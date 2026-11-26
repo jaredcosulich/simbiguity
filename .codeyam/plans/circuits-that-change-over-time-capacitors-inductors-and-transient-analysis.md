@@ -1,0 +1,77 @@
+---
+title: "Circuits that change over time: capacitors, inductors and transient analysis"
+mode: ui
+createdAt: "2026-11-26T19:29:20Z"
+source: manual
+dependsOn: ["time-series-plots-simbiguity-plot-draws-values-over-time-with-the-existing-renderer"]
+---
+
+## Summary
+
+Circuits currently settle instantly. `CircuitSim::step` ignores `dt` and just re-solves the DC circuit (`crates/simbiguity-circuits/src/sim.rs`). This plan adds **capacitors and inductors** and makes time matter, which brings the engine's first use of the fixed clock. Learners can watch an RC circuit charge along its exponential curve, see a flashlight bulb fade as a capacitor drains, and watch an LC circuit ring back and forth. The voltage and current over time are drawn with `simbiguity-plot`. The tests double as numerical-methods lessons, comparing the textbook exact answer with what each integration method actually produces.
+
+## Key Decisions
+
+- **Companion models reuse the existing Norton stamp.** One time step of a capacitor (C, voltage v₀) under backward Euler is a conductance `C/dt` in parallel with a current source `(C/dt)·v₀`. That is exactly the existing `Stamp::Norton { g, current }` in `component.rs`. An inductor is the dual: a conductance `dt/L` with a current source `i₀`. The MNA assembly barely changes, and each step stays a linear solve.
+- **Two integration methods, chosen per simulation:** backward Euler (very stable, slightly damped) and trapezoidal (second-order accurate, keeps LC oscillations from dying out). Exposing both is educational, and tests pin the difference with hand-computed numbers.
+- **State lives in the component.** A `Capacitor { farads, volts }` and `Inductor { henries, amps }` store the value they carry from step to step. `step(dt)` solves using the stored values, then writes the new ones back, so `Snapshot` (a clone) already captures everything and replay stays bit-identical.
+- **DC behaviour is unchanged.** `Circuit::solve()` (no `dt`) treats a capacitor as open and an inductor as a wire, the steady-state limits. Existing DC tests and demos must still pass untouched.
+- **New issues in plain words:** an ideal battery connected straight across a capacitor at t = 0 (infinite inrush current) is reported as such rather than surfacing as a singular-matrix error.
+
+## Implementation
+
+### 1. Components and stamps
+
+**File**: `crates/simbiguity-circuits/src/component.rs`
+
+Add `Component::Capacitor { farads, volts }` and `Component::Inductor { henries, amps }`. Add a method that returns the step's companion `Stamp` for a given `dt` and `Integrator`. DC `stamp()` returns `Open` / `Merge` for them.
+
+### 2. Transient solve
+
+**File**: `crates/simbiguity-circuits/src/mna.rs`
+
+Add `analyze_step(c, dt, integrator)`. It stamps companion models, solves, and returns the new capacitor voltages and inductor currents alongside the `Solution`. Trapezoidal also needs each element's previous current, which is stored on the component.
+
+**File**: `crates/simbiguity-circuits/src/netlist.rs`: `add_capacitor`, `add_inductor`.
+
+### 3. Make `dt` matter in the simulation
+
+**File**: `crates/simbiguity-circuits/src/sim.rs`
+
+`CircuitSim::step(dt)` calls the transient solve and writes the new state back into the components. Add `CircuitSim::with_integrator`. Add the energy stored in each element (½CV², ½LI²) to the solution, for readouts.
+
+### 4. Bridge and demo
+
+**File**: `crates/simbiguity-circuits-wasm/src/lib.rs`: `circuit_add_capacitor`, `circuit_add_inductor`, `circuit_step(h, dt)`, plus chart exports built on `simbiguity-plot`
+
+**New file**: `site/demos/rc-charging/index.html` (+ `demo.js`, `state.js`, `state.test.js`): a battery, switch, resistor and capacitor with a bulb. A live chart shows V across the capacitor and the current. Sliders set R and C, and a readout shows τ = RC. A second preset is an LC "ringing" circuit with an integrator toggle that shows backward Euler damping the oscillation.
+
+**File**: `crates/simbiguity-circuits/capabilities.toml`: a "circuits that change over time" capability, linked to the demo.
+
+## Reused existing code
+
+- `Stamp::Norton` and `Stamp` handling in `crates/simbiguity-circuits/src/component.rs` and `crates/simbiguity-circuits/src/mna.rs`
+- `CircuitSim`, `CircuitInput` in `crates/simbiguity-circuits/src/sim.rs`
+- `FixedClock` from `crates/simbiguity-core/src/clock.rs` for the demo's step loop
+- `lu_solve` from `crates/simbiguity-math/src/linsolve.rs`
+- `simbiguity-plot` (`Chart`, `Series`) from the plot plan
+
+## Tests (written first, hand-computed)
+
+- **RC charging, exact vs discrete.** R = 1 kΩ, C = 1 mF (τ = 1 s), 10 V, dt = 0.1 s, 10 steps.
+  - The textbook answer is 10(1 − e⁻¹) = 6.3212 V.
+  - Backward Euler gives 10(1 − (1/1.1)¹⁰) = 6.1446 V, which lags behind.
+  - Trapezoidal gives 10(1 − (0.95/1.05)¹⁰) = 6.3249 V, which is much closer.
+  - The test asserts the discrete formulas exactly and the gap to the textbook answer.
+- **RL current rise:** L = 1 H, R = 1 Ω gives τ = 1 s, the same shape for current.
+- **LC oscillator:** L = 1 H, C = 1 F has period 2π s. With trapezoidal, the energy ½CV² + ½LI² after 1000 steps is within 1e-9 of the start. With backward Euler it measurably decays. This proves why the integrator choice matters.
+- **DC limit:** after 10τ the transient solution matches `Circuit::solve()`'s steady state.
+- **Determinism:** snapshot at step 50, run to step 100, restore, rerun → bit-identical.
+- **Existing DC tests:** all pass unchanged.
+
+## Scenarios to Demonstrate
+
+- RC circuit mid-charge with the curve approaching the battery voltage
+- Switch opened: the capacitor discharging through the bulb, which fades
+- LC ringing under trapezoidal (sustained) vs backward Euler (damped)
+- A tiny capacitor (τ much less than one frame) charging almost instantly

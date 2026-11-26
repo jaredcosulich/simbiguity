@@ -55,10 +55,20 @@
       "shortSha": "42fce3c",
       "subject": "feat: Circuits that change over time: capacitors, inductors and transient analysis",
       "deferredAt": "2026-11-26T20:45:23Z"
+    },
+    {
+      "sha": "4a7bd35d5cdedc0e989041406f03d519b6747f56",
+      "shortSha": "4a7bd35",
+      "subject": "feat: Performance: benchmarks, WASM size budgets and an incremental circuit solve",
+      "deferredAt": "2026-11-26T21:04:23Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
+  "lastWarned": {
+    "at": "2026-11-26T21:04:45Z",
+    "deferredCommits": 10
+  },
   "drained": {
     "screenshots": 4,
     "at": "2026-11-26T19:15:32Z"

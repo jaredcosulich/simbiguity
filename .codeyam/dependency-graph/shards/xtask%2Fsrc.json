@@ -1,0 +1,2870 @@
+{
+  "entities": {
+    "xtask/src/capabilities.rs::Capability": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::capabilities"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::Capability::demo",
+        "xtask/src/capabilities.rs::Capability::description",
+        "xtask/src/capabilities.rs::Capability::name",
+        "xtask/src/capabilities.rs::Capability::proves",
+        "xtask/src/capabilities.rs::proves"
+      ],
+      "name": "Capability"
+    },
+    "xtask/src/capabilities.rs::Capability::demo": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/capabilities.rs::parse"
+      ],
+      "imports": [],
+      "name": "Capability::demo"
+    },
+    "xtask/src/capabilities.rs::Capability::description": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/capabilities.rs::parse"
+      ],
+      "imports": [],
+      "name": "Capability::description"
+    },
+    "xtask/src/capabilities.rs::Capability::name": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/capabilities.rs::proves"
+      ],
+      "imports": [],
+      "name": "Capability::name"
+    },
+    "xtask/src/capabilities.rs::Capability::proves": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/capabilities.rs::proves"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::proves"
+      ],
+      "name": "Capability::proves"
+    },
+    "xtask/src/capabilities.rs::ManifestError": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::err",
+        "xtask/src/capabilities.rs::parse"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::ManifestError::line",
+        "xtask/src/capabilities.rs::ManifestError::message"
+      ],
+      "name": "ManifestError"
+    },
+    "xtask/src/capabilities.rs::ManifestError::line": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::ManifestError",
+        "xtask/src/capabilities.rs::err",
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/capabilities.rs::strip_comment"
+      ],
+      "imports": [],
+      "name": "ManifestError::line"
+    },
+    "xtask/src/capabilities.rs::ManifestError::message": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::ManifestError",
+        "xtask/src/capabilities.rs::err"
+      ],
+      "imports": [],
+      "name": "ManifestError::message"
+    },
+    "xtask/src/capabilities.rs::__file_root__": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities_tests.rs::__file_root__",
+        "xtask/src/report.rs::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "xtask/src/capabilities.rs::array": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::parse"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::take_string"
+      ],
+      "name": "array",
+      "namedMethods": [
+        "and_then",
+        "is_empty",
+        "new",
+        "ok_or_else",
+        "push",
+        "strip_prefix",
+        "strip_suffix",
+        "trim",
+        "trim_start",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/capabilities.rs::err": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::parse"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::ManifestError",
+        "xtask/src/capabilities.rs::ManifestError::line",
+        "xtask/src/capabilities.rs::ManifestError::message"
+      ],
+      "name": "err"
+    },
+    "xtask/src/capabilities.rs::parse": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/capabilities.rs::Capability::demo",
+        "xtask/src/capabilities.rs::Capability::description",
+        "xtask/src/capabilities.rs::Capability::name",
+        "xtask/src/capabilities.rs::Capability::proves",
+        "xtask/src/capabilities.rs::ManifestError",
+        "xtask/src/capabilities.rs::ManifestError::line",
+        "xtask/src/capabilities.rs::array",
+        "xtask/src/capabilities.rs::err",
+        "xtask/src/capabilities.rs::proves",
+        "xtask/src/capabilities.rs::string",
+        "xtask/src/capabilities.rs::strip_comment"
+      ],
+      "name": "parse",
+      "namedMethods": [
+        "collect",
+        "default",
+        "ends_with",
+        "into",
+        "is_empty",
+        "iter",
+        "last_mut",
+        "len",
+        "lines",
+        "map_err",
+        "new",
+        "position",
+        "push",
+        "push_str",
+        "split_once",
+        "starts_with",
+        "to_string",
+        "trim",
+        "trim_end"
+      ]
+    },
+    "xtask/src/capabilities.rs::proves": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/capabilities.rs::Capability::proves",
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::Capability::name",
+        "xtask/src/capabilities.rs::Capability::proves"
+      ],
+      "name": "proves",
+      "namedMethods": [
+        "is_empty",
+        "starts_with",
+        "to_string"
+      ]
+    },
+    "xtask/src/capabilities.rs::string": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/capabilities.rs::take_string"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::take_string"
+      ],
+      "name": "string",
+      "namedMethods": [
+        "is_empty",
+        "trim"
+      ]
+    },
+    "xtask/src/capabilities.rs::strip_comment": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::parse"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::ManifestError::line"
+      ],
+      "name": "strip_comment",
+      "namedMethods": [
+        "char_indices"
+      ]
+    },
+    "xtask/src/capabilities.rs::take_string": {
+      "filePath": "xtask/src/capabilities.rs",
+      "importedBy": [
+        "xtask/src/capabilities.rs::array",
+        "xtask/src/capabilities.rs::string"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::string"
+      ],
+      "name": "take_string",
+      "namedMethods": [
+        "char_indices",
+        "into",
+        "map",
+        "new",
+        "next",
+        "ok_or_else",
+        "push",
+        "strip_prefix",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/capabilities_tests.rs::__file_root__": {
+      "filePath": "xtask/src/capabilities_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/capabilities.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "xtask/src/libtest_output.rs::Status": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::Status::as_str",
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/libtest_output.rs::TestResult::status",
+        "xtask/src/libtest_output.rs::test_line",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::status",
+        "xtask/src/report.rs::join",
+        "xtask/src/report_tests.rs::doc_test_without_a_line_number",
+        "xtask/src/report_tests.rs::join_counts_results_per_crate",
+        "xtask/src/report_tests.rs::join_derives_capability_status_from_its_tests",
+        "xtask/src/report_tests.rs::join_does_not_duplicate_overlapping_matches",
+        "xtask/src/report_tests.rs::join_leaves_unknown_sources_empty",
+        "xtask/src/report_tests.rs::join_names_doc_tests",
+        "xtask/src/report_tests.rs::join_namespaces_tests_and_attaches_sources",
+        "xtask/src/report_tests.rs::result",
+        "xtask/src/report_tests.rs::to_json_writes_the_shape_the_page_reads"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status::Failed",
+        "xtask/src/libtest_output.rs::Status::Ignored",
+        "xtask/src/libtest_output.rs::Status::Passed",
+        "xtask/src/libtest_output.rs::Status::as_str"
+      ],
+      "name": "Status"
+    },
+    "xtask/src/libtest_output.rs::Status::Failed": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::Status::as_str",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "imports": [],
+      "name": "Status::Failed"
+    },
+    "xtask/src/libtest_output.rs::Status::Ignored": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::Status::as_str",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "imports": [],
+      "name": "Status::Ignored"
+    },
+    "xtask/src/libtest_output.rs::Status::Passed": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::Status::as_str",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "imports": [],
+      "name": "Status::Passed"
+    },
+    "xtask/src/libtest_output.rs::Status::as_str": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::Status"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::Status::Failed",
+        "xtask/src/libtest_output.rs::Status::Ignored",
+        "xtask/src/libtest_output.rs::Status::Passed"
+      ],
+      "inherentMethod": true,
+      "name": "Status::as_str"
+    },
+    "xtask/src/libtest_output.rs::TestResult": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::parse",
+        "xtask/src/libtest_output.rs::test_line",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::results",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::TestResult::path",
+        "xtask/src/libtest_output.rs::TestResult::status",
+        "xtask/src/libtest_output.rs::TestResult::target"
+      ],
+      "name": "TestResult"
+    },
+    "xtask/src/libtest_output.rs::TestResult::path": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "imports": [],
+      "name": "TestResult::path"
+    },
+    "xtask/src/libtest_output.rs::TestResult::status": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status"
+      ],
+      "name": "TestResult::status"
+    },
+    "xtask/src/libtest_output.rs::TestResult::target": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/libtest_output.rs::parse",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "imports": [],
+      "name": "TestResult::target"
+    },
+    "xtask/src/libtest_output.rs::__file_root__": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output_tests.rs::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "xtask/src/libtest_output.rs::parse": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/libtest_output.rs::TestResult::target",
+        "xtask/src/libtest_output.rs::running_target",
+        "xtask/src/libtest_output.rs::test_line"
+      ],
+      "name": "parse",
+      "namedMethods": [
+        "lines",
+        "new",
+        "push",
+        "starts_with",
+        "strip_prefix",
+        "to_string",
+        "trim"
+      ]
+    },
+    "xtask/src/libtest_output.rs::running_target": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::parse"
+      ],
+      "imports": [],
+      "name": "running_target",
+      "namedMethods": [
+        "find",
+        "strip_prefix",
+        "to_string",
+        "trim",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/libtest_output.rs::test_line": {
+      "filePath": "xtask/src/libtest_output.rs",
+      "importedBy": [
+        "xtask/src/libtest_output.rs::parse"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::Status::Failed",
+        "xtask/src/libtest_output.rs::Status::Ignored",
+        "xtask/src/libtest_output.rs::Status::Passed",
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/libtest_output.rs::TestResult::path",
+        "xtask/src/libtest_output.rs::TestResult::status",
+        "xtask/src/libtest_output.rs::TestResult::target"
+      ],
+      "name": "test_line",
+      "namedMethods": [
+        "next",
+        "rsplit_once",
+        "split",
+        "strip_prefix",
+        "strip_suffix",
+        "to_string",
+        "trim",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/libtest_output_tests.rs::__file_root__": {
+      "filePath": "xtask/src/libtest_output_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "xtask/src/libtest_output_tests.rs::integration_tests_are_attributed_to_their_file": {
+      "filePath": "xtask/src/libtest_output_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output_tests.rs::result"
+      ],
+      "name": "integration_tests_are_attributed_to_their_file"
+    },
+    "xtask/src/libtest_output_tests.rs::result": {
+      "filePath": "xtask/src/libtest_output_tests.rs",
+      "importedBy": [
+        "xtask/src/libtest_output_tests.rs::integration_tests_are_attributed_to_their_file",
+        "xtask/src/libtest_output_tests.rs::unit_tests_belong_to_the_running_target",
+        "xtask/src/libtest_output_tests.rs::unrelated_lines_are_ignored"
+      ],
+      "imports": [],
+      "name": "result",
+      "namedMethods": [
+        "to_string"
+      ]
+    },
+    "xtask/src/libtest_output_tests.rs::unit_tests_belong_to_the_running_target": {
+      "filePath": "xtask/src/libtest_output_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output_tests.rs::result"
+      ],
+      "name": "unit_tests_belong_to_the_running_target"
+    },
+    "xtask/src/libtest_output_tests.rs::unrelated_lines_are_ignored": {
+      "filePath": "xtask/src/libtest_output_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output_tests.rs::result"
+      ],
+      "name": "unrelated_lines_are_ignored",
+      "namedMethods": [
+        "is_empty"
+      ]
+    },
+    "xtask/src/main.rs::__file_root__": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main_tests.rs::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "xtask/src/main.rs::civil_from_days": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::now_iso8601"
+      ],
+      "imports": [],
+      "name": "civil_from_days",
+      "namedMethods": [
+        "div_euclid",
+        "from",
+        "rem_euclid"
+      ]
+    },
+    "xtask/src/main.rs::crate_dirs": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "crate_dirs",
+      "namedMethods": [
+        "collect",
+        "exists",
+        "filter",
+        "filter_map",
+        "join",
+        "map",
+        "map_err",
+        "ok",
+        "path",
+        "read_dir",
+        "sort",
+        "to_string"
+      ]
+    },
+    "xtask/src/main.rs::dependencies": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "dependencies",
+      "namedMethods": [
+        "contains",
+        "ends_with",
+        "is_empty",
+        "lines",
+        "new",
+        "push",
+        "split_once",
+        "starts_with",
+        "to_string",
+        "trim"
+      ]
+    },
+    "xtask/src/main.rs::git": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "git",
+      "namedMethods": [
+        "args",
+        "current_dir",
+        "from_utf8_lossy",
+        "new",
+        "ok",
+        "output",
+        "success",
+        "then",
+        "to_string",
+        "trim"
+      ]
+    },
+    "xtask/src/main.rs::main": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "name": "main",
+      "namedMethods": [
+        "args",
+        "as_str",
+        "collect",
+        "first",
+        "map",
+        "skip"
+      ]
+    },
+    "xtask/src/main.rs::manifest_value": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "manifest_value",
+      "namedMethods": [
+        "and_then",
+        "lines",
+        "replace",
+        "split_once",
+        "starts_with",
+        "strip_prefix",
+        "strip_suffix",
+        "trim"
+      ]
+    },
+    "xtask/src/main.rs::now_iso8601": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [
+        "xtask/src/main.rs::civil_from_days"
+      ],
+      "name": "now_iso8601",
+      "namedMethods": [
+        "as_secs",
+        "duration_since",
+        "map",
+        "now",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/main.rs::repo_root": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "repo_root",
+      "namedMethods": [
+        "expect",
+        "new",
+        "parent",
+        "to_path_buf"
+      ]
+    },
+    "xtask/src/main.rs::run_tests": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "run_tests",
+      "namedMethods": [
+        "args",
+        "create",
+        "current_dir",
+        "from",
+        "into",
+        "map_err",
+        "new",
+        "status",
+        "stderr",
+        "stdout",
+        "to_string",
+        "try_clone",
+        "unwrap_or_else",
+        "var"
+      ]
+    },
+    "xtask/src/main.rs::site_report": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::main"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::parse",
+        "xtask/src/libtest_output.rs::parse",
+        "xtask/src/main.rs::crate_dirs",
+        "xtask/src/main.rs::dependencies",
+        "xtask/src/main.rs::git",
+        "xtask/src/main.rs::manifest_value",
+        "xtask/src/main.rs::now_iso8601",
+        "xtask/src/main.rs::repo_root",
+        "xtask/src/main.rs::run_tests",
+        "xtask/src/main.rs::workspace_repository",
+        "xtask/src/report.rs::Build",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json",
+        "xtask/src/test_descriptions.rs::scan"
+      ],
+      "name": "site_report",
+      "namedMethods": [
+        "as_str",
+        "capabilities",
+        "clone",
+        "collect",
+        "contains",
+        "count",
+        "crates",
+        "create_dir_all",
+        "dedup",
+        "display",
+        "exists",
+        "filter",
+        "from",
+        "get",
+        "into_iter",
+        "is_empty",
+        "iter",
+        "join",
+        "krate",
+        "len",
+        "line",
+        "map",
+        "map_err",
+        "message",
+        "name",
+        "new",
+        "ok_or",
+        "ok_or_else",
+        "parent",
+        "parse",
+        "push",
+        "read_to_string",
+        "scan",
+        "sort",
+        "sum",
+        "to_json",
+        "to_string",
+        "unwrap_or_default",
+        "write"
+      ]
+    },
+    "xtask/src/main.rs::workspace_repository": {
+      "filePath": "xtask/src/main.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [],
+      "name": "workspace_repository",
+      "namedMethods": [
+        "find_map",
+        "join",
+        "lines",
+        "ok",
+        "read_to_string",
+        "split_once",
+        "then",
+        "to_string",
+        "trim",
+        "trim_matches"
+      ]
+    },
+    "xtask/src/main_tests.rs::MANIFEST": {
+      "filePath": "xtask/src/main_tests.rs",
+      "importedBy": [
+        "xtask/src/main_tests.rs::dependencies_split_workspace_from_external",
+        "xtask/src/main_tests.rs::manifest_value_reads_the_package_table"
+      ],
+      "imports": [],
+      "name": "MANIFEST"
+    },
+    "xtask/src/main_tests.rs::__file_root__": {
+      "filePath": "xtask/src/main_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/main.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "xtask/src/main_tests.rs::dependencies_split_workspace_from_external": {
+      "filePath": "xtask/src/main_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/main_tests.rs::MANIFEST"
+      ],
+      "name": "dependencies_split_workspace_from_external"
+    },
+    "xtask/src/main_tests.rs::manifest_value_reads_the_package_table": {
+      "filePath": "xtask/src/main_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/main_tests.rs::MANIFEST"
+      ],
+      "name": "manifest_value_reads_the_package_table",
+      "namedMethods": [
+        "as_deref"
+      ]
+    },
+    "xtask/src/report.rs::Build": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Build::commit",
+        "xtask/src/report.rs::Build::committed_at",
+        "xtask/src/report.rs::Build::generated_at",
+        "xtask/src/report.rs::Build::repository"
+      ],
+      "name": "Build"
+    },
+    "xtask/src/report.rs::Build::commit": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Build",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Build::commit"
+    },
+    "xtask/src/report.rs::Build::committed_at": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Build",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Build::committed_at"
+    },
+    "xtask/src/report.rs::Build::generated_at": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Build",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Build::generated_at"
+    },
+    "xtask/src/report.rs::Build::repository": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Build",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Build::repository"
+    },
+    "xtask/src/report.rs::CapabilityReport": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::capabilities",
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::demo",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::krate",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::CapabilityReport::unmatched",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::krate",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::Test::status"
+      ],
+      "name": "CapabilityReport"
+    },
+    "xtask/src/report.rs::CapabilityReport::demo": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "CapabilityReport::demo"
+    },
+    "xtask/src/report.rs::CapabilityReport::description": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::Test::description"
+      ],
+      "name": "CapabilityReport::description"
+    },
+    "xtask/src/report.rs::CapabilityReport::krate": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::krate",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Test::krate"
+      ],
+      "name": "CapabilityReport::krate"
+    },
+    "xtask/src/report.rs::CapabilityReport::name": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Test::name"
+      ],
+      "name": "CapabilityReport::name"
+    },
+    "xtask/src/report.rs::CapabilityReport::status": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::status",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Test::status"
+      ],
+      "name": "CapabilityReport::status"
+    },
+    "xtask/src/report.rs::CapabilityReport::tests": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Report::tests"
+      ],
+      "name": "CapabilityReport::tests"
+    },
+    "xtask/src/report.rs::CapabilityReport::unmatched": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "CapabilityReport::unmatched"
+    },
+    "xtask/src/report.rs::CrateInput": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report",
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput::build_failed",
+        "xtask/src/report.rs::CrateInput::capabilities",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::external_dependencies",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateInput::results",
+        "xtask/src/report.rs::CrateInput::sources",
+        "xtask/src/report.rs::CrateInput::workspace_dependencies",
+        "xtask/src/report.rs::CrateReport::build_failed",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::external_dependencies",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::CrateReport::workspace_dependencies",
+        "xtask/src/report.rs::Report::capabilities",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/test_descriptions.rs::TestSource"
+      ],
+      "name": "CrateInput"
+    },
+    "xtask/src/report.rs::CrateInput::build_failed": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::build_failed",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateReport::build_failed"
+      ],
+      "name": "CrateInput::build_failed"
+    },
+    "xtask/src/report.rs::CrateInput::capabilities": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::capabilities",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::Capability",
+        "xtask/src/report.rs::Report::capabilities"
+      ],
+      "name": "CrateInput::capabilities"
+    },
+    "xtask/src/report.rs::CrateInput::description": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::Test::description"
+      ],
+      "name": "CrateInput::description"
+    },
+    "xtask/src/report.rs::CrateInput::external_dependencies": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::external_dependencies",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateReport::external_dependencies"
+      ],
+      "name": "CrateInput::external_dependencies"
+    },
+    "xtask/src/report.rs::CrateInput::name": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Test::name"
+      ],
+      "name": "CrateInput::name"
+    },
+    "xtask/src/report.rs::CrateInput::results": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::TestResult"
+      ],
+      "name": "CrateInput::results"
+    },
+    "xtask/src/report.rs::CrateInput::sources": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource"
+      ],
+      "name": "CrateInput::sources"
+    },
+    "xtask/src/report.rs::CrateInput::workspace_dependencies": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::workspace_dependencies",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateReport::workspace_dependencies"
+      ],
+      "name": "CrateInput::workspace_dependencies"
+    },
+    "xtask/src/report.rs::CrateReport": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::crates",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput::build_failed",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::external_dependencies",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateInput::workspace_dependencies",
+        "xtask/src/report.rs::CrateReport::build_failed",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::external_dependencies",
+        "xtask/src/report.rs::CrateReport::failed",
+        "xtask/src/report.rs::CrateReport::ignored",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::CrateReport::passed",
+        "xtask/src/report.rs::CrateReport::workspace_dependencies",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::name"
+      ],
+      "name": "CrateReport"
+    },
+    "xtask/src/report.rs::CrateReport::build_failed": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::build_failed",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateInput::build_failed"
+      ],
+      "name": "CrateReport::build_failed"
+    },
+    "xtask/src/report.rs::CrateReport::description": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::Test::description"
+      ],
+      "name": "CrateReport::description"
+    },
+    "xtask/src/report.rs::CrateReport::external_dependencies": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::external_dependencies",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateInput::external_dependencies"
+      ],
+      "name": "CrateReport::external_dependencies"
+    },
+    "xtask/src/report.rs::CrateReport::failed": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "CrateReport::failed"
+    },
+    "xtask/src/report.rs::CrateReport::ignored": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "CrateReport::ignored"
+    },
+    "xtask/src/report.rs::CrateReport::name": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::Test::name"
+      ],
+      "name": "CrateReport::name"
+    },
+    "xtask/src/report.rs::CrateReport::passed": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "CrateReport::passed"
+    },
+    "xtask/src/report.rs::CrateReport::workspace_dependencies": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::workspace_dependencies",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateInput::workspace_dependencies"
+      ],
+      "name": "CrateReport::workspace_dependencies"
+    },
+    "xtask/src/report.rs::Json": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::boolean",
+        "xtask/src/report.rs::Json::close",
+        "xtask/src/report.rs::Json::has_item",
+        "xtask/src/report.rs::Json::indent",
+        "xtask/src/report.rs::Json::item",
+        "xtask/src/report.rs::Json::key",
+        "xtask/src/report.rs::Json::newline",
+        "xtask/src/report.rs::Json::num",
+        "xtask/src/report.rs::Json::open",
+        "xtask/src/report.rs::Json::opt_str",
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::Json::raw",
+        "xtask/src/report.rs::Json::separator",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Json::strs",
+        "xtask/src/report.rs::escape"
+      ],
+      "name": "Json"
+    },
+    "xtask/src/report.rs::Json::boolean": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::raw"
+      ],
+      "inherentMethod": true,
+      "name": "Json::boolean",
+      "namedMethods": [
+        "raw"
+      ]
+    },
+    "xtask/src/report.rs::Json::close": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::has_item",
+        "xtask/src/report.rs::Json::indent",
+        "xtask/src/report.rs::Json::newline",
+        "xtask/src/report.rs::Json::out"
+      ],
+      "inherentMethod": true,
+      "name": "Json::close",
+      "namedMethods": [
+        "newline",
+        "pop",
+        "push"
+      ]
+    },
+    "xtask/src/report.rs::Json::has_item": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::close",
+        "xtask/src/report.rs::Json::open",
+        "xtask/src/report.rs::Json::separator"
+      ],
+      "imports": [],
+      "name": "Json::has_item"
+    },
+    "xtask/src/report.rs::Json::indent": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::close",
+        "xtask/src/report.rs::Json::newline",
+        "xtask/src/report.rs::Json::open"
+      ],
+      "imports": [],
+      "name": "Json::indent"
+    },
+    "xtask/src/report.rs::Json::item": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::separator"
+      ],
+      "inherentMethod": true,
+      "name": "Json::item",
+      "namedMethods": [
+        "separator"
+      ]
+    },
+    "xtask/src/report.rs::Json::key": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::Json::separator",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::escape"
+      ],
+      "inherentMethod": true,
+      "name": "Json::key",
+      "namedMethods": [
+        "push_str",
+        "separator"
+      ]
+    },
+    "xtask/src/report.rs::Json::newline": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::close",
+        "xtask/src/report.rs::Json::separator"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::indent",
+        "xtask/src/report.rs::Json::out"
+      ],
+      "inherentMethod": true,
+      "name": "Json::newline",
+      "namedMethods": [
+        "push",
+        "push_str"
+      ]
+    },
+    "xtask/src/report.rs::Json::num": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::out"
+      ],
+      "inherentMethod": true,
+      "name": "Json::num",
+      "namedMethods": [
+        "push_str",
+        "to_string"
+      ]
+    },
+    "xtask/src/report.rs::Json::open": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::has_item",
+        "xtask/src/report.rs::Json::indent",
+        "xtask/src/report.rs::Json::out"
+      ],
+      "inherentMethod": true,
+      "name": "Json::open",
+      "namedMethods": [
+        "push"
+      ]
+    },
+    "xtask/src/report.rs::Json::opt_str": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::raw",
+        "xtask/src/report.rs::Json::str"
+      ],
+      "inherentMethod": true,
+      "name": "Json::opt_str",
+      "namedMethods": [
+        "raw",
+        "str"
+      ]
+    },
+    "xtask/src/report.rs::Json::out": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::close",
+        "xtask/src/report.rs::Json::key",
+        "xtask/src/report.rs::Json::newline",
+        "xtask/src/report.rs::Json::num",
+        "xtask/src/report.rs::Json::open",
+        "xtask/src/report.rs::Json::raw",
+        "xtask/src/report.rs::Json::separator",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Json::strs",
+        "xtask/src/report.rs::escape",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Json::out"
+    },
+    "xtask/src/report.rs::Json::raw": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::boolean",
+        "xtask/src/report.rs::Json::opt_str",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::Json::str"
+      ],
+      "inherentMethod": true,
+      "name": "Json::raw",
+      "namedMethods": [
+        "push_str"
+      ]
+    },
+    "xtask/src/report.rs::Json::separator": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::item",
+        "xtask/src/report.rs::Json::key"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::has_item",
+        "xtask/src/report.rs::Json::newline",
+        "xtask/src/report.rs::Json::out"
+      ],
+      "inherentMethod": true,
+      "name": "Json::separator",
+      "namedMethods": [
+        "last_mut",
+        "newline",
+        "push"
+      ]
+    },
+    "xtask/src/report.rs::Json::str": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::key",
+        "xtask/src/report.rs::Json::opt_str",
+        "xtask/src/report.rs::Json::raw",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::escape",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::escape"
+      ],
+      "inherentMethod": true,
+      "name": "Json::str",
+      "namedMethods": [
+        "push_str"
+      ]
+    },
+    "xtask/src/report.rs::Json::strs": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::escape"
+      ],
+      "inherentMethod": true,
+      "name": "Json::strs",
+      "namedMethods": [
+        "enumerate",
+        "iter",
+        "push",
+        "push_str"
+      ]
+    },
+    "xtask/src/report.rs::Report": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::CrateInput::capabilities",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::Report::capabilities",
+        "xtask/src/report.rs::Report::crates",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::Test"
+      ],
+      "name": "Report"
+    },
+    "xtask/src/report.rs::Report::capabilities": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::capabilities",
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CrateInput::capabilities"
+      ],
+      "name": "Report::capabilities"
+    },
+    "xtask/src/report.rs::Report::crates": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CrateReport"
+      ],
+      "name": "Report::crates"
+    },
+    "xtask/src/report.rs::Report::tests": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::Test"
+      ],
+      "name": "Report::tests"
+    },
+    "xtask/src/report.rs::Test": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::krate",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::file",
+        "xtask/src/report.rs::Test::id",
+        "xtask/src/report.rs::Test::krate",
+        "xtask/src/report.rs::Test::line",
+        "xtask/src/report.rs::Test::module",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::Test::status"
+      ],
+      "name": "Test"
+    },
+    "xtask/src/report.rs::Test::description": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateReport::description"
+      ],
+      "name": "Test::description"
+    },
+    "xtask/src/report.rs::Test::file": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Test::file"
+    },
+    "xtask/src/report.rs::Test::id": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Test::id"
+    },
+    "xtask/src/report.rs::Test::krate": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::krate",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::krate"
+      ],
+      "name": "Test::krate"
+    },
+    "xtask/src/report.rs::Test::line": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Test::line"
+    },
+    "xtask/src/report.rs::Test::module": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [],
+      "name": "Test::module"
+    },
+    "xtask/src/report.rs::Test::name": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::module_and_name",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport::name"
+      ],
+      "name": "Test::name"
+    },
+    "xtask/src/report.rs::Test::status": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::join",
+        "xtask/src/report.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report.rs::CapabilityReport::status"
+      ],
+      "name": "Test::status"
+    },
+    "xtask/src/report.rs::__file_root__": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report_tests.rs::__file_root__"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "xtask/src/report.rs::doc_test": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::krate",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Json::item",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::file",
+        "xtask/src/report.rs::Test::id",
+        "xtask/src/report.rs::Test::krate",
+        "xtask/src/report.rs::Test::line",
+        "xtask/src/report.rs::Test::module",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::Test::status"
+      ],
+      "name": "doc_test",
+      "namedMethods": [
+        "as_str",
+        "is_empty",
+        "next",
+        "ok",
+        "parse",
+        "rsplit",
+        "rsplit_once",
+        "split_once",
+        "to_string",
+        "trim",
+        "trim_end_matches",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/report.rs::escape": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::key",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Json::strs"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::Json::str"
+      ],
+      "name": "escape",
+      "namedMethods": [
+        "chars",
+        "len",
+        "push",
+        "push_str",
+        "with_capacity"
+      ]
+    },
+    "xtask/src/report.rs::join": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs::proves",
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report.rs::CapabilityReport",
+        "xtask/src/report.rs::CapabilityReport::demo",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::krate",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::CapabilityReport::unmatched",
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::build_failed",
+        "xtask/src/report.rs::CrateInput::capabilities",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::external_dependencies",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateInput::results",
+        "xtask/src/report.rs::CrateInput::sources",
+        "xtask/src/report.rs::CrateInput::workspace_dependencies",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::build_failed",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::external_dependencies",
+        "xtask/src/report.rs::CrateReport::failed",
+        "xtask/src/report.rs::CrateReport::ignored",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::CrateReport::passed",
+        "xtask/src/report.rs::CrateReport::workspace_dependencies",
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::capabilities",
+        "xtask/src/report.rs::Report::crates",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::Test",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::file",
+        "xtask/src/report.rs::Test::id",
+        "xtask/src/report.rs::Test::krate",
+        "xtask/src/report.rs::Test::line",
+        "xtask/src/report.rs::Test::module",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::Test::status",
+        "xtask/src/report.rs::doc_test",
+        "xtask/src/report.rs::module_and_name"
+      ],
+      "name": "join",
+      "namedMethods": [
+        "and_then",
+        "any",
+        "clone",
+        "collect",
+        "contains",
+        "count",
+        "extend",
+        "file",
+        "filter",
+        "find",
+        "is_empty",
+        "iter",
+        "len",
+        "map",
+        "name",
+        "new",
+        "proves",
+        "push"
+      ]
+    },
+    "xtask/src/report.rs::module_and_name": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/report.rs::join"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::Test::file",
+        "xtask/src/report.rs::Test::module",
+        "xtask/src/report.rs::Test::name"
+      ],
+      "name": "module_and_name",
+      "namedMethods": [
+        "clone",
+        "is_empty",
+        "new",
+        "rsplit_once",
+        "strip_prefix",
+        "to_string",
+        "trim_end_matches"
+      ]
+    },
+    "xtask/src/report.rs::to_json": {
+      "filePath": "xtask/src/report.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [
+        "xtask/src/report.rs::Build",
+        "xtask/src/report.rs::Build::commit",
+        "xtask/src/report.rs::Build::committed_at",
+        "xtask/src/report.rs::Build::generated_at",
+        "xtask/src/report.rs::Build::repository",
+        "xtask/src/report.rs::CapabilityReport::demo",
+        "xtask/src/report.rs::CapabilityReport::description",
+        "xtask/src/report.rs::CapabilityReport::krate",
+        "xtask/src/report.rs::CapabilityReport::name",
+        "xtask/src/report.rs::CapabilityReport::status",
+        "xtask/src/report.rs::CapabilityReport::tests",
+        "xtask/src/report.rs::CapabilityReport::unmatched",
+        "xtask/src/report.rs::CrateInput::build_failed",
+        "xtask/src/report.rs::CrateInput::capabilities",
+        "xtask/src/report.rs::CrateInput::description",
+        "xtask/src/report.rs::CrateInput::external_dependencies",
+        "xtask/src/report.rs::CrateInput::name",
+        "xtask/src/report.rs::CrateInput::workspace_dependencies",
+        "xtask/src/report.rs::CrateReport",
+        "xtask/src/report.rs::CrateReport::build_failed",
+        "xtask/src/report.rs::CrateReport::description",
+        "xtask/src/report.rs::CrateReport::external_dependencies",
+        "xtask/src/report.rs::CrateReport::failed",
+        "xtask/src/report.rs::CrateReport::ignored",
+        "xtask/src/report.rs::CrateReport::name",
+        "xtask/src/report.rs::CrateReport::passed",
+        "xtask/src/report.rs::CrateReport::workspace_dependencies",
+        "xtask/src/report.rs::Json",
+        "xtask/src/report.rs::Json::boolean",
+        "xtask/src/report.rs::Json::close",
+        "xtask/src/report.rs::Json::item",
+        "xtask/src/report.rs::Json::key",
+        "xtask/src/report.rs::Json::num",
+        "xtask/src/report.rs::Json::open",
+        "xtask/src/report.rs::Json::opt_str",
+        "xtask/src/report.rs::Json::out",
+        "xtask/src/report.rs::Json::raw",
+        "xtask/src/report.rs::Json::str",
+        "xtask/src/report.rs::Json::strs",
+        "xtask/src/report.rs::Report",
+        "xtask/src/report.rs::Report::capabilities",
+        "xtask/src/report.rs::Report::crates",
+        "xtask/src/report.rs::Report::tests",
+        "xtask/src/report.rs::Test::description",
+        "xtask/src/report.rs::Test::file",
+        "xtask/src/report.rs::Test::id",
+        "xtask/src/report.rs::Test::krate",
+        "xtask/src/report.rs::Test::line",
+        "xtask/src/report.rs::Test::module",
+        "xtask/src/report.rs::Test::name",
+        "xtask/src/report.rs::Test::status"
+      ],
+      "name": "to_json",
+      "namedMethods": [
+        "as_deref",
+        "as_str",
+        "boolean",
+        "close",
+        "default",
+        "item",
+        "iter",
+        "key",
+        "len",
+        "map",
+        "num",
+        "open",
+        "opt_str",
+        "push",
+        "raw",
+        "str",
+        "strs",
+        "sum"
+      ]
+    },
+    "xtask/src/report_tests.rs::__file_root__": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/report.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "xtask/src/report_tests.rs::build": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [
+        "xtask/src/report_tests.rs::to_json_of_an_empty_report",
+        "xtask/src/report_tests.rs::to_json_writes_the_shape_the_page_reads"
+      ],
+      "imports": [],
+      "name": "build",
+      "namedMethods": [
+        "into"
+      ]
+    },
+    "xtask/src/report_tests.rs::capability": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [
+        "xtask/src/report_tests.rs::join_derives_capability_status_from_its_tests",
+        "xtask/src/report_tests.rs::join_does_not_duplicate_overlapping_matches",
+        "xtask/src/report_tests.rs::to_json_writes_the_shape_the_page_reads"
+      ],
+      "imports": [],
+      "name": "capability",
+      "namedMethods": [
+        "collect",
+        "into",
+        "iter",
+        "map",
+        "to_string"
+      ]
+    },
+    "xtask/src/report_tests.rs::doc_test_without_a_line_number": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "doc_test_without_a_line_number",
+      "namedMethods": [
+        "line",
+        "name",
+        "status"
+      ]
+    },
+    "xtask/src/report_tests.rs::input": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [
+        "xtask/src/report_tests.rs::join_counts_results_per_crate",
+        "xtask/src/report_tests.rs::join_derives_capability_status_from_its_tests",
+        "xtask/src/report_tests.rs::join_does_not_duplicate_overlapping_matches",
+        "xtask/src/report_tests.rs::join_leaves_unknown_sources_empty",
+        "xtask/src/report_tests.rs::join_names_doc_tests",
+        "xtask/src/report_tests.rs::join_namespaces_tests_and_attaches_sources",
+        "xtask/src/report_tests.rs::to_json_writes_the_shape_the_page_reads"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::TestResult",
+        "xtask/src/test_descriptions.rs::TestSource"
+      ],
+      "name": "input",
+      "namedMethods": [
+        "into"
+      ]
+    },
+    "xtask/src/report_tests.rs::join_counts_results_per_crate": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "join_counts_results_per_crate",
+      "namedMethods": [
+        "build_failed",
+        "failed",
+        "ignored",
+        "passed",
+        "workspace_dependencies"
+      ]
+    },
+    "xtask/src/report_tests.rs::join_derives_capability_status_from_its_tests": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::capability",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "join_derives_capability_status_from_its_tests",
+      "namedMethods": [
+        "capabilities",
+        "collect",
+        "is_empty",
+        "iter",
+        "map",
+        "tests",
+        "unmatched"
+      ]
+    },
+    "xtask/src/report_tests.rs::join_does_not_duplicate_overlapping_matches": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::capability",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "join_does_not_duplicate_overlapping_matches",
+      "namedMethods": [
+        "capabilities",
+        "len",
+        "tests",
+        "unmatched"
+      ]
+    },
+    "xtask/src/report_tests.rs::join_leaves_unknown_sources_empty": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "join_leaves_unknown_sources_empty",
+      "namedMethods": [
+        "clone",
+        "description",
+        "file",
+        "id",
+        "line",
+        "module"
+      ]
+    },
+    "xtask/src/report_tests.rs::join_names_doc_tests": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "join_names_doc_tests",
+      "namedMethods": [
+        "as_deref",
+        "contains",
+        "description",
+        "file",
+        "id",
+        "line",
+        "module",
+        "name",
+        "starts_with",
+        "unwrap"
+      ]
+    },
+    "xtask/src/report_tests.rs::join_namespaces_tests_and_attaches_sources": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "join_namespaces_tests_and_attaches_sources",
+      "namedMethods": [
+        "as_deref",
+        "description",
+        "file",
+        "id",
+        "line",
+        "module"
+      ]
+    },
+    "xtask/src/report_tests.rs::result": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [
+        "xtask/src/report_tests.rs::doc_test_without_a_line_number",
+        "xtask/src/report_tests.rs::join_counts_results_per_crate",
+        "xtask/src/report_tests.rs::join_derives_capability_status_from_its_tests",
+        "xtask/src/report_tests.rs::join_does_not_duplicate_overlapping_matches",
+        "xtask/src/report_tests.rs::join_leaves_unknown_sources_empty",
+        "xtask/src/report_tests.rs::join_names_doc_tests",
+        "xtask/src/report_tests.rs::join_namespaces_tests_and_attaches_sources",
+        "xtask/src/report_tests.rs::to_json_writes_the_shape_the_page_reads"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/libtest_output.rs::TestResult"
+      ],
+      "name": "result",
+      "namedMethods": [
+        "into"
+      ]
+    },
+    "xtask/src/report_tests.rs::to_json_of_an_empty_report": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/report_tests.rs::build"
+      ],
+      "name": "to_json_of_an_empty_report",
+      "namedMethods": [
+        "contains"
+      ]
+    },
+    "xtask/src/report_tests.rs::to_json_writes_the_shape_the_page_reads": {
+      "filePath": "xtask/src/report_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/libtest_output.rs::Status",
+        "xtask/src/report_tests.rs::build",
+        "xtask/src/report_tests.rs::capability",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/report_tests.rs::result"
+      ],
+      "name": "to_json_writes_the_shape_the_page_reads",
+      "namedMethods": [
+        "contains",
+        "ends_with",
+        "starts_with"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::ChildModule": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::ChildModule::module",
+        "xtask/src/test_descriptions.rs::ChildModule::name",
+        "xtask/src/test_descriptions.rs::ChildModule::path_attr"
+      ],
+      "name": "ChildModule"
+    },
+    "xtask/src/test_descriptions.rs::ChildModule::module": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::ChildModule",
+        "xtask/src/test_descriptions.rs::scan_source",
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "imports": [],
+      "name": "ChildModule::module"
+    },
+    "xtask/src/test_descriptions.rs::ChildModule::name": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::ChildModule",
+        "xtask/src/test_descriptions.rs::mod_declaration",
+        "xtask/src/test_descriptions.rs::scan_source",
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "imports": [],
+      "name": "ChildModule::name"
+    },
+    "xtask/src/test_descriptions.rs::ChildModule::path_attr": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::ChildModule",
+        "xtask/src/test_descriptions.rs::scan_source",
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "imports": [],
+      "name": "ChildModule::path_attr"
+    },
+    "xtask/src/test_descriptions.rs::TestSource": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/report.rs::CrateInput",
+        "xtask/src/report.rs::CrateInput::sources",
+        "xtask/src/report_tests.rs::input",
+        "xtask/src/test_descriptions.rs::scan",
+        "xtask/src/test_descriptions.rs::scan_source",
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource::description",
+        "xtask/src/test_descriptions.rs::TestSource::file",
+        "xtask/src/test_descriptions.rs::TestSource::line",
+        "xtask/src/test_descriptions.rs::TestSource::path"
+      ],
+      "name": "TestSource"
+    },
+    "xtask/src/test_descriptions.rs::TestSource::description": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [],
+      "name": "TestSource::description"
+    },
+    "xtask/src/test_descriptions.rs::TestSource::file": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::scan_source",
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "imports": [],
+      "name": "TestSource::file"
+    },
+    "xtask/src/test_descriptions.rs::TestSource::line": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::brace_delta",
+        "xtask/src/test_descriptions.rs::comment_above",
+        "xtask/src/test_descriptions.rs::fn_name",
+        "xtask/src/test_descriptions.rs::mod_declaration",
+        "xtask/src/test_descriptions.rs::path_attribute",
+        "xtask/src/test_descriptions.rs::scan_source",
+        "xtask/src/test_descriptions.rs::strip_visibility"
+      ],
+      "imports": [],
+      "name": "TestSource::line"
+    },
+    "xtask/src/test_descriptions.rs::TestSource::path": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::path_attribute",
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [],
+      "name": "TestSource::path"
+    },
+    "xtask/src/test_descriptions.rs::__file_root__": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions_tests.rs::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "xtask/src/test_descriptions.rs::brace_delta": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource::line"
+      ],
+      "name": "brace_delta",
+      "namedMethods": [
+        "chars",
+        "clone",
+        "next",
+        "peek",
+        "peekable"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::comment_above": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource::line"
+      ],
+      "name": "comment_above",
+      "namedMethods": [
+        "collect",
+        "filter",
+        "into_iter",
+        "is_empty",
+        "join",
+        "new",
+        "or_else",
+        "push",
+        "reverse",
+        "starts_with",
+        "strip_prefix",
+        "to_string",
+        "trim"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::fn_name": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource::line",
+        "xtask/src/test_descriptions.rs::strip_visibility"
+      ],
+      "name": "fn_name",
+      "namedMethods": [
+        "find",
+        "is_alphanumeric",
+        "strip_prefix",
+        "to_string",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::mod_declaration": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::ChildModule::name",
+        "xtask/src/test_descriptions.rs::TestSource::line",
+        "xtask/src/test_descriptions.rs::strip_visibility"
+      ],
+      "name": "mod_declaration",
+      "namedMethods": [
+        "find",
+        "is_alphanumeric",
+        "starts_with",
+        "strip_prefix",
+        "to_string",
+        "trim_start"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::path_attribute": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource::line",
+        "xtask/src/test_descriptions.rs::TestSource::path"
+      ],
+      "name": "path_attribute",
+      "namedMethods": [
+        "find",
+        "strip_prefix",
+        "to_string",
+        "trim",
+        "trim_start"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::scan": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/main.rs::site_report"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "name": "scan",
+      "namedMethods": [
+        "join",
+        "map",
+        "new",
+        "parent",
+        "to_path_buf",
+        "unwrap_or_default"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::scan_source": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::walk"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::ChildModule",
+        "xtask/src/test_descriptions.rs::ChildModule::module",
+        "xtask/src/test_descriptions.rs::ChildModule::name",
+        "xtask/src/test_descriptions.rs::ChildModule::path_attr",
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::TestSource::description",
+        "xtask/src/test_descriptions.rs::TestSource::file",
+        "xtask/src/test_descriptions.rs::TestSource::line",
+        "xtask/src/test_descriptions.rs::TestSource::path",
+        "xtask/src/test_descriptions.rs::brace_delta",
+        "xtask/src/test_descriptions.rs::comment_above",
+        "xtask/src/test_descriptions.rs::fn_name",
+        "xtask/src/test_descriptions.rs::mod_declaration",
+        "xtask/src/test_descriptions.rs::path_attribute"
+      ],
+      "name": "scan_source",
+      "namedMethods": [
+        "clone",
+        "collect",
+        "enumerate",
+        "extend",
+        "is_empty",
+        "is_none",
+        "iter",
+        "join",
+        "last",
+        "lines",
+        "map",
+        "new",
+        "pop",
+        "push",
+        "starts_with",
+        "take",
+        "to_string",
+        "to_vec",
+        "trim"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::strip_visibility": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::fn_name",
+        "xtask/src/test_descriptions.rs::mod_declaration"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::TestSource::line"
+      ],
+      "name": "strip_visibility",
+      "namedMethods": [
+        "find",
+        "strip_prefix",
+        "trim_start",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/test_descriptions.rs::walk": {
+      "filePath": "xtask/src/test_descriptions.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions.rs::scan"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs::ChildModule::module",
+        "xtask/src/test_descriptions.rs::ChildModule::name",
+        "xtask/src/test_descriptions.rs::ChildModule::path_attr",
+        "xtask/src/test_descriptions.rs::TestSource",
+        "xtask/src/test_descriptions.rs::TestSource::file",
+        "xtask/src/test_descriptions.rs::scan_source"
+      ],
+      "name": "walk",
+      "namedMethods": [
+        "clone",
+        "exists",
+        "extend",
+        "file_stem",
+        "into_owned",
+        "join",
+        "map",
+        "name",
+        "parent",
+        "read_to_string",
+        "replace",
+        "strip_prefix",
+        "to_path_buf",
+        "to_string_lossy",
+        "unwrap_or",
+        "unwrap_or_default"
+      ]
+    },
+    "xtask/src/test_descriptions_tests.rs::__file_root__": {
+      "filePath": "xtask/src/test_descriptions_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/test_descriptions.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "xtask/src/test_descriptions_tests.rs::finds_a_commented_test_in_an_inline_module": {
+      "filePath": "xtask/src/test_descriptions_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/test_descriptions_tests.rs::module"
+      ],
+      "name": "finds_a_commented_test_in_an_inline_module",
+      "namedMethods": [
+        "into",
+        "is_empty"
+      ]
+    },
+    "xtask/src/test_descriptions_tests.rs::inline_module_closes_at_its_brace": {
+      "filePath": "xtask/src/test_descriptions_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/test_descriptions_tests.rs::module"
+      ],
+      "name": "inline_module_closes_at_its_brace",
+      "namedMethods": [
+        "as_str",
+        "collect",
+        "iter",
+        "map"
+      ]
+    },
+    "xtask/src/test_descriptions_tests.rs::module": {
+      "filePath": "xtask/src/test_descriptions_tests.rs",
+      "importedBy": [
+        "xtask/src/test_descriptions_tests.rs::finds_a_commented_test_in_an_inline_module",
+        "xtask/src/test_descriptions_tests.rs::inline_module_closes_at_its_brace",
+        "xtask/src/test_descriptions_tests.rs::reports_child_modules_with_path_attributes"
+      ],
+      "imports": [],
+      "name": "module",
+      "namedMethods": [
+        "collect",
+        "iter",
+        "map",
+        "to_string"
+      ]
+    },
+    "xtask/src/test_descriptions_tests.rs::reports_child_modules_with_path_attributes": {
+      "filePath": "xtask/src/test_descriptions_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/src/test_descriptions_tests.rs::module"
+      ],
+      "name": "reports_child_modules_with_path_attributes",
+      "namedMethods": [
+        "into"
+      ]
+    }
+  },
+  "files": {
+    "xtask/src/capabilities.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "declaresModules": [
+        "xtask/src/capabilities_tests.rs"
+      ],
+      "importedBy": [
+        "xtask/src/capabilities_tests.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report.rs"
+      ],
+      "imports": [
+        "xtask/src/capabilities_tests.rs"
+      ]
+    },
+    "xtask/src/capabilities_tests.rs": {
+      "declaredBy": [
+        "xtask/src/capabilities.rs"
+      ],
+      "importedBy": [
+        "xtask/src/capabilities.rs"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs"
+      ],
+      "namedMethods": [
+        "as_deref",
+        "contains",
+        "demo",
+        "is_empty",
+        "is_err",
+        "len",
+        "line",
+        "message",
+        "name",
+        "proves",
+        "unwrap",
+        "unwrap_err"
+      ]
+    },
+    "xtask/src/libtest_output.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "declaresModules": [
+        "xtask/src/libtest_output_tests.rs"
+      ],
+      "importedBy": [
+        "xtask/src/libtest_output_tests.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report_tests.rs",
+        "xtask/src/report_tests.rs"
+      ],
+      "imports": [
+        "xtask/src/libtest_output_tests.rs"
+      ]
+    },
+    "xtask/src/libtest_output_tests.rs": {
+      "declaredBy": [
+        "xtask/src/libtest_output.rs"
+      ],
+      "importedBy": [
+        "xtask/src/libtest_output.rs"
+      ],
+      "imports": [
+        "xtask/src/libtest_output.rs"
+      ],
+      "namedMethods": [
+        "as_str",
+        "collect",
+        "into_iter",
+        "map",
+        "path",
+        "target"
+      ]
+    },
+    "xtask/src/main.rs": {
+      "declaresModules": [
+        "xtask/src/capabilities.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/report.rs",
+        "xtask/src/test_descriptions.rs",
+        "xtask/src/main_tests.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main_tests.rs"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/report.rs",
+        "xtask/src/test_descriptions.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/test_descriptions.rs",
+        "xtask/src/capabilities.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report.rs",
+        "xtask/src/main_tests.rs"
+      ]
+    },
+    "xtask/src/main_tests.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs"
+      ],
+      "imports": [
+        "xtask/src/main.rs"
+      ],
+      "namedMethods": [
+        "collect",
+        "create_dir_all",
+        "ends_with",
+        "file_name",
+        "id",
+        "into_owned",
+        "is_empty",
+        "is_err",
+        "iter",
+        "join",
+        "len",
+        "map",
+        "new",
+        "process",
+        "remove_dir_all",
+        "temp_dir",
+        "to_string",
+        "to_string_lossy",
+        "unwrap",
+        "unwrap_err",
+        "write"
+      ]
+    },
+    "xtask/src/report.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "declaresModules": [
+        "xtask/src/report_tests.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/report_tests.rs"
+      ],
+      "imports": [
+        "xtask/src/capabilities.rs",
+        "xtask/src/capabilities.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/test_descriptions.rs",
+        "xtask/src/capabilities.rs",
+        "xtask/src/report_tests.rs"
+      ]
+    },
+    "xtask/src/report_tests.rs": {
+      "declaredBy": [
+        "xtask/src/report.rs"
+      ],
+      "importedBy": [
+        "xtask/src/report.rs"
+      ],
+      "imports": [
+        "xtask/src/report.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/libtest_output.rs",
+        "xtask/src/test_descriptions.rs"
+      ]
+    },
+    "xtask/src/test_descriptions.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "declaresModules": [
+        "xtask/src/test_descriptions_tests.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs",
+        "xtask/src/main.rs",
+        "xtask/src/report.rs",
+        "xtask/src/report_tests.rs",
+        "xtask/src/test_descriptions_tests.rs"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions_tests.rs"
+      ]
+    },
+    "xtask/src/test_descriptions_tests.rs": {
+      "declaredBy": [
+        "xtask/src/test_descriptions.rs"
+      ],
+      "importedBy": [
+        "xtask/src/test_descriptions.rs"
+      ],
+      "imports": [
+        "xtask/src/test_descriptions.rs"
+      ],
+      "namedMethods": [
+        "as_deref",
+        "collect",
+        "create_dir_all",
+        "description",
+        "id",
+        "into",
+        "into_iter",
+        "is_empty",
+        "join",
+        "map",
+        "new",
+        "path",
+        "path_attr",
+        "process",
+        "remove_dir_all",
+        "temp_dir",
+        "unwrap",
+        "write"
+      ]
+    }
+  }
+}

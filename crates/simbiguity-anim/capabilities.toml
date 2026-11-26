@@ -1,0 +1,18 @@
+# What simbiguity-anim can do, which demo shows it, and which tests prove
+# it. Read by `cargo run -p xtask -- site-report` for the engine status page.
+
+[[capability]]
+name = "Easing curves and tweens"
+description = "Classic easing curves that start at exactly 0 and end at exactly 1, and tweens that blend any value between two endpoints."
+proves = ["easing::tests", "lerp::tests", "tween::tests"]
+
+[[capability]]
+name = "Springs"
+description = "Damped springs in every regime that settle within their predicted time; the 3D bulb's glow rides on one."
+demo = "demos/circuit-3d/#closed&t=0.15"
+proves = ["spring::tests"]
+
+[[capability]]
+name = "Keyframe tracks and timelines"
+description = "Keyframe tracks that hold before the first key and after the last, and timelines that sequence clips with exact seeking."
+proves = ["track::tests", "timeline::tests"]

@@ -10,6 +10,15 @@
       "runner": "node"
     },
     {
+      "description": "The filter offers exactly the three libtest outcomes, passed first.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "TEST_STATUSES › lists the three outcomes in filter order",
+      "line": 64,
+      "registeredAt": "2026-11-26T19:10:15.100776350+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Uniform names are in the slot order Rust writes (crates/simbiguity-render/src/commands.rs).",
       "file": "site/js/webgl2-executor.test.js",
       "format": "junit-xml",
@@ -181,6 +190,168 @@
       "runner": "node"
     },
     {
+      "description": "Escaped quotes, backslashes, newlines and tabs are decoded.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::decodes_string_escapes",
+      "line": 55,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An empty manifest has no capabilities.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::empty_manifest_is_empty",
+      "line": 106,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A hash inside a string is text, not a comment.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::hash_inside_a_string_is_kept",
+      "line": 48,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A key before any table is an error naming its line.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::key_before_first_table_is_an_error",
+      "line": 66,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A line that is not key = value is an error.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::line_without_equals_is_an_error",
+      "line": 82,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Malformed strings are refused with a reason.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::malformed_strings_are_errors",
+      "line": 96,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A proves array may span lines, with comments and a trailing comma.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::parses_a_multi_line_array",
+      "line": 33,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A full manifest yields one capability per table, with every key read.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::parses_every_key_of_each_capability",
+      "line": 5,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A pattern matches one test by its full path.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::proves_matches_a_full_test_path",
+      "line": 112,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A pattern naming a module matches every test in it and below it.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::proves_matches_a_module_and_its_submodules",
+      "line": 123,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A test at the binary root matches by its bare name.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::proves_matches_a_root_test_by_name",
+      "line": 131,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A misspelled key is reported rather than silently dropped.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::unknown_key_is_an_error",
+      "line": 74,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A capability must have a name.",
+      "file": "xtask/src/capabilities_tests.rs",
+      "format": "cargo",
+      "key": "capabilities::tests::unnamed_capability_is_an_error",
+      "line": 89,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Capabilities stay in manifest order within their crate.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "capabilitiesByCrate › groups by crate in manifest order",
+      "line": 390,
+      "registeredAt": "2026-11-26T19:10:15.102164799+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The crate with the most live demos leads the page.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "capabilitiesByCrate › puts crates with more demos first",
+      "line": 408,
+      "registeredAt": "2026-11-26T19:10:15.102190437+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A report with no capabilities has no groups.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "capabilitiesByCrate › returns no groups for no capabilities",
+      "line": 421,
+      "registeredAt": "2026-11-26T19:10:15.102215357+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Each status reads as a plain word on its pill.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "capabilityLabel › labels each status",
+      "line": 491,
+      "registeredAt": "2026-11-26T19:10:15.102511853+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An unknown status shows as itself.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "capabilityLabel › passes an unknown status through",
+      "line": 498,
+      "registeredAt": "2026-11-26T19:10:15.102537034+00:00",
+      "runner": "node"
+    },
+    {
       "description": "The battery and empty space do nothing.",
       "file": "site/demos/circuit-3d/pointer.test.js",
       "format": "junit-xml",
@@ -316,6 +487,24 @@
       "runner": "cargo"
     },
     {
+      "description": "The build line links to the commit on GitHub.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "commitUrl › links to the commit",
+      "line": 323,
+      "registeredAt": "2026-11-26T19:10:15.101961235+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A local build without a repository has no link.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "commitUrl › returns null without a repository or commit",
+      "line": 328,
+      "registeredAt": "2026-11-26T19:10:15.101987783+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Blowing marks a bulb blown and keeps its rating; anything else is unchanged.",
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
@@ -377,6 +566,33 @@
       "line": 234,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "A filter that matches nothing still reports the total.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "countLabel › reports zero shown",
+      "line": 247,
+      "registeredAt": "2026-11-26T19:10:15.101653052+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Nothing filtered out reads as the full count.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "countLabel › says All when every test is shown",
+      "line": 237,
+      "registeredAt": "2026-11-26T19:10:15.101602319+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A filtered table says how many of the total remain.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "countLabel › says how many of the total are shown",
+      "line": 242,
+      "registeredAt": "2026-11-26T19:10:15.101627658+00:00",
+      "runner": "node"
     },
     {
       "description": "The cursor is a pointer exactly where a click does something.",
@@ -523,6 +739,69 @@
       "runner": "node"
     },
     {
+      "description": "The embed flag is added as a query parameter.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoEmbedUrl › adds the embed flag",
+      "line": 469,
+      "registeredAt": "2026-11-26T19:10:15.102398701+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An existing query keeps its parameters.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoEmbedUrl › appends to an existing query",
+      "line": 474,
+      "registeredAt": "2026-11-26T19:10:15.102431253+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A hash stays at the end of the URL.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoEmbedUrl › keeps the hash after the flag",
+      "line": 479,
+      "registeredAt": "2026-11-26T19:10:15.102458923+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A capability with no demo has no embed.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoEmbedUrl › returns null without a demo",
+      "line": 484,
+      "registeredAt": "2026-11-26T19:10:15.102485613+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The demo path is made relative to the status page.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoUrl › makes the demo relative to the status page",
+      "line": 452,
+      "registeredAt": "2026-11-26T19:10:15.102321864+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A capability with no demo has no link.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoUrl › returns null without a demo",
+      "line": 462,
+      "registeredAt": "2026-11-26T19:10:15.102373319+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A leading slash does not escape the site root.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "demoUrl › strips a leading slash",
+      "line": 457,
+      "registeredAt": "2026-11-26T19:10:15.102347627+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Only invalid values, ideal shorts and source loops stop a solution.",
       "file": "crates/simbiguity-circuits/src/diagnostics.rs",
       "format": "cargo",
@@ -658,6 +937,60 @@
       "runner": "cargo"
     },
     {
+      "description": "Child elements are appended as they are, and an array of children is spread.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "el › appends nodes and spreads an array of children",
+      "line": 74,
+      "registeredAt": "2026-11-26T19:12:47.143916852+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Strings and numbers become text nodes, so markup is never parsed.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "el › appends strings and numbers as text",
+      "line": 62,
+      "registeredAt": "2026-11-26T19:12:24.550898146+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Empty children are dropped so conditionals can return null.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "el › drops null, undefined and false children",
+      "line": 82,
+      "registeredAt": "2026-11-26T19:12:24.550949535+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Other attributes are set as strings; true becomes an empty attribute.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "el › sets other attributes, true as empty",
+      "line": 50,
+      "registeredAt": "2026-11-26T19:12:24.550843007+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The class attribute becomes the element's class name.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "el › sets the class name from the class attribute",
+      "line": 42,
+      "registeredAt": "2026-11-26T19:12:24.550803397+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Null, undefined and false attributes are left off entirely.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "el › skips null, undefined and false attributes",
+      "line": 56,
+      "registeredAt": "2026-11-26T19:12:24.550871153+00:00",
+      "runner": "node"
+    },
+    {
       "description": "The filament resistance follows from the 12 V / 6 W rating.",
       "file": "site/demos/hello-circuit/explain.test.js",
       "format": "junit-xml",
@@ -772,6 +1105,69 @@
       "key": "explanation › titles partial brightness as lit or dim",
       "line": 42,
       "registeredAt": "2026-11-26T17:56:56.111350072+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The crate filter keeps one crate's tests.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › filters by crate",
+      "line": 196,
+      "registeredAt": "2026-11-26T19:10:15.101445787+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The status filter keeps one outcome.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › filters by status",
+      "line": 204,
+      "registeredAt": "2026-11-26T19:10:15.101474308+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "No filters shows every test.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › keeps every test when nothing is filtered",
+      "line": 191,
+      "registeredAt": "2026-11-26T19:10:15.101418886+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Filters combine: every one must match.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › requires every active filter to match",
+      "line": 230,
+      "registeredAt": "2026-11-26T19:10:15.101577277+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Search matches the plain-English description, ignoring case.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › searches descriptions case-insensitively",
+      "line": 212,
+      "registeredAt": "2026-11-26T19:10:15.101500343+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Search also matches the Rust path, so a developer can paste a module.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › searches the module path",
+      "line": 217,
+      "registeredAt": "2026-11-26T19:10:15.101526224+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Surrounding whitespace in the search is ignored.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "filterTests › trims the search",
+      "line": 225,
+      "registeredAt": "2026-11-26T19:10:15.101552260+00:00",
       "runner": "node"
     },
     {
@@ -980,6 +1376,69 @@
       "line": 248,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "An ISO timestamp becomes a short UTC date.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatDate › formats an ISO timestamp as a short date",
+      "line": 336,
+      "registeredAt": "2026-11-26T19:10:15.102012903+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A malformed timestamp renders as nothing rather than Invalid Date.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatDate › returns an empty string for a bad timestamp",
+      "line": 346,
+      "registeredAt": "2026-11-26T19:10:15.102064396+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The date is taken in UTC, not the reader's timezone.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatDate › uses the UTC date",
+      "line": 341,
+      "registeredAt": "2026-11-26T19:10:15.102039085+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Only the active filters are written.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatFilters › omits empty filters",
+      "line": 141,
+      "registeredAt": "2026-11-26T19:10:15.101201534+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "No active filter means no hash at all.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatFilters › returns an empty string when nothing is filtered",
+      "line": 136,
+      "registeredAt": "2026-11-26T19:10:15.101175477+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "What formatFilters writes, parseFilters reads back unchanged.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatFilters › round-trips through parseFilters",
+      "line": 154,
+      "registeredAt": "2026-11-26T19:10:15.101253931+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every active filter is written in a stable order.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "formatFilters › writes all active filters",
+      "line": 146,
+      "registeredAt": "2026-11-26T19:10:15.101227785+00:00",
+      "runner": "node"
     },
     {
       "description": "A number gets its unit and two decimals by default.",
@@ -1304,6 +1763,96 @@
       "line": 68,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "Doc-tests switch the target to `doc` until the next binary starts.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::doc_tests_switch_the_target_to_doc",
+      "line": 49,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An ignored test, with or without a reason, is recorded as ignored.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::ignored_tests_are_recorded_with_or_without_a_reason",
+      "line": 67,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An integration test binary is named by its file under tests/.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::integration_tests_are_attributed_to_their_file",
+      "line": 32,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A Running line without a binary in brackets still names the target.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::running_target_without_binary",
+      "line": 106,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "libtest's should-panic suffix is not part of the test's name.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::should_panic_suffix_is_stripped",
+      "line": 78,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each status renders as the word the report and page use.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::status_strings_match_the_report",
+      "line": 98,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A unit-test binary's results are attributed to its source root.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::unit_tests_belong_to_the_running_target",
+      "line": 13,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Summaries, compiler progress and captured output are not results.",
+      "file": "xtask/src/libtest_output_tests.rs",
+      "format": "cargo",
+      "key": "libtest_output::tests::unrelated_lines_are_ignored",
+      "line": 85,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Without a destination the content is returned unwrapped.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "link › returns bare content without a destination",
+      "line": 97,
+      "registeredAt": "2026-11-26T19:12:24.550999986+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "With a destination the content is wrapped in a link.",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "link › wraps content in a link when there is a destination",
+      "line": 90,
+      "registeredAt": "2026-11-26T19:12:24.550975847+00:00",
+      "runner": "node"
     },
     {
       "description": "Back substitution solves the upper factor from the bottom up.",
@@ -1855,6 +2404,60 @@
       "runner": "cargo"
     },
     {
+      "description": "Clearing every filter removes the hash.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "nextHash › returns an empty hash when the filters are cleared",
+      "line": 172,
+      "registeredAt": "2026-11-26T19:10:15.101342726+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An unchanged filter leaves history alone.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "nextHash › returns null when the URL already matches",
+      "line": 167,
+      "registeredAt": "2026-11-26T19:10:15.101304706+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Nothing to write when there is no hash and no filters.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "nextHash › returns null with no hash and no filters",
+      "line": 182,
+      "registeredAt": "2026-11-26T19:10:15.101393654+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A changed filter produces the new hash to write.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "nextHash › returns the new hash when the filters changed",
+      "line": 162,
+      "registeredAt": "2026-11-26T19:10:15.101279052+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A bare hash mark already means no filters.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "nextHash › treats a bare hash mark as no filters",
+      "line": 177,
+      "registeredAt": "2026-11-26T19:10:15.101367920+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "With no subcommand the binary fails and prints its usage.",
+      "file": "xtask/tests/cli.rs",
+      "format": "cargo",
+      "key": "no_subcommand_prints_usage",
+      "line": 14,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A resistor has no brightness.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -1907,6 +2510,51 @@
       "line": 50,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "The leading hash mark is optional.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "parseFilters › accepts a hash without the leading mark",
+      "line": 124,
+      "registeredAt": "2026-11-26T19:10:15.101123056+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Encoded spaces in the search survive the round trip.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "parseFilters › decodes an encoded search",
+      "line": 129,
+      "registeredAt": "2026-11-26T19:10:15.101149557+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A status the filter does not offer is dropped rather than matching nothing.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "parseFilters › drops an unknown status",
+      "line": 119,
+      "registeredAt": "2026-11-26T19:10:15.101098012+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every filter is read from the hash.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "parseFilters › reads crate, status and search from the hash",
+      "line": 103,
+      "registeredAt": "2026-11-26T19:10:15.101046630+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An empty or missing hash means no filters.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "parseFilters › returns empty filters for an empty hash",
+      "line": 112,
+      "registeredAt": "2026-11-26T19:10:15.101072050+00:00",
+      "runner": "node"
     },
     {
       "description": "An empty path gives the origin, and zero-length segments are skipped.",
@@ -1997,6 +2645,78 @@
       "line": 197,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "Any failure leads the summary with the failing count.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "proofSummary › counts failures when any test failed",
+      "line": 269,
+      "registeredAt": "2026-11-26T19:10:15.101770545+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An ignored test does not count as a failure.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "proofSummary › does not count ignored tests as failing",
+      "line": 277,
+      "registeredAt": "2026-11-26T19:10:15.101796096+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A capability with no proving tests has no summary line.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "proofSummary › returns null with no tests",
+      "line": 254,
+      "registeredAt": "2026-11-26T19:10:15.101678224+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Several passing tests read in the plural.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "proofSummary › uses the plural for several tests",
+      "line": 264,
+      "registeredAt": "2026-11-26T19:10:15.101741147+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "One passing test reads in the singular.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "proofSummary › uses the singular for one test",
+      "line": 259,
+      "registeredAt": "2026-11-26T19:10:15.101715480+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A failing proof is listed before passing ones.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "provingTests › orders failures first, then ignored, then passed",
+      "line": 430,
+      "registeredAt": "2026-11-26T19:10:15.102240290+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A capability proven by nothing has no proving tests.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "provingTests › returns nothing for an untested capability",
+      "line": 445,
+      "registeredAt": "2026-11-26T19:10:15.102295970+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An id the report does not contain is skipped.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "provingTests › skips ids the report does not contain",
+      "line": 439,
+      "registeredAt": "2026-11-26T19:10:15.102266933+00:00",
+      "runner": "node"
     },
     {
       "description": "Axis-angle builds unit quaternions that rotate by the right-hand rule; a zero axis gives the identity.",
@@ -2161,6 +2881,150 @@
       "runner": "cargo"
     },
     {
+      "description": "A doc-test line without a line number still gets a name.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::doc_test_without_a_line_number",
+      "line": 193,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Strings are quoted with JSON escapes, including control characters.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::escape_quotes_and_escapes",
+      "line": 253,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each crate's row counts its own passed, failed and ignored tests.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::join_counts_results_per_crate",
+      "line": 135,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Any failing proof marks a capability failing; passing proofs mark it passing.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::join_derives_capability_status_from_its_tests",
+      "line": 96,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Overlapping proves patterns list each test only once.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::join_does_not_duplicate_overlapping_matches",
+      "line": 118,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A result with no matching source has no description, file or line.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::join_leaves_unknown_sources_empty",
+      "line": 80,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A doc-test is named by its item and file:line with a generated description.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::join_names_doc_tests",
+      "line": 156,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Unit tests keep their module; integration tests move under tests/<file>.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::join_namespaces_tests_and_attaches_sources",
+      "line": 56,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Empty containers close on the same line.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::to_json_of_an_empty_report",
+      "line": 245,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The JSON carries the build identity, totals and every list the page reads.",
+      "file": "xtask/src/report_tests.rs",
+      "format": "cargo",
+      "key": "report::tests::to_json_writes_the_shape_the_page_reads",
+      "line": 211,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A scenario points the page at a committed fixture.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "reportUrl › accepts a same-site relative fixture path",
+      "line": 76,
+      "registeredAt": "2026-11-26T19:10:15.100857878+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "With no query the page loads the report built next to it.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "reportUrl › defaults to report.json",
+      "line": 71,
+      "registeredAt": "2026-11-26T19:10:15.100828070+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An empty report parameter falls back to the default.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "reportUrl › falls back when the parameter is empty",
+      "line": 96,
+      "registeredAt": "2026-11-26T19:10:15.101021167+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A protocol-relative URL is just as foreign and is ignored too.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "reportUrl › rejects a protocol-relative URL",
+      "line": 86,
+      "registeredAt": "2026-11-26T19:10:15.100965780+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An absolute URL could show someone else's report, so it is ignored.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "reportUrl › rejects an absolute URL",
+      "line": 81,
+      "registeredAt": "2026-11-26T19:10:15.100928825+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A javascript: URL is refused regardless of letter case.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "reportUrl › rejects any scheme regardless of case",
+      "line": 91,
+      "registeredAt": "2026-11-26T19:10:15.100994822+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Box–Muller with u2 = 0 puts everything in the cosine output; u1 = 1 gives radius 0; a known u1 gives the expected radius.",
       "file": "crates/simbiguity-core/src/rng.rs",
       "format": "cargo",
@@ -2240,6 +3104,24 @@
       "line": 166,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "The module and name join the way Rust paths do.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "rustPath › joins module and name",
+      "line": 284,
+      "registeredAt": "2026-11-26T19:10:15.101821520+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A test at a binary's root has no module.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "rustPath › returns the bare name without a module",
+      "line": 289,
+      "registeredAt": "2026-11-26T19:10:15.101849001+00:00",
+      "runner": "node"
     },
     {
       "description": "A ray that misses everything picks nothing.",
@@ -2323,6 +3205,15 @@
       "runner": "cargo"
     },
     {
+      "description": "A site-report error is reported with its prefix and a failing exit code.",
+      "file": "xtask/tests/cli.rs",
+      "format": "cargo",
+      "key": "site_report_error_fails_the_command",
+      "line": 32,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Restoring a snapshot brings back the exact earlier state.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -2339,6 +3230,33 @@
       "line": 373,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "The link points at the test's line at the exact commit.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "sourceUrl › links to the file and line at the commit",
+      "line": 298,
+      "registeredAt": "2026-11-26T19:10:15.101874230+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Without a line the link points at the file.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "sourceUrl › omits the line anchor when the line is unknown",
+      "line": 306,
+      "registeredAt": "2026-11-26T19:10:15.101899808+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "No repository, commit or file means no link.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "sourceUrl › returns null when anything is missing",
+      "line": 314,
+      "registeredAt": "2026-11-26T19:10:15.101925402+00:00",
+      "runner": "node"
     },
     {
       "description": "A critically damped spring never crosses its target.",
@@ -2521,6 +3439,33 @@
       "runner": "node"
     },
     {
+      "description": "Without totals the test count falls back to the test list.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "summarize › counts the test list when totals are missing",
+      "line": 383,
+      "registeredAt": "2026-11-26T19:10:15.102140174+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The headline numbers come from the totals and the capability statuses.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "summarize › counts totals, crates and capability statuses",
+      "line": 353,
+      "registeredAt": "2026-11-26T19:10:15.102089777+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An empty report yields zeros rather than throwing.",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "summarize › returns zeros for an empty report",
+      "line": 374,
+      "registeredAt": "2026-11-26T19:10:15.102114710+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Flipping a switch through the Simulation API completes the circuit at the next step.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -2536,6 +3481,96 @@
       "key": "switch_lights_a_bulb",
       "line": 114,
       "registeredAt": "2026-11-26T17:33:52.512695894+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Braces in strings, char literals and comments do not count.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::brace_delta_ignores_literals_and_comments",
+      "line": 147,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Attributes between the comment and the test do not hide the comment.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::comment_above_skips_other_attributes",
+      "line": 40,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A test inside an inline tests module gets its module path, line and comment.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::finds_a_commented_test_in_an_inline_module",
+      "line": 9,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Leaving an inline module returns later tests to the outer module.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::inline_module_closes_at_its_brace",
+      "line": 70,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Declaration parsing understands visibility and rejects non-modules.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::parses_module_and_fn_declarations",
+      "line": 131,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A path attribute applies only to the item right after it.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::path_attribute_does_not_leak_past_its_item",
+      "line": 119,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Out-of-line modules are reported for the walk, with any path attribute.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::reports_child_modules_with_path_attributes",
+      "line": 86,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A root file that does not exist yields no tests rather than an error.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::scan_of_a_missing_root_is_empty",
+      "line": 185,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The walk follows mod declarations into flat, nested and path-attribute files.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::scan_walks_the_module_tree_on_disk",
+      "line": 156,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A test with no comment has no description, and module docs are not one.",
+      "file": "xtask/src/test_descriptions_tests.rs",
+      "format": "cargo",
+      "key": "test_descriptions::tests::uncommented_test_has_no_description",
+      "line": 58,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
       "runner": "cargo"
     },
     {
@@ -2611,6 +3646,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Day zero is the Unix epoch and leap days land correctly.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::civil_from_days_converts_known_dates",
+      "line": 58,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Closed at its rated 12 V the 24 Ω bulb draws 0.5 A and 6 W, full brightness.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -2626,6 +3670,42 @@
       "key": "tests::component_calls_check_id_and_kind",
       "line": 123,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Only directories under crates/ with a Cargo.toml count, sorted by name.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::crate_dirs_lists_crates_sorted",
+      "line": 77,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A repository without a crates directory is an error, not an empty list.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::crate_dirs_without_crates_is_an_error",
+      "line": 100,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A manifest with no dependency tables has none of either kind.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::dependencies_of_a_bare_manifest",
+      "line": 51,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Path dependencies are workspace crates; everything else is external.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::dependencies_split_workspace_from_external",
+      "line": 43,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
       "runner": "cargo"
     },
     {
@@ -2683,6 +3763,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Package keys are read from the package table only, with escaped quotes.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::manifest_value_reads_the_package_table",
+      "line": 27,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Mesh exports describe every mesh, and an index past the end is an error.",
       "file": "crates/simbiguity-render-wasm/src/tests.rs",
       "format": "cargo",
@@ -2698,6 +3787,15 @@
       "key": "tests::new_view_reads_back_its_state",
       "line": 37,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The timestamp is in the ISO 8601 UTC shape the page parses.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::now_iso8601_has_the_utc_shape",
+      "line": 67,
+      "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
       "runner": "cargo"
     },
     {
@@ -2743,6 +3841,24 @@
       "key": "tests::sb_alloc_round_trip",
       "line": 266,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An unknown flag is refused before any test runs.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::site_report_rejects_an_unknown_argument",
+      "line": 106,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The out flag needs a path after it.",
+      "file": "xtask/src/main_tests.rs",
+      "format": "cargo",
+      "key": "tests::site_report_requires_a_path_after_out",
+      "line": 113,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
       "runner": "cargo"
     },
     {
@@ -2878,6 +3994,15 @@
       "key": "unbalanced_wheatstone_bridge_carries_known_current",
       "line": 96,
       "registeredAt": "2026-11-26T17:33:52.512695894+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An unknown subcommand fails the same way.",
+      "file": "xtask/tests/cli.rs",
+      "format": "cargo",
+      "key": "unknown_subcommand_prints_usage",
+      "line": 24,
+      "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
       "runner": "cargo"
     },
     {

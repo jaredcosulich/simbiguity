@@ -28,6 +28,34 @@
         "status": "added"
       }
     },
+    "EngineStatusPage": {
+      "empty": {
+        "status": "added"
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "the report always lists every workspace test; one filtered row uses the same table layout as the two-row filtered scenario"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "covered"
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "the page has no loading UI; the report is a same-site static file and the sections render in one pass once it arrives"
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "covered"
+      },
+      "key-interaction": {
+        "status": "covered"
+      }
+    },
     "HelloCircuitPage": {
       "empty": {
         "status": "n-a",

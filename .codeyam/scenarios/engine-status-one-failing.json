@@ -1,0 +1,16 @@
+{
+  "name": "Engine Status - One Failing",
+  "id": "df1c6d60-068e-4a96-818f-af5c54ef14eb",
+  "url": "/status/?report=fixtures/one-failing.json",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T19:00:00Z",
+    "frozen": true
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/status/index.html",
+  "description": "The balanced Wheatstone bridge test failed: the failing count and the capabilities-proven number turn red, and the card it proves is marked Failing with its proof list opened on the failure."
+}

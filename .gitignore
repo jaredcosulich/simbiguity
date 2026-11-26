@@ -2,6 +2,8 @@
 **/*.rs.bk
 .DS_Store
 site/pkg/
+# Generated on deploy by `cargo run -p xtask -- site-report`.
+site/status/report.json
 
 # codeyam-editor:start
 # Managed by `codeyam-editor init` / `codeyam-editor start`.

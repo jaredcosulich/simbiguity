@@ -1,0 +1,527 @@
+{
+  "timestamp": "2026-11-26T19:17:30Z",
+  "title": "Engine status page: public demos and every test that proves them",
+  "type": "feature",
+  "userRequest": "## Summary\n\nAdd a public **\"Engine status\" page** to the simbiguity site. In one place anyone can see **what the engine can do** (a gallery of live, embedded demos per capability) and **how it is tested** (every test, grouped by crate and capability, with its plain-English description, its pass/fail from the latest `main` build, and a link to its source). It serves two audiences. A teacher or learner sees capabilities and trusts them. A developer evaluating the library sees the rigor behind each engine before importing it. The page regenerates on every deploy, so it never drifts from the code.\n\n## Key Decisions\n\n- **Generate the data, never hand-write it.** A zero-dependency `xtask` (`cargo run -p xtask -- site-report`) runs `cargo test --workspace --no-fail-fast` and parses libtest's stable plain output (`test <path> ... ok|FAILED|ignored`). It then walks each crate's source to attach the `///` description comment above every `#[test]` (the same comment-above-test convention codeyam enforces), and writes `site/status/report.json`. CI runs it before the Pages upload. A stale or hand-edited report is impossible by construction.\n- **Tests are presented as worked examples, not a CI dump.** Group by crate → module → capability (\"Ohm's law\", \"Wheatstone bridge\", \"Snapshot round-trip\"), show the description first and the Rust name second, and link to the line on GitHub at the exact commit SHA. The circuit tests were written as textbook circuits on purpose, so they read as lessons here.\n- **Capabilities are declared next to the code.** Each engine crate gets a small `capabilities.toml` (name, one-line description, which demo shows it, which test modules prove it), parsed by the xtask with a tiny hand-written TOML-subset reader to stay dependency-free, or as plain JSON if that proves simpler. Decide at execution. The page joins capabilities ↔ demos ↔ tests from that file, and a capability with no test is shown as \"untested\", which is visible pressure to keep coverage honest.\n- **Demos embed live, not as screenshots.** Each capability card embeds its demo (the same pages from the demos library) in a lazy-loaded iframe, with a static poster image as the fallback until it is scrolled into view.\n- **Show the build identity.** Commit SHA, date, test counts (passed/failed/ignored), and per-crate dependency count (expected: zero external) appear at the top. \"Zero dependencies\" is a claim the page proves rather than states.\n- **Plain HTML + the existing loader, no framework.** The page renders `report.json` with a small handwritten module, consistent with the rest of `site/`.\n\n## Implementation\n\n### 1. Report generator\n\n**New file**: `xtask/Cargo.toml` (a workspace member, `publish = false`, zero dependencies)\n**New file**: `xtask/src/main.rs`: the `site-report` subcommand\n**New file**: `xtask/src/libtest_output.rs`: parse libtest plain output into results\n**New file**: `xtask/src/test_descriptions.rs`: find `#[test]` fns and their `///` / `//` comment blocks\n**New file**: `xtask/src/capabilities.rs`: read each crate's capability manifest\n**New file**: `xtask/src/report.rs`: join the three and write `site/status/report.json`\n\n### 2. Capability manifests\n\n**New file**: `crates/simbiguity-circuits/capabilities.toml` (and one per engine crate as each lands)\n\n### 3. The page\n\n**New file**: `site/status/index.html`: header with build identity and totals; capability cards (description, live demo embed, proving tests with pass/fail); a full filterable test table (by crate, status, text)\n**New file**: `site/status/status.js`\n**File**: `site/index.html`: prominent \"See what it can do, and how it's tested\" link\n\n### 4. CI\n\n**File**: `.github/workflows/pages.yml`: run `cargo run -p xtask -- site-report` before uploading `site/` (created by the hello-circuit plan)\n\n## Reused existing code\n\n- The `///`-above-`#[test]` convention the project already follows for codeyam's registry\n- `site/js/simbiguity.js` loader and the demo pages (plan: WASM bridge + hello circuit)\n- `.github/workflows/pages.yml` deploy (plan: WASM bridge + hello circuit)\n\n## Tests (TDD — written first)\n\n- `libtest_output`: parses ok / FAILED / ignored lines, nested module paths, the summary line, and output from several crates in one run; ignores unrelated lines; empty output → empty report.\n- `test_descriptions`: picks up `///` and `//` blocks directly above `#[test]`, with other attributes in between; a test with no comment → `None` (rendered as \"no description\", which is itself visible pressure); handles nested `mod tests`.\n- `capabilities`: a valid manifest; a capability naming a missing test module → reported as unproven, not a crash.\n- `report`: join correctness, and a failing test makes its capability show failing.\n- A codeyam scenario of the status page rendered from a fixture `report.json` covering all passing, one failing, and an untested capability.\n\n## Scenarios to Demonstrate\n\n- All green: every capability proven, demos embedded\n- One failing test: its capability card flagged, test row highlighted\n- An untested capability: shown as \"untested\"\n- The filterable test table filtered to one crate",
+  "description": "Added a public engine status page (site/status/) that lists what simbiguity can do, embeds a live demo per capability, and links each capability to the tests that prove it. Capabilities are declared in per-crate capabilities.toml manifests, and a new xtask command runs the tests and writes site/status/report.json, which CI builds in the Pages workflow. The page handles all-green, failing, untested-capability, filtered and missing-report states. SCOPE VERDICT: this cycle delivered the engine status page from its plan. None of the 8 project deliverables changed status this cycle; all 8 were decided by the user, none by the agent. The ledger still shows 7 of them as deferred from the foundations cycle, even though their roadmap plans are no longer queued. That ledger is out of date and needs reconciling at finalize. Known deviations: demo cards show a Loading live demo placeholder instead of poster images. Node test evidence and the report.json write, cargo/git spawns and hash rewrite were not observed this session; they are owed at session-finalize.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/animation-support.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/plans/circuit-simulation.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/plans/engine-status-page-public-demos-of-what-simbiguity-can-do-and-every-test-that-proves-it.md\t.codeyam/plans/completed/engine-status-page-public-demos-of-what-simbiguity-can-do-and-every-test-that-proves-it.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/from-scratch-3d-rendering-via-a-webgl2-renderer.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/plans/hand-written-wasm-interface-exposing-the-crates-to-the-browser.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/plans/market-simulation.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/plans/physics-simulation.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/plans/static-html-demos-embedding-the-simulations.md",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-demos--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-demos--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/speed-history.jsonl",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7305f3b5989cb04e829f615cf59cd0aa3c9d6db1fdb6ee9181dfcd0804c3eab4.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/79f2613d7797057f023b15c67e985575ab29b1ad06afb4c6c416f6a5be91a710.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7b94629100d8d8688dbee6f319884c81e9552d5b7d260079841a077554801d8e.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/bcfb5438d378638dc677a1cb3a4dafb8a7389a3e3cce1ff31ca3ba5608875144.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/e9cabad9939bbfa2966905b79c02133e4399a8002960d497c0c546dd3428b059.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-anim.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "status": "modified"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.toml",
+      "status": "modified"
+    },
+    {
+      "path": "README.md",
+      "status": "modified"
+    },
+    {
+      "path": "site/demos/circuit-3d/index.html",
+      "status": "modified"
+    },
+    {
+      "path": "site/demos/hello-circuit/index.html",
+      "status": "modified"
+    },
+    {
+      "path": "site/index.html",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fstatus.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/xtask%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/xtask%2Ftests.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/rendercard.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/rendertests.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/engine-status-all-green.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/engine-status-filtered-tests.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/engine-status-no-matching-tests.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/engine-status-one-failing.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/engine-status-report-missing.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/engine-status-untested-capability.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-all-green--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-all-green--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-filtered-tests--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-filtered-tests--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-no-matching-tests--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-no-matching-tests--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-one-failing--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-one-failing--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-report-missing--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-report-missing--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-untested-capability--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/engine-status-untested-capability--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/444404d77e99d8df048c478a0d3f413d8dbcd944d32a50dbec32b90c9e1e8dff.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d59163a9ae393ecbd176f70a09ae8ad09472fa1b2af3c408a53f8c0cb9913d4a.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/dcf78239d5af00cc0a033a76d18eec5de983e00dc8b6d28df61425316079adfb.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/xtask.json",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "site/status/build-line.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/capabilities-section.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/capability-card.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/capability-group.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/card-header.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/crate-row.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/crates-section.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/demo-embed.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/dom.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/dom.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/fixtures/all-green.json",
+      "status": "added"
+    },
+    {
+      "path": "site/status/fixtures/one-failing.json",
+      "status": "added"
+    },
+    {
+      "path": "site/status/fixtures/untested-capability.json",
+      "status": "added"
+    },
+    {
+      "path": "site/status/header.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/index.html",
+      "status": "added"
+    },
+    {
+      "path": "site/status/lazy-demos.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/load-error.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/load-report.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/pill.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/proof-item.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/proof-list.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/report-view.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/report-view.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/section-intro.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/stat.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/stats.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/status.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/test-description.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/test-filters.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/test-row.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/tests-section.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/tests-table.js",
+      "status": "added"
+    },
+    {
+      "path": "site/status/unproven-note.js",
+      "status": "added"
+    },
+    {
+      "path": "xtask/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/capabilities.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/capabilities_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/libtest_output.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/libtest_output_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/main.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/main_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/report.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/report_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/test_descriptions.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/src/test_descriptions_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "xtask/tests/cli.rs",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Engine Status - All Green",
+      "screenshotPath": "engine-status-all-green--desktop.png"
+    },
+    {
+      "name": "Engine Status - Filtered Tests",
+      "screenshotPath": "engine-status-filtered-tests--desktop.png"
+    },
+    {
+      "name": "Engine Status - No Matching Tests",
+      "screenshotPath": "engine-status-no-matching-tests--desktop.png"
+    },
+    {
+      "name": "Engine Status - One Failing",
+      "screenshotPath": "engine-status-one-failing--desktop.png"
+    },
+    {
+      "name": "Engine Status - Report Missing",
+      "screenshotPath": "engine-status-report-missing--desktop.png"
+    },
+    {
+      "name": "Engine Status - Untested Capability",
+      "screenshotPath": "engine-status-untested-capability--desktop.png"
+    },
+    {
+      "name": "Landing - Demos",
+      "screenshotPath": "landing-demos--desktop.png"
+    }
+  ]
+}

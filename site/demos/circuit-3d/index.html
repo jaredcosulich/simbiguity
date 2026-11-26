@@ -39,7 +39,11 @@
     .explain.issue { border-left: 4px solid var(--warn); }
     .source { margin-top: 2rem; font-size: 0.9rem; color: var(--muted); }
     .error { color: var(--warn); }
+    /* `?embed`: just the demo, for the engine status page's capability cards. */
+    .embed body { margin: 0.75rem auto; }
+    .embed .crumb, .embed h1, .embed .lede, .embed .source { display: none; }
   </style>
+  <script>if (new URLSearchParams(location.search).has("embed")) document.documentElement.classList.add("embed");</script>
 </head>
 <body>
   <p class="crumb"><a href="../../">simbiguity</a> / demos</p>

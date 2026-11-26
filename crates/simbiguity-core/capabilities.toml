@@ -1,0 +1,17 @@
+# What simbiguity-core can do, and which tests prove it. Read by
+# `cargo run -p xtask -- site-report` for the engine status page.
+
+[[capability]]
+name = "A fixed-timestep clock"
+description = "Real frame times are banked into exact fixed steps with no drift, so every engine advances the same way on every machine."
+proves = ["clock::tests", "lockstep::tests"]
+
+[[capability]]
+name = "A seeded, reproducible RNG"
+description = "PCG32, pinned bit for bit to the reference sequence, so a seeded run is identical across platforms."
+proves = ["rng::tests"]
+
+[[capability]]
+name = "Snapshots and replay"
+description = "Restoring a snapshot and replaying the same inputs reproduces a simulation exactly."
+proves = ["simulation::tests"]

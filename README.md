@@ -60,6 +60,19 @@ python3 -m http.server -d site 8000 # then open http://localhost:8000
 The demo pages' logic has its own tests, run with Node 22 or newer (no npm install needed):
 `node --test "site/**/*.test.js"`.
 
+### Engine status page
+
+[`site/status/`](site/status/) lists everything the engines can do, each with its live
+demo and the tests that prove it, plus every test in the workspace with the comment written
+above it. Its data, `site/status/report.json`, is generated on deploy and not committed. To
+build it locally:
+
+```sh
+cargo run -p xtask -- site-report   # runs every crate's tests, writes site/status/report.json
+```
+
+Capabilities are declared next to the code in each crate's `capabilities.toml`.
+
 ## License
 
 Licensed under either of

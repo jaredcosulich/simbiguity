@@ -1,0 +1,891 @@
+{
+  "entities": {
+    "site/status/build-line.js::renderBuildLine": {
+      "filePath": "site/status/build-line.js",
+      "importedBy": [
+        "site/status/header.js::renderHeader"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/dom.js::link",
+        "site/status/report-view.js::commitUrl",
+        "site/status/report-view.js::formatDate"
+      ],
+      "name": "renderBuildLine"
+    },
+    "site/status/capabilities-section.js::renderCapabilities": {
+      "filePath": "site/status/capabilities-section.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [
+        "site/status/capability-group.js::renderCapabilityGroup",
+        "site/status/report-view.js::capabilitiesByCrate",
+        "site/status/section-intro.js::renderSectionIntro"
+      ],
+      "name": "renderCapabilities"
+    },
+    "site/status/capability-card.js::renderCard": {
+      "filePath": "site/status/capability-card.js",
+      "importedBy": [
+        "site/status/capability-group.js::renderCapabilityGroup"
+      ],
+      "imports": [
+        "site/status/card-header.js::renderCardHeader",
+        "site/status/demo-embed.js::renderDemo",
+        "site/status/dom.js::el",
+        "site/status/proof-list.js::renderProofList",
+        "site/status/report-view.js::provingTests",
+        "site/status/unproven-note.js::renderUnprovenNote"
+      ],
+      "name": "renderCard"
+    },
+    "site/status/capability-group.js::renderCapabilityGroup": {
+      "filePath": "site/status/capability-group.js",
+      "importedBy": [
+        "site/status/capabilities-section.js::renderCapabilities"
+      ],
+      "imports": [
+        "site/status/capability-card.js::renderCard",
+        "site/status/dom.js::el"
+      ],
+      "name": "renderCapabilityGroup"
+    },
+    "site/status/card-header.js::renderCardHeader": {
+      "filePath": "site/status/card-header.js",
+      "importedBy": [
+        "site/status/capability-card.js::renderCard"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/pill.js::renderPill",
+        "site/status/report-view.js::capabilityLabel"
+      ],
+      "name": "renderCardHeader"
+    },
+    "site/status/crate-row.js::renderCrateRow": {
+      "filePath": "site/status/crate-row.js",
+      "importedBy": [
+        "site/status/crates-section.js::renderCrates"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/pill.js::renderPill"
+      ],
+      "name": "renderCrateRow"
+    },
+    "site/status/crates-section.js::renderCrates": {
+      "filePath": "site/status/crates-section.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [
+        "site/status/crate-row.js::renderCrateRow",
+        "site/status/dom.js::el",
+        "site/status/section-intro.js::renderSectionIntro"
+      ],
+      "name": "renderCrates"
+    },
+    "site/status/demo-embed.js::renderDemo": {
+      "filePath": "site/status/demo-embed.js",
+      "importedBy": [
+        "site/status/capability-card.js::renderCard"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/lazy-demos.js::observeDemo",
+        "site/status/report-view.js::demoEmbedUrl",
+        "site/status/report-view.js::demoUrl"
+      ],
+      "name": "renderDemo"
+    },
+    "site/status/dom.js::__file_root__": {
+      "filePath": "site/status/dom.js",
+      "importedBy": [
+        "site/status/dom.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/status/dom.js::el": {
+      "filePath": "site/status/dom.js",
+      "importedBy": [
+        "site/status/build-line.js::renderBuildLine",
+        "site/status/capability-card.js::renderCard",
+        "site/status/capability-group.js::renderCapabilityGroup",
+        "site/status/card-header.js::renderCardHeader",
+        "site/status/crate-row.js::renderCrateRow",
+        "site/status/crates-section.js::renderCrates",
+        "site/status/demo-embed.js::renderDemo",
+        "site/status/dom.js::link",
+        "site/status/load-error.js::renderLoadError",
+        "site/status/pill.js::renderPill",
+        "site/status/proof-item.js::renderProof",
+        "site/status/proof-list.js::renderProofList",
+        "site/status/section-intro.js::renderSectionIntro",
+        "site/status/stat.js::renderStat",
+        "site/status/stats.js::renderStats",
+        "site/status/test-description.js::renderTestDescription",
+        "site/status/test-filters.js::renderTestFilters",
+        "site/status/test-row.js::renderTestRow",
+        "site/status/tests-section.js::renderTests",
+        "site/status/tests-table.js::renderTestsTable",
+        "site/status/unproven-note.js::renderUnprovenNote"
+      ],
+      "imports": [],
+      "name": "el"
+    },
+    "site/status/dom.js::link": {
+      "filePath": "site/status/dom.js",
+      "importedBy": [
+        "site/status/build-line.js::renderBuildLine",
+        "site/status/proof-item.js::renderProof",
+        "site/status/test-row.js::renderTestRow"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "link"
+    },
+    "site/status/dom.test.js::__file_root__": {
+      "filePath": "site/status/dom.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/status/dom.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/status/header.js::renderHeader": {
+      "filePath": "site/status/header.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [
+        "site/status/build-line.js::renderBuildLine",
+        "site/status/report-view.js::summarize",
+        "site/status/stats.js::renderStats"
+      ],
+      "name": "renderHeader"
+    },
+    "site/status/index.html::__file_root__": {
+      "filePath": "site/status/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/status/status.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/status/lazy-demos.js::frame": {
+      "filePath": "site/status/lazy-demos.js",
+      "importedBy": [
+        "site/status/lazy-demos.js::observeDemo"
+      ],
+      "imports": [],
+      "name": "frame"
+    },
+    "site/status/lazy-demos.js::observeDemo": {
+      "filePath": "site/status/lazy-demos.js",
+      "importedBy": [
+        "site/status/demo-embed.js::renderDemo"
+      ],
+      "imports": [
+        "site/status/lazy-demos.js::frame"
+      ],
+      "name": "observeDemo"
+    },
+    "site/status/load-error.js::renderLoadError": {
+      "filePath": "site/status/load-error.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderLoadError"
+    },
+    "site/status/load-report.js::loadReport": {
+      "filePath": "site/status/load-report.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [],
+      "name": "loadReport"
+    },
+    "site/status/pill.js::renderPill": {
+      "filePath": "site/status/pill.js",
+      "importedBy": [
+        "site/status/card-header.js::renderCardHeader",
+        "site/status/crate-row.js::renderCrateRow",
+        "site/status/test-row.js::renderTestRow"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderPill"
+    },
+    "site/status/proof-item.js::renderProof": {
+      "filePath": "site/status/proof-item.js",
+      "importedBy": [
+        "site/status/proof-list.js::renderProofList"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/dom.js::link",
+        "site/status/report-view.js::rustPath",
+        "site/status/report-view.js::sourceUrl",
+        "site/status/test-description.js::renderTestDescription"
+      ],
+      "name": "renderProof"
+    },
+    "site/status/proof-list.js::renderProofList": {
+      "filePath": "site/status/proof-list.js",
+      "importedBy": [
+        "site/status/capability-card.js::renderCard"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/proof-item.js::renderProof",
+        "site/status/report-view.js::proofSummary"
+      ],
+      "name": "renderProofList"
+    },
+    "site/status/report-view.js::__file_root__": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/test-filters.js::renderTestFilters"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/status/report-view.js::capabilitiesByCrate": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/capabilities-section.js::renderCapabilities",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "capabilitiesByCrate"
+    },
+    "site/status/report-view.js::capabilityLabel": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/card-header.js::renderCardHeader",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "capabilityLabel"
+    },
+    "site/status/report-view.js::commitUrl": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/build-line.js::renderBuildLine",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "commitUrl"
+    },
+    "site/status/report-view.js::countLabel": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [],
+      "name": "countLabel"
+    },
+    "site/status/report-view.js::demoEmbedUrl": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/demo-embed.js::renderDemo",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/status/report-view.js::demoUrl"
+      ],
+      "name": "demoEmbedUrl"
+    },
+    "site/status/report-view.js::demoUrl": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/demo-embed.js::renderDemo",
+        "site/status/report-view.js::demoEmbedUrl",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "demoUrl"
+    },
+    "site/status/report-view.js::filterTests": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [],
+      "name": "filterTests"
+    },
+    "site/status/report-view.js::formatDate": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/build-line.js::renderBuildLine",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "formatDate"
+    },
+    "site/status/report-view.js::formatFilters": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.js::nextHash",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "formatFilters"
+    },
+    "site/status/report-view.js::nextHash": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [
+        "site/status/report-view.js::formatFilters"
+      ],
+      "name": "nextHash"
+    },
+    "site/status/report-view.js::parseFilters": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/status.js::main",
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [],
+      "name": "parseFilters"
+    },
+    "site/status/report-view.js::proofSummary": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/proof-list.js::renderProofList",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "proofSummary"
+    },
+    "site/status/report-view.js::provingTests": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/capability-card.js::renderCard",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "provingTests"
+    },
+    "site/status/report-view.js::reportUrl": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/status.js::main"
+      ],
+      "imports": [],
+      "name": "reportUrl"
+    },
+    "site/status/report-view.js::rustPath": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/proof-item.js::renderProof",
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/test-row.js::renderTestRow"
+      ],
+      "imports": [],
+      "name": "rustPath"
+    },
+    "site/status/report-view.js::sourceUrl": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/proof-item.js::renderProof",
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/test-row.js::renderTestRow"
+      ],
+      "imports": [],
+      "name": "sourceUrl"
+    },
+    "site/status/report-view.js::summarize": {
+      "filePath": "site/status/report-view.js",
+      "importedBy": [
+        "site/status/header.js::renderHeader",
+        "site/status/report-view.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "summarize"
+    },
+    "site/status/report-view.test.js::__file_root__": {
+      "filePath": "site/status/report-view.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/status/report-view.js::__file_root__",
+        "site/status/report-view.js::capabilitiesByCrate",
+        "site/status/report-view.js::capabilityLabel",
+        "site/status/report-view.js::commitUrl",
+        "site/status/report-view.js::countLabel",
+        "site/status/report-view.js::demoEmbedUrl",
+        "site/status/report-view.js::demoUrl",
+        "site/status/report-view.js::filterTests",
+        "site/status/report-view.js::formatDate",
+        "site/status/report-view.js::formatFilters",
+        "site/status/report-view.js::nextHash",
+        "site/status/report-view.js::parseFilters",
+        "site/status/report-view.js::proofSummary",
+        "site/status/report-view.js::provingTests",
+        "site/status/report-view.js::reportUrl",
+        "site/status/report-view.js::rustPath",
+        "site/status/report-view.js::sourceUrl",
+        "site/status/report-view.js::summarize"
+      ],
+      "name": "__file_root__"
+    },
+    "site/status/section-intro.js::renderSectionIntro": {
+      "filePath": "site/status/section-intro.js",
+      "importedBy": [
+        "site/status/capabilities-section.js::renderCapabilities",
+        "site/status/crates-section.js::renderCrates",
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderSectionIntro"
+    },
+    "site/status/stat.js::renderStat": {
+      "filePath": "site/status/stat.js",
+      "importedBy": [
+        "site/status/stats.js::renderStats"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderStat"
+    },
+    "site/status/stats.js::renderStats": {
+      "filePath": "site/status/stats.js",
+      "importedBy": [
+        "site/status/header.js::renderHeader"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/stat.js::renderStat"
+      ],
+      "name": "renderStats"
+    },
+    "site/status/status.js::__file_root__": {
+      "filePath": "site/status/status.js",
+      "importedBy": [
+        "site/status/index.html::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/status/status.js::main": {
+      "filePath": "site/status/status.js",
+      "importedBy": [],
+      "imports": [
+        "site/status/capabilities-section.js::renderCapabilities",
+        "site/status/crates-section.js::renderCrates",
+        "site/status/header.js::renderHeader",
+        "site/status/load-error.js::renderLoadError",
+        "site/status/load-report.js::loadReport",
+        "site/status/report-view.js::parseFilters",
+        "site/status/report-view.js::reportUrl",
+        "site/status/status.js::root",
+        "site/status/tests-section.js::renderTests"
+      ],
+      "name": "main"
+    },
+    "site/status/status.js::root": {
+      "filePath": "site/status/status.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [],
+      "name": "root"
+    },
+    "site/status/test-description.js::renderTestDescription": {
+      "filePath": "site/status/test-description.js",
+      "importedBy": [
+        "site/status/proof-item.js::renderProof",
+        "site/status/test-row.js::renderTestRow"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderTestDescription"
+    },
+    "site/status/test-filters.js::renderTestFilters": {
+      "filePath": "site/status/test-filters.js",
+      "importedBy": [
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/report-view.js::__file_root__"
+      ],
+      "name": "renderTestFilters"
+    },
+    "site/status/test-row.js::renderTestRow": {
+      "filePath": "site/status/test-row.js",
+      "importedBy": [
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/dom.js::link",
+        "site/status/pill.js::renderPill",
+        "site/status/report-view.js::rustPath",
+        "site/status/report-view.js::sourceUrl",
+        "site/status/test-description.js::renderTestDescription"
+      ],
+      "name": "renderTestRow"
+    },
+    "site/status/tests-section.js::renderTests": {
+      "filePath": "site/status/tests-section.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [
+        "site/status/dom.js::el",
+        "site/status/report-view.js::countLabel",
+        "site/status/report-view.js::filterTests",
+        "site/status/report-view.js::nextHash",
+        "site/status/report-view.js::parseFilters",
+        "site/status/section-intro.js::renderSectionIntro",
+        "site/status/test-filters.js::renderTestFilters",
+        "site/status/test-row.js::renderTestRow",
+        "site/status/tests-table.js::renderTestsTable"
+      ],
+      "name": "renderTests"
+    },
+    "site/status/tests-table.js::renderTestsTable": {
+      "filePath": "site/status/tests-table.js",
+      "importedBy": [
+        "site/status/tests-section.js::renderTests"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderTestsTable"
+    },
+    "site/status/unproven-note.js::renderUnprovenNote": {
+      "filePath": "site/status/unproven-note.js",
+      "importedBy": [
+        "site/status/capability-card.js::renderCard"
+      ],
+      "imports": [
+        "site/status/dom.js::el"
+      ],
+      "name": "renderUnprovenNote"
+    }
+  },
+  "files": {
+    "site/status/build-line.js": {
+      "importedBy": [
+        "site/status/header.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/report-view.js"
+      ]
+    },
+    "site/status/capabilities-section.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": [
+        "site/status/capability-group.js",
+        "site/status/report-view.js",
+        "site/status/section-intro.js"
+      ]
+    },
+    "site/status/capability-card.js": {
+      "importedBy": [
+        "site/status/capability-group.js"
+      ],
+      "imports": [
+        "site/status/card-header.js",
+        "site/status/demo-embed.js",
+        "site/status/dom.js",
+        "site/status/proof-list.js",
+        "site/status/report-view.js",
+        "site/status/unproven-note.js"
+      ]
+    },
+    "site/status/capability-group.js": {
+      "importedBy": [
+        "site/status/capabilities-section.js"
+      ],
+      "imports": [
+        "site/status/capability-card.js",
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/card-header.js": {
+      "importedBy": [
+        "site/status/capability-card.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/pill.js",
+        "site/status/report-view.js"
+      ]
+    },
+    "site/status/crate-row.js": {
+      "importedBy": [
+        "site/status/crates-section.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/pill.js"
+      ]
+    },
+    "site/status/crates-section.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": [
+        "site/status/crate-row.js",
+        "site/status/dom.js",
+        "site/status/section-intro.js"
+      ]
+    },
+    "site/status/demo-embed.js": {
+      "importedBy": [
+        "site/status/capability-card.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/lazy-demos.js",
+        "site/status/report-view.js"
+      ]
+    },
+    "site/status/dom.js": {
+      "importedBy": [
+        "site/status/build-line.js",
+        "site/status/capability-card.js",
+        "site/status/capability-group.js",
+        "site/status/card-header.js",
+        "site/status/crate-row.js",
+        "site/status/crates-section.js",
+        "site/status/demo-embed.js",
+        "site/status/dom.test.js",
+        "site/status/load-error.js",
+        "site/status/pill.js",
+        "site/status/proof-item.js",
+        "site/status/proof-list.js",
+        "site/status/section-intro.js",
+        "site/status/stat.js",
+        "site/status/stats.js",
+        "site/status/test-description.js",
+        "site/status/test-filters.js",
+        "site/status/test-row.js",
+        "site/status/tests-section.js",
+        "site/status/tests-table.js",
+        "site/status/unproven-note.js"
+      ],
+      "imports": []
+    },
+    "site/status/dom.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/header.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": [
+        "site/status/build-line.js",
+        "site/status/report-view.js",
+        "site/status/stats.js"
+      ]
+    },
+    "site/status/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/status/status.js"
+      ]
+    },
+    "site/status/lazy-demos.js": {
+      "importedBy": [
+        "site/status/demo-embed.js"
+      ],
+      "imports": []
+    },
+    "site/status/load-error.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/load-report.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": []
+    },
+    "site/status/pill.js": {
+      "importedBy": [
+        "site/status/card-header.js",
+        "site/status/crate-row.js",
+        "site/status/test-row.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/proof-item.js": {
+      "importedBy": [
+        "site/status/proof-list.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/report-view.js",
+        "site/status/test-description.js"
+      ]
+    },
+    "site/status/proof-list.js": {
+      "importedBy": [
+        "site/status/capability-card.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/proof-item.js",
+        "site/status/report-view.js"
+      ]
+    },
+    "site/status/report-view.js": {
+      "importedBy": [
+        "site/status/build-line.js",
+        "site/status/capabilities-section.js",
+        "site/status/capability-card.js",
+        "site/status/card-header.js",
+        "site/status/demo-embed.js",
+        "site/status/header.js",
+        "site/status/proof-item.js",
+        "site/status/proof-list.js",
+        "site/status/report-view.test.js",
+        "site/status/status.js",
+        "site/status/test-filters.js",
+        "site/status/test-row.js",
+        "site/status/tests-section.js"
+      ],
+      "imports": []
+    },
+    "site/status/report-view.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/status/report-view.js"
+      ]
+    },
+    "site/status/section-intro.js": {
+      "importedBy": [
+        "site/status/capabilities-section.js",
+        "site/status/crates-section.js",
+        "site/status/tests-section.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/stat.js": {
+      "importedBy": [
+        "site/status/stats.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/stats.js": {
+      "importedBy": [
+        "site/status/header.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/stat.js"
+      ]
+    },
+    "site/status/status.js": {
+      "importedBy": [
+        "site/status/index.html"
+      ],
+      "imports": [
+        "site/status/capabilities-section.js",
+        "site/status/crates-section.js",
+        "site/status/header.js",
+        "site/status/load-error.js",
+        "site/status/load-report.js",
+        "site/status/report-view.js",
+        "site/status/tests-section.js"
+      ]
+    },
+    "site/status/test-description.js": {
+      "importedBy": [
+        "site/status/proof-item.js",
+        "site/status/test-row.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/test-filters.js": {
+      "importedBy": [
+        "site/status/tests-section.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/report-view.js"
+      ]
+    },
+    "site/status/test-row.js": {
+      "importedBy": [
+        "site/status/tests-section.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/pill.js",
+        "site/status/report-view.js",
+        "site/status/test-description.js"
+      ]
+    },
+    "site/status/tests-section.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": [
+        "site/status/dom.js",
+        "site/status/report-view.js",
+        "site/status/section-intro.js",
+        "site/status/test-filters.js",
+        "site/status/test-row.js",
+        "site/status/tests-table.js"
+      ]
+    },
+    "site/status/tests-table.js": {
+      "importedBy": [
+        "site/status/tests-section.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    },
+    "site/status/unproven-note.js": {
+      "importedBy": [
+        "site/status/capability-card.js"
+      ],
+      "imports": [
+        "site/status/dom.js"
+      ]
+    }
+  }
+}

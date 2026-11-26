@@ -1,0 +1,44 @@
+# What simbiguity-circuits-view can do, which demo shows it, and which tests
+# prove it. Read by `cargo run -p xtask -- site-report` for the engine
+# status page (site/status/).
+
+[[capability]]
+name = "Charge flowing as fast as the current"
+description = "Particles move along the wires at a speed proportional to the solved current, and sit still when the loop is open."
+demo = "demos/circuit-3d/#closed&t=2.5"
+proves = [
+  "view_tests::particle_speed_is_proportional_to_current",
+  "view_tests::open_switch_leaves_charges_still",
+  "view_tests::closed_switch_moves_charges",
+]
+
+[[capability]]
+name = "A bulb that warms up and cools down"
+description = "Glow follows brightness through a spring, so a bulb fades in when the switch closes and burns out visibly when overdriven."
+demo = "demos/circuit-3d/#closed&t=0.15"
+proves = [
+  "view_tests::glow_follows_brightness_through_the_spring",
+  "view_tests::blowing_and_replacing_the_bulb",
+  "look::tests",
+]
+
+[[capability]]
+name = "A board you can orbit and click"
+description = "An orbit camera frames the board from a three-quarter view, and a click picks the switch to flip it."
+demo = "demos/circuit-3d/#closed&t=2.5&cam=-50,20,7"
+proves = [
+  "view_tests::toggle_swings_the_lever",
+  "view_tests::pick_finds_the_switch",
+  "view_tests::default_camera_is_three_quarter",
+  "board::tests",
+  "layout::tests",
+]
+
+[[capability]]
+name = "Deterministic animation"
+description = "Seeking to a time or advancing in fixed steps always produces the same frame, so captures and replays are exact."
+proves = [
+  "view_tests::seek_is_deterministic",
+  "view_tests::advance_runs_fixed_steps",
+  "view_tests::commands_returns_the_last_frame",
+]

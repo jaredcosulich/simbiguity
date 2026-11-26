@@ -1,0 +1,16 @@
+{
+  "name": "Engine Status - Untested Capability",
+  "id": "a78aa916-93cd-43bb-b457-d0c3abf118a9",
+  "url": "/status/?report=fixtures/untested-capability.json",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T19:00:00Z",
+    "frozen": true
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/status/index.html",
+  "description": "A capability whose tests do not exist yet is shown, not hidden: an amber untested count in the header and a card saying no test proves it, naming the module it expects."
+}

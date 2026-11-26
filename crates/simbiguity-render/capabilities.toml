@@ -1,0 +1,18 @@
+# What simbiguity-render can do, which demo shows it, and which tests prove
+# it. Read by `cargo run -p xtask -- site-report` for the engine status page.
+
+[[capability]]
+name = "Meshes, paths and an orbit camera"
+description = "Procedural meshes with unit normals, polylines you can walk at a distance, and an orbit camera that projects the target to the centre of the view."
+demo = "demos/circuit-3d/#closed&t=2.5"
+proves = ["mesh::tests", "path::tests", "camera::tests"]
+
+[[capability]]
+name = "Picking with rays"
+description = "A click becomes a ray into the scene, and the nearest visible, tagged object along it is the one you hit."
+proves = ["pick::tests", "scene::tests"]
+
+[[capability]]
+name = "Renderer-agnostic draw commands"
+description = "Each frame is sorted into opaque and back-to-front glass passes and encoded as a compact command buffer that survives a decode round trip unchanged."
+proves = ["frame::tests", "commands::tests", "decode::tests"]

@@ -1,0 +1,9 @@
+# What simbiguity-circuits-wasm can do, which demo shows it, and which tests
+# prove it. Read by `cargo run -p xtask -- site-report` for the engine
+# status page.
+
+[[capability]]
+name = "The circuits engine in the browser"
+description = "A hand-written WebAssembly bridge: opaque handles, status codes and shared memory, with every export rejecting a bad handle instead of crashing."
+demo = "demos/hello-circuit/#closed"
+proves = ["tests"]

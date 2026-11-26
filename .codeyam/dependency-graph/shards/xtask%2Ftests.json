@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "xtask/tests/cli.rs::no_subcommand_prints_usage": {
+      "filePath": "xtask/tests/cli.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/tests/cli.rs::xtask"
+      ],
+      "name": "no_subcommand_prints_usage",
+      "namedMethods": [
+        "contains",
+        "from_utf8_lossy",
+        "status",
+        "stderr",
+        "success"
+      ]
+    },
+    "xtask/tests/cli.rs::site_report_error_fails_the_command": {
+      "filePath": "xtask/tests/cli.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/tests/cli.rs::xtask"
+      ],
+      "name": "site_report_error_fails_the_command",
+      "namedMethods": [
+        "contains",
+        "from_utf8_lossy",
+        "status",
+        "stderr",
+        "success"
+      ]
+    },
+    "xtask/tests/cli.rs::unknown_subcommand_prints_usage": {
+      "filePath": "xtask/tests/cli.rs",
+      "importedBy": [],
+      "imports": [
+        "xtask/tests/cli.rs::xtask"
+      ],
+      "name": "unknown_subcommand_prints_usage",
+      "namedMethods": [
+        "contains",
+        "from_utf8_lossy",
+        "status",
+        "stderr",
+        "success"
+      ]
+    },
+    "xtask/tests/cli.rs::xtask": {
+      "filePath": "xtask/tests/cli.rs",
+      "importedBy": [
+        "xtask/tests/cli.rs::no_subcommand_prints_usage",
+        "xtask/tests/cli.rs::site_report_error_fails_the_command",
+        "xtask/tests/cli.rs::unknown_subcommand_prints_usage"
+      ],
+      "imports": [],
+      "name": "xtask",
+      "namedMethods": [
+        "args",
+        "expect",
+        "new",
+        "output",
+        "process"
+      ]
+    }
+  },
+  "files": {
+    "xtask/tests/cli.rs": {
+      "importedBy": [],
+      "imports": []
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Engine Status - No Matching Tests",
+  "id": "e283b691-1480-409b-b3e4-26317514ae0f",
+  "url": "/status/?report=fixtures/all-green.json#crate=simbiguity-math&q=wheatstone",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T19:00:00Z",
+    "frozen": true
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/status/index.html",
+  "description": "Filters that match nothing leave the table with a plain no-match row and a count of zero shown, rather than an empty box.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": ".filters"
+    }
+  ]
+}

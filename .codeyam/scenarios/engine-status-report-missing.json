@@ -1,0 +1,16 @@
+{
+  "name": "Engine Status - Report Missing",
+  "id": "a536a113-8aca-4327-bfd4-1b9ea3ce665d",
+  "url": "/status/?report=fixtures/missing.json",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T19:14:18Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/status/index.html",
+  "description": "When the report cannot be loaded the page says which file it tried and gives the command that builds the report locally.",
+  "expectedConsoleErrors": true
+}

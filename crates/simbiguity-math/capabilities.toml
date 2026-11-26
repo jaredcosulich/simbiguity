@@ -1,0 +1,17 @@
+# What simbiguity-math can do, and which tests prove it. Read by
+# `cargo run -p xtask -- site-report` for the engine status page.
+
+[[capability]]
+name = "Deterministic float functions"
+description = "Hand-written float functions with no libm, giving the same bits on every platform, signed zeros and infinities included."
+proves = ["float::tests"]
+
+[[capability]]
+name = "Vectors, matrices and quaternions"
+description = "The 3D math every engine shares: componentwise vectors, column-major matrices and right-hand-rule quaternions."
+proves = ["vec::tests", "mat::tests", "quat::tests"]
+
+[[capability]]
+name = "A dense linear solver"
+description = "Gaussian elimination with partial pivoting that solves well-posed systems exactly and reports singular ones instead of guessing."
+proves = ["linsolve::tests"]

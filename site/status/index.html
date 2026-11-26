@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engine status — simbiguity</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, sans-serif;
+      --muted: color-mix(in srgb, CanvasText 60%, Canvas);
+      --line: color-mix(in srgb, CanvasText 18%, Canvas);
+      --panel: color-mix(in srgb, CanvasText 5%, Canvas);
+      --pass: #2f9e44;
+      --fail: #e03131;
+      --skip: #868e96;
+      --untested: #f08c00;
+      --glow: #ffd43b;
+    }
+    html { background: Canvas; color: CanvasText; }
+    body { max-width: 68rem; margin: 2.5rem auto; padding: 0 1.5rem; line-height: 1.55; }
+    a { color: inherit; }
+    code, .mono { font-family: ui-monospace, monospace; font-size: 0.85em; }
+    .crumb { font-size: 0.9rem; opacity: 0.75; }
+    h1 { margin: 0.25rem 0; }
+    h2 { margin: 2.75rem 0 0.25rem; }
+    h3 { margin: 1.75rem 0 0.75rem; font-size: 1rem; }
+    .lede, .section-lede { margin-top: 0; color: var(--muted); max-width: 46rem; }
+
+    .build { color: var(--muted); font-size: 0.9rem; margin: 0.75rem 0 1.25rem; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.75rem; }
+    .stat { background: var(--panel); border-radius: 0.75rem; padding: 0.75rem 1rem; }
+    .stat b { display: block; font-size: 1.75rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+    .stat span { color: var(--muted); font-size: 0.85rem; }
+    .stat.bad b { color: var(--fail); }
+    .stat.good b { color: var(--pass); }
+    .stat.warn b { color: var(--untested); }
+
+    .pill { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.05rem 0.55rem; border-radius: 999px; color: #fff; white-space: nowrap; }
+    .pill.passing, .pill.passed { background: var(--pass); }
+    .pill.failing, .pill.failed { background: var(--fail); }
+    .pill.untested { background: var(--untested); }
+    .pill.ignored { background: var(--skip); }
+    .dot { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; flex: none; margin-top: 0.45rem; }
+    .dot.passed { background: var(--pass); }
+    .dot.failed { background: var(--fail); }
+    .dot.ignored { background: var(--skip); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; }
+    .card { border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .card.failing { border-color: var(--fail); box-shadow: 0 0 0 1px var(--fail); }
+    .card.untested { border-style: dashed; border-color: var(--untested); }
+    .card header { display: flex; justify-content: space-between; align-items: start; gap: 0.75rem; }
+    .card h4 { margin: 0; font-size: 1.02rem; }
+    .card p { margin: 0; }
+    .card .unproven { color: var(--untested); font-size: 0.9rem; }
+    .demo { position: relative; aspect-ratio: 16 / 10; border-radius: 0.5rem; overflow: hidden; background: var(--panel); }
+    .demo iframe { width: 200%; height: 200%; border: 0; transform: scale(0.5); transform-origin: 0 0; pointer-events: none; }
+    .demo .placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 0.9rem; }
+    .demo a.open { position: absolute; inset: 0; }
+    .demo a.open span { position: absolute; right: 0.5rem; bottom: 0.5rem; font-size: 0.8rem; background: Canvas; padding: 0.1rem 0.5rem; border-radius: 0.4rem; text-decoration: none; }
+    details summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; }
+    .proofs { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.45rem; }
+    .proofs li { display: flex; gap: 0.5rem; font-size: 0.9rem; }
+    .proofs li.failed { color: var(--fail); font-weight: 600; }
+    .proofs .name { display: block; color: var(--muted); font-weight: 400; word-break: break-all; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .zero { color: var(--pass); font-weight: 600; }
+    tr.failed td { background: color-mix(in srgb, var(--fail) 12%, Canvas); }
+    tr.failed td:first-child { box-shadow: inset 3px 0 0 var(--fail); }
+    .tests td.what { width: 55%; }
+    .tests .rust { color: var(--muted); word-break: break-all; }
+    .no-description { color: var(--untested); font-style: italic; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: end; margin: 1rem 0 0.75rem; }
+    .filters label { display: grid; font-size: 0.8rem; color: var(--muted); gap: 0.15rem; }
+    .filters select, .filters input { font: inherit; font-size: 0.9rem; padding: 0.35rem 0.5rem; border-radius: 0.5rem; border: 1px solid var(--line); background: Canvas; color: inherit; }
+    .filters input { min-width: 16rem; }
+    .filters button { font: inherit; font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--line); background: Canvas; color: inherit; cursor: pointer; }
+    .count { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .empty, .error { padding: 1rem; background: var(--panel); border-radius: 0.75rem; }
+    .error { border-left: 4px solid var(--fail); }
+    footer { margin: 3rem 0 1rem; font-size: 0.85rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <p class="crumb"><a href="../">simbiguity</a> / engine status</p>
+  <h1>What simbiguity can do, and how it's tested</h1>
+  <p class="lede">
+    Every capability below is shown by a live demo and proven by tests you can read. The page is
+    regenerated from a real <code>cargo test</code> run on every deploy, so it can't drift from the code.
+  </p>
+
+  <main id="status" aria-live="polite">
+    <p class="empty">Loading the latest test report…</p>
+  </main>
+
+  <footer>
+    Generated by <code>cargo run -p xtask -- site-report</code>. Capabilities are declared next to the code in each
+    crate's <code>capabilities.toml</code>; a test's description is the comment written above it.
+  </footer>
+
+  <script type="module" src="status.js"></script>
+</body>
+</html>

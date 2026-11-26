@@ -1,0 +1,16 @@
+{
+  "name": "Engine Status - All Green",
+  "id": "6ed08027-52d4-4237-8fd7-374d0cb475dd",
+  "url": "/status/?report=fixtures/all-green.json",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T19:00:00Z",
+    "frozen": true
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/status/index.html",
+  "description": "Every test passes and all 25 capabilities are proven: the build line names the commit, the headline numbers are green, and the circuit capability cards lead with their live demos."
+}

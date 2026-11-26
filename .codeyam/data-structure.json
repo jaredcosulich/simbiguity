@@ -23,5 +23,19 @@
       { "name": "cameraPitchDeg", "type": "number", "required": false },
       { "name": "cameraDistance", "type": "number", "required": false }
     ]
+  },
+  {
+    "name": "StatusReport",
+    "description": "Generated engine status report (site/status/report.json) written by `cargo run -p xtask -- site-report`: build identity, test totals, per-crate dependency counts, capabilities joined to their demos and proving tests. The status page fetches it; scenarios seed alternate states by pointing the page at a fixture report via `?report=fixtures/<name>.json`, and the crate filter via `#crate=<name>`. Nothing is persisted.",
+    "category": "mock-api",
+    "order": 3,
+    "fields": [
+      { "name": "commit", "type": "string", "required": true },
+      { "name": "generatedAt", "type": "string", "required": true },
+      { "name": "totals", "type": "object", "required": true },
+      { "name": "crates", "type": "array", "required": true },
+      { "name": "capabilities", "type": "array", "required": true },
+      { "name": "tests", "type": "array", "required": true }
+    ]
   }
 ]

@@ -1,0 +1,9 @@
+# What simbiguity-render-wasm can do, which demo shows it, and which tests
+# prove it. Read by `cargo run -p xtask -- site-report` for the engine
+# status page.
+
+[[capability]]
+name = "3D views in the browser"
+description = "A hand-written WebAssembly bridge that builds a 3D view, steps its animation and hands each frame's draw commands to a from-scratch WebGL2 renderer."
+demo = "demos/circuit-3d/#closed&v=16&t=2.5"
+proves = ["tests", "readouts::tests"]

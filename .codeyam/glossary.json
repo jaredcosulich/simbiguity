@@ -17,6 +17,22 @@
     ]
   },
   {
+    "description": "The engine status page: build identity, capability cards with live demos, the crate dependency table and every test with filters.",
+    "filePath": "site/status/index.html",
+    "name": "EngineStatusPage",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability",
+      "engine-status-filtered-tests",
+      "engine-status-no-matching-tests",
+      "engine-status-report-missing"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
     "description": "The Hello, circuit demo page: SVG circuit, readouts panel, voltage slider and explanation panel.",
     "filePath": "site/demos/hello-circuit/index.html",
     "name": "HelloCircuitPage",
@@ -41,6 +57,15 @@
     "tags": [
       "hello-circuit"
     ]
+  },
+  {
+    "description": "The word a test status is written as in the report: passed, failed or ignored.",
+    "filePath": "xtask/src/libtest_output.rs",
+    "name": "Status::as_str",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/libtest_output_tests.rs"
   },
   {
     "description": "Deterministic absolute value by clearing the sign bit.",
@@ -131,6 +156,15 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "Reads a manifest array of strings, allowing a trailing comma.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "array",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
   },
   {
     "description": "Deterministic arcsine on the closed unit interval; NaN outside.",
@@ -251,6 +285,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-core/src/rng.rs"
+  },
+  {
+    "description": "Net brace count of a line, ignoring strings, char literals and comments.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "brace_delta",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
   },
   {
     "description": "Builds the circuit board scene and returns it with the animated parts and the particle mesh.",
@@ -487,6 +530,24 @@
     "testFile": "site/demos/circuit-3d/pointer.test.js"
   },
   {
+    "description": "Groups capabilities by crate, crates with the most live demos first.",
+    "filePath": "site/status/report-view.js",
+    "name": "capabilitiesByCrate",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Human label for a capability status: Proven, Failing or Untested.",
+    "filePath": "site/status/report-view.js",
+    "name": "capabilityLabel",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
     "description": "The colour and strength of the charge particles for a loop current.",
     "filePath": "crates/simbiguity-circuits-view/src/look.rs",
     "name": "charge_look",
@@ -685,6 +746,15 @@
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
+    "description": "Converts days since the Unix epoch to a calendar date.",
+    "filePath": "xtask/src/main.rs",
+    "name": "civil_from_days",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/main_tests.rs"
+  },
+  {
     "description": "Keeps a ranged float draw half-open below hi using float next_down, for any sign of hi.",
     "filePath": "crates/simbiguity-core/src/rng.rs",
     "name": "clamp_below",
@@ -701,6 +771,24 @@
       "3d-rendering"
     ],
     "testFile": "site/demos/circuit-3d/pointer.test.js"
+  },
+  {
+    "description": "Joins the comment block above a test's attribute group into one line.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "comment_above",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
+  },
+  {
+    "description": "GitHub link to the commit the report was built from, or null.",
+    "filePath": "site/status/report-view.js",
+    "name": "commitUrl",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
   },
   {
     "description": "Current through one component from the voltage across it, per stamp; an ideal battery's MNA unknown is negated to read out of plus.",
@@ -728,6 +816,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "The every-test table's count line: All N tests, or M of N tests.",
+    "filePath": "site/status/report-view.js",
+    "name": "countLabel",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Every crate directory under crates/ that has a Cargo.toml, sorted.",
+    "filePath": "xtask/src/main.rs",
+    "name": "crate_dirs",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/main_tests.rs"
   },
   {
     "description": "The closed path charge follows: the wires plus hidden stretches through the switch, bulb and battery.",
@@ -775,6 +881,33 @@
     "testFile": "crates/simbiguity-circuits-view/src/view_tests.rs"
   },
   {
+    "description": "The same demo link in embed mode, keeping any query and hash.",
+    "filePath": "site/status/report-view.js",
+    "name": "demoEmbedUrl",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "A capability's demo link relative to the status page, or null.",
+    "filePath": "site/status/report-view.js",
+    "name": "demoUrl",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Splits a Cargo.toml's dependencies into workspace path crates and external ones.",
+    "filePath": "xtask/src/main.rs",
+    "name": "dependencies",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/main_tests.rs"
+  },
+  {
     "description": "Squared distance from the eye to a node origin, used to sort glass back to front.",
     "filePath": "crates/simbiguity-render/src/frame.rs",
     "name": "depth",
@@ -782,6 +915,15 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
+    "description": "Names a doc-test by its item and file:line with a generated description.",
+    "filePath": "xtask/src/report.rs",
+    "name": "doc_test",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/report_tests.rs"
   },
   {
     "description": "Writes the readouts view onto the SVG circuit and the control panel.",
@@ -806,6 +948,15 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
+    "description": "Creates a DOM element with attributes and text-safe children.",
+    "filePath": "site/status/dom.js",
+    "name": "el",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/dom.test.js"
   },
   {
     "description": "Elastic ease-in: growing wobbles that wind up toward the end, exact at both endpoints.",
@@ -833,6 +984,24 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
+    "description": "Builds a manifest error for a line.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "err",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
+  },
+  {
+    "description": "Quotes and escapes a string for JSON.",
+    "filePath": "xtask/src/report.rs",
+    "name": "escape",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/report_tests.rs"
   },
   {
     "description": "Closed-form evolution of a damped spring error and velocity over a time step, for critical, under- and over-damping.",
@@ -933,6 +1102,15 @@
     "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
+    "description": "Keeps the tests matching every active filter; search matches description or Rust path, ignoring case.",
+    "filePath": "site/status/report-view.js",
+    "name": "filterTests",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
     "description": "Reports one FloatingNode per connected island that has components but no battery or ground, naming its lowest node.",
     "filePath": "crates/simbiguity-circuits/src/mna.rs",
     "name": "floating_islands",
@@ -949,6 +1127,33 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Reads a function name from a fn line, allowing pub and async.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "fn_name",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
+  },
+  {
+    "description": "Formats an ISO timestamp as a short UTC date like 26 Nov 2026.",
+    "filePath": "site/status/report-view.js",
+    "name": "formatDate",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Writes the active filters back into a URL hash, omitting empty ones.",
+    "filePath": "site/status/report-view.js",
+    "name": "formatFilters",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
   },
   {
     "description": "Formats a reading with its unit, or an em dash when there is none.",
@@ -976,6 +1181,18 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Runs a git command and returns its trimmed output on success.",
+    "filePath": "xtask/src/main.rs",
+    "name": "git",
+    "tags": [
+      "engine-status"
+    ],
+    "untestabilityReason": {
+      "justification": "spawns git as a subprocess",
+      "kind": "platform-glue"
+    }
   },
   {
     "description": "Writes the 3D demo state as a URL hash that stateFromHash reads back.",
@@ -1076,6 +1293,15 @@
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
+    "description": "Joins test results, test sources and capability manifests into the status report.",
+    "filePath": "xtask/src/report.rs",
+    "name": "join",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/report_tests.rs"
+  },
+  {
     "description": "fdlibm cosine polynomial on the reduced interval.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "kernel_cos",
@@ -1139,6 +1365,15 @@
     "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
   },
   {
+    "description": "A link when there is a destination, otherwise the bare content.",
+    "filePath": "site/status/dom.js",
+    "name": "link",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/dom.test.js"
+  },
+  {
     "description": "Deterministic natural log within 2 ulp via mantissa split and the atanh series.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "ln",
@@ -1178,6 +1413,18 @@
     "tags": [
       "hello-circuit"
     ]
+  },
+  {
+    "description": "Fetches and parses the status report, throwing with the HTTP status on failure.",
+    "filePath": "site/status/load-report.js",
+    "name": "loadReport",
+    "tags": [
+      "engine-status"
+    ],
+    "untestabilityReason": {
+      "justification": "browser fetch boundary",
+      "kind": "platform-glue"
+    }
   },
   {
     "description": "One-call dense solve of A x = b by LU with partial pivoting.",
@@ -1221,6 +1468,39 @@
     ]
   },
   {
+    "description": "Status page entry: loads the report and composes the header, capabilities, crates and tests sections, or the load error.",
+    "filePath": "site/status/status.js",
+    "name": "main",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability",
+      "engine-status-filtered-tests",
+      "engine-status-report-missing"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "xtask entry point: dispatches the site-report subcommand.",
+    "filePath": "xtask/src/main.rs",
+    "name": "main",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/tests/cli.rs"
+  },
+  {
+    "description": "Reads a key from a Cargo.toml's package table.",
+    "filePath": "xtask/src/main.rs",
+    "name": "manifest_value",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/main_tests.rs"
+  },
+  {
     "description": "Narrows a column-major f64 Mat4 to the f32 array the command buffer carries.",
     "filePath": "crates/simbiguity-render/src/frame.rs",
     "name": "mat",
@@ -1237,6 +1517,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Recognises a mod declaration and whether it is inline or out-of-line.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "mod_declaration",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
+  },
+  {
+    "description": "Splits a libtest path into module and name, putting integration tests under tests/<file>.",
+    "filePath": "xtask/src/report.rs",
+    "name": "module_and_name",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/report_tests.rs"
   },
   {
     "description": "Picks the intact bulb with the highest power to rated-power ratio above BLOW_RATIO; ties go to the lowest id.",
@@ -1266,6 +1564,15 @@
     "testFile": "crates/simbiguity-core/src/clock.rs"
   },
   {
+    "description": "The hash to write after a filter change, or null when the URL already says the same.",
+    "filePath": "site/status/report-view.js",
+    "name": "nextHash",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
     "description": "Largest float strictly below x; portable replacement for f64 next_down under MSRV 1.80.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "next_down",
@@ -1291,6 +1598,27 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/src/wires.rs"
+  },
+  {
+    "description": "The current UTC time as an ISO 8601 timestamp, without a date crate.",
+    "filePath": "xtask/src/main.rs",
+    "name": "now_iso8601",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/main_tests.rs"
+  },
+  {
+    "description": "Starts a demo iframe loading once its card scrolls near the viewport.",
+    "filePath": "site/status/lazy-demos.js",
+    "name": "observeDemo",
+    "tags": [
+      "engine-status"
+    ],
+    "untestabilityReason": {
+      "justification": "browser IntersectionObserver boundary",
+      "kind": "platform-glue"
+    }
   },
   {
     "description": "Horner sum over odd reciprocal denominators, alternating for atan or all-positive for the atanh series in ln.",
@@ -1364,6 +1692,33 @@
     ]
   },
   {
+    "description": "Parses a capabilities.toml manifest into capabilities, reporting the line of anything it cannot read.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "parse",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
+  },
+  {
+    "description": "Parses a cargo test log into one result per test, attributed to the test binary it ran in.",
+    "filePath": "xtask/src/libtest_output.rs",
+    "name": "parse",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/libtest_output_tests.rs"
+  },
+  {
+    "description": "Reads the crate, status and search filters from the URL hash, dropping unknown statuses.",
+    "filePath": "site/status/report-view.js",
+    "name": "parseFilters",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
     "description": "Evenly spaced charge positions along the loop from a phase, keeping only those on visible wires.",
     "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
     "name": "particle_offsets",
@@ -1380,6 +1735,15 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-circuits-view/src/view_tests.rs"
+  },
+  {
+    "description": "Reads the file named by a #[path] attribute.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "path_attribute",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
   },
   {
     "description": "Total length of a polyline.",
@@ -1445,6 +1809,33 @@
     "testFile": "crates/simbiguity-render/src/frame.rs"
   },
   {
+    "description": "The line above a capability card's proving tests: how many prove it, or how many are failing.",
+    "filePath": "site/status/report-view.js",
+    "name": "proofSummary",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Whether a proves entry covers a test: its full path, its module, or a parent module.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "proves",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
+  },
+  {
+    "description": "The tests proving a capability, failures first then ignored then passed.",
+    "filePath": "site/status/report-view.js",
+    "name": "provingTests",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
     "description": "Derives every on-screen reading and flag from one circuit solve.",
     "filePath": "site/demos/hello-circuit/readouts.js",
     "name": "readouts",
@@ -1490,6 +1881,296 @@
     "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
   },
   {
+    "description": "Built-from-commit line with the commit link, date, crate count and test count.",
+    "filePath": "site/status/build-line.js",
+    "name": "renderBuildLine",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The What it can do section: every capability card, grouped by crate.",
+    "filePath": "site/status/capabilities-section.js",
+    "name": "renderCapabilities",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "One crate's name and its capability cards.",
+    "filePath": "site/status/capability-group.js",
+    "name": "renderCapabilityGroup",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "One capability card: title and status pill, description, live demo, and its proving tests or an untested note.",
+    "filePath": "site/status/capability-card.js",
+    "name": "renderCard",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "A capability card's title with its Proven, Failing or Untested pill.",
+    "filePath": "site/status/card-header.js",
+    "name": "renderCardHeader",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "One crate row of the dependency table.",
+    "filePath": "site/status/crate-row.js",
+    "name": "renderCrateRow",
+    "scenarios": [
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The dependency table: every crate, what it builds on, its external dependencies and test count.",
+    "filePath": "site/status/crates-section.js",
+    "name": "renderCrates",
+    "scenarios": [
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "A capability's live demo embedded in embed mode, lazy-loaded, with an open-demo link.",
+    "filePath": "site/status/demo-embed.js",
+    "name": "renderDemo",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The build identity line and headline numbers at the top of the status page.",
+    "filePath": "site/status/header.js",
+    "name": "renderHeader",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The error shown when the report cannot be loaded, with the command that builds it.",
+    "filePath": "site/status/load-error.js",
+    "name": "renderLoadError",
+    "scenarios": [
+      "engine-status-report-missing"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "A coloured status pill for a test result or capability status.",
+    "filePath": "site/status/pill.js",
+    "name": "renderPill",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability",
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "One proving test in a card: result dot, description and source-linked Rust path.",
+    "filePath": "site/status/proof-item.js",
+    "name": "renderProof",
+    "scenarios": [
+      "engine-status-one-failing"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The collapsible list of a capability's proving tests, opened when one fails.",
+    "filePath": "site/status/proof-list.js",
+    "name": "renderProofList",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "A page section's heading and the muted sentence beneath it.",
+    "filePath": "site/status/section-intro.js",
+    "name": "renderSectionIntro",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability",
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "One headline number with its label and tone.",
+    "filePath": "site/status/stat.js",
+    "name": "renderStat",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The row of headline numbers, toned green, red or amber by what failed or is untested.",
+    "filePath": "site/status/stats.js",
+    "name": "renderStats",
+    "scenarios": [
+      "engine-status-all-green",
+      "engine-status-one-failing",
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "A test's plain-English description, or a muted No description.",
+    "filePath": "site/status/test-description.js",
+    "name": "renderTestDescription",
+    "scenarios": [
+      "engine-status-one-failing",
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The crate, status and search controls above the every-test table, with a Clear button.",
+    "filePath": "site/status/test-filters.js",
+    "name": "renderTestFilters",
+    "scenarios": [
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "One every-test table row: result pill, description, crate and source-linked path.",
+    "filePath": "site/status/test-row.js",
+    "name": "renderTestRow",
+    "scenarios": [
+      "engine-status-filtered-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The every-test section: filters mirrored into the URL hash, the match count and the filtered table.",
+    "filePath": "site/status/tests-section.js",
+    "name": "renderTests",
+    "scenarios": [
+      "engine-status-filtered-tests",
+      "engine-status-no-matching-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The every-test table, with an empty-state row when no test matches.",
+    "filePath": "site/status/tests-table.js",
+    "name": "renderTestsTable",
+    "scenarios": [
+      "engine-status-filtered-tests",
+      "engine-status-no-matching-tests"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The note on an untested capability naming the test module it expects.",
+    "filePath": "site/status/unproven-note.js",
+    "name": "renderUnprovenNote",
+    "scenarios": [
+      "engine-status-untested-capability"
+    ],
+    "tags": [
+      "engine-status"
+    ]
+  },
+  {
+    "description": "The repository root, found from the xtask manifest directory.",
+    "filePath": "xtask/src/main.rs",
+    "name": "repo_root",
+    "tags": [
+      "engine-status"
+    ],
+    "untestabilityReason": {
+      "justification": "compile-time environment lookup",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Picks the report the status page loads: a same-site relative `?report=` path, else report.json.",
+    "filePath": "site/status/report-view.js",
+    "name": "reportUrl",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
     "description": "Rounds to nearest integer, halfway cases away from zero.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "round",
@@ -1506,6 +2187,36 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Runs one crate's tests with stdout and stderr interleaved into one log file.",
+    "filePath": "xtask/src/main.rs",
+    "name": "run_tests",
+    "tags": [
+      "engine-status"
+    ],
+    "untestabilityReason": {
+      "justification": "spawns cargo test as a subprocess",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Turns a libtest Running header into the binary's source root, e.g. src/lib.rs.",
+    "filePath": "xtask/src/libtest_output.rs",
+    "name": "running_target",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/libtest_output_tests.rs"
+  },
+  {
+    "description": "A test's module::name path as a developer would grep for it.",
+    "filePath": "site/status/report-view.js",
+    "name": "rustPath",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
   },
   {
     "description": "Allocates a byte buffer in linear memory for JS to fill.",
@@ -1587,6 +2298,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Walks a test binary's module tree from its root file and returns every test found.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "scan",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
+  },
+  {
+    "description": "Finds every #[test] in one file's text with its module path, line and comment, plus the child modules it declares.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "scan_source",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
   },
   {
     "description": "Time after which a spring released from rest stays within a tolerance of its target; infinite without stiffness or damping.",
@@ -1694,6 +2423,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Runs every crate's tests, reads sources and manifests, and writes site/status/report.json.",
+    "filePath": "xtask/src/main.rs",
+    "name": "site_report",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/main_tests.rs"
+  },
+  {
     "description": "Slerp blend weights with a lerp fallback for nearly identical rotations.",
     "filePath": "crates/simbiguity-math/src/quat.rs",
     "name": "slerp_weights",
@@ -1710,6 +2448,15 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "GitHub link to a test's source line at the report's exact commit, or null.",
+    "filePath": "site/status/report-view.js",
+    "name": "sourceUrl",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
   },
   {
     "description": "Finds shorted batteries, fatal for ideal ones and emf over r for real ones, and loops of ideal batteries closed via union-find.",
@@ -1802,6 +2549,51 @@
     "testFile": "site/demos/hello-circuit/state.test.js"
   },
   {
+    "description": "Reads a whole quoted manifest string value, refusing trailing text.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "string",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
+  },
+  {
+    "description": "Drops a # comment from a manifest line unless the # is inside a string.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "strip_comment",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
+  },
+  {
+    "description": "Removes a pub or pub(...) prefix from a line.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "strip_visibility",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
+  },
+  {
+    "description": "Headline numbers for the status page: test totals, crates, and proven/failing/untested capabilities.",
+    "filePath": "site/status/report-view.js",
+    "name": "summarize",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Reads one quoted string with escapes from the front of a value, returning the rest.",
+    "filePath": "xtask/src/capabilities.rs",
+    "name": "take_string",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/capabilities_tests.rs"
+  },
+  {
     "description": "Deterministic tangent as sin over cos.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "tan",
@@ -1809,6 +2601,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Reads one libtest result line into a test path and status, stripping the should-panic suffix.",
+    "filePath": "xtask/src/libtest_output.rs",
+    "name": "test_line",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/libtest_output_tests.rs"
+  },
+  {
+    "description": "Serializes the status report and build identity as pretty-printed JSON.",
+    "filePath": "xtask/src/report.rs",
+    "name": "to_json",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/report_tests.rs"
   },
   {
     "description": "Rounds Seconds to whole nanoseconds; negative or NaN becomes 0, huge values saturate at u64 max.",
@@ -1856,6 +2666,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Follows mod declarations from file to file on disk, collecting tests.",
+    "filePath": "xtask/src/test_descriptions.rs",
+    "name": "walk",
+    "tags": [
+      "engine-status"
+    ],
+    "testFile": "xtask/src/test_descriptions_tests.rs"
+  },
+  {
     "description": "Fills in wire and closed-switch currents from Kirchhoff's current law by walking the spanning forest from leaves to root.",
     "filePath": "crates/simbiguity-circuits/src/wires.rs",
     "name": "wire_currents",
@@ -1899,6 +2718,18 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "The repository URL from the workspace Cargo.toml.",
+    "filePath": "xtask/src/main.rs",
+    "name": "workspace_repository",
+    "tags": [
+      "engine-status"
+    ],
+    "untestabilityReason": {
+      "justification": "filesystem read",
+      "kind": "platform-glue"
+    }
   },
   {
     "description": "Wraps a value into the half-open interval from 0 to the period.",

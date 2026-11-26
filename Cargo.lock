@@ -71,3 +71,7 @@ dependencies = [
  "simbiguity-math",
  "simbiguity-render",
 ]
+
+[[package]]
+name = "xtask"
+version = "0.0.1"

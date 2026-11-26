@@ -134,6 +134,123 @@
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
+  "capabilities::tests::decodes_string_escapes": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::empty_manifest_is_empty": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::hash_inside_a_string_is_kept": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::key_before_first_table_is_an_error": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::line_without_equals_is_an_error": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::malformed_strings_are_errors": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::parses_a_multi_line_array": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::parses_every_key_of_each_capability": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::proves_matches_a_full_test_path": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::proves_matches_a_module_and_its_submodules": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::proves_matches_a_root_test_by_name": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::unknown_key_is_an_error": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "capabilities::tests::unnamed_capability_is_an_error": {
+    "file": "xtask/src/capabilities_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
   "clock::tests::bad_durations_bank_nothing_and_reset_clears": {
     "file": "crates/simbiguity-core/src/clock.rs",
     "lastRunAt": "2026-11-26T16:47:50.918Z",
@@ -908,6 +1025,78 @@
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
+  "libtest_output::tests::doc_tests_switch_the_target_to_doc": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::ignored_tests_are_recorded_with_or_without_a_reason": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::integration_tests_are_attributed_to_their_file": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::running_target_without_binary": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::should_panic_suffix_is_stripped": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::status_strings_match_the_report": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::unit_tests_belong_to_the_running_target": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "libtest_output::tests::unrelated_lines_are_ignored": {
+    "file": "xtask/src/libtest_output_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
   "linsolve::tests::back_substitute_solves_upper_factor": {
     "file": "crates/simbiguity-math/src/linsolve.rs",
     "lastRunAt": "2026-11-26T16:47:50.918Z",
@@ -1457,6 +1646,15 @@
       "pass|full|2026-11-26T17:29:47.731Z"
     ]
   },
+  "no_subcommand_prints_usage": {
+    "file": "xtask/tests/cli.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
+    ]
+  },
   "non_bulbs_have_no_brightness": {
     "file": "crates/simbiguity-circuits/tests/analysis.rs",
     "lastRunAt": "2026-11-26T17:55:56.845Z",
@@ -1691,6 +1889,96 @@
       "pass|full|2026-11-26T17:29:47.731Z"
     ]
   },
+  "report::tests::doc_test_without_a_line_number": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::escape_quotes_and_escapes": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::join_counts_results_per_crate": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::join_derives_capability_status_from_its_tests": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::join_does_not_duplicate_overlapping_matches": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::join_leaves_unknown_sources_empty": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::join_names_doc_tests": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::join_namespaces_tests_and_attaches_sources": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::to_json_of_an_empty_report": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "report::tests::to_json_writes_the_shape_the_page_reads": {
+    "file": "xtask/src/report_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
   "rng::tests::box_muller_known_values": {
     "file": "crates/simbiguity-core/src/rng.rs",
     "lastRunAt": "2026-11-26T16:47:50.918Z",
@@ -1853,6 +2141,15 @@
       "pass|full|2026-11-26T16:47:50.918Z"
     ]
   },
+  "site_report_error_fails_the_command": {
+    "file": "xtask/tests/cli.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
+    ]
+  },
   "snapshot_round_trip_restores_state": {
     "file": "crates/simbiguity-circuits/tests/analysis.rs",
     "lastRunAt": "2026-11-26T17:55:56.845Z",
@@ -1970,6 +2267,96 @@
       "pass|full|2026-11-26T17:33:52.512Z"
     ]
   },
+  "test_descriptions::tests::brace_delta_ignores_literals_and_comments": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::comment_above_skips_other_attributes": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::finds_a_commented_test_in_an_inline_module": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::inline_module_closes_at_its_brace": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::parses_module_and_fn_declarations": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::path_attribute_does_not_leak_past_its_item": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::reports_child_modules_with_path_attributes": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::scan_of_a_missing_root_is_empty": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::scan_walks_the_module_tree_on_disk": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "test_descriptions::tests::uncommented_test_has_no_description": {
+    "file": "xtask/src/test_descriptions_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
   "tests::bad_handle_fails_every_export": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
     "lastRunAt": "2026-11-26T17:56:23.091Z",
@@ -2042,6 +2429,15 @@
       "pass|full|2026-11-26T17:56:23.091Z"
     ]
   },
+  "tests::civil_from_days_converts_known_dates": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
   "tests::closed_loop_lights_bulb_at_rating": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
     "lastRunAt": "2026-11-26T17:56:23.091Z",
@@ -2058,6 +2454,42 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
+    ]
+  },
+  "tests::crate_dirs_lists_crates_sorted": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
+    ]
+  },
+  "tests::crate_dirs_without_crates_is_an_error": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
+    ]
+  },
+  "tests::dependencies_of_a_bare_manifest": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
+  "tests::dependencies_split_workspace_from_external": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
     ]
   },
   "tests::encode_writes_a_decodable_frame": {
@@ -2114,6 +2546,15 @@
       "pass|full|2026-11-26T17:56:23.091Z"
     ]
   },
+  "tests::manifest_value_reads_the_package_table": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
+    ]
+  },
   "tests::mesh_exports_cover_every_mesh": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
     "lastRunAt": "2026-11-26T18:40:50.408Z",
@@ -2130,6 +2571,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
+    ]
+  },
+  "tests::now_iso8601_has_the_utc_shape": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:08.088Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:09:43.546Z"
     ]
   },
   "tests::open_switch_carries_no_current": {
@@ -2175,6 +2625,24 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
+    ]
+  },
+  "tests::site_report_rejects_an_unknown_argument": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
+    ]
+  },
+  "tests::site_report_requires_a_path_after_out": {
+    "file": "xtask/src/main_tests.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
     ]
   },
   "timeline::tests::is_active_covers_the_half_open_clip": {
@@ -2310,6 +2778,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:33:52.512Z"
+    ]
+  },
+  "unknown_subcommand_prints_usage": {
+    "file": "xtask/tests/cli.rs",
+    "lastRunAt": "2026-11-26T19:12:14.789Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T19:12:14.789Z"
     ]
   },
   "vec::tests::arithmetic_is_componentwise": {

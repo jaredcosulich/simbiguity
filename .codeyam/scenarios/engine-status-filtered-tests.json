@@ -1,0 +1,22 @@
+{
+  "name": "Engine Status - Filtered Tests",
+  "id": "3cf30eaf-2ee1-4a9d-87eb-037a5bf7b8ed",
+  "url": "/status/?report=fixtures/one-failing.json#crate=simbiguity-circuits&q=bridge",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T19:00:00Z",
+    "frozen": true
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/status/index.html",
+  "description": "Opening a link with filters in the URL jumps to the every-test table, narrowed to the circuit crate's bridge tests, with the count showing how many of all tests match.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": ".filters"
+    }
+  ]
+}

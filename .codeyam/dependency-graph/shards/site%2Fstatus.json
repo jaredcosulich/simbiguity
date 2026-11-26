@@ -1,5 +1,13 @@
 {
   "entities": {
+    "site/status/bench-section.js::renderBench": {
+      "filePath": "site/status/bench-section.js",
+      "importedBy": [
+        "site/status/status.js::main"
+      ],
+      "imports": [],
+      "name": "renderBench"
+    },
     "site/status/build-line.js::renderBuildLine": {
       "filePath": "site/status/build-line.js",
       "importedBy": [
@@ -489,6 +497,7 @@
       "filePath": "site/status/status.js",
       "importedBy": [],
       "imports": [
+        "site/status/bench-section.js::renderBench",
         "site/status/capabilities-section.js::renderCapabilities",
         "site/status/crates-section.js::renderCrates",
         "site/status/header.js::renderHeader",
@@ -586,6 +595,12 @@
     }
   },
   "files": {
+    "site/status/bench-section.js": {
+      "importedBy": [
+        "site/status/status.js"
+      ],
+      "imports": []
+    },
     "site/status/build-line.js": {
       "importedBy": [
         "site/status/header.js"
@@ -826,7 +841,8 @@
         "site/status/load-error.js",
         "site/status/load-report.js",
         "site/status/report-view.js",
-        "site/status/tests-section.js"
+        "site/status/tests-section.js",
+        "site/status/bench-section.js"
       ]
     },
     "site/status/test-description.js": {

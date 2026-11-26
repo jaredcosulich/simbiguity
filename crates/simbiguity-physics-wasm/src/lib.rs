@@ -6,7 +6,7 @@ use simbiguity_core::simulation::{Seconds, Simulation};
 use simbiguity_math::vec::Vec3;
 use simbiguity_physics::World;
 use simbiguity_physics_view::PhysicsView;
-use simbiguity_render::encode_frame;
+use simbiguity_render::{encode_frame, FrameBuf};
 use simbiguity_render_wasm::status::{ERR_HANDLE, OK};
 
 // Minimal slot mapping for handles
@@ -16,6 +16,7 @@ struct Session {
     world: World,
     view: PhysicsView,
     commands: simbiguity_render::CommandBuffer,
+    frame_buf: FrameBuf,
     time: f64,
 }
 
@@ -61,6 +62,7 @@ pub extern "C" fn phys_new_pendulum() -> u32 {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
         time: 0.0,
     })
 }
@@ -75,6 +77,7 @@ pub extern "C" fn phys_new_spring_mass() -> u32 {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
         time: 0.0,
     })
 }
@@ -98,6 +101,7 @@ pub extern "C" fn phys_encode(h: u32, width: u32, height: u32) -> i32 {
             &s.view.camera,
             width,
             height,
+            &mut s.frame_buf,
             &mut s.commands,
         );
         s.commands.words().len() as i32

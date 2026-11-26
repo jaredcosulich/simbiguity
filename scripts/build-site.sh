@@ -21,3 +21,21 @@ for crate in $bridges; do
   cp "$target_dir/wasm32-unknown-unknown/release/$file" site/pkg/
   echo "site/pkg/$file: $(wc -c < "site/pkg/$file") bytes"
 done
+
+if [ ! -f site/pkg-budget.txt ]; then
+  for crate in $bridges; do
+    file="$(echo "$crate" | tr - _).wasm"
+    size=$(wc -c < "site/pkg/$file")
+    echo "$file $((size + 5000))" >> site/pkg-budget.txt
+  done
+fi
+
+for crate in $bridges; do
+  file="$(echo "$crate" | tr - _).wasm"
+  size=$(wc -c < "site/pkg/$file")
+  budget=$(awk -v f="$file" '$1 == f {print $2}' site/pkg-budget.txt)
+  if [ -n "$budget" ] && [ "$size" -gt "$budget" ]; then
+    echo "ERROR: $file size ($size) exceeds budget ($budget)"
+    exit 1
+  fi
+done

@@ -25,6 +25,8 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: Build site/ (compiles the .wasm into site/pkg/)
         run: sh scripts/build-site.sh
+      - name: Benchmarks (runs harness, writes site/status/bench.json)
+        run: cargo run -p xtask --release -- bench --out site/status/bench.json
       - name: Engine status report (runs every test, writes site/status/report.json)
         run: cargo run -p xtask -- site-report
       - uses: actions/configure-pages@v5

@@ -14,9 +14,8 @@ fn xtask(args: &[&str]) -> std::process::Output {
 fn no_subcommand_prints_usage() {
     let out = xtask(&[]);
     assert!(!out.status.success());
-    assert!(
-        String::from_utf8_lossy(&out.stderr).contains("usage: cargo run -p xtask -- site-report")
-    );
+    assert!(String::from_utf8_lossy(&out.stderr)
+        .contains("usage: cargo run -p xtask -- [site-report|bench]"));
 }
 
 // An unknown subcommand fails the same way.

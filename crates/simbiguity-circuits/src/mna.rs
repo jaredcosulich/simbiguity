@@ -12,7 +12,7 @@
 use alloc::vec;
 use alloc::vec::Vec;
 
-use simbiguity_math::{float, lu_solve, DenseMatrix, SolveError};
+use simbiguity_math::{float, DenseMatrix, SolveError};
 
 use crate::component::{Component, Integrator, Stamp, BLOW_RATIO};
 use crate::diagnostics::CircuitIssue;
@@ -25,6 +25,7 @@ use crate::wires::wire_currents;
 const NO_CURRENT: f64 = 1e-12;
 
 /// The circuit's shape after merging, before any numbers are solved.
+#[derive(Clone, PartialEq, Debug)]
 struct Topology {
     stamps: Vec<Stamp>,
     /// Merged group (its root node) of each node.
@@ -137,6 +138,7 @@ fn floating_islands(c: &Circuit, t: &Topology) -> Vec<CircuitIssue> {
 
 /// Numbering of the unknowns: one voltage per non-reference group in a
 /// referenced island, then one current per ideal battery.
+#[derive(Clone, PartialEq, Debug)]
 struct Unknowns {
     voltage: Vec<Option<usize>>,
     source: Vec<Option<usize>>,
@@ -193,47 +195,71 @@ fn stamp_current_source(rhs: &mut [f64], a: Option<usize>, b: Option<usize>, cur
     }
 }
 
-/// Adds an ideal voltage source `V_a − V_b = emf` whose current is unknown
-/// `k`: ±1 in the B/C blocks and the EMF on the right-hand side.
-fn stamp_voltage_source(
-    m: &mut DenseMatrix,
-    rhs: &mut [f64],
-    a: Option<usize>,
-    b: Option<usize>,
-    k: usize,
-    emf: f64,
-) {
-    for (node, sign) in [(a, 1.0), (b, -1.0)] {
-        if let Some(node) = node {
-            m[(node, k)] += sign;
-            m[(k, node)] += sign;
-        }
-    }
-    rhs[k] = emf;
+#[derive(Clone, PartialEq, Debug)]
+pub struct SolverCache {
+    pub matrix: DenseMatrix,
+    pub rhs: Vec<f64>,
+    pub lu: Option<simbiguity_math::Lu>,
+    t: Option<Topology>,
+    u: Option<Unknowns>,
 }
 
-/// Builds `A·x = rhs`: the G block (conductances), the B/C blocks
-/// (battery incidence, ±1) and the right-hand side (source currents, EMFs).
-fn assemble(c: &Circuit, t: &Topology, u: &Unknowns) -> (DenseMatrix, Vec<f64>) {
-    let mut m = DenseMatrix::zeros(u.count, u.count);
-    let mut rhs = vec![0.0; u.count];
+impl Default for SolverCache {
+    fn default() -> Self {
+        Self {
+            matrix: DenseMatrix::zeros(0, 0),
+            rhs: Vec::new(),
+            lu: None,
+            t: None,
+            u: None,
+        }
+    }
+}
+
+fn assemble_matrix(c: &Circuit, t: &Topology, u: &Unknowns, m: &mut DenseMatrix) {
+    for r in 0..u.count {
+        for col in 0..u.count {
+            m[(r, col)] = 0.0;
+        }
+    }
     for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
         let a = u.voltage[t.group[p.a.0]];
         let b = u.voltage[t.group[p.b.0]];
         match *s {
-            Stamp::Conductance(g) => stamp_conductance(&mut m, a, b, g),
-            Stamp::Norton { g, current } => {
-                stamp_conductance(&mut m, a, b, g);
-                stamp_current_source(&mut rhs, a, b, current);
+            Stamp::Conductance(g) => stamp_conductance(m, a, b, g),
+            Stamp::Norton { g, .. } => {
+                stamp_conductance(m, a, b, g);
             }
-            Stamp::VoltageSource(emf) => {
+            Stamp::VoltageSource(_) => {
                 let k = u.source[i].expect("every ideal battery has a current unknown");
-                stamp_voltage_source(&mut m, &mut rhs, a, b, k, emf);
+                for (node, sign) in [(a, 1.0), (b, -1.0)] {
+                    if let Some(node) = node {
+                        m[(node, k)] += sign;
+                        m[(k, node)] += sign;
+                    }
+                }
             }
             Stamp::Merge | Stamp::Open => {}
         }
     }
-    (m, rhs)
+}
+
+fn assemble_rhs(c: &Circuit, t: &Topology, u: &Unknowns, rhs: &mut [f64]) {
+    rhs.fill(0.0);
+    for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
+        let a = u.voltage[t.group[p.a.0]];
+        let b = u.voltage[t.group[p.b.0]];
+        match *s {
+            Stamp::Norton { current, .. } => {
+                stamp_current_source(rhs, a, b, current);
+            }
+            Stamp::VoltageSource(emf) => {
+                let k = u.source[i].expect("every ideal battery has a current unknown");
+                rhs[k] = emf;
+            }
+            _ => {}
+        }
+    }
 }
 
 /// Names the part behind an unexpected singular pivot (a safety net: the
@@ -350,22 +376,53 @@ fn open_batteries(c: &Circuit, issues: &[CircuitIssue], s: &Solution) -> Vec<Cir
 }
 
 /// Solves the circuit as it stands (no bulbs blow here).
-fn solve_once(c: &Circuit, stamps: Vec<Stamp>) -> (Option<Solution>, Vec<CircuitIssue>) {
-    let t = Topology::build(c, stamps);
+fn solve_once(
+    c: &Circuit,
+    stamps: Vec<Stamp>,
+    cache: &mut SolverCache,
+    needs_refactor: bool,
+) -> (Option<Solution>, Vec<CircuitIssue>) {
+    if needs_refactor || cache.t.is_none() {
+        let t = Topology::build(c, stamps);
+        let u = Unknowns::number(c, &t);
+        cache.t = Some(t.clone());
+        cache.u = Some(u.clone());
+    } else {
+        if let Some(t) = cache.t.as_mut() {
+            t.stamps = stamps;
+        }
+    }
+    let (t, u) = (cache.t.clone().unwrap(), cache.u.clone().unwrap());
+
     let mut issues = source_problems(c, &t);
     if issues.iter().any(CircuitIssue::is_fatal) {
         return (None, issues);
     }
     issues.extend(floating_islands(c, &t));
-    let u = Unknowns::number(c, &t);
-    let (m, rhs) = assemble(c, &t, &u);
-    let x = match lu_solve(&m, &rhs) {
-        Ok(x) => x,
-        Err(SolveError::Singular { pivot_row }) => {
-            issues.push(issue_for_pivot(&u, pivot_row));
-            return (None, issues);
+
+    if needs_refactor || cache.matrix.rows() != u.count {
+        if cache.matrix.rows() != u.count {
+            cache.matrix = DenseMatrix::zeros(u.count, u.count);
         }
-        Err(e) => unreachable!("MNA always builds a square system: {e}"),
+        assemble_matrix(c, &t, &u, &mut cache.matrix);
+        cache.lu = match simbiguity_math::Lu::decompose(&cache.matrix) {
+            Ok(lu) => Some(lu),
+            Err(SolveError::Singular { pivot_row }) => {
+                issues.push(issue_for_pivot(&u, pivot_row));
+                return (None, issues);
+            }
+            Err(e) => unreachable!("MNA always builds a square system: {e}"),
+        };
+    }
+
+    if cache.rhs.len() != u.count {
+        cache.rhs = vec![0.0; u.count];
+    }
+    assemble_rhs(c, &t, &u, &mut cache.rhs);
+
+    let x = match cache.lu.as_ref().unwrap().solve(&cache.rhs) {
+        Ok(x) => x,
+        Err(_) => return (None, issues),
     };
     let solution = build_solution(c, &t, &u, &x);
     let open = open_batteries(c, &issues, &solution);
@@ -416,7 +473,13 @@ fn blown_bulb_issues(c: &Circuit) -> impl Iterator<Item = CircuitIssue> + '_ {
     })
 }
 
-pub(crate) fn analyze_step(c: &Circuit, dt: f64, integrator: Integrator) -> Analysis {
+pub(crate) fn analyze_step(
+    c: &Circuit,
+    dt: f64,
+    integrator: Integrator,
+    cache: &mut SolverCache,
+    mut needs_refactor: bool,
+) -> Analysis {
     let invalid = invalid_components(c);
     if !invalid.is_empty() {
         return Analysis {
@@ -431,7 +494,7 @@ pub(crate) fn analyze_step(c: &Circuit, dt: f64, integrator: Integrator) -> Anal
             .iter()
             .map(|p| p.component.transient_stamp(dt, integrator))
             .collect();
-        let (solution, mut issues) = solve_once(&work, stamps);
+        let (solution, mut issues) = solve_once(&work, stamps, cache, needs_refactor);
         let Some(solution) = solution else {
             return Analysis {
                 solution: None,
@@ -440,6 +503,7 @@ pub(crate) fn analyze_step(c: &Circuit, dt: f64, integrator: Integrator) -> Anal
         };
         if let Some(i) = most_overloaded(&work, &solution) {
             work.parts[i].component.blow();
+            needs_refactor = true;
             continue;
         }
         issues.extend(blown_bulb_issues(&work));
@@ -461,9 +525,11 @@ pub(crate) fn analyze(c: &Circuit) -> Analysis {
         };
     }
     let mut work = c.clone();
+    let mut cache = SolverCache::default();
+    let mut needs_refactor = true;
     loop {
         let stamps: Vec<Stamp> = work.parts.iter().map(|p| p.component.stamp()).collect();
-        let (solution, mut issues) = solve_once(&work, stamps);
+        let (solution, mut issues) = solve_once(&work, stamps, &mut cache, needs_refactor);
         let Some(solution) = solution else {
             return Analysis {
                 solution: None,
@@ -472,6 +538,7 @@ pub(crate) fn analyze(c: &Circuit) -> Analysis {
         };
         if let Some(i) = most_overloaded(&work, &solution) {
             work.parts[i].component.blow();
+            needs_refactor = true;
             continue;
         }
         issues.extend(blown_bulb_issues(&work));
@@ -480,6 +547,24 @@ pub(crate) fn analyze(c: &Circuit) -> Analysis {
             issues,
         };
     }
+}
+
+#[cfg(test)]
+pub(crate) fn stamp_voltage_source(
+    m: &mut DenseMatrix,
+    rhs: &mut [f64],
+    a: Option<usize>,
+    b: Option<usize>,
+    k: usize,
+    emf: f64,
+) {
+    for (node, sign) in [(a, 1.0), (b, -1.0)] {
+        if let Some(node) = node {
+            m[(node, k)] += sign;
+            m[(k, node)] += sign;
+        }
+    }
+    rhs[k] = emf;
 }
 
 #[cfg(test)]

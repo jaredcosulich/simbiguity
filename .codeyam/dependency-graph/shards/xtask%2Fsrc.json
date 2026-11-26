@@ -1,5 +1,151 @@
 {
   "entities": {
+    "xtask/src/bench.rs::run": {
+      "filePath": "xtask/src/bench.rs",
+      "importedBy": [
+        "xtask/src/main.rs::main"
+      ],
+      "imports": [
+        "xtask/src/bench_fixtures.rs::run_all",
+        "xtask/src/bench_fixtures.rs::to_json"
+      ],
+      "name": "run",
+      "namedMethods": [
+        "cloned",
+        "create_dir_all",
+        "from",
+        "get",
+        "len",
+        "map_err",
+        "parent",
+        "run_all",
+        "to_json",
+        "to_string",
+        "write"
+      ]
+    },
+    "xtask/src/bench_fixtures.rs::BenchResult": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench_fixtures.rs::bench",
+        "xtask/src/bench_fixtures.rs::run_all",
+        "xtask/src/bench_fixtures.rs::to_json"
+      ],
+      "imports": [
+        "xtask/src/bench_fixtures.rs::BenchResult::median_us",
+        "xtask/src/bench_fixtures.rs::BenchResult::name",
+        "xtask/src/bench_fixtures.rs::BenchResult::p95_us"
+      ],
+      "name": "BenchResult"
+    },
+    "xtask/src/bench_fixtures.rs::BenchResult::median_us": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench_fixtures.rs::BenchResult",
+        "xtask/src/bench_fixtures.rs::bench",
+        "xtask/src/bench_fixtures.rs::to_json"
+      ],
+      "imports": [],
+      "name": "BenchResult::median_us"
+    },
+    "xtask/src/bench_fixtures.rs::BenchResult::name": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench_fixtures.rs::BenchResult",
+        "xtask/src/bench_fixtures.rs::bench",
+        "xtask/src/bench_fixtures.rs::to_json"
+      ],
+      "imports": [],
+      "name": "BenchResult::name"
+    },
+    "xtask/src/bench_fixtures.rs::BenchResult::p95_us": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench_fixtures.rs::BenchResult",
+        "xtask/src/bench_fixtures.rs::bench",
+        "xtask/src/bench_fixtures.rs::to_json"
+      ],
+      "imports": [],
+      "name": "BenchResult::p95_us"
+    },
+    "xtask/src/bench_fixtures.rs::bench": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench_fixtures.rs::run_all"
+      ],
+      "imports": [
+        "xtask/src/bench_fixtures.rs::BenchResult",
+        "xtask/src/bench_fixtures.rs::BenchResult::median_us",
+        "xtask/src/bench_fixtures.rs::BenchResult::name",
+        "xtask/src/bench_fixtures.rs::BenchResult::p95_us"
+      ],
+      "name": "bench",
+      "namedMethods": [
+        "as_micros",
+        "contains",
+        "elapsed",
+        "len",
+        "new",
+        "now",
+        "partial_cmp",
+        "push",
+        "sort_by",
+        "to_string",
+        "unwrap"
+      ]
+    },
+    "xtask/src/bench_fixtures.rs::run_all": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench.rs::run"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "xtask/src/bench_fixtures.rs::BenchResult",
+        "xtask/src/bench_fixtures.rs::bench"
+      ],
+      "name": "run_all",
+      "namedMethods": [
+        "add_battery",
+        "add_bulb",
+        "add_resistor",
+        "add_switch",
+        "advance",
+        "decompose",
+        "encode",
+        "new",
+        "node",
+        "push",
+        "solve",
+        "zeros"
+      ]
+    },
+    "xtask/src/bench_fixtures.rs::to_json": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench.rs::run"
+      ],
+      "imports": [
+        "xtask/src/bench_fixtures.rs::BenchResult",
+        "xtask/src/bench_fixtures.rs::BenchResult::median_us",
+        "xtask/src/bench_fixtures.rs::BenchResult::name",
+        "xtask/src/bench_fixtures.rs::BenchResult::p95_us"
+      ],
+      "name": "to_json",
+      "namedMethods": [
+        "enumerate",
+        "iter",
+        "len",
+        "median_us",
+        "name",
+        "new",
+        "p95_us",
+        "push_str"
+      ]
+    },
     "xtask/src/capabilities.rs::Capability": {
       "filePath": "xtask/src/capabilities.rs",
       "importedBy": [
@@ -579,6 +725,7 @@
       "filePath": "xtask/src/main.rs",
       "importedBy": [],
       "imports": [
+        "xtask/src/bench.rs::run",
         "xtask/src/main.rs::site_report"
       ],
       "name": "main",
@@ -588,6 +735,7 @@
         "collect",
         "first",
         "map",
+        "run",
         "skip"
       ]
     },
@@ -2635,6 +2783,37 @@
     }
   },
   "files": {
+    "xtask/src/bench.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs",
+        "xtask/src/main.rs"
+      ],
+      "imports": [
+        "xtask/src/bench_fixtures.rs",
+        "xtask/src/bench_fixtures.rs",
+        "xtask/src/bench_fixtures.rs"
+      ]
+    },
+    "xtask/src/bench_fixtures.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/bench.rs",
+        "xtask/src/bench.rs",
+        "xtask/src/bench.rs",
+        "xtask/src/main.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/linsolve.rs"
+      ]
+    },
     "xtask/src/capabilities.rs": {
       "declaredBy": [
         "xtask/src/main.rs"
@@ -2720,6 +2899,8 @@
     },
     "xtask/src/main.rs": {
       "declaresModules": [
+        "xtask/src/bench.rs",
+        "xtask/src/bench_fixtures.rs",
         "xtask/src/capabilities.rs",
         "xtask/src/libtest_output.rs",
         "xtask/src/report.rs",
@@ -2730,12 +2911,15 @@
         "xtask/src/main_tests.rs"
       ],
       "imports": [
+        "xtask/src/bench.rs",
+        "xtask/src/bench_fixtures.rs",
         "xtask/src/capabilities.rs",
         "xtask/src/libtest_output.rs",
         "xtask/src/report.rs",
         "xtask/src/test_descriptions.rs",
         "xtask/src/report.rs",
         "xtask/src/report.rs",
+        "xtask/src/bench.rs",
         "xtask/src/libtest_output.rs",
         "xtask/src/test_descriptions.rs",
         "xtask/src/capabilities.rs",

@@ -23,10 +23,12 @@
       "imports": [
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::commands",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::time",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
-        "crates/simbiguity-physics/src/world.rs::World"
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
       ],
       "name": "Session"
     },
@@ -41,6 +43,19 @@
       ],
       "imports": [],
       "name": "Session::commands"
+    },
+    "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf": {
+      "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_spring_mass"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
+      ],
+      "name": "Session::frame_buf"
     },
     "crates/simbiguity-physics-wasm/src/lib.rs::Session::time": {
       "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
@@ -148,6 +163,7 @@
       "importedBy": [],
       "imports": [
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::commands",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
         "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
@@ -243,13 +259,15 @@
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::commands",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::time",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
         "crates/simbiguity-physics-wasm/src/lib.rs::insert",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new"
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
       ],
       "name": "phys_new_pendulum",
       "namedMethods": [
@@ -270,13 +288,15 @@
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::commands",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::time",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
         "crates/simbiguity-physics-wasm/src/lib.rs::insert",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new"
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
       ],
       "name": "phys_new_spring_mass",
       "namedMethods": [
@@ -351,6 +371,7 @@
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",

@@ -47,7 +47,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Placed",
         "crates/simbiguity-circuits/src/netlist.rs::Placed::component",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::apply",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_transient_state",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
         "crates/simbiguity-circuits/src/wires.rs::node_inflows",
         "crates/simbiguity-circuits/tests/analysis.rs::overloaded_bulb_blows_and_opens_the_circuit",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
@@ -390,7 +392,8 @@
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
         "crates/simbiguity-circuits/src/mna.rs::analyze",
         "crates/simbiguity-circuits/src/mna.rs::analyze_step",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::component_current",
         "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-circuits/src/mna.rs::source_problems",
@@ -684,13 +687,128 @@
       "imports": [],
       "name": "NO_CURRENT"
     },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::analyze",
+        "crates/simbiguity-circuits/src/mna.rs::analyze_step",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::lu",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::matrix",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
+        "crates/simbiguity-circuits/src/mna.rs::Topology",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "SolverCache"
+    },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache::default": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::analyze",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::lu",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::matrix",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "SolverCache::default",
+      "namedMethods": [
+        "new",
+        "zeros"
+      ]
+    },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache::lu": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [],
+      "name": "SolverCache::lu"
+    },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache::matrix": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "SolverCache::matrix"
+    },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-circuits/src/mna.rs::stamp_current_source",
+        "crates/simbiguity-circuits/src/mna.rs::stamp_voltage_source"
+      ],
+      "imports": [],
+      "name": "SolverCache::rhs"
+    },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache::t": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
+        "crates/simbiguity-circuits/src/mna.rs::build_solution",
+        "crates/simbiguity-circuits/src/mna.rs::floating_islands",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-circuits/src/mna.rs::source_problems"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::Topology"
+      ],
+      "name": "SolverCache::t"
+    },
+    "crates/simbiguity-circuits/src/mna.rs::SolverCache::u": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
+        "crates/simbiguity-circuits/src/mna.rs::build_solution",
+        "crates/simbiguity-circuits/src/mna.rs::issue_for_pivot",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns"
+      ],
+      "name": "SolverCache::u"
+    },
     "crates/simbiguity-circuits/src/mna.rs::Topology": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
         "crates/simbiguity-circuits/src/mna.rs::Topology::build",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::floating_islands",
         "crates/simbiguity-circuits/src/mna.rs::solve_once",
@@ -749,7 +867,8 @@
         "crates/simbiguity-circuits/src/mna.rs::Topology::references",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::source_problems"
       ],
@@ -825,7 +944,8 @@
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
         "crates/simbiguity-circuits/src/mna.rs::analyze",
         "crates/simbiguity-circuits/src/mna.rs::analyze_step",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-circuits/src/mna.rs::source_problems"
@@ -838,14 +958,18 @@
     "crates/simbiguity-circuits/src/mna.rs::Unknowns": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::issue_for_pivot",
         "crates/simbiguity-circuits/src/mna.rs::solve_once"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::group",
         "crates/simbiguity-circuits/src/mna.rs::Topology::reference_of",
@@ -863,7 +987,8 @@
       "importedBy": [
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble"
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
       ],
       "imports": [],
       "name": "Unknowns::count"
@@ -876,6 +1001,7 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::group",
         "crates/simbiguity-circuits/src/mna.rs::Topology::reference_of",
@@ -902,7 +1028,8 @@
       "importedBy": [
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::issue_for_pivot"
       ],
@@ -914,7 +1041,8 @@
       "importedBy": [
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::issue_for_pivot"
       ],
@@ -924,7 +1052,8 @@
     "crates/simbiguity-circuits/src/mna.rs::__file_root__": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
-        "crates/simbiguity-circuits/src/mna_tests.rs::__file_root__"
+        "crates/simbiguity-circuits/src/mna_tests.rs::__file_root__",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::cache"
       ],
       "imports": [],
       "name": "__file_root__"
@@ -936,6 +1065,8 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
         "crates/simbiguity-circuits/src/mna.rs::Topology::stamps",
         "crates/simbiguity-circuits/src/mna.rs::blown_bulb_issues",
         "crates/simbiguity-circuits/src/mna.rs::invalid_components",
@@ -949,6 +1080,7 @@
         "blow",
         "clone",
         "collect",
+        "default",
         "extend",
         "is_empty",
         "iter",
@@ -964,6 +1096,7 @@
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Integrator",
         "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
         "crates/simbiguity-circuits/src/mna.rs::Topology::stamps",
         "crates/simbiguity-circuits/src/mna.rs::blown_bulb_issues",
         "crates/simbiguity-circuits/src/mna.rs::invalid_components",
@@ -984,13 +1117,15 @@
         "transient_stamp"
       ]
     },
-    "crates/simbiguity-circuits/src/mna.rs::assemble": {
+    "crates/simbiguity-circuits/src/mna.rs::assemble_matrix": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
         "crates/simbiguity-circuits/src/mna.rs::solve_once"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::group",
         "crates/simbiguity-circuits/src/mna.rs::Topology::stamps",
@@ -999,18 +1134,42 @@
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::source",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::voltage",
         "crates/simbiguity-circuits/src/mna.rs::stamp_conductance",
-        "crates/simbiguity-circuits/src/mna.rs::stamp_current_source",
-        "crates/simbiguity-circuits/src/mna.rs::stamp_voltage_source",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-math/src/mat.rs::DenseMatrix"
       ],
-      "name": "assemble",
+      "name": "assemble_matrix",
       "namedMethods": [
-        "count",
         "enumerate",
         "expect",
         "iter",
-        "zeros",
+        "zip"
+      ]
+    },
+    "crates/simbiguity-circuits/src/mna.rs::assemble_rhs": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
+        "crates/simbiguity-circuits/src/mna.rs::Topology",
+        "crates/simbiguity-circuits/src/mna.rs::Topology::group",
+        "crates/simbiguity-circuits/src/mna.rs::Topology::stamps",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns::source",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns::voltage",
+        "crates/simbiguity-circuits/src/mna.rs::stamp_current_source",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "assemble_rhs",
+      "namedMethods": [
+        "enumerate",
+        "expect",
+        "fill",
+        "iter",
         "zip"
       ]
     },
@@ -1042,6 +1201,8 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::group",
         "crates/simbiguity-circuits/src/mna.rs::Topology::reference_of",
@@ -1091,6 +1252,7 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::island",
         "crates/simbiguity-circuits/src/mna.rs::Topology::reference",
@@ -1133,6 +1295,7 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::source",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::voltage",
@@ -1216,12 +1379,20 @@
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Stamp",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::lu",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::matrix",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::u",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::build",
         "crates/simbiguity-circuits/src/mna.rs::Topology::stamps",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns",
+        "crates/simbiguity-circuits/src/mna.rs::Unknowns::count",
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::floating_islands",
         "crates/simbiguity-circuits/src/mna.rs::issue_for_pivot",
@@ -1229,18 +1400,31 @@
         "crates/simbiguity-circuits/src/mna.rs::source_problems",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-circuits/src/solution.rs::Solution",
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
         "crates/simbiguity-math/src/linsolve.rs::SolveError",
-        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
       ],
       "name": "solve_once",
       "namedMethods": [
         "any",
+        "as_mut",
+        "as_ref",
         "build",
+        "clone",
+        "count",
+        "decompose",
         "extend",
         "is_fatal",
+        "is_none",
         "iter",
+        "len",
         "number",
-        "push"
+        "push",
+        "rows",
+        "solve",
+        "unwrap",
+        "zeros"
       ]
     },
     "crates/simbiguity-circuits/src/mna.rs::source_problems": {
@@ -1252,6 +1436,7 @@
         "crates/simbiguity-circuits/src/component.rs::Stamp",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
         "crates/simbiguity-circuits/src/dsu.rs::Dsu",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::t",
         "crates/simbiguity-circuits/src/mna.rs::Topology",
         "crates/simbiguity-circuits/src/mna.rs::Topology::group",
         "crates/simbiguity-circuits/src/mna.rs::Topology::stamps",
@@ -1271,7 +1456,7 @@
     "crates/simbiguity-circuits/src/mna.rs::stamp_conductance": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
-        "crates/simbiguity-circuits/src/mna.rs::assemble"
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs::DenseMatrix"
@@ -1281,17 +1466,18 @@
     "crates/simbiguity-circuits/src/mna.rs::stamp_current_source": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
-        "crates/simbiguity-circuits/src/mna.rs::assemble"
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs"
       ],
-      "imports": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs"
+      ],
       "name": "stamp_current_source"
     },
     "crates/simbiguity-circuits/src/mna.rs::stamp_voltage_source": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
-      "importedBy": [
-        "crates/simbiguity-circuits/src/mna.rs::assemble"
-      ],
+      "importedBy": [],
       "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::rhs",
         "crates/simbiguity-math/src/mat.rs::DenseMatrix"
       ],
       "name": "stamp_voltage_source"
@@ -1406,7 +1592,8 @@
         "crates/simbiguity-circuits/src/mna.rs::Unknowns::number",
         "crates/simbiguity-circuits/src/mna.rs::analyze",
         "crates/simbiguity-circuits/src/mna.rs::analyze_step",
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::blown_bulb_issues",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
         "crates/simbiguity-circuits/src/mna.rs::floating_islands",
@@ -1452,7 +1639,8 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
+        "xtask/src/bench_fixtures.rs::run_all"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Component",
@@ -2170,8 +2358,11 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitInput::ToggleSwitch",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::analysis",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::apply",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::cache",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::dirty",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::integrator",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::needs_refactor",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_blown",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_transient_state",
@@ -2213,21 +2404,42 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
       ],
       "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
         "crates/simbiguity-circuits/src/sim.rs::CircuitInput",
         "crates/simbiguity-circuits/src/sim.rs::CircuitInput::ReplaceBulb",
         "crates/simbiguity-circuits/src/sim.rs::CircuitInput::SetSwitch",
         "crates/simbiguity-circuits/src/sim.rs::CircuitInput::SetValue",
         "crates/simbiguity-circuits/src/sim.rs::CircuitInput::ToggleSwitch",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::dirty",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::needs_refactor",
         "crates/simbiguity-circuits/src/sim.rs::circuit"
       ],
       "name": "CircuitSim::apply",
       "namedMethods": [
+        "circuit",
+        "component",
         "component_mut",
         "replace_bulb",
         "set_switch",
         "set_value",
         "toggle_switch"
+      ]
+    },
+    "crates/simbiguity-circuits/src/sim.rs::CircuitSim::cache": {
+      "filePath": "crates/simbiguity-circuits/src/sim.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::__file_root__"
+      ],
+      "name": "CircuitSim::cache",
+      "namedMethods": [
+        "mna"
       ]
     },
     "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit": {
@@ -2246,7 +2458,10 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::analysis",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::cache",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::dirty",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::integrator",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::needs_refactor",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_blown",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::with_integrator",
@@ -2255,6 +2470,18 @@
       ],
       "inherentMethod": true,
       "name": "CircuitSim::circuit"
+    },
+    "crates/simbiguity-circuits/src/sim.rs::CircuitSim::dirty": {
+      "filePath": "crates/simbiguity-circuits/src/sim.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::apply",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step"
+      ],
+      "imports": [],
+      "name": "CircuitSim::dirty"
     },
     "crates/simbiguity-circuits/src/sim.rs::CircuitSim::integrator": {
       "filePath": "crates/simbiguity-circuits/src/sim.rs",
@@ -2270,6 +2497,18 @@
       ],
       "name": "CircuitSim::integrator"
     },
+    "crates/simbiguity-circuits/src/sim.rs::CircuitSim::needs_refactor": {
+      "filePath": "crates/simbiguity-circuits/src/sim.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::apply",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step"
+      ],
+      "imports": [],
+      "name": "CircuitSim::needs_refactor"
+    },
     "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new": {
       "filePath": "crates/simbiguity-circuits/src/sim.rs",
       "importedBy": [
@@ -2278,17 +2517,23 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::analysis",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::cache",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::dirty",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::integrator",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::needs_refactor",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_blown",
         "crates/simbiguity-circuits/src/sim.rs::circuit"
       ],
       "inherentMethod": true,
       "name": "CircuitSim::new",
       "namedMethods": [
+        "default",
         "persist_blown",
         "solve"
       ]
@@ -2382,10 +2627,14 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
       ],
       "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
         "crates/simbiguity-circuits/src/mna.rs::analyze_step",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::analysis",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::cache",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::dirty",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::integrator",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::needs_refactor",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_blown",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_transient_state",
         "crates/simbiguity-circuits/src/sim.rs::circuit",
@@ -2394,6 +2643,9 @@
       "name": "CircuitSim::step",
       "namedMethods": [
         "analyze_step",
+        "any",
+        "component",
+        "iter",
         "persist_blown",
         "persist_transient_state"
       ]
@@ -2927,11 +3179,12 @@
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/mna_tests.rs",
         "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/sim.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",
-        "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-circuits/src/component.rs",
@@ -2946,6 +3199,7 @@
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-circuits/src/wires.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-circuits/src/mna_tests.rs"
       ]
     },
@@ -3002,7 +3256,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs"
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs",
@@ -3034,7 +3289,10 @@
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/solution.rs",
-        "crates/simbiguity-circuits/src/mna.rs"
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-core/src/simulation.rs"
       ]
     },
     "crates/simbiguity-circuits/src/solution.rs": {

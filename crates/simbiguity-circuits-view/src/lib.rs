@@ -100,6 +100,7 @@ pub struct CircuitView {
     time: f64,
     clock: FixedClock,
     commands: CommandBuffer,
+    frame_buf: simbiguity_render::FrameBuf,
 }
 
 impl CircuitView {
@@ -127,6 +128,7 @@ impl CircuitView {
             time: 0.0,
             clock: FixedClock::new(Seconds(STEP)).with_max_steps(30),
             commands: CommandBuffer::new(),
+            frame_buf: simbiguity_render::FrameBuf::new(),
         };
         view.lever.target = view.lever_target();
         view.seek(0.0);
@@ -282,7 +284,14 @@ impl CircuitView {
 
     /// Encodes the current frame for a `width × height` viewport.
     pub fn encode(&mut self, width: u32, height: u32) -> &[u32] {
-        encode_frame(&self.scene, &self.camera, width, height, &mut self.commands);
+        encode_frame(
+            &self.scene,
+            &self.camera,
+            width,
+            height,
+            &mut self.frame_buf,
+            &mut self.commands,
+        );
         self.commands.words()
     }
 

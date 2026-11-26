@@ -16,11 +16,48 @@ use crate::scene::{Node, Scene, Shading};
 
 /// Writes one frame of `scene` seen through `camera` at `width × height`
 /// pixels into `out` (which is cleared first).
+/// A reusable buffer for frame encoding allocations.
+#[derive(Default, Debug, Clone)]
+pub struct FrameBuf {
+    /// Opaque nodes.
+    pub opaque: Vec<usize>,
+    /// Translucent nodes.
+    pub glass: Vec<usize>,
+    /// Glow nodes.
+    pub glows: Vec<usize>,
+    /// Particle offsets.
+    pub offsets: Vec<[f32; 3]>,
+}
+
+impl FrameBuf {
+    /// Creates a new empty frame buffer.
+    pub fn new() -> Self {
+        Self::default()
+    }
+    /// Clears the buffer.
+    pub fn clear(&mut self) {
+        self.opaque.clear();
+        self.glass.clear();
+        self.glows.clear();
+        self.offsets.clear();
+    }
+    /// Total capacity.
+    pub fn capacity(&self) -> usize {
+        self.opaque.capacity()
+            + self.glass.capacity()
+            + self.glows.capacity()
+            + self.offsets.capacity()
+    }
+}
+
+/// Writes one frame of `scene` seen through `camera` at `width × height`
+/// pixels into `out` (which is cleared first).
 pub fn encode_frame(
     scene: &Scene,
     camera: &OrbitCamera,
     width: u32,
     height: u32,
+    buf: &mut FrameBuf,
     out: &mut CommandBuffer,
 ) {
     out.clear();
@@ -42,36 +79,32 @@ pub fn encode_frame(
     });
     enc.out.push(&Command::SetBlend(Blend::Off));
 
-    let DrawOrder {
-        opaque,
-        glass,
-        glows,
-    } = draw_order(scene, eye);
-    for n in opaque {
-        enc.draw(n);
+    draw_order(scene, eye, buf);
+    for &i in &buf.opaque {
+        enc.draw(&scene.nodes[i]);
     }
 
-    if !glass.is_empty() {
+    if !buf.glass.is_empty() {
         enc.out.push(&Command::SetDepth {
             test: true,
             write: false,
         });
         enc.out.push(&Command::SetBlend(Blend::Alpha));
-        for n in glass {
-            enc.draw(n);
+        for &i in &buf.glass {
+            enc.draw(&scene.nodes[i]);
         }
     }
 
     let has_particles = scene.instances.iter().any(|i| !i.offsets.is_empty());
-    if !glows.is_empty() || has_particles {
+    if !buf.glows.is_empty() || has_particles {
         enc.out.push(&Command::SetDepth {
             test: true,
             write: false,
         });
         enc.out.push(&Command::SetBlend(Blend::Additive));
     }
-    for n in glows {
-        enc.draw(n);
+    for &i in &buf.glows {
+        enc.draw(&scene.nodes[i]);
     }
     for inst in scene.instances.iter().filter(|i| !i.offsets.is_empty()) {
         enc.use_program(Program::Instanced);
@@ -86,12 +119,16 @@ pub fn encode_frame(
             .push(&Command::SetUniformF32(Uniform::Scale, inst.scale as f32));
         enc.out.push(&Command::BindMesh(inst.mesh.0));
         let count = scene.meshes[inst.mesh.0 as usize].indices.len() as u32;
-        let offsets = inst
-            .offsets
-            .iter()
-            .map(|p| [p.x as f32, p.y as f32, p.z as f32])
-            .collect();
-        enc.out.push(&Command::DrawInstanced { count, offsets });
+        buf.offsets.clear();
+        buf.offsets.extend(
+            inst.offsets
+                .iter()
+                .map(|p| [p.x as f32, p.y as f32, p.z as f32]),
+        );
+        enc.out.push(&Command::DrawInstanced {
+            count,
+            offsets: buf.offsets.clone(),
+        });
     }
     enc.out.push(&Command::SetDepth {
         test: true,
@@ -100,35 +137,26 @@ pub fn encode_frame(
     enc.out.push(&Command::SetBlend(Blend::Off));
 }
 
-/// The visible nodes of a scene, in the order a frame draws them.
-#[derive(Debug, Clone, PartialEq)]
-pub struct DrawOrder<'a> {
-    /// Opaque nodes, grouped by program then mesh.
-    pub opaque: Vec<&'a Node>,
-    /// Translucent (non-glow) nodes, farthest from the eye first.
-    pub glass: Vec<&'a Node>,
-    /// Glow halos that are lit at all (emissive above zero).
-    pub glows: Vec<&'a Node>,
-}
-
 /// Sorts the visible nodes of `scene` into the three node passes of a frame
 /// seen from `eye`. Hidden nodes and unlit glows are left out.
-pub fn draw_order(scene: &Scene, eye: Vec3) -> DrawOrder<'_> {
-    let visible = || scene.nodes.iter().filter(|n| n.visible);
-    let mut opaque: Vec<&Node> = visible().filter(|n| !n.material.is_blended()).collect();
-    opaque.sort_by_key(|n| (program_of(n.material.shading) as u32, n.mesh.0));
-    let mut glass: Vec<&Node> = visible()
-        .filter(|n| n.material.is_blended() && n.material.shading != Shading::Glow)
-        .collect();
-    glass.sort_by(|a, b| depth(b, eye).total_cmp(&depth(a, eye)));
-    let glows = visible()
-        .filter(|n| n.material.shading == Shading::Glow && n.material.emissive > 0.0)
-        .collect();
-    DrawOrder {
-        opaque,
-        glass,
-        glows,
+pub fn draw_order(scene: &Scene, eye: Vec3, buf: &mut FrameBuf) {
+    buf.clear();
+    let visible = scene.nodes.iter().enumerate().filter(|(_, n)| n.visible);
+    for (i, n) in visible {
+        if !n.material.is_blended() {
+            buf.opaque.push(i);
+        } else if n.material.shading != Shading::Glow {
+            buf.glass.push(i);
+        } else if n.material.emissive > 0.0 {
+            buf.glows.push(i);
+        }
     }
+    buf.opaque.sort_by_key(|&i| {
+        let n = &scene.nodes[i];
+        (program_of(n.material.shading) as u32, n.mesh.0)
+    });
+    buf.glass
+        .sort_by(|&a, &b| depth(&scene.nodes[b], eye).total_cmp(&depth(&scene.nodes[a], eye)));
 }
 
 struct Encoder<'a> {
@@ -238,8 +266,13 @@ mod tests {
     #[test]
     fn opaque_nodes_group_by_program() {
         let s = scene();
-        let o = draw_order(&s, eye());
-        let shading: Vec<Shading> = o.opaque.iter().map(|n| n.material.shading).collect();
+        let mut buf = FrameBuf::new();
+        draw_order(&s, eye(), &mut buf);
+        let shading: Vec<Shading> = buf
+            .opaque
+            .iter()
+            .map(|&i| s.nodes[i].material.shading)
+            .collect();
         assert_eq!(shading, [Shading::Unlit, Shading::Lit]);
     }
 
@@ -247,8 +280,13 @@ mod tests {
     #[test]
     fn glass_is_sorted_back_to_front() {
         let s = scene();
-        let o = draw_order(&s, eye());
-        let z: Vec<f64> = o.glass.iter().map(|n| n.transform.get(2, 3)).collect();
+        let mut buf = FrameBuf::new();
+        draw_order(&s, eye(), &mut buf);
+        let z: Vec<f64> = buf
+            .glass
+            .iter()
+            .map(|&i| s.nodes[i].transform.get(2, 3))
+            .collect();
         assert_eq!(z, [-3.0, 3.0]);
     }
 
@@ -256,14 +294,16 @@ mod tests {
     #[test]
     fn unlit_glows_are_skipped() {
         let s = scene();
-        let o = draw_order(&s, eye());
-        assert_eq!(o.glows.len(), 1);
-        assert_eq!(o.glows[0].material.emissive, 0.8);
+        let mut buf = FrameBuf::new();
+        draw_order(&s, eye(), &mut buf);
+        assert_eq!(buf.glows.len(), 1);
+        assert_eq!(s.nodes[buf.glows[0]].material.emissive, 0.8);
     }
 
     fn encode(s: &Scene) -> Vec<crate::commands::Command> {
         let mut out = CommandBuffer::new();
-        encode_frame(s, &OrbitCamera::default(), 640, 400, &mut out);
+        let mut buf = FrameBuf::new();
+        encode_frame(s, &OrbitCamera::default(), 640, 400, &mut buf, &mut out);
         CommandBuffer::decode(out.words()).unwrap()
     }
 
@@ -339,10 +379,31 @@ mod tests {
     #[test]
     fn zero_viewport_is_clamped() {
         let mut out = CommandBuffer::new();
-        encode_frame(&Scene::new(), &OrbitCamera::default(), 0, 0, &mut out);
+        let mut buf = FrameBuf::new();
+        encode_frame(
+            &Scene::new(),
+            &OrbitCamera::default(),
+            0,
+            0,
+            &mut buf,
+            &mut out,
+        );
         assert_eq!(
             CommandBuffer::decode(out.words()).unwrap()[0],
             Command::Viewport(1, 1)
         );
+    }
+
+    /// Verifies that FrameBuf retains its memory allocations across consecutive frames, preventing steady-state allocation overhead.
+    #[test]
+    fn frame_buf_reuses_allocations() {
+        let s = scene();
+        let mut out = CommandBuffer::new();
+        let mut buf = FrameBuf::new();
+        encode_frame(&s, &OrbitCamera::default(), 640, 400, &mut buf, &mut out);
+        let cap = buf.capacity();
+        assert!(cap > 0);
+        encode_frame(&s, &OrbitCamera::default(), 640, 400, &mut buf, &mut out);
+        assert_eq!(buf.capacity(), cap);
     }
 }

@@ -10,6 +10,8 @@
 //! status page's data to `site/status/report.json`. Failing tests do not
 //! fail the command: showing them is the point of the page.
 
+mod bench;
+mod bench_fixtures;
 mod capabilities;
 mod libtest_output;
 mod report;
@@ -32,8 +34,17 @@ fn main() -> ExitCode {
                 ExitCode::FAILURE
             }
         },
+        Some("bench") => match bench::run(&args[1..]) {
+            Ok(()) => ExitCode::SUCCESS,
+            Err(e) => {
+                eprintln!("bench: {e}");
+                ExitCode::FAILURE
+            }
+        },
         _ => {
-            eprintln!("usage: cargo run -p xtask -- site-report [--out <path>] [--reuse-logs]");
+            eprintln!(
+                "usage: cargo run -p xtask -- [site-report|bench] [--out <path>] [--reuse-logs]"
+            );
             ExitCode::FAILURE
         }
     }

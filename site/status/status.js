@@ -9,19 +9,25 @@ import { renderLoadError } from "./load-error.js";
 import { loadReport } from "./load-report.js";
 import { parseFilters, reportUrl } from "./report-view.js";
 import { renderTests } from "./tests-section.js";
+import { renderBench } from "./bench-section.js";
 
 const root = document.getElementById("status");
 
 async function main() {
   const url = reportUrl(location.search);
   let report;
+  let bench;
   try {
     report = await loadReport(url);
+    const benchRes = await fetch("bench.json");
+    if (benchRes.ok) {
+      bench = await benchRes.json();
+    }
   } catch (err) {
     root.replaceChildren(renderLoadError(url, err));
     return;
   }
-  root.replaceChildren(...[renderHeader(report), renderCapabilities(report), renderCrates(report), renderTests(report)].flat(Infinity));
+  root.replaceChildren(...[renderHeader(report), renderCapabilities(report), renderBench(bench), renderCrates(report), renderTests(report)].flat(Infinity));
   // When the page opens with a filter in the URL, jump to the table.
   if (parseFilters(location.hash).crate) document.getElementById("tests")?.scrollIntoView();
 }

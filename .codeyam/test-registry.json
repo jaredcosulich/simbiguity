@@ -1472,8 +1472,17 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::frame_brackets_its_passes",
-      "line": 272,
+      "line": 312,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that FrameBuf retains its memory allocations across consecutive frames, preventing steady-state allocation overhead.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::frame_buf_reuses_allocations",
+      "line": 399,
+      "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
       "runner": "cargo"
     },
     {
@@ -1481,7 +1490,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::glass_is_sorted_back_to_front",
-      "line": 248,
+      "line": 281,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1490,7 +1499,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::instances_draw_in_one_call",
-      "line": 311,
+      "line": 351,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1499,7 +1508,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::opaque_nodes_group_by_program",
-      "line": 239,
+      "line": 267,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1508,7 +1517,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::programs_are_bound_only_on_change",
-      "line": 296,
+      "line": 336,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1517,7 +1526,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::unlit_glows_are_skipped",
-      "line": 257,
+      "line": 295,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1526,7 +1535,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::zero_viewport_is_clamped",
-      "line": 340,
+      "line": 380,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -3178,6 +3187,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies bit-identical outputs for the `dirty`-flag cache and EMF-only matrix factorization cache, ensuring optimization does not alter results.",
+      "file": "crates/simbiguity-circuits/src/sim.rs",
+      "format": "cargo",
+      "key": "sim::tests::cache_produces_bit_identical_results",
+      "line": 171,
+      "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Restoring a snapshot and replaying the same inputs reproduces the exact same state bit for bit, RNG included.",
       "file": "crates/simbiguity-core/src/simulation.rs",
       "format": "cargo",
@@ -3200,7 +3218,7 @@
       "file": "xtask/tests/cli.rs",
       "format": "cargo",
       "key": "site_report_error_fails_the_command",
-      "line": 32,
+      "line": 31,
       "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
       "runner": "cargo"
     },
@@ -3893,8 +3911,17 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_wasm",
-      "line": 195,
+      "line": 199,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that tick generation works correctly for a basic range.",
+      "file": "crates/simbiguity-plot/src/ticks.rs",
+      "format": "cargo",
+      "key": "ticks::tests::test_compute_ticks",
+      "line": 51,
+      "registeredAt": "2026-11-26T20:58:13.543925171+00:00",
       "runner": "cargo"
     },
     {
@@ -4037,7 +4064,7 @@
       "file": "xtask/tests/cli.rs",
       "format": "cargo",
       "key": "unknown_subcommand_prints_usage",
-      "line": 24,
+      "line": 23,
       "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
       "runner": "cargo"
     },

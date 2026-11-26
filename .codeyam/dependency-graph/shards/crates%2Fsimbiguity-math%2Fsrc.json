@@ -604,9 +604,11 @@
     "crates/simbiguity-math/src/linsolve.rs::Lu": {
       "filePath": "crates/simbiguity-math/src/linsolve.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-math/src/lib.rs::__file_root__",
         "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
-        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve",
+        "xtask/src/bench_fixtures.rs::run_all"
       ],
       "imports": [
         "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
@@ -630,6 +632,7 @@
     "crates/simbiguity-math/src/linsolve.rs::Lu::decompose": {
       "filePath": "crates/simbiguity-math/src/linsolve.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-math/src/linsolve.rs::Lu",
         "crates/simbiguity-math/src/linsolve.rs::lu_solve"
       ],
@@ -879,7 +882,6 @@
     "crates/simbiguity-math/src/linsolve.rs::lu_solve": {
       "filePath": "crates/simbiguity-math/src/linsolve.rs",
       "importedBy": [
-        "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-math/src/lib.rs::__file_root__"
       ],
       "imports": [
@@ -924,7 +926,11 @@
     "crates/simbiguity-math/src/mat.rs::DenseMatrix": {
       "filePath": "crates/simbiguity-math/src/mat.rs",
       "importedBy": [
-        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::default",
+        "crates/simbiguity-circuits/src/mna.rs::SolverCache::matrix",
+        "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-circuits/src/mna.rs::stamp_conductance",
         "crates/simbiguity-circuits/src/mna.rs::stamp_voltage_source",
         "crates/simbiguity-math/src/lib.rs::__file_root__",
@@ -942,7 +948,8 @@
         "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
         "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
         "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
-        "crates/simbiguity-math/src/mat.rs::Output"
+        "crates/simbiguity-math/src/mat.rs::Output",
+        "xtask/src/bench_fixtures.rs::run_all"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
@@ -2728,7 +2735,8 @@
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
-        "crates/simbiguity-math/src/lib.rs"
+        "crates/simbiguity-math/src/lib.rs",
+        "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",
@@ -2753,7 +2761,8 @@
         "crates/simbiguity-render/src/camera.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/pick.rs",
-        "crates/simbiguity-render/src/scene.rs"
+        "crates/simbiguity-render/src/scene.rs",
+        "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",

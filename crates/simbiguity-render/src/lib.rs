@@ -41,7 +41,7 @@ pub mod scene;
 pub use camera::OrbitCamera;
 pub use commands::{Blend, Command, CommandBuffer, Program, Uniform};
 pub use decode::DecodeError;
-pub use frame::encode_frame;
+pub use frame::{encode_frame, FrameBuf};
 pub use mesh::Mesh;
 pub use pick::{Aabb, Hit, Ray};
 pub use scene::{Instances, Light, Material, MeshId, Node, NodeId, Scene, Shading};

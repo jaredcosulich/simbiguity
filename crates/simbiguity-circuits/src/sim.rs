@@ -29,6 +29,9 @@ pub struct CircuitSim {
     circuit: Circuit,
     analysis: Analysis,
     integrator: Integrator,
+    dirty: bool,
+    needs_refactor: bool,
+    cache: crate::mna::SolverCache,
 }
 
 impl CircuitSim {
@@ -40,6 +43,9 @@ impl CircuitSim {
             circuit,
             analysis,
             integrator: Integrator::BackwardEuler,
+            dirty: false,
+            needs_refactor: true,
+            cache: crate::mna::SolverCache::default(),
         };
         sim.persist_blown();
         sim
@@ -92,19 +98,49 @@ impl Simulation for CircuitSim {
     type Input = CircuitInput;
 
     fn step(&mut self, dt: Seconds) {
-        self.analysis = crate::mna::analyze_step(&self.circuit, dt.0, self.integrator);
+        let has_transients = self.circuit.parts.iter().any(|p| {
+            matches!(
+                p.component,
+                Component::Capacitor { .. } | Component::Inductor { .. }
+            )
+        });
+        if !self.dirty && !has_transients {
+            return;
+        }
+        self.dirty = false;
+        self.analysis = crate::mna::analyze_step(
+            &self.circuit,
+            dt.0,
+            self.integrator,
+            &mut self.cache,
+            self.needs_refactor,
+        );
+        self.needs_refactor = false;
         self.persist_blown();
         self.persist_transient_state();
     }
 
     fn apply(&mut self, input: CircuitInput) {
+        self.dirty = true;
         match input {
             CircuitInput::ToggleSwitch(id) => {
+                self.needs_refactor = true;
                 self.circuit.toggle_switch(id);
             }
-            CircuitInput::SetSwitch(id, closed) => self.circuit.set_switch(id, closed),
-            CircuitInput::SetValue(id, v) => self.circuit.component_mut(id).set_value(v),
-            CircuitInput::ReplaceBulb(id) => self.circuit.replace_bulb(id),
+            CircuitInput::SetSwitch(id, closed) => {
+                self.needs_refactor = true;
+                self.circuit.set_switch(id, closed);
+            }
+            CircuitInput::SetValue(id, v) => {
+                if !matches!(self.circuit.component(id), Component::Battery { .. }) {
+                    self.needs_refactor = true;
+                }
+                self.circuit.component_mut(id).set_value(v);
+            }
+            CircuitInput::ReplaceBulb(id) => {
+                self.needs_refactor = true;
+                self.circuit.replace_bulb(id);
+            }
         }
     }
 
@@ -122,5 +158,44 @@ impl Snapshot for CircuitSim {
 
     fn restore(&mut self, snapshot: &CircuitSim) {
         *self = snapshot.clone();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use simbiguity_core::Seconds;
+
+    /// Verifies bit-identical outputs for the `dirty`-flag cache and EMF-only matrix factorization cache, ensuring optimization does not alter results.
+    #[test]
+    fn cache_produces_bit_identical_results() {
+        let mut c = Circuit::new();
+        let (p, m) = (c.node(), c.node());
+        let bat = c.add_battery(p, m, 9.0);
+        c.add_resistor(p, m, 100.0);
+
+        let mut sim1 = CircuitSim::new(c.clone());
+        let mut sim2 = CircuitSim::new(c.clone());
+
+        // Step without changes (dirty flag cache kicks in)
+        sim1.step(Seconds(0.1));
+
+        // Force sim2 to re-evaluate by setting dirty and needs_refactor
+        sim2.dirty = true;
+        sim2.needs_refactor = true;
+        sim2.step(Seconds(0.1));
+
+        assert_eq!(sim1.state(), sim2.state());
+
+        // EMF-only cache: change battery voltage
+        sim1.apply(CircuitInput::SetValue(bat, 12.0));
+        sim1.step(Seconds(0.1));
+
+        // sim2 does the same, but we force needs_refactor to bypass the EMF-only cache
+        sim2.apply(CircuitInput::SetValue(bat, 12.0));
+        sim2.needs_refactor = true; // force full matrix rebuild
+        sim2.step(Seconds(0.1));
+
+        assert_eq!(sim1.state(), sim2.state());
     }
 }

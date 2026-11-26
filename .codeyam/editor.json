@@ -6,7 +6,7 @@
       "framework": "plain-html",
       "name": "site",
       "port": 4780,
-      "startCommand": "python3 -m http.server 4781 --bind 127.0.0.1",
+      "startCommand": "sh ../scripts/build-site.sh && python3 -m http.server 4781 --bind 127.0.0.1",
       "type": "web"
     }
   ],
@@ -158,7 +158,12 @@
   "scenarios": {
     "dir": ".codeyam/scenarios"
   },
-  "screenSizes": {},
+  "screenSizes": {
+    "Desktop": {
+      "height": 900,
+      "width": 1440
+    }
+  },
   "server": {
     "access": {
       "mode": "loopback"
@@ -171,7 +176,7 @@
   },
   "setupBrowserEnabled": false,
   "silenceHookStderr": false,
-  "startCommand": "python3 -m http.server 4781 --bind 127.0.0.1",
+  "startCommand": "sh ../scripts/build-site.sh && python3 -m http.server 4781 --bind 127.0.0.1",
   "staticChecks": [
     {
       "command": "cargo fmt --all -- --check",
@@ -284,6 +289,21 @@
       "targetedCommand": "cargo test --no-fail-fast $(codeyam-editor editor cargo-packages-for --unit-tests-only {changed_files} --names {test_names}) -- {test_names}",
       "testFilePatterns": [
         "**/*.rs"
+      ]
+    },
+    {
+      "command": "node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=.codeyam/state/node-junit.xml \"site/**/*.test.js\"",
+      "excludePatterns": [
+        "site/pkg/**"
+      ],
+      "name": "node",
+      "outputFormat": "junit-xml",
+      "outputPath": ".codeyam/state/node-junit.xml",
+      "sourceFilePatterns": [
+        "site/**/*.js"
+      ],
+      "testFilePatterns": [
+        "site/**/*.test.js"
       ]
     }
   ],

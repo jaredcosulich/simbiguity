@@ -61,6 +61,12 @@
       "shortSha": "4a7bd35",
       "subject": "feat: Performance: benchmarks, WASM size budgets and an incremental circuit solve",
       "deferredAt": "2026-11-26T21:04:23Z"
+    },
+    {
+      "sha": "4971487eaab61dd19d7f6b31742a4997c73e9614",
+      "shortSha": "4971487",
+      "subject": "feat: General 3D circuit view: render any circuit laid out on a grid board",
+      "deferredAt": "2026-11-26T21:25:42Z"
     }
   ],
   "finalizeIntent": "fast",

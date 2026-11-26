@@ -25,6 +25,12 @@
       "shortSha": "e0c171d",
       "subject": "feat: 3D rendering and animation: simbiguity-anim, simbiguity-render, a WebGL2 executor and the 3D circuit view",
       "deferredAt": "2026-11-26T18:47:42Z"
+    },
+    {
+      "sha": "19b15024b39eb233f1bc6cac36454375dfb0002e",
+      "shortSha": "19b1502",
+      "subject": "feat: Engine status page: public demos and every test that proves them",
+      "deferredAt": "2026-11-26T19:18:09Z"
     }
   ],
   "finalizeIntent": "fast",

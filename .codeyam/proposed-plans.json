@@ -96,10 +96,13 @@
       "severity": 3,
       "source": "deferred-deliverable",
       "deliverableId": "hand-written-wasm-interface-exposing-the-crates",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "hand-written-wasm-interface-exposing-the-crates-to-the-browser",
       "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
       "kind": "feature",
-      "sightings": 2
+      "sightings": 2,
+      "decidedAt": "2026-11-26T16:56:06Z",
+      "sightingsAtDecision": 2
     },
     {
       "id": "static-html-demos-embedding-the-simulations",

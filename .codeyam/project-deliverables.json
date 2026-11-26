@@ -67,9 +67,9 @@
       "id": "hand-written-wasm-interface-exposing-the-crates",
       "text": "Hand-written WASM interface exposing the crates to the browser",
       "status": "deferred",
-      "resolvedAt": "2026-11-26T16:32:37.342637860+00:00",
-      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
-      "planSlug": null,
+      "resolvedAt": "2026-11-26T16:56:06.385210739+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "hand-written-wasm-interface-exposing-the-crates-to-the-browser",
       "note": "later roadmap plan; this cycle is foundations only",
       "decidedBy": "user"
     },

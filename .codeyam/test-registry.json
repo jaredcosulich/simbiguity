@@ -23,7 +23,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::append_rebases_indices",
-      "line": 257,
+      "line": 280,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -32,7 +32,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::charges_start_empty",
-      "line": 239,
+      "line": 255,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -41,7 +41,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::every_component_is_pickable",
-      "line": 214,
+      "line": 229,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -50,7 +50,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::filament_paths_share_their_feet",
-      "line": 248,
+      "line": 271,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -59,7 +59,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::parts_point_at_the_animated_nodes",
-      "line": 224,
+      "line": 251,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },

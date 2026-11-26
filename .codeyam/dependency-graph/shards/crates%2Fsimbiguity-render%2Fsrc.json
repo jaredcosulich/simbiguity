@@ -599,7 +599,7 @@
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
@@ -1272,7 +1272,7 @@
     "crates/simbiguity-render/src/frame.rs::FrameBuf": {
       "filePath": "crates/simbiguity-render/src/frame.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
@@ -1355,7 +1355,7 @@
     "crates/simbiguity-render/src/frame.rs::FrameBuf::new": {
       "filePath": "crates/simbiguity-render/src/frame.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-render/src/frame.rs::FrameBuf"
       ],
       "imports": [],
@@ -2897,12 +2897,12 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::Parts",
-        "crates/simbiguity-circuits-view/src/board.rs::Parts::filament",
-        "crates/simbiguity-circuits-view/src/board.rs::Parts::filament_broken",
-        "crates/simbiguity-circuits-view/src/board.rs::Parts::glass",
-        "crates/simbiguity-circuits-view/src/board.rs::Parts::halo",
-        "crates/simbiguity-circuits-view/src/board.rs::Parts::knob",
-        "crates/simbiguity-circuits-view/src/board.rs::Parts::lever",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::filaments",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::filaments_broken",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::glasses",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::halos",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::knobs",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::levers",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
@@ -3632,7 +3632,6 @@
         "crates/simbiguity-render/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",

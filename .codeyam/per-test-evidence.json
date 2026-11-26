@@ -37,10 +37,12 @@
   },
   "board::tests::every_component_is_pickable": {
     "file": "crates/simbiguity-circuits-view/src/board.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:17:43.998Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:17:43.998Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
@@ -2581,10 +2583,12 @@
   },
   "tests::inputs_reach_the_view": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:18:25.837Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:18:25.837Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
@@ -2626,10 +2630,12 @@
   },
   "tests::new_view_reads_back_its_state": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:18:25.837Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:18:25.837Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
@@ -2950,19 +2956,23 @@
   },
   "view_tests::blowing_and_replacing_the_bulb": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:17:43.998Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:17:43.998Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
   "view_tests::closed_switch_moves_charges": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:17:43.998Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:17:43.998Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
@@ -2986,10 +2996,12 @@
   },
   "view_tests::glow_follows_brightness_through_the_spring": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:17:43.998Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:17:43.998Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
@@ -3031,10 +3043,12 @@
   },
   "view_tests::toggle_swings_the_lever": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-26T20:56:52.317Z",
+    "lastRunAt": "2026-11-26T21:18:28.541Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-26T21:18:28.541Z",
+      "fail|targeted|2026-11-26T21:15:12.563Z",
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },

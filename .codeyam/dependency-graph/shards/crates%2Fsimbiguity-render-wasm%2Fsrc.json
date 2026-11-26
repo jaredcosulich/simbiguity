@@ -133,6 +133,18 @@
         "new"
       ]
     },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::insert"
+      ],
+      "name": "c3d_new_from_layout",
+      "namedMethods": [
+        "insert",
+        "new"
+      ]
+    },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
       "importedBy": [],
@@ -145,6 +157,22 @@
         "orbit",
         "to_radians"
       ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_count": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_part_count"
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_kind": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_part_kind"
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
@@ -244,6 +272,18 @@
         "toggle_switch"
       ]
     },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle_part": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_toggle_part",
+      "namedMethods": [
+        "from",
+        "toggle_switch"
+      ]
+    },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
       "importedBy": [],
@@ -322,7 +362,8 @@
     "crates/simbiguity-render-wasm/src/slot.rs::insert": {
       "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
       "importedBy": [
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new"
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
@@ -402,6 +443,8 @@
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_encode",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_count",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_count",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_kind",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr",
@@ -410,6 +453,7 @@
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle_part",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom",
         "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
       ],
@@ -730,6 +774,7 @@
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs"
       ]
     },
@@ -753,6 +798,7 @@
         "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",

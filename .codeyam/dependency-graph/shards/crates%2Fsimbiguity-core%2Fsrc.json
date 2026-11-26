@@ -15,7 +15,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-core/src/clock.rs::FixedClock::new",
@@ -825,8 +825,8 @@
         "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",

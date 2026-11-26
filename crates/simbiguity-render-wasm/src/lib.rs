@@ -37,6 +37,27 @@ pub extern "C" fn c3d_new(volts: f64, closed: i32) -> u32 {
     slot::insert(CircuitView::new(volts, closed != 0))
 }
 
+#[no_mangle]
+pub extern "C" fn c3d_new_from_layout(_ptr: *const u32, _len: u32) -> u32 {
+    // Dummy stub
+    slot::insert(CircuitView::new(12.0, false))
+}
+
+#[no_mangle]
+pub extern "C" fn c3d_toggle_part(h: u32, _id: u32) -> i32 {
+    with_view(h, |s| i32::from(s.view.toggle_switch()))
+}
+
+#[no_mangle]
+pub extern "C" fn c3d_part_count(h: u32) -> i32 {
+    with_view(h, |_s| 0)
+}
+
+#[no_mangle]
+pub extern "C" fn c3d_part_kind(h: u32, _id: u32) -> i32 {
+    with_view(h, |_s| 0)
+}
+
 /// Frees a view. Freeing it again is [`ERR_HANDLE`].
 #[no_mangle]
 pub extern "C" fn c3d_free(h: u32) -> i32 {

@@ -77,14 +77,14 @@ fn advance_runs_fixed_steps() {
 fn toggle_swings_the_lever() {
     let mut v = CircuitView::new(12.0, false);
     v.seek(0.0);
-    let open_tip = v.scene().node(v.parts.knob).transform.get(1, 3);
+    let open_tip = v.scene().node(v.parts.knobs[0]).transform.get(1, 3);
     assert!(v.toggle_switch());
     assert!(v.is_closed());
     v.advance(1.0);
-    let closed_tip = v.scene().node(v.parts.knob).transform.get(1, 3);
+    let closed_tip = v.scene().node(v.parts.knobs[0]).transform.get(1, 3);
     assert!(closed_tip < open_tip, "the knob drops as the lever closes");
     assert!(!v.toggle_switch());
-    assert_eq!(v.lever_target(), LEVER_OPEN_ANGLE);
+    assert_eq!(v.lever_target(0), LEVER_OPEN_ANGLE);
 }
 
 /// Overvoltage blows the bulb, which breaks the loop, shows the broken filament and flashes; replacing it restores the circuit.
@@ -96,13 +96,13 @@ fn blowing_and_replacing_the_bulb() {
     let r = v.readouts();
     assert_eq!((r.current, r.particle_speed), (0.0, 0.0));
     let s = v.scene();
-    assert!(!s.node(v.parts.filament).visible);
-    assert!(s.node(v.parts.filament_broken).visible);
-    let flash = s.node(v.parts.halo).material.emissive;
+    assert!(!s.node(v.parts.filaments[0]).visible);
+    assert!(s.node(v.parts.filaments_broken[0]).visible);
+    let flash = s.node(v.parts.halos[0]).material.emissive;
     assert!(flash > 1.0, "the blow flashes: {flash}");
     v.advance(2.0);
     assert!(
-        v.scene().node(v.parts.halo).material.emissive < flash,
+        v.scene().node(v.parts.halos[0]).material.emissive < flash,
         "the flash decays"
     );
     v.set_volts(12.0);

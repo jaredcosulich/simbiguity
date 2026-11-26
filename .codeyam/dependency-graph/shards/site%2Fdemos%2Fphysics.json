@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "site/demos/physics/demo.js::__file_root__": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/index.html::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/physics/index.html::__file_root__": {
+      "filePath": "site/demos/physics/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/demos/physics/demo.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    }
+  },
+  "files": {
+    "site/demos/physics/demo.js": {
+      "importedBy": [
+        "site/demos/physics/index.html"
+      ],
+      "imports": []
+    },
+    "site/demos/physics/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/physics/demo.js"
+      ]
+    }
+  }
+}

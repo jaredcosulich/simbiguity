@@ -9,6 +9,7 @@ dependencies = [
  "simbiguity-circuits",
  "simbiguity-core",
  "simbiguity-math",
+ "simbiguity-physics",
 ]
 
 [[package]]
@@ -59,6 +60,35 @@ dependencies = [
 [[package]]
 name = "simbiguity-math"
 version = "0.0.1"
+
+[[package]]
+name = "simbiguity-physics"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-core",
+ "simbiguity-math",
+]
+
+[[package]]
+name = "simbiguity-physics-view"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-math",
+ "simbiguity-physics",
+ "simbiguity-render",
+]
+
+[[package]]
+name = "simbiguity-physics-wasm"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-core",
+ "simbiguity-math",
+ "simbiguity-physics",
+ "simbiguity-physics-view",
+ "simbiguity-render",
+ "simbiguity-render-wasm",
+]
 
 [[package]]
 name = "simbiguity-plot"

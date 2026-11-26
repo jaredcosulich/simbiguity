@@ -854,7 +854,10 @@
         "crates/simbiguity-core/src/simulation.rs::Simulation",
         "crates/simbiguity-core/src/simulation.rs::Simulation::step",
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
-        "crates/simbiguity-core/src/simulation.rs::ZERO"
+        "crates/simbiguity-core/src/simulation.rs::ZERO",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::step",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Output",
@@ -942,7 +945,9 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/lockstep.rs::S",
-        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics-wasm/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -989,7 +994,11 @@
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/simulation.rs::Snapshot::restore",
-        "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot"
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot",
+        "crates/simbiguity-physics/src/world.rs::Snapshot",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::restore",
+        "crates/simbiguity-physics/src/world.rs::World::snapshot"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1129,7 +1138,12 @@
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lockstep.rs",
-        "crates/simbiguity-core/src/lockstep.rs"
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs"

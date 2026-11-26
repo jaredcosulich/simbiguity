@@ -6,7 +6,8 @@
       "imports": [
         "crates/simbiguity-circuits/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
-        "crates/simbiguity-math/src/lib.rs::__file_root__"
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-physics/src/lib.rs::__file_root__"
       ],
       "name": "__file_root__"
     }
@@ -17,7 +18,8 @@
       "imports": [
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
-        "crates/simbiguity-circuits/src/lib.rs"
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-physics/src/lib.rs"
       ]
     }
   }

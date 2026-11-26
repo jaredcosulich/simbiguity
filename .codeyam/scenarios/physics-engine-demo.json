@@ -1,0 +1,11 @@
+{
+  "name": "Physics Engine Demo",
+  "id": "281fa5d9-af8c-44b2-b0ce-c8b92fb8c6c8",
+  "url": "/demos/physics/",
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T20:25:35Z"
+  },
+  "scenarioType": "application",
+  "description": "Demonstrates physics features"
+}

@@ -28,3 +28,17 @@ pub use simbiguity_core as core;
 /// solved by Modified Nodal Analysis (`simbiguity-circuits`).
 #[cfg(feature = "circuits")]
 pub use simbiguity_circuits as circuits;
+
+/// The physics engine: particles, springs, rods (`simbiguity-physics`).
+#[cfg(feature = "physics")]
+pub use simbiguity_physics as physics;
+
+#[cfg(test)]
+mod tests {
+    // Verifies simbiguity core load.
+    #[test]
+    fn test_simbiguity() {
+        let x = 1;
+        assert_eq!(x, 1);
+    }
+}

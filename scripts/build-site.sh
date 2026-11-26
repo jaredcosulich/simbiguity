@@ -6,7 +6,7 @@ set -eu
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
-bridges="simbiguity-circuits-wasm simbiguity-render-wasm"
+bridges="simbiguity-circuits-wasm simbiguity-render-wasm simbiguity-physics-wasm"
 for crate in $bridges; do
   cargo build -p "$crate" --target wasm32-unknown-unknown --release
 done

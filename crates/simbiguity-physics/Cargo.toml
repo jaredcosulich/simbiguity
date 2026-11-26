@@ -1,0 +1,17 @@
+[package]
+name = "simbiguity-physics"
+description = "A deterministic 3D physics engine for point masses, springs, and constraints."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = ["simbiguity-math/std", "simbiguity-core/std"]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math" }
+simbiguity-core = { path = "../simbiguity-core" }

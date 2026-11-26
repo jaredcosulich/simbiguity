@@ -1,0 +1,283 @@
+{
+  "entities": {
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_spring_mass"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::acos",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::camera",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::default",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::ground_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::particle_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::rod_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::spring_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "name": "PhysicsView"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::acos",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::MeshId"
+      ],
+      "inherentMethod": true,
+      "name": "PhysicsView::add_line",
+      "namedMethods": [
+        "abs",
+        "add_node",
+        "cross",
+        "dot",
+        "from_axis_angle",
+        "length",
+        "new",
+        "normalize",
+        "rotation",
+        "scale",
+        "translation",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::camera": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "name": "PhysicsView::camera"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::default": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new"
+      ],
+      "imports": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new"
+      ],
+      "name": "PhysicsView::default",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::ground_mesh": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::MeshId"
+      ],
+      "name": "PhysicsView::ground_mesh"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::default",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::camera",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::default",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::ground_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::particle_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::rod_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::spring_mesh",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "inherentMethod": true,
+      "name": "PhysicsView::new",
+      "namedMethods": [
+        "add_mesh",
+        "cylinder",
+        "default",
+        "new",
+        "sphere"
+      ]
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::particle_mesh": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::MeshId"
+      ],
+      "name": "PhysicsView::particle_mesh"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::rod_mesh": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::MeshId"
+      ],
+      "name": "PhysicsView::rod_mesh"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "name": "PhysicsView::scene"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::spring_mesh": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::MeshId"
+      ],
+      "name": "PhysicsView::spring_mesh"
+    },
+    "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update": {
+      "filePath": "crates/simbiguity-physics-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::ground_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::particle_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::rod_mesh",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::spring_mesh",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "inherentMethod": true,
+      "name": "PhysicsView::update",
+      "namedMethods": [
+        "add_line",
+        "add_node",
+        "clear",
+        "enumerate",
+        "iter",
+        "lit",
+        "new",
+        "translation"
+      ]
+    }
+  },
+  "files": {
+    "crates/simbiguity-physics-view/src/lib.rs": {
+      "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/scene.rs"
+      ]
+    }
+  }
+}

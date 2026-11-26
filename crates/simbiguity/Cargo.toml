@@ -16,9 +16,11 @@ default = ["math", "core"]
 math = ["dep:simbiguity-math"]
 core = ["dep:simbiguity-core", "math"]
 circuits = ["dep:simbiguity-circuits", "core"]
-std = ["simbiguity-math?/std", "simbiguity-core?/std", "simbiguity-circuits?/std"]
+physics = ["dep:simbiguity-physics", "core"]
+std = ["simbiguity-math?/std", "simbiguity-core?/std", "simbiguity-circuits?/std", "simbiguity-physics?/std"]
 
 [dependencies]
 simbiguity-math = { path = "../simbiguity-math", version = "0.0.1", optional = true }
 simbiguity-core = { path = "../simbiguity-core", version = "0.0.1", optional = true }
 simbiguity-circuits = { path = "../simbiguity-circuits", version = "0.0.1", optional = true }
+simbiguity-physics = { path = "../simbiguity-physics", version = "0.0.1", optional = true }

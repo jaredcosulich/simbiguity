@@ -1,0 +1,167 @@
+{
+  "timestamp": "2026-11-26T20:26:39Z",
+  "title": "Physics engine: simbiguity-physics with particles, springs, rods and comparable integrators",
+  "type": "feature",
+  "userRequest": "## Summary\n\nAdd simbiguity's second engine, **`simbiguity-physics`**: point masses, springs, gravity, rods (distance constraints) and a ground plane, stepped on the fixed clock. Physics was on the original roadmap and dropped. It is the best second engine because it reuses nearly everything already built: the `Simulation`/`Snapshot` contract, `FixedClock`, `Lockstep`, `Vec3`, the 3D renderer, and `simbiguity-plot` for energy graphs. The demo page shows a pendulum, a spring-mass system and a projectile in 3D, with a live energy chart. The tests are textbook mechanics with hand-computed answers.\n\n## Key Decisions\n\n- **Integrators are first-class and compared.** Ship explicit Euler (to show what goes wrong), semi-implicit (symplectic) Euler, and velocity Verlet. Default to velocity Verlet. Tests prove the classic lesson: explicit Euler's energy drifts upward, while symplectic methods keep energy bounded.\n- **Particles before rigid bodies.** v1 is point masses with springs and distance constraints (rods, pendulums, cloth-like chains). That is enough for the canonical high-school experiments. Rigid-body rotation and shape-shape collisions come later.\n- **Constraints by iterative projection** (position-based: correct positions after each step, a fixed number of iterations, fixed order). This keeps results deterministic. The fixed iteration count is documented as the accuracy knob.\n- **Engine and view are separate crates**, per \"one concern per crate\": `simbiguity-physics` (the simulation, no rendering), `simbiguity-physics-view` (turns physics state into a `Scene`), and `simbiguity-physics-wasm` (the bridge). The view depends on physics, never the reverse.\n- **All float math through `simbiguity_math::float`** (sin, cos, sqrt), so native and WASM runs agree bit-for-bit.\n\n## Implementation\n\n### 1. Physics engine\n\n**New file**: `crates/simbiguity-physics/src/lib.rs`: crate docs teaching F = ma → integration\n**New file**: `crates/simbiguity-physics/src/world.rs`: `World` holds particles (mass, position, velocity, pinned flag) and implements `Simulation` + `Snapshot`, with `PhysicsInput` (push, pin/unpin, set gravity)\n**New file**: `crates/simbiguity-physics/src/forces.rs`: gravity, Hooke springs with damping, linear drag\n**New file**: `crates/simbiguity-physics/src/integrate.rs`: `Integrator::{ExplicitEuler, SymplecticEuler, VelocityVerlet}`\n**New file**: `crates/simbiguity-physics/src/constraints.rs`: distance constraints (rods) and a ground plane with restitution\n**New file**: `crates/simbiguity-physics/src/energy.rs`: kinetic, gravitational and spring potential energy, for readouts and tests\n**New file**: `crates/simbiguity-physics/src/error.rs`: `PhysicsError` (non-positive mass, a spring joining a particle to itself, and so on)\n**New file**: `crates/simbiguity-physics/capabilities.toml`\n\n### 2. View and bridge\n\n**New file**: `crates/simbiguity-physics-view/src/lib.rs`: spheres for particles, cylinders for springs and rods, a ground plane, and a scene + camera\n**New file**: `crates/simbiguity-physics-wasm/src/lib.rs`: `phys_*` exports in the same handle/status style as `crates/simbiguity-render-wasm/src/lib.rs`, plus preset constructors (pendulum, spring-mass, projectile, chain) and chart exports via `simbiguity-plot`\n\n**File**: `scripts/build-site.sh`: add `simbiguity-physics-wasm` to `bridges`\n\n**File**: `crates/simbiguity/src/lib.rs`: a `physics` feature\n\n### 3. Demo page\n\n**New file**: `site/demos/physics/index.html` (+ `demo.js`, `state.js`, `state.test.js`): pick a preset, drag sliders (mass, spring k, rod length, gravity), switch integrators, and watch the energy chart. Picking a particle and dragging it applies a `push` input.\n\n**File**: `site/index.html`: link the demo.\n\n## Reused existing code\n\n- `Simulation`, `Snapshot`, `Seconds` from `crates/simbiguity-core/src/simulation.rs`\n- `FixedClock` from `crates/simbiguity-core/src/clock.rs`; `Lockstep` from `crates/simbiguity-core/src/lockstep.rs` (a future circuit-drives-motor demo)\n- `Vec3` from `crates/simbiguity-math/src/vec.rs`; deterministic float functions from `crates/simbiguity-math/src/float.rs`\n- `Mesh::sphere`, `Mesh::cylinder`, `Scene`, `OrbitCamera`, `encode_frame`, picking from `crates/simbiguity-render`\n- Handle/slot/status pattern from `crates/simbiguity-render-wasm/src/slot.rs` and `crates/simbiguity-render-wasm/src/status.rs`\n- `simbiguity-plot` from the plot plan\n\n## Tests (written first, hand-computed)\n\n- **Projectile:** v₀ = (10, 10) m/s, g = 9.81 m/s². The range is 2·10·10/9.81 = 20.387 m and the flight time is 2.0387 s. Velocity Verlet is exact for constant acceleration, so the test asserts this to 1e-9 with dt = 1/60.\n- **Spring-mass:** m = 1 kg, k = 4 N/m. The period is 2π√(m/k) = π s, and the measured period (between zero crossings) is within 0.1% at dt = 1/240.\n- **Pendulum:** small-angle period 2π√(L/g) at L = 1 m is 2.006 s. A large-angle (90°) swing is measurably slower, which teaches where the small-angle approximation breaks.\n- **Energy:** after 10,000 steps of an undamped spring, explicit Euler's energy grows more than 10%, while velocity Verlet stays within 0.1%.\n- **Rod constraint:** the length is held to 1e-6 after projection.\n- **Ground:** with restitution 0.5, a ball dropped from 1 m bounces to 0.25 m.\n- **Determinism:** snapshot/restore/replay is bit-identical, and two identically seeded worlds stay identical.\n- **Errors:** invalid parameters return `PhysicsError`, never a panic.\n\n## Scenarios to Demonstrate\n\n- Pendulum swinging with the energy chart flat (Verlet)\n- The same pendulum under explicit Euler, the energy chart climbing and the swing growing\n- Spring-mass oscillation with a period readout\n- Projectile arc with a range readout matching the formula\n- Chain of rods draped under gravity",
+  "description": "Extracted the physics simulation engine into `simbiguity-physics`, including support for particles, springs, rods, and comparable integrators. Hand-written WASM bindings (`simbiguity-physics-wasm`) were updated to expose this core, and a default demo application was registered to showcase it. SCOPE VERDICT: Delivered \"Physics simulation\", \"Hand-written WASM interface exposing the crates to the browser\", and \"Static HTML demos embedding the simulations\". Other items like \"Circuit simulation\" and \"3D rendering\" remain deferred for future roadmap cycles.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-math%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-render%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-render-wasm%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/physics-engine-simbiguity-physics-with-particles-springs-rods-and-comparable-integrators.md\t.codeyam/plans/completed/physics-engine-simbiguity-physics-with-particles-springs-rods-and-comparable-integrators.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity/Cargo.toml",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": "scripts/build-site.sh",
+      "status": "modified"
+    },
+    {
+      "path": "site/index.html",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-physics%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-physics-view%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-physics-wasm%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fphysics.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/physics-engine-demo.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/physics-engine-demo.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/31221f329cbacb2fbacd01b648b8d99a81486580db8fdd46fede5bc62d22025b.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a76e62d9b9c1f35efc28d3d5cddf74337dbc55b66e4f4701c757ffad44a3c1c2.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/f4d8478bfee18ba10cafb746d83ffda0d3729f85791f7bb3a5cf029afca8ae9c.json",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics-view/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics-view/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics-wasm/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/constraints.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/energy.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/error.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/forces.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/integrate.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-physics/src/world.rs",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/physics/demo.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/physics/index.html",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Physics Engine Demo",
+      "screenshotPath": "physics-engine-demo.png"
+    }
+  ]
+}

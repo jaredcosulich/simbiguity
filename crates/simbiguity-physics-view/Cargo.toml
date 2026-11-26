@@ -1,0 +1,18 @@
+[package]
+name = "simbiguity-physics-view"
+description = "Turns simbiguity-physics state into a simbiguity-render Scene."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = ["simbiguity-math/std", "simbiguity-physics/std", "simbiguity-render/std"]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math" }
+simbiguity-physics = { path = "../simbiguity-physics" }
+simbiguity-render = { path = "../simbiguity-render" }

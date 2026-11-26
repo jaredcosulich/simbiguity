@@ -1,0 +1,15 @@
+use simbiguity_math::vec::Vec3;
+
+#[derive(Debug, Clone)]
+pub struct Gravity {
+    pub acceleration: Vec3,
+}
+
+#[derive(Debug, Clone)]
+pub struct Spring {
+    pub p1: usize,
+    pub p2: usize,
+    pub rest_length: f64,
+    pub k: f64,
+    pub damping: f64,
+}

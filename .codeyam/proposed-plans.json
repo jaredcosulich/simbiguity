@@ -229,6 +229,11 @@
       "at": "2026-11-26T19:19:13.067213452+00:00",
       "feature": "Engine status page",
       "notes": "Engine status page shipped on fast-sim-1 under Fast Commit; the user waived check-ins. Full session-finalize is owed before merge: 9 stale partitions, about 12 stale screenshots from the demo-page edits, node test evidence, and the deliver…"
+    },
+    {
+      "at": "2026-11-26T20:13:00.193983217+00:00",
+      "feature": "Time-series plots: simbiguity-plot draws values over time with the existing renderer",
+      "notes": "Completed time-series plot library with standard math imports."
     }
   ],
   "syntheses": [

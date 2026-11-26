@@ -124,7 +124,7 @@
   "proposedPlans": {
     "agedOutAfterDays": 30
   },
-  "provider": "claude",
+  "provider": "gemini",
   "proxy": {
     "controlPort": 14404,
     "dbPort": 14306,
@@ -357,6 +357,61 @@
       ],
       "sourceFilePatterns": [
         "xtask/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [],
+      "excludePatterns": [],
+      "name": "simbiguity-circuits-puzzle",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-circuits-puzzle"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-circuits-puzzle/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-circuits",
+        "simbiguity-core",
+        "simbiguity-math"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-circuits-wasm",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-circuits-wasm"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-circuits-wasm/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [],
+      "excludePatterns": [],
+      "name": "simbiguity-puzzle",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-puzzle"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-puzzle/**/*",
         "Cargo.toml",
         "Cargo.lock",
         "rust-toolchain.toml"

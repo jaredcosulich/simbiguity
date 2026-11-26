@@ -1,0 +1,50 @@
+{
+  "codeyam-editor": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "if test -f '/workspace/.claude/hooks/antigravity-hook.py'; then mkdir -p '/workspace/.codeyam/logs' && python3 '/workspace/.claude/hooks/antigravity-hook.py' PostToolUse 2>>'/workspace/.codeyam/logs/editor-hook-stderr.log'; else mkdir -p '/workspace/.codeyam/logs' && echo \"antigravity-hook: PostToolUse fired from $(pwd) but the shim is missing\" >>'/workspace/.codeyam/logs/editor-hook-stderr.log'; echo '{}'; fi",
+            "timeout": 30,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "PreInvocation": [
+      {
+        "command": "if test -f '/workspace/.claude/hooks/antigravity-hook.py'; then mkdir -p '/workspace/.codeyam/logs' && python3 '/workspace/.claude/hooks/antigravity-hook.py' PreInvocation 2>>'/workspace/.codeyam/logs/editor-hook-stderr.log'; else mkdir -p '/workspace/.codeyam/logs' && echo \"antigravity-hook: PreInvocation fired from $(pwd) but the shim is missing\" >>'/workspace/.codeyam/logs/editor-hook-stderr.log'; echo '{}'; fi",
+        "timeout": 30,
+        "type": "command"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "if test -f '/workspace/.claude/hooks/antigravity-hook.py'; then mkdir -p '/workspace/.codeyam/logs' && python3 '/workspace/.claude/hooks/antigravity-hook.py' PreToolUse 2>>'/workspace/.codeyam/logs/editor-hook-stderr.log'; else mkdir -p '/workspace/.codeyam/logs' && echo \"antigravity-hook: PreToolUse fired from $(pwd) but the shim is missing\" >>'/workspace/.codeyam/logs/editor-hook-stderr.log'; echo '{\"decision\":\"allow\"}'; fi",
+            "timeout": 30,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "SessionStart": [
+      {
+        "command": "if test -f '/workspace/.claude/hooks/antigravity-hook.py'; then mkdir -p '/workspace/.codeyam/logs' && python3 '/workspace/.claude/hooks/antigravity-hook.py' SessionStart 2>>'/workspace/.codeyam/logs/editor-hook-stderr.log'; else mkdir -p '/workspace/.codeyam/logs' && echo \"antigravity-hook: SessionStart fired from $(pwd) but the shim is missing\" >>'/workspace/.codeyam/logs/editor-hook-stderr.log'; echo '{}'; fi",
+        "timeout": 30,
+        "type": "command"
+      }
+    ],
+    "Stop": [
+      {
+        "command": "if test -f '/workspace/.claude/hooks/antigravity-hook.py'; then mkdir -p '/workspace/.codeyam/logs' && python3 '/workspace/.claude/hooks/antigravity-hook.py' Stop 2>>'/workspace/.codeyam/logs/editor-hook-stderr.log'; else mkdir -p '/workspace/.codeyam/logs' && echo \"antigravity-hook: Stop fired from $(pwd) but the shim is missing\" >>'/workspace/.codeyam/logs/editor-hook-stderr.log'; echo '{}'; fi",
+        "timeout": 30,
+        "type": "command"
+      }
+    ],
+    "enabled": true
+  }
+}

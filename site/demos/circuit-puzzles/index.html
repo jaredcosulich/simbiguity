@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Circuit Puzzles — simbiguity</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, sans-serif;
+      --muted: color-mix(in srgb, CanvasText 60%, Canvas);
+      --line: color-mix(in srgb, CanvasText 75%, Canvas);
+      --panel: color-mix(in srgb, CanvasText 6%, Canvas);
+      --warn: #d9480f;
+      --glow: #ffd43b;
+      --success: #2b8a3e;
+    }
+    html { background: Canvas; color: CanvasText; }
+    body { max-width: 72rem; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.6; }
+    a { color: inherit; }
+    .crumb { font-size: 0.9rem; opacity: 0.75; }
+    h1 { margin: 0.25rem 0; }
+    .lede { margin-top: 0; color: var(--muted); max-width: 52rem; }
+    
+    .layout { display: grid; grid-template-columns: 16rem minmax(0, 1fr) 16rem; gap: 1.5rem; align-items: start; margin-top: 1.25rem; }
+    @media (max-width: 64rem) { .layout { grid-template-columns: 1fr; } }
+    
+    .panel { background: var(--panel); border-radius: 0.75rem; padding: 1rem 1.25rem; }
+    
+    canvas { width: 100%; aspect-ratio: 16 / 10; display: block; border-radius: 0.75rem; background: #17191f; cursor: grab; touch-action: none; }
+    canvas:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
+    
+    h2 { font-size: 1.05rem; margin: 0 0 0.75rem; }
+    
+    .level-list { list-style: none; padding: 0; margin: 0; }
+    .level-list li { padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.5rem; cursor: pointer; border: 1px solid transparent; }
+    .level-list li:hover { background: color-mix(in srgb, CanvasText 10%, transparent); }
+    .level-list li.active { border-color: var(--line); background: var(--panel); }
+    .level-list .solved::after { content: " ✓"; color: var(--success); }
+    
+    .tray { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tray-item { display: flex; justify-content: space-between; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0.5rem; cursor: pointer; }
+    .tray-item:hover { background: var(--panel); }
+    .tray-item.selected { border-color: var(--glow); box-shadow: 0 0 0 1px var(--glow); }
+    
+    .goals { padding-left: 1.5rem; margin: 0.5rem 0; }
+    .goals li.done { color: var(--success); text-decoration: line-through; }
+    
+    .hint { font-size: 0.85rem; color: var(--muted); margin: 0.4rem 0 0; }
+    
+    .controls { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .controls button { flex: 1; font: inherit; padding: 0.4rem; border-radius: 0.5rem; border: 1px solid var(--line); background: Canvas; color: inherit; cursor: pointer; }
+    
+    .explanation-card { margin-top: 1.5rem; padding: 1.5rem; background: color-mix(in srgb, var(--success) 15%, var(--panel)); border: 1px solid var(--success); border-radius: 0.75rem; display: none; }
+    .explanation-card.visible { display: block; }
+    .explanation-card h3 { color: var(--success); margin: 0 0 0.5rem 0; }
+    
+    .issue { border-left: 4px solid var(--warn); padding-left: 1rem; }
+  </style>
+</head>
+<body>
+  <p class="crumb"><a href="../../">simbiguity</a> / demos</p>
+  <h1>Circuit Puzzles</h1>
+  <p class="lede">Learn circuits by building them. Solve the exact goal to progress.</p>
+
+  <div class="layout">
+    <!-- Left: Levels -->
+    <div class="panel">
+      <h2>Levels</h2>
+      <ul id="level-select" class="level-list">
+        <li data-level="1" class="active">1. Complete the Circuit</li>
+        <li data-level="2">2. The Switch</li>
+        <li data-level="3">3. Series Dims</li>
+      </ul>
+    </div>
+    
+    <!-- Center: Board -->
+    <div>
+      <canvas id="view" tabindex="0" aria-label="3D circuit board for puzzles"></canvas>
+      <div class="controls">
+        <button id="btn-undo">Undo</button>
+        <button id="btn-redo">Redo</button>
+        <button id="btn-reset">Reset Level</button>
+        <button id="btn-share">Share Solution</button>
+      </div>
+      
+      <div id="explanation" class="explanation-card">
+        <h3>Level Solved!</h3>
+        <p id="explanation-text"></p>
+      </div>
+    </div>
+    
+    <!-- Right: Goal & Parts -->
+    <div class="panel">
+      <h2>Goal</h2>
+      <p id="level-desc">Make the bulb light up.</p>
+      <ul id="goal-list" class="goals">
+        <li>Bulb is lit</li>
+      </ul>
+      
+      <h2 style="margin-top: 1.5rem">Parts Tray</h2>
+      <div id="parts-tray" class="tray">
+        <div class="tray-item selected" data-part="wire">
+          <span>Wire</span>
+          <span class="count">∞</span>
+        </div>
+        <div class="tray-item" data-part="bulb">
+          <span>Bulb</span>
+          <span class="count">1</span>
+        </div>
+      </div>
+      
+      <p id="hint" class="hint">Click a part to select it, then click two snap points on the board to place it.</p>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

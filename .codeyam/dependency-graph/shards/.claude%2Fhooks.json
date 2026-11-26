@@ -52,6 +52,194 @@
       ],
       "name": "resolve_mode_table"
     },
+    ".claude/hooks/antigravity-hook.py::_decode": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::to_claude_tool_input"
+      ],
+      "imports": [],
+      "name": "_decode"
+    },
+    ".claude/hooks/antigravity-hook.py::_hook_session_id": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::post_idle_hook"
+      ],
+      "imports": [],
+      "name": "_hook_session_id"
+    },
+    ".claude/hooks/antigravity-hook.py::_live_control_port": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::post_idle_hook"
+      ],
+      "imports": [],
+      "name": "_live_control_port"
+    },
+    ".claude/hooks/antigravity-hook.py::_post_idle_hook_once": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::post_idle_hook"
+      ],
+      "imports": [],
+      "name": "_post_idle_hook_once"
+    },
+    ".claude/hooks/antigravity-hook.py::_read_session_token": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::post_idle_hook"
+      ],
+      "imports": [],
+      "name": "_read_session_token"
+    },
+    ".claude/hooks/antigravity-hook.py::base_payload": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::context_event",
+        ".claude/hooks/antigravity-hook.py::post_tool_use",
+        ".claude/hooks/antigravity-hook.py::pre_tool_use",
+        ".claude/hooks/antigravity-hook.py::stop"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::project_dir_from"
+      ],
+      "name": "base_payload"
+    },
+    ".claude/hooks/antigravity-hook.py::context_event": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::main"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::base_payload",
+        ".claude/hooks/antigravity-hook.py::inject",
+        ".claude/hooks/antigravity-hook.py::injected_text",
+        ".claude/hooks/antigravity-hook.py::run_hook"
+      ],
+      "name": "context_event"
+    },
+    ".claude/hooks/antigravity-hook.py::inject": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::context_event",
+        ".claude/hooks/antigravity-hook.py::injected_text"
+      ],
+      "imports": [],
+      "name": "inject"
+    },
+    ".claude/hooks/antigravity-hook.py::injected_text": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::context_event"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::inject"
+      ],
+      "name": "injected_text"
+    },
+    ".claude/hooks/antigravity-hook.py::main": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::context_event",
+        ".claude/hooks/antigravity-hook.py::post_idle_hook",
+        ".claude/hooks/antigravity-hook.py::post_tool_use",
+        ".claude/hooks/antigravity-hook.py::pre_tool_use",
+        ".claude/hooks/antigravity-hook.py::project_dir_from",
+        ".claude/hooks/antigravity-hook.py::record_session",
+        ".claude/hooks/antigravity-hook.py::stop"
+      ],
+      "name": "main"
+    },
+    ".claude/hooks/antigravity-hook.py::post_idle_hook": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::main",
+        ".claude/hooks/antigravity-hook.py::stop"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::_hook_session_id",
+        ".claude/hooks/antigravity-hook.py::_live_control_port",
+        ".claude/hooks/antigravity-hook.py::_post_idle_hook_once",
+        ".claude/hooks/antigravity-hook.py::_read_session_token"
+      ],
+      "name": "post_idle_hook"
+    },
+    ".claude/hooks/antigravity-hook.py::post_tool_use": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::main"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::base_payload",
+        ".claude/hooks/antigravity-hook.py::run_hook",
+        ".claude/hooks/antigravity-hook.py::to_claude_tool_input"
+      ],
+      "name": "post_tool_use"
+    },
+    ".claude/hooks/antigravity-hook.py::pre_tool_use": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::main"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::base_payload",
+        ".claude/hooks/antigravity-hook.py::run_hook",
+        ".claude/hooks/antigravity-hook.py::to_claude_tool_input"
+      ],
+      "name": "pre_tool_use"
+    },
+    ".claude/hooks/antigravity-hook.py::project_dir_from": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::base_payload",
+        ".claude/hooks/antigravity-hook.py::main"
+      ],
+      "imports": [],
+      "name": "project_dir_from"
+    },
+    ".claude/hooks/antigravity-hook.py::record_session": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::main"
+      ],
+      "imports": [],
+      "name": "record_session"
+    },
+    ".claude/hooks/antigravity-hook.py::run_hook": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::context_event",
+        ".claude/hooks/antigravity-hook.py::post_tool_use",
+        ".claude/hooks/antigravity-hook.py::pre_tool_use",
+        ".claude/hooks/antigravity-hook.py::stop"
+      ],
+      "imports": [],
+      "name": "run_hook"
+    },
+    ".claude/hooks/antigravity-hook.py::stop": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::main"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::base_payload",
+        ".claude/hooks/antigravity-hook.py::post_idle_hook",
+        ".claude/hooks/antigravity-hook.py::run_hook"
+      ],
+      "name": "stop"
+    },
+    ".claude/hooks/antigravity-hook.py::to_claude_tool_input": {
+      "filePath": ".claude/hooks/antigravity-hook.py",
+      "importedBy": [
+        ".claude/hooks/antigravity-hook.py::post_tool_use",
+        ".claude/hooks/antigravity-hook.py::pre_tool_use"
+      ],
+      "imports": [
+        ".claude/hooks/antigravity-hook.py::_decode"
+      ],
+      "name": "to_claude_tool_input"
+    },
     ".claude/hooks/editor-pretool-hook.py::_argv_is_read_only": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -4512,6 +4700,10 @@
   },
   "files": {
     ".claude/hooks/_step_metadata.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    ".claude/hooks/antigravity-hook.py": {
       "importedBy": [],
       "imports": []
     },

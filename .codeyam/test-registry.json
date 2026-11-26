@@ -1,33 +1,6 @@
 {
   "tests": [
     {
-      "description": "The pick codes match the Rust pick tags.",
-      "file": "site/js/simbiguity-render.test.js",
-      "format": "junit-xml",
-      "key": "Pick › matches the Rust pick tags",
-      "line": 42,
-      "registeredAt": "2026-11-26T18:41:31.164739836+00:00",
-      "runner": "node"
-    },
-    {
-      "description": "The filter offers exactly the three libtest outcomes, passed first.",
-      "file": "site/status/report-view.test.js",
-      "format": "junit-xml",
-      "key": "TEST_STATUSES › lists the three outcomes in filter order",
-      "line": 64,
-      "registeredAt": "2026-11-26T19:10:15.100776350+00:00",
-      "runner": "node"
-    },
-    {
-      "description": "Uniform names are in the slot order Rust writes (crates/simbiguity-render/src/commands.rs).",
-      "file": "site/js/webgl2-executor.test.js",
-      "format": "junit-xml",
-      "key": "UNIFORMS › lists the eight slots in Rust order",
-      "line": 78,
-      "registeredAt": "2026-11-26T18:41:31.165015343+00:00",
-      "runner": "node"
-    },
-    {
       "description": "A balanced Wheatstone bridge carries no current through its bridge resistor — a topology no series/parallel reduction handles.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -161,24 +134,6 @@
       "line": 195,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
-    },
-    {
-      "description": "Client coordinates become canvas pixels, offset by the rectangle and scaled to the backing store.",
-      "file": "site/demos/circuit-3d/pointer.test.js",
-      "format": "junit-xml",
-      "key": "canvasPixel › maps client coordinates into the backing store",
-      "line": 24,
-      "registeredAt": "2026-11-26T18:41:31.164224928+00:00",
-      "runner": "node"
-    },
-    {
-      "description": "A missing ratio counts as one and a collapsed canvas is still one pixel.",
-      "file": "site/demos/circuit-3d/pointer.test.js",
-      "format": "junit-xml",
-      "key": "canvasSize › defaults the ratio and never returns zero",
-      "line": 15,
-      "registeredAt": "2026-11-26T18:41:31.164200016+00:00",
-      "runner": "node"
     },
     {
       "description": "The backing store is the CSS size times the pixel ratio, rounded.",
@@ -1765,6 +1720,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that a level contains the correct ID",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::test_level",
+      "line": 12,
+      "registeredAt": "2026-11-26T19:55:35.333134591+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Doc-tests switch the target to `doc` until the next binary starts.",
       "file": "xtask/src/libtest_output_tests.rs",
       "format": "cargo",
@@ -3187,6 +3151,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that a solution string can be encoded",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::test_encode",
+      "line": 11,
+      "registeredAt": "2026-11-26T19:55:35.440121700+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Restoring a snapshot and replaying the same inputs reproduces the exact same state bit for bit, RNG included.",
       "file": "crates/simbiguity-core/src/simulation.rs",
       "format": "cargo",
@@ -3859,6 +3832,15 @@
       "key": "tests::site_report_requires_a_path_after_out",
       "line": 113,
       "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that Goal correctly returns true/false based on state",
+      "file": "crates/simbiguity-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_goal",
+      "line": 33,
+      "registeredAt": "2026-11-26T19:55:35.524946133+00:00",
       "runner": "cargo"
     },
     {

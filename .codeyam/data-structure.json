@@ -37,5 +37,31 @@
       { "name": "capabilities", "type": "array", "required": true },
       { "name": "tests", "type": "array", "required": true }
     ]
+  },
+  {
+    "name": "PuzzleProgress",
+    "description": "Progress for the 3D circuit puzzle game, stored in localStorage. Tracks which levels have been solved.",
+    "category": "datastore",
+    "order": 4,
+    "fields": [
+      { "name": "levelId", "type": "string", "isId": true, "required": true },
+      { "name": "solved", "type": "boolean", "required": true },
+      { "name": "bestSolutionHash", "type": "string", "required": false }
+    ]
+  },
+  {
+    "name": "CircuitPuzzleLevel",
+    "description": "Data-driven level for the 3D circuit puzzle game. Seeded from JSON/TOML files or URL hashes.",
+    "category": "mock-api",
+    "order": 5,
+    "fields": [
+      { "name": "id", "type": "string", "isId": true, "required": true },
+      { "name": "boardSize", "type": "object", "required": true },
+      { "name": "fixedComponents", "type": "array", "required": true },
+      { "name": "partsTray", "type": "array", "required": true },
+      { "name": "goals", "type": "array", "required": true },
+      { "name": "hint", "type": "string", "required": true },
+      { "name": "explanation", "type": "string", "required": true }
+    ]
   }
 ]

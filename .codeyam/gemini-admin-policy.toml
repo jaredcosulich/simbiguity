@@ -1,0 +1,16 @@
+# CodeYam Editor Supplemental Admin Policy
+# This file is passed to `gemini` via --admin-policy to auto-approve
+# skills and shell commands, as workspace-local policies are currently
+# disabled in the Gemini CLI.
+
+[[rule]]
+toolName = "activate_skill"
+argsPattern = '.*codeyam-editor.*'
+decision = "allow"
+priority = 100
+
+[[rule]]
+toolName = "run_shell_command"
+argsPattern = '.*codeyam-editor editor.*'
+decision = "allow"
+priority = 100

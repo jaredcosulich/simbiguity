@@ -1,0 +1,271 @@
+{
+  "entities": {
+    ".gemini/hooks/_step_metadata.py::_empty_mode_table": {
+      "filePath": ".gemini/hooks/_step_metadata.py",
+      "importedBy": [
+        ".gemini/hooks/_step_metadata.py::load_step_metadata",
+        ".gemini/hooks/_step_metadata.py::resolve_mode_table"
+      ],
+      "imports": [],
+      "name": "_empty_mode_table"
+    },
+    ".gemini/hooks/_step_metadata.py::_kv_pairs_to_int_dict": {
+      "filePath": ".gemini/hooks/_step_metadata.py",
+      "importedBy": [
+        ".gemini/hooks/_step_metadata.py::load_step_metadata"
+      ],
+      "imports": [],
+      "name": "_kv_pairs_to_int_dict"
+    },
+    ".gemini/hooks/_step_metadata.py::_no_test_slug_map": {
+      "filePath": ".gemini/hooks/_step_metadata.py",
+      "importedBy": [
+        ".gemini/hooks/_step_metadata.py::load_step_metadata"
+      ],
+      "imports": [],
+      "name": "_no_test_slug_map"
+    },
+    ".gemini/hooks/_step_metadata.py::_string_list": {
+      "filePath": ".gemini/hooks/_step_metadata.py",
+      "importedBy": [
+        ".gemini/hooks/_step_metadata.py::load_step_metadata"
+      ],
+      "imports": [],
+      "name": "_string_list"
+    },
+    ".gemini/hooks/_step_metadata.py::load_step_metadata": {
+      "filePath": ".gemini/hooks/_step_metadata.py",
+      "importedBy": [],
+      "imports": [
+        ".gemini/hooks/_step_metadata.py::_empty_mode_table",
+        ".gemini/hooks/_step_metadata.py::_kv_pairs_to_int_dict",
+        ".gemini/hooks/_step_metadata.py::_no_test_slug_map",
+        ".gemini/hooks/_step_metadata.py::_string_list"
+      ],
+      "name": "load_step_metadata"
+    },
+    ".gemini/hooks/_step_metadata.py::resolve_mode_table": {
+      "filePath": ".gemini/hooks/_step_metadata.py",
+      "importedBy": [],
+      "imports": [
+        ".gemini/hooks/_step_metadata.py::_empty_mode_table"
+      ],
+      "name": "resolve_mode_table"
+    },
+    ".gemini/hooks/editor-step-hook.py::_clear_step_context_marker": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "_clear_step_context_marker"
+    },
+    ".gemini/hooks/editor-step-hook.py::_context_injection_key": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::_editor_context_lines"
+      ],
+      "imports": [],
+      "name": "_context_injection_key"
+    },
+    ".gemini/hooks/editor-step-hook.py::_editor_context_due": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::_editor_context_lines"
+      ],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_read_step_context_marker",
+        ".gemini/hooks/editor-step-hook.py::_step_context_due",
+        ".gemini/hooks/editor-step-hook.py::_write_step_context_marker"
+      ],
+      "name": "_editor_context_due"
+    },
+    ".gemini/hooks/editor-step-hook.py::_editor_context_lines": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_context_injection_key",
+        ".gemini/hooks/editor-step-hook.py::_editor_context_due"
+      ],
+      "name": "_editor_context_lines"
+    },
+    ".gemini/hooks/editor-step-hook.py::_empty_mode_table": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::load_step_metadata",
+        ".gemini/hooks/editor-step-hook.py::resolve_mode"
+      ],
+      "imports": [],
+      "name": "_empty_mode_table"
+    },
+    ".gemini/hooks/editor-step-hook.py::_kv_pairs_to_int_dict": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::load_step_metadata"
+      ],
+      "imports": [],
+      "name": "_kv_pairs_to_int_dict"
+    },
+    ".gemini/hooks/editor-step-hook.py::_no_test_slug_map": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::load_step_metadata"
+      ],
+      "imports": [],
+      "name": "_no_test_slug_map"
+    },
+    ".gemini/hooks/editor-step-hook.py::_read_step_context_marker": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::_editor_context_due",
+        ".gemini/hooks/editor-step-hook.py::_step_context_due",
+        ".gemini/hooks/editor-step-hook.py::_step_reminder_due"
+      ],
+      "imports": [],
+      "name": "_read_step_context_marker"
+    },
+    ".gemini/hooks/editor-step-hook.py::_step_context_due": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::_editor_context_due",
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_read_step_context_marker",
+        ".gemini/hooks/editor-step-hook.py::_write_step_context_marker"
+      ],
+      "name": "_step_context_due"
+    },
+    ".gemini/hooks/editor-step-hook.py::_step_injection_key": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "_step_injection_key"
+    },
+    ".gemini/hooks/editor-step-hook.py::_step_reminder_due": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_read_step_context_marker",
+        ".gemini/hooks/editor-step-hook.py::_write_step_context_marker"
+      ],
+      "name": "_step_reminder_due"
+    },
+    ".gemini/hooks/editor-step-hook.py::_string_list": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::load_step_metadata"
+      ],
+      "imports": [],
+      "name": "_string_list"
+    },
+    ".gemini/hooks/editor-step-hook.py::_write_step_context_marker": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::_editor_context_due",
+        ".gemini/hooks/editor-step-hook.py::_step_context_due",
+        ".gemini/hooks/editor-step-hook.py::_step_reminder_due"
+      ],
+      "imports": [],
+      "name": "_write_step_context_marker"
+    },
+    ".gemini/hooks/editor-step-hook.py::detect_event": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "detect_event"
+    },
+    ".gemini/hooks/editor-step-hook.py::label_signals_user_feedback_phase": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "label_signals_user_feedback_phase"
+    },
+    ".gemini/hooks/editor-step-hook.py::load_step_metadata": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_empty_mode_table",
+        ".gemini/hooks/editor-step-hook.py::_kv_pairs_to_int_dict",
+        ".gemini/hooks/editor-step-hook.py::_no_test_slug_map",
+        ".gemini/hooks/editor-step-hook.py::_string_list"
+      ],
+      "name": "load_step_metadata"
+    },
+    ".gemini/hooks/editor-step-hook.py::log_event": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "log_event"
+    },
+    ".gemini/hooks/editor-step-hook.py::main": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_clear_step_context_marker",
+        ".gemini/hooks/editor-step-hook.py::_editor_context_lines",
+        ".gemini/hooks/editor-step-hook.py::_step_context_due",
+        ".gemini/hooks/editor-step-hook.py::_step_injection_key",
+        ".gemini/hooks/editor-step-hook.py::_step_reminder_due",
+        ".gemini/hooks/editor-step-hook.py::detect_event",
+        ".gemini/hooks/editor-step-hook.py::label_signals_user_feedback_phase",
+        ".gemini/hooks/editor-step-hook.py::load_step_metadata",
+        ".gemini/hooks/editor-step-hook.py::log_event",
+        ".gemini/hooks/editor-step-hook.py::mode_display_prefix",
+        ".gemini/hooks/editor-step-hook.py::mode_is_build",
+        ".gemini/hooks/editor-step-hook.py::resolve_mode"
+      ],
+      "name": "main"
+    },
+    ".gemini/hooks/editor-step-hook.py::mode_display_prefix": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "mode_display_prefix"
+    },
+    ".gemini/hooks/editor-step-hook.py::mode_is_build": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [],
+      "name": "mode_is_build"
+    },
+    ".gemini/hooks/editor-step-hook.py::resolve_mode": {
+      "filePath": ".gemini/hooks/editor-step-hook.py",
+      "importedBy": [
+        ".gemini/hooks/editor-step-hook.py::main"
+      ],
+      "imports": [
+        ".gemini/hooks/editor-step-hook.py::_empty_mode_table"
+      ],
+      "name": "resolve_mode"
+    }
+  },
+  "files": {
+    ".gemini/hooks/_step_metadata.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    ".gemini/hooks/editor-step-hook.py": {
+      "importedBy": [],
+      "imports": []
+    }
+  }
+}

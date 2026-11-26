@@ -1,0 +1,73 @@
+{
+  "hooks": {
+    "AfterAgent": [
+      {
+        "hooks": [
+          {
+            "command": "test -f .gemini/hooks/editor-step-hook.py && mkdir -p .codeyam/logs && python3 .gemini/hooks/editor-step-hook.py 2>>.codeyam/logs/editor-hook-stderr.log || true",
+            "name": "editor-step-hook",
+            "timeout": 5000,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "AfterTool": [
+      {
+        "hooks": [
+          {
+            "command": "test -f .gemini/hooks/editor-step-hook.py && mkdir -p .codeyam/logs && python3 .gemini/hooks/editor-step-hook.py 2>>.codeyam/logs/editor-hook-stderr.log || true",
+            "name": "editor-step-hook",
+            "timeout": 5000,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "BeforeAgent": [
+      {
+        "hooks": [
+          {
+            "command": "test -f .gemini/hooks/editor-step-hook.py && mkdir -p .codeyam/logs && python3 .gemini/hooks/editor-step-hook.py 2>>.codeyam/logs/editor-hook-stderr.log || true",
+            "name": "editor-step-hook",
+            "timeout": 5000,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreCompress": [
+      {
+        "hooks": [
+          {
+            "command": "test -f .gemini/hooks/editor-step-hook.py && mkdir -p .codeyam/logs && python3 .gemini/hooks/editor-step-hook.py 2>>.codeyam/logs/editor-hook-stderr.log || true",
+            "name": "editor-step-hook",
+            "timeout": 5000,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "test -f .gemini/hooks/editor-step-hook.py && mkdir -p .codeyam/logs && python3 .gemini/hooks/editor-step-hook.py 2>>.codeyam/logs/editor-hook-stderr.log || true",
+            "name": "editor-step-hook",
+            "timeout": 5000,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "ui": {
+    "hideBanner": true,
+    "hideContextSummary": true,
+    "hideFooter": true,
+    "hideTips": true,
+    "hideWindowTitle": true,
+    "showShortcutsHint": false,
+    "showUserIdentity": false
+  }
+}

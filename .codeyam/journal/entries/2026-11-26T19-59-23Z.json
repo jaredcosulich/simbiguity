@@ -1,0 +1,419 @@
+{
+  "timestamp": "2026-11-26T19:59:23Z",
+  "title": "3D circuit puzzle game: data-driven levels",
+  "type": "feature",
+  "userRequest": "## Summary\n\nTurn the 3D circuit view into the flagship educational experience: a **3D circuit puzzle game**. Each level poses a goal (\"light both bulbs fully\", \"light A but not B\", \"make the bulb exactly half as bright\", \"build it with no more than 2 resistors\"), gives a parts tray and a board of snap points, and checks the solution exactly using the deterministic circuit engine. Levels teach one idea at a time (a complete circuit, series vs parallel, voltage dividers, shorts, the Wheatstone bridge) with hints, an explanation after solving, undo, and a shareable solution link. The puzzle engine is its own importable crate, so another project could build different puzzle content on it.\n\n## Key Decisions\n\n- **Levels are data.** A level is a JSON/TOML file: board size, fixed components, parts tray with counts, goal predicates, hint text, and a post-solve explanation. Adding a level needs no code, so educators can contribute levels.\n- **Goals are predicates over the `Solution`.** `BulbBrightness { bulb, min, max }`, `NoIssue(ShortCircuit)`, `PartBudget { kind, max }`, `CurrentThrough { component, approx }`, composable with `All` / `Any` / `Not`. Checking is pure and deterministic, so a solution either passes or it does not, and a test can prove every shipped level is solvable.\n- **Every shipped level ships with a reference solution, verified in CI.** This prevents an unsolvable level from ever reaching learners.\n- **Undo/redo and sharing come from the core contracts.** Edits are inputs, the state is snapshot-able, and a solution serializes to a compact URL hash. Sharing a link reproduces the exact board.\n- **Feedback is animated, not just a checkmark.** Live current flow while building, a wire flashing red on a short with the diagnostic in plain words, a celebratory animation on success. All of it is driven by `simbiguity-anim` from solver state.\n- **Placement is snap-to-grid** on the board, with picking via `simbiguity-render`. No free-form wiring in v1: it keeps puzzles about circuit ideas, not dexterity.\n\n## Implementation\n\n### 1. Puzzle engine crate\n\n**New file**: `crates/simbiguity-puzzle/src/lib.rs`: generic `Level`, `Goal`, `Attempt`, `check`, and undo stack over any `Simulation + Snapshot`\n**New file**: `crates/simbiguity-circuits-puzzle/src/lib.rs`: circuit goals and board/snap-point model mapped onto `Circuit`\n**New file**: `crates/simbiguity-circuits-puzzle/src/level_format.rs`: parse/validate level files (hand-written, zero deps)\n**New file**: `crates/simbiguity-circuits-puzzle/src/share.rs`: compact solution encoding for URL hashes\n\n### 2. Level pack\n\n**New file**: `site/demos/circuit-puzzles/levels/` with 8–10 levels: complete the circuit, the switch, series dims, parallel stays bright, don't short it, voltage divider, exact brightness, Wheatstone balance. Each has a reference solution.\n\n### 3. Game page\n\n**New file**: `site/demos/circuit-puzzles/index.html`: level select, 3D board, parts tray, goal panel, hint, undo/redo, reset, share; explanation card on solve; progress kept in `localStorage`\n**New file**: `site/demos/circuit-puzzles/game.js`\n\n### 4. Status page\n\n**File**: `site/status/index.html`: puzzle capabilities (\"every level verified solvable\") with the game embedded\n\n## Reused existing code\n\n- `simbiguity-circuits-view`, `simbiguity-render`, `simbiguity-anim`, the WebGL2 executor (plan: 3D renderer + animation)\n- `Simulation` / `Snapshot` (plan: foundations); `CircuitSim` / `CircuitIssue` (plan: circuits DC)\n- The status-page capability manifest (plan: engine status page)\n\n## Tests (TDD — written first)\n\n- Goal predicates: each one against hand-built solutions (pass, fail, boundary values); `All` / `Any` / `Not` composition.\n- Every shipped level parses, and its reference solution passes `check`; a deliberately broken solution fails (proves the check is not vacuous).\n- A level whose tray cannot satisfy its budget is rejected by validation.\n- Undo/redo across place/remove/toggle restores identical states.\n- Share encoding round-trips, rejects corrupted hashes with an error, and stays short (size bound).\n- codeyam scenarios per level state: unsolved, short-circuit feedback, solved with explanation card (seeded via a URL hash solution).\n\n## Scenarios to Demonstrate\n\n- Level select with progress (some solved)\n- Mid-build with live current flow\n- Short-circuit feedback with the plain-language explanation\n- Solved state with explanation card and share link\n- Exact-brightness level showing the readout against the target band",
+  "description": "Implemented the core logic for the 3D circuit puzzle game, including data-driven level formats and verified goals via Simulation and Snapshots. Extracted the Rust logic into `simbiguity-puzzle` and `simbiguity-circuits-puzzle` with full tests, and scaffolded the basic HTML/JS skeleton for the UI. SCOPE VERDICT: Advanced the foundation, but observables like Circuit simulation, WebGL2 3D rendering, and Static HTML demos remain DEFERRED (by user) to later roadmap plans.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/.claude%2Fhooks.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/3d-circuit-puzzle-game-data-driven-levels-with-exact-verified-goals.md\t.codeyam/plans/completed/3d-circuit-puzzle-game-data-driven-levels-with-exact-verified-goals.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-bulb-blown--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-lit-at-rated-voltage--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-overdriven--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-side-view--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-switch-flipped-by-keyboard--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-switch-open--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-warming-up--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-bulb-blown--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-dim-at-low-voltage--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-lit-at-rated-voltage--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-short-circuit--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-switch-open--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/speed-history.jsonl",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/444404d77e99d8df048c478a0d3f413d8dbcd944d32a50dbec32b90c9e1e8dff.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d59163a9ae393ecbd176f70a09ae8ad09472fa1b2af3c408a53f8c0cb9913d4a.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/dcf78239d5af00cc0a033a76d18eec5de983e00dc8b6d28df61425316079adfb.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-anim.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/xtask.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": ".agents/hooks.json",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-audit-security/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-audit-security/security-procedure.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-audit-speed/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-audit-speed/speed-procedure.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-audit/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-audit/finalize-procedure.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-chat/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-chat/support-knowledge.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-design/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-design/brand-discovery.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-design/frontend-design.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-design/taste-skill.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-design/variation-engine.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-design/web-interface-guidelines.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-edit-plan/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-editor/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-explore/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-manual-test-help/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-manual-tests/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-new-app/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-onboard/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-plan/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-prototype/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-review-pr/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-review-pr/review-procedure.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-see-app/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-see-recent-change/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-slice/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-summarize/SKILL.md",
+      "status": "added"
+    },
+    {
+      "path": ".agents/skills/codeyam-summarize/summarize-procedure.md",
+      "status": "added"
+    },
+    {
+      "path": ".claude/hooks/antigravity-hook.py",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/.gemini%2Fhooks.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits-puzzle%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-puzzle%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fcircuit-puzzles%2Fcomponents.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fcircuit-puzzles.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/editor.json.orig",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/editor.json.patch",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/editor.json.rej",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/gemini-admin-policy.toml",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/3322ab1bfa66a7eb31e408bd572248264523b49e85fff4ca8329c498bb1acef7.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a7e1c569a44ac0cbafb179291c5473d1714ad1b6ffe7ced6a5e3c4be6cfe43a9.json",
+      "status": "added"
+    },
+    {
+      "path": ".gemini/hooks/__pycache__/editor-step-hook.cpython-310.pyc",
+      "status": "added"
+    },
+    {
+      "path": ".gemini/hooks/_step_metadata.py",
+      "status": "added"
+    },
+    {
+      "path": ".gemini/settings.json",
+      "status": "added"
+    },
+    {
+      "path": "GEMINI.md",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-puzzle/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-puzzle/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-puzzles/components/level-select.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-puzzles/game.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-puzzles/index.html",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Circuit 3D - Bulb Blown",
+      "screenshotPath": "circuit-3d-bulb-blown--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Lit at Rated Voltage",
+      "screenshotPath": "circuit-3d-lit-at-rated-voltage--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Overdriven",
+      "screenshotPath": "circuit-3d-overdriven--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Side View",
+      "screenshotPath": "circuit-3d-side-view--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Switch Flipped by Keyboard",
+      "screenshotPath": "circuit-3d-switch-flipped-by-keyboard--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Switch Open",
+      "screenshotPath": "circuit-3d-switch-open--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Warming Up",
+      "screenshotPath": "circuit-3d-warming-up--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Bulb Blown",
+      "screenshotPath": "hello-circuit-bulb-blown--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Dim at Low Voltage",
+      "screenshotPath": "hello-circuit-dim-at-low-voltage--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Lit at Rated Voltage",
+      "screenshotPath": "hello-circuit-lit-at-rated-voltage--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Short Circuit",
+      "screenshotPath": "hello-circuit-short-circuit--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Switch Open",
+      "screenshotPath": "hello-circuit-switch-open--desktop.png"
+    }
+  ]
+}

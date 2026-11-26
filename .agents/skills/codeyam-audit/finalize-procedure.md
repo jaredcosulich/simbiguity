@@ -1,0 +1,2458 @@
+# codeyam-audit procedure — align, finalize, present, drive to merge-ready
+
+The authoritative, version-controlled body of the `/codeyam-audit` skill:
+**bring this repo into full codeyam alignment, finalize it whole-repo, clean it
+for presentation, and drive it to merge-ready — aggressively on deterministic
+drift, deciding every judgment call by the written rules below, and asking the
+user exactly one question: whether to ship.**
+
+This file is the *procedure*; the sibling `SKILL.md` is the thin, stable
+*contract* that points here. Durable knowledge accrues in this file so the
+skill's "Reflect & self-improve" step can propose edits to **this file**
+(never a silent edit to `SKILL.md`) through the standard editor workflow.
+
+It is **self-contained**: a client project has no `CLAUDE.md` to lean on, so
+every command, default, and gotcha needed to converge is written here. Read it
+top to bottom on first use; on later runs, recalled memories supply the deltas.
+
+---
+
+## What this skill is (and is not)
+
+- **It is the one comprehensive "finalize outside the editor workflow" entry.**
+  Run it when you have accumulated deferred-finalize commits, made manual
+  commits outside the workflow, or just want to bring whatever HEAD currently
+  is into full alignment and merge-readiness.
+- **It is aggressive on deterministic drift.** Mechanical alignment fixes
+  (registry reconcile, test/evidence/description refresh, capture-script sync,
+  screenshot recapture, import-graph refresh) are applied autonomously.
+- **It decides judgment calls by rule, and defers big fixes by plan.** A bulk
+  unregistered-entity wall, an ambiguous classification (fixture vs real,
+  testable vs untestable), a stale-looking doc line, and a CI fork are each
+  settled by the written rule in step 4b, step 6, or step 8a — never by a
+  mid-run question. The user running this audit usually cannot answer those
+  questions and does not need to: the audit's job is to leave the codebase in
+  the best shape it can. When the right fix is **too big for this pass** (the
+  bar is in step 4b), the run writes a `/codeyam-plan` plan for it and leaves
+  those findings **visible** — never baselined. They keep failing the audit,
+  so the branch is not merge-ready until the plan lands; the ship question
+  (step 7) names the open findings and the plan that owns them.
+- **It is idempotent and resumable.** Every run makes progress; re-running
+  picks up where the last left off. A run ends **merge-ready, with a report**
+  of the decisions it made, the spend it made, and the plans it wrote — or,
+  when a too-big fix was planned, with everything else done and those open
+  findings named beside their plan — so the
+  user can still disagree after the fact. It never bails-and-abandons mid-way,
+  and never leaves the repo half-aligned. "Aggressive" means *relentless toward
+  done*, not *reckless*: nothing uncertain is ever deleted (step 6).
+- **One ship question.** Pushing the branch, opening/updating the PR, driving
+  CI green, and merging are irreversible, so they are gated — by **one**
+  plain-language question at the end of the run (step 7), not three. A yes
+  covers all of them, including step 8a's CI-fix loop. The one standing form
+  of that yes is the scheduled invocation below. The only other question a run
+  may ask is the scope-change re-ask in step 8a.
+- **On a client project it never touches the editor binary.** Preflight
+  records whether this is the codeyam-editor workspace itself (**self-host
+  mode**) or any other project (**client mode**). In client mode the run never
+  rebuilds, reinstalls, upgrades, or restarts the `codeyam-editor` binary or
+  server, and never asks the user to. A capability the installed editor lacks
+  is worked around and listed under **CodeYam improvements** in the final
+  report.
+
+### Scheduled invocation — `scheduled-finalize` / `scheduled-merge`
+
+The plan run schedule types this skill into the agent terminal after its last
+Fast-commit plan completes, when the user ticked "Finalize the branch after
+the last plan" in the Run Schedule panel. The argument is the user's choice,
+recorded in that panel, of how far this run may go without them:
+
+- **`scheduled-finalize`** — run unattended through step 7 to merge-ready
+  (`verify-full-finalize` exit 0), then stop and report. Do **not** push, and
+  do not ask the ship question: it waits in the report for the user.
+- **`scheduled-merge`** — the same, then treat the ship question as **already
+  answered yes**: push → PR create/update → drive CI green → merge without
+  asking. Every other rule still holds — the 8b stripped-body rule, the
+  read-back-before-retry rule, 8a's investigate-before-classify, and 8a's
+  scope-change re-ask.
+
+The schedule never decides on its own to finalize. The branch's deferred
+debt is never a reason, however large it gets. The only time it types
+`scheduled-finalize` **between plans** is when the user asked for the full
+check (the closing question's "run the full check" answer, recorded by
+`plan-schedule finalize-request`). That run is always `scheduled-finalize`,
+never `scheduled-merge`, and plans are still queued behind it. Run it exactly
+like the end-of-run finalize, and do not touch the queue.
+
+**Release the branch finalize lock when a scheduled run ends.** Before typing
+this skill, the schedule took a branch-wide lock so that only one computer on
+the branch finalizes it. That is the computer that finished last. Whatever
+ends this run must release that lock: merge-ready, merged, or failed and
+handed back to the user. Run:
+
+```bash
+codeyam-editor editor plan-schedule finalize-release
+```
+
+It is a no-op when this computer holds no lock, so run it on every terminal
+outcome without checking first. Skipping it leaves the next finalize on this
+branch refused, and the Run Schedule panel then reports a finalize "running"
+on this computer that has already ended. After a full check the user asked
+for between plans, the same command also queues the schedule's next plan,
+which starts when this turn ends. Without it the run stays stopped.
+
+A scheduled run never offers the speed or security review (step 8c): nobody
+is there to answer it.
+
+Judgment calls are decided by rule in **every** mode, so an unattended run
+never waits mid-way for an answer: the rules in step 4b, step 6, and step 8a
+apply identically whether the user is watching or away. With no argument, the
+run asks the one ship question at the end of step 7.
+
+There is also a **report-only mode** (see the last section): the cheap "just
+tell me what's misaligned, don't touch anything" path, including the
+deferred-commit attribution report. The headline behavior is the aggressive
+drive; report-only is an explicit opt-in.
+
+---
+
+## 0. Preflight — initialized project + supported stack
+
+**Confirm the project is initialized for codeyam-editor.**
+
+```bash
+codeyam-editor editor config-show >/dev/null 2>&1 || {
+  echo "Project is not initialized for codeyam-editor. Run /codeyam-onboard first."
+  exit 1
+}
+```
+
+If it fails, tell the user to run `/codeyam-onboard` and stop. Do not proceed.
+
+**Read the stack up front and gate on it.** The audit engine aligns and
+finalizes per stack; on a stack it does not yet support, a partial sync would
+report a half-aligned repo as clean — a false green. So fail loud and
+actionable instead:
+
+```bash
+codeyam-editor editor capabilities-list --format json   # what this binary supports
+cat .codeyam/stack.json                                  # this repo's declared stack
+```
+
+- **Supported stack** → drive to full sync (the rest of this procedure).
+- **Unsupported stack** → stop with a precise, actionable message naming the
+  stack and the supported set, e.g.:
+  `/codeyam-audit does not yet fully support stack 'X'. Supported: <list>.`
+  Do **not** proceed into a partial sync that would mislabel the repo as clean.
+
+> This mirrors the engine's own stack-agnosticism contract: generalize from
+> config where you can, and where you genuinely can't, **fail loud** rather
+> than silently producing a false-green on an unsupported stack.
+
+**Record the audit mode — self-host or client — once, from the binary.** Do
+not guess it from the directory name or the presence of a `crates/` folder;
+ask the installed editor, which already knows:
+
+```bash
+codeyam-editor editor rebuild-self --check
+```
+
+- **`not-applicable`** → **client mode**. So is **`aliases-diverged`** when its
+  stderr says the aliases run an older build "until the operator refresh
+  relinks them" (that verdict exists on clients too, with its own
+  client-correct recovery — follow that stderr line verbatim and nothing more;
+  it never asks you to rebuild).
+- **Any other verdict** (`current`, `stale`, `server-stale`,
+  `release-profile-stale`, `rebuild-in-flight`, `ui-bundle-stale`, …) →
+  **self-host mode**: this project IS the codeyam-editor workspace.
+
+Every instruction below that builds, swaps, installs, upgrades, or restarts the
+editor binary or its server is **self-host only**. In client mode, never run
+`rebuild-self`, `cargo install`, or `restart-server`, never tell the user to
+upgrade the editor, and never treat an outdated binary as a step they must take.
+When the installed editor lacks a command, flag, or fix this procedure names,
+use the workaround it gives (or the closest read-only equivalent), continue,
+and list the gap under **CodeYam improvements** in the final report — what was
+missing, and the workaround used.
+
+**List the re-tests a push handed to this audit.** A push made with
+`editor push --defer-to-audit "<reason>"` skipped its queue-head re-test and
+left a `deferToAudit` note on the pushed tip, in the shipped
+`refs/notes/codeyam/emergency-push` ref. Fetch that ref, then let the merge
+gate name what is still owed:
+
+```bash
+git fetch origin '+refs/notes/codeyam/emergency-push:refs/notes/codeyam/emergency-push' 2>/dev/null || true
+codeyam-editor editor verify-full-finalize --format json   # read its `deferredToAudit` array
+```
+
+Each entry is a commit since the merge-base whose skipped partitions no full
+finalize has re-run yet. They are **owed**, not optional: the whole-repo
+`session-finalize` this procedure runs re-runs every partition and settles
+them, and the branch is not merge-ready until it does. Name each entry (short
+sha, skipped partitions, the quoted reason) under **Decisions** in the final
+report. A `verify-full-finalize` exit 0 means none are left owed.
+
+---
+
+## The one unrecoverable rule (read before any commit)
+
+**NEVER rebase, amend, or force-push commits that have been pushed.** A
+concurrent session (or a teammate) may have committed under you at any moment.
+Integrate a moved primary branch by **merging it in**, never by rebasing onto
+it — `codeyam-editor editor sync-upstream --base` is the command that does it
+(the `--base` step always records a merge commit). Every other mistake in this
+procedure is recoverable; this one rewrites history other people may be
+building on and cannot be undone.
+
+**What the sync tools may rebase, and how they say so.** Before `--base`,
+`sync-upstream` (and `pre-commit-sync`) level the branch with its own upstream.
+On a branch with no merge commits over that upstream, that step **rebases the
+unpushed local commits** onto it and prints `sync: rebasing N unpushed
+commit(s) onto <upstream> (no shared history affected)`; `sync-upstream`'s JSON
+records it as `"integration": {"strategy": "rebase", "rebasedCommits": N}`.
+Those commit ids change, but no shared history does. It never replays a commit
+that any remote-tracking ref already has — that case integrates by merge
+(`"reason": "published-commits"`). So the rule above is enforced by the tool;
+don't hand-run a `git rebase` to get the same result.
+
+**Assume shared unless told otherwise.** On a genuinely private branch the
+only cost of merging is a slightly less-clean merge commit — which is never
+*wrong*. So default to merge; the user can override only by explicitly saying
+the branch is private.
+
+Because a sibling can commit between any two of your commands:
+
+- Re-check `git branch --show-current` before *every* commit — a merged-PR
+  auto-switch can move you off the branch you think you're on.
+- Re-check `git rev-list --count origin/<branch>..HEAD` and
+  `HEAD..origin/<branch>` before committing, so you see divergence the moment
+  it appears and merge it in rather than discovering it at push.
+
+> **Fleet block** (active only when the repo participates in a shared commit
+> queue — sibling sessions, a per-branch push queue). The push/finalize tail
+> prints `Commit queue: ...` lines; these are normal serialization, not
+> errors. Every queue bail names its own recovery command — read the bail body
+> and run exactly what it says; do not hand-stitch a workaround. On a solo
+> branch with no upstream the queue is disabled and this block is inert.
+
+### After every merge you resolve — a clean conflict list is not evidence
+
+A merge is an integration event, not a pass-through: stop and re-assert the
+invariants a line-based merge cannot see **before** continuing.
+
+```bash
+codeyam-editor editor verify-merge-consistency     # the merge's changed files + staticChecks
+```
+
+It flags the same import listed twice from one module (both sides added it in
+different positions, so the three-way merge kept both), a screenshot
+`.png.hash` with no `.png` beside it or the reverse (the hash and the PNG are
+one artifact in two files, and the merge resolved them independently), and any
+failing `staticChecks` entry (`tsc --noEmit` among them). It scopes itself to
+the merge in progress, else a just-committed merge commit against its first
+parent; `--base <ref>` and `--all` widen it. Exit `2` names the fix per finding.
+
+Then run the test suites covering the changed files
+(`codeyam-editor editor refresh-tests --changed`). This step earned its place on
+a 402-file merge: git reported success, `tsc` found two duplicate imports, the
+audit found an orphaned screenshot hash, and the tests that broke — five of
+them, asserting a write shape the resolution had changed — were all in files git
+**auto-merged**, not the ones it flagged as conflicts. Stale-assertion tests
+like those cannot be detected statically; only running them finds them.
+
+---
+
+## 1. ORIENT — branch, debt, and the whole-repo preview
+
+Establish where you are before changing anything.
+
+```bash
+git branch --show-current                     # safe default: the current branch
+git fetch origin                              # see siblings' work without integrating yet
+git rev-list --count origin/<branch>..HEAD    # commits you have that origin doesn't
+git rev-list --count HEAD..origin/<branch>    # commits origin has that you don't
+codeyam-editor editor finalize-debt show --format json
+```
+
+**Determine what is waiting to be integrated — now, while it is free.** (A
+self-check for you, not a question for the user.) Every
+screenshot this run captures is derived from the working tree, so a merge that
+lands *after* the sweep and touches what the scenarios render (UI source,
+styles, bundler config) throws the whole sweep away. Measured 2026-10-07: a
+2,216-scenario sweep (~2 h) was killed 14 minutes in because a 402-file UI
+sibling branch was still unmerged. Answer it with a diff stat per candidate:
+
+```bash
+git diff --stat HEAD...origin/<branch>        # your own upstream
+git diff --stat HEAD...origin/<primary>       # the branch base
+git diff --stat HEAD...origin/<sibling>       # any sibling this branch must absorb
+```
+
+**Rule: integrate everything that touches capture inputs BEFORE step 5's
+screenshot sweep.** A pending merge confined to backend code, skills, or docs
+cannot change a frame and may wait.
+
+`finalize-debt show` lists the deferred commits owed a full `session-finalize`.
+**Zero deferred and no divergence** → the branch may already be merge-ready;
+jump to step 5's `verify-full-finalize` check and short-circuit if it passes
+("nothing to finalize").
+
+**Deferred SHAs that no longer resolve → `finalize-debt rebuild`, then
+re-check.** The ledger (`.codeyam/state/finalize-debt.json`) records each
+deferred commit by SHA, and an upstream rebase rewrites those SHAs. The read-only
+`finalize-debt show` and `finalize-preflight` deliberately keep an entry whose
+commit is gone rather than silently dropping it, so after a rebase they report
+deferred commits that `git cat-file -e <sha>` cannot find. Do not hand-edit the
+ledger. Rebuild it from the `Codeyam-Finalize: deferred` commit trailers, which
+survive the rebase, and re-run the check:
+
+```bash
+codeyam-editor editor finalize-debt rebuild    # --base-ref <ref> to bound the walk
+codeyam-editor editor finalize-preflight       # the unreachable entries are gone
+```
+
+**Preview the whole-repo finalize debt, not just the diff-only gate.** Any
+per-step Fast-Commit gate you have been passing is **diff-scoped** — it only
+sees the current diff. `session-finalize` runs the *strict, whole-repo* audit,
+which can surface inherited debt (e.g. a `SOURCE_HAS_UNREGISTERED` wall) that
+was invisible all session. Surface that count *now* so the size of the run is
+known up front rather than discovered at the finalize wall.
+
+> GOTCHA — **diff-scoped gate vs whole-repo finalize.** Passing every
+> per-step gate does **not** mean `session-finalize` will pass. Treat a green
+> session as "the diff is clean," never as "the branch is finalize-ready."
+
+**Converge the binary AND the server before anything routed through the
+server — self-host mode only.** (Keyed off the mode preflight recorded. In
+**client mode** the editor binary is installed, not built here: skip this whole
+block, and if `server-identity` reports config STALE, run
+`codeyam-editor editor reload-config` — never `rebuild-self` or
+`restart-server`, which end the agent session running inside the editor and are
+not the client's to run. If the server is behind in a way `reload-config` does
+not fix, work around it and list it under CodeYam improvements.) These are two build
+surfaces, not one. `rebuild-self` rebuilds and
+swaps the *binary*, so your next CLI invocation runs new code; the editor
+**server** is a separate long-lived process that keeps executing whatever build
+it booted with until it is restarted. Test runs, gate runs and preview captures
+are routed through the server, so a stale server does not make them slow — it
+makes their conclusions **invalid**. Measured: a 25-minute `refresh-tests` warm
+produced a completely void result because the server was running a build that
+predated 61 edited files.
+
+Read the state before you spend anything on it — the probe never builds, swaps,
+or restarts:
+
+```bash
+codeyam-editor editor rebuild-self --check
+```
+
+Treat any verdict other than `current` as **blocking for server-routed work**:
+
+| Verdict | What it means here |
+|---|---|
+| `current` | Binary and aliases agree with the source. Proceed. |
+| `stale` | A source edit (or a failed post-swap restart) is not in the binary. Run `rebuild-self` — read the stderr guidance, which names the recovery that fits. |
+| `rebuild-in-flight` | A detached worker is still building. Run `rebuild-self` to re-attach; do not start a second build. |
+| `aliases-diverged` | The binary is current but the role hardlinks point at a previous generation — usually after a bare `cargo install --force`. A plain `rebuild-self` relinks them on its already-current fast path without recompiling. |
+
+> GOTCHA — **`rebuild-in-flight` can be checked, so check it before you
+> re-attach.** The probe now verifies that the recorded pid is actually a
+> `rebuild-self` worker, not just that some process holds that pid. When it throws out
+> a leftover record, its stderr says `ignoring a stale rebuild job record` and
+> why. If you still doubt the verdict, the two signatures are opposite:
+> - **No worker:** `pgrep -f rebuild-self` finds nothing, and
+>   `.codeyam/state/rebuild-self-restart.json` reads
+>   `"outcome":"succeeded"` with a `buildSha` equal to HEAD. There is nothing to
+>   attach to. Report it as a bug rather than waiting.
+> - **Genuinely mid-restart:** `pgrep` finds the worker,
+>   `codeyam-editor editor server-identity` returns nothing (the server is
+>   bouncing), and the restart record is absent. Waiting is correct here.
+
+Then make sure the *server* picked the new binary up:
+
+```bash
+codeyam-editor editor restart-server
+```
+
+> GOTCHA — **`--defer-restart` is the wrong choice whenever the next step
+> routes through the server.** It swaps the binary and deliberately skips the
+> bounce, which is exactly the state that yields a void warm. It exists to
+> protect a session *hosted by the PTY broker* — i.e. one that would be dropped
+> by the bounce. A laptop session usually is not hosted that way, so check
+> whether this session actually descends from the server before assuming it
+> needs protecting. Choosing `--defer-restart` to be safe, on a session that was
+> never at risk, guarantees the one outcome you were trying to avoid.
+
+**No server running?** (`rebuild-self` says `no editor server running`, or
+`server-identity` cannot reach one.) Start one for THIS project, by absolute
+path, and prove it is the right server before any server-routed step:
+
+```bash
+codeyam-editor start --no-open --project "$(pwd)"   # run from the repo root
+codeyam-editor editor server-identity
+```
+
+Read two rows before going on. `project dir:` must be this repo. `build:` must
+match the CLI; if it does not, the `rebuild-self --check` probe above settles
+whether that difference matters.
+
+> GOTCHA — **a bare `start` opens the Project Launcher, not this project.**
+> With two or more projects in the global registry, `codeyam-editor start`
+> without `--project` boots in launcher mode by design (it prints
+> `Launcher mode (N registered projects)` and serves the `/projects` selector),
+> even when run from inside this repo. Every server-routed step
+> (`refresh-tests`, `recapture-stale`, the finalize's Phase 1) then talks to the
+> launcher and fails opaquely, and `server-identity` reads
+> `(unknown — older server)` for every field. Pass an absolute path rather than
+> a project name: a name is substring-matched against the registry and can
+> select a sibling project.
+
+---
+
+## 2. See the whole failure set at once — no fail-fast
+
+Before fixing anything, get the *complete* list of what is broken, not the
+first failure:
+
+```bash
+codeyam-editor editor audit --format json
+```
+
+Read every `failures[]` entry and the `attribution[]` array together. Each
+attribution row is `{invariantId, item, introducedIn, causedByHead,
+causedByBranchDrift, causedByForeignClone}` and joins back to a finding where
+`invariantId` equals the finding's `id` and `item` is one of the finding's
+`items` (a `failures[]` row is `{id, title, items, …}` — it has no
+`invariantId` or singular `item`). Rows appear only for items whose introducing commit
+resolved, so an item with no row is "not attributable", not "attributed to
+nothing" — the same thing the text renderer means when it omits the `★`
+marker. Note `--findings-only` deliberately omits the array; the default
+`--format json` is what carries it.
+
+**Read `cacheFreshness` BEFORE you quote the user a number.** The same
+document carries a `cacheFreshness` sibling —
+`{green, stale, red, nonGreenPartitions[], nonGreenCauses{}, cacheDependentFindings}`
+— and it is present on every projection (`--format json`, `--findings-only`,
+`--summary-only --format json`), green or not, so its absence means an old
+binary, never a green cache.
+
+`green` counts only partitions nothing has invalidated, which includes
+invalidation a partition did not cause itself: a partition whose own sources
+never moved is still not green when it shares a runner with one that drifted,
+because a single runner invocation wrote both of their caches. `nonGreenCauses`
+maps each attributed partition to which check named it — `own-hash-drift`,
+`runner-coupled`, or `aggregate-behind` — so you can tell the drift you just
+caused from the drift you inherited without re-deriving it. Treat all of them
+as equally untrustworthy for pricing: they differ in what they say about the
+edit, not in how much doubt they cast. (Before this split, runner-coupled
+partitions were counted green here, so this sibling read `19 green / 1 stale`
+on a tree where `editor test-status` reported 8 stale — and the refresh that
+ratio priced as unnecessary removed 35 of 36 findings.)
+
+When `nonGreenPartitions` is non-empty, the
+finding count is an **upper bound, not a debt estimate**:
+`cacheDependentFindings` of the total are derived from runner output or
+coverage those partitions produce, and they dissolve on a refresh. Measured
+on `editor-improvements-73` (2026-08-17): 39 findings on a cold cache — 112
+`REGISTRY_ENTRY_RUNNER_OUTPUT_EMPTY`, 114 `REGISTRY_TEST_NOT_WIRED`, 22
+`PLATFORM_GATE_MISMATCH`, 106 `UNCOVERED_GLOSSARY_ENTRY`, 111
+`GLOSSARY_ENTRY_LACKS_TEST` — became **5** after a flag-free `refresh-tests`
+and nothing else.
+
+So **price the cold count as two numbers, never one**: `total −
+cacheDependentFindings` findings are real and will drive edits, and
+`cacheDependentFindings` is an upper bound the warm dissolves. Quoting the
+undivided cold number mis-prices the spend the user is being asked to
+authorize — which is the whole point of surfacing a count here. The text
+renderer says the same thing in a banner at the top and bottom of the body;
+`cacheFreshness` is the machine-readable form so you never have to parse the
+prose.
+
+**The fixed order — this is the ONE statement of it; every later step defers
+to it:**
+
+1. **Cold audit** — the `audit --format json` above. It is cheap: measure it
+   with `audit --timings`, or read this repo's recent full runs with
+   `codeyam-editor editor audit-history --full-only`, rather than trusting any
+   duration written in this file.
+2. **Compile gates** — `codeyam-editor editor verify-build --scope branch`
+   (every static check the branch's whole diff selects, as `session-finalize`
+   measures it), and, when the branch carries platform surface (see
+   "Cross-platform pitfalls"), `codeyam-editor editor cross-check`. A red here
+   is a source fix, so it belongs with step 4's edits, not after the warm.
+   Re-run both on this pass's own edits before the warm: the edits can redden
+   a check the branch passed.
+3. **Read-only `reconcile-registry`** (no `--auto-apply`, so no partition
+   pre-flight). It lists the line drifts, stale entries, and unregistered tests
+   that would otherwise turn the warm red.
+4. **Source edits** — the step-4b judgment fixes the non-cache-dependent
+   findings call for, the compile-gate failures, and the drifts the read-only
+   reconcile listed. **Register each new test
+   as you write it** (`register-test`, `register-test-batch`, or
+   `reconcile-registry --auto-apply --partition <the partition you touched>`),
+   so the registry is complete before the warm rather than changed after it.
+5. **Warm** — a flag-free `codeyam-editor editor refresh-tests`, then re-run
+   the audit. What remains is the true debt.
+6. **Sweep** — step 5's `recapture-stale`, after the checkpoint commit step 5
+   requires.
+
+Why the compile gates come before the warm: each fix they force is a source
+edit, and every source edit re-stales the partitions the warm just paid for.
+Measured on `editor-improvements-112` (2026-11-17): three full warms (~31, ~23
+and ~20 minutes) where one would have done. After the first, a commit was
+refused by `cargo-clippy` (dead code already on the branch); later
+`cross-check` reported `[FAIL] windows-clippy` (two unix-only test helpers).
+Each was a one-line fix, and each re-staled all 12 cargo partitions. Both
+verdicts were available in minutes before the first warm.
+
+Why the warm is fifth, not first: the warm is only durable until the next
+source or registry edit. Touching one tracked file re-stales the partition
+that owns it, and a moved registry digest re-stales every partition of that
+runner (see 4a's second GOTCHA), so a warm paid before the edits is a warm
+paid twice. The edit-driving findings do not depend on the cache, so nothing
+before the warm needs it. Measured on `editor-improvements-78` (2026-08-31): a
+31-minute warm left all 20 partitions green, **one** added comment line in
+`crates/codeyam-editor/src/commands/editor/pre_commit_sync.rs` invalidated
+it, and the next `--auto-apply` spent 55 minutes re-running partitions to
+learn nothing had changed. On `editor-improvements-105` (2026-10-30) a
+38.7-minute warm ran first, while only 7 of the cold audit's 64 findings were
+cache-dependent and a cold audit took 140s. The edits that followed made
+`refresh-tests --changed` withhold narrowing ("13 changed file(s) may declare a
+test the registry does not know yet") and run 33,494 tests. The 56-second
+read-only reconcile that found 28 line drifts ran only after that warm; run
+first, it would have caught the stale entries that turned the warm red.
+
+The warm is a backgrounded long command like any other; wait on the completion
+sentinel rather than assuming it hung. When an edit after the warm is
+unavoidable, re-check freshness before anything that pays a pre-flight rather
+than assuming the warm still holds:
+
+```bash
+codeyam-editor editor test-status
+```
+
+**A warm can false-redden a partition under its own fan-out — recover that one
+partition, never the workspace.** The flag-free warm runs runners in parallel,
+and under that contention a runner can exit non-zero while its own parsed
+results report zero failures. The summary names it — *"the runner contradicts
+its own output"* — marks that partition deliberately red, and calls the run
+UNVERIFIED. Measured on `editor-improvements-87` (2026-09-16): the `ui` runner
+exited 1 with 6,470 parsed results and no failures, then exited 0 with 6,471
+when run alone, no code change — and the whole ~28-minute warm was failed by a
+runner that was fine.
+
+The warm now re-runs such a runner once, serially, before reporting it, and
+says so: `runners_recovered_by_retry` in the summary JSON, plus a `NOTE:` line
+in the human output. A non-zero count is a rescued run, not a clean one — the
+host saturated. A runner that contradicts itself on the serial retry too keeps
+its red, and its diagnostic says the retry already happened; that one is a
+genuine setup/hook/crash failure, not contention.
+
+If you still need to recover by hand, scope it to the red partition:
+
+```bash
+codeyam-editor editor refresh-tests --partition <name> --write-cache
+```
+
+**Not `--force`.** It re-runs the whole workspace and embeds the single cargo
+output blob into every cargo partition, which manufactures a fake
+multi-failure wall out of one runner's trouble.
+
+**When contention reddened the warm, turn the concurrency down for one run —
+do not hand-split it.** `refresh-tests` runs runners in parallel up to
+`testParallelism.maxConcurrentRunners` (adaptive when unset), and
+`--max-concurrent-runners <N>` overrides that for a single invocation without
+touching `editor.json`. `1` is fully serial: no two runners overlap, so
+neither can steal the other's port or starve it of cores.
+
+```bash
+codeyam-editor editor refresh-tests --max-concurrent-runners 1
+```
+
+It is the test-runner counterpart of pinning `recapture-stale --concurrency 1`
+for captures: a deliberate one-run override of an adaptive default. Reach for it when a run's failures look contention-shaped —
+a runner that contradicts its own output and was NOT already serially
+retried, or a failure that passes when run alone (a port collision, a timeout
+under load). Both diagnostics now name the flag. Measured on
+`editor-improvements-96` (2026-10-06): a flag-free warm ran 1,709s and cached
+**nothing** — `ui` contradicted its own output and two cargo tests lost port
+races, all of which passed alone. Recovery took two hand-orchestrated
+invocations (the eleven cargo partitions, then `ui` by itself) to approximate
+what this flag does in one. Serial costs wall-clock. On a healthy machine,
+leave the flag off and let the adaptive cap run.
+
+**`--findings-only` is a smaller ANSWER, not a faster run — do not reach for
+it to save time.** It skips the per-file `git log` attribution walk and the
+per-entity evidence projection, and that is genuinely all it skips. Measured
+on codeyam-editor itself (1745 scenarios, when a full audit ran ~21 minutes —
+it has since measured 140s; take today's figure from `audit --timings`, never
+from this file), attribution was
+**5s — 0.4% of the run**. An agent that picks `--findings-only` expecting a
+fast path waits essentially the full time and learns to distrust the docs,
+which costs more than the minutes. Pick it when you want the compact
+projection: the verdict, the missing-\* arrays, and a name+count summary.
+
+**To read ONE finding's detail, use `--only <INVARIANT_ID>`.** It narrows both
+the work and the document. A scope that names no roster-derived finding gets
+a `coverage` block holding only the totals, per-classification counts, and the
+per-runner `staleIngests` rows (`rostersOmitted: true`), not the per-entry
+rosters. On this repo those rosters alone took an `--only` document to 11.2 MB
+for a 13-item finding, which is big enough that the harness saves it to a file
+instead of showing it inline. Only an `--only` naming a finding whose items are
+roster rows (`UNCOVERED_GLOSSARY_ENTRY`, `UNRESOLVABLE_GLOSSARY_ENTRY`) carries
+the full rosters, and so does the unfiltered document. The timestamp findings —
+`STALE_COVERAGE_INGEST`, `STALE_LCOV_COVERAGE` — get the summary, so the
+recovery command a blocked finalize names stays small enough to read inline.
+
+The lever that actually moves wall-clock is `--concurrency`, because the bulk
+of an audit is the per-scenario screenshot scan — one PNG decoded and
+perceptually hashed per captured scenario. It defaults to one thread per core;
+pass `--concurrency 1` to force the sequential path when you are debugging a
+run whose findings look wrong. Findings are identical at every setting.
+
+Which stage is slow is not a thing to guess at — `--timings` reports it:
+
+```
+codeyam-editor editor audit --timings --format text     # table on stderr
+codeyam-editor editor audit --timings --format json     # `timings` block in the document
+```
+
+Read the `unattributed` row as well as the named stages: a large one means the
+instrumentation is pointed at the wrong place, which is itself the finding.
+A stage reporting `calls: 2` is doing its work twice.
+
+Group findings by invariant id and by the commit that introduced them. Fixing
+blind, one failure at a time, wastes finalize cycles — each full
+`session-finalize` is the expensive loop you are trying to run *once*.
+
+---
+
+## 3. Don't chase deterministic churn (the stale-cache band)
+
+Several "dirty" signals are deterministic retention churn, **not** edits to
+revert:
+
+- Deleted `.codeyam/plans/completed/*` files — the rolling completed-plan
+  archive trims to a fixed cap. Every session prunes the *same* files; they
+  reconcile to a no-op on merge. Do **not** `git checkout` them.
+- `DEPENDENCY_GRAPH_STALE` / `PARTITION_NEEDS_REFRESH` staleness-sweep
+  warnings — deferred work, discharged by `session-finalize`'s reconcile, not
+  something to fix by hand mid-session.
+- Every finding under a non-green partition — see `cacheFreshness` in step 2.
+  `REGISTRY_ENTRY_RUNNER_OUTPUT_EMPTY`, `REGISTRY_TEST_NOT_WIRED`,
+  `PLATFORM_GATE_MISMATCH`, `UNCOVERED_GLOSSARY_ENTRY` and
+  `GLOSSARY_ENTRY_LACKS_TEST` are computed from runner emission, so a cold
+  cache manufactures them by the hundred. Warm the cache; do not fix them by
+  hand.
+
+**A cost being documented is not evidence the cost is correct.** Everything
+in this band is churn you should stop chasing — but the inverse error is
+just as expensive, and it wears the docs as camouflage: you recognise a slow
+command's shape from `CLAUDE.md`, confirm it is healthy, and let it run,
+because the duration was written down as *expected* rather than as a
+*symptom*. Documentation records what a command does today, not that today's
+behaviour is right. When a command's own progress output says the work it
+just did was unnecessary — a partition reporting `already fresh` after
+paying a multi-minute test run for it — that is a defect to report, not a
+duration to absorb. This file already makes the argument one layer down for
+the RSS runaway (two sessions let `reconcile-registry` reach 2 GB because
+"this one is slow" was in the docs); it holds for wall-clock too.
+
+> GOTCHA — **`UNCOVERED_GLOSSARY_ENTRY` has TWO causes, and they want
+> opposite actions.** A zero-hit reading means the entity's own instrumented
+> lines recorded no hits. That happens when nothing tests it — the real debt
+> — and it *also* happens when LLVM **inlined** a small function into its
+> callers, so the hits landed on the caller's lines and the entity's own
+> symbol reads zero even though its code ran and its tests passed.
+>
+> The discriminator is in the same LCOV the finding came from: **did a test
+> that references this entity itself record hits?** If yes, the entity was
+> inlined. Measured 2026-09-04 on `session_finalize_log.rs` — `last_run_slice`
+> read zero hits beside four tests that each ran, as did `run_id_of`,
+> `format_warm_note`, `build_finalize_log_document` and
+> `reject_impossible_combination`. The coverage data was healthy: 68.5% of
+> functions project-wide carried hits.
+>
+> The audit now draws this distinction for you and lists the inlined entries
+> in their own `— inlining-suspect (a covering test ran; not debt) —` group,
+> excluded from the zero-hit count. That group is **not** part of
+> `failures[]` and never affects `passed`; under `--format json` it is the
+> sibling `inliningSuspects` array, so every entry left in `failures[]` is
+> something to fix. **Neither resolution for a genuinely
+> uncovered entry applies to that group:** do not write a duplicate test for
+> something already tested, and — the expensive one — do not record an
+> `untestabilityReason`. A `trivial-wrapper` / `platform-glue` claim
+> permanently marks a *tested* function as owing no test, and nothing
+> downstream ever revisits it. One session came within a step of doing that
+> to eight entries before noticing their tests had run.
+>
+> Entries outside that group are unchanged and are the real debt. If you are
+> triaging by hand on an older binary, check for a covering test that ran
+> before you choose between "write a test" and "mark untestable".
+
+> GOTCHA — **a git hook invoking a flag the binary doesn't have.** When a
+> commit or push dies on something like `error: unexpected argument '--check'
+> found`, or a hook calls a subcommand that no longer exists, the cause is a
+> **stale managed hook fragment written by an older binary**. Git hooks are not
+> tracked in the tree, so nothing refreshes them on a branch switch or pull.
+> Fix it with `codeyam-editor editor install-hooks`, which reconciles the
+> managed fragments — adding what's missing, rewriting a body that drifted from
+> the current binary's, and removing an orphaned fragment whose name has left
+> the managed set (including in hook files codeyam no longer manages). It
+> prints what it added / updated / removed, so an empty report genuinely means
+> "already current". `git commit --no-verify` is the stopgap only; it blunt-skips
+> *every* hook, not just the broken one, so never leave it as the resolution.
+
+> GOTCHA — **coverage-dir graph pollution.** Coverage output directories
+> (`coverage/`, `*/coverage/`, `coverage-seed/`, `*/lcov-report/`) can pollute
+> the dependency graph with nodes for files that aren't real source. A current
+> binary handles this; on an older one, `rm -rf` the coverage dirs (they are
+> generated output) before the staleness sweep so they stop seeding phantom
+> nodes. In self-host mode, rebuilding the binary beats repeating the `rm -rf`
+> loop. In client mode, keep using the `rm -rf` workaround and list "coverage
+> dirs pollute the dependency graph on this editor version" under CodeYam
+> improvements — never upgrade the binary or ask the user to.
+
+> GOTCHA (self-host mode only) — **`rebuild-self` on a freshly reset/switched branch.** After a
+> `git reset --hard` / branch-switch under the session, do NOT trust a *mtime*
+> read of binary staleness: a reset rewrites every source file's mtime to
+> checkout-time, so an mtime heuristic can call a genuinely-old binary "current"
+> or a freshly-rebuilt one "stale". The **build stamp** is authoritative —
+> `rebuild-self --check` now compares the binary's embedded commit sha against
+> HEAD (a plain `rebuild-self` rebuilds when they differ, `--force` overrides).
+> Trust that verdict, not mtimes. And a post-swap "server did not become reachable
+> within the restart budget" message *after* a `build stamp verified` line means
+> the swap **SUCCEEDED** — the new binary is installed and was not rolled back;
+> just run `codeyam-editor start` (or raise `CODEYAM_RESTART_START_TIMEOUT_SECS`)
+> to bring the server up. It is not a rebuild failure.
+
+---
+
+## 4. Align — mechanical fixes first, then judgment calls
+
+### 4a. Mechanical fixes (autonomous, deterministic, no judgment)
+
+Apply the failures whose fix is unambiguous and scripted. These have a
+`fixCommand` in the audit JSON or a named recovery:
+
+- Registry drift → `codeyam-editor editor reconcile-registry --auto-apply`,
+  at the position step 2's fixed order gives it: read-only before the edits,
+  `--partition`-scoped while registering new tests, unscoped only after the
+  warm
+- Import / dependency-graph staleness → `codeyam-editor editor analyze-imports`
+- Post-merge drift after integrating origin →
+  `codeyam-editor editor pre-commit-sync --recover` (runs
+  `git pull --rebase --autostash` → `post-merge-drift-sweep` →
+  `plan-cleanup-duplicates` in one shot — do **not** hand-stitch these, and do
+  **not** `git add` a deleted queue-plan copy by hand).
+- Duplicate plan slug on merge → the same `--recover` path handles it.
+
+Re-run `codeyam-editor editor audit --format json` after the mechanical pass so
+the remaining set is only the judgment calls.
+
+> GOTCHA — **`reconcile-registry --auto-apply` is order-sensitive with your
+> source edits, and getting the order wrong costs the better part of an
+> hour.** Read-only `reconcile-registry` is a ~20-second command here. Under
+> `--auto-apply` *only*, it first runs a stale-partition pre-flight, and in
+> its eviction shape that is **one package-scoped `cargo test` per stale
+> partition, run one at a time** — so its cost is set by how many partitions
+> are stale when it starts, which is set by which files you edited since the
+> warm.
+>
+> Measured on `editor-improvements-78` (2026-08-31): all 20 partitions green
+> after a 31-minute warm, then a single one-line description comment added to
+> one file, then `--auto-apply` spent **55 minutes** in the pre-flight — and
+> **10 of the 11 partitions it ran reported "already fresh"** after paying
+> 144–429 seconds each. One edited file re-invalidated the cache and bought
+> nearly a whole-workspace re-run to rediscover that nothing had changed.
+>
+> Step 2's fixed order avoids it entirely: read-only reconcile runs before the
+> edits, new tests are registered as they are written, and the warm comes
+> after both, so an `--auto-apply` run after the warm finds every partition
+> green and its pre-flight costs nothing. When an edit after the warm is
+> unavoidable, make the price visible before you pay it rather than after — `codeyam-editor editor test-status` is
+> cheap and answers "is the warm still valid?" directly, and the count of
+> non-green partitions it reports is the number of package test runs the
+> pre-flight is about to spend.
+>
+> While it runs, the pre-flight announces its run count and prints
+> per-partition progress with elapsed time. Read that output as a claim to
+> check, not a progress bar to wait out: a partition reporting `already
+> fresh` after a full run is the tool telling you the run was wasted.
+
+> GOTCHA — **Finish every REGISTRY change before the warm, for the same
+> reason you finish every SOURCE edit before it — and this one is the more
+> expensive of the two, because it is self-sustaining.** The rule above is
+> about the source Merkle hash; a registry change is a second, independent
+> way to invalidate a partition, and `reconcile-registry` producing one is
+> not an accident but its normal output. Any add, remove, or line-drift
+> update moves the affected runner's **registry digest**, and Phase 1
+> refuses cache reuse for every partition whose stamped digest no longer
+> matches — no source file need be touched, so `test-status` can report the
+> partition green while Phase 1 re-runs it anyway.
+>
+> The loop is what makes it costly. A broad registry change invalidates many
+> partitions at once, which collapses Phase 1 from a scoped re-run into a
+> **full-suite** one — and in a full-suite run the `cargo-ignored` runner
+> reliably exceeds its 1800s floor, because it owns tests that spawn real
+> editor servers and they stretch badly under fan-out. A killed runner
+> stores no results, so the finalize fails having proved nothing. The
+> natural next move — fix what the audit found, re-run — changes the
+> registry again and re-enters the loop.
+>
+> Measured on this repo, 2026-09-08: the loop's lap was a **4584s failure**.
+> Finishing all registry changes first, re-warming so the digests matched,
+> and only then finalizing was a **695.7s pass** — Phase 1 scoped itself to
+> the single partition whose digest had moved, and `cargo-ignored` was never
+> re-run at all. Same branch, same work, one seventh the wall-clock.
+>
+> The cheap pre-check is `codeyam-editor editor verify-test-cache`, which
+> answers "do the digests still line up?" before you pay for a run.
+> `codeyam-editor editor test-status` prices it: it reports the digest-
+> invalidated partitions as a fraction of the total (`1 of 20` is a scoped
+> re-run; `9 of 20` is the full-suite run that times out), so the cost of
+> the next finalize is visible in advance rather than discovered at 4584s.
+>
+> Do NOT respond to the timeout by raising `cargo-ignored`'s timeout. The
+> floor is already 1800s, raising a number to escape a contention problem is
+> what `scripts/check-ci-timeout-floors.sh` exists to stop, and the runner's
+> `auto` timeout cannot adapt its way out either — it is
+> `lastSuccessfulRunSecs + headroom`, and a persistently-failing advisory
+> test in that runner means no run is ever recorded successful, so only the
+> floor is ever in play. Fix the ordering instead.
+
+> GOTCHA — **Platform-gate drift can only be reconciled AFTER a full
+> `refresh-tests`, so do not hand-run `reconcile-registry` for it here.**
+> `REGISTRY_HAS_FOREIGN_HOST_GATED_TEST` fires when a test's registry
+> `platform_gate` disagrees with the `#[cfg(...)]` its source declares — the
+> shape you get the moment you add a `#[cfg(unix)]` to an already-registered
+> test. `reconcile-registry --auto-apply` re-infers the gate from source, but
+> it reads the **per-partition test cache**, so run before a full refresh it
+> sees the pre-edit cache and reports clean. The finding then surfaces in
+> `session-finalize` Phase 2 — after Phase 1's full suite has already run —
+> costing a `--start-from-phase 2` round trip of roughly 15 minutes.
+>
+> You do not need to sequence this by hand: `session-finalize` heals it
+> itself, in a Phase 1.5 pass between the refresh and the audit (whenever
+> Phase 2 is about to run, `--start-from-phase 2` included). It logs
+> `Phase 1.5/5: re-inferred platform_gate from source cfg for N registry
+> entr…` naming every rewritten key, and stays silent when nothing drifted.
+> If it ever fails it warns and continues, and Phase 2 reports the finding
+> with its usual recovery — so the only action left to you is reading that
+> line to understand a registry change in the resulting diff.
+>
+> One case the heal deliberately does NOT repair: an entry whose recorded
+> `line` no longer points at the item its key names. The inference verifies
+> that anchor before reading any `#[cfg]`, because a drifted line sitting
+> under a neighbouring attribute is exactly how a *false* gate gets stamped —
+> and a false gate is worse than a missing one, since it tells the audit to
+> expect the test not to run on a platform where it silently stopped running.
+> Those entries are named in the Phase 1.5 line as declined (with the token
+> that would have been stamped), and `reconcile-registry --auto-apply` exits
+> 2 rather than 0 when gate drift was detected and none of it was repaired.
+> Fix the anchor (a full `refresh-tests` re-derives `line` from runner
+> output), then reconcile — or repair the single entry with
+> `register-test … --clear-platform-gate` to drop a gate the source does not
+> declare.
+>
+> Note `backfill-platform-gates` is **not** the recovery for this: it is
+> fill-only (`None → Some`) and deliberately never overwrites a concrete
+> gate, which is exactly what a drifted entry carries.
+
+> **An unanchorable shell/TAP add whose key is a bare suite path is the
+> suite ROLLUP, not a phantom.** A TAP suite emits a parent result line
+> (`ok 48 - scripts/x.test.sh`) beside its per-case lines
+> (`scripts/x.test.sh › some case`), and the rollup is a real, runnable entry
+> of its own — so a path-shaped key with no ` › ` is still a genuine
+> `RUNNER_HAS_UNREGISTERED_TEST` even when every per-case key of that suite is
+> already registered. It is registered at `line: 1` with `file` equal to the
+> key, the same shape the registry's other rollups already carry, and
+> `register-test` needs `--line 1` for it (a rollup has no per-case line to
+> resolve, so the form without it fails with `pass --line <N>`).
+> `reconcile-registry` names this case in its skipped-add reason and prints
+> the exact command; copy that. Only when the suite file no longer exists is
+> the name residue — then clear it with a plain `refresh-tests`, not
+> `--force`.
+
+### 4b. Judgment fixes (decide by rule, defer by plan)
+
+What's left needs a decision, not a script — but the decision is **yours, by
+the rules below**, not a question for the user. Do not stop mid-run to ask.
+Record every call you make (what, which rule, why) for the final report, so the
+user can disagree after the fact.
+
+**The "too big for this pass" bar.** A fix is too big when it needs any of:
+- a real refactor — splitting a module, moving a seam, changing a public
+  boundary;
+- more than about **25** entity registrations or test authorings for one
+  finding;
+- work outside this branch's scope that would need its own review.
+
+**Too big → plan, findings left visible, never a question.** Write a plan for
+the fix, and leave its findings exactly where they are:
+
+```bash
+codeyam-editor editor plan-create --source codeyam-audit --prefix audit \
+  --mode backend --title "<what the fix is>" --body-file <path> \
+  --owns "<ID>:<subject>" --owns "<ID>:<subject>"   # prints the slug
+```
+
+Pass one `--owns` per finding item the plan will fix: `<ID>:<subject>`, where
+the subject is the item's name exactly as the audit prints it (for a coverage
+row `name (path)`, the bare `name` is enough), or `<ID>` alone for the whole
+finding. `plan-create` refuses an id that is not on the `audit --only ?` list.
+From then on, while the plan is queued, every audit labels those findings
+`(owned by plan <slug>)` in text and lists them in the JSON `ownedBy[]` array
+(`{id, item, plan}`). The label never changes the verdict: owned findings still
+fail. A claim on a finding that no longer fails shows up under
+`staleOwnershipClaims[]` — drop it from that plan's `owns:`.
+
+Do **not** baseline those findings — not with a `plan:` justification, not with
+any other. CLAUDE.md's "No deferral primitives" rule forbids it: a suppression
+that points at a plan outlives the plan the day the plan is pruned or completed
+without the fix, and nothing gate-strength notices. The findings keep failing
+the strict audit, so `session-finalize` / `verify-full-finalize` will not pass
+and the branch is **not merge-ready** until the plan lands. That is the honest
+state. Carry on with every other fix in this pass, then end at step 7's ship
+question naming each open finding and the plan slug that owns it.
+
+The rules:
+
+- **Unregistered-entity wall (`SOURCE_HAS_UNREGISTERED_ENTITY` and friends).**
+  At or under the bar: register every entity in this pass, with the glossary
+  discipline (a real description, a test where the entity has logic). Above
+  the bar: register what belongs to this branch's own diff (the `--scope diff`
+  rows of `registry-query` / `evidence-query`), then write a plan for the
+  inherited remainder and leave it visible.
+- **Ambiguous classifications** — is this a test fixture? derive-generated?
+  testable pure logic or an untestable shim? Apply the written discipline:
+  `glossary-skip-add` only for a genuine `test-fixture` / `derive-generated`
+  artifact, otherwise `glossary-add` with a test. When it is genuinely
+  unclear, **take the stricter choice — register it and test it.** A wrongly
+  registered entity costs one test; a wrongly skipped one hides untested logic
+  forever. Record the call in the report.
+- **Anything that deletes or rewrites content** — see step 6: delete only what
+  is clearly dead; leave anything uncertain in place and report it.
+- **A grown file over its size ceiling (`SOURCE_EXCEEDS_SIZE_BUDGET`)** is
+  decided here too, not asked. Re-record only the grown files with
+  `codeyam-editor editor size-ledger-init --force --file <path>…`, and keep it
+  only when its tally reports `lowered 0` (the same check the finalize's
+  size refusal names) — a non-zero count means it rewrote ceilings beyond the
+  growth being accepted; shrink those files instead.
+  For each re-recorded file this branch grew by more than the 25-line bar
+  above, write a paydown plan (`plan-create --prefix audit`) and list it
+  in the report.
+- **Accepting a finding into the audit baseline** is allowed without asking in
+  exactly one case: a finding the check's own documentation says a
+  capture or test cannot distinguish (e.g. a genuine
+  `SCENARIO_DISTINCT_CAPTURE_COLLISION` between two scenarios that differ only
+  in state a capture cannot show). Every entry gets a justification. Never
+  hand-edit `.codeyam/audit-baseline.json`, and never reach for
+  `audit-baseline-rebuild`, which re-derives the whole file and collapses it
+  when LCOV is absent. `audit-baseline-add` refuses an item that matches no
+  current finding and prints the check's before/after count — that line is the
+  proof nothing else moved, so quote it rather than re-auditing to verify.
+
+> GOTCHA — **`reconcile-glossary` proposals ARE merge-blocking. Size them
+> before you quote the user a number.**
+> `editor reconcile-glossary` can print a long `add` list (we've seen 100+).
+> That list is real, merge-required work — not polish. Two facts:
+> 1. The underlying invariant, `SOURCE_HAS_UNREGISTERED_ENTITY`, carries no
+>    `_ADVISORY` suffix, so `audit_failure_is_advisory` does not exempt it: it
+>    reaches the **strict** gate and blocks `session-finalize` /
+>    `verify-full-finalize`. Every `add` needs a `glossary-add` (or a
+>    `glossary-skip-add` for a genuine test-fixture / derive-generated
+>    artifact) before the branch is merge-ready.
+> 2. `reconcile-glossary` walks the **same source scope** the invariant
+>    consumes (`discover_source_rel_paths` → `collect_source_entities_for_files`,
+>    which excludes `ALWAYS_EXCLUDED_DIRS` like `.codeyam/`). It previously
+>    walked the broader dependency graph and proposed adds for
+>    `.codeyam/`-internal capture scripts/hooks the gate never touches — pure
+>    noise that inflated the wall. Post-fix, the list is not inflated: what it
+>    shows is what you owe.
+>
+> **Size the Phase 2 wall with `editor audit --format json`** — the default
+> JSON projection is the STRICT comprehensive gather, the same one
+> `session-finalize` Phase 2 blocks on. Measured on this repo it reported
+> exactly the 25 `SOURCE_HAS_UNREGISTERED_ENTITY` items Phase 2 later stopped
+> at. Do NOT size it with the mid-session `editor audit-gate` /
+> `audit --findings-only` count: that one downgrades inherited debt and will
+> **under-report** the obligation, which is exactly how a run gets mis-priced
+> and then re-scoped in front of the user.
+>
+> **`editor finalize-preview` is the richer projection** when you also need
+> the walls beyond Phase 2: it runs the same strict gather, then adds the
+> Phase 3.5 screenshot-recapture obligation and the Phase 3.6
+> glossary-reconciliation ambiguity count, kept disjoint from Phase 2 so the
+> totals do not double-count. It is the costlier of the two (it also runs the
+> static checks and a full dependency-graph rebuild), so launch it
+> backgrounded; it heartbeats, prints a `[Ns] finalize-preview: <pass>` line
+> as each pass starts, and `command-status finalize-preview` reads its verdict
+> back. A run whose RSS keeps climbing past ~2 GB is a regression to report,
+> not a large project — the per-entry re-parse that once made it run 19
+> minutes silent now trips a `BLOCKED:` memory ceiling instead.
+>
+> This is what you measure the "too big" bar against. The run report states the
+> spend that was made (with the measured number and which projection it came
+> from) and the plans written for the rest.
+
+> GOTCHA — **`SLUG_FILE_EXCEEDS_BUDGET`: lift or split, never reflow.** The
+> finding names a step-library slug over its line budget, and the obvious
+> remedy — reword the prose until it fits — is the one that breaks the build.
+> The pre-split slug bodies are frozen as fixtures under
+> `crates/codeyam-editor/tests/fixtures/legacy/` and compared **line for line**
+> by `assert_lines_preserved`, so a reflowed line reads as a *dropped* line and
+> fails; `step_audit_guidance_contract.rs`, which pins literal phrases inside
+> the step files, is the second guard the same edit trips. Both are invisible
+> until the suite runs, which is precisely what step 6a exists to surface early.
+>
+> Two sanctioned mechanisms, both line-preserving:
+> 1. **Lift a block into a fragment.** The budget is measured on the RAW slug
+>    file, while `step.rs` injects the fragment at render time — so the text is
+>    authored once and still reaches the agent verbatim. This is the way the
+>    decomposition guard itself documents ("the established way to keep a slug
+>    under the ratchet is to lift a block into a fragment"):
+>    ```bash
+>    codeyam-editor editor new-step-fragment <name> --slug <slug>
+>    ```
+>    It writes the fragment body, adds the `include_str!` substitution, inserts
+>    the `{<name>_block}` placeholder into each named slug, and prints the
+>    placeholder-leak test to add.
+> 2. **Split the slug** into a companion slug, moving whole lines across.
+>
+> The rule is about the *frozen* lines, not about every line in the file. A line
+> your own branch added is absent from the legacy fixture, so nothing pins it and
+> you are free to condense it. That distinction is what makes this usable rather
+> than absolute — check the fixture before assuming a line is untouchable.
+
+This is the convergence contract in practice: each run fixes all the mechanical
+drift it can, decides every judgment call by the rules above, writes a plan for
+what is too big while leaving its findings visible, and keeps going. It ends
+merge-ready — or, when a too-big plan owns open findings, with everything else
+done — with a report of the decisions made and the plans written.
+
+---
+
+## 5. Refresh evidence + screenshots (in the right order)
+
+If the branch carries surfaces with visual or scenario output, the finalize
+wants current evidence and screenshots.
+
+**Checkpoint-commit before the sweep — and before any command you expect to
+run longer than ~15 minutes.** A long sweep is the moment a crash costs the
+most, and everything the edits and the warm produced (glossary entries, new
+tests, registry updates, a re-recorded ledger) is uncommitted until you commit
+it. Commit it first, through the verified out-of-workflow path:
+
+```bash
+git add <the files the edits and the warm changed>
+codeyam-editor editor commit --out-of-workflow -m "audit: <what this checkpoint holds>"
+```
+
+It runs the same static-check and scoped test-cache gates the pre-commit hook
+does, so a checkpoint is not an unverified commit. The sweep then runs on a
+tree where the only uncommitted work is the sweep's own output. Measured on
+`editor-improvements-105` (2026-10-30): a session made no commit in 3h15m (14
+glossary entries, about 30 new tests, a re-recorded ledger), and the laptop
+crashed as it was about to start a sweep of about an hour.
+
+> GOTCHA — **reconcile/evidence ordering.** Record test evidence on reconcile,
+> *then* capture/refresh screenshots — not the reverse. A current binary
+> records evidence for you during reconcile; the old manual sequence
+> double-refreshed. Don't re-introduce the double-refresh.
+
+> GOTCHA — **deleted-screenshot recovery.** If screenshots were pruned
+> (retention, a clean checkout, a sibling's reconcile), **recapture** them
+> rather than reverting the deletion — the capture is the source of truth; the
+> file on disk is derived.
+
+> A pure-backend / non-visual stack has no screenshots to refresh; this step is
+> a no-op there. Don't fabricate visual evidence for a stack that has none.
+
+> GOTCHA — **`BLOCKED: … commit(s) on <ref> not yet integrated touch …` is the
+> designed path, not a surprise.** A whole-project `recapture-stale` refuses
+> (exit 2) when this branch is behind its upstream or `audit.branchBaseRef` and
+> those commits change files the swept scenarios render from — the ORIENT
+> question (step 1) asked too late. Integrate the named ref, commit, and re-run.
+> `--allow-pending-integration` sweeps anyway; reach for it only when you know
+> why the frames will survive the merge. A `--target` run is never refused. A
+> sweep you stop for any reason resumes rather than restarts: each frame is
+> stamped fresh the moment it is captured.
+
+> **A large sweep is not necessarily a two-hour sweep — and the sweep sizes its
+> own width, so leave `--concurrency` off.** With no width pinned,
+> `recapture-stale` tunes how many captures it keeps in flight: it starts at the
+> width this machine settled at last time (or 1), widens while measured
+> throughput keeps improving and host memory stays above its reserve, and halves
+> on an unanswered capture or memory pressure. The ceiling is
+> `min(cores - 1, memory budget / per-capture peak)`. The settled width is
+> remembered per machine in `.codeyam/state/recapture-tuning.json` (gitignored),
+> so the next sweep starts where this one ended. (A serial sweep of a
+> 1,700-scenario corpus measured ~7,400s, just over two hours, at ~4.4s each —
+> that is the cost the tuner exists to cut.) Read what it chose from the run
+> JSON: `effective_concurrency`, and the `concurrency_tuning` block (the path it
+> took and each width's throughput).
+>
+> **A number PINS the width and DISABLES the tuner** — `--concurrency <N>` for
+> one run, or `scenarios.recaptureConcurrency` from config for every run. A
+> guessed pin trades a tuned, memory-aware width for a fixed one: too high pays
+> the saturation retries and back-offs the tuner avoids, too low is just slower.
+> Pin only deliberately:
+>
+> - `--concurrency 1` to debug a capture — the sequential path rules
+>   concurrency in or out.
+> - A cap on a machine shared with other heavy work. Pin it per machine with
+>   `codeyam-editor editor config-override scenarios.recaptureConcurrency <N>`
+>   (written to `.codeyam/editor.local.json`). **Never commit
+>   `scenarios.recaptureConcurrency` to `.codeyam/editor.json`**: that pins every
+>   machine to one width, when the right width is a property of each machine's
+>   cores and memory.
+>
+> To MEASURE the trade-off instead of guessing, run
+> `codeyam-editor editor recapture-stale --calibrate`. It captures a small sample
+> of already-fresh scenarios at widths 1, 2, 4, … and prints a width /
+> seconds-per-capture / peak-memory table. It writes no screenshots, and it
+> records the best width as this machine's learned start.
+>
+> A wide sweep is safe because the editor server takes its capture gate
+> EXCLUSIVELY for any capture that mutates shared state — one that seeds,
+> restarts the dev server, resets a sandbox or container, drives a shared
+> simulator, **or scripts streams or transcripts** (those overlay the scenario's
+> script onto the server's single shared mock engine for the whole render). Such
+> captures never overlap however many are dispatched; only captures that mutate
+> nothing share the gate.
+>
+> That list is exhaustive rather than illustrative, and it is worth knowing why:
+> the stream/transcript channel was MISSING until 2026-08-30, and its absence is
+> what let a `--concurrency 4` sweep screenshot one scenario showing a different
+> scenario's scripted transcript. So do not reason from "my scenarios don't
+> seed, therefore concurrency is free" — reason from the list. If you add a
+> capture path that touches server-side shared state, it needs a channel in
+> `crates/control-api/src/capture_lock_mode.rs::CaptureMutationInputs` before it
+> is safe to run concurrently.
+>
+> The real cost of too wide a sweep is memory — every capture spawns its own
+> browser — which is why the tuner widens one step at a time and watches host
+> memory as it goes. Native-simulator stacks are pinned
+> to 1 (one shared device) and ignore the flag, and a content-collection stack
+> sees little gain because nearly every capture there is exclusive either way.
+>
+> **A capture the server leaves unanswered under concurrency is retried once,
+> serially, before it is ever reported — so do NOT read a timeout at the end of
+> a sweep as a broken scenario.** Both unanswered shapes are retried: a transport
+> failure (the server did not answer, or not with the capture contract) and a
+> per-slug timeout (the budget elapsed before it answered). Neither is a verdict
+> about the scenario; a budget elapsing says the server was too slow. The re-ask
+> is sequential on purpose, because the likeliest cause is the sweep's own
+> fan-out — measured on a 1,740-scenario sweep, three slugs timed out at
+> `--concurrency 4` and all three captured in 37s when re-run serially, with no
+> code or config change. A slug that goes unanswered TWICE keeps its outcome and
+> is reported honestly, so a genuinely uncapturable scenario is never masked.
+>
+> The JSON reports `captures_recovered_by_retry` for exactly this. Non-zero means
+> the run hit that saturation and absorbed it. Without the count, a rescued run
+> looks identical to one that never needed rescuing. On an auto-tuned sweep the
+> tuner has already halved its width in response, and the width it remembers
+> reflects that, so there is nothing to do. Under a pin, it is the signal that
+> the pin is too high: drop the pin and let the tuner choose.
+>
+> Two consequences for reading the output. The JSON reports `concurrency`
+> (requested) and `effective_concurrency` (used) — read the latter, since a
+> native stack reports a request it did not honor. And it reports the cost in
+> two parts, which is the part worth internalizing:
+>
+> - `capture_seconds` — the capture loop alone. **This is the only number that
+>   shrinks as the width grows.**
+> - `elapsed_seconds` — the whole invocation, which also includes the
+>   collision-isolation post-pass. That post-pass re-hashes every screenshot in
+>   the project, so it is a FIXED whole-project cost regardless of how many
+>   scenarios this run captured. A measured 4-scenario run spent ~40s capturing
+>   and ~1,090s there.
+>
+> So when you re-price a quoted estimate (e.g. `finalize-preview`'s "budget
+> roughly N minute(s) from this project's last M capture(s)" — derived from
+> *serial* timings), divide the **capture** portion by the effective
+> concurrency and leave the fixed portion alone. Dividing `elapsed_seconds`
+> wholesale is the same class of mis-pricing this reporting exists to stop.
+>
+> **Concurrency is not the only wall. `recapture-stale` also carries a time
+> budget, and on a large sweep that is the one you hit first.** Width changes how
+> much gets captured *before* the budget elapses; it does not change *whether*
+> the sweep finishes. Under the old flat 300-second default, a wide sweep still
+> fell short — measured: 1,789 stale, **132 captured**, exit `2`. A sweep you
+> intend to complete in one pass, whatever it costs, can lift the wall
+> explicitly while leaving the width on auto:
+>
+> ```bash
+> codeyam-editor editor recapture-stale --max-seconds 0
+> ```
+>
+> `--max-seconds 0` disables the wall. It is the separate decision about a large
+> sweep; the width needs no decision, since the tuner makes it.
+>
+> Distinguish the two outcomes rather than guessing: a budget bail sets
+> **`budget_expired: true`** on the stdout JSON and lists every uncaptured slug
+> under `skipped`. That is an *unfinished* run, not a failed one — the captures
+> it did make are good, and nothing was left worse than it was found. Do not
+> investigate it as a capture failure (which is what the GOTCHA below covers);
+> re-run it with the budget lifted.
+
+> **`--concurrency` and `--max-seconds` bound different things, and a large
+> sweep needs you to get both right.** Concurrency shrinks how long the captures
+> take; the budget bounds how long the run is ALLOWED to take. They are easy to
+> read as one lever and they are not: under a budget too small for the work,
+> a wider sweep changes only how many scenarios get captured before the same
+> wall, never whether the sweep finishes. Trusting the width alone is exactly
+> how a reader still gets cut off.
+>
+> The budget used to be a flat 300 seconds whenever you did not name one —
+> chosen before the command had any idea how much work it had found. Measured
+> 2026-09-03 on this repo: 1,789 scenarios stale, a default-budget run captured
+> **132** and skipped **1,657**, printing
+> `⏱ Budget expired after 300s — skipping 1657 remaining slug(s)` and exiting
+> `2`. The same set drained in one pass with `--max-seconds 0`. Five minutes
+> bought nothing but the number.
+>
+> **Omitting `--max-seconds` is now the right default**, and it is no longer the
+> trap: the budget is sized from the stale set the run discovers, at this
+> project's measured capture rate, divided by the concurrency actually in use —
+> with headroom, and never below 300s, so a small touch-up behaves exactly as it
+> did. The startup line names the budget and where it came from:
+>
+> ```
+>   ▶ 1789 scenario(s) to recapture (budget 2952s, derived from 1789 stale
+>     scenario(s) at 4.4s each across 4 concurrent capture(s))
+> ```
+>
+> Read that line. It is there so a mis-sized run can be stopped in its first
+> seconds rather than discovered at the wall.
+>
+> The derived number is a starting estimate, not a wall. The run re-checks it
+> against the pace it is actually achieving, and when it is slower but still
+> capturing it extends the budget — up to 3x the original — printing a
+> `⏱ Budget extended …` line with the observed and assumed pace. So a slow
+> machine no longer bails 83% done and costs a second full pass (measured
+> 2026-09-24: 1,947 stale, 335 skipped at a 9,054s derived budget, 195 minutes
+> across two runs). The observed pace is recorded as the next run's estimate. A
+> run that stops producing frames is not extended, and an explicit
+> `--max-seconds` is never extended.
+>
+> A value you pass is still authoritative — an explicit `--max-seconds 300`
+> still stops at 300 and still exits `2`, because a caller who names a budget
+> means it. So prefer omitting the flag on a full sweep, and reach for an
+> explicit budget only when you deliberately want a time-boxed partial paydown
+> (which is what the `finalize-debt` advice offers it for). `--max-seconds 0`
+> remains unlimited.
+
+> GOTCHA — **a recapture that fails everything is ONE cause, not N.** When
+> `recapture-stale` fails every capture (or most of them), treat it as a single
+> environmental cause until proven otherwise — unrelated scenarios do not
+> spontaneously break together. The command now does this grouping for you: it
+> normalizes each failure (stripping the per-scenario slug and URL), and when
+> two or more agree it leads the bail with one shared-cause diagnosis and puts
+> the same string on the JSON's `shared_failure_cause` key. Read that first.
+> Do NOT open the per-scenario failures one at a time, and do NOT hand-write a
+> `grep -o … | sort -u` over the output to discover how many distinct errors
+> there really are. The usual culprit is an error the app emits while loading
+> the page, which the capture guard rejects on; such errors are normally
+> suppressed in the app's own dev-server configuration, so read that file
+> first — a project that documented its own escape hatch is one read away.
+
+> GOTCHA — **`env.*` overrides do not reach a running app.** `codeyam-editor
+> editor config-override env.FOO bar` writes the value and live-reloads the
+> *editor's* config, but the app is a long-lived child process that read its
+> environment when it booted. The override does not take effect until that
+> process restarts, so a recapture run in between just re-proves the old
+> failure — minutes wasted. `config-override` now says so and prints
+> `Next valid action: codeyam-editor editor restart-dev-server` for these keys;
+> run it before re-capturing. Non-`env.` keys are genuinely live-reloaded and
+> owe no restart.
+
+---
+
+## 6. Presentability pass — treat the branch as open-source
+
+Placed *after* screenshots are refreshed (step 5) so the gallery embeds the
+final images, and *before* step 6a so the narrowed suite validates the cleanup
+while that is still cheap — not at the finalize, which is where this used to be
+discovered. For a branch built entirely via Fast Commit, the per-cycle finalize
+bodies rendered terse (no polish), so this is where the repo finally polishes
+before merge.
+
+```bash
+# Read-only: surface stale docs + non-essential debug logging. Never deletes.
+codeyam-editor editor presentability-scan
+
+# Refresh the README how-to + scenario gallery (idempotent).
+codeyam-editor editor readme-sync
+
+# Does the app stay responsive after it paints? Samples the root plus each
+# application scenario's route in a WebGPU/WebGL-enabled browser.
+codeyam-editor editor preview-liveness
+```
+
+**A `preview-liveness` that exits `2` naming an unresponsive route is a
+release blocker, not a polish item.** A page that paints and then locks its
+main thread passes every screenshot, because the screenshot was taken before
+the lock — and it freezes every real browser that opens it. Read the console
+tail it prints, fix the block, and re-run. A route reported `skipped` (no
+probe script, or the dev server not up) has not been checked; an all-skipped
+run blocks too, so start the app and re-run rather than moving on. A
+non-browser stack has no page to probe: skip this command there.
+
+**A `readme-sync` that exits `2` with `BLOCKED:` is a finding to act on, not a
+step to skip past.** It means the README's gallery or how-to block holds content
+codeyam-editor did not write — someone curated by typing between the markers —
+and the sync refused rather than destroying it. Do NOT work around it by
+reverting their edit or by deleting the markers (removing them makes the next
+sync *append* a second, generated gallery). Read the `Next valid action:` line
+and follow it: move that prose outside the markers, or move the curation into
+`.codeyam/readme-gallery.json` — scaffold one with `codeyam-editor editor
+readme-gallery-init`, which names scenarios by slug so their screenshots keep
+refreshing. When the right home for their words is not obvious, move the prose
+just outside the markers unchanged (nothing is lost) and note it in the report;
+it is their writing, and this refusal exists because a routine sync once
+destroyed a hand-curated gallery with no warning.
+
+**`Debug logging: not scanned` is NOT a pass.** It means this stack declared no
+`debugLogPatterns` and has no built-in default, so the logging pass never ran
+and an empty candidate list is an absence of evidence, not evidence of
+cleanliness. Configure `debugLogPatterns` in `.codeyam/stack.json` (or add a
+built-in default for the stack's framework token) and re-run before treating
+presentability as clean. `Debug logging: none` is the line that means clean;
+under `--format json` the same distinction is `debug_log_patterns_source`.
+
+Then **assertively** remove the clearly-dead docs and debug log lines the scan
+surfaces — and **leave anything uncertain in place**, listing it in the run
+report. Do not ask. The scan only ever *lists* candidates; the judgment (and the
+deletion) is yours. Because uncertain content is never deleted, not asking can
+never lose work — the report lets the user delete the rest later. (The
+user-authored-content refusal above — `readme-sync`'s `BLOCKED:` — is
+unchanged: move their words, never delete them.) A debug
+line a test asserted on will fail once the suite runs — step 6a catches that in
+seconds, so revert that one removal there rather than discovering it at Phase 1
+prices.
+
+> `session-finalize` also emits a self-contained presentability advisory naming
+> these same two commands, so a client with no copy of this procedure is still
+> covered.
+
+---
+
+## 6a. Verify the edits before the finalize pays for them
+
+Steps 4 and 6 both **edit source** — 4b's judgment fixes, 6's assertive removals
+— and nothing between them and step 7 ever executes what they changed. Without
+this step the finalize is the first thing to run the pass's own edits, and it
+charges Phase 1 prices to tell you a test went red.
+
+```bash
+# Narrowed to this pass's diff — the cheap scope, not the finalize's.
+codeyam-editor editor refresh-tests --changed
+```
+
+Fix every red **here**, before entering step 7. The asymmetry is the whole
+argument, and it is measured: on `editor-improvements-88` a step-4 trim of three
+step-library slug files broke two cargo tests. The finalize surfaced them at
+`CODEYAM_FINALIZE_PHASE1_FAILED` after **2986 seconds**; running the two affected
+test files directly afterwards took about **50 seconds**. Add the
+`pre-commit-sync` re-claim, the rebuild the edit forced, and the re-finalize, and
+a verdict available in under a minute cost about an hour.
+
+`--changed` is the point: it runs only the tests for the files this pass touched,
+which is exactly the set steps 4 and 6 edited. The flag-free form already has two
+jobs in this procedure — warming a cold cache in step 2, and the finalize's own
+Phase 1 — and paying for either one here would spend the cheapness that makes
+this step worth taking.
+
+This is a different failure class from the hoisted strict audit in step 7's
+`Phase 0.5/5` / `Phase 0.6` pre-flights. Those catch *audit findings* early; a
+plain red test is invisible to them, because only a test run can see it.
+
+---
+
+## 7. Commit → finalize → the merge-ready gate
+
+**Order of operations.** Run the chain in this order. Each step creates the
+precondition the next would otherwise refuse on, one refusal per launch:
+
+| # | Step | The refusal it pre-empts |
+|---|---|---|
+| 1 | `pre-commit-sync` | finalize and push refusing on a missing tested-tip record |
+| 2 | `rebuild-self` (only if `rebuild-self --check` reads `stale`) | `finalize-ci-only` refusing because an embedded file changed and the binary is stale |
+| 3 | `session-finalize` (or `finalize-ci-only` for CI-infrastructure-only commits) | `verify-full-finalize` reading no marker for HEAD |
+| 4 | `verify-full-finalize` | push refusing an unproven HEAD |
+| 5 | `push` | the PR having no remote branch |
+| 6 | `windows-check` (when its MANDATE below applies) | a red Windows CI job after merge |
+
+This is the expensive loop; still aim to run it *once*, cleanly — but two
+properties now make its cost proportional to the change rather than flat.
+
+**The cheap gates fail fast.** `verify-build` and the cross-target build run
+as a hoisted `Phase 0.5/5` pre-flight, ahead of the full suite,
+and their positions at Phase 4 / 4b become a no-op re-check. So a
+cargo-fmt, clippy, tsc, windows-portability, shell-tests, date-rot or
+cross-target failure surfaces in minutes instead of surfacing at minute 57
+of an otherwise-passing run.
+
+**A re-run after a small fix is no longer full price.** Each phase records a
+fingerprint of the inputs it actually consumes, and a later run skips a
+phase whose fingerprint is unchanged, logging `Phase N/5: skipped (inputs
+unchanged since <sha> at <time>)`. A one-file post-CI test fix therefore
+re-runs the phases that file affects and re-stamps the marker, instead of
+paying the whole hour again purely to move `lastFullFinalizeSha`. A
+fingerprint that cannot be computed counts as *changed*, so the failure
+direction is always "do the work".
+
+This does **not** relax the marker-stamp trap below — `verify-full-finalize`
+remains the only authority on merge-readiness. It also does not change what
+`--start-from-phase` means: that still skips by operator assertion rather
+than by evidence, and still cannot advance the marker.
+
+Nor is it a licence to run the loop repeatedly. The saving is per *phase*; the
+cost is per *cycle*, and a cheaper re-run is still a whole cycle — a
+`pre-commit-sync` claim, a finalize, and a push. What keeps the count at one is
+batching the fixes that trigger it: see 8a's *land the whole set in ONE commit*
+before you fix the first red check.
+
+**Precondition — the strict audit reads ZERO gating findings before the first
+`session-finalize`.** The finalize is not the instrument that surfaces audit
+findings; it is the gate that confirms there are none. Before the block below:
+
+```bash
+codeyam-editor editor audit --format json        # the STRICT gather Phase 2 blocks on (see 4b's GOTCHA)
+codeyam-editor editor audit --only <INVARIANT_ID> # the fix loop, one finding at a time (`--only ?` lists ids)
+```
+
+Drive every non-`_ADVISORY` finding to zero — fix it, register it, or (only in
+4b's one sanctioned case: a finding a capture cannot distinguish) accept it by
+name with `audit-baseline-add` — and only then start the finalize. If a
+finding is owned by a too-big plan from step 4b, do **not** start the
+finalize: it would block on that finding. Skip to the run report and the ship
+question below, which names the finding and its plan. A finalize started with a gating finding
+already known will block at Phase 0.6, after paying the full pre-audit cost
+described below, to tell you what the `audit` you already ran told you.
+`audit --only` answers the same question for a fraction of a full audit's cost
+(measure both with `--timings`). This is not optional
+on a branch carrying audit debt: on `editor-improvements-103` the agent held
+the first run's findings from `audit --format json` before starting it, and
+the two Phase 0.6 blocks that followed cost 69 minutes.
+
+**The one class that may remain: coverage findings on this pass's own tests.**
+`UNCOVERED_GLOSSARY_ENTRY` on an entity whose test this pass wrote clears only
+through the finalize's own LCOV bootstrap — nothing before it collects the
+coverage that would clear it. Start the finalize with those still listed, and
+name each in the run report. Everything else, including a coverage finding on an
+entity whose test predates this pass, is driven to zero first. On
+`editor-improvements-112` six such findings remained at launch, and the finalize
+passed.
+
+**Commit the audit's own fixes through `commit --out-of-workflow`, never a raw
+`git commit`.** An audit is out-of-workflow work: no editor cycle is parked at
+its commit step, so there is no `advance` to commit through. The sanctioned
+path is:
+
+```bash
+git add <the files the fixes changed>
+codeyam-editor editor commit --out-of-workflow -m "audit: <what the fixes do>"
+```
+
+It runs the static-check gate and the strict test-cache gate (scoped to the
+partitions the staged paths can affect) itself, then commits. Only the slug
+gate is skipped; the git hook's static checks, shipped-blob lock and
+plan-frontmatter check still run. A raw `git commit` skips the editor's
+commit-side checks, and `--no-verify` skips every hook. Add `--dry-run` to
+learn whether the commit would be accepted before you make it.
+For the message body, follow the `journal-commit-message` conventions
+(`<type>: <title>`, blank line, description) and end it with the session's
+attribution trailers.
+
+```bash
+# Stop fast-intent so finalize stamps the real marker, not a deferred one.
+codeyam-editor editor fast-commit-stop
+
+# Integrate a moved primary branch by MERGING (never rebasing) — see rule 0.
+# pre-commit-sync alone compares only against this branch's own upstream, which
+# on a branch one machine pushes is always level, so it never sees main move.
+codeyam-editor editor sync-upstream --base \
+  --trailer "<attribution trailer>"            # one --trailer per session attribution line
+codeyam-editor editor pre-commit-sync          # records the tested tip session-finalize requires; --recover if it bails
+codeyam-editor editor verify-merge-consistency # if either integrated a merge — see "After every merge"
+
+# MANDATORY when the branch carries platform surface (see "Cross-platform
+# pitfalls"): the finalize's Phase 4b gates on these same checks and fails on
+# a real cross-target error, so get the verdict cheaply first. Its first run
+# belongs at step 2's compile gates, before the warm; this one confirms the
+# edits made since.
+codeyam-editor editor cross-check
+# MANDATORY when this branch repaired a red Windows cross-target build (or the
+# Windows suite has otherwise never run on it): see the windows-check MANDATE.
+codeyam-editor editor windows-check
+
+# The full, whole-repo finalize. Stamps lastFullFinalizeSha.
+# Add --linux whenever this host is not Linux and the branch carries platform
+# surface with a crossPlatformTestCommand configured — the finalize otherwise
+# refuses before Phase 1 (exit 2, "Next valid action: … --linux"). If you did
+# not add it and the refusal names it, re-run with exactly the flag it names.
+codeyam-editor editor session-finalize [--linux] 2>&1 | tee /tmp/codeyam-audit-finalize.log
+```
+
+Each `MANDATORY when` above is a condition to check, not an option to weigh:
+when it holds, the step is not skippable, and when it does not hold, skip
+the step rather than run it for reassurance.
+
+> GOTCHA (self-host mode only — `hosted-e2e` is a codeyam-editor-repo static
+> check; a client project never has it, and in client mode you never run
+> `rebuild-self`) — **after `fast-commit-stop`, the first source commit needs an
+> ORDER, not a rebuild.** Stopping fast intent re-arms the full `verify-build`
+> in the pre-commit hook, and its `hosted-e2e` check refuses a binary that
+> `rebuild-self --check` calls stale:
+>
+> ```
+> CODEYAM_STATIC_CHECK_SKIP: rebuild-self --check says the codeyam-editor on
+> PATH (…) may predate this checkout's source, so it could test old code. …
+> BLOCKED: static check 'hosted-e2e' failed.
+> ```
+>
+> Re-running `rebuild-self` and retrying the commit **loops**: with the edits
+> still uncommitted the probe keeps reading `stale`, and the commit itself then
+> moves HEAD past the binary's embedded sha. The way through:
+>
+> ```bash
+> codeyam-editor editor rebuild-self                               # 1. the binary now carries this tree
+> CODEYAM_EDITOR_BIN="$(command -v codeyam-editor)" git commit -F <msg>   # 2. hosted-e2e RUNS (~70s) instead of refusing
+> codeyam-editor editor rebuild-self --check                       # 3. reads `current` — no re-stamp build needed
+> ```
+>
+> `CODEYAM_EDITOR_BIN` is `scripts/check-hosted-e2e.sh`'s documented override —
+> a binary named there is trusted as given — and step 1 is what makes trusting
+> it honest. Step 3 used to be a second full `rebuild-self` (~2.5 minutes) that
+> only re-stamped the new HEAD sha into byte-identical source. It is no longer
+> needed: step 1 records what it compiled from the dirty tree, so a commit of
+> exactly that content reads `current`, as a **state-only** commit always did.
+> Run a real `rebuild-self` only if `--check` reads `stale`, which means a file
+> changed between step 1 and the commit. Never use `git commit --no-verify` here:
+> it skips *every* hook, and `staticChecks` is the only thing between the pass
+> and a red CI.
+
+> **A Phase 0.6 block is cheaper than a Phase 2 block — and still NOT cheap.
+> Do not budget it as a few minutes.** The finalize runs the strict audit
+> *twice*: once as a pre-audit before Phase 1's full suite, and again as Phase 2
+> in its own position. The pre-audit blocks on every finding Phase 1 could not
+> have changed — the not-cache-derived invariants
+> (`SOURCE_HAS_UNREGISTERED_ENTITY`, `SLUG_FILE_EXCEEDS_BUDGET`, the glossary
+> ones) plus any cache-derived finding whose partitions Phase 1 is going to
+> reuse anyway — so it does spare you Phase 1. Measured on
+> `editor-improvements-88` before it existed: `phase1=passed, phase2=failed,
+> elapsed=3128.2s` for a verdict a standalone `audit --only` reached in
+> 100-190s.
+>
+> But "hoisted ahead of the full suite" is not "first". Phase 0.6 still runs
+> behind Phase 0 (session-cleanup), Phase 0.5 (`verify-build` + the
+> cross-target build), Phase 0.55, and its own reconciliation pre-check, and
+> then performs a full strict audit — which on this repo alone has measured
+> 641s on one machine and ~20 minutes on another, and 140s on
+> `editor-improvements-105` (2026-10-30). The spread is the point: price it
+> with `audit --timings`, not from a figure here. An earlier revision of this
+> paragraph said a Phase 0.6 block "costs ~3 minutes". That figure dated from a
+> much cheaper audit and is wrong by an order of magnitude. Measured on `editor-improvements-103`, from the
+> finalize log:
+>
+> | runId | outcome | elapsed |
+> |---|---|---|
+> | `59d6caa2` | Phase 0.6 BLOCKED (`UNCOVERED_GLOSSARY_ENTRY: 22`, `CHANGE_ITEM_LACKS_VERIFY: 1`) | 2098.6s (35 min) |
+> | `cdd75c20` | Phase 0.6 BLOCKED (`SOURCE_HAS_UNREGISTERED_ENTITY: 1`) | 2060.6s (34 min) |
+>
+> **Derive the figure for the repo in front of you rather than quoting one.**
+> Any constant here ages as the audit grows, which is how the old one went
+> wrong. Two sources record real time. The standalone audit's own cost is the
+> `timings` block of `codeyam-editor editor audit --timings --format json`.
+> `audit-history` records verdicts and counts, not durations, so it cannot
+> answer this. A whole blocked finalize's cost is the `elapsed=` on its run-end
+> line in `.codeyam/logs/session-finalize.log`, or in its run-keyed transcript.
+> Read the pre-audit's price as *everything up to and including one strict
+> audit*. The consequence is the precondition above: a known gating finding
+> goes to `audit --only`, never to a finalize.
+>
+> Findings it *cannot* settle — ones derived from runner output a partition
+> Phase 1 will re-run produces — are reported as deferred and left to Phase 2,
+> which remains the authority. A clean pre-audit therefore proves nothing about
+> merge-readiness on its own; only Phase 2 advances the marker. On a run where
+> nothing is wrong, the pre-audit is one extra strict audit: a real cost, worth
+> paying because the alternative is the whole Phase 1 suite before Phase 2
+> reports the same block.
+
+> GOTCHA — **the marker-stamp trap.** A `session-finalize` that *skips* the
+> comprehensive whole-repo phase can leave `lastFullFinalizeSha` unstamped even
+> though it exited 0 — and then the merge-readiness gate still fails. Always
+> confirm the marker actually advanced:
+>
+> ```bash
+> codeyam-editor editor verify-full-finalize   # exit 0 == HEAD is covered
+> ```
+>
+> If it exits 1 after a "successful" finalize, you hit the trap — re-run the
+> finalize forcing the comprehensive pass; don't trust the green exit code
+> alone.
+
+> GOTCHA — **redirection + completion token.** Use `2>&1 | tee <file>` to capture
+> both streams to a file you can read back. The finalize prints its terminal status
+> as a JSON line carrying `CODEYAM_CMD_COMPLETE` on **both** success and failure.
+> When the harness backgrounds the finalize, **await its completion notification**
+> (the re-invocation when the task exits) — or block once with `codeyam-editor editor
+> wait-for <task-id>`, run BARE. Then read the `status` off that sentinel line in the
+> `tee`'d file. Do NOT hand-roll an `until grep … sleep` poll loop, and don't regex
+> English success strings. (Same wait-for-the-notification model as the editor
+> SKILL.md and the step hook's background-work block — one model, not two.)
+
+> GOTCHA — **the on-disk log spans EVERY run, so grepping it answers the wrong
+> question.** Separately from the `tee`'d file above, finalize always writes
+> `.codeyam/logs/session-finalize.log`. That file is deliberately append-only —
+> the history is useful, and comparing this run's phase timings against the last
+> one is a real workflow — so a `grep BLOCKED:` or `grep 'Next valid action:'`
+> over it returns **the union of every run this branch has ever done**, most of
+> it historical and none of it labelled as such. This is the same shape as the
+> `<cmd>.txt` warning in CLAUDE.md, where a narrower re-run replaces a wider
+> one's output: in both cases the file you get is not the file you meant.
+>
+> It reads exactly like a live problem. A previous run's `fleet-ready.test.sh
+> mutated the repository under test` bail — carrying a repository-state delta
+> naming a branch that no longer existed — was once read as live damage to the
+> current checkout, and several minutes went into verifying `core.bare`, the
+> reflog, and every ref before it turned out to predate the session by days.
+>
+> Ask for the run you actually mean:
+>
+> ```bash
+> codeyam-editor editor finalize-log --last-run      # just the newest run
+> ```
+>
+> Read-only, exits `0` on an absent or empty log, and takes `--format text|json`
+> like the other query surfaces. Under JSON, `count` is the slice's line count
+> and `total` the whole log's, and the `runId` sibling is the join key — it
+> matches the `runId` on
+> `.codeyam/state/command-output/session-finalize.status.json`, so you can prove
+> the slice and the verdict describe the same run rather than trusting a bare
+> `status`. Every run that started emits a closing `CODEYAM_FINALIZE_RUN_END`
+> marker carrying `ok`, `failed`, or `refused` (a blocked precondition, such as
+> the dirty-tree gate, that returns before the phases run). So a slice with NO
+> closing marker means the run never finished at all — still in flight, or
+> killed.
+
+> GOTCHA — **the per-test-evidence union-clobber.** If the finalize's evidence
+> phase reports a large `per-test-evidence` "missing" / "out of sync" count
+> (thousands of rows) that appeared *right after* a `pre-commit-sync` pulled
+> sibling commits, suspect the union-clobber, not a real evidence gap: a
+> non-driver merge (a `git pull --rebase` autostash pop) dropped local rows.
+> `origin` retains the intact file, so recover in one line —
+> `git checkout origin/<branch> -- .codeyam/per-test-evidence.json` — instead of
+> paying a full flag-free `refresh-tests`. The normal `pre-commit-sync` now
+> integrates through the union-safe transient-commit rebase and re-asserts a
+> post-integration shrink guard, so a fresh clobber should no longer occur; this
+> recovery is for a file already damaged by an older sync.
+
+> GOTCHA — **a red test during the coverage bootstrap is a test failure, not a
+> tooling failure.** On a Rust project the finalize runs `cargo llvm-cov` before
+> Phase 1 whenever source has moved. With `--no-fail-fast` the whole suite still
+> runs past a red test, but cargo-llvm-cov then exits 101 and writes **no** LCOV
+> file. An older binary reported that as `LCOV bootstrap failed: cargo llvm-cov
+> exited with status exit status: 101`, every phase `pending`, and the failing test
+> was one line in a 25,000-line transcript (search it for ` ... FAILED`). A current
+> binary rebuilds the LCOV from the run's profile data, marks the failing test's
+> partition red in the test cache, prints `the coverage run had N failing test(s):
+> <names>`, and continues. Phase 1 then re-runs that partition instead of reusing a
+> cached pass, so a test that is still red fails the finalize there, by name. That
+> red mark survives a finalize that stops earlier, for example on a Phase 0.5 static
+> gate. So a re-run that skips the (now fresh) coverage step still re-checks the
+> test. Treat the named test as the finding. Do not turn off
+> `audit.coverageBootstrap.enabled`, because that removes coverage gating, not the
+> red test. When no usable LCOV can be rebuilt (a build error, a crate the host
+> cannot build, an OOM kill) the bootstrap still bails with its original message
+> and remedies (`excludedWorkspaceCrates` first), plus a `Failing tests:` line
+> when the output named any.
+
+> GOTCHA — **infra crashes, not code bugs.** A finalize can die on a full disk
+> or an OOM. If it crashes non-deterministically, check `df -h` / free memory
+> before assuming the branch is broken.
+
+Only after `verify-full-finalize` exits 0 is the branch **merge-ready**.
+
+**Now — and only now — ask the one ship question.** Write the run report first
+(decisions made and the rule behind each, spend made, plans written with their
+slugs, anything uncertain left in place, and in client mode the CodeYam
+improvements list), then ask a single plain-language question, e.g.:
+
+> *"Everything passes. Upload it, open the review page, and merge once the
+> automated checks pass?"*
+
+Run your draft through `codeyam-editor editor check-question-copy --structured`
+first and fix what it reports. Do not split it into separate push / PR / merge
+questions.
+
+- **Yes** authorizes all of step 8: push, PR create/update, step 8a's CI-fix
+  loop, and the merge (8b's stripped-body rule unchanged) — without asking
+  again. The one exception is 8a's scope-change re-ask.
+- **No** stops here: the branch stays merge-ready locally, and the report says
+  so.
+
+**When a too-big plan from step 4b owns open findings**, the branch never
+reached `verify-full-finalize` exit 0, so it is not merge-ready: nothing is
+pushed or merged (`editor push` would refuse the uncovered range anyway). The
+run report lists each open finding beside the plan slug that owns it. Take
+that list from the audit's `ownedBy[]` array (`editor audit --format json`),
+not by cross-referencing plans by hand. A failing finding absent from
+`ownedBy[]` is owned by no plan, and the report must say so. The ship
+question says so plainly and offers what is still possible, e.g.:
+
+> *"Everything else is fixed. 3 problems remain that need a bigger change, so
+> I wrote a plan for them; the branch can't merge until that plan is done.
+> Start that plan now?"*
+
+A yes runs that plan; a no leaves it queued and the branch unmerged. This
+holds under `scheduled-finalize` and `scheduled-merge` too: a standing yes
+never merges past a finding the run left visible — stop and report.
+
+`scheduled-merge` is a standing yes (see "Scheduled invocation" at the top);
+`scheduled-finalize` does not ask — it stops and reports, with the ship
+question waiting in the report. On a yes:
+
+```bash
+codeyam-editor editor push                     # the wrapper runs the deferred-finalize gate
+```
+
+`editor push` works **directly** here even though this branch never walked the
+guided workflow — the wrapper proceeds past its workflow-step precondition once
+`verify-full-finalize` is green (HEAD is full-finalize-covered), so there is no
+need to fall back to a plain `git push`. A mid-workflow branch that is *not*
+full-finalize-covered is still refused, with a message naming both routes
+(advance the workflow, or run a whole-repo `session-finalize`).
+
+If the pre-push gate complains of deferred commits, do **not** override with
+`--allow-deferred`; it means finalize didn't cover the range — go back to the
+marker-stamp trap above.
+
+### Publishing a release AFTER the finalize (self-host mode only)
+
+This section is about releasing the codeyam-editor binary itself. In client
+mode, skip it — the audit never publishes, bumps, or installs the editor.
+
+If this branch publishes a versioned artifact, the ordering is:
+
+**bump → publish → commit → finalize → push** — never bump → publish → commit → push.
+
+A version-bump / release-metadata commit (a manifest version field, a lockfile,
+a changelog stamp) is a **source change like any other**. It falls outside the
+stamped `lastFullFinalizeSha`, so a branch driven to `verify-full-finalize`
+exit 0 and pushed silently stops being merge-ready the moment that commit
+lands — and the ordinary push gates do not catch it, because they classify
+manifests and lockfiles as owing no finalize. You then pay a second
+`session-finalize` plus a second push to get back.
+
+Put the release commit *inside* the finalize instead: bump and publish first,
+commit the version metadata, and only then run `session-finalize` and push.
+
+`editor push` now blocks on this rather than letting it through silently — a
+`BLOCKED:` with `Next valid action: codeyam-editor editor session-finalize`
+when the branch was stamped merge-ready and has drifted off it. On a feature
+branch under fast intent it warns instead of blocking, matching how the same
+gate treats ordinary post-finalize source commits there.
+
+---
+
+## 8. PR → CI → mergeability
+
+With the branch pushed and merge-ready:
+
+- Open or update the PR (`gh pr create` / `gh pr view`). The ship question's
+  yes already covers this — do not ask again.
+- **Before waiting on any check, read `gh pr view <pr> --json
+  mergeable,mergeStateStatus`.** If it says `CONFLICTING` / `DIRTY`, integrate
+  the base by merge (`codeyam-editor editor sync-upstream --base --trailer
+  "<attribution trailer>"` — never a raw `git merge`, never a rebase), resolve
+  any conflict it stops on and finish with `sync-upstream --continue-rebase`,
+  push — and only then start the CI wait. GitHub
+  creates no `refs/pull/<N>/merge` ref for a conflicting PR, so the
+  `pull_request` workflow never fires: **the PR shows zero checks and no
+  error**, and a wait on it can never end. `editor ci-failures` refuses with
+  exit `2` in this state for the same reason. A PR with zero checks has two
+  known causes, and they look identical: this one (a conflict — no merge ref),
+  and a CI-skip token in the tip commit message (see
+  `scripts/lib/ci-skip-token.sh`). Check mergeability first; it is one call.
+- Track CI. Any red check is handled by 8a below — there is no shortcut.
+- Drive to `gh pr view --json mergeable` → `MERGEABLE` /
+  `mergeStateStatus: CLEAN`. A `CONFLICTING` state means origin moved again —
+  merge it in (never rebase) and re-run the finalize gate.
+- Merging the PR is the final outward action — the ship question's yes already
+  covers it once CI is green; do not ask again.
+- **Merge with a stripped body — never let a squash inherit `[skip ci]`.** See
+  8b below; this is not optional polish, it is the difference between the merge
+  publishing a binary and publishing nothing.
+
+**A 5xx from an outward write is not evidence the write failed. Read the
+resource back before retrying.** A `502` says the *response* did not make it
+back to you; it says nothing about whether the server acted. Every outward
+action this section gates — opening a PR, merging one, pushing a tag, creating a
+release — is one where a blind retry is more expensive than the original
+failure, because the retry is not idempotent.
+
+Both halves of that happened in a single session, and both writes had **already
+succeeded**:
+
+| Write | What it returned | What a blind retry would have done |
+|---|---|---|
+| `gh pr create` | HTTP 502 | Opened a **duplicate PR** for the same branch |
+| `gh pr merge --squash` | HTTP 502 | Attempted a **second merge** on a just-merged branch |
+
+So the rule, for any write this procedure gates:
+
+```bash
+# Do NOT re-run the write. Read the resource back first.
+gh pr list --head "$(git branch --show-current)" --json number,state,url
+gh pr view <n> --json state,mergedAt,mergeCommit
+```
+
+If the resource is already in the state the write intended, the write
+succeeded — report it as done and move on. Only retry once a read has actually
+confirmed the write did not land. This generalizes past `gh`: treat *any* 5xx on
+an outward action as "verdict unknown, go and look", never as "it failed, do it
+again".
+
+### 8a. Red CI is not done — investigate before you classify
+
+**A red test is a red test. `verify-full-finalize` exiting 0 locally is
+necessary but NEVER sufficient — local green does not clear red CI.** When any
+CI check is red, root-cause it at the source *before* any
+"known/flaky/infra/environmental" label is even considered.
+
+**The contract — investigate-then-classify, never classify-then-defer.** For
+**every** red check, in this order:
+
+1. **Pull the actual failing-job log.** Do not reason from the check name.
+   ```bash
+   gh pr checks <pr>                          # list checks + buckets
+   codeyam-editor editor ci-job-log <job-id>  # the specific failure
+   ```
+   The job id is the number after `/job/` in the check's link. Use
+   `ci-job-log`, not `gh run view --job <job-id> --log-failed`: the latter
+   refuses ("still in progress") until EVERY job in the run has finished, while
+   a red job usually lands long before its siblings. `ci-job-log` serves the
+   log as soon as that one job completes, and reports an unfinished job as
+   not-yet-available rather than failing.
+2. **Extract the specific assertion or build error** — the failing test name,
+   the exact `assertion failed: ...` / compile error / panic, the line. Write
+   it down.
+3. **Only now classify**, against the flake bar below. A classification with no
+   log evidence behind it is forbidden.
+
+**On a PR, CI fails fast — a `cancelled` job is collateral, not a finding.**
+Every merge-gating job ends with `.github/actions/cancel-run-on-failure`, so
+the first red job cancels the rest of a PR run, and the Windows lane does not
+start until the Linux build, Windows-target clippy and portability lint pass.
+Fix the job that actually FAILED, and read nothing into the cancelled or
+never-started ones. That also means one round shows the first failure, not
+every platform's, so run the cheap local repros (`cross-check`,
+`windows-check`) before a push rather than leaning on full PR CI to list them
+all. Push runs on `main` and dispatches still run every lane.
+
+**A Rust build job killed mid-compile with no compiler error (exit 143) is a
+cold cache, not a flake.** The repo's Actions cache has a 10 GB limit; when
+Rust caches get evicted, a job compiles cold, and a killed job never saves its
+cache, so it stays cold on every later run. Before re-running, check
+`gh cache list` and the job log's `No cache found`, and read the archive job's
+`Report memory and kernel kills on failure` step for the cause.
+
+**FORBIDDEN:** presenting a stop/defer question whose justification is an
+un-investigated "known infra" or "known flake" label. A queued plan or a flakes
+memory is **not** evidence that *this* red check is that issue — confirm the
+failure signature matches first.
+
+**Default toward fixing, not stopping.** Red CI after a push is *inside* this
+skill's job, not an outward action — the default is "root-cause and fix," and
+the ship question's yes already authorized the loop. A genuine fork (approach A
+vs B with real ripple) is **decided, not asked**: take the approach that changes
+less behavior. If both are large, write a plan for the bigger fix (step 4b) and
+land the smaller one. A red check the plan owns stays red — do not merge past
+it; stop and report it beside its plan slug.
+
+**The one re-ask.** If a fix made after the ship question's yes changes behavior
+beyond the red check itself — not just the failing test or its direct cause —
+ask the ship question again, plainly saying what changed: the user approved a
+different diff.
+
+**Iterate on the narrowest CI that can answer — one full PR run, at the end.**
+A full PR run answers every platform at once, and that is the only reason to
+pay for it. While you are still fixing, pick the cheapest run that answers the
+question you actually have:
+
+- **A suspected flake → rerun that job on the SAME commit.**
+  `gh run rerun <run-id> --job <job-id>` re-runs one job against an unchanged
+  tree. It is the proof the flake bar below demands and the cheapest possible
+  re-verification. A suspected flake never justifies a new push.
+- **A red check confined to one platform's suite → that platform's targeted
+  run.** For Windows that is `codeyam-editor editor windows-check`, which
+  dispatches CI's `windows_only` input on the pushed tip; read it back with
+  `windows-check --run <id>`. This includes a commit that changes only test
+  scheduling (a nextest override, a shard pin): it can only move Windows shard
+  times, so only the Windows suite can answer it.
+- **Only the final commit, carrying every fix, pays for full PR CI.**
+
+`windows-check` refuses an unpushed tip, and on a PR branch every push also
+starts the full PR run. If the CI skips draft PRs, as this repo's does, convert
+the PR to draft first (`gh pr ready <pr> --undo`). Push and iterate with the
+targeted runs, then `gh pr ready <pr>` to start the one full run on the final
+tip. Without that, each targeted run sits beside a full run that cancels the
+previous one and is cancelled by the next.
+
+**One push, one Windows check, one `gh pr ready`.** Where this repo's CI is
+concerned, a green `windows-check` on the final tip is not repeated: the full
+PR run's `prior-verdict` job finds that dispatch on the same commit and skips
+the Windows lanes, and `assert-platform-suites-ran` names the dispatch in their
+place. That holds only while the PR's merge with its base is the same tree as
+the tip, so merge the base before the push, not after. The sequence is then:
+batch every known fix into ONE commit → push (PR in draft) → `windows-check` →
+fix every red its `--run` readback lists in ONE further commit, push, and check
+again → `gh pr ready <pr>` once, with nothing pushed after the green check. A
+push after it starts a Windows run the check already paid for. Measured on PR
+#150: three pushes, three `windows_only` dispatches (~20, ~45 and ~55 Windows
+minutes), and a final full run that re-ran the suite dispatch `43283338571` had
+passed about an hour earlier on the same SHA.
+
+Measured on PR #142: five full PR runs, each 33–50 minutes and ~39 jobs, to
+reach green. Three of the four red rounds were Windows-only: a repaired
+windows-gnu build whose newly-visible suite went straight to full CI (see the
+`windows-check` MANDATE), then a nextest override and a shard pin, each pushed
+as its own full run. Roughly one full run plus three Windows-only runs would
+have done.
+
+**Land the whole set in ONE commit — a post-finalize commit un-stamps the
+branch.** A CI run reports *every* failure it found, so the complete set is in
+front of you before you fix the first one. Investigate all of them (steps 1–3
+above, per red check), then land the fixes together. The reason is mechanical
+rather than stylistic: `session-finalize` stamps `lastFullFinalizeSha` at the
+HEAD it verified, and a commit made after that stamp moves HEAD past it — the
+branch stops being merge-ready and `editor push` blocks with `Next valid action:
+codeyam-editor editor session-finalize`. One fix per commit therefore buys one
+whole finalize cycle per fix. Measured on `editor-improvements-76`: that loop
+ran five times, 35–47 minutes each even with section 7's phase fingerprinting
+skipping unchanged phases, for three fixes a single CI run had already reported
+and that could have shipped in one commit.
+
+**What a cycle actually costs, so the advice above is a price rather than an
+exhortation.** On `editor-improvements-80` the same loop ran five times and cost
+roughly **34, 85, 50, 87 and 50 minutes** — call it an hour a fix, with the
+worst case near an hour and a half. Two things follow.
+
+The spread is not noise, and it is the reason the cheap runs were cheap: phase
+fingerprinting skipped the phases nothing had touched. On the 34-minute run,
+Phase 1 reused **20 green partition caches** instead of re-running **35,841
+tests**. So a batched fix set does not merely save you *n − 1* runs — it keeps
+the runs it does cost in the cheap band, because a commit that touches one area
+leaves the other phases' fingerprints intact. Interleaving unrelated fixes
+across separate commits is what dirties every phase and prices each cycle at the
+top of that range.
+
+And an hour is long enough that the batching decision is worth making
+deliberately *before* the first fix, not discovered at the second. When CI hands
+you three failures, the choice is between roughly one hour and roughly four.
+
+**The case batching cannot cover: a diagnose-then-fix loop.** The advice above
+assumes CI handed you the complete failure list. Sometimes it cannot: the first
+commit exists only to make a failure *visible* (upload a log artifact, add a CI
+diagnostic step), and the fix is written from what that run reveals. The two
+commits cannot share one finalize, because the second does not exist yet. On
+`editor-improvements-94` that loop cost two whole re-stamp finalizes, ~45
+minutes each, neither of which changed a single verdict. Two things now keep it
+cheap — lean on them rather than fighting the ordering:
+
+- **When every commit past the full-finalize marker is CI infrastructure, do not
+  re-finalize at all — run `codeyam-editor editor finalize-ci-only`.** CI
+  infrastructure means the explicit allowlist in `ci_infra_allowlist.rs`:
+  `.github/workflows/*.yml`, `.config/nextest.toml`, the Windows shard planner
+  and its tests, `scripts/lib/ci-*.sh`, and the `scripts/check-*.sh` lints with
+  their suites. The command runs only what reads those files. That is the
+  static checks whose `filePatterns` match them, the test partitions each
+  allowlist entry names, and, for a file the binary embeds (`cicd.yml`), the
+  includer module's tests plus a `rebuild-self --check` that must read
+  `current`. It then commits per-commit proof beside the marker (a
+  `ciInfraEvidence` row keyed on the commit's `git patch-id`). Both CI gates
+  read that proof: `verify-full-finalize` and the compile-free `fast-gates`
+  precheck (`scripts/lib/full-finalize-precheck.sh`). Before the precheck
+  learned to, PR #149's proven `cicd.yml` commit passed `verify-full-finalize`
+  and still failed `fast-gates`. So if `fast-gates` refuses a commit you proved,
+  the proof is missing from the pushed `finalize-debt.json` or the commit was
+  edited after the proof. On PR #148 each such round cost 2,317–3,217 s
+  of full finalize. This path skips the whole-repo audit entirely. It refuses
+  (`Next valid action: session-finalize`) the moment a commit past the marker
+  touches anything else, and `verify-full-finalize` names it as the recovery
+  when the only uncovered paths are CI infrastructure
+  (`reason: ci-infrastructure-unproven`). `--dry-run` prints the plan first.
+- **A commit touching only CI provider config or test-scheduling config does
+  not invalidate the audit.** `.github/workflows/**` (and the other CI config
+  locations) and `.config/nextest.toml` are linted by the static checks and read
+  by nothing else a finalize runs. The audit, the dependency-graph rebuild, and
+  the screenshot guard leave them out of their input fingerprints. When the
+  audit's recorded pass still matches, the re-finalize re-runs only the static
+  checks and the cheap whole-tree guards — minutes. That is the best case, not a
+  promise. On `editor-improvements-104` two such re-finalizes took **2,805 s and
+  2,698 s**. `.config/nextest.toml` was still an audit input then, and in the
+  second run the audit's recorded pass no longer matched. Each paid the strict
+  audit twice: the Phase 0.6 pre-audit, then Phase 2 on inputs Phase 1 had just
+  proven unchanged. Phase 2 now adopts a clean pre-audit verdict whenever Phase 1
+  rewrote no runner output and the audit's inputs have not moved since. So the
+  worst case for a config-only commit is **one** strict audit (price it with
+  `audit --timings`),
+  not two. Keep the visibility commit to config alone. Mix a source edit into it
+  and every phase that reads that source re-runs, as it must. The audit's skip
+  still requires the static checks to have passed on the current tree, so a
+  broken workflow edit cannot slip through on the audit's old pass.
+- **The fix commit pays for what it touched, not for the whole branch.** Phase
+  fingerprinting re-runs only the phases whose inputs moved; that is the
+  mechanism the price above already reflects.
+
+> GOTCHA — **the tested-tip record does not survive a push that pulled.**
+> `session-finalize` requires the tested-tip record `pre-commit-sync` writes. A
+> clean `editor push` re-records it as the sha it landed (it prints `Push:
+> recorded <sha> as the tested tip`), so a re-finalize on a branch level with
+> origin needs no sync. A push that had to pull origin's commits (or took the
+> plan-only route) deletes it, so the first finalize after such a push refuses
+> immediately with `Commit queue: finalize found no tested-tip record`.
+> `finalize-preview` names the same owed step (`Launch precondition: no
+> tested-tip record`). The message says what it is — *"this is a recovery, not
+> an error"* — so run `pre-commit-sync` and re-run instead of investigating it
+> as a failure.
+
+**The flake bar — "flake" requires proof of non-determinism.** A check may be
+labeled a flake ONLY when it **passed on a re-run with no code change**, OR it
+**exactly matches a documented flake by test name AND failure signature**. A
+check that fails on two consecutive runs with the same signature is **by
+definition not a flake — it is a real bug. Fix it.** Build/compile errors and
+assertion mismatches are never flakes.
+
+**The first move on a suspected flake is a same-commit job rerun:**
+`gh run rerun <run-id> --job <job-id>`. Green there is the "passed on a re-run
+with no code change" this bar requires; red again with the same signature means
+it is a real bug. Either way the answer costs one job, not a push and a full PR
+run. On PR #142, Windows shard 2 in run 40650713940 was checked exactly this
+way.
+
+**Documented flake family — the port/process TOCTOU.** A single test in the
+real-port / real-process family (`port_reclaim` first-free, broker restart /
+survival, reverse-proxy controller boot, a git-tree-oid `finalize_debt` check)
+that fails in the ~21k-test parallel finalize Phase 1 but is **green on a
+single in-place re-run**, with the *failing test rotating run-to-run*, is
+this environmental family — a sibling test stealing a just-freed ephemeral port
+in a bind→drop→reacquire window. Do NOT weaken the E2E assertion. Harden it
+through `free_local_port_retry(|port| …)` (the bindable-direction helper beside
+`unbound_local_port` in each crate's `test_net` / `test_support`), which retries
+on a fresh port when the drawn one was stolen; new offenders are caught at
+`verify-build` by the `test-port-races` static check. A *new* racy test the lint
+flags is a real bug to fix now, not a flake.
+
+**A red test this branch did not cause — fix it on discovery, do not prove it
+red on the base first.** Proving it fails on a cold base worktree changes
+nothing about what happens next: the test gets fixed either way, and the proof
+costs minutes of cold compile and gigabytes of scratch target per test. Whatever
+the size of the fix, run this loop instead, in order:
+
+1. **Already fixed upstream?** `git fetch -q`, and check whether origin's new
+   commits touch the test or the code it covers. If they do,
+   `codeyam-editor editor sync-upstream` and re-run the test in place.
+2. **Flaky?** Re-run it once in place. Green with no code change meets the
+   flake bar above — harden it; never weaken the assertion.
+3. **Environmental?** A failure the runner-requirement probe explains (a
+   missing system library or toolchain) stays a reported environment error. No
+   claim, no fix commit.
+4. **Being fixed elsewhere?** `codeyam-editor editor test-fix-claim check
+   <test>` fetches every machine's claims first. `claimed-by …` means leave it
+   and carry on — the next sync picks up that fix. `landed <sha>` means sync.
+5. **Otherwise take it and fix it.** `test-fix-claim take <test>` (it takes
+   over a claim whose holder went quiet, and says so), fix it, and commit the
+   fix ON ITS OWN as `fix: …` with a `Codeyam-Fixes: <test>` trailer. Then
+   `codeyam-editor editor push --fix-only <commit>` ships that one commit
+   without touching your tree or your unpushed feature work, and marks the
+   claim landed. `editor commit --out-of-workflow --fixes <test>` makes that
+   commit and prints this exact `push --fix-only HEAD` as its next step.
+   It works on an already-finalized branch too: `--fix-only` records each
+   commit it re-ran green (`.codeyam/state/fix-only-proofs.json`), and the
+   pre-push guard accepts a recorded commit instead of demanding a
+   re-finalize. A trailer alone is not enough — a `fix:` commit pushed any
+   other way is still refused as un-finalized source. The proof covers the
+   push only: the merge gate (`verify-full-finalize`) still counts the fix
+   as source past the last full finalize. Only if `--fix-only` refuses because the fix does not apply
+   onto origin without this branch's feature edits, fold it into the feature
+   commit: `codeyam-editor editor journal-commit-message` adds the
+   `Codeyam-Fixes:` trailer for every claim this session holds, and the
+   regular `push` stamps those claims landed.
+
+Every fix travels on its own by default, because a fix hidden in an unpushed
+feature commit is invisible to every other machine until the feature lands.
+"Is it mine?" never decides whether the fix is made. `editor test-on-base` still exists for a person who wants that question
+answered by hand; it is no longer a step in this procedure.
+
+**Clear `REGISTRY_HAS_FOREIGN_HOST_GATED_TEST` mechanically, never by hand.** A
+test that gains a `#[cfg(target_os = …)]` / `#[cfg(unix)]` (or whose enclosing
+module/file does) drifts its registry `platform_gate` from source and raises this
+finding. The remedy is `codeyam-editor editor reconcile-registry --auto-apply`,
+which now re-infers the source cfg for **existing** entries and rewrites a
+disagreeing (or missing) gate in place — in either direction, including
+*clearing* a stale gate when source verifiably declares no cfg — or
+`backfill-platform-gates` for the fill-only bulk case (`None → Some`, never
+overwriting a concrete gate). Do NOT hand-edit with a per-test
+`register-test --platform-gate`; the finding's `fix_command` names the
+mechanical path.
+
+**It is mechanical, not unconditional — and it now tells you when it did
+nothing.** The inference only trusts an entry whose recorded `line` still
+points at the item its key names; a drifted line is declined rather than
+stamped from a neighbouring attribute. So a run can legitimately repair zero
+entries. It no longer hides that: each declined entry is printed with the
+token it would have stamped, and the command exits **2** (not 0) when gate
+drift was detected and none was repaired — a `fix_command` that exits 0
+having changed nothing is indistinguishable from one that worked. Recover by
+re-anchoring (`refresh-tests` re-derives `line` from runner output) and
+re-running, or repair one entry with `register-test … --clear-platform-gate`.
+
+### 8b. A squash merge must not inherit a plan commit's `[skip ci]`
+
+A squash merge concatenates **every** branch commit message into the merge
+commit's body, and GitHub Actions honors a skip token **anywhere** in that
+message — not just on the subject line. So ANY branch commit carrying `[skip ci]`
+— a plan commit made on `main` before the branch was cut, a cherry-pick, a
+hand-written one — makes the default `gh pr merge --squash` land that token on
+the primary branch and silently skip the entire `cicd` workflow for the merge
+commit.
+
+Nothing announces it. On 2026-08-09 PR #100 merged as `6baba063b` with no CI run
+at all: no `codeyam-editor-binary:main-6baba063b` was published, no cloud image
+was built, and `fleet-advance-to.sh`'s retag resolved its source to a tag that
+exists nowhere — the newest `main-*` tag stayed ~130 commits stale.
+
+**Merge with `merge-pr`, never a bare `gh pr merge --squash`:**
+
+```bash
+codeyam-editor editor merge-pr <n>            # --dry-run to see subject + body first
+```
+
+It is the one implementation both merge procedures share. It re-asserts the
+green gate, composes GitHub's default squash body (`* <subject>` + body per
+commit, oldest first) with every token GitHub honors stripped (`[skip ci]`,
+`[ci skip]`, `[no ci]`, `[skip actions]`, `[actions skip]`, `***NO_CI***`,
+case-insensitive), refuses a token in the subject rather than overriding the
+PR title, and reads the merge commit back to assert no token survived.
+
+**Do NOT stop `/codeyam-plan` emitting `[skip ci]`.** The token is right on a
+plan-only commit that targets `main`, which is the only case that emits it —
+`/codeyam-plan` and `/review-session` both OMIT it on a branch, where it would
+suppress the open PR's own run. The defect is it *escaping into a squash body*.
+
+**That branch exception does not make the strip step above unnecessary.** It
+narrows who emits the token, not who can carry one: a branch commit that picked
+one up from any source must still not reach a squash body, so merge through
+`merge-pr` regardless.
+
+**After merging, confirm the merge commit actually got a run:**
+
+```bash
+codeyam-editor editor verify-primary-branch-ci
+```
+
+Exit `0` means a run exists. Exit `2` names the sha and the one command that
+recovers it (`gh workflow run cicd --ref main`). A `gh` that cannot answer, a
+non-GitHub remote, or a repo that defines no workflows at all reports
+unknown/not-applicable and exits `0` — this check never turns a network hiccup,
+or a project that simply has no CI, into a red gate.
+
+### 8c. Offer a due review — after the ship flow, never inside it
+
+Interactive runs only (no argument): `scheduled-finalize` / `scheduled-merge`
+skip this section. Once step 8 is done — or once the user said no to the
+ship question — ask once:
+
+```bash
+codeyam-editor editor periodic-review status
+```
+
+If nothing is `due`, end the run as usual. Otherwise ask ONE more,
+separate question: never folded into the ship question, which keeps its
+one-question contract. Offer each `due` review with this fixed copy, verbatim,
+plus "Not now":
+
+- speed due — **"Find what slows down your sessions"**: "Measures where time
+  went in your recent sessions, explains how CodeYam builds and tests this
+  project, and recommends changes. You pick which become plans."
+- security due — **"Check this project for security risks"**: "A read-only
+  security review that changes nothing you wrote. Each problem found is rated
+  by how serious it is, and you pick which become plans."
+- **"Not now"**: "Nothing runs. The review stays due and is offered again at
+  the next session end or audit."
+
+On a pick, run that review's skill (`/codeyam-audit-speed` or
+`/codeyam-audit-security`). It records its own run when it finishes, which
+resets that review's clock.
+
+---
+
+## Cross-platform pitfalls
+
+> **Cross-platform block** — active only when the branch carries
+> platform-specific surface (multiple target OSes, conditional-compilation, a
+> desktop crate, CI/container build files, OS-dependent networking/error
+> classification). On a single-platform stack with none of these, this section
+> is inert. `session-finalize` itself prints a cross-platform advisory only
+> when it detects such surface.
+
+A green local finalize on **one** OS does not prove the branch is CI-green when
+it carries platform-specific surface. The categories to watch, and the concrete
+footguns behind each (all observed in real CI-fix rounds):
+
+- **Conditional-compilation code** (`cfg(target_os …)`, `cfg(windows)`, and
+  equivalents). The other platform's branch never compiled on your host, so a
+  dead-code/type error there fires only in CI. A cross-target compile/lint pass
+  (`codeyam-editor editor cross-check`) re-evaluates every config for a
+  cross-target triple locally, in seconds.
+- **A desktop GUI member** (e.g. a Tauri crate). It links platform GUI
+  libraries, so a change can break a headless workspace build in a GUI-less
+  container though it is clean on a developer laptop. The CI/image build must
+  also *copy* the desktop dir even when the build excludes it, or the image
+  build breaks on a missing directory.
+- **CI / container build files** (`.github/workflows/*.yml`, `Dockerfile*`).
+  The build invocation itself changed; local build success says nothing about
+  the CI or image build. The CI workflow is the authority on which invocations
+  CI actually runs.
+- **Networking error classification** (connect-vs-timeout, refused-vs-reset).
+  Socket semantics diverge by OS: a connection to an unbound localhost port is
+  *refused* (RST) on Unix but *times out* on Windows, and an HTTP response
+  written without reading the request gets an RST on Windows. A classifier or
+  assertion verified on one OS can misbehave on another.
+- **Phase/error assertions bound to a platform-dependent message.** An
+  assertion matching the exact text of an OS-specific error passes on the host
+  that produces that text and fails elsewhere. Make errors name their phase
+  explicitly rather than asserting on incidental wording.
+- **Assertions against the raw spelling of a value the code escapes.** When
+  production code escapes a path before emitting it (into TOML, JSON, a shell
+  string, a URL), a test that builds its expectation from the path's raw
+  display spelling passes on POSIX — no backslashes, so escaping is a no-op —
+  and fails on Windows. Build the expectation through the same escaping helper
+  the code uses. Fix the TEST: un-escaping the emitted value turns the test
+  green by making the real output wrong.
+- **The skipped-platform-test-job trap** — a *false* green. A CI matrix runs
+  each platform's TEST job only after that platform's BUILD job succeeds. When
+  the build fails (e.g. an unguarded `std::os::unix::*` in a test breaks the
+  windows-gnu build with `E0433`), the dependent test job is **skipped** — so a
+  matrix where every *run* job is green can have skipped a whole platform, and
+  any pre-existing failures on that platform stay invisible. A green CI run is
+  not proof a platform was exercised; a *skipped* build's tests never ran.
+  **A skipped platform job is never a neutral result** — it is "no verdict",
+  and it reaches every decision that assumed CI would supply one, not just the
+  Windows build it is usually explained with. On `editor-improvements-103` a
+  `build-rust-linux-archive` killed by SIGTERM skipped the ubuntu `test-rust`
+  job, which was the very job a `--without-linux-suite` waiver had been
+  accepted on — so the branch had no Linux verdict anywhere, local or CI.
+
+**MANDATE — when this surface is present, run the local repros BEFORE the first
+`session-finalize` — at step 2's compile gates, ahead of the warm — and never
+after CI tells you.** A cross-target fix is a
+source edit that re-stales the warm, so the first `cross-check` belongs ahead of
+it; step 7 re-runs it only to confirm the edits made since. The finalize
+runs these same cross-target checks as a gating Phase 4b, so a failure found
+here costs ~90 seconds instead of a blocked finalize. Measured on
+`editor-improvements-101`: a `session-finalize` spent 21 minutes before
+blocking on `cross-target build failed`, and a standalone `cross-check` then
+reported the identical `[FAIL] windows-clippy` in ~1.5 minutes.
+
+- `codeyam-editor editor cross-check` — compile/lint every cross-target locally,
+  in ~90 seconds on a warm cache. The first cross-target build after a toolchain
+  or target change pays a cold cross-compile cache and takes several minutes, so
+  a slow first run is expected, not a hang. This is also now **enforced**:
+  `session-finalize` runs the cross-target checks as a gating phase (Phase 4b)
+  whenever it detects compile-affecting platform surface, and FAILS on a real
+  cross-target compile/clippy error (missing toolchains SKIP with an install
+  hint, never block). So the gate and this guidance reinforce each other — do not treat
+  `cross-check` as optional when the branch touches platform surface. A
+  cross-target `[PASS]` is a COMPILE verdict, and the line now says so
+  (`compiled for this target only; no test ran on it`). Do not read it as
+  "the platforms are verified" — on `editor-improvements-99` both CI escapes
+  were Linux runtime failures sitting behind a green `macos-clippy` /
+  `windows-clippy`.
+- `codeyam-editor editor session-finalize --linux` — run the actual suite on
+  Linux before merge, so a Linux-only test failure gates locally instead of in
+  CI. This is **enforced** too: on a non-Linux host, a branch carrying platform
+  surface with a `crossPlatformTestCommand` configured is refused before Phase 1
+  (exit `2`) unless you pass `--linux`, or `--without-linux-suite "<why>"` when
+  this machine genuinely cannot run it. The waiver is logged as unverified.
+  **The rule, not a question:** pass `--linux` whenever this host can run it;
+  otherwise waive with a reason naming why this host cannot, and treat the
+  post-push check below as mandatory. **A waiver carries a post-push
+  obligation.** Its only justification is that CI's Linux test job supplies
+  the verdict instead, so after the first CI run on the waived branch, confirm
+  that job actually RAN — on this repo, that `assert-platform-suites-ran`
+  passed. A Linux test job that was skipped (because its build job failed,
+  was cancelled, or was killed) means the waiver is **unmet**: the branch has
+  no Linux verdict at all. Fix or re-run the build until the suite runs; do not
+  merge on the waiver alone.
+  The suite starts as soon as the setup phases pass and runs **beside** the
+  local phases (its output goes to `.codeyam/state/command-output/linux-suite.log`),
+  so a red suite stops the finalize while local phases are still running. Before
+  Phase 1, a seconds-long harness probe checks that the container looks like a
+  CI runner: the tests are not in process group 1, there is no git identity
+  (with `user.useConfigOnly` set), and `/workspace/node_modules` is empty. A
+  refusal there is a harness bug, so fix the harness script.
+  **When a test fails in the container because the environment lacks something
+  CI's runners also lack (a git identity, a tool, a free port), that is a
+  FIXTURE bug: fix the test** — e.g. `git config user.email` in the test's own
+  repo. Never give the harness what CI lacks. On `editor-improvements-110`,
+  giving the container a git identity failed the next finalize and hid a real
+  fixture bug that only Windows CI exposed, at about 200 minutes in all.
+- `codeyam-editor editor windows-check` — the Windows verdict. `cross-check`
+  only COMPILES for Windows; it never runs a Windows test or touches a Windows
+  filesystem, so a green `windows-clippy` says nothing about a `MAX_PATH`
+  checkout or a Windows-only test failure. This runs a configured
+  `crossPlatformTestCommand.windows` runner, or dispatches CI's `windows_only`
+  input on the pushed tip (`--run <id>` reads the verdict back). Run it BEFORE
+  a `--start-from-phase 2` re-stamp, not after — a Windows fix verified this
+  way costs one ~25-minute narrowed run instead of a re-stamp plus a full CI
+  round. **It is MANDATORY whenever the Windows suite was previously DARK** —
+  a commit on this branch repaired a red Windows cross-target build, or the
+  last CI run's `assert-platform-suites-ran` (or your CI's equivalent) reported
+  the Windows test job skipped. Fixing the build is what lets that suite run
+  for the first time, so every failure in it is still unseen. With a local
+  `crossPlatformTestCommand.windows` runner, run it before pushing; without
+  one, run it on the push that carries the repair, before any further fix
+  round or re-stamp. Measured on `editor-improvements-103`: `04dafd6af`
+  repaired the windows-gnu build, the branch went straight to full CI, and two
+  rounds (runs `40202657897`, `40215887712`) surfaced 6 and then 4 Windows
+  failures that one `windows-check` would have shown together. The same thing
+  happened again on PR #142: `68ee5496e` repaired the windows-gnu build and the
+  branch went straight to full CI. So make the check concrete: **if any commit
+  on this branch fixes a `cross-check` `[FAIL] windows-clippy`, the Windows
+  suite was dark.** Run `windows-check` before the push that would start the
+  next full round.
+- **A newly slow Windows test is usually NOT a pin to add — but read the plan's
+  mode first.** In `measured` mode every `main` run records per-test Windows
+  durations, and the next run places each test measured at 15s or more onto
+  the lightest shard (`scripts/windows-shard-plan.py`). So a shard that timed
+  out green on a PR rebalances itself once that test has run on `main`. The
+  mode is the first line of `build-rust-windows-archive`'s step summary
+  (`mode measured` / `mode pins-only`) and of each shard's nextest log
+  (`Shard plan (<mode>)`).
+
+  **In `pins-only` mode nothing rebalances.** That mode means the planner had
+  no timings table — `main` has never published one (the timings feature is
+  new on this branch, as on PR #144), or the artifact expired. Then the pins
+  are the only placements, an unpinned straggler stays in whatever slice it
+  sorts into, and re-running CI gets the same timeout. On PR #144 run
+  41203515032 a 110s unplaced test was shard 1's last pool test and took it to
+  717s against the 780s step cap, every test green. Here a pin IS the fix.
+
+  `WINDOWS_PINNED_SLOW_TESTS` in `.github/workflows/cicd.yml` otherwise exists
+  only for a test that must not share a shard: one shard's placed tests run in
+  PARALLEL and CPU-bound ones contend, so a shard's placed run costs nearly
+  the SUM of its pins, not the longest one (run 40650713940: the ~115s
+  step-render guard pushed its 84s neighbour past nextest's 120s kill; run
+  41210192667: three pins on shard 1 contended past 75s after a 669s pool).
+
+  **Before pushing ANY pin edit, and after ANY green-but-timed-out Windows
+  shard, run the planner's `check` against the latest run** — never a full PR
+  run to find out (PR #144 spent ~104 CI minutes learning it twice):
+
+  ```
+  python3 scripts/windows-shard-plan.py plan --out /tmp/plan.json \
+    --pins "<the edited WINDOWS_PINNED_SLOW_TESTS list>" \
+    --timings <windows-test-timings.json> --suite <suite listing> --shards 6
+  codeyam-editor editor ci-job-log <shard N job id> > /tmp/shardN.log   # each measured shard
+  python3 scripts/windows-shard-plan.py check --plan /tmp/plan.json \
+    --log 1=/tmp/shard1.log … --log 6=/tmp/shard6.log
+  ```
+
+  With `--timings` and `--suite` the plan's pool is `balanced`: module groups
+  split by measured duration, one filter per shard. `check` then re-reads each
+  shard's pool from its filter against the freshest per-test seconds and scales
+  by the measured wall/test-time ratio, so it projects a plan for a different
+  shard count than the measured run. Without them the pool is `sliced`, and
+  each shard is projected as its measured pool (less any test the new plan
+  moves out, plus any test it stops placing). Either way the placed run is
+  measured if unchanged, else the sum of its tests' seconds, and `check` exits
+  `2` naming any shard with less than ~130s of headroom under the cap — the
+  run-to-run pool variance observed for identical code (546–717s). Exit `3`
+  means a shard was not measured, which is no verdict. Then confirm the pushed
+  pin with `windows-check`, not a full PR run, and keep the PR in draft until
+  it is green.
+- **CI's test runner, not just CI's platforms.** None of the three verdicts
+  above runs the suite the way CI does when CI uses a different runner from the
+  local gates. On a Rust workspace whose CI runs `cargo nextest` under a
+  profile (`.config/nextest.toml`'s `ci`), that profile's per-test
+  `slow-timeout` / `terminate-after` budgets, leak detection and test groups
+  are enforced only in CI — a green local `cargo test` suite says nothing about
+  them, so a test over budget passes every local gate and fails CI as a
+  `TIMEOUT`. Reproduce a timeout-shaped CI failure under the same profile,
+  never with the local runner: `cargo nextest run --profile ci -E
+  'test(<name>)'`. A config edit that fixes one is validated in about a second
+  by the project's config check where one exists (this repo:
+  `scripts/check-nextest-config.sh`, run by `verify-build`).
+
+When a cross-target build fails, expect the skipped-platform-test-job trap:
+finalize names it explicitly, and you must treat that platform's tests as
+UNVERIFIED until the build is fixed and its suite actually runs. "Actually
+runs" is something to confirm, not assume: both halves of the MANDATE above —
+`windows-check` after a dark Windows suite, and the waiver's post-push check —
+exist because a platform verdict was taken as something CI would provide
+without anyone reading whether CI provided it.
+
+---
+
+## Report-only mode (the cheap, touch-nothing path)
+
+When the user just wants "tell me what's misaligned, don't touch anything,"
+run the report and stop:
+
+1. **Summarize the debt.** `codeyam-editor editor finalize-debt show --format
+   json` → the `deferred[]` list.
+2. **Run the audit read-only.** `codeyam-editor editor audit --format json` →
+   `failures[]` + `attribution[]`.
+3. **Attribute and report.** Intersect each `attribution[].introducedIn` SHA
+   with the `deferred[].sha` list. Group findings by the deferred commit that
+   introduced them, present the grouped report, and **stop** — apply nothing.
+
+This preserves the old report-only audit value (and its deferred-commit
+attribution) as an explicit early-exit. The default headline path is the
+aggressive align→finalize→present→merge-ready drive above.
+
+---
+
+## Reflect & self-improve (the last step every run)
+
+After the branch reaches merge-ready (or the user answers no to the ship
+question), run a **bounded, honest** reflection. The skill gets better every time it runs —
+but it must never silently rewrite its own `SKILL.md`.
+
+Enumerate the friction this run actually hit: every workaround you had to
+invent, every GOTCHA that bit, every step whose guidance was stale or missing,
+every CLI whose real behavior differed from this procedure. Then route each
+genuinely-new, non-obvious lesson through one of two channels — never a silent
+self-edit:
+
+1. **Durable lesson → persistent memory** (ungated, auto-recalled). Write a
+   memory file: one fact per file, update an existing file rather than
+   duplicate, add the one-line index pointer, and skip anything already
+   captured by the repo, this procedure, or an existing memory.
+2. **Structural gap → a queued plan, listed in the report.** When the lesson
+   is bigger than a memory — this procedure is wrong, a step is missing — write
+   a plan against **this file**
+   (`.claude/skills/codeyam-audit/finalize-procedure.md`) with
+   `codeyam-editor editor plan-create --source codeyam-audit --prefix audit`,
+   and list its slug in the run report. Do not stop to ask: the plan is the
+   review point, because it flows through the standard editor workflow, so the
+   skill never edits its own `SKILL.md` unseen. In client mode, a gap in the
+   editor itself is a CodeYam improvement for the report, not a plan in the
+   client's repo.
+
+If the run was clean, say **"nothing new learned"** and write nothing. Do not
+manufacture busywork edits.
+
+---
+
+## See also
+
+- `docs/fast-commit.md` — the deferred-tail mechanics this procedure finalizes.
+- `docs/finalize-deferral.md` — `verify-no-deferred-finalize`, the deferred
+  trailer, and the emergency-override audit trail.

@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id"
+      ],
+      "name": "Level"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level"
+      ],
+      "imports": [],
+      "name": "Level::hint"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level"
+      ],
+      "imports": [],
+      "name": "Level::id"
+    }
+  },
+  "files": {
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs"
+      ],
+      "imports": []
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+        "crates/simbiguity-circuits-puzzle/src/share.rs"
+      ],
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+        "crates/simbiguity-circuits-puzzle/src/share.rs"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/share.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs"
+      ],
+      "imports": [],
+      "namedMethods": [
+        "to_string"
+      ]
+    }
+  }
+}

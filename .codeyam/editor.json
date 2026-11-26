@@ -264,6 +264,87 @@
         "rust-toolchain.toml"
       ],
       "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-math"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-anim",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-anim"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-anim/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-math"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-render",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-render"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-render/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-anim",
+        "simbiguity-circuits",
+        "simbiguity-core",
+        "simbiguity-math",
+        "simbiguity-render"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-circuits-view",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-circuits-view"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-circuits-view/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-circuits-view",
+        "simbiguity-render"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-render-wasm",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-render-wasm"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-render-wasm/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
     }
   ],
   "testRunners": [

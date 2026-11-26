@@ -49,6 +49,12 @@
       "shortSha": "479eed1",
       "subject": "feat: Physics engine: simbiguity-physics with particles, springs, rods and comparable integrators",
       "deferredAt": "2026-11-26T20:27:18Z"
+    },
+    {
+      "sha": "42fce3c3e3f385605be23c744deec253e2d6bebb",
+      "shortSha": "42fce3c",
+      "subject": "feat: Circuits that change over time: capacitors, inductors and transient analysis",
+      "deferredAt": "2026-11-26T20:45:23Z"
     }
   ],
   "finalizeIntent": "fast",

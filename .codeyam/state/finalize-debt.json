@@ -7,6 +7,12 @@
       "shortSha": "9e8a287",
       "subject": "feat: Foundations: simbiguity-math and simbiguity-core",
       "deferredAt": "2026-11-26T16:53:29Z"
+    },
+    {
+      "sha": "ac1aeeafa6f4419daa659216b97b907b34dd7b41",
+      "shortSha": "ac1aeea",
+      "subject": "feat: DC circuit engine: simbiguity-circuits with Modified Nodal Analysis and teachable diagnostics",
+      "deferredAt": "2026-11-26T17:35:47Z"
     }
   ],
   "finalizeIntent": "fast",

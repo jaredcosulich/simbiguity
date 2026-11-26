@@ -1,0 +1,18 @@
+[package]
+name = "simbiguity-anim"
+description = "Zero-dependency, no_std animation math for simbiguity: easing curves, tweens, keyframe tracks, timelines and springs. No renderer; usable anywhere."
+keywords = ["animation", "easing", "tween", "spring", "no-std"]
+categories = ["graphics", "no-std", "simulation"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = ["simbiguity-math/std"]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }

@@ -1,0 +1,15 @@
+{
+  "name": "Circuit 3D - Lit at Rated Voltage",
+  "id": "573b3d3d-cdf2-4b15-8df0-33e7d832c1a2",
+  "url": "/demos/circuit-3d/#closed&t=2.5",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "The switch is closed at the bulb's rated voltage: amber charges flow around the loop, the filament glows and the halo is at full strength."
+}

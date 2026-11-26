@@ -1,0 +1,1664 @@
+{
+  "entities": {
+    "crates/simbiguity-anim/src/easing.rs::ALL": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::Linear",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadOut"
+      ],
+      "name": "ALL"
+    },
+    "crates/simbiguity-anim/src/easing.rs::BACK_C1": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::BACK_C2",
+        "crates/simbiguity-anim/src/easing.rs::BACK_C3",
+        "crates/simbiguity-anim/src/easing.rs::back_in"
+      ],
+      "imports": [],
+      "name": "BACK_C1"
+    },
+    "crates/simbiguity-anim/src/easing.rs::BACK_C2": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::back_in_out"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::BACK_C1"
+      ],
+      "name": "BACK_C2"
+    },
+    "crates/simbiguity-anim/src/easing.rs::BACK_C3": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::back_in"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::BACK_C1"
+      ],
+      "name": "BACK_C3"
+    },
+    "crates/simbiguity-anim/src/easing.rs::D": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::bounce_out"
+      ],
+      "imports": [],
+      "name": "D"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic",
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::ease",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key",
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween::ease",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::Linear",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic",
+        "crates/simbiguity-anim/src/easing.rs::back_in",
+        "crates/simbiguity-anim/src/easing.rs::back_in_out",
+        "crates/simbiguity-anim/src/easing.rs::bounce_out",
+        "crates/simbiguity-anim/src/easing.rs::elastic_in",
+        "crates/simbiguity-anim/src/easing.rs::expo_in",
+        "crates/simbiguity-anim/src/easing.rs::in_out",
+        "crates/simbiguity-anim/src/easing.rs::out"
+      ],
+      "name": "Ease"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::BackIn": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::BackIn"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::BackInOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::BackInOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::BackOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::BackOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::BounceIn": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::BounceIn"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::BounceInOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::BounceInOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::BounceOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::BounceOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::CubicIn": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::CubicIn"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::CubicInOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::CubicInOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::CubicOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::CubicOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::ElasticIn": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::ElasticIn"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::ElasticInOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::ElasticInOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::ElasticOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply",
+        "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic"
+      ],
+      "imports": [],
+      "name": "Ease::ElasticOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::ExpoIn": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::ExpoIn"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::ExpoInOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::ExpoInOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::ExpoOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::ExpoOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::Linear": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::Linear"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::QuadIn": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::QuadIn"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::QuadInOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::QuadInOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::QuadOut": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::ALL",
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "Ease::QuadOut"
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::apply": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::CubicOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ExpoOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::Linear",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::QuadOut",
+        "crates/simbiguity-anim/src/easing.rs::back_in",
+        "crates/simbiguity-anim/src/easing.rs::back_in_out",
+        "crates/simbiguity-anim/src/easing.rs::bounce_out",
+        "crates/simbiguity-anim/src/easing.rs::elastic_in",
+        "crates/simbiguity-anim/src/easing.rs::expo_in",
+        "crates/simbiguity-anim/src/easing.rs::in_out",
+        "crates/simbiguity-anim/src/easing.rs::out"
+      ],
+      "inherentMethod": true,
+      "name": "Ease::apply",
+      "namedMethods": [
+        "clamp",
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BackOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::BounceOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticIn",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticInOut",
+        "crates/simbiguity-anim/src/easing.rs::Ease::ElasticOut"
+      ],
+      "inherentMethod": true,
+      "name": "Ease::is_monotonic"
+    },
+    "crates/simbiguity-anim/src/easing.rs::N": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::bounce_out"
+      ],
+      "imports": [],
+      "name": "N"
+    },
+    "crates/simbiguity-anim/src/easing.rs::PI": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::elastic_in"
+      ],
+      "imports": [],
+      "name": "PI"
+    },
+    "crates/simbiguity-anim/src/easing.rs::back_in": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::BACK_C1",
+        "crates/simbiguity-anim/src/easing.rs::BACK_C3"
+      ],
+      "name": "back_in"
+    },
+    "crates/simbiguity-anim/src/easing.rs::back_in_out": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::BACK_C2"
+      ],
+      "name": "back_in_out"
+    },
+    "crates/simbiguity-anim/src/easing.rs::bounce_out": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::D",
+        "crates/simbiguity-anim/src/easing.rs::N"
+      ],
+      "name": "bounce_out"
+    },
+    "crates/simbiguity-anim/src/easing.rs::elastic_in": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::PI",
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::sin"
+      ],
+      "name": "elastic_in",
+      "namedMethods": [
+        "exp",
+        "sin"
+      ]
+    },
+    "crates/simbiguity-anim/src/easing.rs::expo_in": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::exp"
+      ],
+      "name": "expo_in",
+      "namedMethods": [
+        "exp"
+      ]
+    },
+    "crates/simbiguity-anim/src/easing.rs::in_out": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "in_out"
+    },
+    "crates/simbiguity-anim/src/easing.rs::out": {
+      "filePath": "crates/simbiguity-anim/src/easing.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/easing.rs::Ease::apply"
+      ],
+      "imports": [],
+      "name": "out"
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Lerp": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-circuits-view/src/look.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp"
+      ],
+      "name": "Lerp"
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp"
+      ],
+      "name": "Lerp::lerp"
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Quat": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp",
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "name": "Quat"
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Quat::lerp": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp",
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "name": "Quat::lerp",
+      "namedMethods": [
+        "slerp"
+      ]
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Vec2": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp",
+        "crates/simbiguity-math/src/vec.rs::Vec2"
+      ],
+      "name": "Vec2"
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp",
+        "crates/simbiguity-math/src/vec.rs::Vec2"
+      ],
+      "name": "Vec2::lerp",
+      "namedMethods": [
+        "lerp",
+        "new"
+      ]
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Vec3": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Vec3"
+    },
+    "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lerp.rs::f64::lerp",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Vec3::lerp",
+      "namedMethods": [
+        "lerp",
+        "new"
+      ]
+    },
+    "crates/simbiguity-anim/src/lerp.rs::f64::lerp": {
+      "filePath": "crates/simbiguity-anim/src/lerp.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec2::lerp",
+        "crates/simbiguity-anim/src/lerp.rs::Vec3::lerp"
+      ],
+      "name": "f64::lerp"
+    },
+    "crates/simbiguity-anim/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-anim/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/tween.rs::Tween"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::omega",
+        "crates/simbiguity-anim/src/spring.rs::Spring::settling_time",
+        "crates/simbiguity-anim/src/spring.rs::Spring::snap",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::Spring::target",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value",
+        "crates/simbiguity-anim/src/spring.rs::Spring::zeta",
+        "crates/simbiguity-anim/src/spring.rs::evolve",
+        "crates/simbiguity-anim/src/spring.rs::value",
+        "crates/simbiguity-anim/src/spring.rs::velocity"
+      ],
+      "name": "Spring"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::critical": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::omega",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value",
+        "crates/simbiguity-anim/src/spring.rs::value"
+      ],
+      "inherentMethod": true,
+      "name": "Spring::critical",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::new": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::omega",
+        "crates/simbiguity-anim/src/spring.rs::Spring::target",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value",
+        "crates/simbiguity-anim/src/spring.rs::Spring::zeta",
+        "crates/simbiguity-anim/src/spring.rs::value",
+        "crates/simbiguity-anim/src/spring.rs::velocity"
+      ],
+      "inherentMethod": true,
+      "name": "Spring::new",
+      "namedMethods": [
+        "max"
+      ]
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::omega": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::settling_time",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [],
+      "name": "Spring::omega"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::settling_time": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring::omega",
+        "crates/simbiguity-anim/src/spring.rs::Spring::zeta"
+      ],
+      "inherentMethod": true,
+      "name": "Spring::settling_time"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::snap": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring::value",
+        "crates/simbiguity-anim/src/spring.rs::value",
+        "crates/simbiguity-anim/src/spring.rs::velocity"
+      ],
+      "inherentMethod": true,
+      "name": "Spring::snap"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::step": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring::omega",
+        "crates/simbiguity-anim/src/spring.rs::Spring::target",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value",
+        "crates/simbiguity-anim/src/spring.rs::Spring::zeta",
+        "crates/simbiguity-anim/src/spring.rs::evolve",
+        "crates/simbiguity-anim/src/spring.rs::value",
+        "crates/simbiguity-anim/src/spring.rs::velocity"
+      ],
+      "inherentMethod": true,
+      "name": "Spring::step",
+      "namedMethods": [
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::target": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [],
+      "name": "Spring::target"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::value": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::snap",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::value"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::omega",
+        "crates/simbiguity-anim/src/spring.rs::Spring::target",
+        "crates/simbiguity-anim/src/spring.rs::Spring::zeta",
+        "crates/simbiguity-anim/src/spring.rs::value",
+        "crates/simbiguity-anim/src/spring.rs::velocity"
+      ],
+      "inherentMethod": true,
+      "name": "Spring::value"
+    },
+    "crates/simbiguity-anim/src/spring.rs::Spring::zeta": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::settling_time",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [],
+      "name": "Spring::zeta"
+    },
+    "crates/simbiguity-anim/src/spring.rs::evolve": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "name": "evolve",
+      "namedMethods": [
+        "abs",
+        "exp",
+        "sin_cos",
+        "sqrt"
+      ]
+    },
+    "crates/simbiguity-anim/src/spring.rs::value": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::critical",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::snap",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "name": "value"
+    },
+    "crates/simbiguity-anim/src/spring.rs::velocity": {
+      "filePath": "crates/simbiguity-anim/src/spring.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/spring.rs::Spring",
+        "crates/simbiguity-anim/src/spring.rs::Spring::new",
+        "crates/simbiguity-anim/src/spring.rs::Spring::snap",
+        "crates/simbiguity-anim/src/spring.rs::Spring::step",
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
+      ],
+      "imports": [],
+      "name": "velocity"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Clip": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "name": "Clip"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Clip::duration": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration"
+      ],
+      "name": "Clip::duration"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Clip::start": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "name": "Clip::start"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::ClipId": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [],
+      "name": "ClipId"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::looping",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::new",
+        "crates/simbiguity-anim/src/timeline.rs::looping"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::looping",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::new",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with",
+        "crates/simbiguity-anim/src/timeline.rs::looping"
+      ],
+      "name": "Timeline"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::at": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::at",
+      "namedMethods": [
+        "len",
+        "max",
+        "push"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::clips": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip"
+      ],
+      "name": "Timeline::clips"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::duration": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::duration",
+      "namedMethods": [
+        "fold",
+        "iter",
+        "map",
+        "max"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::is_active",
+      "namedMethods": [
+        "local_time"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::looping",
+        "crates/simbiguity-anim/src/timeline.rs::looping"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::local_time",
+      "namedMethods": [
+        "duration"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::looping": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::looping"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::new",
+        "crates/simbiguity-anim/src/timeline.rs::looping"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::looping"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::new": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::looping"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::new",
+      "namedMethods": [
+        "default"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::progress": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::progress",
+      "namedMethods": [
+        "clamp",
+        "local_time"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::start": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::is_active",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::progress",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::then",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::with"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::start"
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::then": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::then",
+      "namedMethods": [
+        "at",
+        "duration"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::Timeline::with": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Clip::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Clip::start",
+        "crates/simbiguity-anim/src/timeline.rs::ClipId",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::at",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::clips",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::duration",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::start"
+      ],
+      "inherentMethod": true,
+      "name": "Timeline::with",
+      "namedMethods": [
+        "at"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs::looping": {
+      "filePath": "crates/simbiguity-anim/src/timeline.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::local_time",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::looping"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/timeline.rs::Timeline",
+        "crates/simbiguity-anim/src/timeline.rs::Timeline::looping"
+      ],
+      "name": "looping"
+    },
+    "crates/simbiguity-anim/src/track.rs::Keyframe": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::insert",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::ease",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::time",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::value"
+      ],
+      "name": "Keyframe"
+    },
+    "crates/simbiguity-anim/src/track.rs::Keyframe::ease": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::sample"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease"
+      ],
+      "name": "Keyframe::ease"
+    },
+    "crates/simbiguity-anim/src/track.rs::Keyframe::time": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::duration",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::insert",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::sample"
+      ],
+      "imports": [],
+      "name": "Keyframe::time"
+    },
+    "crates/simbiguity-anim/src/track.rs::Keyframe::value": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::sample"
+      ],
+      "imports": [],
+      "name": "Keyframe::value"
+    },
+    "crates/simbiguity-anim/src/track.rs::Track": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::new"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "name": "Track"
+    },
+    "crates/simbiguity-anim/src/track.rs::Track::keys": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::duration",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::insert",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::new",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::sample"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "name": "Track::keys"
+    },
+    "crates/simbiguity-anim/src/track.rs::Track<T>::duration": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe::time",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "inherentMethod": true,
+      "name": "Track<T>::duration",
+      "namedMethods": [
+        "last",
+        "map_or"
+      ]
+    },
+    "crates/simbiguity-anim/src/track.rs::Track<T>::insert": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/track.rs::Track<T>::key"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::time",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "inherentMethod": true,
+      "name": "Track<T>::insert",
+      "namedMethods": [
+        "insert",
+        "iter",
+        "position",
+        "push"
+      ]
+    },
+    "crates/simbiguity-anim/src/track.rs::Track<T>::key": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::ease",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::time",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::value",
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::insert"
+      ],
+      "inherentMethod": true,
+      "name": "Track<T>::key",
+      "namedMethods": [
+        "insert"
+      ]
+    },
+    "crates/simbiguity-anim/src/track.rs::Track<T>::keys": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::duration",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::insert",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::new",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::sample"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe",
+        "crates/simbiguity-anim/src/track.rs::Track::keys"
+      ],
+      "inherentMethod": true,
+      "name": "Track<T>::keys"
+    },
+    "crates/simbiguity-anim/src/track.rs::Track<T>::new": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/track.rs::Track",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "inherentMethod": true,
+      "name": "Track<T>::new",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-anim/src/track.rs::Track<T>::sample": {
+      "filePath": "crates/simbiguity-anim/src/track.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/track.rs::Keyframe::ease",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::time",
+        "crates/simbiguity-anim/src/track.rs::Keyframe::value",
+        "crates/simbiguity-anim/src/track.rs::Track::keys",
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
+      ],
+      "inherentMethod": true,
+      "name": "Track<T>::sample",
+      "namedMethods": [
+        "apply",
+        "first",
+        "iter",
+        "last",
+        "lerp",
+        "map",
+        "position"
+      ]
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/lerp.rs::Lerp",
+        "crates/simbiguity-anim/src/tween.rs::Tween::duration",
+        "crates/simbiguity-anim/src/tween.rs::Tween::ease",
+        "crates/simbiguity-anim/src/tween.rs::Tween::from",
+        "crates/simbiguity-anim/src/tween.rs::Tween::to"
+      ],
+      "name": "Tween"
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween::duration": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::progress"
+      ],
+      "imports": [],
+      "name": "Tween::duration"
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween::ease": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::sample",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease"
+      ],
+      "name": "Tween::ease"
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween::from": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::sample"
+      ],
+      "imports": [],
+      "name": "Tween::from"
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween::to": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::sample"
+      ],
+      "imports": [],
+      "name": "Tween::to"
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween<T>::is_done": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::progress"
+      ],
+      "inherentMethod": true,
+      "name": "Tween<T>::is_done",
+      "namedMethods": [
+        "progress"
+      ]
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween<T>::new": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween::duration",
+        "crates/simbiguity-anim/src/tween.rs::Tween::ease",
+        "crates/simbiguity-anim/src/tween.rs::Tween::from",
+        "crates/simbiguity-anim/src/tween.rs::Tween::to"
+      ],
+      "inherentMethod": true,
+      "name": "Tween<T>::new"
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween<T>::progress": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::is_done",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::sample"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/tween.rs::Tween::duration"
+      ],
+      "inherentMethod": true,
+      "name": "Tween<T>::progress",
+      "namedMethods": [
+        "clamp"
+      ]
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween<T>::sample": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/tween.rs::Tween::ease",
+        "crates/simbiguity-anim/src/tween.rs::Tween::from",
+        "crates/simbiguity-anim/src/tween.rs::Tween::to",
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::progress"
+      ],
+      "inherentMethod": true,
+      "name": "Tween<T>::sample",
+      "namedMethods": [
+        "apply",
+        "lerp",
+        "progress"
+      ]
+    },
+    "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease": {
+      "filePath": "crates/simbiguity-anim/src/tween.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs::Ease",
+        "crates/simbiguity-anim/src/tween.rs::Tween",
+        "crates/simbiguity-anim/src/tween.rs::Tween::ease"
+      ],
+      "inherentMethod": true,
+      "name": "Tween<T>::with_ease"
+    }
+  },
+  "files": {
+    "crates/simbiguity-anim/src/easing.rs": {
+      "declaredBy": [
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/tween.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs"
+      ]
+    },
+    "crates/simbiguity-anim/src/lerp.rs": {
+      "declaredBy": [
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/tween.rs",
+        "crates/simbiguity-circuits-view/src/look.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/vec.rs"
+      ]
+    },
+    "crates/simbiguity-anim/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-anim/src/easing.rs",
+        "crates/simbiguity-anim/src/lerp.rs",
+        "crates/simbiguity-anim/src/spring.rs",
+        "crates/simbiguity-anim/src/timeline.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/tween.rs"
+      ],
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs",
+        "crates/simbiguity-anim/src/lerp.rs",
+        "crates/simbiguity-anim/src/spring.rs",
+        "crates/simbiguity-anim/src/timeline.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/tween.rs",
+        "crates/simbiguity-anim/src/easing.rs",
+        "crates/simbiguity-anim/src/lerp.rs",
+        "crates/simbiguity-anim/src/spring.rs",
+        "crates/simbiguity-anim/src/timeline.rs",
+        "crates/simbiguity-anim/src/timeline.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/tween.rs"
+      ]
+    },
+    "crates/simbiguity-anim/src/spring.rs": {
+      "declaredBy": [
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs"
+      ],
+      "namedMethods": [
+        "abs",
+        "ln",
+        "sqrt"
+      ]
+    },
+    "crates/simbiguity-anim/src/timeline.rs": {
+      "declaredBy": [
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "imports": []
+    },
+    "crates/simbiguity-anim/src/track.rs": {
+      "declaredBy": [
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs",
+        "crates/simbiguity-anim/src/lerp.rs"
+      ]
+    },
+    "crates/simbiguity-anim/src/tween.rs": {
+      "declaredBy": [
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-anim/src/easing.rs",
+        "crates/simbiguity-anim/src/lerp.rs"
+      ]
+    }
+  }
+}

@@ -1,0 +1,806 @@
+{
+  "entities": {
+    "crates/simbiguity-render-wasm/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-render-wasm/src/status.rs::ERR_INDEX",
+        "crates/simbiguity-render-wasm/src/status.rs::last_error"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_advance",
+      "namedMethods": [
+        "advance"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_commands_ptr": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_commands_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "commands",
+        "null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_encode": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_encode",
+      "namedMethods": [
+        "encode",
+        "len"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_free": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::remove"
+      ],
+      "name": "c3d_free",
+      "namedMethods": [
+        "remove"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_count": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_mesh_count",
+      "namedMethods": [
+        "len",
+        "scene"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_len": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+      ],
+      "name": "c3d_mesh_indices_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_ptr": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_mesh_indices_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_vertices_len": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+      ],
+      "name": "c3d_mesh_vertices_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_vertices_ptr": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_mesh_vertices_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_new": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::insert"
+      ],
+      "name": "c3d_new",
+      "namedMethods": [
+        "insert",
+        "new"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_orbit",
+      "namedMethods": [
+        "orbit",
+        "to_radians"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_pick",
+      "namedMethods": [
+        "map_or",
+        "pick"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_readouts",
+      "namedMethods": [
+        "readouts",
+        "time"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_readouts_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_replace_bulb": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_replace_bulb",
+      "namedMethods": [
+        "replace_bulb"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_seek": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_seek",
+      "namedMethods": [
+        "seek"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_set_camera",
+      "namedMethods": [
+        "clamp",
+        "to_radians"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_set_volts",
+      "namedMethods": [
+        "set_volts"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "name": "c3d_toggle",
+      "namedMethods": [
+        "from",
+        "toggle_switch"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_zoom",
+      "namedMethods": [
+        "zoom"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/readouts.rs::READOUT_COUNT": {
+      "filePath": "crates/simbiguity-render-wasm/src/readouts.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::readouts",
+        "crates/simbiguity-render-wasm/src/slot.rs::insert"
+      ],
+      "imports": [],
+      "name": "READOUT_COUNT"
+    },
+    "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts": {
+      "filePath": "crates/simbiguity-render-wasm/src/readouts.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts",
+        "crates/simbiguity-render-wasm/src/readouts.rs::READOUT_COUNT",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "name": "pack_readouts",
+      "namedMethods": [
+        "from",
+        "to_degrees"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::Slot": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::insert",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-render-wasm/src/readouts.rs::READOUT_COUNT",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::readouts",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::view"
+      ],
+      "name": "Slot"
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::Slot::readouts": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-render-wasm/src/slot.rs::insert"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/readouts.rs::READOUT_COUNT"
+      ],
+      "name": "Slot::readouts"
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::Slot::view": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-render-wasm/src/slot.rs::insert",
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
+      ],
+      "name": "Slot::view"
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::insert": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-render-wasm/src/readouts.rs::READOUT_COUNT",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::readouts",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::view"
+      ],
+      "name": "insert",
+      "namedMethods": [
+        "borrow_mut",
+        "len",
+        "push",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::no_view": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::remove",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::view",
+        "crates/simbiguity-render-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-render-wasm/src/status.rs::fail"
+      ],
+      "name": "no_view",
+      "namedMethods": [
+        "format"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::remove": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_free"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "remove",
+      "namedMethods": [
+        "and_then",
+        "borrow_mut",
+        "checked_sub",
+        "get_mut",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::with_mesh": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_len",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_vertices_len",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_vertices_ptr"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::view",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::ERR_INDEX",
+        "crates/simbiguity-render-wasm/src/status.rs::fail"
+      ],
+      "name": "with_mesh",
+      "namedMethods": [
+        "format",
+        "get",
+        "scene"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs::with_view": {
+      "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_commands_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_encode",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_count",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_replace_bulb",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_seek",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view"
+      ],
+      "name": "with_view",
+      "namedMethods": [
+        "and_then",
+        "as_mut",
+        "borrow_mut",
+        "checked_sub",
+        "get_mut",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::ERR_HANDLE": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view"
+      ],
+      "imports": [],
+      "name": "ERR_HANDLE"
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::ERR_INDEX": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+      ],
+      "imports": [],
+      "name": "ERR_INDEX"
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::OK": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_commands_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_vertices_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_replace_bulb",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_seek",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom",
+        "crates/simbiguity-render-wasm/src/slot.rs::remove"
+      ],
+      "imports": [],
+      "name": "OK"
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::fail": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+      ],
+      "imports": [],
+      "name": "fail",
+      "namedMethods": [
+        "borrow_mut",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::last_error": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__"
+      ],
+      "imports": [],
+      "name": "last_error",
+      "namedMethods": [
+        "borrow",
+        "clone",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::sb_last_error_len": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::error_message"
+      ],
+      "imports": [],
+      "name": "sb_last_error_len",
+      "namedMethods": [
+        "borrow",
+        "len",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/status.rs::sb_last_error_ptr": {
+      "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::error_message"
+      ],
+      "imports": [],
+      "name": "sb_last_error_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "borrow",
+        "with"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::H": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::bad_handles_are_rejected",
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame",
+        "crates/simbiguity-render-wasm/src/tests.rs::frame",
+        "crates/simbiguity-render-wasm/src/tests.rs::pick_hits_the_switch_and_misses_the_sky"
+      ],
+      "imports": [],
+      "name": "H"
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::W": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::bad_handles_are_rejected",
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame",
+        "crates/simbiguity-render-wasm/src/tests.rs::frame",
+        "crates/simbiguity-render-wasm/src/tests.rs::new_view_reads_back_its_state",
+        "crates/simbiguity-render-wasm/src/tests.rs::pick_hits_the_switch_and_misses_the_sky"
+      ],
+      "imports": [],
+      "name": "W"
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::__file_root__": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::bad_handles_are_rejected": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::H",
+        "crates/simbiguity-render-wasm/src/tests.rs::W",
+        "crates/simbiguity-render-wasm/src/tests.rs::error_message"
+      ],
+      "name": "bad_handles_are_rejected",
+      "namedMethods": [
+        "contains",
+        "is_null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::camera_exports_use_degrees_and_clamp": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::readouts"
+      ],
+      "name": "camera_exports_use_degrees_and_clamp",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::H",
+        "crates/simbiguity-render-wasm/src/tests.rs::W",
+        "crates/simbiguity-render-wasm/src/tests.rs::frame",
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+      ],
+      "name": "encode_writes_a_decodable_frame",
+      "namedMethods": [
+        "any",
+        "decode",
+        "iter",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::error_message": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::bad_handles_are_rejected",
+        "crates/simbiguity-render-wasm/src/tests.rs::mesh_exports_cover_every_mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/status.rs::sb_last_error_len",
+        "crates/simbiguity-render-wasm/src/status.rs::sb_last_error_ptr"
+      ],
+      "name": "error_message",
+      "namedMethods": [
+        "from_raw_parts",
+        "from_utf8",
+        "string",
+        "to_vec",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::frame": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::H",
+        "crates/simbiguity-render-wasm/src/tests.rs::W"
+      ],
+      "name": "frame",
+      "namedMethods": [
+        "from_raw_parts",
+        "to_vec"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::inputs_reach_the_view": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::readouts"
+      ],
+      "name": "inputs_reach_the_view",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::mesh_exports_cover_every_mesh": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::error_message"
+      ],
+      "name": "mesh_exports_cover_every_mesh",
+      "namedMethods": [
+        "contains",
+        "is_null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::new_view_reads_back_its_state": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::W",
+        "crates/simbiguity-render-wasm/src/tests.rs::readouts"
+      ],
+      "name": "new_view_reads_back_its_state",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::pick_hits_the_switch_and_misses_the_sky": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render-wasm/src/tests.rs::H",
+        "crates/simbiguity-render-wasm/src/tests.rs::W"
+      ],
+      "name": "pick_hits_the_switch_and_misses_the_sky",
+      "namedMethods": [
+        "from",
+        "new",
+        "project",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::readouts": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::camera_exports_use_degrees_and_clamp",
+        "crates/simbiguity-render-wasm/src/tests.rs::inputs_reach_the_view",
+        "crates/simbiguity-render-wasm/src/tests.rs::new_view_reads_back_its_state"
+      ],
+      "imports": [],
+      "name": "readouts",
+      "namedMethods": [
+        "from_raw_parts",
+        "to_vec"
+      ]
+    }
+  },
+  "files": {
+    "crates/simbiguity-render-wasm/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-render-wasm/src/readouts.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/readouts.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render-wasm/src/readouts.rs",
+        "crates/simbiguity-render-wasm/src/readouts.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/readouts.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render/src/camera.rs"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/slot.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/readouts.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs"
+      ],
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/status.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs"
+      ],
+      "imports": [],
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs"
+      ]
+    }
+  }
+}

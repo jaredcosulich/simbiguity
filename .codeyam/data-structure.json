@@ -9,5 +9,19 @@
       { "name": "batteryVolts", "type": "number", "required": true },
       { "name": "shorted", "type": "boolean", "required": false }
     ]
+  },
+  {
+    "name": "Circuit3DState",
+    "description": "Demo state for the 3D circuit page, seeded from the URL hash (e.g. #closed&v=24&t=2.5&cam=60,25,9). A fixed t freezes animation time so captures are pixel-stable; cam sets orbit yaw,pitch,distance. Nothing is persisted; production starts with the switch open at the bulb's rated voltage and a live clock.",
+    "category": "mock-api",
+    "order": 2,
+    "fields": [
+      { "name": "switchClosed", "type": "boolean", "required": true },
+      { "name": "batteryVolts", "type": "number", "required": true },
+      { "name": "fixedTime", "type": "number", "required": false },
+      { "name": "cameraYawDeg", "type": "number", "required": false },
+      { "name": "cameraPitchDeg", "type": "number", "required": false },
+      { "name": "cameraDistance", "type": "number", "required": false }
+    ]
   }
 ]

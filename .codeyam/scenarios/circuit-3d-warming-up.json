@@ -1,0 +1,15 @@
+{
+  "name": "Circuit 3D - Warming Up",
+  "id": "8f9b8f85-dec7-4ae5-ae67-f16aa54d1d52",
+  "url": "/demos/circuit-3d/#closed&t=0.15",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "A moment after the switch closes: the current is already flowing but the bulb is still warming up on its spring, so the glow is only part way there."
+}

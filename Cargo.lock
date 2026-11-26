@@ -12,11 +12,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "simbiguity-anim"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-math",
+]
+
+[[package]]
 name = "simbiguity-circuits"
 version = "0.0.1"
 dependencies = [
  "simbiguity-core",
  "simbiguity-math",
+]
+
+[[package]]
+name = "simbiguity-circuits-view"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-anim",
+ "simbiguity-circuits",
+ "simbiguity-core",
+ "simbiguity-math",
+ "simbiguity-render",
 ]
 
 [[package]]
@@ -37,3 +55,19 @@ dependencies = [
 [[package]]
 name = "simbiguity-math"
 version = "0.0.1"
+
+[[package]]
+name = "simbiguity-render"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-math",
+]
+
+[[package]]
+name = "simbiguity-render-wasm"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-circuits-view",
+ "simbiguity-math",
+ "simbiguity-render",
+]

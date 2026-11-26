@@ -1,0 +1,15 @@
+{
+  "name": "Circuit 3D - Switch Open",
+  "id": "154911c5-12d2-4483-b76b-11eec76fa643",
+  "url": "/demos/circuit-3d/#t=2.5",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "The starting state: the switch lever is up, so the loop has a gap, the charges sit still and dim on the wires, and the bulb is dark."
+}

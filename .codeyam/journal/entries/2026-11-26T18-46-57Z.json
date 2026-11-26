@@ -1,0 +1,507 @@
+{
+  "timestamp": "2026-11-26T18:46:57Z",
+  "title": "3D rendering and animation: simbiguity-anim, simbiguity-render, a WebGL2 executor and the 3D circuit view",
+  "type": "feature",
+  "userRequest": "## Summary\n\nBuild the visual layer for 3D demos, from scratch, in two independently importable crates. **`simbiguity-anim`** handles easing curves, tweens, keyframe tracks, timelines and critically-damped springs. It is pure math with no renderer, usable anywhere. **`simbiguity-render`** handles a renderer-agnostic scene (meshes, materials, lights, orbit camera, picking rays) that compiles into a flat **draw-command buffer**. On the web, a thin handwritten **WebGL2 executor** in JS replays that buffer. The first consumer is a **3D view of the hello circuit**: a battery, switch, wires and bulb on a board, with current shown as animated particles flowing along the wires at a speed proportional to the solved current, and the bulb's glow driven by its brightness.\n\n## Key Decisions\n\n- **Rust decides what to draw; JS only issues GL calls.** `simbiguity-render` outputs a compact command buffer (`SetProgram`, `SetUniformMat4`, `BindMesh`, `DrawIndexed` …), plus mesh vertex/index buffers, through the same C-ABI + shared-memory pattern as the circuits bridge. The JS executor is a few hundred lines with no logic of its own. The same buffer can feed a native backend later (wgpu, Metal, or a software rasterizer for tests) without touching scene code, which keeps the door open for native apps.\n- **Mesh generation in Rust** (box, cylinder, sphere, capsule, tube-along-polyline for wires), so geometry is testable and shared by every backend.\n- **Tiny built-in shader set** (unlit, Lambert + Blinn-Phong, emissive glow, instanced points for current particles), written in GLSL ES 3.00 and stored next to the executor. No shader graph.\n- **Animation drives from simulation state, never the reverse.** Particle speed and bulb glow are pure functions of the circuit's `Solution`. `simbiguity-anim` springs smooth the visual response (the bulb warms up and cools down) without changing the physics.\n- **Picking in Rust.** Ray from camera through cursor → intersect component bounding volumes → component id. This is how a click on the 3D switch toggles it, and it is the basis of the puzzle interactions later.\n- **Determinism for captures.** The demo accepts a fixed time (`#t=2.5`) so codeyam scenario captures are pixel-stable. Headless Chromium's WebGL2 (SwiftShader) is the capture backend, so confirm early at execution that it renders the shaders.\n\n## Implementation\n\n### 1. `simbiguity-anim`\n\n**New file**: `crates/simbiguity-anim/src/lib.rs`\n**New file**: `crates/simbiguity-anim/src/easing.rs`: the standard easing family (quad/cubic/expo/back/elastic/bounce, in/out/in-out)\n**New file**: `crates/simbiguity-anim/src/tween.rs`: `Tween<T: Lerp>`\n**New file**: `crates/simbiguity-anim/src/track.rs`: keyframe tracks with per-segment easing\n**New file**: `crates/simbiguity-anim/src/timeline.rs`: sequence/parallel composition, seek, loop\n**New file**: `crates/simbiguity-anim/src/spring.rs`: critically-damped / under-damped spring follower\n\n### 2. `simbiguity-render`\n\n**New file**: `crates/simbiguity-render/src/lib.rs`\n**New file**: `crates/simbiguity-render/src/scene.rs`: nodes, transforms, materials, lights\n**New file**: `crates/simbiguity-render/src/camera.rs`: perspective + orbit controls\n**New file**: `crates/simbiguity-render/src/mesh.rs`: primitive and tube generation\n**New file**: `crates/simbiguity-render/src/commands.rs`: the draw-command buffer encoding (versioned, documented byte layout)\n**New file**: `crates/simbiguity-render/src/pick.rs`: ray casting\n\n### 3. Web executor + bridge\n\n**New file**: `crates/simbiguity-render-wasm/src/lib.rs`: C-ABI exports for scene building, frame encode, pick\n**New file**: `site/js/webgl2-executor.js`: decode the command buffer → WebGL2 calls\n**New file**: `site/js/shaders/`: GLSL ES 3.00 sources\n\n### 4. 3D circuit demo\n\n**New file**: `crates/simbiguity-circuits-view/src/lib.rs`: maps a `Circuit` + `Solution` to a scene (component models, wire tubes, current particles, glow), depending on circuits + render + anim\n**New file**: `site/demos/circuit-3d/index.html`: orbit, click to toggle the switch, a voltage slider, readouts\n**File**: `site/status/index.html`: add the 3D demo as the embed for its capabilities\n\n## Reused existing code\n\n- `Vec3` / `Quat` / `Mat4` from `simbiguity-math`; `FixedClock` from `simbiguity-core` (plan: foundations)\n- `CircuitSim` / `Solution` from `simbiguity-circuits` (plan: circuits DC)\n- The C-ABI + shared-memory bridge pattern and `site/js/simbiguity.js` (plan: WASM bridge + hello circuit)\n- The status page capability cards (plan: engine status page)\n\n## Tests (TDD — written first)\n\n- Easing: every curve hits f(0)=0 and f(1)=1, plus monotonicity where it is promised; a spring settles within tolerance by a computed time and a critically-damped spring never overshoots; timeline seek is exact.\n- Mesh: vertex/index counts per primitive, normals unit-length, tube follows the polyline; winding consistent.\n- Camera: a known point projects to a known pixel; orbit clamps pitch.\n- Command buffer: encode → decode round-trip; version header; unknown op rejected.\n- Picking: a ray through the switch hits the switch; misses return `None`; the nearest hit wins.\n- Circuit view: particle speed ∝ current (zero current → stationary); glow follows brightness through the spring.\n- codeyam scenarios of the 3D demo at a fixed `t` in the dark and lit states.\n\n## Scenarios to Demonstrate\n\n- 3D circuit, switch open: dark bulb, no particles moving\n- 3D circuit, switch closed: particles flowing, bulb glowing\n- High voltage: fast particles, blown bulb effect\n- Camera orbited to a side angle (deterministic via `#cam=`)",
+  "description": "Added simbiguity-anim (tweens, easing and timelines), simbiguity-render (a from-scratch, backend-free scene/mesh/camera pipeline that emits draw commands), simbiguity-circuits-view (builds a 3D board of battery, switch, wires and bulb from the circuit simulation) and simbiguity-render-wasm (the hand-written WASM bridge), plus a JS WebGL2 executor and a new 'Circuit in 3D' demo page with orbit camera, readouts and explain panels, linked from the landing page. Scope verdict: this cycle DELIVERED the 'Animation support' and 'From-scratch 3D rendering via a WebGL2 renderer' deliverables and extended the WASM interface and static HTML demos; physics and market simulation remain DEFERRED to later roadmap plans (user decision). Deviations: the plan's status-page link was skipped because site/status does not exist; high voltage is shown as two scenarios (overdriven, bulb blown); the bypass switch is not in the 3D view; WebGL2 GL calls and the URL-hash write are covered only by scenario screenshots.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-math%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fjs.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/3d-rendering-and-animation-simbiguity-anim-simbiguity-render-a-webgl2-executor-and-the-3d-circuit-view.md\t.codeyam/plans/completed/3d-rendering-and-animation-simbiguity-anim-simbiguity-render-a-webgl2-executor-and-the-3d-circuit-view.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-demos.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-demos--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-demos--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/speed-history.jsonl",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/cbc6c5ea057caec48fbb9b39dfc7fc8d8682090df6c7262862b6733dcaaed15f.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "README.md",
+      "status": "modified"
+    },
+    {
+      "path": "scripts/build-site.sh",
+      "status": "modified"
+    },
+    {
+      "path": "site/index.html",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-anim%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits-view%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-render%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-render-wasm%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fcircuit-3d.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-bulb-blown.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-lit-at-rated-voltage.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-overdriven.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-side-view.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-switch-flipped-by-keyboard.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-switch-open.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/circuit-3d-warming-up.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/landingpage.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-bulb-blown--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-bulb-blown--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-lit-at-rated-voltage--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-lit-at-rated-voltage--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-overdriven--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-overdriven--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-side-view--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-side-view--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-switch-flipped-by-keyboard--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-switch-flipped-by-keyboard--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-switch-open--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-switch-open--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-warming-up--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-warming-up--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7305f3b5989cb04e829f615cf59cd0aa3c9d6db1fdb6ee9181dfcd0804c3eab4.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7b94629100d8d8688dbee6f319884c81e9552d5b7d260079841a077554801d8e.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/bcfb5438d378638dc677a1cb3a4dafb8a7389a3e3cce1ff31ca3ba5608875144.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/e9cabad9939bbfa2966905b79c02133e4399a8002960d497c0c546dd3428b059.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-anim.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-view.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render-wasm.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render.json",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/easing.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/lerp.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/spring.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/timeline.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/track.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-anim/src/tween.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/src/board.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/src/layout.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/src/look.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/src/readouts.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/src/slot.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/src/status.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render-wasm/src/tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/camera.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/commands.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/decode.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/frame.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/mesh.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/path.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/pick.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-render/src/scene.rs",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/canvas-input.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/demo.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/explain-panel.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/explain.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/explain.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/index.html",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/pointer.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/pointer.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/readouts-panel.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/readouts.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/readouts.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/state.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/circuit-3d/state.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/js/shaders/glow.frag",
+      "status": "added"
+    },
+    {
+      "path": "site/js/shaders/instanced.frag",
+      "status": "added"
+    },
+    {
+      "path": "site/js/shaders/instanced.vert",
+      "status": "added"
+    },
+    {
+      "path": "site/js/shaders/lit.frag",
+      "status": "added"
+    },
+    {
+      "path": "site/js/shaders/mesh.vert",
+      "status": "added"
+    },
+    {
+      "path": "site/js/shaders/unlit.frag",
+      "status": "added"
+    },
+    {
+      "path": "site/js/simbiguity-render.js",
+      "status": "added"
+    },
+    {
+      "path": "site/js/simbiguity-render.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/js/webgl2-executor.js",
+      "status": "added"
+    },
+    {
+      "path": "site/js/webgl2-executor.test.js",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Circuit 3D - Bulb Blown",
+      "screenshotPath": "circuit-3d-bulb-blown--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Lit at Rated Voltage",
+      "screenshotPath": "circuit-3d-lit-at-rated-voltage--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Overdriven",
+      "screenshotPath": "circuit-3d-overdriven--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Side View",
+      "screenshotPath": "circuit-3d-side-view--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Switch Flipped by Keyboard",
+      "screenshotPath": "circuit-3d-switch-flipped-by-keyboard--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Switch Open",
+      "screenshotPath": "circuit-3d-switch-open--desktop.png"
+    },
+    {
+      "name": "Circuit 3D - Warming Up",
+      "screenshotPath": "circuit-3d-warming-up--desktop.png"
+    },
+    {
+      "name": "Landing - Demos",
+      "screenshotPath": "landing-demos--desktop.png"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+[package]
+name = "simbiguity-circuits-view"
+description = "A 3D view of a simbiguity circuit: component models, wire tubes, current particles and bulb glow, all driven by the solved circuit."
+keywords = ["circuits", "3d", "animation", "education", "no-std"]
+categories = ["simulation", "graphics", "no-std"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = [
+  "simbiguity-math/std",
+  "simbiguity-core/std",
+  "simbiguity-circuits/std",
+  "simbiguity-anim/std",
+  "simbiguity-render/std",
+]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }
+simbiguity-core = { path = "../simbiguity-core", version = "0.0.1" }
+simbiguity-circuits = { path = "../simbiguity-circuits", version = "0.0.1" }
+simbiguity-anim = { path = "../simbiguity-anim", version = "0.0.1" }
+simbiguity-render = { path = "../simbiguity-render", version = "0.0.1" }

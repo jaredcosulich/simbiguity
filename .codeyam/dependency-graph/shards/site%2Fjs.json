@@ -1,5 +1,55 @@
 {
   "entities": {
+    "site/js/simbiguity-render.js::Pick": {
+      "filePath": "site/js/simbiguity-render.js",
+      "importedBy": [
+        "site/demos/circuit-3d/pointer.js::clickAction",
+        "site/demos/circuit-3d/pointer.test.js::__file_root__",
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/simbiguity-render.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "Pick"
+    },
+    "site/js/simbiguity-render.js::__file_root__": {
+      "filePath": "site/js/simbiguity-render.js",
+      "importedBy": [
+        "site/js/simbiguity-render.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/js/simbiguity-render.js::loadCircuit3D": {
+      "filePath": "site/js/simbiguity-render.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main"
+      ],
+      "imports": [
+        "site/js/simbiguity-render.js::Pick",
+        "site/js/simbiguity-render.js::readoutsFromArray",
+        "site/js/simbiguity.js::SimbiguityError"
+      ],
+      "name": "loadCircuit3D"
+    },
+    "site/js/simbiguity-render.js::readoutsFromArray": {
+      "filePath": "site/js/simbiguity-render.js",
+      "importedBy": [
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/simbiguity-render.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "readoutsFromArray"
+    },
+    "site/js/simbiguity-render.test.js::__file_root__": {
+      "filePath": "site/js/simbiguity-render.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity-render.js::Pick",
+        "site/js/simbiguity-render.js::__file_root__",
+        "site/js/simbiguity-render.js::readoutsFromArray"
+      ],
+      "name": "__file_root__"
+    },
     "site/js/simbiguity.js::IssueKind": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
@@ -11,6 +61,7 @@
     "site/js/simbiguity.js::SimbiguityError": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
+        "site/js/simbiguity-render.js::loadCircuit3D",
         "site/js/simbiguity.js::loadCircuits"
       ],
       "imports": [],
@@ -26,14 +77,133 @@
         "site/js/simbiguity.js::SimbiguityError"
       ],
       "name": "loadCircuits"
+    },
+    "site/js/webgl2-executor.js::CommandBufferError": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.js::WebGL2Executor",
+        "site/js/webgl2-executor.js::decodeCommands",
+        "site/js/webgl2-executor.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "CommandBufferError"
+    },
+    "site/js/webgl2-executor.js::FIXED": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.js::decodeCommands"
+      ],
+      "imports": [],
+      "name": "FIXED"
+    },
+    "site/js/webgl2-executor.js::PROGRAMS": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.js::WebGL2Executor"
+      ],
+      "imports": [],
+      "name": "PROGRAMS"
+    },
+    "site/js/webgl2-executor.js::UNIFORMS": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.js::WebGL2Executor",
+        "site/js/webgl2-executor.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "UNIFORMS"
+    },
+    "site/js/webgl2-executor.js::WebGL2Executor": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main"
+      ],
+      "imports": [
+        "site/js/webgl2-executor.js::CommandBufferError",
+        "site/js/webgl2-executor.js::PROGRAMS",
+        "site/js/webgl2-executor.js::UNIFORMS",
+        "site/js/webgl2-executor.js::decodeCommands",
+        "site/js/webgl2-executor.js::fetchText"
+      ],
+      "name": "WebGL2Executor"
+    },
+    "site/js/webgl2-executor.js::__file_root__": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/js/webgl2-executor.js::decodeCommands": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.js::WebGL2Executor",
+        "site/js/webgl2-executor.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/js/webgl2-executor.js::CommandBufferError",
+        "site/js/webgl2-executor.js::FIXED"
+      ],
+      "name": "decodeCommands"
+    },
+    "site/js/webgl2-executor.js::fetchText": {
+      "filePath": "site/js/webgl2-executor.js",
+      "importedBy": [
+        "site/js/webgl2-executor.js::WebGL2Executor"
+      ],
+      "imports": [],
+      "name": "fetchText"
+    },
+    "site/js/webgl2-executor.test.js::__file_root__": {
+      "filePath": "site/js/webgl2-executor.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/webgl2-executor.js::CommandBufferError",
+        "site/js/webgl2-executor.js::UNIFORMS",
+        "site/js/webgl2-executor.js::__file_root__",
+        "site/js/webgl2-executor.js::decodeCommands"
+      ],
+      "name": "__file_root__"
     }
   },
   "files": {
+    "site/js/simbiguity-render.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d/pointer.js",
+        "site/demos/circuit-3d/pointer.test.js",
+        "site/js/simbiguity-render.test.js"
+      ],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "site/js/simbiguity-render.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity-render.js"
+      ]
+    },
     "site/js/simbiguity.js": {
       "importedBy": [
-        "site/demos/hello-circuit/demo.js"
+        "site/demos/hello-circuit/demo.js",
+        "site/js/simbiguity-render.js"
       ],
       "imports": []
+    },
+    "site/js/webgl2-executor.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js",
+        "site/js/webgl2-executor.test.js"
+      ],
+      "imports": []
+    },
+    "site/js/webgl2-executor.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/webgl2-executor.js"
+      ]
     }
   }
 }

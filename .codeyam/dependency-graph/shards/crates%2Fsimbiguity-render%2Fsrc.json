@@ -1,0 +1,3527 @@
+{
+  "entities": {
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::far",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::fov_y",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::near",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::orbit",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::project",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::target",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view_projection",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::yaw",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::zoom",
+        "crates/simbiguity-render/src/pick.rs::Ray"
+      ],
+      "name": "OrbitCamera"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::orbit",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::zoom"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::pitch"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::clamp",
+      "namedMethods": [
+        "clamp"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::default": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::far",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::fov_y",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::near",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::target",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::yaw"
+      ],
+      "name": "OrbitCamera::default",
+      "namedMethods": [
+        "to_radians"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::distance": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::zoom"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::distance"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::distance",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::target",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::yaw"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::eye",
+      "namedMethods": [
+        "new",
+        "sin_cos"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::far": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::far"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::fov_y": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::fov_y"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_distance": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::max_distance"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::max_pitch": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::max_pitch"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_distance": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::min_distance"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::min_pitch": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::min_pitch"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::near": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::near"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::orbit": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::pitch",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::yaw"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::orbit",
+      "namedMethods": [
+        "clamp"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::pitch": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::orbit"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::pitch"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::project": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::project",
+      "namedMethods": [
+        "projection",
+        "transform_point",
+        "view"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::project",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view_projection"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::far",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::fov_y",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::near"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::projection",
+      "namedMethods": [
+        "perspective"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::far",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::near",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::target",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view_projection",
+        "crates/simbiguity-render/src/pick.rs::Ray"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::ray",
+      "namedMethods": [
+        "eye",
+        "inverse",
+        "new",
+        "normalize",
+        "transform_point",
+        "unwrap_or",
+        "view_projection"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::target": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "OrbitCamera::target"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::view": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::project",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view_projection"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::target"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::view",
+      "namedMethods": [
+        "eye",
+        "look_at"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::view_projection": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::view"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::view_projection",
+      "namedMethods": [
+        "projection",
+        "view"
+      ]
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::yaw": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::eye",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::orbit"
+      ],
+      "imports": [],
+      "name": "OrbitCamera::yaw"
+    },
+    "crates/simbiguity-render/src/camera.rs::OrbitCamera::zoom": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::clamp",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::distance"
+      ],
+      "inherentMethod": true,
+      "name": "OrbitCamera::zoom",
+      "namedMethods": [
+        "clamp",
+        "is_finite"
+      ]
+    },
+    "crates/simbiguity-render/src/commands.rs::Blend": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Command::SetBlend",
+        "crates/simbiguity-render/src/decode.rs::decode_one",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Blend::Additive",
+        "crates/simbiguity-render/src/commands.rs::Blend::Alpha",
+        "crates/simbiguity-render/src/commands.rs::Blend::Off"
+      ],
+      "name": "Blend"
+    },
+    "crates/simbiguity-render/src/commands.rs::Blend::Additive": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Blend"
+      ],
+      "imports": [],
+      "name": "Blend::Additive"
+    },
+    "crates/simbiguity-render/src/commands.rs::Blend::Alpha": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Blend"
+      ],
+      "imports": [],
+      "name": "Blend::Alpha"
+    },
+    "crates/simbiguity-render/src/commands.rs::Blend::Off": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Blend"
+      ],
+      "imports": [],
+      "name": "Blend::Off"
+    },
+    "crates/simbiguity-render/src/commands.rs::COUNT": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "COUNT"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::decode_one",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Blend",
+        "crates/simbiguity-render/src/commands.rs::Command::BindMesh",
+        "crates/simbiguity-render/src/commands.rs::Command::Clear",
+        "crates/simbiguity-render/src/commands.rs::Command::DrawIndexed",
+        "crates/simbiguity-render/src/commands.rs::Command::DrawInstanced",
+        "crates/simbiguity-render/src/commands.rs::Command::SetBlend",
+        "crates/simbiguity-render/src/commands.rs::Command::SetDepth",
+        "crates/simbiguity-render/src/commands.rs::Command::SetProgram",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformF32",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformVec4",
+        "crates/simbiguity-render/src/commands.rs::Command::Viewport",
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "name": "Command"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::BindMesh": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [],
+      "name": "Command::BindMesh"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::Clear": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [],
+      "name": "Command::Clear"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::DrawIndexed": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [],
+      "name": "Command::DrawIndexed"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::DrawInstanced": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [],
+      "name": "Command::DrawInstanced"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::SetBlend": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Blend"
+      ],
+      "name": "Command::SetBlend"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::SetDepth": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [],
+      "name": "Command::SetDepth"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::SetProgram": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "name": "Command::SetProgram"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::SetUniformF32": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "name": "Command::SetUniformF32"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "name": "Command::SetUniformMat4"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::SetUniformVec4": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "name": "Command::SetUniformVec4"
+    },
+    "crates/simbiguity-render/src/commands.rs::Command::Viewport": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push"
+      ],
+      "imports": [],
+      "name": "Command::Viewport"
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::out",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Command::BindMesh",
+        "crates/simbiguity-render/src/commands.rs::Command::Clear",
+        "crates/simbiguity-render/src/commands.rs::Command::DrawIndexed",
+        "crates/simbiguity-render/src/commands.rs::Command::DrawInstanced",
+        "crates/simbiguity-render/src/commands.rs::Command::SetBlend",
+        "crates/simbiguity-render/src/commands.rs::Command::SetDepth",
+        "crates/simbiguity-render/src/commands.rs::Command::SetProgram",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformF32",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformVec4",
+        "crates/simbiguity-render/src/commands.rs::Command::Viewport",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/commands.rs::MAGIC",
+        "crates/simbiguity-render/src/commands.rs::VERSION",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "name": "CommandBuffer"
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::clear",
+      "namedMethods": [
+        "truncate"
+      ]
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::default": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new"
+      ],
+      "name": "CommandBuffer::default",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::new": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/commands.rs::MAGIC",
+        "crates/simbiguity-render/src/commands.rs::VERSION",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::new",
+      "namedMethods": [
+        "vec"
+      ]
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::push": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Command::BindMesh",
+        "crates/simbiguity-render/src/commands.rs::Command::Clear",
+        "crates/simbiguity-render/src/commands.rs::Command::DrawIndexed",
+        "crates/simbiguity-render/src/commands.rs::Command::DrawInstanced",
+        "crates/simbiguity-render/src/commands.rs::Command::SetBlend",
+        "crates/simbiguity-render/src/commands.rs::Command::SetDepth",
+        "crates/simbiguity-render/src/commands.rs::Command::SetProgram",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformF32",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformVec4",
+        "crates/simbiguity-render/src/commands.rs::Command::Viewport",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::push",
+      "namedMethods": [
+        "extend",
+        "from",
+        "iter",
+        "len",
+        "map",
+        "push",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::words": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::MAGIC",
+        "crates/simbiguity-render/src/commands.rs::VERSION",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::words"
+    },
+    "crates/simbiguity-render/src/commands.rs::MAGIC": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode"
+      ],
+      "imports": [],
+      "name": "MAGIC"
+    },
+    "crates/simbiguity-render/src/commands.rs::Program": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Command::SetProgram",
+        "crates/simbiguity-render/src/decode.rs::program",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::program",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/frame.rs::program_of",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Program::Glow",
+        "crates/simbiguity-render/src/commands.rs::Program::Instanced",
+        "crates/simbiguity-render/src/commands.rs::Program::Lit",
+        "crates/simbiguity-render/src/commands.rs::Program::Unlit"
+      ],
+      "name": "Program"
+    },
+    "crates/simbiguity-render/src/commands.rs::Program::Glow": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "imports": [],
+      "name": "Program::Glow"
+    },
+    "crates/simbiguity-render/src/commands.rs::Program::Instanced": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "imports": [],
+      "name": "Program::Instanced"
+    },
+    "crates/simbiguity-render/src/commands.rs::Program::Lit": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "imports": [],
+      "name": "Program::Lit"
+    },
+    "crates/simbiguity-render/src/commands.rs::Program::Unlit": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "imports": [],
+      "name": "Program::Unlit"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformF32",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4",
+        "crates/simbiguity-render/src/commands.rs::Command::SetUniformVec4",
+        "crates/simbiguity-render/src/decode.rs::uniform",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::COUNT",
+        "crates/simbiguity-render/src/commands.rs::Uniform::Color",
+        "crates/simbiguity-render/src/commands.rs::Uniform::Emissive",
+        "crates/simbiguity-render/src/commands.rs::Uniform::Eye",
+        "crates/simbiguity-render/src/commands.rs::Uniform::LightColor",
+        "crates/simbiguity-render/src/commands.rs::Uniform::LightDir",
+        "crates/simbiguity-render/src/commands.rs::Uniform::Model",
+        "crates/simbiguity-render/src/commands.rs::Uniform::Scale",
+        "crates/simbiguity-render/src/commands.rs::Uniform::ViewProj"
+      ],
+      "name": "Uniform"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::Color": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::Color"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::Emissive": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::Emissive"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::Eye": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::Eye"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::LightColor": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::LightColor"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::LightDir": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::LightDir"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::Model": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::Model"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::Scale": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::Scale"
+    },
+    "crates/simbiguity-render/src/commands.rs::Uniform::ViewProj": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "imports": [],
+      "name": "Uniform::ViewProj"
+    },
+    "crates/simbiguity-render/src/commands.rs::VERSION": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode"
+      ],
+      "imports": [],
+      "name": "VERSION"
+    },
+    "crates/simbiguity-render/src/commands.rs::words": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
+      ],
+      "name": "words"
+    },
+    "crates/simbiguity-render/src/decode.rs::CommandBuffer": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::MAGIC",
+        "crates/simbiguity-render/src/commands.rs::VERSION",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadMagic",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::MissingHeader",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::Truncated",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::UnsupportedVersion",
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "name": "CommandBuffer"
+    },
+    "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::MAGIC",
+        "crates/simbiguity-render/src/commands.rs::VERSION",
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadMagic",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::MissingHeader",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::Truncated",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::UnsupportedVersion",
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::decode",
+      "namedMethods": [
+        "get",
+        "len",
+        "new",
+        "ok_or",
+        "push"
+      ]
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::decode_one",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadLength",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadMagic",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadValue",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::MissingHeader",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::Truncated",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::UnknownOp",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::UnsupportedVersion"
+      ],
+      "name": "DecodeError"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::BadLength": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "imports": [],
+      "name": "DecodeError::BadLength"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::BadMagic": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::DecodeError"
+      ],
+      "imports": [],
+      "name": "DecodeError::BadMagic"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::BadValue": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "imports": [],
+      "name": "DecodeError::BadValue"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::MissingHeader": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::DecodeError"
+      ],
+      "imports": [],
+      "name": "DecodeError::MissingHeader"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::Truncated": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::DecodeError"
+      ],
+      "imports": [],
+      "name": "DecodeError::Truncated"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::UnknownOp": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "imports": [],
+      "name": "DecodeError::UnknownOp"
+    },
+    "crates/simbiguity-render/src/decode.rs::DecodeError::UnsupportedVersion": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode",
+        "crates/simbiguity-render/src/decode.rs::DecodeError"
+      ],
+      "imports": [],
+      "name": "DecodeError::UnsupportedVersion"
+    },
+    "crates/simbiguity-render/src/decode.rs::decode_one": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer",
+        "crates/simbiguity-render/src/decode.rs::CommandBuffer::decode"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Blend",
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadLength",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::BadValue",
+        "crates/simbiguity-render/src/decode.rs::DecodeError::UnknownOp",
+        "crates/simbiguity-render/src/decode.rs::program",
+        "crates/simbiguity-render/src/decode.rs::uniform"
+      ],
+      "name": "decode_one",
+      "namedMethods": [
+        "chunks",
+        "collect",
+        "enumerate",
+        "from_bits",
+        "is_empty",
+        "iter_mut",
+        "len",
+        "map",
+        "ok_or"
+      ]
+    },
+    "crates/simbiguity-render/src/decode.rs::program": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "name": "program"
+    },
+    "crates/simbiguity-render/src/decode.rs::uniform": {
+      "filePath": "crates/simbiguity-render/src/decode.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/decode.rs::decode_one"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Uniform"
+      ],
+      "name": "uniform",
+      "namedMethods": [
+        "copied",
+        "get"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::DrawOrder": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glass",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glows",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::opaque",
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "name": "DrawOrder"
+    },
+    "crates/simbiguity-render/src/frame.rs::DrawOrder::glass": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::DrawOrder",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "name": "DrawOrder::glass"
+    },
+    "crates/simbiguity-render/src/frame.rs::DrawOrder::glows": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::DrawOrder",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "name": "DrawOrder::glows"
+    },
+    "crates/simbiguity-render/src/frame.rs::DrawOrder::opaque": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::DrawOrder",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "name": "DrawOrder::opaque"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/frame.rs::Encoder::eye",
+        "crates/simbiguity-render/src/frame.rs::Encoder::out",
+        "crates/simbiguity-render/src/frame.rs::Encoder::program",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder::view_proj",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "name": "Encoder"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder::eye": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::depth",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Encoder::eye"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder::out": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/frame.rs::mat"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+      ],
+      "name": "Encoder::out"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder::program": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Program"
+      ],
+      "name": "Encoder::program"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder::scene": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "name": "Encoder::scene"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder::view_proj": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [],
+      "name": "Encoder::view_proj"
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Uniform",
+        "crates/simbiguity-render/src/frame.rs::Encoder::out",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::mat",
+        "crates/simbiguity-render/src/frame.rs::program_of",
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "inherentMethod": true,
+      "name": "Encoder<'_>::draw",
+      "namedMethods": [
+        "len",
+        "push",
+        "use_program"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/commands.rs::Uniform",
+        "crates/simbiguity-render/src/frame.rs::Encoder::eye",
+        "crates/simbiguity-render/src/frame.rs::Encoder::out",
+        "crates/simbiguity-render/src/frame.rs::Encoder::program",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder::view_proj"
+      ],
+      "inherentMethod": true,
+      "name": "Encoder<'_>::use_program",
+      "namedMethods": [
+        "push"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::depth": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::draw_order"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/frame.rs::Encoder::eye",
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "name": "depth",
+      "namedMethods": [
+        "length_squared",
+        "transform_point"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::draw_order": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glass",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glows",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::opaque",
+        "crates/simbiguity-render/src/frame.rs::Encoder::eye",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::depth",
+        "crates/simbiguity-render/src/frame.rs::program_of",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds",
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "name": "draw_order",
+      "namedMethods": [
+        "collect",
+        "filter",
+        "is_blended",
+        "iter",
+        "sort_by",
+        "sort_by_key",
+        "total_cmp"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::encode_frame": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/commands.rs::Blend",
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/commands.rs::Uniform",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glass",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glows",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::opaque",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::eye",
+        "crates/simbiguity-render/src/frame.rs::Encoder::out",
+        "crates/simbiguity-render/src/frame.rs::Encoder::program",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder::view_proj",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::use_program",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::mat",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "name": "encode_frame",
+      "namedMethods": [
+        "any",
+        "clear",
+        "collect",
+        "draw",
+        "eye",
+        "filter",
+        "from",
+        "is_empty",
+        "iter",
+        "len",
+        "map",
+        "max",
+        "push",
+        "use_program",
+        "view_projection"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::mat": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::encode_frame"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-render/src/frame.rs::Encoder::out"
+      ],
+      "name": "mat",
+      "namedMethods": [
+        "iter",
+        "iter_mut",
+        "zip"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs::program_of": {
+      "filePath": "crates/simbiguity-render/src/frame.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::draw_order"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "name": "program_of"
+    },
+    "crates/simbiguity-render/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-render/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/commands.rs::Blend",
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/commands.rs::Uniform",
+        "crates/simbiguity-render/src/decode.rs::DecodeError",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Hit",
+        "crates/simbiguity-render/src/pick.rs::Ray",
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::NodeId",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds",
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::append",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::sphere",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tube",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::bounds",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::indices",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::normal",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::position",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::quad",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::ring",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::sphere",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::stitch",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tri",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::triangle_count",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tube",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertex_count",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertices",
+        "crates/simbiguity-render/src/mesh.rs::PI",
+        "crates/simbiguity-render/src/mesh.rs::TAU",
+        "crates/simbiguity-render/src/mesh.rs::VERTEX_STRIDE",
+        "crates/simbiguity-render/src/mesh.rs::mul",
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "name": "Mesh"
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::bounds": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::position",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertex_count",
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::bounds",
+      "namedMethods": [
+        "including",
+        "is_empty",
+        "point",
+        "position",
+        "vertex_count"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::capsule": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::ring",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::stitch",
+        "crates/simbiguity-render/src/mesh.rs::PI"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::capsule",
+      "namedMethods": [
+        "default",
+        "from",
+        "max",
+        "ring",
+        "stitch"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::quad",
+        "crates/simbiguity-render/src/mesh.rs::mul"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::cuboid",
+      "namedMethods": [
+        "default",
+        "new",
+        "push",
+        "quad"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::stitch",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tri",
+        "crates/simbiguity-render/src/mesh.rs::TAU"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::cylinder",
+      "namedMethods": [
+        "default",
+        "from",
+        "max",
+        "new",
+        "push",
+        "sin_cos",
+        "stitch",
+        "tri"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::indices": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tri",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::triangle_count"
+      ],
+      "imports": [],
+      "name": "Mesh::indices"
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::normal": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tube"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertices",
+        "crates/simbiguity-render/src/mesh.rs::VERTEX_STRIDE"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::normal",
+      "namedMethods": [
+        "from",
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::position": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertices",
+        "crates/simbiguity-render/src/mesh.rs::VERTEX_STRIDE"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::position",
+      "namedMethods": [
+        "from",
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::push": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::ring",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tube"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertex_count",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertices"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::push",
+      "namedMethods": [
+        "extend_from_slice",
+        "vertex_count"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::quad": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::stitch"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tri"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::quad",
+      "namedMethods": [
+        "tri"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::ring": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::sphere"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push",
+        "crates/simbiguity-render/src/mesh.rs::TAU"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::ring",
+      "namedMethods": [
+        "from",
+        "new",
+        "push",
+        "sin_cos"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::sphere": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::ring",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::stitch",
+        "crates/simbiguity-render/src/mesh.rs::PI"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::sphere",
+      "namedMethods": [
+        "default",
+        "from",
+        "max",
+        "ring",
+        "stitch"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::stitch": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::sphere",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tube"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh::quad"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::stitch",
+      "namedMethods": [
+        "quad"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::tri": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::quad"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh::indices"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::tri",
+      "namedMethods": [
+        "extend_from_slice"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::triangle_count": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh::indices"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::triangle_count",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::tube": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::normal",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::stitch",
+        "crates/simbiguity-render/src/mesh.rs::TAU"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::tube",
+      "namedMethods": [
+        "abs",
+        "cross",
+        "default",
+        "distance",
+        "dot",
+        "enumerate",
+        "from",
+        "iter",
+        "last",
+        "len",
+        "map_or",
+        "max",
+        "normalize",
+        "push",
+        "sin_cos",
+        "stitch",
+        "unwrap_or",
+        "unwrap_or_else",
+        "with_capacity"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::vertex_count": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::bounds",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertices",
+        "crates/simbiguity-render/src/mesh.rs::VERTEX_STRIDE"
+      ],
+      "inherentMethod": true,
+      "name": "Mesh::vertex_count",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs::Mesh::vertices": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::normal",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::position",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::push",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertex_count"
+      ],
+      "imports": [],
+      "name": "Mesh::vertices"
+    },
+    "crates/simbiguity-render/src/mesh.rs::PI": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::sphere"
+      ],
+      "imports": [],
+      "name": "PI"
+    },
+    "crates/simbiguity-render/src/mesh.rs::TAU": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cylinder",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::ring",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::tube"
+      ],
+      "imports": [],
+      "name": "TAU"
+    },
+    "crates/simbiguity-render/src/mesh.rs::VERTEX_STRIDE": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::normal",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::position",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::vertex_count"
+      ],
+      "imports": [],
+      "name": "VERTEX_STRIDE"
+    },
+    "crates/simbiguity-render/src/mesh.rs::mul": {
+      "filePath": "crates/simbiguity-render/src/mesh.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "mul",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/path.rs::path_length": {
+      "filePath": "crates/simbiguity-render/src/path.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop",
+        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop::at",
+        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop::length"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "path_length",
+      "namedMethods": [
+        "distance",
+        "map",
+        "sum",
+        "windows"
+      ]
+    },
+    "crates/simbiguity-render/src/path.rs::point_along": {
+      "filePath": "crates/simbiguity-render/src/path.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop",
+        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop::at"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "point_along",
+      "namedMethods": [
+        "copied",
+        "distance",
+        "last",
+        "lerp",
+        "max",
+        "unwrap_or",
+        "windows"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/mesh.rs::Mesh::bounds",
+        "crates/simbiguity-render/src/pick.rs::Aabb::expanded",
+        "crates/simbiguity-render/src/pick.rs::Aabb::including",
+        "crates/simbiguity-render/src/pick.rs::Aabb::point",
+        "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
+        "crates/simbiguity-render/src/pick.rs::EMPTY",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Aabb::expanded",
+        "crates/simbiguity-render/src/pick.rs::Aabb::including",
+        "crates/simbiguity-render/src/pick.rs::Aabb::intersect",
+        "crates/simbiguity-render/src/pick.rs::Aabb::is_empty",
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min",
+        "crates/simbiguity-render/src/pick.rs::Aabb::point",
+        "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
+        "crates/simbiguity-render/src/pick.rs::EMPTY",
+        "crates/simbiguity-render/src/pick.rs::Ray",
+        "crates/simbiguity-render/src/pick.rs::Ray::dir",
+        "crates/simbiguity-render/src/pick.rs::Ray::origin"
+      ],
+      "name": "Aabb"
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::expanded": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min"
+      ],
+      "inherentMethod": true,
+      "name": "Aabb::expanded",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::including": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::transformed"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min"
+      ],
+      "inherentMethod": true,
+      "name": "Aabb::including",
+      "namedMethods": [
+        "max",
+        "min",
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::intersect": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min",
+        "crates/simbiguity-render/src/pick.rs::Ray",
+        "crates/simbiguity-render/src/pick.rs::Ray::dir",
+        "crates/simbiguity-render/src/pick.rs::Ray::origin"
+      ],
+      "inherentMethod": true,
+      "name": "Aabb::intersect",
+      "namedMethods": [
+        "max",
+        "min"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::is_empty": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min"
+      ],
+      "inherentMethod": true,
+      "name": "Aabb::is_empty"
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::max": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::expanded",
+        "crates/simbiguity-render/src/pick.rs::Aabb::including",
+        "crates/simbiguity-render/src/pick.rs::Aabb::intersect",
+        "crates/simbiguity-render/src/pick.rs::Aabb::is_empty",
+        "crates/simbiguity-render/src/pick.rs::Aabb::point",
+        "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
+        "crates/simbiguity-render/src/pick.rs::EMPTY"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Aabb::max"
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::min": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::expanded",
+        "crates/simbiguity-render/src/pick.rs::Aabb::including",
+        "crates/simbiguity-render/src/pick.rs::Aabb::intersect",
+        "crates/simbiguity-render/src/pick.rs::Aabb::is_empty",
+        "crates/simbiguity-render/src/pick.rs::Aabb::point",
+        "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
+        "crates/simbiguity-render/src/pick.rs::EMPTY"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Aabb::min"
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::point": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min"
+      ],
+      "inherentMethod": true,
+      "name": "Aabb::point"
+    },
+    "crates/simbiguity-render/src/pick.rs::Aabb::transformed": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::including",
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min",
+        "crates/simbiguity-render/src/pick.rs::EMPTY"
+      ],
+      "inherentMethod": true,
+      "name": "Aabb::transformed",
+      "namedMethods": [
+        "including",
+        "new",
+        "transform_point"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs::EMPTY": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::transformed"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::max",
+        "crates/simbiguity-render/src/pick.rs::Aabb::min"
+      ],
+      "name": "EMPTY",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs::Hit": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/pick.rs::Hit::distance",
+        "crates/simbiguity-render/src/pick.rs::Hit::tag"
+      ],
+      "name": "Hit"
+    },
+    "crates/simbiguity-render/src/pick.rs::Hit::distance": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Hit"
+      ],
+      "imports": [],
+      "name": "Hit::distance"
+    },
+    "crates/simbiguity-render/src/pick.rs::Hit::tag": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Hit"
+      ],
+      "imports": [],
+      "name": "Hit::tag"
+    },
+    "crates/simbiguity-render/src/pick.rs::Ray": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::intersect",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Ray::at",
+        "crates/simbiguity-render/src/pick.rs::Ray::dir",
+        "crates/simbiguity-render/src/pick.rs::Ray::origin"
+      ],
+      "name": "Ray"
+    },
+    "crates/simbiguity-render/src/pick.rs::Ray::at": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Ray"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/pick.rs::Ray::dir",
+        "crates/simbiguity-render/src/pick.rs::Ray::origin"
+      ],
+      "inherentMethod": true,
+      "name": "Ray::at"
+    },
+    "crates/simbiguity-render/src/pick.rs::Ray::dir": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::intersect",
+        "crates/simbiguity-render/src/pick.rs::Ray",
+        "crates/simbiguity-render/src/pick.rs::Ray::at"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Ray::dir"
+    },
+    "crates/simbiguity-render/src/pick.rs::Ray::origin": {
+      "filePath": "crates/simbiguity-render/src/pick.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/pick.rs::Aabb::intersect",
+        "crates/simbiguity-render/src/pick.rs::Ray",
+        "crates/simbiguity-render/src/pick.rs::Ray::at"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Ray::origin"
+    },
+    "crates/simbiguity-render/src/scene.rs::Instances": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/scene.rs::Instances::material",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::Instances::offsets",
+        "crates/simbiguity-render/src/scene.rs::Instances::scale",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Node::material",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh"
+      ],
+      "name": "Instances"
+    },
+    "crates/simbiguity-render/src/scene.rs::Instances::material": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Node::material",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Node::material"
+      ],
+      "name": "Instances::material"
+    },
+    "crates/simbiguity-render/src/scene.rs::Instances::mesh": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh"
+      ],
+      "name": "Instances::mesh"
+    },
+    "crates/simbiguity-render/src/scene.rs::Instances::offsets": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Instances"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Instances::offsets"
+    },
+    "crates/simbiguity-render/src/scene.rs::Instances::scale": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Instances"
+      ],
+      "imports": [],
+      "name": "Instances::scale"
+    },
+    "crates/simbiguity-render/src/scene.rs::Light": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::light"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/scene.rs::Light::ambient",
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Light::direction",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::new"
+      ],
+      "name": "Light"
+    },
+    "crates/simbiguity-render/src/scene.rs::Light::ambient": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::default"
+      ],
+      "imports": [],
+      "name": "Light::ambient"
+    },
+    "crates/simbiguity-render/src/scene.rs::Light::color": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Material::color"
+      ],
+      "name": "Light::color"
+    },
+    "crates/simbiguity-render/src/scene.rs::Light::default": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::ambient",
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Light::direction",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::new"
+      ],
+      "name": "Light::default",
+      "namedMethods": [
+        "new",
+        "normalize",
+        "unwrap_or"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Light::direction": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::default"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Light::direction"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/lib.rs::paint",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Instances::material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit",
+        "crates/simbiguity-render/src/scene.rs::Material::with_alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::with_emissive",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Node::material",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Material::alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Material::emissive",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::is_blended",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::shading",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit",
+        "crates/simbiguity-render/src/scene.rs::Material::with_alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::with_emissive",
+        "crates/simbiguity-render/src/scene.rs::Shading",
+        "crates/simbiguity-render/src/scene.rs::Shading::Glow",
+        "crates/simbiguity-render/src/scene.rs::Shading::Lit",
+        "crates/simbiguity-render/src/scene.rs::Shading::Unlit"
+      ],
+      "name": "Material"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::alpha": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::is_blended",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit",
+        "crates/simbiguity-render/src/scene.rs::Material::with_alpha"
+      ],
+      "imports": [],
+      "name": "Material::alpha"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::color": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light::color"
+      ],
+      "name": "Material::color"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::emissive": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit",
+        "crates/simbiguity-render/src/scene.rs::Material::with_emissive"
+      ],
+      "imports": [],
+      "name": "Material::emissive"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::glow": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Material::emissive",
+        "crates/simbiguity-render/src/scene.rs::Material::shading",
+        "crates/simbiguity-render/src/scene.rs::Shading",
+        "crates/simbiguity-render/src/scene.rs::Shading::Glow"
+      ],
+      "inherentMethod": true,
+      "name": "Material::glow"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::is_blended": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Material::alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::shading",
+        "crates/simbiguity-render/src/scene.rs::Shading",
+        "crates/simbiguity-render/src/scene.rs::Shading::Glow"
+      ],
+      "inherentMethod": true,
+      "name": "Material::is_blended"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::lit": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Material::emissive",
+        "crates/simbiguity-render/src/scene.rs::Material::shading",
+        "crates/simbiguity-render/src/scene.rs::Shading",
+        "crates/simbiguity-render/src/scene.rs::Shading::Lit"
+      ],
+      "inherentMethod": true,
+      "name": "Material::lit"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::shading": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::is_blended",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "name": "Material::shading"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::unlit": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light::color",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::alpha",
+        "crates/simbiguity-render/src/scene.rs::Material::color",
+        "crates/simbiguity-render/src/scene.rs::Material::emissive",
+        "crates/simbiguity-render/src/scene.rs::Material::shading",
+        "crates/simbiguity-render/src/scene.rs::Shading",
+        "crates/simbiguity-render/src/scene.rs::Shading::Unlit"
+      ],
+      "inherentMethod": true,
+      "name": "Material::unlit"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::with_alpha": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::alpha"
+      ],
+      "inherentMethod": true,
+      "name": "Material::with_alpha"
+    },
+    "crates/simbiguity-render/src/scene.rs::Material::with_emissive": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::emissive"
+      ],
+      "inherentMethod": true,
+      "name": "Material::with_emissive"
+    },
+    "crates/simbiguity-render/src/scene.rs::MeshId": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
+      ],
+      "imports": [],
+      "name": "MeshId"
+    },
+    "crates/simbiguity-render/src/scene.rs::Node": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::DrawOrder",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glass",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::glows",
+        "crates/simbiguity-render/src/frame.rs::DrawOrder::opaque",
+        "crates/simbiguity-render/src/frame.rs::Encoder<'_>::draw",
+        "crates/simbiguity-render/src/frame.rs::depth",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-render/src/scene.rs::Instances::material",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Node::material",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh",
+        "crates/simbiguity-render/src/scene.rs::Node::pick",
+        "crates/simbiguity-render/src/scene.rs::Node::transform",
+        "crates/simbiguity-render/src/scene.rs::Node::visible",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "name": "Node"
+    },
+    "crates/simbiguity-render/src/scene.rs::Node::material": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Instances::material",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Instances::material",
+        "crates/simbiguity-render/src/scene.rs::Material"
+      ],
+      "name": "Node::material"
+    },
+    "crates/simbiguity-render/src/scene.rs::Node::mesh": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Instances",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::MeshId"
+      ],
+      "name": "Node::mesh"
+    },
+    "crates/simbiguity-render/src/scene.rs::Node::pick": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "name": "Node::pick"
+    },
+    "crates/simbiguity-render/src/scene.rs::Node::transform": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "name": "Node::transform"
+    },
+    "crates/simbiguity-render/src/scene.rs::Node::visible": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "imports": [],
+      "name": "Node::visible"
+    },
+    "crates/simbiguity-render/src/scene.rs::NodeId": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::Parts",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::filament",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::filament_broken",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::glass",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::halo",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::knob",
+        "crates/simbiguity-circuits-view/src/board.rs::Parts::lever",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [],
+      "name": "NodeId"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::add_mesh": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::add_mesh",
+      "namedMethods": [
+        "len",
+        "push"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::add_node": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-render/src/scene.rs::Instances::material",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::MeshId",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Node::material",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh",
+        "crates/simbiguity-render/src/scene.rs::Node::pick",
+        "crates/simbiguity-render/src/scene.rs::Node::transform",
+        "crates/simbiguity-render/src/scene.rs::Node::visible",
+        "crates/simbiguity-render/src/scene.rs::NodeId",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::add_node",
+      "namedMethods": [
+        "len",
+        "push"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::clear": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
+      ],
+      "imports": [],
+      "name": "Scene::clear"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::default": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::new"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes"
+      ],
+      "name": "Scene::default",
+      "namedMethods": [
+        "default",
+        "new"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::instances": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Instances"
+      ],
+      "name": "Scene::instances"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::light": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light"
+      ],
+      "name": "Scene::light"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::meshes": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "name": "Scene::meshes"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::new": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Light",
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Light::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::new",
+      "namedMethods": [
+        "default"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::node": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::NodeId",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::node"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::node_mut": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::NodeId",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::node_mut"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::nodes": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Node"
+      ],
+      "name": "Scene::nodes"
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::pick": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Node",
+        "crates/simbiguity-render/src/scene.rs::Node::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/pick.rs::Hit",
+        "crates/simbiguity-render/src/pick.rs::Ray",
+        "crates/simbiguity-render/src/scene.rs::Node::pick",
+        "crates/simbiguity-render/src/scene.rs::Node::visible",
+        "crates/simbiguity-render/src/scene.rs::NodeId",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::pick",
+      "namedMethods": [
+        "enumerate",
+        "intersect",
+        "iter",
+        "map_or",
+        "world_bounds"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Scene::world_bounds": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_board",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
+        "crates/simbiguity-circuits-view/src/board.rs::add_charges",
+        "crates/simbiguity-circuits-view/src/board.rs::add_switch",
+        "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-render/src/frame.rs::Encoder",
+        "crates/simbiguity-render/src/frame.rs::Encoder::scene",
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::encode_frame",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/pick.rs::Aabb",
+        "crates/simbiguity-render/src/scene.rs::Instances::mesh",
+        "crates/simbiguity-render/src/scene.rs::Node::mesh",
+        "crates/simbiguity-render/src/scene.rs::Node::transform",
+        "crates/simbiguity-render/src/scene.rs::NodeId",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes"
+      ],
+      "inherentMethod": true,
+      "name": "Scene::world_bounds",
+      "namedMethods": [
+        "bounds",
+        "transformed"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs::Shading": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/frame.rs::draw_order",
+        "crates/simbiguity-render/src/frame.rs::program_of",
+        "crates/simbiguity-render/src/lib.rs::__file_root__",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::is_blended",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Material::shading",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/scene.rs::Shading::Glow",
+        "crates/simbiguity-render/src/scene.rs::Shading::Lit",
+        "crates/simbiguity-render/src/scene.rs::Shading::Unlit"
+      ],
+      "name": "Shading"
+    },
+    "crates/simbiguity-render/src/scene.rs::Shading::Glow": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::glow",
+        "crates/simbiguity-render/src/scene.rs::Material::is_blended",
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "imports": [],
+      "name": "Shading::Glow"
+    },
+    "crates/simbiguity-render/src/scene.rs::Shading::Lit": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::lit",
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "imports": [],
+      "name": "Shading::Lit"
+    },
+    "crates/simbiguity-render/src/scene.rs::Shading::Unlit": {
+      "filePath": "crates/simbiguity-render/src/scene.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Material::unlit",
+        "crates/simbiguity-render/src/scene.rs::Shading"
+      ],
+      "imports": [],
+      "name": "Shading::Unlit"
+    }
+  },
+  "files": {
+    "crates/simbiguity-render/src/camera.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/readouts.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-render/src/pick.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/commands.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs"
+      ],
+      "imports": []
+    },
+    "crates/simbiguity-render/src/decode.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/frame.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/commands.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/path.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/scene.rs"
+      ],
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/path.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/mesh.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-render/src/pick.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/path.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/layout.rs",
+        "crates/simbiguity-circuits-view/src/layout.rs",
+        "crates/simbiguity-circuits-view/src/layout.rs",
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/pick.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs",
+        "crates/simbiguity-render/src/scene.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/quat.rs"
+      ]
+    },
+    "crates/simbiguity-render/src/scene.rs": {
+      "declaredBy": [
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/pick.rs",
+        "crates/simbiguity-render/src/pick.rs"
+      ]
+    }
+  }
+}

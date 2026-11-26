@@ -1,0 +1,22 @@
+{
+  "name": "Circuit 3D - Switch Flipped by Keyboard",
+  "id": "a9c702fb-39af-4561-8ec8-b28620d49582",
+  "url": "/demos/circuit-3d/#t=2.5",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "Starting open, pressing Enter on the focused 3D view flips the switch: the loop closes and the readouts and explanation update to current flowing.",
+  "interactions": [
+    {
+      "action": "press",
+      "selector": "canvas",
+      "value": "Enter"
+    }
+  ]
+}

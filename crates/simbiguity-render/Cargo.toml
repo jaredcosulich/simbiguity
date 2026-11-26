@@ -1,0 +1,18 @@
+[package]
+name = "simbiguity-render"
+description = "Zero-dependency, no_std, renderer-agnostic 3D for simbiguity: meshes, materials, lights, an orbit camera and picking rays, compiled into a flat draw-command buffer any backend can replay."
+keywords = ["3d", "rendering", "webgl", "mesh", "no-std"]
+categories = ["graphics", "rendering", "no-std"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = ["simbiguity-math/std"]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }

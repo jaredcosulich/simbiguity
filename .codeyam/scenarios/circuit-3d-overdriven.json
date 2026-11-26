@@ -1,0 +1,15 @@
+{
+  "name": "Circuit 3D - Overdriven",
+  "id": "33ed95fa-a116-479d-a085-7e43286663af",
+  "url": "/demos/circuit-3d/#closed&v=16&t=2.5",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "Above the rated voltage: more current makes the charges race faster, the bulb is at full glare and the explanation warns it is overdriven."
+}

@@ -6,12 +6,18 @@ set -eu
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
-cargo build -p simbiguity-circuits-wasm --target wasm32-unknown-unknown --release
+bridges="simbiguity-circuits-wasm simbiguity-render-wasm"
+for crate in $bridges; do
+  cargo build -p "$crate" --target wasm32-unknown-unknown --release
+done
 
 # Respect CARGO_TARGET_DIR / .cargo/config instead of assuming ./target.
 target_dir="$(cargo metadata --format-version 1 --no-deps \
   | sed -n 's/.*"target_directory":"\([^"]*\)".*/\1/p')"
 
 mkdir -p site/pkg
-cp "$target_dir/wasm32-unknown-unknown/release/simbiguity_circuits_wasm.wasm" site/pkg/
-echo "site/pkg/simbiguity_circuits_wasm.wasm: $(wc -c < site/pkg/simbiguity_circuits_wasm.wasm) bytes"
+for crate in $bridges; do
+  file="$(echo "$crate" | tr - _).wasm"
+  cp "$target_dir/wasm32-unknown-unknown/release/$file" site/pkg/
+  echo "site/pkg/$file: $(wc -c < "site/pkg/$file") bytes"
+done

@@ -1,0 +1,22 @@
+[package]
+name = "simbiguity-render-wasm"
+description = "A hand-written C-ABI / WebAssembly bridge for simbiguity's 3D views: build a view, step its animation, encode a frame's draw commands, pick under the cursor. No wasm-bindgen."
+keywords = ["3d", "wasm", "ffi", "webgl", "education"]
+categories = ["graphics", "wasm"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[lib]
+# cdylib → the .wasm the browser loads; rlib → native unit tests link it.
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+simbiguity-circuits-view = { path = "../simbiguity-circuits-view", version = "0.0.1", features = ["std"] }
+simbiguity-render = { path = "../simbiguity-render", version = "0.0.1", features = ["std"] }
+
+[dev-dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }

@@ -1,0 +1,15 @@
+{
+  "name": "Circuit 3D - Bulb Blown",
+  "id": "72fad7c8-eabe-494e-b9e5-8f25ab42c85c",
+  "url": "/demos/circuit-3d/#closed&v=24&t=2.5",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "Far too much voltage burns the filament through: the glass goes smoky, the broken filament shows, the charges stop, and the panel offers to replace the bulb."
+}

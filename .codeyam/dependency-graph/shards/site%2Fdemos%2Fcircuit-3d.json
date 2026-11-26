@@ -1,0 +1,406 @@
+{
+  "entities": {
+    "site/demos/circuit-3d/canvas-input.js::bindCanvasInput": {
+      "filePath": "site/demos/circuit-3d/canvas-input.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/pointer.js::__file_root__",
+        "site/demos/circuit-3d/pointer.js::canvasPixel",
+        "site/demos/circuit-3d/pointer.js::clickAction",
+        "site/demos/circuit-3d/pointer.js::cursorFor"
+      ],
+      "name": "bindCanvasInput"
+    },
+    "site/demos/circuit-3d/demo.js::$": {
+      "filePath": "site/demos/circuit-3d/demo.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main"
+      ],
+      "imports": [],
+      "name": "$"
+    },
+    "site/demos/circuit-3d/demo.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/demo.js",
+      "importedBy": [
+        "site/demos/circuit-3d/index.html::__file_root__"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/explain-panel.js::showLoadError"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/demo.js::main": {
+      "filePath": "site/demos/circuit-3d/demo.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
+        "site/demos/circuit-3d/demo.js::$",
+        "site/demos/circuit-3d/demo.js::show",
+        "site/demos/circuit-3d/pointer.js::canvasSize",
+        "site/demos/circuit-3d/state.js::hashFromState",
+        "site/demos/circuit-3d/state.js::stateFromHash",
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/webgl2-executor.js::WebGL2Executor"
+      ],
+      "name": "main"
+    },
+    "site/demos/circuit-3d/demo.js::show": {
+      "filePath": "site/demos/circuit-3d/demo.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/explain-panel.js::showExplanation",
+        "site/demos/circuit-3d/explain.js::explanation",
+        "site/demos/circuit-3d/readouts-panel.js::showReadouts",
+        "site/demos/circuit-3d/readouts.js::formatReadouts"
+      ],
+      "name": "show"
+    },
+    "site/demos/circuit-3d/explain-panel.js::box": {
+      "filePath": "site/demos/circuit-3d/explain-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/explain-panel.js::showExplanation",
+        "site/demos/circuit-3d/explain-panel.js::showLoadError"
+      ],
+      "imports": [],
+      "name": "box"
+    },
+    "site/demos/circuit-3d/explain-panel.js::heading": {
+      "filePath": "site/demos/circuit-3d/explain-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/explain-panel.js::showExplanation",
+        "site/demos/circuit-3d/explain-panel.js::showLoadError"
+      ],
+      "imports": [],
+      "name": "heading"
+    },
+    "site/demos/circuit-3d/explain-panel.js::paragraph": {
+      "filePath": "site/demos/circuit-3d/explain-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/explain-panel.js::showExplanation",
+        "site/demos/circuit-3d/explain-panel.js::showLoadError"
+      ],
+      "imports": [],
+      "name": "paragraph"
+    },
+    "site/demos/circuit-3d/explain-panel.js::showExplanation": {
+      "filePath": "site/demos/circuit-3d/explain-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::show"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/explain-panel.js::box",
+        "site/demos/circuit-3d/explain-panel.js::heading",
+        "site/demos/circuit-3d/explain-panel.js::paragraph"
+      ],
+      "name": "showExplanation"
+    },
+    "site/demos/circuit-3d/explain-panel.js::showLoadError": {
+      "filePath": "site/demos/circuit-3d/explain-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/explain-panel.js::box",
+        "site/demos/circuit-3d/explain-panel.js::heading",
+        "site/demos/circuit-3d/explain-panel.js::paragraph"
+      ],
+      "name": "showLoadError"
+    },
+    "site/demos/circuit-3d/explain.js::explanation": {
+      "filePath": "site/demos/circuit-3d/explain.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::show",
+        "site/demos/circuit-3d/explain.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/state.js::__file_root__"
+      ],
+      "name": "explanation"
+    },
+    "site/demos/circuit-3d/explain.test.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/explain.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/explain.js::explanation"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/index.html::__file_root__": {
+      "filePath": "site/demos/circuit-3d/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/demo.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/pointer.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/pointer.js",
+      "importedBy": [
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/pointer.js::canvasPixel": {
+      "filePath": "site/demos/circuit-3d/pointer.js",
+      "importedBy": [
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
+        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "canvasPixel"
+    },
+    "site/demos/circuit-3d/pointer.js::canvasSize": {
+      "filePath": "site/demos/circuit-3d/pointer.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "canvasSize"
+    },
+    "site/demos/circuit-3d/pointer.js::clickAction": {
+      "filePath": "site/demos/circuit-3d/pointer.js",
+      "importedBy": [
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
+        "site/demos/circuit-3d/pointer.js::cursorFor",
+        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/js/simbiguity-render.js::Pick"
+      ],
+      "name": "clickAction"
+    },
+    "site/demos/circuit-3d/pointer.js::cursorFor": {
+      "filePath": "site/demos/circuit-3d/pointer.js",
+      "importedBy": [
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
+        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/pointer.js::clickAction"
+      ],
+      "name": "cursorFor"
+    },
+    "site/demos/circuit-3d/pointer.test.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/pointer.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/pointer.js::canvasPixel",
+        "site/demos/circuit-3d/pointer.js::canvasSize",
+        "site/demos/circuit-3d/pointer.js::clickAction",
+        "site/demos/circuit-3d/pointer.js::cursorFor",
+        "site/js/simbiguity-render.js::Pick"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/readouts-panel.js::$": {
+      "filePath": "site/demos/circuit-3d/readouts-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/readouts-panel.js::showReadouts"
+      ],
+      "imports": [],
+      "name": "$"
+    },
+    "site/demos/circuit-3d/readouts-panel.js::showReadouts": {
+      "filePath": "site/demos/circuit-3d/readouts-panel.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::show"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/readouts-panel.js::$"
+      ],
+      "name": "showReadouts"
+    },
+    "site/demos/circuit-3d/readouts.js::formatReadouts": {
+      "filePath": "site/demos/circuit-3d/readouts.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::show",
+        "site/demos/circuit-3d/readouts.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "formatReadouts"
+    },
+    "site/demos/circuit-3d/readouts.test.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/readouts.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/readouts.js::formatReadouts"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/state.js::DEFAULT_CAMERA": {
+      "filePath": "site/demos/circuit-3d/state.js",
+      "importedBy": [
+        "site/demos/circuit-3d/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "DEFAULT_CAMERA"
+    },
+    "site/demos/circuit-3d/state.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/state.js",
+      "importedBy": [
+        "site/demos/circuit-3d/explain.js::explanation",
+        "site/demos/circuit-3d/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-3d/state.js::hashFromState": {
+      "filePath": "site/demos/circuit-3d/state.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d/state.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/state.js::round"
+      ],
+      "name": "hashFromState"
+    },
+    "site/demos/circuit-3d/state.js::num": {
+      "filePath": "site/demos/circuit-3d/state.js",
+      "importedBy": [
+        "site/demos/circuit-3d/state.js::stateFromHash"
+      ],
+      "imports": [],
+      "name": "num"
+    },
+    "site/demos/circuit-3d/state.js::round": {
+      "filePath": "site/demos/circuit-3d/state.js",
+      "importedBy": [
+        "site/demos/circuit-3d/state.js::hashFromState"
+      ],
+      "imports": [],
+      "name": "round"
+    },
+    "site/demos/circuit-3d/state.js::stateFromHash": {
+      "filePath": "site/demos/circuit-3d/state.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d/state.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/state.js::num"
+      ],
+      "name": "stateFromHash"
+    },
+    "site/demos/circuit-3d/state.test.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/state.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/state.js::DEFAULT_CAMERA",
+        "site/demos/circuit-3d/state.js::__file_root__",
+        "site/demos/circuit-3d/state.js::hashFromState",
+        "site/demos/circuit-3d/state.js::stateFromHash"
+      ],
+      "name": "__file_root__"
+    }
+  },
+  "files": {
+    "site/demos/circuit-3d/canvas-input.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/pointer.js"
+      ]
+    },
+    "site/demos/circuit-3d/demo.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/index.html"
+      ],
+      "imports": [
+        "site/js/simbiguity-render.js",
+        "site/js/webgl2-executor.js",
+        "site/demos/circuit-3d/canvas-input.js",
+        "site/demos/circuit-3d/explain-panel.js",
+        "site/demos/circuit-3d/explain.js",
+        "site/demos/circuit-3d/pointer.js",
+        "site/demos/circuit-3d/readouts.js",
+        "site/demos/circuit-3d/readouts-panel.js",
+        "site/demos/circuit-3d/state.js"
+      ]
+    },
+    "site/demos/circuit-3d/explain-panel.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-3d/explain.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d/explain.test.js"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/state.js"
+      ]
+    },
+    "site/demos/circuit-3d/explain.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/explain.js"
+      ]
+    },
+    "site/demos/circuit-3d/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/demo.js"
+      ]
+    },
+    "site/demos/circuit-3d/pointer.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/canvas-input.js",
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d/pointer.test.js"
+      ],
+      "imports": [
+        "site/js/simbiguity-render.js"
+      ]
+    },
+    "site/demos/circuit-3d/pointer.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity-render.js",
+        "site/demos/circuit-3d/pointer.js"
+      ]
+    },
+    "site/demos/circuit-3d/readouts-panel.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-3d/readouts.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d/readouts.test.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-3d/readouts.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/readouts.js"
+      ]
+    },
+    "site/demos/circuit-3d/state.js": {
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d/explain.js",
+        "site/demos/circuit-3d/state.test.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-3d/state.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/state.js"
+      ]
+    }
+  }
+}

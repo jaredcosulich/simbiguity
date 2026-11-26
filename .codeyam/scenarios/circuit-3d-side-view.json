@@ -1,0 +1,15 @@
+{
+  "name": "Circuit 3D - Side View",
+  "id": "698c38f0-ca20-4741-ab92-3210f1369d56",
+  "url": "/demos/circuit-3d/#closed&t=2.5&cam=-50,20,7",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T18:44:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-3d/index.html",
+  "description": "The lit circuit orbited round to a low view from the other side and zoomed in, showing the camera state survives in the link."
+}

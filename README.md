@@ -43,6 +43,11 @@ double as the reference for how your own project can embed the engines.
   live by `simbiguity-circuits` through the hand-written bridge in
   [`crates/simbiguity-circuits-wasm`](crates/simbiguity-circuits-wasm) and the
   ~150-line loader [`site/js/simbiguity.js`](site/js/simbiguity.js).
+- [Circuit in 3D](site/demos/circuit-3d/) — the same circuit on a board you can orbit,
+  with charge flowing as fast as the solved current and a bulb that warms up on a spring.
+  `simbiguity-anim`, `simbiguity-render` and `simbiguity-circuits-view` build every frame
+  as draw commands in Rust (bridge: [`crates/simbiguity-render-wasm`](crates/simbiguity-render-wasm));
+  [`site/js/webgl2-executor.js`](site/js/webgl2-executor.js) only replays them with WebGL2.
 
 To run them locally you need the `wasm32-unknown-unknown` target
 (`rustup target add wasm32-unknown-unknown`) and Python 3 for a static server:

@@ -13,6 +13,11 @@
     "crates/simbiguity-core/src/clock.rs::FixedClock": {
       "filePath": "crates/simbiguity-core/src/clock.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-core/src/clock.rs::FixedClock::new",
         "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
         "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps",
@@ -816,6 +821,12 @@
         "crates/simbiguity-circuits/tests/analysis.rs::snapshot_round_trip_restores_state",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-core/src/clock.rs::FixedClock",
@@ -926,6 +937,7 @@
       "importedBy": [
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
+        "crates/simbiguity-circuits-view/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
@@ -1030,6 +1042,7 @@
         "crates/simbiguity-core/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
@@ -1105,6 +1118,8 @@
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",

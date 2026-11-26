@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circuit in 3D — simbiguity</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, sans-serif;
+      --muted: color-mix(in srgb, CanvasText 60%, Canvas);
+      --line: color-mix(in srgb, CanvasText 75%, Canvas);
+      --panel: color-mix(in srgb, CanvasText 6%, Canvas);
+      --warn: #d9480f;
+      --glow: #ffd43b;
+    }
+    html { background: Canvas; color: CanvasText; }
+    body { max-width: 72rem; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.6; }
+    a { color: inherit; }
+    .crumb { font-size: 0.9rem; opacity: 0.75; }
+    h1 { margin: 0.25rem 0; }
+    .lede { margin-top: 0; color: var(--muted); max-width: 52rem; }
+    .stage { display: grid; grid-template-columns: minmax(0, 1fr) 16rem; gap: 1.5rem; align-items: start; margin-top: 1.25rem; }
+    @media (max-width: 52rem) { .stage { grid-template-columns: 1fr; } }
+    canvas { width: 100%; aspect-ratio: 16 / 10; display: block; border-radius: 0.75rem; background: #17191f; cursor: grab; touch-action: none; }
+    canvas:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
+    .hint { font-size: 0.85rem; color: var(--muted); margin: 0.4rem 0 0; }
+    .panel { background: var(--panel); border-radius: 0.75rem; padding: 1rem 1.25rem; }
+    .readouts { display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 1rem; margin: 0; font-variant-numeric: tabular-nums; }
+    .readouts dt { color: var(--muted); }
+    .readouts dd { margin: 0; text-align: right; font-weight: 600; }
+    label.slider { display: block; margin-top: 1rem; }
+    input[type=range] { width: 100%; }
+    .controls button { margin-top: 0.75rem; width: 100%; font: inherit; padding: 0.4rem; border-radius: 0.5rem; border: 1px solid var(--line); background: Canvas; color: inherit; cursor: pointer; }
+    .controls button[hidden] { display: none; }
+    .explain { margin-top: 1.25rem; }
+    .explain h2 { font-size: 1.05rem; margin: 0 0 0.25rem; }
+    .explain p { margin: 0.25rem 0; }
+    .explain.issue { border-left: 4px solid var(--warn); }
+    .source { margin-top: 2rem; font-size: 0.9rem; color: var(--muted); }
+    .error { color: var(--warn); }
+  </style>
+</head>
+<body>
+  <p class="crumb"><a href="../../">simbiguity</a> / demos</p>
+  <h1>Circuit in 3D</h1>
+  <p class="lede">
+    The same battery, switch and 12&nbsp;V&nbsp;/&nbsp;6&nbsp;W bulb as <a href="../hello-circuit/">Hello, circuit</a>,
+    now on a board you can turn around. The glowing dots are charge: they move as fast as the solved current says,
+    and the bulb warms up as bright as the power it absorbs. Rust builds every frame; WebGL2 only draws it.
+  </p>
+
+  <div class="stage">
+    <div>
+      <canvas id="view" tabindex="0" aria-label="3D circuit: battery, switch and bulb on a board. Press Enter to flip the switch."></canvas>
+      <p class="hint">Drag to orbit, scroll to zoom, click the switch to flip it.</p>
+    </div>
+
+    <div class="controls panel">
+      <dl class="readouts" aria-live="polite">
+        <dt>Battery</dt><dd id="r-volts">—</dd>
+        <dt>Current</dt><dd id="r-amps">—</dd>
+        <dt>Bulb power</dt><dd id="r-watts">—</dd>
+        <dt>Brightness</dt><dd id="r-bright">—</dd>
+        <dt>Charge speed</dt><dd id="r-speed">—</dd>
+      </dl>
+      <label class="slider">
+        Battery voltage: <strong id="volts-value">12.0 V</strong>
+        <input id="volts" type="range" min="0" max="24" step="0.5" value="12">
+      </label>
+      <button id="toggle" type="button">Close the switch</button>
+      <button id="replace" type="button" hidden>Replace the bulb</button>
+    </div>
+  </div>
+
+  <section id="explain" class="explain panel" aria-live="polite">
+    <h2>Loading the engine…</h2>
+  </section>
+
+  <p class="source">
+    How this page works: <a href="demo.js">demo.js</a> loads
+    <a href="../../js/simbiguity-render.js">simbiguity-render.js</a> (the WASM bridge) and
+    <a href="../../js/webgl2-executor.js">webgl2-executor.js</a>, which replays the draw commands Rust encodes each frame.
+  </p>
+
+  <script type="module" src="demo.js"></script>
+</body>
+</html>

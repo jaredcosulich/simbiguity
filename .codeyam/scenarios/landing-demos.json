@@ -11,5 +11,5 @@
   },
   "scenarioType": "application",
   "pageFilePath": "site/index.html",
-  "description": "The project landing page with its Demos list, linking the Hello, circuit demo."
+  "description": "The project landing page with its Demos list, linking the Hello, circuit demo and the new Circuit in 3D demo."
 }

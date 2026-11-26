@@ -1,6 +1,24 @@
 {
   "tests": [
     {
+      "description": "The pick codes match the Rust pick tags.",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "Pick › matches the Rust pick tags",
+      "line": 42,
+      "registeredAt": "2026-11-26T18:41:31.164739836+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Uniform names are in the slot order Rust writes (crates/simbiguity-render/src/commands.rs).",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "UNIFORMS › lists the eight slots in Rust order",
+      "line": 78,
+      "registeredAt": "2026-11-26T18:41:31.165015343+00:00",
+      "runner": "node"
+    },
+    {
       "description": "A balanced Wheatstone bridge carries no current through its bridge resistor — a topology no series/parallel reduction handles.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -19,6 +37,51 @@
       "runner": "cargo"
     },
     {
+      "description": "Appending offsets the second mesh's indices past the first mesh's vertices.",
+      "file": "crates/simbiguity-circuits-view/src/board.rs",
+      "format": "cargo",
+      "key": "board::tests::append_rebases_indices",
+      "line": 257,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "There is one particle set, empty until the view fills it, using the returned mesh.",
+      "file": "crates/simbiguity-circuits-view/src/board.rs",
+      "format": "cargo",
+      "key": "board::tests::charges_start_empty",
+      "line": 239,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The scene tags the battery once, the switch base, lever and knob, and the bulb socket and glass.",
+      "file": "crates/simbiguity-circuits-view/src/board.rs",
+      "format": "cargo",
+      "key": "board::tests::every_component_is_pickable",
+      "line": 214,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The broken filament stubs start where the intact filament does and stop short of its peak.",
+      "file": "crates/simbiguity-circuits-view/src/board.rs",
+      "format": "cargo",
+      "key": "board::tests::filament_paths_share_their_feet",
+      "line": 248,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The parts the view animates are the right nodes: glass is translucent, the halo glows, the broken filament starts hidden.",
+      "file": "crates/simbiguity-circuits-view/src/board.rs",
+      "format": "cargo",
+      "key": "board::tests::parts_point_at_the_animated_nodes",
+      "line": 224,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A bulb at its rated voltage glows at full brightness; at half its rated voltage it draws a quarter of the power, so a quarter of the brightness.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -26,6 +89,123 @@
       "line": 146,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "With zero yaw and pitch the eye sits on +Z at the orbit distance.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::eye_sits_on_the_orbit_sphere",
+      "line": 145,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Orbiting clamps the pitch to its limits.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::orbit_clamps_pitch",
+      "line": 184,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Points behind the camera do not project.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::points_behind_the_camera_do_not_project",
+      "line": 166,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The target projects to the viewport centre, and a point to its right lands right of centre.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::project_lands_known_points_on_known_pixels",
+      "line": 153,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A ray through a projected pixel passes back through the point.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::ray_inverts_project",
+      "line": 172,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The view-projection is the projection times the view.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::view_projection_composes",
+      "line": 211,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Zoom scales distance within limits and ignores nonsense factors.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::zoom_scales_within_limits",
+      "line": 195,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Client coordinates become canvas pixels, offset by the rectangle and scaled to the backing store.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "canvasPixel › maps client coordinates into the backing store",
+      "line": 24,
+      "registeredAt": "2026-11-26T18:41:31.164224928+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A missing ratio counts as one and a collapsed canvas is still one pixel.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "canvasSize › defaults the ratio and never returns zero",
+      "line": 15,
+      "registeredAt": "2026-11-26T18:41:31.164200016+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The backing store is the CSS size times the pixel ratio, rounded.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "canvasSize › scales by the device pixel ratio",
+      "line": 9,
+      "registeredAt": "2026-11-26T18:41:31.164173602+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The battery and empty space do nothing.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "clickAction › does nothing elsewhere",
+      "line": 45,
+      "registeredAt": "2026-11-26T18:41:31.164298801+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Clicking the switch flips it, blown or not.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "clickAction › flips the switch",
+      "line": 33,
+      "registeredAt": "2026-11-26T18:41:31.164249838+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Clicking the bulb replaces it only when it is blown.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "clickAction › replaces only a blown bulb",
+      "line": 39,
+      "registeredAt": "2026-11-26T18:41:31.164274458+00:00",
+      "runner": "node"
     },
     {
       "description": "Negative and NaN frame times bank nothing; reset empties the bank.",
@@ -109,6 +289,33 @@
       "runner": "cargo"
     },
     {
+      "description": "clear drops every command but keeps the header, and Default equals new.",
+      "file": "crates/simbiguity-render/src/commands.rs",
+      "format": "cargo",
+      "key": "commands::tests::clear_keeps_only_the_header",
+      "line": 253,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "f32 payloads are stored as their bit patterns.",
+      "file": "crates/simbiguity-render/src/commands.rs",
+      "format": "cargo",
+      "key": "commands::tests::floats_are_stored_as_bits",
+      "line": 245,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each header packs the opcode in the low byte and the payload word count above it.",
+      "file": "crates/simbiguity-render/src/commands.rs",
+      "format": "cargo",
+      "key": "commands::tests::headers_pack_opcode_and_length",
+      "line": 233,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Blowing marks a bulb blown and keeps its rating; anything else is unchanged.",
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
@@ -170,6 +377,150 @@
       "line": 234,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "The cursor is a pointer exactly where a click does something.",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "cursorFor › points where a click acts and grabs elsewhere",
+      "line": 53,
+      "registeredAt": "2026-11-26T18:41:31.164323883+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A short buffer, wrong magic or unknown version is rejected.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::bad_headers_are_rejected",
+      "line": 244,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Any nonzero depth word means true.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::depth_flags_treat_nonzero_as_true",
+      "line": 317,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every command survives an encode and decode round trip unchanged.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::every_command_round_trips",
+      "line": 229,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The header is the magic word then the version, and an empty buffer decodes to nothing.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::header_is_magic_then_version",
+      "line": 236,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Out-of-range program, uniform and blend values are rejected.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::out_of_range_enum_values_are_rejected",
+      "line": 299,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A payload that runs past the end of the buffer is truncated.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::truncated_payload_is_rejected",
+      "line": 289,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An opcode this version does not define is an error naming the word.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::unknown_opcode_is_rejected",
+      "line": 261,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A payload length that does not fit the opcode is an error.",
+      "file": "crates/simbiguity-render/src/decode.rs",
+      "format": "cargo",
+      "key": "decode::tests::wrong_payload_length_is_rejected",
+      "line": 270,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A header-only buffer decodes to no commands.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › decodes an empty frame",
+      "line": 14,
+      "registeredAt": "2026-11-26T18:41:31.164767143+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every opcode decodes to its named command with its payload.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › decodes every opcode",
+      "line": 19,
+      "registeredAt": "2026-11-26T18:41:31.164793202+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A payload that runs past the end is truncated.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › rejects a truncated command",
+      "line": 66,
+      "registeredAt": "2026-11-26T18:41:31.164963036+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A payload length that does not fit the opcode is refused.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › rejects a wrong payload length",
+      "line": 59,
+      "registeredAt": "2026-11-26T18:41:31.164925195+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An opcode the executor does not know is refused, naming the word.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › rejects an unknown opcode",
+      "line": 54,
+      "registeredAt": "2026-11-26T18:41:31.164853249+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A missing header, wrong magic or unknown version is refused.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › rejects bad headers",
+      "line": 47,
+      "registeredAt": "2026-11-26T18:41:31.164817813+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every decoding failure is a CommandBufferError.",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "decodeCommands › throws CommandBufferError",
+      "line": 71,
+      "registeredAt": "2026-11-26T18:41:31.164988765+00:00",
+      "runner": "node"
     },
     {
       "description": "Only invalid values, ideal shorts and source loops stop a solution.",
@@ -235,12 +586,102 @@
       "runner": "cargo"
     },
     {
+      "description": "Linear is the default curve.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::default_is_linear",
+      "line": 279,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every curve starts at exactly 0 and ends at exactly 1.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::every_curve_hits_both_endpoints_exactly",
+      "line": 204,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The private helpers handle their own edge inputs.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::helpers_guard_their_edges",
+      "line": 287,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The in-out curves are symmetric about the midpoint.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::in_out_curves_are_symmetric",
+      "line": 248,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Known values pin the formulas: quad-in is t squared, cubic-out mirrors cubic-in.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::known_values_match_the_formulas",
+      "line": 265,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Curves that claim to be monotonic never go backwards or leave the unit interval.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::monotonic_curves_never_go_backwards",
+      "line": 223,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Back and elastic curves really do overshoot, which is why they are not monotonic.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::non_monotonic_curves_leave_the_unit_interval_or_reverse",
+      "line": 237,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Inputs outside the unit interval, and NaN, are clamped first.",
+      "file": "crates/simbiguity-anim/src/easing.rs",
+      "format": "cargo",
+      "key": "easing::tests::out_of_range_and_nan_inputs_are_clamped",
+      "line": 213,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The filament resistance follows from the 12 V / 6 W rating.",
       "file": "site/demos/hello-circuit/explain.test.js",
       "format": "junit-xml",
       "key": "explanation › derives the filament resistance from the rating",
       "line": 62,
       "registeredAt": "2026-11-26T17:56:56.111422833+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Full brightness at exactly the rated voltage is still just flowing.",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › does not call the rated voltage overdriven",
+      "line": 32,
+      "registeredAt": "2026-11-26T18:41:31.164120397+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A blown bulb wins over everything and is an issue that quotes the voltage.",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains a blown bulb first",
+      "line": 10,
+      "registeredAt": "2026-11-26T18:41:31.164027688+00:00",
       "runner": "node"
     },
     {
@@ -277,6 +718,33 @@
       "key": "explanation › explains an open switch",
       "line": 26,
       "registeredAt": "2026-11-26T17:56:56.111298173+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An open switch explains the gap.",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains an open switch as a gap that stops the charges",
+      "line": 18,
+      "registeredAt": "2026-11-26T18:41:31.164068145+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Full brightness above the rated voltage is overdriven.",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains an overdriven bulb",
+      "line": 25,
+      "registeredAt": "2026-11-26T18:41:31.164094771+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Normal flow quotes the current.",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains current flowing with the amps",
+      "line": 37,
+      "registeredAt": "2026-11-26T18:41:31.164145760+00:00",
       "runner": "node"
     },
     {
@@ -550,6 +1018,105 @@
       "runner": "node"
     },
     {
+      "description": "Each number gets its unit and precision.",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReadouts › formats every reading with its unit",
+      "line": 12,
+      "registeredAt": "2026-11-26T18:41:31.164356178+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An open switch offers to close it.",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReadouts › offers to close an open switch",
+      "line": 25,
+      "registeredAt": "2026-11-26T18:41:31.164382047+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Brightness rounds to a whole percent.",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReadouts › rounds brightness to a whole percent",
+      "line": 30,
+      "registeredAt": "2026-11-26T18:41:31.164407743+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Only a blown bulb shows the replace button.",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReadouts › shows replace only for a blown bulb",
+      "line": 36,
+      "registeredAt": "2026-11-26T18:41:31.164432633+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A frame starts with viewport, clear and opaque state, ends restoring it, and draws every visible lit node.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::frame_brackets_its_passes",
+      "line": 272,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Glass is drawn back to front: the far box before the near one.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::glass_is_sorted_back_to_front",
+      "line": 248,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Instanced particles draw once with every offset; an empty set draws nothing and skips the additive pass.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::instances_draw_in_one_call",
+      "line": 311,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Opaque nodes are grouped by program, unlit before lit, and hidden nodes are left out.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::opaque_nodes_group_by_program",
+      "line": 239,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each program is bound once per pass, not once per node.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::programs_are_bound_only_on_change",
+      "line": 296,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Only lit halos are drawn.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::unlit_glows_are_skipped",
+      "line": 257,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A zero-size viewport is drawn as one pixel rather than dividing by zero.",
+      "file": "crates/simbiguity-render/src/frame.rs",
+      "format": "cargo",
+      "key": "frame::tests::zero_viewport_is_clamped",
+      "line": 340,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The rated voltage is the default, so it is left out of the hash.",
       "file": "site/demos/hello-circuit/state.test.js",
       "format": "junit-xml",
@@ -568,12 +1135,39 @@
       "runner": "node"
     },
     {
+      "description": "Writing then reading gives the same state back.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › round-trips a state with a camera through stateFromHash",
+      "line": 59,
+      "registeredAt": "2026-11-26T18:41:31.164639120+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Every hash it writes reads back as the same state.",
       "file": "site/demos/hello-circuit/state.test.js",
       "format": "junit-xml",
       "key": "hashFromState › round-trips through stateFromHash",
       "line": 58,
       "registeredAt": "2026-11-26T17:56:56.110960813+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every non-default field is written, with the camera rounded.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › writes every non-default field",
+      "line": 53,
+      "registeredAt": "2026-11-26T18:41:31.164613159+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The default state has no hash at all.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › writes nothing for the default state",
+      "line": 48,
+      "registeredAt": "2026-11-26T18:41:31.164588217+00:00",
       "runner": "node"
     },
     {
@@ -610,6 +1204,105 @@
       "key": "invalid_value_is_fatal",
       "line": 234,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "at wraps around the loop and reports whether a point is on a wire.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::at_wraps_and_reports_wires",
+      "line": 192,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An empty loop has no length and returns the origin off-wire.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::empty_loop_is_inert",
+      "line": 204,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The lever swings about its pivot, and the knob sits at its tip.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::lever_and_knob_follow_the_angle",
+      "line": 221,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The loop is closed: each section starts where the previous one ends.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::loop_is_closed",
+      "line": 179,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The loop is the three wires plus three hidden stretches, and its length is their sum.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::loop_length_is_the_sum_of_its_sections",
+      "line": 168,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Only particles on wires are drawn, every one of them on the loop.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::particle_offsets_skip_hidden_stretches",
+      "line": 232,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "wrap maps any value into the half-open period.",
+      "file": "crates/simbiguity-circuits-view/src/layout.rs",
+      "format": "cargo",
+      "key": "layout::tests::wrap_maps_into_the_period",
+      "line": 212,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "t outside the unit interval extrapolates, so overshooting easings work.",
+      "file": "crates/simbiguity-anim/src/lerp.rs",
+      "format": "cargo",
+      "key": "lerp::tests::f64_lerp_extrapolates",
+      "line": 61,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "f64 blends linearly and lands on the exact end value at t = 1.",
+      "file": "crates/simbiguity-anim/src/lerp.rs",
+      "format": "cargo",
+      "key": "lerp::tests::f64_lerp_hits_ends_exactly",
+      "line": 53,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Quaternions blend by slerp, so halfway between 0 and 90 degrees is 45 degrees.",
+      "file": "crates/simbiguity-anim/src/lerp.rs",
+      "format": "cargo",
+      "key": "lerp::tests::quaternions_blend_along_the_arc",
+      "line": 83,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Vectors blend per component.",
+      "file": "crates/simbiguity-anim/src/lerp.rs",
+      "format": "cargo",
+      "key": "lerp::tests::vectors_blend_per_component",
+      "line": 68,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
     {
@@ -766,6 +1459,69 @@
       "runner": "cargo"
     },
     {
+      "description": "A blown bulb has smoky glass lit only by the decaying flash.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::blown_bulb_is_smoky_and_flashes",
+      "line": 132,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Charges at rest are dim blue-grey; flowing ones are amber, whichever way they flow.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::charges_warm_with_current",
+      "line": 150,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A cold bulb has clear, mostly transparent glass, a dark filament and no halo.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::cold_bulb_is_clear_and_dark",
+      "line": 103,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "More glow means brighter glass, filament and halo.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::glow_brightens_monotonically",
+      "line": 123,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Out-of-range glow and flash are clamped.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::inputs_are_clamped",
+      "line": 143,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "lerp3 blends each channel and hits both ends.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::lerp3_blends_channels",
+      "line": 161,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A fully lit bulb has warm glass, a hot filament and a halo.",
+      "file": "crates/simbiguity-circuits-view/src/look.rs",
+      "format": "cargo",
+      "key": "look::tests::lit_bulb_is_warm_and_glowing",
+      "line": 113,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Dense constructors, row access, row swaps and mat-vec products.",
       "file": "crates/simbiguity-math/src/mat.rs",
       "format": "cargo",
@@ -853,6 +1609,78 @@
       "key": "mat::tests::translation_and_scale_on_points_and_vectors",
       "line": 348,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Primitives are centred on the origin with the size asked for.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::bounds_match_the_requested_size",
+      "line": 347,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Vertex and triangle counts follow from the primitive's resolution.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::counts_match_the_resolution",
+      "line": 299,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A tube needs two distinct points; duplicates are dropped and too few points give an empty mesh.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::degenerate_tubes_are_empty",
+      "line": 386,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An empty mesh has a point box at the origin.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::empty_mesh_bounds_are_a_point",
+      "line": 395,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every vertex normal is unit length and every index is in range.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::normals_are_unit_and_indices_in_range",
+      "line": 313,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Low resolutions are raised to the minimum that still makes a solid.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::resolutions_have_a_floor",
+      "line": 402,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every non-degenerate triangle is wound counter-clockwise seen from outside.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::triangles_wind_counter_clockwise_from_outside",
+      "line": 331,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every ring of a tube stays its radius away from the path it follows.",
+      "file": "crates/simbiguity-render/src/mesh.rs",
+      "format": "cargo",
+      "key": "mesh::tests::tube_follows_its_path",
+      "line": 361,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
     {
@@ -1081,6 +1909,96 @@
       "runner": "cargo"
     },
     {
+      "description": "An empty path gives the origin, and zero-length segments are skipped.",
+      "file": "crates/simbiguity-render/src/path.rs",
+      "format": "cargo",
+      "key": "path::tests::degenerate_paths",
+      "line": 58,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The length of a polyline is the sum of its segments.",
+      "file": "crates/simbiguity-render/src/path.rs",
+      "format": "cargo",
+      "key": "path::tests::length_sums_segments",
+      "line": 35,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Distances before the start or past the end clamp to the ends.",
+      "file": "crates/simbiguity-render/src/path.rs",
+      "format": "cargo",
+      "key": "path::tests::point_along_clamps_to_ends",
+      "line": 51,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Walking a distance lands on the right segment at the right place.",
+      "file": "crates/simbiguity-render/src/path.rs",
+      "format": "cargo",
+      "key": "path::tests::point_along_walks_segments",
+      "line": 43,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Empty grows to a point, then to a box holding every point.",
+      "file": "crates/simbiguity-render/src/pick.rs",
+      "format": "cargo",
+      "key": "pick::tests::boxes_grow_by_points",
+      "line": 175,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Expanding adds a margin on every side.",
+      "file": "crates/simbiguity-render/src/pick.rs",
+      "format": "cargo",
+      "key": "pick::tests::expanded_adds_margin",
+      "line": 189,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A ray starting inside the box hits at distance zero.",
+      "file": "crates/simbiguity-render/src/pick.rs",
+      "format": "cargo",
+      "key": "pick::tests::ray_from_inside_hits_at_zero",
+      "line": 169,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A ray aimed at a box enters it at the near face.",
+      "file": "crates/simbiguity-render/src/pick.rs",
+      "format": "cargo",
+      "key": "pick::tests::ray_hits_the_near_face",
+      "line": 146,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A ray that passes beside or points away from the box misses.",
+      "file": "crates/simbiguity-render/src/pick.rs",
+      "format": "cargo",
+      "key": "pick::tests::ray_misses",
+      "line": 154,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A transformed box bounds every transformed corner.",
+      "file": "crates/simbiguity-render/src/pick.rs",
+      "format": "cargo",
+      "key": "pick::tests::transformed_bounds_the_moved_box",
+      "line": 197,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Axis-angle builds unit quaternions that rotate by the right-hand rule; a zero axis gives the identity.",
       "file": "crates/simbiguity-math/src/quat.rs",
       "format": "cargo",
@@ -1189,6 +2107,51 @@
       "runner": "node"
     },
     {
+      "description": "Every field lands in its documented slot, booleans as one or zero.",
+      "file": "crates/simbiguity-render-wasm/src/readouts.rs",
+      "format": "cargo",
+      "key": "readouts::tests::fields_land_in_their_slots",
+      "line": 55,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An open, blown, unsolved circuit packs its flags the other way round.",
+      "file": "crates/simbiguity-render-wasm/src/readouts.rs",
+      "format": "cargo",
+      "key": "readouts::tests::flags_flip",
+      "line": 74,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every slot gets its name, flags become booleans and the camera is grouped.",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "readoutsFromArray › names every slot",
+      "line": 8,
+      "registeredAt": "2026-11-26T18:41:31.164666077+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Zero flags read as false and one as true.",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "readoutsFromArray › reads flags as booleans",
+      "line": 27,
+      "registeredAt": "2026-11-26T18:41:31.164690294+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A short buffer is an error rather than undefined readouts.",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "readoutsFromArray › rejects a short buffer",
+      "line": 35,
+      "registeredAt": "2026-11-26T18:41:31.164714864+00:00",
+      "runner": "node"
+    },
+    {
       "description": "A real battery shorted by a wire still solves, reporting emf / r.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -1279,6 +2242,60 @@
       "runner": "cargo"
     },
     {
+      "description": "A ray that misses everything picks nothing.",
+      "file": "crates/simbiguity-render/src/scene.rs",
+      "format": "cargo",
+      "key": "scene::tests::a_miss_is_none",
+      "line": 274,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The default light points up and toward the viewer, at unit length.",
+      "file": "crates/simbiguity-render/src/scene.rs",
+      "format": "cargo",
+      "key": "scene::tests::default_light_is_unit_and_overhead",
+      "line": 311,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Hidden or untagged nodes are skipped.",
+      "file": "crates/simbiguity-render/src/scene.rs",
+      "format": "cargo",
+      "key": "scene::tests::hidden_and_untagged_nodes_are_not_picked",
+      "line": 264,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Ids index meshes and nodes in insertion order; world bounds follow the transform.",
+      "file": "crates/simbiguity-render/src/scene.rs",
+      "format": "cargo",
+      "key": "scene::tests::ids_and_world_bounds",
+      "line": 284,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The material constructors set shading, and blending is needed for translucency and glow only.",
+      "file": "crates/simbiguity-render/src/scene.rs",
+      "format": "cargo",
+      "key": "scene::tests::materials_know_when_they_blend",
+      "line": 294,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The nearest pickable node along the ray wins.",
+      "file": "crates/simbiguity-render/src/scene.rs",
+      "format": "cargo",
+      "key": "scene::tests::pick_returns_the_nearest_hit",
+      "line": 256,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A series divider: 12 V over 1 Ω then 2 Ω puts the middle node at 8 V.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -1324,12 +2341,102 @@
       "runner": "cargo"
     },
     {
+      "description": "A critically damped spring never crosses its target.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::critical_spring_never_overshoots",
+      "line": 184,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Zero, negative and NaN steps leave the spring untouched.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::non_positive_and_nan_steps_do_nothing",
+      "line": 214,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "For every damping regime, the spring is within tolerance once its settling time has passed.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::settles_by_its_settling_time",
+      "line": 164,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Settling time is infinite without stiffness or damping and zero at full tolerance.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::settling_time_edge_cases",
+      "line": 243,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Snap teleports and stops without changing the target.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::snap_stops_the_spring_in_place",
+      "line": 226,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Closed form: one step of 2 dt equals two steps of dt.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::stepping_is_exact_regardless_of_step_size",
+      "line": 198,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A stiffer spring settles faster.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::stiffer_springs_settle_sooner",
+      "line": 260,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An under-damped spring does overshoot.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::under_damped_spring_overshoots",
+      "line": 192,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A spring with no stiffness coasts at its current velocity.",
+      "file": "crates/simbiguity-anim/src/spring.rs",
+      "format": "cargo",
+      "key": "spring::tests::zero_omega_coasts",
+      "line": 237,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The leading # is optional, so location.hash and a bare string both work.",
       "file": "site/demos/hello-circuit/state.test.js",
       "format": "junit-xml",
       "key": "stateFromHash › accepts a hash without the leading hash sign",
       "line": 19,
       "registeredAt": "2026-11-26T17:56:56.110785437+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Volts are clamped to the slider and nonsense falls back to the rated volts.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › clamps or ignores bad volts",
+      "line": 24,
+      "registeredAt": "2026-11-26T18:41:31.164513143+00:00",
       "runner": "node"
     },
     {
@@ -1351,6 +2458,15 @@
       "runner": "node"
     },
     {
+      "description": "A cache-buster appended after a question mark inside the hash is ignored.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › ignores anything after a question mark",
+      "line": 41,
+      "registeredAt": "2026-11-26T18:41:31.164563086+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Tokens the demo does not know are ignored.",
       "file": "site/demos/hello-circuit/state.test.js",
       "format": "junit-xml",
@@ -1369,12 +2485,39 @@
       "runner": "node"
     },
     {
+      "description": "An empty hash is the default: open switch, rated volts, live animation, default camera.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › reads an empty or bare hash as the 3D default state",
+      "line": 8,
+      "registeredAt": "2026-11-26T18:41:31.164461446+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Each token switches on its own flag, in any order.",
       "file": "site/demos/hello-circuit/state.test.js",
       "format": "junit-xml",
       "key": "stateFromHash › reads closed, short and v tokens in any order",
       "line": 14,
       "registeredAt": "2026-11-26T17:56:56.110758585+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every token is read: closed, volts, frozen time and camera.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › reads every token",
+      "line": 14,
+      "registeredAt": "2026-11-26T18:41:31.164488056+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A negative or unreadable time means live animation; a camera needs three finite numbers.",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › rejects bad times and incomplete cameras",
+      "line": 32,
+      "registeredAt": "2026-11-26T18:41:31.164538402+00:00",
       "runner": "node"
     },
     {
@@ -1405,12 +2548,30 @@
       "runner": "cargo"
     },
     {
+      "description": "A freed or never-issued handle is an error with a readable message.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::bad_handles_are_rejected",
+      "line": 51,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The bypass shorts the battery: no solution, every result NaN, issue 2.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
       "key": "tests::bypass_short_has_no_solution",
       "line": 203,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The camera exports work in degrees and clamp to the camera's limits.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::camera_exports_use_degrees_and_clamp",
+      "line": 84,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
     {
@@ -1468,6 +2629,15 @@
       "runner": "cargo"
     },
     {
+      "description": "An encoded frame is a valid command buffer that sets the requested viewport.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::encode_writes_a_decodable_frame",
+      "line": 101,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A freed handle is never reused, so it cannot alias a newer circuit.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -1483,6 +2653,15 @@
       "key": "tests::ids_count_up_in_creation_order",
       "line": 101,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Toggle reports the new switch state and volts, replace and seek reach the view.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::inputs_reach_the_view",
+      "line": 65,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
     {
@@ -1504,6 +2683,24 @@
       "runner": "cargo"
     },
     {
+      "description": "Mesh exports describe every mesh, and an index past the end is an error.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::mesh_exports_cover_every_mesh",
+      "line": 125,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A new view hands out a nonzero handle and reads back the state it was built with.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::new_view_reads_back_its_state",
+      "line": 37,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "With the switch open the loop is broken: no current, a dark bulb, and the engine names the open circuit.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -1522,6 +2719,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Picking at the pixel the switch base projects to hits the switch; a corner of the sky hits nothing.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::pick_hits_the_switch_and_misses_the_sky",
+      "line": 113,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Placing a part on a node that does not exist is ERR_NODE.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -1537,6 +2743,132 @@
       "key": "tests::sb_alloc_round_trip",
       "line": 266,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "is_active is true inside a clip, false at its end and outside it.",
+      "file": "crates/simbiguity-anim/src/timeline.rs",
+      "format": "cargo",
+      "key": "timeline::tests::is_active_covers_the_half_open_clip",
+      "line": 164,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A looping timeline wraps time, including negative times.",
+      "file": "crates/simbiguity-anim/src/timeline.rs",
+      "format": "cargo",
+      "key": "timeline::tests::looping_wraps_time",
+      "line": 135,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A non-looping or empty timeline leaves time alone.",
+      "file": "crates/simbiguity-anim/src/timeline.rs",
+      "format": "cargo",
+      "key": "timeline::tests::non_looping_and_empty_timelines_pass_time_through",
+      "line": 145,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Seeking is exact: progress is a pure function of time and clamps to the clip.",
+      "file": "crates/simbiguity-anim/src/timeline.rs",
+      "format": "cargo",
+      "key": "timeline::tests::seek_gives_exact_progress",
+      "line": 123,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "then places clips back to back and with starts a clip alongside another.",
+      "file": "crates/simbiguity-anim/src/timeline.rs",
+      "format": "cargo",
+      "key": "timeline::tests::then_sequences_and_with_runs_in_parallel",
+      "line": 112,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Zero-length clips jump from 0 to 1 at their start; negative durations become zero.",
+      "file": "crates/simbiguity-anim/src/timeline.rs",
+      "format": "cargo",
+      "key": "timeline::tests::zero_length_clips_jump",
+      "line": 154,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An empty track samples to None and has zero duration.",
+      "file": "crates/simbiguity-anim/src/track.rs",
+      "format": "cargo",
+      "key": "track::tests::empty_track_has_nothing_to_sample",
+      "line": 83,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Before the first key the track holds it, after the last it holds that.",
+      "file": "crates/simbiguity-anim/src/track.rs",
+      "format": "cargo",
+      "key": "track::tests::holds_first_and_last_values",
+      "line": 91,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Keys added out of order are sorted, and a key at an existing time replaces it.",
+      "file": "crates/simbiguity-anim/src/track.rs",
+      "format": "cargo",
+      "key": "track::tests::keys_sort_and_replace",
+      "line": 115,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Between keys the segment uses the easing of the key it arrives at.",
+      "file": "crates/simbiguity-anim/src/track.rs",
+      "format": "cargo",
+      "key": "track::tests::segments_use_the_arriving_keys_ease",
+      "line": 104,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A linear tween is from at 0, halfway at the midpoint and to at the end.",
+      "file": "crates/simbiguity-anim/src/tween.rs",
+      "format": "cargo",
+      "key": "tween::tests::linear_tween_samples_evenly",
+      "line": 61,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Sampling clamps before the start and after the end.",
+      "file": "crates/simbiguity-anim/src/tween.rs",
+      "format": "cargo",
+      "key": "tween::tests::samples_clamp_outside_the_duration",
+      "line": 70,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "with_ease shapes the progress.",
+      "file": "crates/simbiguity-anim/src/tween.rs",
+      "format": "cargo",
+      "key": "tween::tests::with_ease_shapes_progress",
+      "line": 80,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A zero-length tween jumps to its end value at time 0.",
+      "file": "crates/simbiguity-anim/src/tween.rs",
+      "format": "cargo",
+      "key": "tween::tests::zero_duration_jumps",
+      "line": 88,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
     {
@@ -1591,6 +2923,105 @@
       "key": "vec::tests::normalize_unit_or_none",
       "line": 170,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Advance runs whole fixed steps of wall-clock time.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::advance_runs_fixed_steps",
+      "line": 67,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Overvoltage blows the bulb, which breaks the loop, shows the broken filament and flashes; replacing it restores the circuit.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::blowing_and_replacing_the_bulb",
+      "line": 92,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A closed switch at rated voltage drives half an amp and moves the charges.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::closed_switch_moves_charges",
+      "line": 28,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "encode and commands return the same frame.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::commands_returns_the_last_frame",
+      "line": 128,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The default camera opens on a three-quarter view within its zoom limits.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::default_camera_is_three_quarter",
+      "line": 136,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The glow warms up through its spring instead of snapping to the brightness.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::glow_follows_brightness_through_the_spring",
+      "line": 41,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An open switch means no current, so the charges stand still and the bulb stays dark.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::open_switch_leaves_charges_still",
+      "line": 17,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Particle speed is proportional to current, signed, and zero for no current.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::particle_speed_is_proportional_to_current",
+      "line": 8,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The switch is under the pixel its base projects to; empty sky picks nothing.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::pick_finds_the_switch",
+      "line": 116,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Seeking is deterministic: the same inputs and time give the same frame.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::seek_is_deterministic",
+      "line": 55,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Toggling reports the new state and swings the lever toward it.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::toggle_swings_the_lever",
+      "line": 77,
+      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
     {

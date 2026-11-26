@@ -1,5 +1,22 @@
 [
   {
+    "description": "The Circuit in 3D demo page: WebGL2 canvas, readouts panel, voltage slider, switch and replace buttons, and explanation panel.",
+    "filePath": "site/demos/circuit-3d/index.html",
+    "name": "Circuit3DPage",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
     "description": "The Hello, circuit demo page: SVG circuit, readouts panel, voltage slider and explanation panel.",
     "filePath": "site/demos/hello-circuit/index.html",
     "name": "HelloCircuitPage",
@@ -44,6 +61,60 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Adds the battery body, band and terminal nub, with the body pickable as the battery.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "add_battery",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "Adds the wooden board the circuit sits on.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "add_board",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "Adds the bulb socket, glass, intact and broken filaments and halo; returns the nodes the view restyles.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "add_bulb",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "Adds the empty instanced set of charge particles and returns its mesh.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "add_charges",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "Adds the switch base, posts, lever and knob, all pickable as the switch; returns the lever and knob.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "add_switch",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "Adds the three copper wire tubes.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "add_wires",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
     "description": "Full circuit analysis: rejects invalid values, solves, blows the most overloaded bulb and re-solves until none is over its limit, then lists blown bulbs last.",
     "filePath": "crates/simbiguity-circuits/src/mna.rs",
     "name": "analyze",
@@ -51,6 +122,15 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "Appends one mesh to another, rebasing the second mesh indices.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "append",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
     "description": "Deterministic arcsine on the closed unit interval; NaN outside.",
@@ -69,6 +149,15 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "A pure translation to a board position.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "at",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
     "description": "Deterministic arctangent within 4 ulp via reciprocal and half-angle reductions.",
@@ -98,6 +187,24 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Back ease-in: pulls slightly backwards before accelerating forward.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "back_in",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
+    "description": "Back ease-in-out: pulls back at the start and overshoots at the end.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "back_in_out",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
     "description": "Solves U x = y in place from the bottom row up.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "back_substitute",
@@ -105,6 +212,18 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Wires drag-to-orbit, wheel zoom, click picking and Enter or Space toggling on the 3D canvas to the view.",
+    "filePath": "site/demos/circuit-3d/canvas-input.js",
+    "name": "bindCanvasInput",
+    "scenarios": [
+      "circuit-3d-switch-flipped-by-keyboard",
+      "circuit-3d-side-view"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
   },
   {
     "description": "Yields a BulbBlown issue for each blown bulb, in component order.",
@@ -116,6 +235,15 @@
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
+    "description": "Bounce ease-out: lands like a dropped ball with decaying bounces.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "bounce_out",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
     "description": "Box-Muller transform: two uniforms become two independent standard normals, cosine output first.",
     "filePath": "crates/simbiguity-core/src/rng.rs",
     "name": "box_muller",
@@ -125,6 +253,15 @@
     "testFile": "crates/simbiguity-core/src/rng.rs"
   },
   {
+    "description": "Builds the circuit board scene and returns it with the animated parts and the particle mesh.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "build_scene",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
     "description": "Turns solved unknowns into node voltages, voltage across, currents including wires via KCL, powers and bulb brightness.",
     "filePath": "crates/simbiguity-circuits/src/mna.rs",
     "name": "build_solution",
@@ -132,6 +269,231 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "The glass, filament and halo look of the bulb for an animated glow, flash and blown state.",
+    "filePath": "crates/simbiguity-circuits-view/src/look.rs",
+    "name": "bulb_look",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/look.rs"
+  },
+  {
+    "description": "Advances the 3D view animation by wall-clock seconds.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_advance",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of the last encoded 3D frame.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_commands_ptr",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Encodes the current 3D frame and returns its length in words.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_encode",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Frees a 3D view handle.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_free",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Number of meshes in the 3D view scene.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_mesh_count",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Number of indices in a mesh.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_mesh_indices_len",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of a mesh triangle indices.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_mesh_indices_ptr",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Number of floats in a mesh vertex buffer.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_mesh_vertices_len",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of a mesh interleaved vertices.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_mesh_vertices_ptr",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Builds a 3D hello circuit view and returns its handle.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_new",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Orbits the 3D view camera by degrees.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_orbit",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "What is under a pixel of the 3D view: nothing, battery, switch or bulb.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_pick",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Refreshes the 3D view readouts buffer and returns its length.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_readouts",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of the 3D view readouts buffer.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_readouts_ptr",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Screws a fresh bulb into the 3D view.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_replace_bulb",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Restarts the 3D view animation and runs it to an exact time.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_seek",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Places the 3D view camera from degrees and a distance, clamped.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_set_camera",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Sets the 3D view battery voltage.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_set_volts",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Flips the 3D view switch and returns whether it is now closed.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_toggle",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Floats per vertex in the mesh buffers.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_vertex_stride",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Zooms the 3D view camera by a factor, clamped.",
+    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "name": "c3d_zoom",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Maps a pointer client position to canvas backing-store pixels.",
+    "filePath": "site/demos/circuit-3d/pointer.js",
+    "name": "canvasPixel",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/pointer.test.js"
+  },
+  {
+    "description": "The canvas backing-store size for its CSS size and device pixel ratio, at least one pixel.",
+    "filePath": "site/demos/circuit-3d/pointer.js",
+    "name": "canvasSize",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/pointer.test.js"
+  },
+  {
+    "description": "The colour and strength of the charge particles for a loop current.",
+    "filePath": "crates/simbiguity-circuits-view/src/look.rs",
+    "name": "charge_look",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/look.rs"
   },
   {
     "description": "Shared right-hand-side length check returning DimensionMismatch.",
@@ -332,6 +694,15 @@
     "testFile": "crates/simbiguity-core/src/rng.rs"
   },
   {
+    "description": "What a click on a picked part does: flip the switch, replace a blown bulb, or nothing.",
+    "filePath": "site/demos/circuit-3d/pointer.js",
+    "name": "clickAction",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/pointer.test.js"
+  },
+  {
     "description": "Current through one component from the voltage across it, per stamp; an ideal battery's MNA unknown is negated to read out of plus.",
     "filePath": "crates/simbiguity-circuits/src/mna.rs",
     "name": "component_current",
@@ -359,6 +730,60 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "The closed path charge follows: the wires plus hidden stretches through the switch, bulb and battery.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "current_loop",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
+  },
+  {
+    "description": "The cursor over a picked part: pointer where a click acts, otherwise grab.",
+    "filePath": "site/demos/circuit-3d/pointer.js",
+    "name": "cursorFor",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/pointer.test.js"
+  },
+  {
+    "description": "Decodes a draw-command buffer into plain objects, rejecting bad headers, unknown opcodes and wrong lengths.",
+    "filePath": "site/js/webgl2-executor.js",
+    "name": "decodeCommands",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/js/webgl2-executor.test.js"
+  },
+  {
+    "description": "Decodes one draw command from its opcode and payload, rejecting wrong lengths and out-of-range enum values.",
+    "filePath": "crates/simbiguity-render/src/decode.rs",
+    "name": "decode_one",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/decode.rs"
+  },
+  {
+    "description": "The opening three-quarter orbit camera of the 3D circuit.",
+    "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
+    "name": "default_camera",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/view_tests.rs"
+  },
+  {
+    "description": "Squared distance from the eye to a node origin, used to sort glass back to front.",
+    "filePath": "crates/simbiguity-render/src/frame.rs",
+    "name": "depth",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
     "description": "Writes the readouts view onto the SVG circuit and the control panel.",
     "filePath": "site/demos/hello-circuit/demo.js",
     "name": "draw",
@@ -374,6 +799,24 @@
     ]
   },
   {
+    "description": "Sorts the visible nodes of a scene into the opaque, translucent back-to-front and lit-glow passes of a frame.",
+    "filePath": "crates/simbiguity-render/src/frame.rs",
+    "name": "draw_order",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
+    "description": "Elastic ease-in: growing wobbles that wind up toward the end, exact at both endpoints.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "elastic_in",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
     "description": "One Gaussian elimination step storing L multipliers in place.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "eliminate_below",
@@ -381,6 +824,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Compiles a scene seen through an orbit camera into one frame of draw commands: opaque, glass back to front, glow, then instanced particles.",
+    "filePath": "crates/simbiguity-render/src/frame.rs",
+    "name": "encode_frame",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
+    "description": "Closed-form evolution of a damped spring error and velocity over a time step, for critical, under- and over-damping.",
+    "filePath": "crates/simbiguity-anim/src/spring.rs",
+    "name": "evolve",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/spring.rs"
   },
   {
     "description": "Deterministic e^x within 2 ulp via ln2 range reduction and a Taylor kernel.",
@@ -401,6 +862,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "The 3D demo explanation heading, paragraph and issue flag for one set of readouts.",
+    "filePath": "site/demos/circuit-3d/explain.js",
+    "name": "explanation",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/explain.test.js"
+  },
+  {
     "description": "Plain-language title and body explaining why the bulb looks the way it does.",
     "filePath": "site/demos/hello-circuit/explain.js",
     "name": "explanation",
@@ -410,6 +880,15 @@
     "testFile": "site/demos/hello-circuit/explain.test.js"
   },
   {
+    "description": "Exponential ease-in, 2^(10t-10), exactly 0 at t = 0.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "expo_in",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
     "description": "Records the last error message and returns the given status code.",
     "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
     "name": "fail",
@@ -417,6 +896,41 @@
       "hello-circuit"
     ],
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Records an error message for the 3D bridge and returns its status code.",
+    "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+    "name": "fail",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Fetches a shader source file next to the executor module.",
+    "filePath": "site/js/webgl2-executor.js",
+    "name": "fetchText",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
+    "description": "The bulb filament as polylines: the intact zig-zag and the two stubs left when it burns through.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "filament_paths",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
     "description": "Reports one FloatingNode per connected island that has components but no battery or ground, naming its lowest node.",
@@ -446,6 +960,15 @@
     "testFile": "site/demos/hello-circuit/readouts.test.js"
   },
   {
+    "description": "Formats the 3D demo readout labels, the switch button label and whether to show the replace button.",
+    "filePath": "site/demos/circuit-3d/readouts.js",
+    "name": "formatReadouts",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/readouts.test.js"
+  },
+  {
     "description": "Solves L y = P b with the implied unit diagonal.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "forward_substitute",
@@ -455,6 +978,15 @@
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
   },
   {
+    "description": "Writes the 3D demo state as a URL hash that stateFromHash reads back.",
+    "filePath": "site/demos/circuit-3d/state.js",
+    "name": "hashFromState",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/state.test.js"
+  },
+  {
     "description": "Writes the URL hash for a demo state; empty for the default state.",
     "filePath": "site/demos/hello-circuit/state.js",
     "name": "hashFromState",
@@ -462,6 +994,41 @@
       "hello-circuit"
     ],
     "testFile": "site/demos/hello-circuit/state.test.js"
+  },
+  {
+    "description": "Builds an explanation-panel heading element from text.",
+    "filePath": "site/demos/circuit-3d/explain-panel.js",
+    "name": "heading",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
+    "description": "Builds an ease-in-out curve: the in curve for the first half, its mirror for the second.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "in_out",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
+    "description": "Stores a new 3D view in the handle table and returns its nonzero handle.",
+    "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+    "name": "insert",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
   },
   {
     "description": "Adds an empty circuit slot to the handle table and returns its handle.",
@@ -527,6 +1094,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "The knob transform at the tip of the lever lifted by an angle.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "knob_transform",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
+  },
+  {
     "description": "Returns a copy of the last error message for native callers and tests.",
     "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
     "name": "last_error",
@@ -536,6 +1112,33 @@
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
+    "description": "The 3D bridge last error message, for native callers and tests.",
+    "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+    "name": "last_error",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Per-channel blend of two RGB colours.",
+    "filePath": "crates/simbiguity-circuits-view/src/look.rs",
+    "name": "lerp3",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/look.rs"
+  },
+  {
+    "description": "The switch lever transform when lifted by an angle about its pivot.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "lever_transform",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
+  },
+  {
     "description": "Deterministic natural log within 2 ulp via mantissa split and the atanh series.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "ln",
@@ -543,6 +1146,23 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Instantiates the 3D view WASM bridge and returns the Circuit3D class wrapping its exports.",
+    "filePath": "site/js/simbiguity-render.js",
+    "name": "loadCircuit3D",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
   },
   {
     "description": "Fetches and instantiates the circuits WASM bridge and returns the Circuit class wrapping its exports.",
@@ -569,6 +1189,23 @@
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
   },
   {
+    "description": "Loads the 3D bridge and WebGL2 executor, applies the URL hash state, wires the controls and runs the frozen or live frame loop.",
+    "filePath": "site/demos/circuit-3d/demo.js",
+    "name": "main",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
     "description": "Loads the engine, builds the hello circuit from the URL-hash state and wires the page controls.",
     "filePath": "site/demos/hello-circuit/demo.js",
     "name": "main",
@@ -582,6 +1219,15 @@
     "tags": [
       "hello-circuit"
     ]
+  },
+  {
+    "description": "Narrows a column-major f64 Mat4 to the f32 array the command buffer carries.",
+    "filePath": "crates/simbiguity-render/src/frame.rs",
+    "name": "mat",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/frame.rs"
   },
   {
     "description": "Largest absolute matrix entry; scales the singular-pivot tolerance.",
@@ -602,6 +1248,15 @@
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
   },
   {
+    "description": "Component-wise product of two vectors, used to scale unit cube faces to a box size.",
+    "filePath": "crates/simbiguity-render/src/mesh.rs",
+    "name": "mul",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/mesh.rs"
+  },
+  {
     "description": "Converts a nanosecond count held as f64 into Seconds; shared by FixedClock step and elapsed.",
     "filePath": "crates/simbiguity-core/src/clock.rs",
     "name": "nanos_to_seconds",
@@ -618,6 +1273,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Records the unknown-handle error for a 3D view handle.",
+    "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+    "name": "no_view",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
   },
   {
     "description": "Net current into each node from non-wire components, plus the wire adjacency used to spread it.",
@@ -647,6 +1311,15 @@
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
   },
   {
+    "description": "Turns an ease-in curve into its ease-out mirror by reflecting it in time and value.",
+    "filePath": "crates/simbiguity-anim/src/easing.rs",
+    "name": "out",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/easing.rs"
+  },
+  {
     "description": "Stores a string in the shared output buffer and returns its byte length.",
     "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
     "name": "output",
@@ -654,6 +1327,86 @@
       "hello-circuit"
     ],
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Packs a view readouts, camera angles in degrees and animation time into the flat buffer JS reads.",
+    "filePath": "crates/simbiguity-render-wasm/src/readouts.rs",
+    "name": "pack_readouts",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/readouts.rs"
+  },
+  {
+    "description": "Writes a computed surface look into a scene material.",
+    "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
+    "name": "paint",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/view_tests.rs"
+  },
+  {
+    "description": "Builds an explanation-panel paragraph element from text.",
+    "filePath": "site/demos/circuit-3d/explain-panel.js",
+    "name": "paragraph",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
+    "description": "Evenly spaced charge positions along the loop from a phase, keeping only those on visible wires.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "particle_offsets",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
+  },
+  {
+    "description": "Charge particle speed for a current: proportional, signed, and zero for zero current.",
+    "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
+    "name": "particle_speed",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/view_tests.rs"
+  },
+  {
+    "description": "Total length of a polyline.",
+    "filePath": "crates/simbiguity-render/src/path.rs",
+    "name": "path_length",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/path.rs"
+  },
+  {
+    "description": "Tags a scene node so picking under the cursor reports it.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "pickable",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
+    "description": "The point a given distance along a polyline, clamped to its ends.",
+    "filePath": "crates/simbiguity-render/src/path.rs",
+    "name": "point_along",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/path.rs"
   },
   {
     "description": "Builds the normal f64 power of two 2^k from exponent bits; nested helper of scale_pow2.",
@@ -674,6 +1427,24 @@
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
+    "description": "Maps a program id word to its built-in shader Program, or None.",
+    "filePath": "crates/simbiguity-render/src/decode.rs",
+    "name": "program",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/decode.rs"
+  },
+  {
+    "description": "The built-in shader program a shading model draws with.",
+    "filePath": "crates/simbiguity-render/src/frame.rs",
+    "name": "program_of",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
     "description": "Derives every on-screen reading and flag from one circuit solve.",
     "filePath": "site/demos/hello-circuit/readouts.js",
     "name": "readouts",
@@ -681,6 +1452,15 @@
       "hello-circuit"
     ],
     "testFile": "site/demos/hello-circuit/readouts.test.js"
+  },
+  {
+    "description": "Names the slots of the 3D view readouts buffer.",
+    "filePath": "site/js/simbiguity-render.js",
+    "name": "readoutsFromArray",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/js/simbiguity-render.test.js"
   },
   {
     "description": "Cody-Waite reduction of an angle to about plus or minus pi/4 plus a quadrant mod 4.",
@@ -699,6 +1479,15 @@
       "hello-circuit"
     ],
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Frees the 3D view behind a handle, or reports an unknown handle.",
+    "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+    "name": "remove",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
   },
   {
     "description": "Rounds to nearest integer, halfway cases away from zero.",
@@ -746,6 +1535,15 @@
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
+    "description": "Byte length of the 3D bridge last error message.",
+    "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+    "name": "sb_last_error_len",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
     "description": "Address of the last error message in linear memory.",
     "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
     "name": "sb_last_error_ptr",
@@ -753,6 +1551,15 @@
       "hello-circuit"
     ],
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of the 3D bridge last error message in linear memory.",
+    "filePath": "crates/simbiguity-render-wasm/src/status.rs",
+    "name": "sb_last_error_ptr",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
   },
   {
     "description": "Byte length of the shared output string.",
@@ -782,6 +1589,49 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Time after which a spring released from rest stays within a tolerance of its target; infinite without stiffness or damping.",
+    "filePath": "crates/simbiguity-anim/src/spring.rs",
+    "name": "settling_time",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-anim/src/spring.rs"
+  },
+  {
+    "description": "Updates the readouts and explanation panels when what they show has changed.",
+    "filePath": "site/demos/circuit-3d/demo.js",
+    "name": "show",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
+    "description": "Fills the 3D demo explanation panel, marking it as an issue when the bulb has blown.",
+    "filePath": "site/demos/circuit-3d/explain-panel.js",
+    "name": "showExplanation",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
+    ]
+  },
+  {
     "description": "Fills the explanation panel with text nodes so engine messages are never parsed as HTML.",
     "filePath": "site/demos/hello-circuit/demo.js",
     "name": "showExplanation",
@@ -794,6 +1644,35 @@
     ],
     "tags": [
       "hello-circuit"
+    ]
+  },
+  {
+    "description": "Replaces the 3D demo explanation panel with the reason the WASM bridge or WebGL2 could not start.",
+    "filePath": "site/demos/circuit-3d/explain-panel.js",
+    "name": "showLoadError",
+    "tags": [
+      "3d-rendering"
+    ],
+    "untestabilityReason": {
+      "justification": "only reachable when the browser lacks WebGL2 or the wasm fetch fails, which the preview browser cannot reproduce",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Writes formatted readouts, the voltage label and the button labels and visibility into the 3D demo controls panel.",
+    "filePath": "site/demos/circuit-3d/readouts-panel.js",
+    "name": "showReadouts",
+    "scenarios": [
+      "circuit-3d-switch-open",
+      "circuit-3d-lit-at-rated-voltage",
+      "circuit-3d-warming-up",
+      "circuit-3d-overdriven",
+      "circuit-3d-bulb-blown",
+      "circuit-3d-side-view",
+      "circuit-3d-switch-flipped-by-keyboard"
+    ],
+    "tags": [
+      "3d-rendering"
     ]
   },
   {
@@ -905,6 +1784,15 @@
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
+    "description": "Reads the 3D demo state from the URL hash: switch, volts, frozen time and camera.",
+    "filePath": "site/demos/circuit-3d/state.js",
+    "name": "stateFromHash",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "site/demos/circuit-3d/state.test.js"
+  },
+  {
     "description": "Reads the demo switch, bypass and voltage state from a URL hash, clamping volts to the slider.",
     "filePath": "site/demos/hello-circuit/state.js",
     "name": "stateFromHash",
@@ -950,6 +1838,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Maps a uniform slot word to its Uniform, or None.",
+    "filePath": "crates/simbiguity-render/src/decode.rs",
+    "name": "uniform",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render/src/decode.rs"
+  },
+  {
     "description": "sqrt of 1 minus x squared, factored for precision near plus or minus 1; shared by acos and asin.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "unit_complement",
@@ -968,6 +1865,24 @@
     "testFile": "crates/simbiguity-circuits/src/wires.rs"
   },
   {
+    "description": "The three wire polylines of the loop in flow order.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "wires",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
+  },
+  {
+    "description": "Runs a closure on one mesh of a 3D view, or reports a mesh index out of range.",
+    "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+    "name": "with_mesh",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
     "description": "Runs a closure on the circuit behind a handle or fails with ERR_HANDLE.",
     "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
     "name": "with_slot",
@@ -975,5 +1890,23 @@
       "hello-circuit"
     ],
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Runs a closure on the 3D view behind a handle, or reports an unknown handle.",
+    "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
+    "name": "with_view",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
+  },
+  {
+    "description": "Wraps a value into the half-open interval from 0 to the period.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "wrap",
+    "tags": [
+      "3d-rendering"
+    ],
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
   }
 ]

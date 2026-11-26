@@ -1,5 +1,33 @@
 {
   "views": {
+    "Circuit3DPage": {
+      "empty": {
+        "status": "covered"
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "The page shows one fixed circuit; there is no list of items to have exactly one of"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "No collection to overflow; the closest analogue, current above rating, is covered by Overdriven"
+      },
+      "loading": {
+        "status": "added"
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "covered"
+      },
+      "key-interaction": {
+        "status": "added"
+      }
+    },
     "HelloCircuitPage": {
       "empty": {
         "status": "n-a",

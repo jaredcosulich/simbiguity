@@ -79,6 +79,12 @@
       "shortSha": "a0c5ca1",
       "subject": "Fix: get fast-sim-1 green and clean (clippy, toolchain pin, committed junk)",
       "deferredAt": "2026-11-26T22:59:47Z"
+    },
+    {
+      "sha": "99c4a8d2a3c46bd27f60532686dd75a182179f0a",
+      "shortSha": "99c4a8d",
+      "subject": "Fix: time-series plots actually draw (Chart::draw stub, line geometry, tick loop)",
+      "deferredAt": "2026-11-26T23:32:12Z"
     }
   ],
   "finalizeIntent": "fast",

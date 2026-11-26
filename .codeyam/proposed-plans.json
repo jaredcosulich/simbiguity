@@ -133,6 +133,42 @@
       "proposedAt": "2026-11-26T18:03:14.735776386+00:00",
       "kind": "tech-debt",
       "sightings": 1
+    },
+    {
+      "id": "give-the-node-test-runner-its-own-test-partition-so-its-results-count",
+      "title": "Give the node test runner its own test partition so its results count",
+      "mode": "backend",
+      "body": "## Root cause\nThe node runner was added to the project's test runners, but no testPartition names it, so refresh-tests runs it and then has nowhere to cache or attribute the results. Every node test reads as missing evidence.\n\n## Evidence\nfnd-a5bb19c67699 plus this session's sighting. On HEAD 3341e17, .codeyam/editor.json has no partition with \"runner\": \"node\" (grep finds none).\n\n## Smallest fix\nAdd a node testPartition to .codeyam/editor.json covering site/js/**/*.js and site/demos/**/*.js, then run refresh-tests for it so per-test-evidence.json records the node tests.\n\n## Cost of leaving it\nEvery finalize reports 63+ node tests as missing evidence, which hides real gaps and pushes the session to investigate a false alarm.",
+      "reason": "Two sessions (fnd-a5bb19c67699 and this one) saw all node tests pass yet record no evidence, because no partition owns the node runner.",
+      "outcome": "Passing browser-side tests stop showing up as missing.",
+      "source": "codeyam-improvement",
+      "status": "pending",
+      "proposedAt": "2026-11-26T18:49:08.630064320+00:00",
+      "kind": "tech-debt",
+      "sightings": 1,
+      "evidenceIds": [
+        "fnd-a5bb19c67699"
+      ],
+      "evidenceSessions": 1,
+      "ideaRank": 1,
+      "theme": {
+        "lane": "codeyam-improvement",
+        "score": 499,
+        "notVerified": true
+      }
+    },
+    {
+      "id": "follow-up-webgl2executor-s-gl-calls-and-demo-js-s-history-replacestate-hash-write-have-no",
+      "title": "Follow up: WebGL2Executor's GL calls and demo.js's history.replaceState hash write have no…",
+      "mode": "ui",
+      "body": "## Summary\n\nThe cycle that built plan `3d-rendering-and-animation-simbiguity-anim-simbiguity-render-a-webgl2-executor-and-the-3d-circuit-view` closed with this follow-up open on a file it changed:\n\n> WebGL2Executor's GL calls and demo.js's history.replaceState hash write have no observing unit test; they are observed only by the seven captured circuit-3d scenarios.\n\nRe-read the completed plan and the current code before planning: the rest of that plan has shipped.",
+      "reason": "Follow-up left on its own change by plan `3d-rendering-and-animation-simbiguity-anim-simbiguity-render-a-webgl2-executor-and-the-3d-circuit-view`.",
+      "severity": 3,
+      "source": "plan-remainder",
+      "status": "pending",
+      "proposedAt": "2026-11-26T18:49:08.630064320+00:00",
+      "kind": "tech-debt",
+      "sightings": 1
     }
   ],
   "rounds": [
@@ -176,6 +212,36 @@
       "proposedIds": [
         "follow-up-github-pages-is-not-switched-on-in-the-repository-settings-yet-settings-pages"
       ]
+    },
+    {
+      "at": "2026-11-26T18:49:08.630064320+00:00",
+      "feature": "Circuit in 3D: animated WebGL2 view of the bulb circuit",
+      "notes": "3D feature shipped on fast-sim-1 as deferred commits. All 8 cargo partitions read stale (own-source drift) and node evidence is still missing; the owed session-finalize must run the whole suite. WebGL2 GL calls and the URL-hash write are o…",
+      "proposedIds": [
+        "follow-up-webgl2executor-s-gl-calls-and-demo-js-s-history-replacestate-hash-write-have-no"
+      ]
+    }
+  ],
+  "syntheses": [
+    {
+      "at": "2026-11-26T18:49:08.630064320+00:00",
+      "lane": "codeyam-improvement",
+      "consumedIds": [
+        "fnd-aba66bcb320d",
+        "fnd-72d216019f60",
+        "fnd-7bc4ce8a9b95",
+        "fnd-a5bb19c67699",
+        "fnd-50e3df0338df",
+        "fnd-aade5ba0d304",
+        "fnd-114c5338501b",
+        "fnd-86c629a57de2"
+      ],
+      "keptIds": [
+        "give-the-node-test-runner-its-own-test-partition-so-its-results-count"
+      ],
+      "refused": 1,
+      "notes": "The journal-title-match finding is two sightings from one session, cosmetic: not admitted. The prove-red timeout finding is a single time-lost sighting: not admitted.",
+      "cycle": "Circuit in 3D: animated WebGL2 view of the bulb circuit"
     }
   ]
 }

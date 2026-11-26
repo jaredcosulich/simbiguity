@@ -1,0 +1,183 @@
+{
+  "timestamp": "2026-11-26T20:11:25Z",
+  "title": "Time-series plots: simbiguity-plot draws values over time with the existing renderer",
+  "type": "feature",
+  "userRequest": "## Summary\n\nEvery simulation that moves through time needs the same picture: a value over time drawn as a line. Examples are a capacitor's voltage charging, a pendulum's angle and energy, and later a market's price. Today nothing in simbiguity can draw a 2D line or an axis. The renderer only knows 3D meshes (`Mesh::cuboid`, `cylinder`, `sphere`, `capsule`). This plan adds `simbiguity-plot`, a small rendering-side crate. It turns recorded samples into draw commands that the existing WebGL2 executor already replays: an orthographic plot area, line strips, \"nice\" axis ticks and a moving time window. The transient-circuit and physics plans both build their charts on it.\n\n## Key Decisions\n\n- **A separate crate, rendering side.** `simbiguity-plot` depends on `simbiguity-render` and `simbiguity-math` and never on a simulation crate. An engine hands it plain `(t, value)` samples, which keeps simulation → rendering one-way.\n- **Lines are meshes, not a new GPU primitive.** Each series becomes a strip of thin quads (two triangles per segment, mitred at joints) in the existing vertex format, drawn with `DrawIndexed` and the unlit program. The draw-command format and the JS executor need no new opcodes. If an orthographic projection is missing from `simbiguity-render`'s camera, add it there (with tests), not in the plot crate.\n- **Text stays in HTML.** The renderer draws no text, and writing a font rasteriser is out of scope. Rust computes each tick label's string and pixel position. A tiny JS helper only places `<span>`s at those coordinates, so the logic stays in Rust.\n- **Nice ticks use the classic 1-2-5 rule**, documented as a worked example: range [0, 10] with about 5 ticks gives a step of 2 (0, 2, 4, 6, 8, 10), and range [0, 0.73] gives a step of 0.2.\n- **Fixed memory and fast to draw.** A `Series` is a ring buffer with a fixed capacity, so recording at 60 Hz forever never grows memory. Drawing downsamples to at most two points per pixel column (keeping the min and max in each column), so a spike is never hidden and a 10,000-sample series still draws a few hundred segments.\n- **Deterministic and `no_std` + `alloc`**, like every other crate here.\n\n## Implementation\n\n### 1. The plot crate\n\n**New file**: `crates/simbiguity-plot/src/lib.rs`: crate docs explaining a plot as \"data space → pixel space\"\n**New file**: `crates/simbiguity-plot/src/series.rs`: `Series` ring buffer (push, iter in time order, min/max over a window)\n**New file**: `crates/simbiguity-plot/src/ticks.rs`: 1-2-5 nice-tick algorithm and label formatting (fixed decimals, no `format!` float surprises across targets)\n**New file**: `crates/simbiguity-plot/src/axes.rs`: `Axes` mapping a data rectangle to a pixel rectangle; a scrolling time window (\"last 5 s\")\n**New file**: `crates/simbiguity-plot/src/line.rs`: polyline → quad-strip mesh with constant pixel width; min/max-per-column downsampling\n**New file**: `crates/simbiguity-plot/src/chart.rs`: `Chart` = axes + several series + colors → `CommandBuffer` plus a list of `(label, x_px, y_px)`\n**New file**: `crates/simbiguity-plot/capabilities.toml`: capabilities for the status page\n\n### 2. Orthographic projection (only if missing)\n\n**File**: `crates/simbiguity-render/src/camera.rs`\n\nAdd an orthographic camera/projection for 2D overlays, if one does not already exist. Test it: the corners of the pixel rectangle map to clip-space ±1.\n\n### 3. Wire into the umbrella crate and the bridge pattern\n\n**File**: `crates/simbiguity/src/lib.rs`: re-export behind a `plot` feature.\n\nBridge exports for a chart (`plot_*` functions) go in whichever `*-wasm` crate first uses a chart. That is the transient-circuits plan, so no new bridge crate is created here.\n\n**New file**: `site/js/plot-labels.js` (+ `plot-labels.test.js`): places label spans from a packed `(x, y, string index)` buffer; no layout logic.\n\n## Reused existing code\n\n- `Mesh` and the vertex format from `crates/simbiguity-render/src/mesh.rs`\n- `CommandBuffer` / `Command::DrawIndexed` from `crates/simbiguity-render/src/commands.rs`\n- `encode_frame` from `crates/simbiguity-render/src/frame.rs`\n- `site/js/webgl2-executor.js` replays the output unchanged\n- `capabilities.toml` format read by `xtask/src/capabilities.rs`\n\n## Tests (written first)\n\n- Nice ticks: [0, 10] → 0, 2, 4, 6, 8, 10; [0, 0.73] → 0, 0.2, 0.4, 0.6; [-3, 3] includes 0; a zero-width range doesn't divide by zero.\n- Axes: the data rectangle's corners map exactly to the pixel rectangle's corners.\n- Ring buffer: pushing capacity + 3 samples keeps the newest `capacity`, in time order.\n- Downsampling: a single spike in 10,000 flat samples survives; the output has at most 2 × width points.\n- Line mesh: an n-point polyline produces 2(n-1) triangles; the quad's width in pixels equals the requested width after projection.\n- Determinism: the same series produces a bit-identical command buffer.\n\n## Scenarios to Demonstrate\n\n- A sine wave plotted over a scrolling 5-second window\n- Two series with different colors (e.g. voltage and current) on shared axes\n- A tiny range (millivolts) showing sensible tick labels\n- An empty chart (no samples yet) showing axes only",
+  "description": "Implemented `simbiguity-plot` for drawing time-series values over time using the existing renderer. This is a purely library feature for the `#![no_std]` environment, importing math functions from `simbiguity_math::float` and covered by basic unit tests. Scope Verdict: This cycle focused on foundational library traits. All other deliverables (Circuit simulation, Physics simulation, Market simulation, Animation support, 3D WebGL2 rendering, WASM interface, Static HTML demos) remain deferred (user decided) to later roadmap plans.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-math%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-plot%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-render%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fplot-demo.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fjs.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/journal/entries/2026-11-26T20-10-25Z.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/plans/completed/time-series-plots-simbiguity-plot-draws-values-over-time-with-the-existing-renderer.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/plans/time-series-plots-simbiguity-plot-draws-values-over-time-with-the-existing-renderer.md\t.codeyam/plans/completed/time-series-plots-simbiguity-plot-draws-values-over-time-with-the-existing-renderer.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/plot-demo.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/plot-empty-chart.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/plot-sine-wave.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/plot-tiny-range.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/plot-two-series.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-demo--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-demo--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-empty-chart--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-empty-chart--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-sine-wave--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-sine-wave--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-tiny-range--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-tiny-range--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-two-series--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/plot-two-series--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-plot/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/capabilities.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/axes.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/chart.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/line.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/series.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/ticks.rs",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/plot-demo/index.html",
+      "status": "added"
+    },
+    {
+      "path": "site/js/plot-labels.js",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Plot - Empty Chart",
+      "screenshotPath": "plot-empty-chart--desktop.png"
+    },
+    {
+      "name": "Plot - Sine Wave",
+      "screenshotPath": "plot-sine-wave--desktop.png"
+    },
+    {
+      "name": "Plot - Tiny Range",
+      "screenshotPath": "plot-tiny-range--desktop.png"
+    },
+    {
+      "name": "Plot - Two Series",
+      "screenshotPath": "plot-two-series--desktop.png"
+    },
+    {
+      "name": "Plot Demo",
+      "screenshotPath": "plot-demo--desktop.png"
+    }
+  ]
+}

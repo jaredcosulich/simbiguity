@@ -37,6 +37,12 @@
       "shortSha": "16cb5cd",
       "subject": "feat: 3D circuit puzzle game: data-driven levels with exact, verified goals",
       "deferredAt": "2026-11-26T20:00:08Z"
+    },
+    {
+      "sha": "685a876409d61052baf39dae005fd212a9eaaa37",
+      "shortSha": "685a876",
+      "subject": "feat: Time-series plots: simbiguity-plot draws values over time with the existing renderer",
+      "deferredAt": "2026-11-26T20:11:26Z"
     }
   ],
   "finalizeIntent": "fast",

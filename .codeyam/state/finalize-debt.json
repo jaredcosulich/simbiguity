@@ -31,6 +31,12 @@
       "shortSha": "19b1502",
       "subject": "feat: Engine status page: public demos and every test that proves them",
       "deferredAt": "2026-11-26T19:18:09Z"
+    },
+    {
+      "sha": "16cb5cdea4662e69ad0b3e53f62be7d43688eb55",
+      "shortSha": "16cb5cd",
+      "subject": "feat: 3D circuit puzzle game: data-driven levels with exact, verified goals",
+      "deferredAt": "2026-11-26T20:00:08Z"
     }
   ],
   "finalizeIntent": "fast",

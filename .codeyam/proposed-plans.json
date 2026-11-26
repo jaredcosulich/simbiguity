@@ -120,6 +120,19 @@
       "sightings": 2,
       "decidedAt": "2026-11-26T16:56:07Z",
       "sightingsAtDecision": 2
+    },
+    {
+      "id": "follow-up-github-pages-is-not-switched-on-in-the-repository-settings-yet-settings-pages",
+      "title": "Follow up: GitHub Pages is not switched on in the repository settings yet (Settings → Pages →…",
+      "mode": "ui",
+      "body": "## Summary\n\nThe cycle that built plan `hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy` closed with this follow-up open on a file it changed:\n\n> GitHub Pages is not switched on in the repository settings yet (Settings → Pages → Source: GitHub Actions). The plan asked for this only with the user's OK, so pages.yml will build but not publish until it is enabled.\n\nRe-read the completed plan and the current code before planning: the rest of that plan has shipped.",
+      "reason": "Follow-up left on its own change by plan `hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy`.",
+      "severity": 3,
+      "source": "plan-remainder",
+      "status": "pending",
+      "proposedAt": "2026-11-26T18:03:14.735776386+00:00",
+      "kind": "tech-debt",
+      "sightings": 1
     }
   ],
   "rounds": [
@@ -155,6 +168,14 @@
       "at": "2026-11-26T17:36:42.004251507+00:00",
       "feature": "DC circuit engine for teaching",
       "notes": "simbiguity-circuits landed with 61 tests, and clippy and fmt are clean. Fast Commit is on, so session-finalize is owed before merging fast-sim-1. The partitions simbiguity-core and simbiguity-math are marked stale for refresh. The circuit-…"
+    },
+    {
+      "at": "2026-11-26T18:03:14.735776386+00:00",
+      "feature": "Hello circuit: first live demo in the browser",
+      "notes": "Hello circuit shipped on fast-sim-1 under Fast Commit (finalize owed before merge). GitHub Pages is still not enabled in repo settings (Settings → Pages → Source: GitHub Actions) and gh is not authenticated here, so the user must do it. CI…",
+      "proposedIds": [
+        "follow-up-github-pages-is-not-switched-on-in-the-repository-settings-yet-settings-pages"
+      ]
     }
   ]
 }

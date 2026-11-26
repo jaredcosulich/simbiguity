@@ -1,0 +1,1 @@
+{"at":"2026-11-26T18:03:14.735776386+00:00","feature":"Hello circuit: first live demo in the browser","plan":"hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy","text":"The CI and Pages workflows (.github/workflows/ci.yml, pages.yml) were not run here; they need GitHub Actions."}

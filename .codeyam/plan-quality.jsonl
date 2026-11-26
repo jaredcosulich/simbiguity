@@ -1,0 +1,1 @@
+{"at":"2026-11-26T18:03:14.735776386+00:00","feature":"Hello circuit: first live demo in the browser","plan":"hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy","text":"The plan says to keep the app port 4780 in startCommand; the project's existing startCommand already used 4781, which was kept."}

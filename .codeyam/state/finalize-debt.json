@@ -43,6 +43,12 @@
       "shortSha": "685a876",
       "subject": "feat: Time-series plots: simbiguity-plot draws values over time with the existing renderer",
       "deferredAt": "2026-11-26T20:11:26Z"
+    },
+    {
+      "sha": "479eed1bbb09557b94ebb340f87211fb2e76fe8b",
+      "shortSha": "479eed1",
+      "subject": "feat: Physics engine: simbiguity-physics with particles, springs, rods and comparable integrators",
+      "deferredAt": "2026-11-26T20:27:18Z"
     }
   ],
   "finalizeIntent": "fast",

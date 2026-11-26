@@ -1,0 +1,27 @@
+{
+  "claimStartedAt": "2026-11-26T22:52:47Z",
+  "completedAt": "2026-11-26T22:58:38Z",
+  "completedBy": {
+    "agentProvider": "gemini",
+    "codeyamEditorVersion": "0.1.7",
+    "currentStep": "backend-step15",
+    "machine": "codeyam-editor-codeyam-editor-2",
+    "originId": "2529c5ad-2bef-469d-be8a-e34608393066",
+    "pid": 6,
+    "priority": 0,
+    "selectedPlan": "fix-get-fast-sim-1-green-and-clean-clippy-toolchain-pin-committed-junk",
+    "sessionId": "d45edb58-4b0a-4845-944e-7a518cc769ec",
+    "startedAt": "2026-11-26T22:52:47Z"
+  },
+  "createdAt": "2026-11-26T22:13:44Z",
+  "deliverables": [
+    ".gitignore",
+    "crates/simbiguity-circuits/src/mna.rs",
+    "rust-toolchain.toml"
+  ],
+  "journalTimestamp": "2026-11-26T22:58:38Z",
+  "mode": "backend",
+  "planFile": "completed/fix-get-fast-sim-1-green-and-clean-clippy-toolchain-pin-committed-junk.md",
+  "slug": "fix-get-fast-sim-1-green-and-clean-clippy-toolchain-pin-committed-junk",
+  "title": "Fix: get fast-sim-1 green and clean (clippy, toolchain pin, committed junk)"
+}

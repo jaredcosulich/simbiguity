@@ -1281,7 +1281,9 @@
       ],
       "name": "floating_islands",
       "namedMethods": [
+        "enumerate",
         "is_none",
+        "iter",
         "new",
         "push"
       ]

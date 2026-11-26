@@ -6,8 +6,13 @@ use crate::netlist::{ComponentId, NodeId};
 
 /// A problem found while solving. Each one names the part to point at, so a
 /// UI can highlight it and explain it.
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CircuitIssue {
+    /// The MNA solver encountered an internal problem (non-square matrix or bug). Fatal.
+    SolverFailure {
+        /// A developer-readable message for the internal error.
+        message: alloc::string::String,
+    },
     /// A component has a value that makes no physical sense (a resistance
     /// of zero or less, a bulb rated at 0 W, a NaN). Fatal: nothing is solved.
     InvalidValue {
@@ -55,7 +60,8 @@ impl CircuitIssue {
     pub fn is_fatal(&self) -> bool {
         matches!(
             self,
-            CircuitIssue::InvalidValue { .. }
+            CircuitIssue::SolverFailure { .. }
+                | CircuitIssue::InvalidValue { .. }
                 | CircuitIssue::ShortCircuit { current: None, .. }
                 | CircuitIssue::VoltageSourceLoop { .. }
         )
@@ -65,6 +71,9 @@ impl CircuitIssue {
 impl fmt::Display for CircuitIssue {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            CircuitIssue::SolverFailure { message } => {
+                write!(f, "internal solver error: {message}")
+            }
             CircuitIssue::InvalidValue { component } => write!(
                 f,
                 "component {} has a value that cannot exist (it must be positive and finite)",

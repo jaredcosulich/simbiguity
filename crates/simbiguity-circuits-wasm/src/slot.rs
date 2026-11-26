@@ -140,7 +140,7 @@ impl Slot {
             .state()
             .issues()
             .get(i as usize)
-            .copied()
+            .cloned()
             .ok_or_else(|| fail(ERR_INDEX, std::format!("no issue {i}")))
     }
 }

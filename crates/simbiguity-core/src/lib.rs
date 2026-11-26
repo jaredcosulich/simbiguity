@@ -1,3 +1,12 @@
+#![cfg_attr(
+    not(test),
+    deny(
+        clippy::unwrap_used,
+        clippy::expect_used,
+        clippy::panic,
+        clippy::unreachable
+    )
+)]
 //! # simbiguity-core
 //!
 //! The shared contracts that let simbiguity engines compose:

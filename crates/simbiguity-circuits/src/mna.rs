@@ -216,7 +216,12 @@ impl Default for SolverCache {
     }
 }
 
-fn assemble_matrix(c: &Circuit, t: &Topology, u: &Unknowns, m: &mut DenseMatrix) {
+fn assemble_matrix(
+    c: &Circuit,
+    t: &Topology,
+    u: &Unknowns,
+    m: &mut DenseMatrix,
+) -> Result<(), alloc::string::String> {
     for r in 0..u.count {
         for col in 0..u.count {
             m[(r, col)] = 0.0;
@@ -231,7 +236,9 @@ fn assemble_matrix(c: &Circuit, t: &Topology, u: &Unknowns, m: &mut DenseMatrix)
                 stamp_conductance(m, a, b, g);
             }
             Stamp::VoltageSource(_) => {
-                let k = u.source[i].expect("every ideal battery has a current unknown");
+                let Some(k) = u.source[i] else {
+                    return Err("every ideal battery has a current unknown".into());
+                };
                 for (node, sign) in [(a, 1.0), (b, -1.0)] {
                     if let Some(node) = node {
                         m[(node, k)] += sign;
@@ -242,9 +249,15 @@ fn assemble_matrix(c: &Circuit, t: &Topology, u: &Unknowns, m: &mut DenseMatrix)
             Stamp::Merge | Stamp::Open => {}
         }
     }
+    Ok(())
 }
 
-fn assemble_rhs(c: &Circuit, t: &Topology, u: &Unknowns, rhs: &mut [f64]) {
+fn assemble_rhs(
+    c: &Circuit,
+    t: &Topology,
+    u: &Unknowns,
+    rhs: &mut [f64],
+) -> Result<(), alloc::string::String> {
     rhs.fill(0.0);
     for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
         let a = u.voltage[t.group[p.a.0]];
@@ -254,12 +267,15 @@ fn assemble_rhs(c: &Circuit, t: &Topology, u: &Unknowns, rhs: &mut [f64]) {
                 stamp_current_source(rhs, a, b, current);
             }
             Stamp::VoltageSource(emf) => {
-                let k = u.source[i].expect("every ideal battery has a current unknown");
+                let Some(k) = u.source[i] else {
+                    return Err("every ideal battery has a current unknown".into());
+                };
                 rhs[k] = emf;
             }
             _ => {}
         }
     }
+    Ok(())
 }
 
 /// Names the part behind an unexpected singular pivot (a safety net: the
@@ -392,7 +408,22 @@ fn solve_once(
             t.stamps = stamps;
         }
     }
-    let (t, u) = (cache.t.clone().unwrap(), cache.u.clone().unwrap());
+    let Some(t) = cache.t.clone() else {
+        return (
+            None,
+            alloc::vec![CircuitIssue::SolverFailure {
+                message: alloc::string::String::from("Missing topology")
+            }],
+        );
+    };
+    let Some(u) = cache.u.clone() else {
+        return (
+            None,
+            alloc::vec![CircuitIssue::SolverFailure {
+                message: alloc::string::String::from("Missing unknowns")
+            }],
+        );
+    };
 
     let mut issues = source_problems(c, &t);
     if issues.iter().any(CircuitIssue::is_fatal) {
@@ -404,23 +435,40 @@ fn solve_once(
         if cache.matrix.rows() != u.count {
             cache.matrix = DenseMatrix::zeros(u.count, u.count);
         }
-        assemble_matrix(c, &t, &u, &mut cache.matrix);
+        if let Err(e) = assemble_matrix(c, &t, &u, &mut cache.matrix) {
+            issues.push(CircuitIssue::SolverFailure { message: e });
+            return (None, issues);
+        }
         cache.lu = match simbiguity_math::Lu::decompose(&cache.matrix) {
             Ok(lu) => Some(lu),
             Err(SolveError::Singular { pivot_row }) => {
                 issues.push(issue_for_pivot(&u, pivot_row));
                 return (None, issues);
             }
-            Err(e) => unreachable!("MNA always builds a square system: {e}"),
+            Err(e) => {
+                issues.push(CircuitIssue::SolverFailure {
+                    message: alloc::format!("MNA always builds a square system: {e}"),
+                });
+                return (None, issues);
+            }
         };
     }
 
     if cache.rhs.len() != u.count {
         cache.rhs = vec![0.0; u.count];
     }
-    assemble_rhs(c, &t, &u, &mut cache.rhs);
+    if let Err(e) = assemble_rhs(c, &t, &u, &mut cache.rhs) {
+        issues.push(CircuitIssue::SolverFailure { message: e });
+        return (None, issues);
+    }
 
-    let x = match cache.lu.as_ref().unwrap().solve(&cache.rhs) {
+    let Some(lu) = cache.lu.as_ref() else {
+        issues.push(CircuitIssue::SolverFailure {
+            message: alloc::string::String::from("Missing LU decomp"),
+        });
+        return (None, issues);
+    };
+    let x = match lu.solve(&cache.rhs) {
         Ok(x) => x,
         Err(_) => return (None, issues),
     };

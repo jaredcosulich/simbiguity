@@ -496,6 +496,7 @@
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::InvalidValue",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::OpenCircuit",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::ShortCircuit",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::SolverFailure",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::VoltageSourceLoop",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::fmt",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::is_fatal",
@@ -561,6 +562,19 @@
       ],
       "name": "CircuitIssue::ShortCircuit"
     },
+    "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::SolverFailure": {
+      "filePath": "crates/simbiguity-circuits/src/diagnostics.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::fmt",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::is_fatal"
+      ],
+      "imports": [],
+      "name": "CircuitIssue::SolverFailure",
+      "namedMethods": [
+        "string"
+      ]
+    },
     "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::VoltageSourceLoop": {
       "filePath": "crates/simbiguity-circuits/src/diagnostics.rs",
       "importedBy": [
@@ -586,6 +600,7 @@
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::InvalidValue",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::OpenCircuit",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::ShortCircuit",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::SolverFailure",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::VoltageSourceLoop"
       ],
       "name": "CircuitIssue::fmt",
@@ -603,6 +618,7 @@
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::InvalidValue",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::ShortCircuit",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::SolverFailure",
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::VoltageSourceLoop"
       ],
       "inherentMethod": true,
@@ -1141,8 +1157,9 @@
       "name": "assemble_matrix",
       "namedMethods": [
         "enumerate",
-        "expect",
+        "into",
         "iter",
+        "string",
         "zip"
       ]
     },
@@ -1168,9 +1185,10 @@
       "name": "assemble_rhs",
       "namedMethods": [
         "enumerate",
-        "expect",
         "fill",
+        "into",
         "iter",
+        "string",
         "zip"
       ]
     },
@@ -1416,6 +1434,8 @@
         "count",
         "decompose",
         "extend",
+        "format",
+        "from",
         "is_fatal",
         "is_none",
         "iter",
@@ -1424,7 +1444,8 @@
         "push",
         "rows",
         "solve",
-        "unwrap",
+        "string",
+        "vec",
         "zeros"
       ]
     },
@@ -3125,6 +3146,7 @@
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": [
@@ -3176,6 +3198,12 @@
         "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-circuits/src/solution.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-circuits/src/mna.rs": {
@@ -3224,14 +3252,20 @@
         "crates/simbiguity-circuits/src/mna.rs"
       ],
       "namedMethods": [
+        "add_battery",
         "add_bulb",
         "add_resistor",
         "blow",
         "build",
+        "clone",
         "collect",
         "component_mut",
+        "default",
         "is_empty",
+        "is_err",
+        "is_none",
         "iter",
+        "len",
         "map",
         "new",
         "node",

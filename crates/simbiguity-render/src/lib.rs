@@ -1,3 +1,12 @@
+#![cfg_attr(
+    not(test),
+    deny(
+        clippy::unwrap_used,
+        clippy::expect_used,
+        clippy::panic,
+        clippy::unreachable
+    )
+)]
 //! # simbiguity-render
 //!
 //! Renderer-agnostic 3D: Rust decides *what* to draw, a backend only issues

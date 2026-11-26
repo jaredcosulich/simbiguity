@@ -429,7 +429,7 @@
       "inherentMethod": true,
       "name": "Slot::issue",
       "namedMethods": [
-        "copied",
+        "cloned",
         "format",
         "get",
         "issues",
@@ -1327,6 +1327,7 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/tests.rs",
         "crates/simbiguity-circuits-wasm/src/tests.rs"
@@ -1343,6 +1344,8 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs"
       ],
       "imports": [
+        "crates/simbiguity-circuits/src/diagnostics.rs",
+        "crates/simbiguity-circuits-wasm/src/alloc.rs",
         "crates/simbiguity-circuits/src/diagnostics.rs"
       ]
     },
@@ -1377,6 +1380,12 @@
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-circuits-wasm/src/slot.rs": {

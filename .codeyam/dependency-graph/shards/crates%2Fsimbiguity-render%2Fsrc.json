@@ -3570,6 +3570,12 @@
         "crates/simbiguity-render/src/scene.rs",
         "crates/simbiguity-render/src/scene.rs",
         "crates/simbiguity-render/src/scene.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-render/src/mesh.rs": {

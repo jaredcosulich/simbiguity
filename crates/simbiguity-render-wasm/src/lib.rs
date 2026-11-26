@@ -1,3 +1,12 @@
+#![cfg_attr(
+    not(test),
+    deny(
+        clippy::unwrap_used,
+        clippy::expect_used,
+        clippy::panic,
+        clippy::unreachable
+    )
+)]
 //! # simbiguity-render-wasm
 //!
 //! A hand-written bridge from JavaScript to simbiguity's 3D views, in the

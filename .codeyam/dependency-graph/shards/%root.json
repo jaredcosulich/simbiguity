@@ -1,6 +1,30 @@
 {
   "entities": {},
   "files": {
+    "scratch-node-fix.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "scratch-tests.rs": {
+      "importedBy": [],
+      "imports": [],
+      "namedMethods": [
+        "add_battery",
+        "build",
+        "clone",
+        "collect",
+        "default",
+        "is_err",
+        "is_none",
+        "iter",
+        "len",
+        "map",
+        "new",
+        "node",
+        "stamp",
+        "zeros"
+      ]
+    },
     "scratch.py": {
       "importedBy": [],
       "imports": []

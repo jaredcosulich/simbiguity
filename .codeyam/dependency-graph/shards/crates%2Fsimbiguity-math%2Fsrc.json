@@ -2723,6 +2723,12 @@
         "crates/simbiguity-math/src/quat.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/vec.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-math/src/linsolve.rs": {

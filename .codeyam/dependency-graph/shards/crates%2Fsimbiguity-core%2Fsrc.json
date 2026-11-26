@@ -1087,6 +1087,12 @@
         "crates/simbiguity-core/src/simulation.rs",
         "crates/simbiguity-core/src/simulation.rs",
         "crates/simbiguity-core/src/simulation.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-core/src/lockstep.rs": {

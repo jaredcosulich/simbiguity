@@ -1602,6 +1602,12 @@
         "crates/simbiguity-anim/src/track.rs",
         "crates/simbiguity-anim/src/track.rs",
         "crates/simbiguity-anim/src/tween.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-anim/src/spring.rs": {

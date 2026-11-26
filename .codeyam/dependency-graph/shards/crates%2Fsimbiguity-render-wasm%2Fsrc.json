@@ -776,6 +776,12 @@
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-render-wasm/src/readouts.rs": {

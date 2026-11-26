@@ -1,3 +1,12 @@
+#![cfg_attr(
+    not(test),
+    deny(
+        clippy::unwrap_used,
+        clippy::expect_used,
+        clippy::panic,
+        clippy::unreachable
+    )
+)]
 //! # simbiguity-circuits-wasm
 //!
 //! A hand-written bridge from JavaScript to [`simbiguity_circuits`]. No

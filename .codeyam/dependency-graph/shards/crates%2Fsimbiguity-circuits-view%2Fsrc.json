@@ -2932,6 +2932,12 @@
         "crates/simbiguity-circuits-view/src/look.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-circuits-view/src/layout.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-circuits-view/src/look.rs": {

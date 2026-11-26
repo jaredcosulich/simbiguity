@@ -150,6 +150,11 @@
         "hand-written-wasm-interface-exposing-the-crates-to-the-browser",
         "static-html-demos-embedding-the-simulations"
       ]
+    },
+    {
+      "at": "2026-11-26T17:36:42.004251507+00:00",
+      "feature": "DC circuit engine for teaching",
+      "notes": "simbiguity-circuits landed with 61 tests, and clippy and fmt are clean. Fast Commit is on, so session-finalize is owed before merging fast-sim-1. The partitions simbiguity-core and simbiguity-math are marked stale for refresh. The circuit-…"
     }
   ]
 }

@@ -19,6 +19,12 @@
       "shortSha": "837c5c9",
       "subject": "feat: Hello circuit: hand-written WASM bridge, JS loader, first demo page and GitHub Pages deploy",
       "deferredAt": "2026-11-26T18:02:08Z"
+    },
+    {
+      "sha": "e0c171d47d43b04685dee96e6b6a2ef3abe9c43d",
+      "shortSha": "e0c171d",
+      "subject": "feat: 3D rendering and animation: simbiguity-anim, simbiguity-render, a WebGL2 executor and the 3D circuit view",
+      "deferredAt": "2026-11-26T18:47:42Z"
     }
   ],
   "finalizeIntent": "fast",

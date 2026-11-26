@@ -67,6 +67,12 @@
       "shortSha": "4971487",
       "subject": "feat: General 3D circuit view: render any circuit laid out on a grid board",
       "deferredAt": "2026-11-26T21:25:42Z"
+    },
+    {
+      "sha": "cc0b50c05fcbb116190b26a4b24bfff42fa1f039",
+      "shortSha": "cc0b50c",
+      "subject": "feat: Hardening: randomized physics-law invariants, no panics, native-vs-WASM determinism",
+      "deferredAt": "2026-11-26T21:43:46Z"
     }
   ],
   "finalizeIntent": "fast",

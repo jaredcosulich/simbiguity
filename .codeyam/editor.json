@@ -1,5 +1,5 @@
 {
-  "$comment": "Per-developer settings (port, provider, proxy ports, startCommand, etc.) belong in editor.local.json. That file is gitignored and is deep-merged on top of this one at load time. Changing `provider` after scaffold does NOT install that agent's surface — re-run `codeyam-editor editor install-hooks` (or `codeyam-editor init --provider <name>`) to install it. See CLAUDE.md or run `codeyam-editor editor config-show` to inspect the effective config.",
+  "$comment": "Per-developer settings (port, provider, proxy ports, startCommand, etc.) belong in editor.local.json. That file is gitignored and is deep-merged on top of this one at load time. Changing `provider` after scaffold does NOT install that agent's surface \u2014 re-run `codeyam-editor editor install-hooks` (or `codeyam-editor init --provider <name>`) to install it. See CLAUDE.md or run `codeyam-editor editor config-show` to inspect the effective config.",
   "apps": [
     {
       "dir": "site",
@@ -417,6 +417,105 @@
         "rust-toolchain.toml"
       ],
       "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-core",
+        "simbiguity-math"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-physics",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-physics"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-physics/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-core",
+        "simbiguity-math",
+        "simbiguity-physics",
+        "simbiguity-render"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-physics-view",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-physics-view"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-physics-view/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-anim",
+        "simbiguity-circuits",
+        "simbiguity-circuits-view",
+        "simbiguity-core",
+        "simbiguity-math",
+        "simbiguity-physics",
+        "simbiguity-physics-view",
+        "simbiguity-render",
+        "simbiguity-render-wasm"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-physics-wasm",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-physics-wasm"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-physics-wasm/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-math",
+        "simbiguity-render"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-plot",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-plot"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-plot/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "name": "node",
+      "runner": "node",
+      "testFilePatterns": [
+        "site/**/*.test.js"
+      ],
+      "sourceFilePatterns": [],
+      "excludePatterns": [],
+      "dependsOn": []
     }
   ],
   "testRunners": [

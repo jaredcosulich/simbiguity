@@ -1,0 +1,15 @@
+{
+  "name": "Hello Circuit - Lit at Rated Voltage",
+  "id": "81e2ee40-88bb-4f51-91c8-7082427cd314",
+  "url": "/demos/hello-circuit/#closed",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T17:59:33Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/hello-circuit/index.html",
+  "description": "The switch is closed at the bulb's rated voltage: full brightness, live wires, and Ohm's law worked through with the engine's numbers."
+}

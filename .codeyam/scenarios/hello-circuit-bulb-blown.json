@@ -1,0 +1,15 @@
+{
+  "name": "Hello Circuit - Bulb Blown",
+  "id": "7fb837cc-40e2-4544-a664-64c43949dc38",
+  "url": "/demos/hello-circuit/#closed&v=20",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T17:59:33Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/hello-circuit/index.html",
+  "description": "Overvoltage: the filament burns out, the panel is marked as an issue, and the Replace the bulb button appears."
+}

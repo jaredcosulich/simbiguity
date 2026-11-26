@@ -96,6 +96,8 @@
         "crates/simbiguity-circuits/tests/analysis.rs::parallel_resistors_share_current",
         "crates/simbiguity-circuits/tests/analysis.rs::series_voltage_divider",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb",
+        "crates/simbiguity-circuits/tests/analysis.rs::unbalanced_wheatstone_bridge_carries_known_current",
         "crates/simbiguity-circuits/tests/analysis.rs::wire_carries_the_loop_current"
       ],
       "imports": [
@@ -389,6 +391,7 @@
         "crates/simbiguity-circuits/tests/analysis.rs::parallel_batteries_with_different_emfs_circulate_current",
         "crates/simbiguity-circuits/tests/analysis.rs::parallel_resistors_share_current",
         "crates/simbiguity-circuits/tests/analysis.rs::series_voltage_divider",
+        "crates/simbiguity-circuits/tests/analysis.rs::unbalanced_wheatstone_bridge_carries_known_current",
         "crates/simbiguity-circuits/tests/analysis.rs::wire_carries_the_loop_current"
       ],
       "imports": [
@@ -445,6 +448,50 @@
         "solution",
         "state",
         "step",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitInput",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/tests/analysis.rs::close",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "switch_lights_a_bulb",
+      "namedMethods": [
+        "add_battery",
+        "add_bulb",
+        "add_switch",
+        "apply",
+        "brightness",
+        "new",
+        "node",
+        "solution",
+        "state",
+        "step",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/analysis.rs::unbalanced_wheatstone_bridge_carries_known_current": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/analysis.rs::close",
+        "crates/simbiguity-circuits/tests/analysis.rs::solved"
+      ],
+      "name": "unbalanced_wheatstone_bridge_carries_known_current",
+      "namedMethods": [
+        "add_battery",
+        "add_resistor",
+        "current",
+        "new",
+        "node",
+        "node_voltage",
         "unwrap"
       ]
     },

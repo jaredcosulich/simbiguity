@@ -1,0 +1,13 @@
+[
+  {
+    "name": "HelloCircuitState",
+    "description": "Demo state for the hello-circuit page, seeded from the URL hash (e.g. #closed, #closed&v=24, #short). Nothing is persisted; production starts with the switch open at the bulb's rated voltage.",
+    "category": "mock-api",
+    "order": 1,
+    "fields": [
+      { "name": "switchClosed", "type": "boolean", "required": true },
+      { "name": "batteryVolts", "type": "number", "required": true },
+      { "name": "shorted", "type": "boolean", "required": false }
+    ]
+  }
+]

@@ -1,0 +1,327 @@
+{
+  "timestamp": "2026-11-26T18:01:27Z",
+  "title": "Hello circuit: hand-written WASM bridge, JS loader, first demo page and GitHub Pages deploy",
+  "type": "feature",
+  "userRequest": "## Summary\n\nPut the first engine in front of people. This plan has four parts: a **hand-written WASM interface** (no `wasm-bindgen`) that exposes `simbiguity-circuits` to JavaScript, a small **handwritten JS loader**, a **\"Hello, circuit\" demo page** where you close a switch and a bulb lights up (with live voltage/current readouts), and a **GitHub Pages deploy** of `site/` from CI. The demo is also the reference for how another project embeds simbiguity. Its source is meant to be read and copied.\n\n## Key Decisions\n\n- **A plain C ABI plus shared linear memory, no codegen.** The bridge crate exports `extern \"C\"` functions over opaque handles (`circuit_new() -> u32`, `circuit_add_bulb(h, a, b, watts, volts) -> u32`, `circuit_toggle(h, id)`, `circuit_solve(h) -> i32`, `circuit_bulb_brightness(h, id) -> f64`). Bulk results go out as a pointer + length into a `Vec<f64>` the JS side reads via `Float64Array` on `memory.buffer`. Errors come back as status codes plus `last_error_ptr/len` for a UTF-8 message. Every export is a normal Rust function, so it is **unit-tested natively**. The ABI is not WASM-only.\n- **One bridge crate per engine** (`simbiguity-circuits-wasm`), not one mega-bridge, so a project that only wants circuits ships only circuits. It depends on its engine and nothing else.\n- **The loader is a tiny ES module** (`site/js/simbiguity.js`): `WebAssembly.instantiateStreaming`, memory views refreshed after any call that may grow memory, string decode for errors, and a thin idiomatic wrapper class per engine (`new Circuit()` …). Zero npm dependencies, no bundler.\n- **2D first.** The hello demo draws the circuit with inline SVG (bulb glow = brightness). The from-scratch WebGL2 renderer is its own plan. Keeping it out of here gets the embedding story shipped and testable sooner.\n- **Build = cargo only.** `cargo build -p simbiguity-circuits-wasm --target wasm32-unknown-unknown --release`, then copy the `.wasm` into `site/pkg/` (gitignored). A small script does both, and the codeyam `startCommand` runs it before serving, so the preview always serves a fresh build.\n- **Pages deploy from GitHub Actions** (`actions/upload-pages-artifact` + `deploy-pages`) on pushes to `main`: install the wasm target, build, upload `site/`. CI also runs `cargo fmt --check`, `clippy -D warnings`, and `cargo test --workspace`. Turn on Pages for the repo (source: GitHub Actions) as part of this plan, with the user's OK, since it changes repo settings.\n\n## Implementation\n\n### 1. WASM bridge crate\n\n**New file**: `crates/simbiguity-circuits-wasm/Cargo.toml`: `crate-type = [\"cdylib\", \"rlib\"]` (the rlib so native tests link)\n**New file**: `crates/simbiguity-circuits-wasm/src/lib.rs`: handle table, exports, status codes, `last_error`\n**New file**: `crates/simbiguity-circuits-wasm/src/alloc.rs`: `sb_alloc(len)` / `sb_free(ptr, len)` so JS can pass byte buffers in\n\n### 2. JS loader and wrapper\n\n**New file**: `site/js/simbiguity.js`: `loadSimbiguity(url)` → typed wrappers; documented line by line as embedding docs\n\n### 3. Hello-circuit demo\n\n**New file**: `site/demos/hello-circuit/index.html`: an explainer paragraph, an SVG circuit (battery, switch, bulb), a clickable switch, live readouts (V, I, P), and a brightness slider for battery voltage that shows P ∝ V² and the bulb blowing above its rating\n**New file**: `site/demos/hello-circuit/demo.js`\n**File**: `site/index.html`: link to the demo\n\n### 4. Build + dev server\n\n**New file**: `scripts/build-site.sh`: cargo build for wasm32 + copy to `site/pkg/`\n**File**: `.codeyam/editor.json`: `apps[0].startCommand` becomes a build-then-serve command (keep the literal app port `4780`, which the editor rewrites to its internal port; it runs inside `site/`, so call the script as `../scripts/build-site.sh`)\n\n### 5. CI + Pages\n\n**New file**: `.github/workflows/ci.yml`: fmt, clippy, test, wasm build\n**New file**: `.github/workflows/pages.yml`: build `site/` and deploy to GitHub Pages on `main`\n\n## Reused existing code\n\n- `CircuitSim` / `Solution` / `CircuitIssue` from `simbiguity-circuits` (plan: circuits DC)\n- `site/index.html` landing page and the `landing-coming-soon` scenario\n\n## Tests (TDD — written first)\n\n- Native unit tests of every export: create/build/solve/read brightness; an unknown handle → error status and a readable `last_error`; a short circuit → status + message; toggle round-trip; the alloc/free round-trip.\n- Handle hygiene: `circuit_free` invalidates the handle, and double free is an error, not UB.\n- A codeyam scenario for the demo page in two states, **switch open (bulb dark)** and **switch closed (bulb lit)**, seeded through the URL hash (`#closed`). That makes the capture deterministic and proves the WASM path end to end in a real browser.\n\n## Scenarios to Demonstrate\n\n- Hello circuit, switch open: dark bulb, 0 A readout\n- Hello circuit, switch closed: lit bulb, real V/I/P\n- Overvoltage: blown bulb with the explanation shown\n- Short circuit: the diagnostic message rendered on the page",
+  "description": "Added simbiguity-circuits-wasm, a hand-written (no wasm-bindgen) WASM bridge exposing the DC circuit engine through a handle table, issue/status codes and an allocator; a small JS loader (site/js/simbiguity.js, loadCircuits) and the first static demo page, a battery/switch/bulb circuit whose state, readouts and explanations live in tested pure modules (27 node tests, 16 Rust bridge tests). CI gains a site job and a pages.yml workflow builds the static site for GitHub Pages. Scope verdict: DELIVERED the first slice of the hand-written WASM interface (circuits crate only) and the first static HTML demo; DEFERRED physics, market, animation, WebGL2 rendering and further demos to their own roadmap plans (user-decided). Still open: GitHub Pages is not yet enabled in repo settings (needs the user), and the CI/Pages workflows have not run on GitHub Actions yet.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Ftests.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy.md\t.codeyam/plans/completed/hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-coming-soon.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-coming-soon--desktop.png",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-coming-soon--desktop.png.hash",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/1023884d367ab43137b2f17ad39371dabab2ba36b734028cf8cf04e8e48924f0.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/5eedf329f97ce0495f284d7415f01db5bf5ebeb1771997300c43c8b7b0de8608.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/69fcc015127ba817682376b65d45936d3df8c9853ac138bd8117aadb080e0f1a.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7aa2a97f02b3abf8043cc375f2e7aadd9ac53e752808aa1cc18d3e70caba334e.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7c553de0dec05701752f4e4a4e3b1353987bfd6e408a834e0618c556f54db17d.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "status": "added"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "status": "added"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "README.md",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/alloc.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/issues.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "scripts/build-site.sh",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/demo.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/explain.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/explain.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/index.html",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/readouts.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/readouts.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/state.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/hello-circuit/state.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/index.html",
+      "status": "modified"
+    },
+    {
+      "path": "site/js/simbiguity.js",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits-wasm%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/scripts.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fhello-circuit.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fjs.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/site-demos-hello-circuit-index-html.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/site-index-html.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hello-circuit-bulb-blown.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hello-circuit-dim-at-low-voltage.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hello-circuit-lit-at-rated-voltage.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hello-circuit-short-circuit.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hello-circuit-switch-open.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-demos.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-bulb-blown--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-bulb-blown--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-dim-at-low-voltage--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-dim-at-low-voltage--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-lit-at-rated-voltage--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-lit-at-rated-voltage--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-short-circuit--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-short-circuit--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-switch-open--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hello-circuit-switch-open--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-demos--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/79f2613d7797057f023b15c67e985575ab29b1ad06afb4c6c416f6a5be91a710.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/cbc6c5ea057caec48fbb9b39dfc7fc8d8682090df6c7262862b6733dcaaed15f.json",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Hello Circuit - Bulb Blown",
+      "screenshotPath": "hello-circuit-bulb-blown--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Dim at Low Voltage",
+      "screenshotPath": "hello-circuit-dim-at-low-voltage--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Lit at Rated Voltage",
+      "screenshotPath": "hello-circuit-lit-at-rated-voltage--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Short Circuit",
+      "screenshotPath": "hello-circuit-short-circuit--desktop.png"
+    },
+    {
+      "name": "Hello Circuit - Switch Open",
+      "screenshotPath": "hello-circuit-switch-open--desktop.png"
+    },
+    {
+      "name": "Landing - Demos",
+      "screenshotPath": "landing-demos--desktop.png"
+    }
+  ]
+}

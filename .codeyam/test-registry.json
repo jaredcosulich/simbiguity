@@ -235,6 +235,78 @@
       "runner": "cargo"
     },
     {
+      "description": "The filament resistance follows from the 12 V / 6 W rating.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › derives the filament resistance from the rating",
+      "line": 62,
+      "registeredAt": "2026-11-26T17:56:56.111422833+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A blown bulb quotes the wattage it would have drawn.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains a blown bulb with the power it would draw",
+      "line": 18,
+      "registeredAt": "2026-11-26T17:56:56.111260961+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Full brightness works through Ohm's law with the engine's current.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains a fully lit bulb with Ohm's law",
+      "line": 33,
+      "registeredAt": "2026-11-26T17:56:56.111324635+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A short wins over everything else and is marked as an issue.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains a short circuit first",
+      "line": 11,
+      "registeredAt": "2026-11-26T17:56:56.111224451+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An open switch explains the gap in the loop.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains an open switch",
+      "line": 26,
+      "registeredAt": "2026-11-26T17:56:56.111298173+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A closed loop at 0 V carries no current.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › explains zero volts as no current",
+      "line": 50,
+      "registeredAt": "2026-11-26T17:56:56.111374559+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Engine messages pass through verbatim, in order.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › passes engine messages through",
+      "line": 56,
+      "registeredAt": "2026-11-26T17:56:56.111398733+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Partial brightness reports the percentage of the rating.",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "explanation › titles partial brightness as lit or dim",
+      "line": 42,
+      "registeredAt": "2026-11-26T17:56:56.111350072+00:00",
+      "runner": "node"
+    },
+    {
       "description": "abs and copysign only touch the sign bit, so they must preserve signed zero, infinities and the magnitude exactly.",
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
@@ -440,6 +512,78 @@
       "line": 248,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "A number gets its unit and two decimals by default.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReading › formats a number with its unit",
+      "line": 22,
+      "registeredAt": "2026-11-26T17:56:56.110987113+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The digits argument controls the decimals.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReading › honours the digits argument",
+      "line": 27,
+      "registeredAt": "2026-11-26T17:56:56.111012431+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Zero is a real reading and must not read as missing.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReading › keeps zero as a reading",
+      "line": 38,
+      "registeredAt": "2026-11-26T17:56:56.111062733+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "No value is an em dash, never \"null A\" or \"NaN A\".",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "formatReading › shows an em dash for null or undefined",
+      "line": 32,
+      "registeredAt": "2026-11-26T17:56:56.111037018+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The rated voltage is the default, so it is left out of the hash.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › omits v at the rated voltage",
+      "line": 53,
+      "registeredAt": "2026-11-26T17:56:56.110936281+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The default state needs no hash at all, so the plain URL stays clean.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › returns an empty string for the default state",
+      "line": 43,
+      "registeredAt": "2026-11-26T17:56:56.110886139+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Every hash it writes reads back as the same state.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › round-trips through stateFromHash",
+      "line": 58,
+      "registeredAt": "2026-11-26T17:56:56.110960813+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Tokens come out in a fixed order: closed, short, then v.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "hashFromState › writes tokens in a fixed order",
+      "line": 48,
+      "registeredAt": "2026-11-26T17:56:56.110911643+00:00",
+      "runner": "node"
     },
     {
       "description": "An ideal battery shorted by a wire is fatal: no solution, a named ShortCircuit with unlimited current.",
@@ -1000,6 +1144,51 @@
       "runner": "cargo"
     },
     {
+      "description": "Only a blown-bulb issue naming this bulb counts as blown.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "readouts › flags blown only for this bulb",
+      "line": 81,
+      "registeredAt": "2026-11-26T17:56:56.111170243+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "The battery label tracks the slider, not the engine.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "readouts › labels the battery from the state voltage",
+      "line": 88,
+      "registeredAt": "2026-11-26T17:56:56.111195161+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A lit loop shows the engine's numbers and marks the wires live.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "readouts › reads a lit loop",
+      "line": 45,
+      "registeredAt": "2026-11-26T17:56:56.111095491+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An open switch: zero current, dark bulb, wires not live.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "readouts › reads an open loop as dark and not flowing",
+      "line": 57,
+      "registeredAt": "2026-11-26T17:56:56.111120594+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "No solution, as with a short: every readout is a dash.",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "readouts › shows dashes when there is no solution",
+      "line": 67,
+      "registeredAt": "2026-11-26T17:56:56.111145042+00:00",
+      "runner": "node"
+    },
+    {
       "description": "A real battery shorted by a wire still solves, reporting emf / r.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -1135,6 +1324,60 @@
       "runner": "cargo"
     },
     {
+      "description": "The leading # is optional, so location.hash and a bare string both work.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › accepts a hash without the leading hash sign",
+      "line": 19,
+      "registeredAt": "2026-11-26T17:56:56.110785437+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Voltages outside the slider range are clamped, not rejected.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › clamps volts to the slider range",
+      "line": 24,
+      "registeredAt": "2026-11-26T17:56:56.110811433+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "A garbled or empty v= falls back to the rated voltage instead of NaN or 0.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › falls back to rated volts for an unreadable v token",
+      "line": 30,
+      "registeredAt": "2026-11-26T17:56:56.110836391+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Tokens the demo does not know are ignored.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › ignores unknown tokens",
+      "line": 36,
+      "registeredAt": "2026-11-26T17:56:56.110861152+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "An empty hash is the starting state: switch open, no bypass, rated voltage.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › reads an empty hash as the default state",
+      "line": 8,
+      "registeredAt": "2026-11-26T17:56:56.110722692+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Each token switches on its own flag, in any order.",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "stateFromHash › reads closed, short and v tokens in any order",
+      "line": 14,
+      "registeredAt": "2026-11-26T17:56:56.110758585+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Flipping a switch through the Simulation API completes the circuit at the next step.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -1150,6 +1393,150 @@
       "key": "switch_lights_a_bulb",
       "line": 114,
       "registeredAt": "2026-11-26T17:33:52.512695894+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Calls on a bad handle fail cleanly, including the pointer and float exports.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::bad_handle_fails_every_export",
+      "line": 229,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The bypass shorts the battery: no solution, every result NaN, issue 2.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::bypass_short_has_no_solution",
+      "line": 203,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Freeing twice, or freeing handle 0, is ERR_HANDLE with a readable message.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::circuit_free_rejects_dead_and_zero_handles",
+      "line": 80,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A new circuit gets a non-zero handle, and handles are distinct.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::circuit_new_returns_distinct_nonzero_handles",
+      "line": 70,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "set_value takes effect at the next solve: half the volts, a quarter the power.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::circuit_set_value_changes_next_solve",
+      "line": 174,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Toggle reports the new state each time.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::circuit_toggle_returns_new_state",
+      "line": 135,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Closed at its rated 12 V the 24 Ω bulb draws 0.5 A and 6 W, full brightness.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::closed_loop_lights_bulb_at_rating",
+      "line": 157,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An unknown component id is ERR_COMPONENT; the wrong kind is ERR_KIND.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::component_calls_check_id_and_kind",
+      "line": 123,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A freed handle is never reused, so it cannot alias a newer circuit.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::freed_handle_stays_dead_after_new_circuits",
+      "line": 91,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Nodes and components are numbered from 0 in creation order.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::ids_count_up_in_creation_order",
+      "line": 101,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The issue mapping agrees with IssueKind in site/js/simbiguity.js.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::issue_kind_code_and_part_match_the_engine",
+      "line": 238,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Issue messages arrive through sb_out, and a past-the-end index is ERR_INDEX.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::issue_messages_and_index_bounds",
+      "line": 215,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "With the switch open the loop is broken: no current, a dark bulb, and the engine names the open circuit.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::open_switch_carries_no_current",
+      "line": 144,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "At 20 V the bulb blows and stays blown until replaced.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::overvoltage_blows_bulb_until_replaced",
+      "line": 183,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Placing a part on a node that does not exist is ERR_NODE.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::place_rejects_unknown_node",
+      "line": 113,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A buffer from sb_alloc is writable and can be freed; null frees are no-ops.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::sb_alloc_round_trip",
+      "line": 266,
+      "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
       "runner": "cargo"
     },
     {

@@ -41,7 +41,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Placed",
         "crates/simbiguity-circuits/src/netlist.rs::Placed::component",
         "crates/simbiguity-circuits/src/wires.rs::node_inflows",
-        "crates/simbiguity-circuits/tests/analysis.rs::overloaded_bulb_blows_and_opens_the_circuit"
+        "crates/simbiguity-circuits/tests/analysis.rs::overloaded_bulb_blows_and_opens_the_circuit",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Component::Battery",
@@ -340,7 +342,11 @@
         "crates/simbiguity-circuits/tests/analysis.rs::overloaded_bulb_blows_and_opens_the_circuit",
         "crates/simbiguity-circuits/tests/analysis.rs::parallel_ideal_batteries_are_a_voltage_source_loop",
         "crates/simbiguity-circuits/tests/analysis.rs::real_battery_short_reports_emf_over_r",
-        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step"
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
+        "crates/simbiguity-circuits-wasm/src/issues.rs::issue_kind_code",
+        "crates/simbiguity-circuits-wasm/src/issues.rs::issue_part_index",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue::BulbBlown",
@@ -1248,7 +1254,13 @@
         "crates/simbiguity-circuits/tests/analysis.rs::solved",
         "crates/simbiguity-circuits/tests/analysis.rs::solving_is_deterministic",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
-        "crates/simbiguity-circuits/tests/analysis.rs::wire_carries_the_loop_current"
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb",
+        "crates/simbiguity-circuits/tests/analysis.rs::unbalanced_wheatstone_bridge_carries_known_current",
+        "crates/simbiguity-circuits/tests/analysis.rs::wire_carries_the_loop_current",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Component",
@@ -1634,7 +1646,10 @@
         "crates/simbiguity-circuits/src/solution.rs::Solution::power",
         "crates/simbiguity-circuits/src/solution.rs::Solution::voltage_across",
         "crates/simbiguity-circuits/src/solution.rs::brightness",
-        "crates/simbiguity-circuits/tests/analysis.rs::most_overloaded_series_bulb_blows_first_and_saves_the_other"
+        "crates/simbiguity-circuits/tests/analysis.rs::most_overloaded_series_bulb_blows_first_and_saves_the_other",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs::ComponentId::index",
@@ -1680,7 +1695,10 @@
         "crates/simbiguity-circuits/src/netlist.rs::ground",
         "crates/simbiguity-circuits/src/solution.rs::Solution",
         "crates/simbiguity-circuits/src/solution.rs::Solution::brightness",
-        "crates/simbiguity-circuits/src/solution.rs::Solution::node_voltage"
+        "crates/simbiguity-circuits/src/solution.rs::Solution::node_voltage",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs::ComponentId::index",
@@ -1815,7 +1833,8 @@
         "crates/simbiguity-circuits/src/sim.rs::Input",
         "crates/simbiguity-circuits/tests/analysis.rs::blown_bulb_persists_until_replaced",
         "crates/simbiguity-circuits/tests/analysis.rs::snapshot_round_trip_restores_state",
-        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step"
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs::ComponentId",
@@ -1885,7 +1904,12 @@
         "crates/simbiguity-circuits/src/sim.rs::Snapshot",
         "crates/simbiguity-circuits/tests/analysis.rs::blown_bulb_persists_until_replaced",
         "crates/simbiguity-circuits/tests/analysis.rs::snapshot_round_trip_restores_state",
-        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step"
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
@@ -2479,7 +2503,9 @@
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/wires.rs",
         "crates/simbiguity-circuits/src/wires.rs",
-        "crates/simbiguity-circuits/tests/analysis.rs"
+        "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": []
     },
@@ -2492,7 +2518,9 @@
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-circuits/src/solution.rs",
-        "crates/simbiguity-circuits/tests/analysis.rs"
+        "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs",
@@ -2621,7 +2649,10 @@
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-circuits/src/wires.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
-        "crates/simbiguity-circuits/tests/analysis.rs"
+        "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs",
@@ -2638,7 +2669,9 @@
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
-        "crates/simbiguity-circuits/tests/analysis.rs"
+        "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs",

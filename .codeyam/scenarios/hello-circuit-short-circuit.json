@@ -1,0 +1,15 @@
+{
+  "name": "Hello Circuit - Short Circuit",
+  "id": "820702f4-7e12-4868-8976-8e35cdd15e28",
+  "url": "/demos/hello-circuit/#closed&short",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T17:59:33Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/hello-circuit/index.html",
+  "description": "The bypass wire shorts the battery: the engine refuses to give a number, every readout is a dash, and the engine's own message is quoted."
+}

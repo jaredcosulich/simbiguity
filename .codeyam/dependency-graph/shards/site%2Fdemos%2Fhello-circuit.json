@@ -1,0 +1,228 @@
+{
+  "entities": {
+    "site/demos/hello-circuit/demo.js::$": {
+      "filePath": "site/demos/hello-circuit/demo.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::draw",
+        "site/demos/hello-circuit/demo.js::main",
+        "site/demos/hello-circuit/demo.js::showExplanation"
+      ],
+      "imports": [],
+      "name": "$"
+    },
+    "site/demos/hello-circuit/demo.js::__file_root__": {
+      "filePath": "site/demos/hello-circuit/demo.js",
+      "importedBy": [
+        "site/demos/hello-circuit/index.html::__file_root__"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/explain.js::explanation"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/hello-circuit/demo.js::draw": {
+      "filePath": "site/demos/hello-circuit/demo.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::main"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/demo.js::$",
+        "site/demos/hello-circuit/demo.js::showExplanation",
+        "site/demos/hello-circuit/explain.js::explanation",
+        "site/demos/hello-circuit/readouts.js::readouts"
+      ],
+      "name": "draw"
+    },
+    "site/demos/hello-circuit/demo.js::main": {
+      "filePath": "site/demos/hello-circuit/demo.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/demo.js::$",
+        "site/demos/hello-circuit/demo.js::draw",
+        "site/demos/hello-circuit/state.js::__file_root__",
+        "site/demos/hello-circuit/state.js::hashFromState",
+        "site/demos/hello-circuit/state.js::stateFromHash",
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "main"
+    },
+    "site/demos/hello-circuit/demo.js::showExplanation": {
+      "filePath": "site/demos/hello-circuit/demo.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::draw"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/demo.js::$"
+      ],
+      "name": "showExplanation"
+    },
+    "site/demos/hello-circuit/explain.js::__file_root__": {
+      "filePath": "site/demos/hello-circuit/explain.js",
+      "importedBy": [
+        "site/demos/hello-circuit/explain.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/state.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/hello-circuit/explain.js::explanation": {
+      "filePath": "site/demos/hello-circuit/explain.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::__file_root__",
+        "site/demos/hello-circuit/demo.js::draw",
+        "site/demos/hello-circuit/explain.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/state.js::__file_root__"
+      ],
+      "name": "explanation"
+    },
+    "site/demos/hello-circuit/explain.test.js::__file_root__": {
+      "filePath": "site/demos/hello-circuit/explain.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/explain.js::__file_root__",
+        "site/demos/hello-circuit/explain.js::explanation"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/hello-circuit/index.html::__file_root__": {
+      "filePath": "site/demos/hello-circuit/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/demo.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/hello-circuit/readouts.js::formatReading": {
+      "filePath": "site/demos/hello-circuit/readouts.js",
+      "importedBy": [
+        "site/demos/hello-circuit/readouts.js::readouts",
+        "site/demos/hello-circuit/readouts.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "formatReading"
+    },
+    "site/demos/hello-circuit/readouts.js::readouts": {
+      "filePath": "site/demos/hello-circuit/readouts.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::draw",
+        "site/demos/hello-circuit/readouts.test.js::__file_root__"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/readouts.js::formatReading"
+      ],
+      "name": "readouts"
+    },
+    "site/demos/hello-circuit/readouts.test.js::__file_root__": {
+      "filePath": "site/demos/hello-circuit/readouts.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/readouts.js::formatReading",
+        "site/demos/hello-circuit/readouts.js::readouts"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/hello-circuit/state.js::__file_root__": {
+      "filePath": "site/demos/hello-circuit/state.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::main",
+        "site/demos/hello-circuit/explain.js::__file_root__",
+        "site/demos/hello-circuit/explain.js::explanation",
+        "site/demos/hello-circuit/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/hello-circuit/state.js::hashFromState": {
+      "filePath": "site/demos/hello-circuit/state.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::main",
+        "site/demos/hello-circuit/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "hashFromState"
+    },
+    "site/demos/hello-circuit/state.js::stateFromHash": {
+      "filePath": "site/demos/hello-circuit/state.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::main",
+        "site/demos/hello-circuit/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "stateFromHash"
+    },
+    "site/demos/hello-circuit/state.test.js::__file_root__": {
+      "filePath": "site/demos/hello-circuit/state.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/state.js::__file_root__",
+        "site/demos/hello-circuit/state.js::hashFromState",
+        "site/demos/hello-circuit/state.js::stateFromHash"
+      ],
+      "name": "__file_root__"
+    }
+  },
+  "files": {
+    "site/demos/hello-circuit/demo.js": {
+      "importedBy": [
+        "site/demos/hello-circuit/index.html"
+      ],
+      "imports": [
+        "site/js/simbiguity.js",
+        "site/demos/hello-circuit/explain.js",
+        "site/demos/hello-circuit/readouts.js",
+        "site/demos/hello-circuit/state.js"
+      ]
+    },
+    "site/demos/hello-circuit/explain.js": {
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js",
+        "site/demos/hello-circuit/explain.test.js"
+      ],
+      "imports": [
+        "site/demos/hello-circuit/state.js"
+      ]
+    },
+    "site/demos/hello-circuit/explain.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/explain.js"
+      ]
+    },
+    "site/demos/hello-circuit/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/demo.js"
+      ]
+    },
+    "site/demos/hello-circuit/readouts.js": {
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js",
+        "site/demos/hello-circuit/readouts.test.js"
+      ],
+      "imports": []
+    },
+    "site/demos/hello-circuit/readouts.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/readouts.js"
+      ]
+    },
+    "site/demos/hello-circuit/state.js": {
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js",
+        "site/demos/hello-circuit/explain.js",
+        "site/demos/hello-circuit/state.test.js"
+      ],
+      "imports": []
+    },
+    "site/demos/hello-circuit/state.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/hello-circuit/state.js"
+      ]
+    }
+  }
+}

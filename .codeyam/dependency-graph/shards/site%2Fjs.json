@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "site/js/simbiguity.js::IssueKind": {
+      "filePath": "site/js/simbiguity.js",
+      "importedBy": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "imports": [],
+      "name": "IssueKind"
+    },
+    "site/js/simbiguity.js::SimbiguityError": {
+      "filePath": "site/js/simbiguity.js",
+      "importedBy": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "imports": [],
+      "name": "SimbiguityError"
+    },
+    "site/js/simbiguity.js::loadCircuits": {
+      "filePath": "site/js/simbiguity.js",
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js::main"
+      ],
+      "imports": [
+        "site/js/simbiguity.js::IssueKind",
+        "site/js/simbiguity.js::SimbiguityError"
+      ],
+      "name": "loadCircuits"
+    }
+  },
+  "files": {
+    "site/js/simbiguity.js": {
+      "importedBy": [
+        "site/demos/hello-circuit/demo.js"
+      ],
+      "imports": []
+    }
+  }
+}

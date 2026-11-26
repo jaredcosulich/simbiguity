@@ -1,0 +1,1412 @@
+{
+  "entities": {
+    "crates/simbiguity-circuits-wasm/src/alloc.rs::sb_alloc": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/alloc.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::sb_alloc_round_trip"
+      ],
+      "imports": [],
+      "name": "sb_alloc",
+      "namedMethods": [
+        "as_mut_ptr",
+        "forget",
+        "with_capacity"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/alloc.rs::sb_free": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/alloc.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::sb_alloc_round_trip"
+      ],
+      "imports": [],
+      "name": "sb_free",
+      "namedMethods": [
+        "from_raw_parts",
+        "is_null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/issues.rs::issue_kind_code": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/issues.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_kind"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue"
+      ],
+      "name": "issue_kind_code"
+    },
+    "crates/simbiguity-circuits-wasm/src/issues.rs::issue_part_index": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/issues.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_part"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue"
+      ],
+      "name": "issue_part_index",
+      "namedMethods": [
+        "index"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::RESULT_STRIDE": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve"
+      ],
+      "imports": [],
+      "name": "RESULT_STRIDE"
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_battery": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_battery",
+      "namedMethods": [
+        "battery",
+        "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_bulb": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_bulb",
+      "namedMethods": [
+        "bulb",
+        "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_resistor": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_resistor",
+      "namedMethods": [
+        "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_switch": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_switch",
+      "namedMethods": [
+        "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_wire": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_wire",
+      "namedMethods": [
+        "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_KIND",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail"
+      ],
+      "name": "circuit_bulb_brightness",
+      "namedMethods": [
+        "brightness",
+        "format",
+        "index",
+        "map",
+        "part",
+        "solution",
+        "state"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_free": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::remove"
+      ],
+      "name": "circuit_free",
+      "namedMethods": [
+        "remove"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_has_solution": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_has_solution",
+      "namedMethods": [
+        "from",
+        "is_some",
+        "solution",
+        "state"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_kind": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/issues.rs::issue_kind_code",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_issue_kind",
+      "namedMethods": [
+        "issue"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_message": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::output"
+      ],
+      "name": "circuit_issue_message",
+      "namedMethods": [
+        "issue",
+        "to_string"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_part": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/issues.rs::issue_part_index",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_issue_part",
+      "namedMethods": [
+        "issue"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_new": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "name": "circuit_new",
+      "namedMethods": [
+        "insert_empty"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_node": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_node",
+      "namedMethods": [
+        "add_node"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_KIND",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail"
+      ],
+      "name": "circuit_replace_bulb",
+      "namedMethods": [
+        "apply",
+        "circuit",
+        "component",
+        "format",
+        "index",
+        "part"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_results_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_results_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_value": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_set_value",
+      "namedMethods": [
+        "apply",
+        "part"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_solve": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_solve",
+      "namedMethods": [
+        "solve"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_toggle": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_KIND",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail"
+      ],
+      "name": "circuit_toggle",
+      "namedMethods": [
+        "apply",
+        "circuit",
+        "component",
+        "format",
+        "from",
+        "index",
+        "part"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_node",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_solve",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::RESULT_STRIDE",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::remove",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_COMPONENT",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_INDEX",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_NODE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail",
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId",
+        "crates/simbiguity-circuits/src/netlist.rs::NodeId",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Slot",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::add_node",
+      "namedMethods": [
+        "index",
+        "node",
+        "push",
+        "rebuild"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_INDEX",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::issue",
+      "namedMethods": [
+        "copied",
+        "format",
+        "get",
+        "issues",
+        "ok_or_else",
+        "state"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_NODE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail",
+        "crates/simbiguity-circuits/src/netlist.rs::NodeId"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::node",
+      "namedMethods": [
+        "copied",
+        "format",
+        "get",
+        "ok_or_else"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::NodeId"
+      ],
+      "name": "Slot::nodes"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_COMPONENT",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail",
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::part",
+      "namedMethods": [
+        "copied",
+        "format",
+        "get",
+        "ok_or_else"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId"
+      ],
+      "name": "Slot::parts"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits/src/component.rs::Component"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::place",
+      "namedMethods": [
+        "add",
+        "index",
+        "node",
+        "push",
+        "rebuild"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::rebuild",
+      "namedMethods": [
+        "circuit",
+        "clone",
+        "new"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::results"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
+      ],
+      "name": "Slot::sim"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::RESULT_STRIDE",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::solve",
+      "namedMethods": [
+        "brightness",
+        "clear",
+        "current",
+        "extend_from_slice",
+        "issues",
+        "len",
+        "power",
+        "solution",
+        "state",
+        "step",
+        "unwrap_or",
+        "voltage_across"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_new",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
+      ],
+      "name": "insert_empty",
+      "namedMethods": [
+        "borrow_mut",
+        "len",
+        "new",
+        "push",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::remove": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_free",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail"
+      ],
+      "name": "remove",
+      "namedMethods": [
+        "and_then",
+        "borrow_mut",
+        "checked_sub",
+        "format",
+        "get_mut",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_battery",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_bulb",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_resistor",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_switch",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_wire",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_has_solution",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_kind",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_message",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_part",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_node",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_len",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_value",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_solve",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_toggle",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::fail"
+      ],
+      "name": "with_slot",
+      "namedMethods": [
+        "and_then",
+        "as_mut",
+        "borrow_mut",
+        "checked_sub",
+        "format",
+        "get_mut",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::ERR_COMPONENT": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind"
+      ],
+      "imports": [],
+      "name": "ERR_COMPONENT"
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::remove",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bad_handle_fails_every_export",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::freed_handle_stays_dead_after_new_circuits"
+      ],
+      "imports": [],
+      "name": "ERR_HANDLE"
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::ERR_INDEX": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds"
+      ],
+      "imports": [],
+      "name": "ERR_INDEX"
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::ERR_KIND": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_toggle"
+      ],
+      "imports": [],
+      "name": "ERR_KIND"
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::ERR_NODE": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::place_rejects_unknown_node"
+      ],
+      "imports": [],
+      "name": "ERR_NODE"
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::OK": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_value",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::remove"
+      ],
+      "imports": [],
+      "name": "OK"
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::fail": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_toggle",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::remove",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "imports": [],
+      "name": "fail",
+      "namedMethods": [
+        "borrow_mut",
+        "into",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::last_error": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::place_rejects_unknown_node"
+      ],
+      "imports": [],
+      "name": "last_error",
+      "namedMethods": [
+        "borrow",
+        "clone",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::output": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_message"
+      ],
+      "imports": [],
+      "name": "output",
+      "namedMethods": [
+        "borrow_mut",
+        "len",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::sb_last_error_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles"
+      ],
+      "imports": [],
+      "name": "sb_last_error_len",
+      "namedMethods": [
+        "borrow",
+        "len",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::sb_out_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::out_string"
+      ],
+      "imports": [],
+      "name": "sb_out_len",
+      "namedMethods": [
+        "borrow",
+        "len",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs::sb_out_ptr": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::out_string"
+      ],
+      "imports": [],
+      "name": "sb_out_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "borrow",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::Hello": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bypass",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::main"
+      ],
+      "name": "Hello"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kind_code_and_part_match_the_engine",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced"
+      ],
+      "imports": [],
+      "name": "Hello::battery"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kind_code_and_part_match_the_engine",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced"
+      ],
+      "imports": [],
+      "name": "Hello::bulb"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bypass": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order"
+      ],
+      "imports": [],
+      "name": "Hello::bypass"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_toggle_returns_new_state",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::freed_handle_stays_dead_after_new_circuits",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kind_code_and_part_match_the_engine",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kinds",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::place_rejects_unknown_node",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::results",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::row"
+      ],
+      "imports": [],
+      "name": "Hello::h"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::main": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_toggle_returns_new_state",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order"
+      ],
+      "imports": [],
+      "name": "Hello::main"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::__file_root__": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::bad_handle_fails_every_export": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE"
+      ],
+      "name": "bad_handle_fails_every_export",
+      "namedMethods": [
+        "is_nan",
+        "is_null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::last_error",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kinds",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::results"
+      ],
+      "name": "bypass_short_has_no_solution",
+      "namedMethods": [
+        "all",
+        "bulb",
+        "contains",
+        "h",
+        "is_nan",
+        "iter"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::last_error",
+        "crates/simbiguity-circuits-wasm/src/status.rs::sb_last_error_len",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+      ],
+      "name": "circuit_free_rejects_dead_and_zero_handles",
+      "namedMethods": [
+        "contains",
+        "format",
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::close",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::row"
+      ],
+      "name": "circuit_set_value_changes_next_solve",
+      "namedMethods": [
+        "battery",
+        "bulb",
+        "h"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_toggle_returns_new_state": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::main",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello"
+      ],
+      "name": "circuit_toggle_returns_new_state",
+      "namedMethods": [
+        "h",
+        "main"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::close": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced"
+      ],
+      "imports": [],
+      "name": "close",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::close",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::row"
+      ],
+      "name": "closed_loop_lights_bulb_at_rating",
+      "namedMethods": [
+        "battery",
+        "bulb",
+        "h",
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_COMPONENT",
+        "crates/simbiguity-circuits-wasm/src/status.rs::last_error",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello"
+      ],
+      "name": "component_calls_check_id_and_kind",
+      "namedMethods": [
+        "battery",
+        "bulb",
+        "contains",
+        "h"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::freed_handle_stays_dead_after_new_circuits": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+      ],
+      "name": "freed_handle_stays_dead_after_new_circuits"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::hello": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_toggle_returns_new_state",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kind_code_and_part_match_the_engine",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bypass",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::main"
+      ],
+      "name": "hello",
+      "namedMethods": [
+        "from"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::ids_count_up_in_creation_order": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bypass",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::main",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello"
+      ],
+      "name": "ids_count_up_in_creation_order",
+      "namedMethods": [
+        "battery",
+        "bulb",
+        "bypass",
+        "h",
+        "main"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kind_code_and_part_match_the_engine": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello"
+      ],
+      "name": "issue_kind_code_and_part_match_the_engine",
+      "namedMethods": [
+        "battery",
+        "bulb",
+        "collect",
+        "contains",
+        "issue",
+        "map",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kinds": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+      ],
+      "name": "issue_kinds",
+      "namedMethods": [
+        "collect",
+        "map"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_INDEX",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::out_string"
+      ],
+      "name": "issue_messages_and_index_bounds",
+      "namedMethods": [
+        "h",
+        "is_empty",
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::close",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kinds",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::results",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::row"
+      ],
+      "name": "open_switch_carries_no_current",
+      "namedMethods": [
+        "contains",
+        "h",
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::out_string": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::sb_out_len",
+        "crates/simbiguity-circuits-wasm/src/status.rs::sb_out_ptr"
+      ],
+      "name": "out_string",
+      "namedMethods": [
+        "from_raw_parts",
+        "from_utf8",
+        "to_vec",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::battery",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::bulb",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::close",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_kinds",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::row"
+      ],
+      "name": "overvoltage_blows_bulb_until_replaced",
+      "namedMethods": [
+        "bulb",
+        "contains",
+        "find",
+        "h",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::place_rejects_unknown_node": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/status.rs::ERR_NODE",
+        "crates/simbiguity-circuits-wasm/src/status.rs::last_error",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+      ],
+      "name": "place_rejects_unknown_node",
+      "namedMethods": [
+        "contains"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::results": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::row"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+      ],
+      "name": "results",
+      "namedMethods": [
+        "from_raw_parts",
+        "to_vec"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::row": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::closed_loop_lights_bulb_at_rating",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::open_switch_carries_no_current",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::overvoltage_blows_bulb_until_replaced"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::results"
+      ],
+      "name": "row"
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::sb_alloc_round_trip": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/alloc.rs::sb_alloc",
+        "crates/simbiguity-circuits-wasm/src/alloc.rs::sb_free"
+      ],
+      "name": "sb_alloc_round_trip",
+      "namedMethods": [
+        "add",
+        "is_null",
+        "null_mut",
+        "write_bytes"
+      ]
+    }
+  },
+  "files": {
+    "crates/simbiguity-circuits-wasm/src/alloc.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
+      ],
+      "imports": []
+    },
+    "crates/simbiguity-circuits-wasm/src/issues.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/diagnostics.rs"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-circuits-wasm/src/alloc.rs",
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/alloc.rs",
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/diagnostics.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/status.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
+      ],
+      "imports": [],
+      "namedMethods": [
+        "as_ptr",
+        "borrow",
+        "new",
+        "with"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/alloc.rs",
+        "crates/simbiguity-circuits-wasm/src/alloc.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-circuits-wasm/src/status.rs"
+      ]
+    }
+  }
+}

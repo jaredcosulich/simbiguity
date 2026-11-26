@@ -20,6 +20,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "simbiguity-circuits-wasm"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-circuits",
+ "simbiguity-core",
+]
+
+[[package]]
 name = "simbiguity-core"
 version = "0.0.1"
 dependencies = [

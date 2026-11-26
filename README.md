@@ -39,6 +39,22 @@ lockstep on one clock.
 Interactive demos live in [`site/`](site/) and are published to GitHub Pages. They
 double as the reference for how your own project can embed the engines.
 
+- [Hello, circuit](site/demos/hello-circuit/) — a battery, a switch and a bulb, solved
+  live by `simbiguity-circuits` through the hand-written bridge in
+  [`crates/simbiguity-circuits-wasm`](crates/simbiguity-circuits-wasm) and the
+  ~150-line loader [`site/js/simbiguity.js`](site/js/simbiguity.js).
+
+To run them locally you need the `wasm32-unknown-unknown` target
+(`rustup target add wasm32-unknown-unknown`) and Python 3 for a static server:
+
+```sh
+sh scripts/build-site.sh            # builds the .wasm into site/pkg/
+python3 -m http.server -d site 8000 # then open http://localhost:8000
+```
+
+The demo pages' logic has its own tests, run with Node 22 or newer (no npm install needed):
+`node --test "site/**/*.test.js"`.
+
 ## License
 
 Licensed under either of

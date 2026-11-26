@@ -1,0 +1,19 @@
+[package]
+name = "simbiguity-circuits-wasm"
+description = "A hand-written C-ABI / WebAssembly bridge for simbiguity-circuits: opaque handles, status codes and shared linear memory, no wasm-bindgen."
+keywords = ["circuits", "wasm", "ffi", "simulation", "education"]
+categories = ["simulation", "wasm"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[lib]
+# cdylib → the .wasm the browser loads; rlib → native unit tests link it.
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+simbiguity-circuits = { path = "../simbiguity-circuits", version = "0.0.1", features = ["std"] }
+simbiguity-core = { path = "../simbiguity-core", version = "0.0.1", features = ["std"] }

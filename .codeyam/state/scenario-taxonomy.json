@@ -1,0 +1,35 @@
+{
+  "views": {
+    "HelloCircuitPage": {
+      "empty": {
+        "status": "n-a",
+        "reason": "The demo always builds the same fixed circuit; there is no list or data set that can be empty. The nearest state, switch open with no current, is the Switch Open scenario."
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "The page shows one fixed circuit, never a collection, so there is no single-item versus many distinction."
+      },
+      "typical": {
+        "status": "added"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "The page shows one fixed circuit, never a collection."
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "The loading text is replaced within milliseconds once the local wasm instantiates, so no stable capture of it exists."
+      },
+      "edge": {
+        "status": "added"
+      },
+      "error": {
+        "status": "added"
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "Every interacted state the controls can reach is linkable by URL hash and captured directly: open, lit, dim, blown and short."
+      }
+    }
+  }
+}

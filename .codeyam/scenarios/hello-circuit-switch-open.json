@@ -1,0 +1,15 @@
+{
+  "name": "Hello Circuit - Switch Open",
+  "id": "31d95d87-9c81-475c-b674-085ca6c8847d",
+  "url": "/demos/hello-circuit/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T17:59:33Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/hello-circuit/index.html",
+  "description": "The starting state: the switch is open, so no current flows and the explanation says why the bulb is dark."
+}

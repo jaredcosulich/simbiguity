@@ -1,5 +1,31 @@
 [
   {
+    "description": "The Hello, circuit demo page: SVG circuit, readouts panel, voltage slider and explanation panel.",
+    "filePath": "site/demos/hello-circuit/index.html",
+    "name": "HelloCircuitPage",
+    "scenarios": [
+      "hello-circuit-switch-open",
+      "hello-circuit-lit-at-rated-voltage",
+      "hello-circuit-dim-at-low-voltage",
+      "hello-circuit-bulb-blown",
+      "hello-circuit-short-circuit"
+    ],
+    "tags": [
+      "hello-circuit"
+    ]
+  },
+  {
+    "description": "The project landing page with the Demos list.",
+    "filePath": "site/index.html",
+    "name": "LandingPage",
+    "scenarios": [
+      "landing-demos"
+    ],
+    "tags": [
+      "hello-circuit"
+    ]
+  },
+  {
     "description": "Deterministic absolute value by clearing the sign bit.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "abs",
@@ -126,6 +152,177 @@
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
   },
   {
+    "description": "Places an ideal battery between two nodes and returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_battery",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Places a bulb rated at given volts and watts and returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_bulb",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Places a resistor between two nodes and returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_resistor",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Places an open or closed switch and returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_switch",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Places an ideal wire between two nodes and returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_wire",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Reads one bulb brightness from the last solve, NaN with a message on failure.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_bulb_brightness",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Frees a circuit; a dead or unknown handle is ERR_HANDLE, never undefined behaviour.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_free",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Reports whether the last solve produced a solution.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_has_solution",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Kind code of issue i, from 1 invalid value to 6 blown bulb.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_issue_kind",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Writes issue i plain-language explanation to the shared output string.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_issue_message",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Component or node id that issue i points at.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_issue_part",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Creates an empty circuit in the handle table and returns its non-zero handle.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_new",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Adds a junction to a circuit and returns its node id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_node",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Screws a fresh bulb in place of a blown one; non-bulbs are ERR_KIND.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_replace_bulb",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Number of f64 values in the results buffer.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_results_len",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of the last solve results, four f64 per component.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_results_ptr",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Sets a component main value such as battery EMF, applied at the next solve.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_set_value",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Solves the circuit, refreshes the shared results buffer and returns the issue count.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_solve",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Flips a switch and returns its new state; non-switches are ERR_KIND.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_toggle",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
     "description": "Keeps a ranged float draw half-open below hi using float next_down, for any sign of hi.",
     "filePath": "crates/simbiguity-core/src/rng.rs",
     "name": "clamp_below",
@@ -162,6 +359,21 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Writes the readouts view onto the SVG circuit and the control panel.",
+    "filePath": "site/demos/hello-circuit/demo.js",
+    "name": "draw",
+    "scenarios": [
+      "hello-circuit-switch-open",
+      "hello-circuit-lit-at-rated-voltage",
+      "hello-circuit-dim-at-low-voltage",
+      "hello-circuit-bulb-blown",
+      "hello-circuit-short-circuit"
+    ],
+    "tags": [
+      "hello-circuit"
+    ]
+  },
+  {
     "description": "One Gaussian elimination step storing L multipliers in place.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "eliminate_below",
@@ -189,6 +401,24 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Plain-language title and body explaining why the bulb looks the way it does.",
+    "filePath": "site/demos/hello-circuit/explain.js",
+    "name": "explanation",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "site/demos/hello-circuit/explain.test.js"
+  },
+  {
+    "description": "Records the last error message and returns the given status code.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "fail",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
     "description": "Reports one FloatingNode per connected island that has components but no battery or ground, naming its lowest node.",
     "filePath": "crates/simbiguity-circuits/src/mna.rs",
     "name": "floating_islands",
@@ -207,6 +437,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Formats a reading with its unit, or an em dash when there is none.",
+    "filePath": "site/demos/hello-circuit/readouts.js",
+    "name": "formatReading",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "site/demos/hello-circuit/readouts.test.js"
+  },
+  {
     "description": "Solves L y = P b with the implied unit diagonal.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "forward_substitute",
@@ -214,6 +453,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Writes the URL hash for a demo state; empty for the default state.",
+    "filePath": "site/demos/hello-circuit/state.js",
+    "name": "hashFromState",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "site/demos/hello-circuit/state.test.js"
+  },
+  {
+    "description": "Adds an empty circuit slot to the handle table and returns its handle.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+    "name": "insert_empty",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
     "description": "Lists an InvalidValue issue for each component with a non-physical value, in order.",
@@ -234,6 +491,24 @@
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
+    "description": "Maps a CircuitIssue to the numeric kind code the JS loader names in IssueKind.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/issues.rs",
+    "name": "issue_kind_code",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "The component or node index a CircuitIssue points at.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/issues.rs",
+    "name": "issue_part_index",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
     "description": "fdlibm cosine polynomial on the reduced interval.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "kernel_cos",
@@ -252,6 +527,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Returns a copy of the last error message for native callers and tests.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "last_error",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
     "description": "Deterministic natural log within 2 ulp via mantissa split and the atanh series.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "ln",
@@ -261,6 +545,21 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Fetches and instantiates the circuits WASM bridge and returns the Circuit class wrapping its exports.",
+    "filePath": "site/js/simbiguity.js",
+    "name": "loadCircuits",
+    "scenarios": [
+      "hello-circuit-switch-open",
+      "hello-circuit-lit-at-rated-voltage",
+      "hello-circuit-dim-at-low-voltage",
+      "hello-circuit-bulb-blown",
+      "hello-circuit-short-circuit"
+    ],
+    "tags": [
+      "hello-circuit"
+    ]
+  },
+  {
     "description": "One-call dense solve of A x = b by LU with partial pivoting.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "lu_solve",
@@ -268,6 +567,21 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Loads the engine, builds the hello circuit from the URL-hash state and wires the page controls.",
+    "filePath": "site/demos/hello-circuit/demo.js",
+    "name": "main",
+    "scenarios": [
+      "hello-circuit-switch-open",
+      "hello-circuit-lit-at-rated-voltage",
+      "hello-circuit-dim-at-low-voltage",
+      "hello-circuit-bulb-blown",
+      "hello-circuit-short-circuit"
+    ],
+    "tags": [
+      "hello-circuit"
+    ]
   },
   {
     "description": "Largest absolute matrix entry; scales the singular-pivot tolerance.",
@@ -333,6 +647,15 @@
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
   },
   {
+    "description": "Stores a string in the shared output buffer and returns its byte length.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "output",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
     "description": "Builds the normal f64 power of two 2^k from exponent bits; nested helper of scale_pow2.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "pow2",
@@ -351,6 +674,15 @@
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
+    "description": "Derives every on-screen reading and flag from one circuit solve.",
+    "filePath": "site/demos/hello-circuit/readouts.js",
+    "name": "readouts",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "site/demos/hello-circuit/readouts.test.js"
+  },
+  {
     "description": "Cody-Waite reduction of an angle to about plus or minus pi/4 plus a quadrant mod 4.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "reduce_quadrant",
@@ -358,6 +690,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Frees the slot behind a handle, leaving it dead forever so handles never alias.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+    "name": "remove",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
     "description": "Rounds to nearest integer, halfway cases away from zero.",
@@ -378,6 +719,60 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Allocates a byte buffer in linear memory for JS to fill.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/alloc.rs",
+    "name": "sb_alloc",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Releases a buffer from sb_alloc of the same length.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/alloc.rs",
+    "name": "sb_free",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Byte length of the last error message.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "sb_last_error_len",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of the last error message in linear memory.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "sb_last_error_ptr",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Byte length of the shared output string.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "sb_out_len",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Address of the string the last string-returning export produced.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
+    "name": "sb_out_ptr",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
     "description": "Multiplies by 2 to the k, splitting large shifts so the power-of-two factor never overflows.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "scale_pow2",
@@ -385,6 +780,21 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Fills the explanation panel with text nodes so engine messages are never parsed as HTML.",
+    "filePath": "site/demos/hello-circuit/demo.js",
+    "name": "showExplanation",
+    "scenarios": [
+      "hello-circuit-switch-open",
+      "hello-circuit-lit-at-rated-voltage",
+      "hello-circuit-dim-at-low-voltage",
+      "hello-circuit-bulb-blown",
+      "hello-circuit-short-circuit"
+    ],
+    "tags": [
+      "hello-circuit"
+    ]
   },
   {
     "description": "Deterministic sine via sin_cos.",
@@ -495,6 +905,15 @@
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
+    "description": "Reads the demo switch, bypass and voltage state from a URL hash, clamping volts to the slider.",
+    "filePath": "site/demos/hello-circuit/state.js",
+    "name": "stateFromHash",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "site/demos/hello-circuit/state.test.js"
+  },
+  {
     "description": "Deterministic tangent as sin over cos.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "tan",
@@ -547,5 +966,14 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/src/wires.rs"
+  },
+  {
+    "description": "Runs a closure on the circuit behind a handle or fails with ERR_HANDLE.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+    "name": "with_slot",
+    "tags": [
+      "hello-circuit"
+    ],
+    "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   }
 ]

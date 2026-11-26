@@ -196,6 +196,42 @@
         "rust-toolchain.toml"
       ],
       "testFilePatterns": []
+    },
+    {
+      "dependsOn": [
+        "simbiguity-math"
+      ],
+      "excludePatterns": [],
+      "name": "simbiguity-core",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-core"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-core/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
+    },
+    {
+      "dependsOn": [],
+      "excludePatterns": [],
+      "name": "simbiguity-math",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "simbiguity-math"
+      ],
+      "sourceFilePatterns": [
+        "crates/simbiguity-math/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
     }
   ],
   "testRunners": [

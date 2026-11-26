@@ -1,0 +1,40 @@
+{
+  "claimStartedAt": "2026-11-26T16:28:23Z",
+  "completedAt": "2026-11-26T16:52:51Z",
+  "completedBy": {
+    "agentProvider": "claude",
+    "codeyamEditorVersion": "0.1.7",
+    "currentStep": "backend-step15",
+    "machine": "codeyam-editor-codeyam-editor-2",
+    "pid": 6,
+    "priority": 0,
+    "selectedPlan": "foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng",
+    "sessionId": "7ecfb07f-7bf5-4898-990b-e69cc115fa15",
+    "startedAt": "2026-11-26T16:28:23Z"
+  },
+  "createdAt": "2026-11-26T12:42:15Z",
+  "deliverables": [
+    ".gitignore",
+    "Cargo.lock",
+    "crates/simbiguity-core/Cargo.toml",
+    "crates/simbiguity-core/src/clock.rs",
+    "crates/simbiguity-core/src/lib.rs",
+    "crates/simbiguity-core/src/lockstep.rs",
+    "crates/simbiguity-core/src/rng.rs",
+    "crates/simbiguity-core/src/simulation.rs",
+    "crates/simbiguity-math/Cargo.toml",
+    "crates/simbiguity-math/src/float.rs",
+    "crates/simbiguity-math/src/lib.rs",
+    "crates/simbiguity-math/src/linsolve.rs",
+    "crates/simbiguity-math/src/mat.rs",
+    "crates/simbiguity-math/src/quat.rs",
+    "crates/simbiguity-math/src/vec.rs",
+    "crates/simbiguity/Cargo.toml",
+    "crates/simbiguity/src/lib.rs"
+  ],
+  "journalTimestamp": "2026-11-26T16:52:51Z",
+  "mode": "backend",
+  "planFile": "completed/foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng.md",
+  "slug": "foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng",
+  "title": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)"
+}

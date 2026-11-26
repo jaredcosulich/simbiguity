@@ -1,0 +1,1100 @@
+{
+  "entities": {
+    "crates/simbiguity-core/src/clock.rs::DEFAULT_MAX_STEPS": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [],
+      "name": "DEFAULT_MAX_STEPS"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps",
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::new",
+        "crates/simbiguity-core/src/lockstep.rs::clock"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::DEFAULT_MAX_STEPS",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::accumulator_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::max_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::reset",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps",
+        "crates/simbiguity-core/src/clock.rs::StepCount",
+        "crates/simbiguity-core/src/clock.rs::StepCount::alpha",
+        "crates/simbiguity-core/src/clock.rs::StepCount::dropped",
+        "crates/simbiguity-core/src/clock.rs::StepCount::steps",
+        "crates/simbiguity-core/src/clock.rs::nanos_to_seconds",
+        "crates/simbiguity-core/src/clock.rs::to_nanos",
+        "crates/simbiguity-core/src/clock.rs::total_steps",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "FixedClock"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::accumulator_nanos": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::reset",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [],
+      "name": "FixedClock::accumulator_nanos"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::advance": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock::accumulator_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::max_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::StepCount",
+        "crates/simbiguity-core/src/clock.rs::StepCount::alpha",
+        "crates/simbiguity-core/src/clock.rs::StepCount::dropped",
+        "crates/simbiguity-core/src/clock.rs::StepCount::steps",
+        "crates/simbiguity-core/src/clock.rs::to_nanos",
+        "crates/simbiguity-core/src/clock.rs::total_steps",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::advance",
+      "namedMethods": [
+        "from",
+        "min",
+        "saturating_add"
+      ]
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::nanos_to_seconds",
+        "crates/simbiguity-core/src/clock.rs::total_steps",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::elapsed"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::max_steps": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps"
+      ],
+      "imports": [],
+      "name": "FixedClock::max_steps"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::new": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::DEFAULT_MAX_STEPS",
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::accumulator_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::max_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::to_nanos",
+        "crates/simbiguity-core/src/clock.rs::total_steps",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::new",
+      "namedMethods": [
+        "is_finite"
+      ]
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::reset": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock::accumulator_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::total_steps"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::reset"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::step": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos",
+        "crates/simbiguity-core/src/clock.rs::nanos_to_seconds",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::step"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [],
+      "name": "FixedClock::step_nanos"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::reset",
+        "crates/simbiguity-core/src/clock.rs::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::DEFAULT_MAX_STEPS",
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::accumulator_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::max_steps",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step_nanos",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps",
+        "crates/simbiguity-core/src/clock.rs::nanos_to_seconds",
+        "crates/simbiguity-core/src/clock.rs::to_nanos",
+        "crates/simbiguity-core/src/clock.rs::total_steps",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::total_steps"
+    },
+    "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::max_steps"
+      ],
+      "inherentMethod": true,
+      "name": "FixedClock::with_max_steps",
+      "namedMethods": [
+        "max"
+      ]
+    },
+    "crates/simbiguity-core/src/clock.rs::NANOS_PER_SECOND": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::nanos_to_seconds",
+        "crates/simbiguity-core/src/clock.rs::to_nanos"
+      ],
+      "imports": [],
+      "name": "NANOS_PER_SECOND"
+    },
+    "crates/simbiguity-core/src/clock.rs::StepCount": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::StepCount::alpha",
+        "crates/simbiguity-core/src/clock.rs::StepCount::dropped",
+        "crates/simbiguity-core/src/clock.rs::StepCount::steps"
+      ],
+      "name": "StepCount"
+    },
+    "crates/simbiguity-core/src/clock.rs::StepCount::alpha": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::StepCount"
+      ],
+      "imports": [],
+      "name": "StepCount::alpha"
+    },
+    "crates/simbiguity-core/src/clock.rs::StepCount::dropped": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::StepCount"
+      ],
+      "imports": [],
+      "name": "StepCount::dropped"
+    },
+    "crates/simbiguity-core/src/clock.rs::StepCount::steps": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::StepCount"
+      ],
+      "imports": [],
+      "name": "StepCount::steps"
+    },
+    "crates/simbiguity-core/src/clock.rs::nanos_to_seconds": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::NANOS_PER_SECOND",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "nanos_to_seconds"
+    },
+    "crates/simbiguity-core/src/clock.rs::to_nanos": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::NANOS_PER_SECOND",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "to_nanos",
+      "namedMethods": [
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-core/src/clock.rs::total_steps": {
+      "filePath": "crates/simbiguity-core/src/clock.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::reset",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps"
+      ],
+      "name": "total_steps"
+    },
+    "crates/simbiguity-core/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-core/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::StepCount",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable",
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Lockstep": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::new"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::StepCount",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::new",
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick",
+        "crates/simbiguity-core/src/lockstep.rs::clock",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Lockstep"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::StepCount",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with",
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "Lockstep::advance",
+      "namedMethods": [
+        "advance_with",
+        "iter_mut",
+        "tick"
+      ]
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::StepCount",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
+        "crates/simbiguity-core/src/lockstep.rs::clock",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "Lockstep::advance_with",
+      "namedMethods": [
+        "advance",
+        "step"
+      ]
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::new",
+        "crates/simbiguity-core/src/lockstep.rs::clock"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::new",
+        "crates/simbiguity-core/src/lockstep.rs::clock"
+      ],
+      "inherentMethod": true,
+      "name": "Lockstep::clock"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Lockstep::new": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
+        "crates/simbiguity-core/src/lockstep.rs::clock"
+      ],
+      "inherentMethod": true,
+      "name": "Lockstep::new"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::S": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick",
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-core/src/simulation.rs::Simulation"
+      ],
+      "name": "S"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::S::tick": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::S",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "S::tick",
+      "namedMethods": [
+        "step"
+      ]
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Steppable": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::S"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Steppable"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::Steppable::tick": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::S",
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Steppable::tick"
+    },
+    "crates/simbiguity-core/src/lockstep.rs::clock": {
+      "filePath": "crates/simbiguity-core/src/lockstep.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::new"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock"
+      ],
+      "name": "clock"
+    },
+    "crates/simbiguity-core/src/rng.rs::DEFAULT_STREAM": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::new"
+      ],
+      "imports": [],
+      "name": "DEFAULT_STREAM"
+    },
+    "crates/simbiguity-core/src/rng.rs::MULTIPLIER": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32"
+      ],
+      "imports": [],
+      "name": "MULTIPLIER"
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/rng.rs::Rng::new",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::DEFAULT_STREAM",
+        "crates/simbiguity-core/src/rng.rs::MULTIPLIER",
+        "crates/simbiguity-core/src/rng.rs::Rng::chance",
+        "crates/simbiguity-core/src/rng.rs::Rng::increment",
+        "crates/simbiguity-core/src/rng.rs::Rng::new",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_f64",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u64",
+        "crates/simbiguity-core/src/rng.rs::Rng::normal",
+        "crates/simbiguity-core/src/rng.rs::Rng::normal_with",
+        "crates/simbiguity-core/src/rng.rs::Rng::range",
+        "crates/simbiguity-core/src/rng.rs::Rng::range_u32",
+        "crates/simbiguity-core/src/rng.rs::Rng::spare_normal",
+        "crates/simbiguity-core/src/rng.rs::Rng::state",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream",
+        "crates/simbiguity-core/src/rng.rs::TWO_POW_NEG_53",
+        "crates/simbiguity-core/src/rng.rs::box_muller",
+        "crates/simbiguity-core/src/rng.rs::clamp_below"
+      ],
+      "name": "Rng"
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::chance": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::next_f64"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::chance",
+      "namedMethods": [
+        "next_f64"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::increment": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+      ],
+      "imports": [],
+      "name": "Rng::increment"
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::new": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::DEFAULT_STREAM",
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::new",
+      "namedMethods": [
+        "with_stream"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::next_f64": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::chance",
+        "crates/simbiguity-core/src/rng.rs::Rng::normal",
+        "crates/simbiguity-core/src/rng.rs::Rng::range"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u64",
+        "crates/simbiguity-core/src/rng.rs::TWO_POW_NEG_53"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::next_f64",
+      "namedMethods": [
+        "next_u64"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::next_u32": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u64",
+        "crates/simbiguity-core/src/rng.rs::Rng::range_u32",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::MULTIPLIER",
+        "crates/simbiguity-core/src/rng.rs::Rng::increment",
+        "crates/simbiguity-core/src/rng.rs::Rng::state"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::next_u32",
+      "namedMethods": [
+        "rotate_right",
+        "wrapping_add",
+        "wrapping_mul"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::next_u64": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_f64"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::next_u64",
+      "namedMethods": [
+        "from",
+        "next_u32"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::normal": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::normal_with"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::next_f64",
+        "crates/simbiguity-core/src/rng.rs::Rng::spare_normal",
+        "crates/simbiguity-core/src/rng.rs::box_muller"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::normal",
+      "namedMethods": [
+        "next_f64",
+        "take"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::normal_with": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::normal"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::normal_with",
+      "namedMethods": [
+        "normal"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::range": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::next_f64",
+        "crates/simbiguity-core/src/rng.rs::clamp_below"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::range",
+      "namedMethods": [
+        "next_f64"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::range_u32": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::range_u32",
+      "namedMethods": [
+        "from",
+        "next_u32",
+        "wrapping_neg"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::spare_normal": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::normal",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+      ],
+      "imports": [],
+      "name": "Rng::spare_normal"
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::state": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32",
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+      ],
+      "imports": [],
+      "name": "Rng::state"
+    },
+    "crates/simbiguity-core/src/rng.rs::Rng::with_stream": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::new"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::increment",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_u32",
+        "crates/simbiguity-core/src/rng.rs::Rng::spare_normal",
+        "crates/simbiguity-core/src/rng.rs::Rng::state"
+      ],
+      "inherentMethod": true,
+      "name": "Rng::with_stream",
+      "namedMethods": [
+        "next_u32",
+        "wrapping_add"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::TWO_POW_NEG_53": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::next_f64"
+      ],
+      "imports": [],
+      "name": "TWO_POW_NEG_53"
+    },
+    "crates/simbiguity-core/src/rng.rs::box_muller": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::normal"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::ln",
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "name": "box_muller",
+      "namedMethods": [
+        "ln",
+        "sin_cos",
+        "sqrt"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs::clamp_below": {
+      "filePath": "crates/simbiguity-core/src/rng.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::Rng",
+        "crates/simbiguity-core/src/rng.rs::Rng::range"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::next_down"
+      ],
+      "name": "clamp_below",
+      "namedMethods": [
+        "max",
+        "next_down"
+      ]
+    },
+    "crates/simbiguity-core/src/simulation.rs::Output": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::add",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::add_assign",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::sub"
+      ],
+      "name": "Output"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::new",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::step",
+        "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
+        "crates/simbiguity-core/src/clock.rs::nanos_to_seconds",
+        "crates/simbiguity-core/src/clock.rs::to_nanos",
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance",
+        "crates/simbiguity-core/src/lockstep.rs::Lockstep::advance_with",
+        "crates/simbiguity-core/src/lockstep.rs::S",
+        "crates/simbiguity-core/src/lockstep.rs::S::tick",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable",
+        "crates/simbiguity-core/src/lockstep.rs::Steppable::tick",
+        "crates/simbiguity-core/src/simulation.rs::Output",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::add",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::add_assign",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::from_hz",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::mul",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::sub",
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::step",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-core/src/simulation.rs::ZERO"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Output",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::add",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::add_assign",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::from_hz",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::get",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::mul",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::sub",
+        "crates/simbiguity-core/src/simulation.rs::ZERO"
+      ],
+      "name": "Seconds"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds::add": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Output",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Seconds::add"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds::add_assign": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Output",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Seconds::add_assign"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds::from_hz": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "inherentMethod": true,
+      "name": "Seconds::from_hz"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds::get": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "imports": [],
+      "inherentMethod": true,
+      "name": "Seconds::get"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds::mul": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Seconds::mul"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Seconds::sub": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Output",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Seconds::sub"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Simulation": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/lockstep.rs::S",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::apply",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::state",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::step"
+      ],
+      "name": "Simulation"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Simulation::apply": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "imports": [],
+      "name": "Simulation::apply"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Simulation::state": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "imports": [],
+      "name": "Simulation::state"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Simulation::step": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "Simulation::step"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Snapshot": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs::__file_root__",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::restore",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-core/src/simulation.rs::Seconds::get",
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::apply",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::state",
+        "crates/simbiguity-core/src/simulation.rs::Simulation::step",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::restore",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot"
+      ],
+      "name": "Snapshot"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Snapshot::restore": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot"
+      ],
+      "name": "Snapshot::restore"
+    },
+    "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot::restore"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "name": "Snapshot::snapshot"
+    },
+    "crates/simbiguity-core/src/simulation.rs::ZERO": {
+      "filePath": "crates/simbiguity-core/src/simulation.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "ZERO"
+    }
+  },
+  "files": {
+    "crates/simbiguity-core/src/clock.rs": {
+      "declaredBy": [
+        "crates/simbiguity-core/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-core/src/lockstep.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs"
+      ]
+    },
+    "crates/simbiguity-core/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-core/src/rng.rs",
+        "crates/simbiguity-core/src/simulation.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-core/src/rng.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-core/src/rng.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs"
+      ]
+    },
+    "crates/simbiguity-core/src/lockstep.rs": {
+      "declaredBy": [
+        "crates/simbiguity-core/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs"
+      ]
+    },
+    "crates/simbiguity-core/src/rng.rs": {
+      "declaredBy": [
+        "crates/simbiguity-core/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/simulation.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs"
+      ]
+    },
+    "crates/simbiguity-core/src/simulation.rs": {
+      "declaredBy": [
+        "crates/simbiguity-core/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-core/src/clock.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-core/src/lockstep.rs",
+        "crates/simbiguity-core/src/lockstep.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/rng.rs"
+      ]
+    }
+  }
+}

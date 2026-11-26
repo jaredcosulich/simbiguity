@@ -1,0 +1,20 @@
+[package]
+name = "simbiguity-math"
+description = "Zero-dependency, no_std math for simbiguity: vectors, quaternions, matrices, a dense linear solver and deterministic float functions."
+keywords = ["math", "linear-algebra", "no-std", "simulation", "education"]
+categories = ["mathematics", "no-std", "simulation"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+# Adds `std::error::Error` impls. The float functions never switch to std's
+# versions: they stay bit-identical on every platform either way, which is
+# what keeps simulations deterministic across native and WASM.
+std = []
+
+[dependencies]

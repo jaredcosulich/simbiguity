@@ -1,0 +1,203 @@
+{
+  "timestamp": "2026-11-26T16:52:51Z",
+  "title": "Foundations: simbiguity-math and simbiguity-core",
+  "type": "feature",
+  "userRequest": "## Summary\n\nLay the two foundation crates every simbiguity engine builds on: **`simbiguity-math`** (vectors, matrices, quaternions, and a dense linear solver) and **`simbiguity-core`** (the shared contracts that let engines compose: the `Simulation` trait, a fixed-timestep clock, a deterministic seeded RNG, and snapshot/restore). Both have zero external dependencies, are `#![no_std]` + `alloc`, and are independently importable. The circuit solver, physics, markets and animation crates all depend on these. Getting the contracts right here is what makes \"a circuit drives a motor that spins a rigid body, stepped in lockstep\" possible later.\n\n## Key Decisions\n\n- **Zero dependencies, `no_std` + `alloc`.** Engines must run in the browser (WASM), natively, and on small devices. `std` is only enabled behind an opt-in `std` feature (for `Error` impls and float intrinsics). Without `std`, float functions (`sqrt`, `sin`, …) need a source. Provide them in `simbiguity-math::float` as small, documented, tested implementations (or `core::intrinsics`-free polynomial approximations), rather than pulling `libm`.\n- **`f64` by default, generic later only if needed.** Simulation accuracy matters more than GPU-friendliness at this layer. The renderer converts to `f32` at its boundary. No premature `Scalar` trait.\n- **The `Simulation` contract.** `trait Simulation { type State; type Input; fn step(&mut self, dt: Seconds); fn apply(&mut self, input: Self::Input); fn state(&self) -> &Self::State; }`, plus `Snapshot: Simulation` with `snapshot()` / `restore()`. Deterministic: the same inputs at the same steps give bit-identical states. This is what makes puzzle checking, undo, and replay exact.\n- **Fixed-timestep clock with an accumulator.** `FixedClock::advance(real_dt) -> StepCount` yields whole fixed steps plus an interpolation alpha for rendering. Several simulations share one clock to run in lockstep.\n- **RNG: a documented PCG32 (or SplitMix64 seeding xoshiro256\\*\\*), seeded explicitly.** There is no global or thread RNG: every random draw is reproducible from the seed.\n- **Dense LU with partial pivoting** is the first solver: it is correct, readable, and plenty for puzzle-sized circuits (tens of nodes). Report singular systems as a typed error, because the circuit crate turns that into \"short circuit\" or \"floating node\" messages. Sparse solvers come later if a demo needs them.\n- **Readable source is a feature.** Each public item carries a doc comment that teaches (what a quaternion is for, why pivoting matters), since learners read this code.\n\n## Implementation\n\n### 1. `simbiguity-math`\n\n**New file**: `crates/simbiguity-math/Cargo.toml`\n**New file**: `crates/simbiguity-math/src/lib.rs`\n**New file**: `crates/simbiguity-math/src/vec.rs`: `Vec2`, `Vec3` (add/sub/scale, dot, cross, length, normalize, lerp)\n**New file**: `crates/simbiguity-math/src/quat.rs`: `Quat` (axis-angle, multiply, rotate vector, slerp, normalize)\n**New file**: `crates/simbiguity-math/src/mat.rs`: `Mat4` (identity, multiply, translate/rotate/scale, perspective, look_at, inverse), plus a heap `DenseMatrix` for solvers\n**New file**: `crates/simbiguity-math/src/linsolve.rs`: `lu_solve(a, b) -> Result<Vec<f64>, SolveError>` with partial pivoting; `SolveError::Singular { pivot_row }`\n**New file**: `crates/simbiguity-math/src/float.rs`: `no_std` float functions with documented error bounds\n\n### 2. `simbiguity-core`\n\n**New file**: `crates/simbiguity-core/Cargo.toml`\n**New file**: `crates/simbiguity-core/src/lib.rs`\n**New file**: `crates/simbiguity-core/src/simulation.rs`: `Simulation`, `Snapshot`, `Seconds` newtype\n**New file**: `crates/simbiguity-core/src/clock.rs`: `FixedClock` (accumulator, max-steps-per-frame guard against the \"spiral of death\", interpolation alpha)\n**New file**: `crates/simbiguity-core/src/rng.rs`: seeded RNG (`next_u32`, `next_f64` in [0,1), `range`, `normal` via Box–Muller)\n**New file**: `crates/simbiguity-core/src/lockstep.rs`: a tiny `Lockstep` runner that steps several `Simulation`s on one clock, showing composition\n\n### 3. Wire into the umbrella crate\n\n**File**: `crates/simbiguity/src/lib.rs`\n\nRe-export `math` and `core` behind default-on features (`math`, `core`), so `simbiguity = { default-features = false, features = [\"math\"] }` works.\n\n### 4. Register the new crates with codeyam\n\nRe-run `codeyam-editor editor configure-test-commands` so each crate gets a test partition with `dependsOn` from the manifest graph, then `bootstrap-registry`.\n\n## Reused existing code\n\n- Greenfield: no engine code exists yet. Uses the workspace settings in `Cargo.toml` (`workspace.package`, the `crates/*` member glob) and the umbrella crate `crates/simbiguity/src/lib.rs`.\n\n## Tests (TDD — written first)\n\n- Vector/quaternion identities: `a × b ⟂ a`, `|q·v| = |v|` for unit `q`, slerp endpoints, `Mat4 · inverse ≈ I`.\n- `lu_solve`: a known 3×3 system; a system that needs pivoting (zero on the diagonal); a singular matrix → `Singular`; a 1×1; an empty system.\n- `float`: `sqrt`/`sin`/`cos`/`exp` within the documented error bound across ranges, including edge values (0, negative, large).\n- `FixedClock`: exact step counts for uneven frame times; the alpha is in [0,1); a long stall is capped at max steps.\n- RNG: the same seed gives the same sequence; different seeds diverge; the `range` bounds hold; the mean/variance of `normal` are near (0,1) over N draws (deterministic, so the test is exact).\n- `Snapshot`: step → snapshot → step → restore → step gives the identical state to stepping straight through.\n- `Lockstep`: two toy simulations stay in step across uneven frames.\n\n## Scenarios to Demonstrate\n\n- Library-only plan, no visual surface yet. The public test-results page (a later plan) is where these tests become visible.",
+  "description": "Adds two zero-dependency, no_std-capable crates. simbiguity-math: pure-Rust fdlibm-style float functions (sqrt, sin/cos/tan, exp, ln, atan/atan2, asin/acos, next_down), Vec3, Quat, Mat4, dense matrices, and an LU linear solver. simbiguity-core: the Simulation contract (Steppable::tick), FixedClock with integer-nanosecond accumulation, PCG32 seeded Rng, and snapshots. 81 in-file unit tests, all green.\n\nScope verdict: DELIVERED zero-dependency-rust-simulation-crates-shared. DEFERRED (decided by user, later roadmap plans; this cycle is foundations only): circuit-simulation, physics-simulation, market-simulation, animation-support, from-scratch-3d-rendering-via-a-webgl2-renderer, hand-written-wasm-interface-exposing-the-crates, static-html-demos-embedding-the-simulations. No agent-decided deferrals.\n\nDeviations from plan: float functions are ALWAYS pure Rust even with the std feature (std only adds Error impls) so native and WASM results are bit-identical. FixedClock banks integer nanoseconds; a step rounds to the nearest ns (1/60 s = 16 666 667 ns). The Steppable method is named tick, not step, to avoid ambiguity with Simulation::step. float.rs allows clippy::excessive_precision to keep fdlibm constants verbatim. reconcile-registry --auto-apply was used instead of the plan's bootstrap-registry. Bug fixed beyond plan: the Rng::range upper clamp used hi.to_bits() - 1, which panics for hi = 0.0 and steps upward for negative hi; replaced with a new public float::next_down (MSRV 1.80 lacks f64::next_down). fdlibm constants and the PCG32 reference sequence were written from memory and are verified by platform-accuracy and reference-sequence tests. sin/cos accuracy is claimed only for |x| < 1.6e6.\n\nFast Commit: the full audit, registry/glossary reconcile, and screenshot recapture are owed via session-finalize before merge (known advisories: stale dependency screenshots, Rust toolchain not pinned).",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/.claude%2Fhooks.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng.md\t.codeyam/plans/completed/foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-metrics.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-playwright.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-targeting.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity/Cargo.toml",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/.codeyam.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-math%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/first-build-session.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/project-deliverables.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenario-content-probe.js",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenario-visual-state.js",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-coming-soon--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/red-proofs/foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/3a8676cba6f12414e9c00f95d778999c501e6edc906bc99642e27eebbac207c0.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/69fcc015127ba817682376b65d45936d3df8c9853ac138bd8117aadb080e0f1a.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7aa2a97f02b3abf8043cc375f2e7aadd9ac53e752808aa1cc18d3e70caba334e.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/fd6b6ad45876fe489a4c6a97b5f321adb9345a09f1e94c504294db6393075b41.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/src/clock.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/src/lockstep.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/src/rng.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-core/src/simulation.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/src/float.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/src/linsolve.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/src/mat.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/src/quat.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-math/src/vec.rs",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Landing - Coming Soon",
+      "screenshotPath": "landing-coming-soon--desktop.png"
+    }
+  ]
+}

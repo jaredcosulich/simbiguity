@@ -176,8 +176,8 @@
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
         ".claude/hooks/editor-pretool-hook.py::_is_non_executing_runner_call",
-        ".claude/hooks/editor-pretool-hook.py::_test_runner_index",
-        ".claude/hooks/editor-pretool-hook.py::is_narrowed_refresh_only"
+        ".claude/hooks/editor-pretool-hook.py::_is_refresh_tests",
+        ".claude/hooks/editor-pretool-hook.py::_test_runner_index"
       ],
       "imports": [],
       "name": "_codeyam_verb"
@@ -255,6 +255,16 @@
         ".claude/hooks/editor-pretool-hook.py::block"
       ],
       "name": "_configured_test_scripts"
+    },
+    ".claude/hooks/editor-pretool-hook.py::_declares_test_module": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::included_as_test_module"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_is_parent_module_file"
+      ],
+      "name": "_declares_test_module"
     },
     ".claude/hooks/editor-pretool-hook.py::_deletes_build_output": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
@@ -335,6 +345,14 @@
       ],
       "imports": [],
       "name": "_file_holds_handoff"
+    },
+    ".claude/hooks/editor-pretool-hook.py::_file_narrowed_clause": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::_test_run_block_message"
+      ],
+      "imports": [],
+      "name": "_file_narrowed_clause"
     },
     ".claude/hooks/editor-pretool-hook.py::_gating_subcommand": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
@@ -547,6 +565,14 @@
       "imports": [],
       "name": "_in_spans"
     },
+    ".claude/hooks/editor-pretool-hook.py::_includer_candidates": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::included_as_test_module"
+      ],
+      "imports": [],
+      "name": "_includer_candidates"
+    },
     ".claude/hooks/editor-pretool-hook.py::_inferred_target_refusal": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -652,6 +678,16 @@
       ],
       "name": "_is_non_executing_runner_call"
     },
+    ".claude/hooks/editor-pretool-hook.py::_is_parent_module_file": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::_declares_test_module"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::main"
+      ],
+      "name": "_is_parent_module_file"
+    },
     ".claude/hooks/editor-pretool-hook.py::_is_pcre_flag": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -668,6 +704,18 @@
       ],
       "imports": [],
       "name": "_is_redirection_ampersand"
+    },
+    ".claude/hooks/editor-pretool-hook.py::_is_refresh_tests": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::is_narrowed_refresh_only",
+        ".claude/hooks/editor-pretool-hook.py::refresh_file_args"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_codeyam_verb",
+        ".claude/hooks/editor-pretool-hook.py::_program_name"
+      ],
+      "name": "_is_refresh_tests"
     },
     ".claude/hooks/editor-pretool-hook.py::_is_rust_comment": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
@@ -790,6 +838,7 @@
       "importedBy": [
         ".claude/hooks/editor-pretool-hook.py::question_findings_already_raised",
         ".claude/hooks/editor-pretool-hook.py::question_payload_was_bounced",
+        ".claude/hooks/editor-pretool-hook.py::question_recommended_already_raised",
         ".claude/hooks/editor-pretool-hook.py::remember_question_bounce"
       ],
       "imports": [
@@ -878,7 +927,8 @@
     ".claude/hooks/editor-pretool-hook.py::_option_labels": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
-        ".claude/hooks/editor-pretool-hook.py::question_copy_keyed_findings"
+        ".claude/hooks/editor-pretool-hook.py::question_copy_keyed_findings",
+        ".claude/hooks/editor-pretool-hook.py::recommended_subject"
       ],
       "imports": [],
       "name": "_option_labels"
@@ -1075,6 +1125,7 @@
         ".claude/hooks/editor-pretool-hook.py::_invokes_configured_script",
         ".claude/hooks/editor-pretool-hook.py::_is_inspection_only_stage",
         ".claude/hooks/editor-pretool-hook.py::_is_non_executing_runner_call",
+        ".claude/hooks/editor-pretool-hook.py::_is_refresh_tests",
         ".claude/hooks/editor-pretool-hook.py::_runs_as_script_argument",
         ".claude/hooks/editor-pretool-hook.py::_runs_parse_only",
         ".claude/hooks/editor-pretool-hook.py::_script_operand",
@@ -1084,7 +1135,6 @@
         ".claude/hooks/editor-pretool-hook.py::git_invocation_directories",
         ".claude/hooks/editor-pretool-hook.py::invokes_codeyam_editor",
         ".claude/hooks/editor-pretool-hook.py::invokes_git_subcommand",
-        ".claude/hooks/editor-pretool-hook.py::is_narrowed_refresh_only",
         ".claude/hooks/editor-pretool-hook.py::prefix_assigned_interpreter_operand",
         ".claude/hooks/editor-pretool-hook.py::recursive_rm_operands",
         ".claude/hooks/editor-pretool-hook.py::write_construct_data_spans"
@@ -1105,6 +1155,7 @@
       "importedBy": [
         ".claude/hooks/editor-pretool-hook.py::_load_question_copy_bounces",
         ".claude/hooks/editor-pretool-hook.py::gate_question_copy",
+        ".claude/hooks/editor-pretool-hook.py::refuse_recommended_resend",
         ".claude/hooks/editor-pretool-hook.py::remember_question_bounce"
       ],
       "imports": [],
@@ -1226,6 +1277,7 @@
         ".claude/hooks/editor-pretool-hook.py::_read_run_script",
         ".claude/hooks/editor-pretool-hook.py::_template_skeleton",
         ".claude/hooks/editor-pretool-hook.py::classify_write_target",
+        ".claude/hooks/editor-pretool-hook.py::file_narrowed_run_is_test_code",
         ".claude/hooks/editor-pretool-hook.py::line_budget_violation",
         ".claude/hooks/editor-pretool-hook.py::tracked_file_count",
         ".claude/hooks/editor-pretool-hook.py::write_after_scripted_refusal_target"
@@ -1461,6 +1513,7 @@
         ".claude/hooks/editor-pretool-hook.py::invokes_git_subcommand",
         ".claude/hooks/editor-pretool-hook.py::is_narrowed_refresh_only",
         ".claude/hooks/editor-pretool-hook.py::is_test_run_command",
+        ".claude/hooks/editor-pretool-hook.py::refresh_file_args",
         ".claude/hooks/editor-pretool-hook.py::scripted_rewrite_details",
         ".claude/hooks/editor-pretool-hook.py::tee_write_targets",
         ".claude/hooks/editor-pretool-hook.py::tracked_recursive_rm",
@@ -1542,6 +1595,7 @@
         ".claude/hooks/editor-pretool-hook.py::main"
       ],
       "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_file_narrowed_clause",
         ".claude/hooks/editor-pretool-hook.py::_slug_label",
         ".claude/hooks/editor-pretool-hook.py::block",
         ".claude/hooks/editor-pretool-hook.py::merge_in_progress"
@@ -1781,10 +1835,12 @@
         ".claude/hooks/editor-pretool-hook.py::_unbounded_poll_guard",
         ".claude/hooks/editor-pretool-hook.py::describe_call",
         ".claude/hooks/editor-pretool-hook.py::gate_question_copy",
+        ".claude/hooks/editor-pretool-hook.py::gate_waived_check_in_question",
         ".claude/hooks/editor-pretool-hook.py::inspector_nudge",
         ".claude/hooks/editor-pretool-hook.py::main",
         ".claude/hooks/editor-pretool-hook.py::notice",
         ".claude/hooks/editor-pretool-hook.py::piped_gating_command",
+        ".claude/hooks/editor-pretool-hook.py::refuse_recommended_resend",
         ".claude/hooks/editor-pretool-hook.py::refuse_unparseable",
         ".claude/hooks/editor-pretool-hook.py::run_structured_question_check",
         ".claude/hooks/editor-pretool-hook.py::script_run_write_targets",
@@ -2002,6 +2058,18 @@
       "imports": [],
       "name": "explain_requested"
     },
+    ".claude/hooks/editor-pretool-hook.py::file_narrowed_run_is_test_code": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::main"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_repo_relative",
+        ".claude/hooks/editor-pretool-hook.py::is_test_file",
+        ".claude/hooks/editor-pretool-hook.py::refresh_file_args"
+      ],
+      "name": "file_narrowed_run_is_test_code"
+    },
     ".claude/hooks/editor-pretool-hook.py::finish_run": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -2022,9 +2090,22 @@
         ".claude/hooks/editor-pretool-hook.py::question_findings_already_raised",
         ".claude/hooks/editor-pretool-hook.py::question_payload_hash",
         ".claude/hooks/editor-pretool-hook.py::question_payload_was_bounced",
+        ".claude/hooks/editor-pretool-hook.py::recommended_subjects",
+        ".claude/hooks/editor-pretool-hook.py::refuse_recommended_resend",
         ".claude/hooks/editor-pretool-hook.py::remember_question_bounce"
       ],
       "name": "gate_question_copy"
+    },
+    ".claude/hooks/editor-pretool-hook.py::gate_waived_check_in_question": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::main"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::block",
+        ".claude/hooks/editor-pretool-hook.py::read_waived_question_verdict"
+      ],
+      "name": "gate_waived_check_in_question"
     },
     ".claude/hooks/editor-pretool-hook.py::git_add_paths_are_plans_only": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
@@ -2085,6 +2166,18 @@
       ],
       "imports": [],
       "name": "harness_applies_updated_input"
+    },
+    ".claude/hooks/editor-pretool-hook.py::included_as_test_module": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::is_test_file"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_declares_test_module",
+        ".claude/hooks/editor-pretool-hook.py::_includer_candidates",
+        ".claude/hooks/editor-pretool-hook.py::main"
+      ],
+      "name": "included_as_test_module"
     },
     ".claude/hooks/editor-pretool-hook.py::inline_test_module_span": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
@@ -2188,9 +2281,8 @@
         ".claude/hooks/editor-pretool-hook.py::main"
       ],
       "imports": [
-        ".claude/hooks/editor-pretool-hook.py::_codeyam_verb",
         ".claude/hooks/editor-pretool-hook.py::_invokes_configured_script",
-        ".claude/hooks/editor-pretool-hook.py::_program_name",
+        ".claude/hooks/editor-pretool-hook.py::_is_refresh_tests",
         ".claude/hooks/editor-pretool-hook.py::_runs_tests",
         ".claude/hooks/editor-pretool-hook.py::_shell_c_payload",
         ".claude/hooks/editor-pretool-hook.py::_split_commands"
@@ -2224,18 +2316,32 @@
     ".claude/hooks/editor-pretool-hook.py::is_test_edit": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::is_test_file",
         ".claude/hooks/editor-pretool-hook.py::test_edit_allowed"
       ],
       "imports": [
         ".claude/hooks/editor-pretool-hook.py::edits_only_inline_tests",
-        ".claude/hooks/editor-pretool-hook.py::is_test_path"
+        ".claude/hooks/editor-pretool-hook.py::is_test_file"
       ],
       "name": "is_test_edit"
+    },
+    ".claude/hooks/editor-pretool-hook.py::is_test_file": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::file_narrowed_run_is_test_code",
+        ".claude/hooks/editor-pretool-hook.py::is_test_edit"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::included_as_test_module",
+        ".claude/hooks/editor-pretool-hook.py::is_test_edit",
+        ".claude/hooks/editor-pretool-hook.py::is_test_path"
+      ],
+      "name": "is_test_file"
     },
     ".claude/hooks/editor-pretool-hook.py::is_test_path": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
-        ".claude/hooks/editor-pretool-hook.py::is_test_edit"
+        ".claude/hooks/editor-pretool-hook.py::is_test_file"
       ],
       "imports": [],
       "name": "is_test_path"
@@ -2318,7 +2424,9 @@
     ".claude/hooks/editor-pretool-hook.py::main": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::_is_parent_module_file",
         ".claude/hooks/editor-pretool-hook.py::allow",
+        ".claude/hooks/editor-pretool-hook.py::included_as_test_module",
         ".claude/hooks/editor-pretool-hook.py::windowed_handoff_read_tool"
       ],
       "imports": [
@@ -2341,7 +2449,9 @@
         ".claude/hooks/editor-pretool-hook.py::describe_call",
         ".claude/hooks/editor-pretool-hook.py::dewindowed_live_handoff",
         ".claude/hooks/editor-pretool-hook.py::explain_requested",
+        ".claude/hooks/editor-pretool-hook.py::file_narrowed_run_is_test_code",
         ".claude/hooks/editor-pretool-hook.py::gate_question_copy",
+        ".claude/hooks/editor-pretool-hook.py::gate_waived_check_in_question",
         ".claude/hooks/editor-pretool-hook.py::git_add_paths_are_plans_only",
         ".claude/hooks/editor-pretool-hook.py::handoff_refusal_collateral",
         ".claude/hooks/editor-pretool-hook.py::handoff_refusal_offender",
@@ -2426,7 +2536,8 @@
         ".claude/hooks/editor-pretool-hook.py::remember_question_bounce"
       ],
       "imports": [
-        ".claude/hooks/editor-pretool-hook.py::_merged_raised"
+        ".claude/hooks/editor-pretool-hook.py::_merged_raised",
+        ".claude/hooks/editor-pretool-hook.py::recommended_subject"
       ],
       "name": "next_bounce_record"
     },
@@ -2644,7 +2755,8 @@
     ".claude/hooks/editor-pretool-hook.py::question_findings_already_raised": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
-        ".claude/hooks/editor-pretool-hook.py::gate_question_copy"
+        ".claude/hooks/editor-pretool-hook.py::gate_question_copy",
+        ".claude/hooks/editor-pretool-hook.py::question_recommended_already_raised"
       ],
       "imports": [
         ".claude/hooks/editor-pretool-hook.py::_load_question_copy_bounces"
@@ -2669,6 +2781,17 @@
       ],
       "name": "question_payload_was_bounced"
     },
+    ".claude/hooks/editor-pretool-hook.py::question_recommended_already_raised": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::refuse_recommended_resend"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_load_question_copy_bounces",
+        ".claude/hooks/editor-pretool-hook.py::question_findings_already_raised"
+      ],
+      "name": "question_recommended_already_raised"
+    },
     ".claude/hooks/editor-pretool-hook.py::read_event": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -2687,6 +2810,14 @@
       ],
       "name": "read_rel_skill_path"
     },
+    ".claude/hooks/editor-pretool-hook.py::read_waived_question_verdict": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::gate_waived_check_in_question"
+      ],
+      "imports": [],
+      "name": "read_waived_question_verdict"
+    },
     ".claude/hooks/editor-pretool-hook.py::recent_scripted_refusal_age": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -2698,6 +2829,27 @@
         ".claude/hooks/editor-pretool-hook.py::_record_refusal"
       ],
       "name": "recent_scripted_refusal_age"
+    },
+    ".claude/hooks/editor-pretool-hook.py::recommended_subject": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::next_bounce_record",
+        ".claude/hooks/editor-pretool-hook.py::recommended_subjects"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_option_labels"
+      ],
+      "name": "recommended_subject"
+    },
+    ".claude/hooks/editor-pretool-hook.py::recommended_subjects": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::gate_question_copy"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::recommended_subject"
+      ],
+      "name": "recommended_subjects"
     },
     ".claude/hooks/editor-pretool-hook.py::record_awaiting_user": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
@@ -2728,6 +2880,17 @@
       "imports": [],
       "name": "recursive_rm_refusal"
     },
+    ".claude/hooks/editor-pretool-hook.py::refresh_file_args": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::file_narrowed_run_is_test_code"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_is_refresh_tests",
+        ".claude/hooks/editor-pretool-hook.py::_split_commands"
+      ],
+      "name": "refresh_file_args"
+    },
     ".claude/hooks/editor-pretool-hook.py::refusal_text": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",
       "importedBy": [
@@ -2738,6 +2901,18 @@
         ".claude/hooks/editor-pretool-hook.py::notice"
       ],
       "name": "refusal_text"
+    },
+    ".claude/hooks/editor-pretool-hook.py::refuse_recommended_resend": {
+      "filePath": ".claude/hooks/editor-pretool-hook.py",
+      "importedBy": [
+        ".claude/hooks/editor-pretool-hook.py::gate_question_copy"
+      ],
+      "imports": [
+        ".claude/hooks/editor-pretool-hook.py::_question_copy_bounce_path",
+        ".claude/hooks/editor-pretool-hook.py::block",
+        ".claude/hooks/editor-pretool-hook.py::question_recommended_already_raised"
+      ],
+      "name": "refuse_recommended_resend"
     },
     ".claude/hooks/editor-pretool-hook.py::refuse_unparseable": {
       "filePath": ".claude/hooks/editor-pretool-hook.py",

@@ -1,0 +1,371 @@
+[
+  {
+    "description": "Deterministic absolute value by clearing the sign bit.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "abs",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic arccosine on the closed unit interval; NaN outside.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "acos",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic arcsine on the closed unit interval; NaN outside.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "asin",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic arctangent within 4 ulp via reciprocal and half-angle reductions.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "atan",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Quadrant-aware arctangent of y over x with IEEE signed-zero behaviour.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "atan2",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Range reduction for atan: reciprocal flip above 1 then two half-angle shrinks.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "atan_reduce",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Solves U x = y in place from the bottom row up.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "back_substitute",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Box-Muller transform: two uniforms become two independent standard normals, cosine output first.",
+    "filePath": "crates/simbiguity-core/src/rng.rs",
+    "name": "box_muller",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-core/src/rng.rs"
+  },
+  {
+    "description": "Shared right-hand-side length check returning DimensionMismatch.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "check_rhs_len",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Partial pivot search: largest magnitude in column k at or below row k.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "choose_pivot",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Keeps a ranged float draw half-open below hi using float next_down, for any sign of hi.",
+    "filePath": "crates/simbiguity-core/src/rng.rs",
+    "name": "clamp_below",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-core/src/rng.rs"
+  },
+  {
+    "description": "Returns x with the sign bit of sign, exactly.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "copysign",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic cosine via sin_cos.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "cos",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "One Gaussian elimination step storing L multipliers in place.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "eliminate_below",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Deterministic e^x within 2 ulp via ln2 range reduction and a Taylor kernel.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "exp",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Horner-evaluated Taylor series for e^r on the reduced interval.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "exp_taylor",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Rounds toward negative infinity exactly.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "floor",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Solves L y = P b with the implied unit diagonal.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "forward_substitute",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "fdlibm cosine polynomial on the reduced interval.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "kernel_cos",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "fdlibm sine polynomial on the reduced interval.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "kernel_sin",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic natural log within 2 ulp via mantissa split and the atanh series.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "ln",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "One-call dense solve of A x = b by LU with partial pivoting.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "lu_solve",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Largest absolute matrix entry; scales the singular-pivot tolerance.",
+    "filePath": "crates/simbiguity-math/src/linsolve.rs",
+    "name": "max_abs_entry",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Converts a nanosecond count held as f64 into Seconds; shared by FixedClock step and elapsed.",
+    "filePath": "crates/simbiguity-core/src/clock.rs",
+    "name": "nanos_to_seconds",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-core/src/clock.rs"
+  },
+  {
+    "description": "Largest float strictly below x; portable replacement for f64 next_down under MSRV 1.80.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "next_down",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Horner sum over odd reciprocal denominators, alternating for atan or all-positive for the atanh series in ln.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "odd_series",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Builds the normal f64 power of two 2^k from exponent bits; nested helper of scale_pow2.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "pow2",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Cody-Waite reduction of an angle to about plus or minus pi/4 plus a quadrant mod 4.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "reduce_quadrant",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Rounds to nearest integer, halfway cases away from zero.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "round",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "1-ulp correction for sqrt: steps to the lower neighbour when its square is closer.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "round_down_if_closer",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Multiplies by 2 to the k, splitting large shifts so the power-of-two factor never overflows.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "scale_pow2",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic sine via sin_cos.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "sin",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic sine and cosine with one shared range reduction.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "sin_cos",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Slerp blend weights with a lerp fallback for nearly identical rotations.",
+    "filePath": "crates/simbiguity-math/src/quat.rs",
+    "name": "slerp_weights",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/quat.rs"
+  },
+  {
+    "description": "Splits a positive normal into exponent and mantissa in the sqrt-half to sqrt-two band.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "split_mantissa",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Pure-Rust square root within 1 ulp; handles subnormals, NaN, negatives, zero and infinity.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "sqrt",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Newton iterations for sqrt of a positive normal from an exponent-halving first guess.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "sqrt_newton",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Deterministic tangent as sin over cos.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "tan",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Rounds Seconds to whole nanoseconds; negative or NaN becomes 0, huge values saturate at u64 max.",
+    "filePath": "crates/simbiguity-core/src/clock.rs",
+    "name": "to_nanos",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-core/src/clock.rs"
+  },
+  {
+    "description": "Rounds toward zero exactly; large and non-finite values pass through.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "trunc",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "sqrt of 1 minus x squared, factored for precision near plus or minus 1; shared by acos and asin.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "unit_complement",
+    "tags": [
+      "simbiguity-foundations"
+    ],
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  }
+]

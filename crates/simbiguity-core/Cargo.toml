@@ -1,0 +1,18 @@
+[package]
+name = "simbiguity-core"
+description = "Shared contracts for simbiguity engines: the Simulation trait, snapshots, a fixed-timestep clock, a seeded RNG and a lockstep runner."
+keywords = ["simulation", "deterministic", "no-std", "rng", "education"]
+categories = ["simulation", "no-std"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = ["simbiguity-math/std"]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }

@@ -1,0 +1,52 @@
+{
+  "provenAt": "2026-11-26T16:46:43Z",
+  "slug": "foundations-simbiguity-math-and-simbiguity-core-zero-dependency-math-simulation-contract-fixed-clock-seeded-rng",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-core/src/rng.rs",
+    "crates/simbiguity-math/src/float.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "find": "float::next_down(hi).max(lo)",
+      "replace": "f64::from_bits(hi.to_bits().wrapping_sub(1)).max(lo)"
+    },
+    {
+      "file": "crates/simbiguity-math/src/float.rs",
+      "find": "alternating && (k / 2) % 2 == 1",
+      "replace": "alternating && (k / 2) % 2 == 0"
+    }
+  ],
+  "withFixSource": "re-run",
+  "tests": {
+    "float::tests::atan_matches_platform_within_four_ulp": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    },
+    "float::tests::odd_series_signs_and_values": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    },
+    "rng::tests::clamp_below_keeps_range_half_open": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "float::tests::odd_series_signs_and_values",
+      "float::tests::atan_matches_platform_within_four_ulp"
+    ]
+  }
+}

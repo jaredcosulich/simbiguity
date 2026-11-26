@@ -5,3 +5,18 @@ version = 3
 [[package]]
 name = "simbiguity"
 version = "0.0.1"
+dependencies = [
+ "simbiguity-core",
+ "simbiguity-math",
+]
+
+[[package]]
+name = "simbiguity-core"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-math",
+]
+
+[[package]]
+name = "simbiguity-math"
+version = "0.0.1"

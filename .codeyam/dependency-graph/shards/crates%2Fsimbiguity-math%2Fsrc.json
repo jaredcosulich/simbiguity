@@ -1,0 +1,2339 @@
+{
+  "entities": {
+    "crates/simbiguity-math/src/float.rs::C1": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos"
+      ],
+      "imports": [],
+      "name": "C1"
+    },
+    "crates/simbiguity-math/src/float.rs::C2": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos"
+      ],
+      "imports": [],
+      "name": "C2"
+    },
+    "crates/simbiguity-math/src/float.rs::C3": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos"
+      ],
+      "imports": [],
+      "name": "C3"
+    },
+    "crates/simbiguity-math/src/float.rs::C4": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos"
+      ],
+      "imports": [],
+      "name": "C4"
+    },
+    "crates/simbiguity-math/src/float.rs::C5": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos"
+      ],
+      "imports": [],
+      "name": "C5"
+    },
+    "crates/simbiguity-math/src/float.rs::C6": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos"
+      ],
+      "imports": [],
+      "name": "C6"
+    },
+    "crates/simbiguity-math/src/float.rs::LN2_HI": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "imports": [],
+      "name": "LN2_HI"
+    },
+    "crates/simbiguity-math/src/float.rs::LN2_LO": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "imports": [],
+      "name": "LN2_LO"
+    },
+    "crates/simbiguity-math/src/float.rs::PIO2_1": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::reduce_quadrant"
+      ],
+      "imports": [],
+      "name": "PIO2_1"
+    },
+    "crates/simbiguity-math/src/float.rs::PIO2_2": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::reduce_quadrant"
+      ],
+      "imports": [],
+      "name": "PIO2_2"
+    },
+    "crates/simbiguity-math/src/float.rs::PIO2_3": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::reduce_quadrant"
+      ],
+      "imports": [],
+      "name": "PIO2_3"
+    },
+    "crates/simbiguity-math/src/float.rs::S1": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_sin"
+      ],
+      "imports": [],
+      "name": "S1"
+    },
+    "crates/simbiguity-math/src/float.rs::S2": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_sin"
+      ],
+      "imports": [],
+      "name": "S2"
+    },
+    "crates/simbiguity-math/src/float.rs::S3": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_sin"
+      ],
+      "imports": [],
+      "name": "S3"
+    },
+    "crates/simbiguity-math/src/float.rs::S4": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_sin"
+      ],
+      "imports": [],
+      "name": "S4"
+    },
+    "crates/simbiguity-math/src/float.rs::S5": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_sin"
+      ],
+      "imports": [],
+      "name": "S5"
+    },
+    "crates/simbiguity-math/src/float.rs::S6": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::kernel_sin"
+      ],
+      "imports": [],
+      "name": "S6"
+    },
+    "crates/simbiguity-math/src/float.rs::SIGN_MASK": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/float.rs::copysign"
+      ],
+      "imports": [],
+      "name": "SIGN_MASK"
+    },
+    "crates/simbiguity-math/src/float.rs::TWO_POW_52": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::trunc"
+      ],
+      "imports": [],
+      "name": "TWO_POW_52"
+    },
+    "crates/simbiguity-math/src/float.rs::__file_root__": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/vec.rs::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-math/src/float.rs::abs": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::atan",
+        "crates/simbiguity-math/src/float.rs::round",
+        "crates/simbiguity-math/src/float.rs::round_down_if_closer",
+        "crates/simbiguity-math/src/float.rs::trunc",
+        "crates/simbiguity-math/src/linsolve.rs::choose_pivot",
+        "crates/simbiguity-math/src/linsolve.rs::max_abs_entry"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::SIGN_MASK"
+      ],
+      "name": "abs",
+      "namedMethods": [
+        "from_bits",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::acos": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::slerp_weights"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::atan2",
+        "crates/simbiguity-math/src/float.rs::unit_complement"
+      ],
+      "name": "acos",
+      "namedMethods": [
+        "contains"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::asin": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::atan2",
+        "crates/simbiguity-math/src/float.rs::unit_complement"
+      ],
+      "name": "asin",
+      "namedMethods": [
+        "contains"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::atan": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::atan2"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/float.rs::atan_reduce",
+        "crates/simbiguity-math/src/float.rs::copysign",
+        "crates/simbiguity-math/src/float.rs::odd_series"
+      ],
+      "name": "atan",
+      "namedMethods": [
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::atan2": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::acos",
+        "crates/simbiguity-math/src/float.rs::asin"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::atan",
+        "crates/simbiguity-math/src/float.rs::copysign"
+      ],
+      "name": "atan2",
+      "namedMethods": [
+        "is_nan",
+        "is_sign_negative"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::atan_reduce": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::atan"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "name": "atan_reduce"
+    },
+    "crates/simbiguity-math/src/float.rs::copysign": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::atan",
+        "crates/simbiguity-math/src/float.rs::atan2",
+        "crates/simbiguity-math/src/float.rs::round",
+        "crates/simbiguity-math/src/float.rs::trunc"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::SIGN_MASK"
+      ],
+      "name": "copysign",
+      "namedMethods": [
+        "from_bits",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::cos": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos"
+      ],
+      "name": "cos"
+    },
+    "crates/simbiguity-math/src/float.rs::exp": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::LN2_HI",
+        "crates/simbiguity-math/src/float.rs::LN2_LO",
+        "crates/simbiguity-math/src/float.rs::exp_taylor",
+        "crates/simbiguity-math/src/float.rs::round",
+        "crates/simbiguity-math/src/float.rs::scale_pow2"
+      ],
+      "name": "exp",
+      "namedMethods": [
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::exp_taylor": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::exp"
+      ],
+      "imports": [],
+      "name": "exp_taylor"
+    },
+    "crates/simbiguity-math/src/float.rs::floor": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::trunc"
+      ],
+      "name": "floor"
+    },
+    "crates/simbiguity-math/src/float.rs::kernel_cos": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::sin_cos"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::C1",
+        "crates/simbiguity-math/src/float.rs::C2",
+        "crates/simbiguity-math/src/float.rs::C3",
+        "crates/simbiguity-math/src/float.rs::C4",
+        "crates/simbiguity-math/src/float.rs::C5",
+        "crates/simbiguity-math/src/float.rs::C6"
+      ],
+      "name": "kernel_cos"
+    },
+    "crates/simbiguity-math/src/float.rs::kernel_sin": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::sin_cos"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::S1",
+        "crates/simbiguity-math/src/float.rs::S2",
+        "crates/simbiguity-math/src/float.rs::S3",
+        "crates/simbiguity-math/src/float.rs::S4",
+        "crates/simbiguity-math/src/float.rs::S5",
+        "crates/simbiguity-math/src/float.rs::S6"
+      ],
+      "name": "kernel_sin"
+    },
+    "crates/simbiguity-math/src/float.rs::ln": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::box_muller"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::LN2_HI",
+        "crates/simbiguity-math/src/float.rs::LN2_LO",
+        "crates/simbiguity-math/src/float.rs::odd_series",
+        "crates/simbiguity-math/src/float.rs::scale_pow2",
+        "crates/simbiguity-math/src/float.rs::split_mantissa"
+      ],
+      "name": "ln",
+      "namedMethods": [
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::next_down": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::clamp_below"
+      ],
+      "imports": [],
+      "name": "next_down",
+      "namedMethods": [
+        "from_bits",
+        "is_nan",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::odd_series": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::atan",
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "imports": [],
+      "name": "odd_series",
+      "namedMethods": [
+        "rev",
+        "step_by"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::pow2": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::scale_pow2"
+      ],
+      "imports": [],
+      "name": "pow2",
+      "namedMethods": [
+        "from_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::reduce_quadrant": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::sin_cos"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::PIO2_1",
+        "crates/simbiguity-math/src/float.rs::PIO2_2",
+        "crates/simbiguity-math/src/float.rs::PIO2_3",
+        "crates/simbiguity-math/src/float.rs::round"
+      ],
+      "name": "reduce_quadrant"
+    },
+    "crates/simbiguity-math/src/float.rs::round": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::reduce_quadrant"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/float.rs::copysign",
+        "crates/simbiguity-math/src/float.rs::trunc"
+      ],
+      "name": "round"
+    },
+    "crates/simbiguity-math/src/float.rs::round_down_if_closer": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::abs"
+      ],
+      "name": "round_down_if_closer",
+      "namedMethods": [
+        "from_bits",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::scale_pow2": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::ln",
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::pow2"
+      ],
+      "name": "scale_pow2",
+      "namedMethods": [
+        "contains"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::sin": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::slerp_weights"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos"
+      ],
+      "name": "sin"
+    },
+    "crates/simbiguity-math/src/float.rs::sin_cos": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::box_muller",
+        "crates/simbiguity-math/src/float.rs::cos",
+        "crates/simbiguity-math/src/float.rs::sin",
+        "crates/simbiguity-math/src/float.rs::tan",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::kernel_cos",
+        "crates/simbiguity-math/src/float.rs::kernel_sin",
+        "crates/simbiguity-math/src/float.rs::reduce_quadrant"
+      ],
+      "name": "sin_cos",
+      "namedMethods": [
+        "is_finite"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::split_mantissa": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "imports": [],
+      "name": "split_mantissa",
+      "namedMethods": [
+        "from_bits",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::sqrt": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs::box_muller",
+        "crates/simbiguity-math/src/float.rs::atan_reduce",
+        "crates/simbiguity-math/src/float.rs::unit_complement",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::length",
+        "crates/simbiguity-math/src/vec.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::round_down_if_closer",
+        "crates/simbiguity-math/src/float.rs::scale_pow2",
+        "crates/simbiguity-math/src/float.rs::sqrt_newton"
+      ],
+      "name": "sqrt",
+      "namedMethods": [
+        "is_nan"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::sqrt_newton": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "imports": [],
+      "name": "sqrt_newton",
+      "namedMethods": [
+        "from_bits",
+        "to_bits"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::tan": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::perspective"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos"
+      ],
+      "name": "tan"
+    },
+    "crates/simbiguity-math/src/float.rs::trunc": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::floor",
+        "crates/simbiguity-math/src/float.rs::round"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::TWO_POW_52",
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/float.rs::copysign"
+      ],
+      "name": "trunc",
+      "namedMethods": [
+        "is_finite"
+      ]
+    },
+    "crates/simbiguity-math/src/float.rs::unit_complement": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/float.rs::acos",
+        "crates/simbiguity-math/src/float.rs::asin"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "name": "unit_complement"
+    },
+    "crates/simbiguity-math/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-math/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::Lu": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::perm",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::size",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::NotSquare",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::Singular",
+        "crates/simbiguity-math/src/linsolve.rs::back_substitute",
+        "crates/simbiguity-math/src/linsolve.rs::check_rhs_len",
+        "crates/simbiguity-math/src/linsolve.rs::choose_pivot",
+        "crates/simbiguity-math/src/linsolve.rs::eliminate_below",
+        "crates/simbiguity-math/src/linsolve.rs::forward_substitute",
+        "crates/simbiguity-math/src/linsolve.rs::max_abs_entry",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "Lu"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::Lu::decompose": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::perm",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::NotSquare",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::Singular",
+        "crates/simbiguity-math/src/linsolve.rs::choose_pivot",
+        "crates/simbiguity-math/src/linsolve.rs::eliminate_below",
+        "crates/simbiguity-math/src/linsolve.rs::max_abs_entry",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "inherentMethod": true,
+      "name": "Lu::decompose",
+      "namedMethods": [
+        "clone",
+        "collect",
+        "cols",
+        "rows",
+        "swap",
+        "swap_rows"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::Lu::lu": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
+        "crates/simbiguity-math/src/linsolve.rs::back_substitute",
+        "crates/simbiguity-math/src/linsolve.rs::choose_pivot",
+        "crates/simbiguity-math/src/linsolve.rs::eliminate_below",
+        "crates/simbiguity-math/src/linsolve.rs::forward_substitute"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "Lu::lu"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::Lu::perm": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::size",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
+        "crates/simbiguity-math/src/linsolve.rs::forward_substitute"
+      ],
+      "imports": [],
+      "name": "Lu::perm"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::Lu::size": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu::perm"
+      ],
+      "inherentMethod": true,
+      "name": "Lu::size",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::Lu::solve": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::perm",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::size",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::back_substitute",
+        "crates/simbiguity-math/src/linsolve.rs::check_rhs_len",
+        "crates/simbiguity-math/src/linsolve.rs::forward_substitute"
+      ],
+      "inherentMethod": true,
+      "name": "Lu::solve",
+      "namedMethods": [
+        "size"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::SolveError": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt",
+        "crates/simbiguity-math/src/linsolve.rs::check_rhs_len",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::DimensionMismatch",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::NotSquare",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::Singular",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt"
+      ],
+      "name": "SolveError",
+      "namedMethods": [
+        "error"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::SolveError::DimensionMismatch": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt",
+        "crates/simbiguity-math/src/linsolve.rs::check_rhs_len"
+      ],
+      "imports": [],
+      "name": "SolveError::DimensionMismatch"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::SolveError::NotSquare": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt"
+      ],
+      "imports": [],
+      "name": "SolveError::NotSquare"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::SolveError::Singular": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt"
+      ],
+      "imports": [],
+      "name": "SolveError::Singular"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::DimensionMismatch",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::NotSquare",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::Singular"
+      ],
+      "name": "SolveError::fmt"
+    },
+    "crates/simbiguity-math/src/linsolve.rs::back_substitute": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "back_substitute",
+      "namedMethods": [
+        "len",
+        "map",
+        "rev",
+        "sum"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::check_rhs_len": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError::DimensionMismatch"
+      ],
+      "name": "check_rhs_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::choose_pivot": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "choose_pivot",
+      "namedMethods": [
+        "abs",
+        "fold",
+        "map",
+        "rows"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::eliminate_below": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "eliminate_below",
+      "namedMethods": [
+        "rows"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::forward_substitute": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::perm",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "forward_substitute",
+      "namedMethods": [
+        "collect",
+        "iter",
+        "len",
+        "map",
+        "sum"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::lu_solve": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/linsolve.rs::check_rhs_len",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "lu_solve",
+      "namedMethods": [
+        "cols",
+        "decompose",
+        "rows",
+        "solve"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs::max_abs_entry": {
+      "filePath": "crates/simbiguity-math/src/linsolve.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "name": "max_abs_entry",
+      "namedMethods": [
+        "abs",
+        "copied",
+        "flat_map",
+        "fold",
+        "iter",
+        "map",
+        "max",
+        "row",
+        "rows"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/linsolve.rs::Lu",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
+        "crates/simbiguity-math/src/linsolve.rs::Lu::lu",
+        "crates/simbiguity-math/src/linsolve.rs::back_substitute",
+        "crates/simbiguity-math/src/linsolve.rs::choose_pivot",
+        "crates/simbiguity-math/src/linsolve.rs::eliminate_below",
+        "crates/simbiguity-math/src/linsolve.rs::forward_substitute",
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve",
+        "crates/simbiguity-math/src/linsolve.rs::max_abs_entry",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index_mut",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::swap_rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/mat.rs::Output",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "name": "DenseMatrix"
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::data": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index_mut",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::swap_rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [],
+      "name": "DenseMatrix::data"
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::from_row_major",
+      "namedMethods": [
+        "len",
+        "then_some"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::identity",
+      "namedMethods": [
+        "zeros"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::index": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset"
+      ],
+      "name": "DenseMatrix::index",
+      "namedMethods": [
+        "offset"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::index_mut": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset"
+      ],
+      "name": "DenseMatrix::index_mut",
+      "namedMethods": [
+        "offset"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::mul_vec",
+      "namedMethods": [
+        "collect",
+        "iter",
+        "len",
+        "map",
+        "row",
+        "sum",
+        "then",
+        "zip"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index_mut",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::offset",
+      "namedMethods": [
+        "cols",
+        "rows"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::row": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::get",
+        "crates/simbiguity-math/src/mat.rs::Mat4::mul",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::cols"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::row"
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Output",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::rows"
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::swap_rows": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::cols"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::swap_rows",
+      "namedMethods": [
+        "swap"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "inherentMethod": true,
+      "name": "DenseMatrix::zeros"
+    },
+    "crates/simbiguity-math/src/mat.rs::IDENTITY": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::default",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "name": "IDENTITY"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4::default",
+        "crates/simbiguity-math/src/mat.rs::Mat4::inverse",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::mul",
+        "crates/simbiguity-math/src/mat.rs::Mat4::perspective",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transpose",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::tan",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4::default",
+        "crates/simbiguity-math/src/mat.rs::Mat4::get",
+        "crates/simbiguity-math/src/mat.rs::Mat4::inverse",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/mat.rs::Mat4::mul",
+        "crates/simbiguity-math/src/mat.rs::Mat4::perspective",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transpose",
+        "crates/simbiguity-math/src/mat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Mat4"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::default": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "name": "Mat4::default"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::get": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::mul",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::get"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::inverse": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::inverse",
+      "namedMethods": [
+        "is_finite"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::look_at": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::look_at",
+      "namedMethods": [
+        "cross",
+        "dot",
+        "normalize"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::m": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::get",
+        "crates/simbiguity-math/src/mat.rs::Mat4::inverse",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::mul",
+        "crates/simbiguity-math/src/mat.rs::Mat4::perspective",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transpose",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [],
+      "name": "Mat4::m"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::mul": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::get",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "name": "Mat4::mul",
+      "namedMethods": [
+        "get",
+        "map",
+        "sum"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::perspective": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::tan",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::perspective",
+      "namedMethods": [
+        "tan"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::rotation": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::rotation",
+      "namedMethods": [
+        "rotate"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::row_dot": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::row_dot"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::scale": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::scale"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::transform_point": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::transform_point",
+      "namedMethods": [
+        "new",
+        "row_dot"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::transform_vector",
+      "namedMethods": [
+        "new",
+        "row_dot"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::translation": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::translation"
+    },
+    "crates/simbiguity-math/src/mat.rs::Mat4::transpose": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m"
+      ],
+      "inherentMethod": true,
+      "name": "Mat4::transpose",
+      "namedMethods": [
+        "enumerate",
+        "iter_mut"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs::Output": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::Mat4"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::data",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::identity",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::index",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::swap_rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::get",
+        "crates/simbiguity-math/src/mat.rs::Mat4::m",
+        "crates/simbiguity-math/src/mat.rs::Mat4::mul",
+        "crates/simbiguity-math/src/mat.rs::cols",
+        "crates/simbiguity-math/src/mat.rs::rows"
+      ],
+      "name": "Output"
+    },
+    "crates/simbiguity-math/src/mat.rs::cols": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::row",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::swap_rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [],
+      "name": "cols"
+    },
+    "crates/simbiguity-math/src/mat.rs::rows": {
+      "filePath": "crates/simbiguity-math/src/mat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::from_row_major",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::mul_vec",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::offset",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows",
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::zeros",
+        "crates/simbiguity-math/src/mat.rs::Output"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::DenseMatrix::rows"
+      ],
+      "name": "rows"
+    },
+    "crates/simbiguity-math/src/quat.rs::IDENTITY": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::default",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::new"
+      ],
+      "name": "IDENTITY",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Output": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "name": "Output"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/quat.rs::IDENTITY",
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::default",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/float.rs::sqrt",
+        "crates/simbiguity-math/src/quat.rs::IDENTITY",
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::default",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::length",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z",
+        "crates/simbiguity-math/src/quat.rs::slerp_weights",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Quat"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::conjugate": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::conjugate",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::default": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::IDENTITY",
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "name": "Quat::default"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::dot": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::length",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::dot"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sin_cos",
+        "crates/simbiguity-math/src/quat.rs::IDENTITY",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::from_axis_angle",
+      "namedMethods": [
+        "new",
+        "normalize",
+        "sin_cos"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::length": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::length",
+      "namedMethods": [
+        "dot",
+        "sqrt"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::mul": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "name": "Quat::mul",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::neg": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "name": "Quat::neg",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::new": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::IDENTITY",
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::new"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::normalize": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::IDENTITY",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::length",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::normalize",
+      "namedMethods": [
+        "is_finite",
+        "length",
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::rotate": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::rotate",
+      "namedMethods": [
+        "cross",
+        "xyz"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::slerp": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::w",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z",
+        "crates/simbiguity-math/src/quat.rs::slerp_weights"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::slerp",
+      "namedMethods": [
+        "dot",
+        "new",
+        "normalize"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::w": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp"
+      ],
+      "imports": [],
+      "name": "Quat::w"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::x": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz"
+      ],
+      "imports": [],
+      "name": "Quat::x"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::xyz": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::x",
+        "crates/simbiguity-math/src/quat.rs::Quat::y",
+        "crates/simbiguity-math/src/quat.rs::Quat::z",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Quat::xyz",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::y": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz"
+      ],
+      "imports": [],
+      "name": "Quat::y"
+    },
+    "crates/simbiguity-math/src/quat.rs::Quat::z": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Output",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::conjugate",
+        "crates/simbiguity-math/src/quat.rs::Quat::dot",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::mul",
+        "crates/simbiguity-math/src/quat.rs::Quat::neg",
+        "crates/simbiguity-math/src/quat.rs::Quat::new",
+        "crates/simbiguity-math/src/quat.rs::Quat::normalize",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz"
+      ],
+      "imports": [],
+      "name": "Quat::z"
+    },
+    "crates/simbiguity-math/src/quat.rs::slerp_weights": {
+      "filePath": "crates/simbiguity-math/src/quat.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::slerp"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::acos",
+        "crates/simbiguity-math/src/float.rs::sin"
+      ],
+      "name": "slerp_weights",
+      "namedMethods": [
+        "acos",
+        "sin"
+      ]
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec2": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec2::x",
+        "crates/simbiguity-math/src/vec.rs::Vec2::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y"
+      ],
+      "name": "Vec2"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec2::new": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::X",
+        "crates/simbiguity-math/src/vec.rs::Y",
+        "crates/simbiguity-math/src/vec.rs::Z"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::x",
+        "crates/simbiguity-math/src/vec.rs::Vec2::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y"
+      ],
+      "inherentMethod": true,
+      "name": "Vec2::new"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/vec.rs::Vec2"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::x",
+        "crates/simbiguity-math/src/vec.rs::Vec2::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y"
+      ],
+      "inherentMethod": true,
+      "name": "Vec2::perp_dot"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec2::x": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::x"
+      ],
+      "name": "Vec2::x"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec2::y": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::y"
+      ],
+      "name": "Vec2::y"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec3::cross": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::x",
+        "crates/simbiguity-math/src/vec.rs::Vec2::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Vec3::cross",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec3::new": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz",
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::X",
+        "crates/simbiguity-math/src/vec.rs::Y",
+        "crates/simbiguity-math/src/vec.rs::Z"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::x",
+        "crates/simbiguity-math/src/vec.rs::Vec2::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "inherentMethod": true,
+      "name": "Vec3::new"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec3::x": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz",
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec2::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::x"
+      ],
+      "name": "Vec3::x"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec3::y": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz",
+        "crates/simbiguity-math/src/vec.rs::Vec2",
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec2::perp_dot",
+        "crates/simbiguity-math/src/vec.rs::Vec2::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::y"
+      ],
+      "name": "Vec3::y"
+    },
+    "crates/simbiguity-math/src/vec.rs::Vec3::z": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
+        "crates/simbiguity-math/src/mat.rs::Mat4::rotation",
+        "crates/simbiguity-math/src/mat.rs::Mat4::row_dot",
+        "crates/simbiguity-math/src/mat.rs::Mat4::scale",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_point",
+        "crates/simbiguity-math/src/mat.rs::Mat4::transform_vector",
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/quat.rs::Quat::from_axis_angle",
+        "crates/simbiguity-math/src/quat.rs::Quat::rotate",
+        "crates/simbiguity-math/src/quat.rs::Quat::xyz",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new"
+      ],
+      "imports": [],
+      "name": "Vec3::z"
+    },
+    "crates/simbiguity-math/src/vec.rs::X": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new"
+      ],
+      "name": "X",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/vec.rs::Y": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new"
+      ],
+      "name": "Y",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/vec.rs::Z": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec2::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new"
+      ],
+      "name": "Z",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/vec.rs::__file_root__": {
+      "filePath": "crates/simbiguity-math/src/vec.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::__file_root__",
+        "crates/simbiguity-math/src/float.rs::sqrt"
+      ],
+      "name": "__file_root__"
+    }
+  },
+  "files": {
+    "crates/simbiguity-math/src/float.rs": {
+      "declaredBy": [
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-core/src/rng.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/vec.rs"
+      ],
+      "imports": [],
+      "namedMethods": [
+        "excessive_precision"
+      ]
+    },
+    "crates/simbiguity-math/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/vec.rs"
+      ]
+    },
+    "crates/simbiguity-math/src/linsolve.rs": {
+      "declaredBy": [
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs"
+      ]
+    },
+    "crates/simbiguity-math/src/mat.rs": {
+      "declaredBy": [
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/linsolve.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/float.rs"
+      ]
+    },
+    "crates/simbiguity-math/src/quat.rs": {
+      "declaredBy": [
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/mat.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs"
+      ]
+    },
+    "crates/simbiguity-math/src/vec.rs": {
+      "declaredBy": [
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/mat.rs",
+        "crates/simbiguity-math/src/quat.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs"
+      ],
+      "namedMethods": [
+        "dot",
+        "is_finite",
+        "length",
+        "length_squared",
+        "new",
+        "sqrt"
+      ]
+    }
+  }
+}

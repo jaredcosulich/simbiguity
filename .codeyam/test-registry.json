@@ -1,0 +1,734 @@
+{
+  "tests": [
+    {
+      "description": "Negative and NaN frame times bank nothing; reset empties the bank.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::bad_durations_bank_nothing_and_reset_clears",
+      "line": 180,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Past the per-call cap, owed steps are dropped and reported rather than spiralling; the cap never goes below one.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::max_steps_caps_and_reports_dropped",
+      "line": 165,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The nanosecond-to-second conversion is the shared inverse of to_nanos.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::nanos_to_seconds_converts",
+      "line": 225,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Infinite steps would make every advance owe nothing forever.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::new_rejects_infinite_step",
+      "line": 200,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A zero, sub-nanosecond or non-finite step is refused at construction.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::new_rejects_zero_step",
+      "line": 193,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Leftover time is banked as alpha in [0, 1) and paid out on later calls.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::remainder_becomes_alpha_and_carries_over",
+      "line": 151,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Sixty frames of 1/60 s must make exactly sixty steps with no drift, which f64 banking would not guarantee.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::sixty_frames_make_exactly_sixty_steps",
+      "line": 136,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The step is reported back rounded to whole nanoseconds.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::step_reports_rounded_nanoseconds",
+      "line": 206,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "to_nanos rounds to nearest, clamps negatives and NaN to 0 and saturates huge values.",
+      "file": "crates/simbiguity-core/src/clock.rs",
+      "format": "cargo",
+      "key": "clock::tests::to_nanos_rounds_clamps_and_saturates",
+      "line": 214,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "abs and copysign only touch the sign bit, so they must preserve signed zero, infinities and the magnitude exactly.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::abs_and_copysign_handle_sign_bit_exactly",
+      "line": 396,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "acos and asin must agree with the platform on [-1, 1] and reject out-of-domain inputs.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::acos_asin_match_platform_and_domain",
+      "line": 685,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "atan2 must match the platform in every quadrant and follow IEEE for signed zeros on the axes.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::atan2_quadrants_and_zeros",
+      "line": 662,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "atan must hit the known values exactly enough and stay within 4 ulp of the platform on both sides of the |x| = 1 reciprocal switch.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::atan_matches_platform_within_four_ulp",
+      "line": 629,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Reduction must flip above 1 and shrink u below tan(π/16) so the series converges.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::atan_reduce_flips_and_shrinks",
+      "line": 649,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "exp must be within 2 ulp of the platform across its useful range.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::exp_matches_platform_within_two_ulp",
+      "line": 543,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The Taylor kernel must be exact at zero and accurate at the edges of its reduced interval.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::exp_taylor_is_accurate_on_reduced_interval",
+      "line": 570,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The overflow and underflow thresholds and the split scale path just inside them must give inf, zero, and finite gradual-underflow values.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::exp_thresholds_and_extremes",
+      "line": 556,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "ln must be within 2 ulp of the platform and handle 0, negatives, infinity and subnormals.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::ln_matches_platform_and_special_cases",
+      "line": 608,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "next_down must step toward −∞ for positive, negative and zero inputs alike, since a raw bits−1 steps the wrong way for negatives.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::next_down_steps_toward_negative_infinity",
+      "line": 409,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The odd-denominator series must start at 1, follow the requested sign pattern, and converge to atan/atanh identities for small z.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::odd_series_signs_and_values",
+      "line": 580,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Quadrant reduction must leave a remainder within about π/4 and pick the quadrant that sin_cos's sign table expects.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::reduce_quadrant_lands_in_the_central_interval",
+      "line": 521,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The 1-ulp correction steps down only when the lower neighbour's square is strictly closer, and otherwise leaves the guess alone.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::round_down_if_closer_picks_the_nearer_neighbour",
+      "line": 490,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The power-of-two scaler must stay exact past the normal exponent range by splitting the shift, which exp and the subnormal paths need.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::scale_pow2_splits_large_shifts",
+      "line": 442,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "sin and cos must stay within 2e-16 absolute of the platform across all four quadrants and moderately large angles.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::sin_cos_match_platform",
+      "line": 501,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The mantissa split must reconstruct x and keep m in [√½, √2].",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::split_mantissa_reconstructs_input",
+      "line": 593,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "sqrt must be within 1 ulp of the correctly rounded platform result across many magnitudes, and exact on perfect squares.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::sqrt_matches_platform_within_one_ulp",
+      "line": 452,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The Newton stage alone must already land within one ulp, so the correction only ever has a single neighbour to consider.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::sqrt_newton_converges_to_within_one_ulp",
+      "line": 481,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Subnormals take a scaled detour; NaN, negatives, zero and infinity are special-cased and must come back as IEEE prescribes.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::sqrt_special_and_subnormal_inputs",
+      "line": 466,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "tan is sin/cos, so it must agree with the platform away from poles.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::tan_matches_platform_away_from_poles",
+      "line": 533,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "trunc, floor and round are the building blocks of every range reduction; they must be exact, including negatives and halfway cases.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::trunc_floor_round_are_exact",
+      "line": 424,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The unit complement is √(1−x²), exact at the ends and the middle.",
+      "file": "crates/simbiguity-math/src/float.rs",
+      "format": "cargo",
+      "key": "float::tests::unit_complement_values",
+      "line": 699,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Back substitution solves the upper factor from the bottom up.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::back_substitute_solves_upper_factor",
+      "line": 366,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The length check passes on a match and reports both sizes otherwise.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::check_rhs_len_accepts_and_rejects",
+      "line": 309,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The pivot search must look only at or below row k, compare magnitudes, and keep the earliest row on ties.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::choose_pivot_picks_largest_magnitude_at_or_below_k",
+      "line": 332,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Elimination must zero the column below the pivot (storing the multipliers there) and update the trailing block.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::eliminate_below_stores_multipliers_and_updates_rows",
+      "line": 343,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Forward substitution permutes b and applies the unit-lower factor.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::forward_substitute_applies_perm_and_lower_factor",
+      "line": 352,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A factored matrix must be reusable for several right-hand sides.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::lu_resolves_for_several_rhs",
+      "line": 234,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The empty system has the empty solution.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::lu_solve_empty_system",
+      "line": 286,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A 1×1 system is plain division.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::lu_solve_one_by_one_system",
+      "line": 280,
+      "registeredAt": "2026-11-26T16:51:05.418075868+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A zero in the leading position must be pivoted around rather than reported as singular.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::lu_solve_pivots_past_a_zero_leading_entry",
+      "line": 227,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Singular, non-square and wrongly sized systems must report the specific error variant, not panic.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::lu_solve_reports_each_error_variant",
+      "line": 247,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A well-posed 3×3 system must solve to its known answer, and the result must reproduce b when multiplied back.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::lu_solve_solves_a_known_system",
+      "line": 216,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The largest magnitude must ignore sign and be 0 for empty/zero input.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::max_abs_entry_ignores_sign",
+      "line": 323,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Error messages must name the problem in plain words.",
+      "file": "crates/simbiguity-math/src/linsolve.rs",
+      "format": "cargo",
+      "key": "linsolve::tests::solve_error_display_messages",
+      "line": 292,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every simulation, whatever its types, is stepped the same number of times with the clock's fixed dt.",
+      "file": "crates/simbiguity-core/src/lockstep.rs",
+      "format": "cargo",
+      "key": "lockstep::tests::advance_steps_every_sim_equally",
+      "line": 100,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "advance_with calls the closure once per owed step with the fixed dt.",
+      "file": "crates/simbiguity-core/src/lockstep.rs",
+      "format": "cargo",
+      "key": "lockstep::tests::advance_with_calls_closure_per_step",
+      "line": 140,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Across uneven frames (16, 17, 50, 3 ms) two simulations stay in lockstep and receive exactly the steps the banked time allows.",
+      "file": "crates/simbiguity-core/src/lockstep.rs",
+      "format": "cargo",
+      "key": "lockstep::tests::sims_stay_in_step_across_uneven_frames",
+      "line": 120,
+      "registeredAt": "2026-11-26T16:51:05.418075868+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The blanket Steppable impl forwards tick to Simulation::step.",
+      "file": "crates/simbiguity-core/src/lockstep.rs",
+      "format": "cargo",
+      "key": "lockstep::tests::steppable_tick_forwards_to_step",
+      "line": 155,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Dense constructors, row access, row swaps and mat-vec products.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::dense_matrix_basics",
+      "line": 432,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The identity is the default and leaves points unchanged; element access follows column-major layout.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::identity_default_and_get_layout",
+      "line": 337,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The inverse must undo a general transform and refuse singular input.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::inverse_undoes_and_rejects_singular",
+      "line": 399,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Composition applies the right operand first, and transpose swaps rows and columns.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::mul_order_and_transpose",
+      "line": 388,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The offset helper maps row-major positions and IndexMut writes there.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::offset_maps_row_major_positions",
+      "line": 450,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A column past the end must panic instead of reading the next row.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::offset_rejects_column_overflow",
+      "line": 461,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Perspective puts the near and far planes at clip depth −1 and +1 and shrinks distant points; look_at maps the eye to the origin and the target onto −Z, returning identity for degenerate input.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::perspective_and_look_at",
+      "line": 412,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The rotation matrix must agree with rotating by the quaternion.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::rotation_matches_quaternion",
+      "line": 374,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The row helper must dot the right column-major entries and include the translation column only in proportion to w.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::row_dot_reads_column_major_rows",
+      "line": 363,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Translation moves points but not directions; scale stretches both.",
+      "file": "crates/simbiguity-math/src/mat.rs",
+      "format": "cargo",
+      "key": "mat::tests::translation_and_scale_on_points_and_vectors",
+      "line": 348,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Axis-angle builds unit quaternions that rotate by the right-hand rule; a zero axis gives the identity.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::from_axis_angle_rotates_by_right_hand_rule",
+      "line": 163,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Multiplication composes right-first and the conjugate undoes a rotation.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::mul_composes_and_conjugate_inverts",
+      "line": 178,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Negation flips every component and is the same rotation.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::neg_is_same_rotation",
+      "line": 206,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Normalize restores unit length and maps zero to the identity.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::normalize_unit_and_zero",
+      "line": 189,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Rotating by a unit quaternion never changes a vector's length.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::rotate_preserves_length",
+      "line": 198,
+      "registeredAt": "2026-11-26T16:51:05.418075868+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Slerp hits both ends, moves at constant angle, and takes the short arc even when given the negated target.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::slerp_endpoints_midpoint_and_short_arc",
+      "line": 216,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The weights sum to the lerp fallback near d = 1 and follow the sin-ratio formula otherwise; at θ = π/2 the midpoint weights are √½.",
+      "file": "crates/simbiguity-math/src/quat.rs",
+      "format": "cargo",
+      "key": "quat::tests::slerp_weights_lerp_fallback_and_sine_ratio",
+      "line": 235,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Box–Muller with u2 = 0 puts everything in the cosine output; u1 = 1 gives radius 0; a known u1 gives the expected radius.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::box_muller_known_values",
+      "line": 269,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "chance honours its probability, including the 0 and 1 extremes.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::chance_honours_probability",
+      "line": 226,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A value that rounded onto hi is pulled just below it, but never below lo; values already below hi pass through.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::clamp_below_keeps_range_half_open",
+      "line": 252,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Floats stay in [0, 1) and ranges stay half-open; empty ranges return lo.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::floats_and_ranges_stay_in_bounds",
+      "line": 193,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "next_u64 concatenates two u32 draws high-first.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::next_u64_is_two_u32_draws",
+      "line": 182,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Normals have mean ≈ 0 and variance ≈ 1; normal_with shifts and scales.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::normal_has_unit_moments",
+      "line": 236,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The PCG32 reference sequence for seed 42, stream 54 (from the pcg-c demo) pins the algorithm bit for bit across platforms.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::pcg32_matches_reference_sequence",
+      "line": 154,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "range_u32 must reach every value with no visible bias, including a span that does not divide 2^32.",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::range_u32_is_unbiased_and_covers_span",
+      "line": 212,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Same seed gives the same sequence; different seeds or streams differ; clones continue identically (snapshot safety).",
+      "file": "crates/simbiguity-core/src/rng.rs",
+      "format": "cargo",
+      "key": "rng::tests::seeding_and_streams_are_reproducible",
+      "line": 166,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Restoring a snapshot and replaying the same inputs reproduces the exact same state bit for bit, RNG included.",
+      "file": "crates/simbiguity-core/src/simulation.rs",
+      "format": "cargo",
+      "key": "simulation::tests::restore_then_replay_is_bit_identical",
+      "line": 156,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Seconds arithmetic and from_hz behave like plain f64 durations.",
+      "file": "crates/simbiguity-core/src/simulation.rs",
+      "format": "cargo",
+      "key": "simulation::tests::seconds_arithmetic",
+      "line": 142,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The macro-generated operators must act componentwise on both types.",
+      "file": "crates/simbiguity-math/src/vec.rs",
+      "format": "cargo",
+      "key": "vec::tests::arithmetic_is_componentwise",
+      "line": 137,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Cross products follow the right-hand rule; perp_dot is its 2D z part.",
+      "file": "crates/simbiguity-math/src/vec.rs",
+      "format": "cargo",
+      "key": "vec::tests::cross_and_perp_dot_right_hand_rule",
+      "line": 189,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The cross product is perpendicular to both inputs, as the plan's identity requires.",
+      "file": "crates/simbiguity-math/src/vec.rs",
+      "format": "cargo",
+      "key": "vec::tests::cross_is_perpendicular_to_both_inputs",
+      "line": 179,
+      "registeredAt": "2026-11-26T16:51:05.418075868+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Dot, length, distance and lerp follow their textbook definitions.",
+      "file": "crates/simbiguity-math/src/vec.rs",
+      "format": "cargo",
+      "key": "vec::tests::dot_length_distance_lerp",
+      "line": 158,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Normalize gives unit vectors and refuses the zero vector.",
+      "file": "crates/simbiguity-math/src/vec.rs",
+      "format": "cargo",
+      "key": "vec::tests::normalize_unit_or_none",
+      "line": 170,
+      "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    }
+  ],
+  "version": 2
+}

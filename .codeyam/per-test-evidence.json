@@ -1,0 +1,731 @@
+{
+  "clock::tests::bad_durations_bank_nothing_and_reset_clears": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::max_steps_caps_and_reports_dropped": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::nanos_to_seconds_converts": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::new_rejects_infinite_step": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::new_rejects_zero_step": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::remainder_becomes_alpha_and_carries_over": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::sixty_frames_make_exactly_sixty_steps": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::step_reports_rounded_nanoseconds": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "clock::tests::to_nanos_rounds_clamps_and_saturates": {
+    "file": "crates/simbiguity-core/src/clock.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::abs_and_copysign_handle_sign_bit_exactly": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::acos_asin_match_platform_and_domain": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::atan2_quadrants_and_zeros": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::atan_matches_platform_within_four_ulp": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::atan_reduce_flips_and_shrinks": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::exp_matches_platform_within_two_ulp": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::exp_taylor_is_accurate_on_reduced_interval": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::exp_thresholds_and_extremes": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::ln_matches_platform_and_special_cases": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::next_down_steps_toward_negative_infinity": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::odd_series_signs_and_values": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::reduce_quadrant_lands_in_the_central_interval": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::round_down_if_closer_picks_the_nearer_neighbour": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::scale_pow2_splits_large_shifts": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::sin_cos_match_platform": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::split_mantissa_reconstructs_input": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::sqrt_matches_platform_within_one_ulp": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::sqrt_newton_converges_to_within_one_ulp": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::sqrt_special_and_subnormal_inputs": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::tan_matches_platform_away_from_poles": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::trunc_floor_round_are_exact": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "float::tests::unit_complement_values": {
+    "file": "crates/simbiguity-math/src/float.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::back_substitute_solves_upper_factor": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::check_rhs_len_accepts_and_rejects": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::choose_pivot_picks_largest_magnitude_at_or_below_k": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::eliminate_below_stores_multipliers_and_updates_rows": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::forward_substitute_applies_perm_and_lower_factor": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::lu_resolves_for_several_rhs": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::lu_solve_empty_system": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::lu_solve_one_by_one_system": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:51:05.418Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:51:05.418Z"
+    ]
+  },
+  "linsolve::tests::lu_solve_pivots_past_a_zero_leading_entry": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::lu_solve_reports_each_error_variant": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::lu_solve_solves_a_known_system": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::max_abs_entry_ignores_sign": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "linsolve::tests::solve_error_display_messages": {
+    "file": "crates/simbiguity-math/src/linsolve.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "lockstep::tests::advance_steps_every_sim_equally": {
+    "file": "crates/simbiguity-core/src/lockstep.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "lockstep::tests::advance_with_calls_closure_per_step": {
+    "file": "crates/simbiguity-core/src/lockstep.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "lockstep::tests::sims_stay_in_step_across_uneven_frames": {
+    "file": "crates/simbiguity-core/src/lockstep.rs",
+    "lastRunAt": "2026-11-26T16:51:05.418Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:51:05.418Z"
+    ]
+  },
+  "lockstep::tests::steppable_tick_forwards_to_step": {
+    "file": "crates/simbiguity-core/src/lockstep.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::dense_matrix_basics": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::identity_default_and_get_layout": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::inverse_undoes_and_rejects_singular": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::mul_order_and_transpose": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::offset_maps_row_major_positions": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::offset_rejects_column_overflow": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::perspective_and_look_at": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::rotation_matches_quaternion": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::row_dot_reads_column_major_rows": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "mat::tests::translation_and_scale_on_points_and_vectors": {
+    "file": "crates/simbiguity-math/src/mat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "quat::tests::from_axis_angle_rotates_by_right_hand_rule": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "quat::tests::mul_composes_and_conjugate_inverts": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "quat::tests::neg_is_same_rotation": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "quat::tests::normalize_unit_and_zero": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "quat::tests::rotate_preserves_length": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:51:05.418Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:51:05.418Z"
+    ]
+  },
+  "quat::tests::slerp_endpoints_midpoint_and_short_arc": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "quat::tests::slerp_weights_lerp_fallback_and_sine_ratio": {
+    "file": "crates/simbiguity-math/src/quat.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::box_muller_known_values": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::chance_honours_probability": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::clamp_below_keeps_range_half_open": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::floats_and_ranges_stay_in_bounds": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::next_u64_is_two_u32_draws": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::normal_has_unit_moments": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::pcg32_matches_reference_sequence": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::range_u32_is_unbiased_and_covers_span": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "rng::tests::seeding_and_streams_are_reproducible": {
+    "file": "crates/simbiguity-core/src/rng.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "simulation::tests::restore_then_replay_is_bit_identical": {
+    "file": "crates/simbiguity-core/src/simulation.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "simulation::tests::seconds_arithmetic": {
+    "file": "crates/simbiguity-core/src/simulation.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "vec::tests::arithmetic_is_componentwise": {
+    "file": "crates/simbiguity-math/src/vec.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "vec::tests::cross_and_perp_dot_right_hand_rule": {
+    "file": "crates/simbiguity-math/src/vec.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "vec::tests::cross_is_perpendicular_to_both_inputs": {
+    "file": "crates/simbiguity-math/src/vec.rs",
+    "lastRunAt": "2026-11-26T16:51:05.418Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:51:05.418Z"
+    ]
+  },
+  "vec::tests::dot_length_distance_lerp": {
+    "file": "crates/simbiguity-math/src/vec.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  },
+  "vec::tests::normalize_unit_or_none": {
+    "file": "crates/simbiguity-math/src/vec.rs",
+    "lastRunAt": "2026-11-26T16:47:50.918Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T16:47:50.918Z"
+    ]
+  }
+}

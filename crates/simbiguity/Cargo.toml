@@ -11,4 +11,12 @@ repository.workspace = true
 authors.workspace = true
 rust-version.workspace = true
 
+[features]
+default = ["math", "core"]
+math = ["dep:simbiguity-math"]
+core = ["dep:simbiguity-core", "math"]
+std = ["simbiguity-math?/std", "simbiguity-core?/std"]
+
 [dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1", optional = true }
+simbiguity-core = { path = "../simbiguity-core", version = "0.0.1", optional = true }

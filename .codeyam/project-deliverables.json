@@ -47,9 +47,9 @@
       "id": "animation-support",
       "text": "Animation support",
       "status": "deferred",
-      "resolvedAt": "2026-11-26T16:32:37.292842589+00:00",
-      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
-      "planSlug": null,
+      "resolvedAt": "2026-11-26T16:56:03.058875971+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "animation-support",
       "note": "later roadmap plan; this cycle is foundations only",
       "decidedBy": "user"
     },

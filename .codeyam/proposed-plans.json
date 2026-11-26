@@ -62,10 +62,13 @@
       "severity": 3,
       "source": "deferred-deliverable",
       "deliverableId": "animation-support",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "animation-support",
       "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
       "kind": "feature",
-      "sightings": 2
+      "sightings": 2,
+      "decidedAt": "2026-11-26T16:56:03Z",
+      "sightingsAtDecision": 2
     },
     {
       "id": "from-scratch-3d-rendering-via-a-webgl2-renderer",

@@ -17,9 +17,9 @@
       "id": "circuit-simulation",
       "text": "Circuit simulation",
       "status": "deferred",
-      "resolvedAt": "2026-11-26T16:32:37.216131482+00:00",
-      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
-      "planSlug": null,
+      "resolvedAt": "2026-11-26T16:55:58.908795209+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "circuit-simulation",
       "note": "later roadmap plan; this cycle is foundations only",
       "decidedBy": "user"
     },

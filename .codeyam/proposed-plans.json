@@ -9,10 +9,15 @@
       "severity": 3,
       "source": "deferred-deliverable",
       "deliverableId": "circuit-simulation",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "circuit-simulation",
       "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
       "kind": "feature",
-      "sightings": 2
+      "sightings": 2,
+      "decidedAt": "2026-11-26T16:55:58Z",
+      "sightingsAtDecision": 2,
+      "offeredCount": 1,
+      "lastOfferedAt": "2026-11-26T16:54:45.110613907+00:00"
     },
     {
       "id": "physics-simulation",

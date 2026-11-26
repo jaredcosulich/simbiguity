@@ -129,10 +129,14 @@
       "reason": "Follow-up left on its own change by plan `hello-circuit-hand-written-wasm-bridge-js-loader-first-demo-page-and-github-pages-deploy`.",
       "severity": 3,
       "source": "plan-remainder",
-      "status": "pending",
+      "status": "ignored",
       "proposedAt": "2026-11-26T18:03:14.735776386+00:00",
       "kind": "tech-debt",
-      "sightings": 1
+      "sightings": 1,
+      "decidedAt": "2026-11-26T19:20:18Z",
+      "sightingsAtDecision": 1,
+      "offeredCount": 1,
+      "lastOfferedAt": "2026-11-26T19:19:22.513199788+00:00"
     },
     {
       "id": "give-the-node-test-runner-its-own-test-partition-so-its-results-count",

@@ -57,9 +57,9 @@
       "id": "from-scratch-3d-rendering-via-a-webgl2-renderer",
       "text": "From-scratch 3D rendering via a WebGL2 renderer",
       "status": "deferred",
-      "resolvedAt": "2026-11-26T16:32:37.317901046+00:00",
-      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
-      "planSlug": null,
+      "resolvedAt": "2026-11-26T16:56:04.626928030+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "from-scratch-3d-rendering-via-a-webgl2-renderer",
       "note": "later roadmap plan; this cycle is foundations only",
       "decidedBy": "user"
     },

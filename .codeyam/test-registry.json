@@ -3457,6 +3457,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that tick generation works correctly for a basic range.",
+      "file": "crates/simbiguity-plot/src/ticks.rs",
+      "format": "cargo",
+      "key": "test_compute_ticks",
+      "line": 51,
+      "registeredAt": "2026-11-26T20:08:29.535742966+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Braces in strings, char literals and comments do not count.",
       "file": "xtask/src/test_descriptions_tests.rs",
       "format": "cargo",

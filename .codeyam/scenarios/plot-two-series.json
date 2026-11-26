@@ -1,0 +1,15 @@
+{
+  "name": "Plot - Two Series",
+  "id": "e86b7866-1efb-4395-a883-498ce0645b7a",
+  "url": "/demos/plot-demo/#two-series",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T20:03:27Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/plot-demo/index.html",
+  "description": "Two series with different colors (e.g. voltage and current) on shared axes"
+}

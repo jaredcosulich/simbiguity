@@ -1,0 +1,15 @@
+{
+  "name": "Plot - Tiny Range",
+  "id": "3fa03971-e823-499d-bb93-e40b756d36ce",
+  "url": "/demos/plot-demo/#tiny-range",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T20:03:27Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/plot-demo/index.html",
+  "description": "A tiny range (millivolts) showing sensible tick labels"
+}

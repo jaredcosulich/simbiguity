@@ -1,0 +1,4 @@
+id = "plot"
+name = "Time-Series Plotter"
+status = "stable"
+crates = ["simbiguity-plot"]

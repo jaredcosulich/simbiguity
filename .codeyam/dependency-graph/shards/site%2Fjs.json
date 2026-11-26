@@ -168,6 +168,10 @@
     }
   },
   "files": {
+    "site/js/plot-labels.js": {
+      "importedBy": [],
+      "imports": []
+    },
     "site/js/simbiguity-render.js": {
       "importedBy": [
         "site/demos/circuit-3d/demo.js",

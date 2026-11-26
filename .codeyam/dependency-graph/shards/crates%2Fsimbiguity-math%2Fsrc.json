@@ -281,7 +281,9 @@
       "importedBy": [
         "crates/simbiguity-anim/src/easing.rs::elastic_in",
         "crates/simbiguity-anim/src/easing.rs::expo_in",
-        "crates/simbiguity-anim/src/spring.rs::evolve"
+        "crates/simbiguity-anim/src/spring.rs::evolve",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::LN2_HI",
@@ -305,7 +307,10 @@
     },
     "crates/simbiguity-math/src/float.rs::floor": {
       "filePath": "crates/simbiguity-math/src/float.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
+      ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::trunc"
       ],
@@ -344,7 +349,9 @@
     "crates/simbiguity-math/src/float.rs::ln": {
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
-        "crates/simbiguity-core/src/rng.rs::box_muller"
+        "crates/simbiguity-core/src/rng.rs::box_muller",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::LN2_HI",
@@ -2575,6 +2582,9 @@
         "crates/simbiguity-math/src/quat.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-render/src/camera.rs",
         "crates/simbiguity-render/src/mesh.rs"
       ],

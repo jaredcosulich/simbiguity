@@ -18,5 +18,10 @@
   "hello-circuit-short-circuit": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
   "hello-circuit-switch-open": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
   "landing-coming-soon": "cb968c4aad14b6b37c4c68b137b16370a534c7780b05decb4adf7e9e3163d6ac",
-  "landing-demos": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f"
+  "landing-demos": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
+  "plot-demo": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
+  "plot-empty-chart": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
+  "plot-sine-wave": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
+  "plot-tiny-range": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f",
+  "plot-two-series": "273c8818ca3b7ae23f750ff8548a1a181728a046aecea04b990394cd0dab557f"
 }

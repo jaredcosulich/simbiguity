@@ -61,6 +61,14 @@ name = "simbiguity-math"
 version = "0.0.1"
 
 [[package]]
+name = "simbiguity-plot"
+version = "0.0.1"
+dependencies = [
+ "simbiguity-math",
+ "simbiguity-render",
+]
+
+[[package]]
 name = "simbiguity-puzzle"
 version = "0.0.1"
 

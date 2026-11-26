@@ -599,6 +599,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
@@ -1516,6 +1517,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::append",
+        "crates/simbiguity-plot/src/line.rs::build_line_mesh",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
         "crates/simbiguity-render/src/mesh.rs::Mesh::cuboid",
@@ -3321,6 +3323,7 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-render/src/decode.rs",
         "crates/simbiguity-render/src/decode.rs",
         "crates/simbiguity-render/src/decode.rs",
@@ -3439,6 +3442,7 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-render/src/lib.rs",

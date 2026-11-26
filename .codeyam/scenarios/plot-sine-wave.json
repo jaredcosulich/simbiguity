@@ -1,0 +1,15 @@
+{
+  "name": "Plot - Sine Wave",
+  "id": "ac1d4ee2-7f45-42b0-b91d-8678c540db09",
+  "url": "/demos/plot-demo/#sine",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T20:03:27Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/plot-demo/index.html",
+  "description": "A sine wave plotted over a scrolling 5-second window"
+}

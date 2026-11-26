@@ -1,0 +1,402 @@
+{
+  "entities": {
+    "crates/simbiguity-plot/src/axes.rs::Axes": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart",
+        "crates/simbiguity-plot/src/chart.rs::Chart::axes",
+        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_h",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_w",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_x",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_y",
+        "crates/simbiguity-plot/src/axes.rs::Axes::x_max",
+        "crates/simbiguity-plot/src/axes.rs::Axes::x_min",
+        "crates/simbiguity-plot/src/axes.rs::Axes::y_max",
+        "crates/simbiguity-plot/src/axes.rs::Axes::y_min"
+      ],
+      "name": "Axes"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_h",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_w",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_x",
+        "crates/simbiguity-plot/src/axes.rs::Axes::px_y",
+        "crates/simbiguity-plot/src/axes.rs::Axes::x_max",
+        "crates/simbiguity-plot/src/axes.rs::Axes::x_min",
+        "crates/simbiguity-plot/src/axes.rs::Axes::y_max",
+        "crates/simbiguity-plot/src/axes.rs::Axes::y_min"
+      ],
+      "inherentMethod": true,
+      "name": "Axes::data_to_px"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::px_h": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::px_h"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::px_w": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::px_w"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::px_x": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::px_x"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::px_y": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::px_y"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::x_max": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::x_max"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::x_min": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::x_min"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::y_max": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::y_max"
+    },
+    "crates/simbiguity-plot/src/axes.rs::Axes::y_min": {
+      "filePath": "crates/simbiguity-plot/src/axes.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px"
+      ],
+      "imports": [],
+      "name": "Axes::y_min"
+    },
+    "crates/simbiguity-plot/src/chart.rs::Chart": {
+      "filePath": "crates/simbiguity-plot/src/chart.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/chart.rs::Chart::axes",
+        "crates/simbiguity-plot/src/chart.rs::Chart::series",
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "name": "Chart"
+    },
+    "crates/simbiguity-plot/src/chart.rs::Chart::axes": {
+      "filePath": "crates/simbiguity-plot/src/chart.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs::Axes"
+      ],
+      "name": "Chart::axes"
+    },
+    "crates/simbiguity-plot/src/chart.rs::Chart::series": {
+      "filePath": "crates/simbiguity-plot/src/chart.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "name": "Chart::series"
+    },
+    "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw": {
+      "filePath": "crates/simbiguity-plot/src/chart.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+      ],
+      "inherentMethod": true,
+      "name": "Chart<'a>::draw",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-plot/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-plot/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs::Axes",
+        "crates/simbiguity-plot/src/chart.rs::Chart",
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-plot/src/line.rs::build_line_mesh": {
+      "filePath": "crates/simbiguity-plot/src/line.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
+      ],
+      "name": "build_line_mesh",
+      "namedMethods": [
+        "default",
+        "extend_from_slice",
+        "len"
+      ]
+    },
+    "crates/simbiguity-plot/src/series.rs::Series": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart",
+        "crates/simbiguity-plot/src/chart.rs::Chart::series",
+        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series::capacity",
+        "crates/simbiguity-plot/src/series.rs::Series::head",
+        "crates/simbiguity-plot/src/series.rs::Series::iter",
+        "crates/simbiguity-plot/src/series.rs::Series::new",
+        "crates/simbiguity-plot/src/series.rs::Series::push",
+        "crates/simbiguity-plot/src/series.rs::Series::samples"
+      ],
+      "name": "Series"
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::capacity": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/series.rs::Series::iter",
+        "crates/simbiguity-plot/src/series.rs::Series::new",
+        "crates/simbiguity-plot/src/series.rs::Series::push"
+      ],
+      "imports": [],
+      "name": "Series::capacity"
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::head": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/series.rs::Series::iter",
+        "crates/simbiguity-plot/src/series.rs::Series::new",
+        "crates/simbiguity-plot/src/series.rs::Series::push"
+      ],
+      "imports": [],
+      "name": "Series::head"
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::iter": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series::capacity",
+        "crates/simbiguity-plot/src/series.rs::Series::head",
+        "crates/simbiguity-plot/src/series.rs::Series::samples"
+      ],
+      "inherentMethod": true,
+      "name": "Series::iter",
+      "namedMethods": [
+        "as_slice",
+        "chain",
+        "iter",
+        "len",
+        "split_at"
+      ]
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::new": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series::capacity",
+        "crates/simbiguity-plot/src/series.rs::Series::head",
+        "crates/simbiguity-plot/src/series.rs::Series::samples"
+      ],
+      "inherentMethod": true,
+      "name": "Series::new",
+      "namedMethods": [
+        "with_capacity"
+      ]
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::push": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series::capacity",
+        "crates/simbiguity-plot/src/series.rs::Series::head",
+        "crates/simbiguity-plot/src/series.rs::Series::samples"
+      ],
+      "inherentMethod": true,
+      "name": "Series::push",
+      "namedMethods": [
+        "len",
+        "push"
+      ]
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::samples": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/series.rs::Series::iter",
+        "crates/simbiguity-plot/src/series.rs::Series::new",
+        "crates/simbiguity-plot/src/series.rs::Series::push"
+      ],
+      "imports": [],
+      "name": "Series::samples"
+    },
+    "crates/simbiguity-plot/src/ticks.rs::NiceTicks": {
+      "filePath": "crates/simbiguity-plot/src/ticks.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::floor",
+        "crates/simbiguity-math/src/float.rs::ln",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
+      ],
+      "name": "NiceTicks"
+    },
+    "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute": {
+      "filePath": "crates/simbiguity-plot/src/ticks.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::exp",
+        "crates/simbiguity-math/src/float.rs::floor",
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "inherentMethod": true,
+      "name": "NiceTicks::compute",
+      "namedMethods": [
+        "is_empty",
+        "new",
+        "push",
+        "vec"
+      ]
+    }
+  },
+  "files": {
+    "crates/simbiguity-plot/src/axes.rs": {
+      "declaredBy": [
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "imports": []
+    },
+    "crates/simbiguity-plot/src/chart.rs": {
+      "declaredBy": [
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs",
+        "crates/simbiguity-plot/src/series.rs",
+        "crates/simbiguity-render/src/commands.rs"
+      ]
+    },
+    "crates/simbiguity-plot/src/lib.rs": {
+      "declaresModules": [
+        "crates/simbiguity-plot/src/axes.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/line.rs",
+        "crates/simbiguity-plot/src/series.rs",
+        "crates/simbiguity-plot/src/ticks.rs"
+      ],
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-plot/src/axes.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/line.rs",
+        "crates/simbiguity-plot/src/series.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-plot/src/axes.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/series.rs",
+        "crates/simbiguity-plot/src/ticks.rs"
+      ]
+    },
+    "crates/simbiguity-plot/src/line.rs": {
+      "declaredBy": [
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/mesh.rs"
+      ]
+    },
+    "crates/simbiguity-plot/src/series.rs": {
+      "declaredBy": [
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "imports": []
+    },
+    "crates/simbiguity-plot/src/ticks.rs": {
+      "declaredBy": [
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs"
+      ]
+    }
+  }
+}

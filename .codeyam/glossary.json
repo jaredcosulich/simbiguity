@@ -59,6 +59,12 @@
     ]
   },
   {
+    "description": "Computes human-readable tick values for axes based on a data range.",
+    "filePath": "crates/simbiguity-plot/src/ticks.rs",
+    "name": "NiceTicks",
+    "testFile": "crates/simbiguity-plot/src/ticks.rs"
+  },
+  {
     "description": "The word a test status is written as in the report: passed, failed or ignored.",
     "filePath": "xtask/src/libtest_output.rs",
     "name": "Status::as_str",

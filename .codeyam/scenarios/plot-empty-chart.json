@@ -1,0 +1,15 @@
+{
+  "name": "Plot - Empty Chart",
+  "id": "d0ff4562-c033-464c-bdc3-98623eb1ffb3",
+  "url": "/demos/plot-demo/#empty",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T20:03:27Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/plot-demo/index.html",
+  "description": "An empty chart (no samples yet) showing axes only"
+}

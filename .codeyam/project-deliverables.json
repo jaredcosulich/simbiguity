@@ -77,9 +77,9 @@
       "id": "static-html-demos-embedding-the-simulations",
       "text": "Static HTML demos embedding the simulations",
       "status": "deferred",
-      "resolvedAt": "2026-11-26T16:32:37.368515787+00:00",
-      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
-      "planSlug": null,
+      "resolvedAt": "2026-11-26T16:56:07.597510498+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "static-html-demos-embedding-the-simulations",
       "note": "later roadmap plan; this cycle is foundations only",
       "decidedBy": "user"
     }

@@ -27,9 +27,9 @@
       "id": "physics-simulation",
       "text": "Physics simulation",
       "status": "deferred",
-      "resolvedAt": "2026-11-26T16:32:37.242587639+00:00",
-      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
-      "planSlug": null,
+      "resolvedAt": "2026-11-26T16:56:00.567164612+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "physics-simulation",
       "note": "later roadmap plan; this cycle is foundations only",
       "decidedBy": "user"
     },

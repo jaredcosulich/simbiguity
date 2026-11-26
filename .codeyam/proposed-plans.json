@@ -1,0 +1,132 @@
+{
+  "proposals": [
+    {
+      "id": "circuit-simulation",
+      "title": "Circuit simulation",
+      "mode": "backend",
+      "body": "## Summary\n\nCircuit simulation\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "circuit-simulation",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    },
+    {
+      "id": "physics-simulation",
+      "title": "Physics simulation",
+      "mode": "backend",
+      "body": "## Summary\n\nPhysics simulation\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "physics-simulation",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    },
+    {
+      "id": "market-simulation",
+      "title": "Market simulation",
+      "mode": "backend",
+      "body": "## Summary\n\nMarket simulation\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "market-simulation",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    },
+    {
+      "id": "animation-support",
+      "title": "Animation support",
+      "mode": "backend",
+      "body": "## Summary\n\nAnimation support\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "animation-support",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    },
+    {
+      "id": "from-scratch-3d-rendering-via-a-webgl2-renderer",
+      "title": "From-scratch 3D rendering via a WebGL2 renderer",
+      "mode": "backend",
+      "body": "## Summary\n\nFrom-scratch 3D rendering via a WebGL2 renderer\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "from-scratch-3d-rendering-via-a-webgl2-renderer",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    },
+    {
+      "id": "hand-written-wasm-interface-exposing-the-crates-to-the-browser",
+      "title": "Hand-written WASM interface exposing the crates to the browser",
+      "mode": "backend",
+      "body": "## Summary\n\nHand-written WASM interface exposing the crates to the browser\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "hand-written-wasm-interface-exposing-the-crates",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    },
+    {
+      "id": "static-html-demos-embedding-the-simulations",
+      "title": "Static HTML demos embedding the simulations",
+      "mode": "backend",
+      "body": "## Summary\n\nStatic HTML demos embedding the simulations\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "severity": 3,
+      "source": "deferred-deliverable",
+      "deliverableId": "static-html-demos-embedding-the-simulations",
+      "status": "pending",
+      "proposedAt": "2026-11-26T16:54:28.611373031+00:00",
+      "kind": "feature",
+      "sightings": 2
+    }
+  ],
+  "rounds": [
+    {
+      "at": "2026-11-26T16:54:28.611373031+00:00",
+      "feature": "Shared math and simulation core crates",
+      "notes": "Foundations cycle shipped on fast-sim-1 under Fast Commit (feature commit 9e8a287 stamped deferred). session-finalize is still owed before merging to main: 3 stale test partitions, 1 stale screenshot, Rust toolchain not pinned (verify-buil…",
+      "proposedIds": [
+        "circuit-simulation",
+        "physics-simulation",
+        "market-simulation",
+        "animation-support",
+        "from-scratch-3d-rendering-via-a-webgl2-renderer",
+        "hand-written-wasm-interface-exposing-the-crates-to-the-browser",
+        "static-html-demos-embedding-the-simulations"
+      ]
+    },
+    {
+      "at": "2026-11-26T16:54:33.632008971+00:00",
+      "feature": "Shared math and simulation core crates",
+      "notes": "Foundations cycle shipped on fast-sim-1 under Fast Commit (feature commit 9e8a287 stamped deferred). session-finalize is still owed before merging to main: 3 stale test partitions, 1 stale screenshot, Rust toolchain not pinned (verify-buil…",
+      "proposedIds": [
+        "circuit-simulation",
+        "physics-simulation",
+        "market-simulation",
+        "animation-support",
+        "from-scratch-3d-rendering-via-a-webgl2-renderer",
+        "hand-written-wasm-interface-exposing-the-crates-to-the-browser",
+        "static-html-demos-embedding-the-simulations"
+      ]
+    }
+  ]
+}

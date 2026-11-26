@@ -6,12 +6,12 @@
     {
       "id": "zero-dependency-rust-simulation-crates-shared",
       "text": "Zero-dependency Rust simulation crates (shared math and core simulation contract)",
-      "status": "open",
-      "resolvedAt": null,
-      "resolvedInFeature": null,
+      "status": "delivered",
+      "resolvedAt": "2026-11-26T16:54:33.563017125+00:00",
+      "resolvedInFeature": "Foundations: simbiguity-math and simbiguity-core (zero-dependency math, Simulation contract, fixed clock, seeded RNG, snapshots)",
       "planSlug": null,
       "note": null,
-      "decidedBy": null
+      "decidedBy": "user"
     },
     {
       "id": "circuit-simulation",

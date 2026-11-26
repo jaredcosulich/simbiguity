@@ -73,6 +73,12 @@
       "shortSha": "cc0b50c",
       "subject": "feat: Hardening: randomized physics-law invariants, no panics, native-vs-WASM determinism",
       "deferredAt": "2026-11-26T21:43:46Z"
+    },
+    {
+      "sha": "a0c5ca12c35971376a4cc5b902481468a0aeceff",
+      "shortSha": "a0c5ca1",
+      "subject": "Fix: get fast-sim-1 green and clean (clippy, toolchain pin, committed junk)",
+      "deferredAt": "2026-11-26T22:59:47Z"
     }
   ],
   "finalizeIntent": "fast",

@@ -4,6 +4,40 @@ use simbiguity_math::{float, Mat4, Vec3};
 
 use crate::pick::Ray;
 
+/// Creates an orthographic projection matrix.
+pub fn orthographic_projection(
+    left: f64,
+    right: f64,
+    bottom: f64,
+    top: f64,
+    near: f64,
+    far: f64,
+) -> Mat4 {
+    let tx = -(right + left) / (right - left);
+    let ty = -(top + bottom) / (top - bottom);
+    let tz = -(far + near) / (far - near);
+    Mat4 {
+        m: [
+            2.0 / (right - left),
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.0 / (top - bottom),
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -2.0 / (far - near),
+            0.0,
+            tx,
+            ty,
+            tz,
+            1.0,
+        ],
+    }
+}
+
 /// A camera on a sphere around `target`: drag to orbit, scroll to zoom.
 ///
 /// `yaw` turns around the vertical axis (0 looks from +Z toward −Z);
@@ -211,5 +245,20 @@ mod tests {
     fn view_projection_composes() {
         let c = OrbitCamera::default();
         assert_eq!(c.view_projection(1.5), c.projection(1.5) * c.view());
+    }
+
+    /// Verifies that the orthographic projection correctly transforms coordinates within the bounds.
+    #[test]
+    fn orthographic_works() {
+        let p = orthographic_projection(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
+        let pt = p.transform_point(Vec3::new(50.0, 50.0, 0.0));
+        assert!((pt.x).abs() < 1e-6);
+        assert!((pt.y).abs() < 1e-6);
+        assert!((pt.z).abs() < 1e-6);
+
+        let p2 = orthographic_projection(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
+        let pt2 = p2.transform_point(Vec3::new(0.0, 0.0, -1.0));
+        assert!((pt2.x + 1.0).abs() < 1e-6);
+        assert!((pt2.y + 1.0).abs() < 1e-6);
     }
 }

@@ -33,6 +33,10 @@ pub use simbiguity_circuits as circuits;
 #[cfg(feature = "physics")]
 pub use simbiguity_physics as physics;
 
+/// The time-series plot rendering logic (`simbiguity-plot`).
+#[cfg(feature = "plot")]
+pub use simbiguity_plot as plot;
+
 #[cfg(test)]
 mod tests {
     // Verifies simbiguity core load.

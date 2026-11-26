@@ -34,4 +34,10 @@ impl Series {
         };
         first.iter().chain(second.iter())
     }
+
+    pub fn window(&self, duration: f64) -> impl Iterator<Item = &(f64, f64)> {
+        let max_time = self.iter().last().map(|&(t, _)| t).unwrap_or(0.0);
+        let min_time = max_time - duration;
+        self.iter().filter(move |&&(t, _)| t >= min_time)
+    }
 }

@@ -1,6 +1,10 @@
 {
   "entities": {},
   "files": {
+    "patch_ticks.sh": {
+      "importedBy": [],
+      "imports": []
+    },
     "scratch-node-fix.py": {
       "importedBy": [],
       "imports": []

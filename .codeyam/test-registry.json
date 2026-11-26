@@ -77,7 +77,7 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::eye_sits_on_the_orbit_sphere",
-      "line": 145,
+      "line": 179,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -86,8 +86,17 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::orbit_clamps_pitch",
-      "line": 184,
+      "line": 218,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that the orthographic projection correctly transforms coordinates within the bounds.",
+      "file": "crates/simbiguity-render/src/camera.rs",
+      "format": "cargo",
+      "key": "camera::tests::orthographic_works",
+      "line": 252,
+      "registeredAt": "2026-11-26T23:28:02.297088049+00:00",
       "runner": "cargo"
     },
     {
@@ -95,7 +104,7 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::points_behind_the_camera_do_not_project",
-      "line": 166,
+      "line": 200,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -104,7 +113,7 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::project_lands_known_points_on_known_pixels",
-      "line": 153,
+      "line": 187,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -113,7 +122,7 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::ray_inverts_project",
-      "line": 172,
+      "line": 206,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -122,7 +131,7 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::view_projection_composes",
-      "line": 211,
+      "line": 245,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -131,7 +140,7 @@
       "file": "crates/simbiguity-render/src/camera.rs",
       "format": "cargo",
       "key": "camera::tests::zoom_scales_within_limits",
-      "line": 195,
+      "line": 229,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -2768,7 +2777,7 @@
       "file": "crates/simbiguity/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_simbiguity",
-      "line": 40,
+      "line": 44,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },
@@ -2797,6 +2806,24 @@
       "key": "ticks::tests::test_compute_ticks",
       "line": 51,
       "registeredAt": "2026-11-26T20:58:13.543925171+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The 1-2-5 rule: asking for about 5 ticks over [0, 10] gives a step of 2. So the ticks are exactly 0, 2, 4, 6, 8, 10, a hand-checkable example of choosing \"nice\" axis labels.",
+      "file": "crates/simbiguity-plot/src/ticks.rs",
+      "format": "cargo",
+      "key": "ticks::tests::ticks_for_zero_to_ten_step_by_two",
+      "line": 72,
+      "registeredAt": "2026-11-26T23:28:02.297088049+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that tick generation doesn't loop infinitely or produce excessive ticks for very large magnitudes.",
+      "file": "crates/simbiguity-plot/src/ticks.rs",
+      "format": "cargo",
+      "key": "ticks::tests::ticks_terminate_at_huge_magnitudes",
+      "line": 79,
+      "registeredAt": "2026-11-26T23:28:02.297088049+00:00",
       "runner": "cargo"
     },
     {

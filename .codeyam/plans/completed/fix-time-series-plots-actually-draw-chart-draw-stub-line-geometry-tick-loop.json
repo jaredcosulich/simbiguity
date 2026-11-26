@@ -1,0 +1,41 @@
+{
+  "claimStartedAt": "2026-11-26T23:00:49Z",
+  "completedAt": "2026-11-26T23:30:32Z",
+  "completedBy": {
+    "agentProvider": "gemini",
+    "codeyamEditorVersion": "0.1.7",
+    "currentStep": "ui-step22",
+    "machine": "codeyam-editor-codeyam-editor-2",
+    "originId": "2529c5ad-2bef-469d-be8a-e34608393066",
+    "pid": 6,
+    "priority": 0,
+    "selectedPlan": "fix-time-series-plots-actually-draw-chart-draw-stub-line-geometry-tick-loop",
+    "sessionId": "d45edb58-4b0a-4845-944e-7a518cc769ec",
+    "startedAt": "2026-11-26T23:00:49Z"
+  },
+  "createdAt": "2026-11-26T22:14:08Z",
+  "deliverables": [
+    ".gitignore",
+    "Cargo.lock",
+    "crates/simbiguity-circuits/src/mna.rs",
+    "crates/simbiguity-plot/Cargo.toml",
+    "crates/simbiguity-plot/capabilities.toml",
+    "crates/simbiguity-plot/src/axes.rs",
+    "crates/simbiguity-plot/src/chart.rs",
+    "crates/simbiguity-plot/src/lib.rs",
+    "crates/simbiguity-plot/src/line.rs",
+    "crates/simbiguity-plot/src/series.rs",
+    "crates/simbiguity-plot/src/ticks.rs",
+    "crates/simbiguity-render/src/camera.rs",
+    "crates/simbiguity/Cargo.toml",
+    "crates/simbiguity/src/lib.rs",
+    "patch_ticks.sh",
+    "rust-toolchain.toml",
+    "site/js/plot-labels.test.js"
+  ],
+  "journalTimestamp": "2026-11-26T23:30:32Z",
+  "mode": "ui",
+  "planFile": "completed/fix-time-series-plots-actually-draw-chart-draw-stub-line-geometry-tick-loop.md",
+  "slug": "fix-time-series-plots-actually-draw-chart-draw-stub-line-geometry-tick-loop",
+  "title": "Fix: time-series plots actually draw (Chart::draw stub, line geometry, tick loop)"
+}

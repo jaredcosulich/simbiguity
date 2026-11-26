@@ -1,5 +1,21 @@
 {
   "entities": {
+    "site/js/plot-labels.js::renderLabels": {
+      "filePath": "site/js/plot-labels.js",
+      "importedBy": [
+        "site/js/plot-labels.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "renderLabels"
+    },
+    "site/js/plot-labels.test.js::__file_root__": {
+      "filePath": "site/js/plot-labels.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/plot-labels.js::renderLabels"
+      ],
+      "name": "__file_root__"
+    },
     "site/js/simbiguity-render.js::Pick": {
       "filePath": "site/js/simbiguity-render.js",
       "importedBy": [
@@ -170,8 +186,16 @@
   },
   "files": {
     "site/js/plot-labels.js": {
-      "importedBy": [],
+      "importedBy": [
+        "site/js/plot-labels.test.js"
+      ],
       "imports": []
+    },
+    "site/js/plot-labels.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/plot-labels.js"
+      ]
     },
     "site/js/simbiguity-render.js": {
       "importedBy": [

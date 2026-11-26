@@ -310,6 +310,7 @@
     "crates/simbiguity-math/src/float.rs::floor": {
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
       ],
@@ -518,7 +519,8 @@
         "crates/simbiguity-math/src/float.rs::unit_complement",
         "crates/simbiguity-math/src/quat.rs::Quat",
         "crates/simbiguity-math/src/quat.rs::Quat::length",
-        "crates/simbiguity-math/src/vec.rs::__file_root__"
+        "crates/simbiguity-math/src/vec.rs::__file_root__",
+        "crates/simbiguity-plot/src/line.rs::build_line_mesh"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::round_down_if_closer",
@@ -1222,6 +1224,7 @@
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::view",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::view_projection",
+        "crates/simbiguity-render/src/camera.rs::orthographic_projection",
         "crates/simbiguity-render/src/frame.rs::mat",
         "crates/simbiguity-render/src/pick.rs::Aabb",
         "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
@@ -2687,6 +2690,8 @@
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",

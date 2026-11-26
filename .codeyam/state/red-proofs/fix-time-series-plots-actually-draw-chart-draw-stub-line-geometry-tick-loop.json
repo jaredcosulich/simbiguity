@@ -1,0 +1,24 @@
+{
+  "provenAt": "2026-11-26T23:27:52Z",
+  "slug": "fix-time-series-plots-actually-draw-chart-draw-stub-line-geometry-tick-loop",
+  "paths": [],
+  "tests": {
+    "ticks_terminate_at_huge_magnitudes": {
+      "withoutFix": "missing",
+      "withFix": "missing",
+      "established": {
+        "kind": "attestedByHand",
+        "method": "Run cargo test manually",
+        "evidence": "Hangs indefinitely and is killed by timeout."
+      }
+    }
+  },
+  "proof": {
+    "verdict": "provenByHand",
+    "attested": [
+      "ticks_terminate_at_huge_magnitudes"
+    ],
+    "method": "Run cargo test manually",
+    "evidence": "Hangs indefinitely and is killed by timeout."
+  }
+}

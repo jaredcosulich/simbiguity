@@ -1,4 +1,7 @@
-id = "plot"
+[[capability]]
 name = "Time-Series Plotter"
-status = "stable"
-crates = ["simbiguity-plot"]
+description = "Plots time-series data using screen-space normal extrusion and nice ticks."
+demo = "demos/plot-demo/#sine"
+proves = [
+    "ticks::tests"
+]

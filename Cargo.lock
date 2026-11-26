@@ -10,6 +10,7 @@ dependencies = [
  "simbiguity-core",
  "simbiguity-math",
  "simbiguity-physics",
+ "simbiguity-plot",
 ]
 
 [[package]]

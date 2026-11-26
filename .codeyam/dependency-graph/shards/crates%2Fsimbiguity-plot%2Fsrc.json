@@ -126,7 +126,8 @@
     "crates/simbiguity-plot/src/chart.rs::Chart::axes": {
       "filePath": "crates/simbiguity-plot/src/chart.rs",
       "importedBy": [
-        "crates/simbiguity-plot/src/chart.rs::Chart"
+        "crates/simbiguity-plot/src/chart.rs::Chart",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
       ],
       "imports": [
         "crates/simbiguity-plot/src/axes.rs::Axes"
@@ -136,7 +137,8 @@
     "crates/simbiguity-plot/src/chart.rs::Chart::series": {
       "filePath": "crates/simbiguity-plot/src/chart.rs",
       "importedBy": [
-        "crates/simbiguity-plot/src/chart.rs::Chart"
+        "crates/simbiguity-plot/src/chart.rs::Chart",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
       ],
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series"
@@ -147,17 +149,45 @@
       "filePath": "crates/simbiguity-plot/src/chart.rs",
       "importedBy": [],
       "imports": [
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+        "crates/simbiguity-math/src/float.rs::floor",
+        "crates/simbiguity-plot/src/chart.rs::Chart::axes",
+        "crates/simbiguity-plot/src/chart.rs::Chart::series",
+        "crates/simbiguity-plot/src/line.rs::build_line_mesh",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::format_tick",
+        "crates/simbiguity-render/src/commands.rs::Command",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::Program",
+        "crates/simbiguity-render/src/commands.rs::Uniform",
+        "crates/simbiguity-render/src/mesh.rs::Mesh"
       ],
       "inherentMethod": true,
       "name": "Chart<'a>::draw",
       "namedMethods": [
-        "new"
+        "build_line_mesh",
+        "compute",
+        "data_to_px",
+        "default",
+        "extend",
+        "extend_from_slice",
+        "floor",
+        "format_tick",
+        "iter",
+        "len",
+        "map",
+        "max",
+        "min",
+        "new",
+        "push",
+        "vertex_count"
       ]
     },
     "crates/simbiguity-plot/src/lib.rs::__file_root__": {
       "filePath": "crates/simbiguity-plot/src/lib.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity/src/lib.rs::__file_root__"
+      ],
       "imports": [
         "crates/simbiguity-plot/src/axes.rs::Axes",
         "crates/simbiguity-plot/src/chart.rs::Chart",
@@ -168,12 +198,17 @@
     },
     "crates/simbiguity-plot/src/line.rs::build_line_mesh": {
       "filePath": "crates/simbiguity-plot/src/line.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
+      ],
       "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt",
         "crates/simbiguity-render/src/mesh.rs::Mesh"
       ],
       "name": "build_line_mesh",
       "namedMethods": [
+        "abs",
+        "clamp",
         "default",
         "extend_from_slice",
         "len"
@@ -192,7 +227,8 @@
         "crates/simbiguity-plot/src/series.rs::Series::iter",
         "crates/simbiguity-plot/src/series.rs::Series::new",
         "crates/simbiguity-plot/src/series.rs::Series::push",
-        "crates/simbiguity-plot/src/series.rs::Series::samples"
+        "crates/simbiguity-plot/src/series.rs::Series::samples",
+        "crates/simbiguity-plot/src/series.rs::Series::window"
       ],
       "name": "Series"
     },
@@ -221,7 +257,8 @@
     "crates/simbiguity-plot/src/series.rs::Series::iter": {
       "filePath": "crates/simbiguity-plot/src/series.rs",
       "importedBy": [
-        "crates/simbiguity-plot/src/series.rs::Series"
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/series.rs::Series::window"
       ],
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series::capacity",
@@ -282,22 +319,43 @@
       "imports": [],
       "name": "Series::samples"
     },
+    "crates/simbiguity-plot/src/series.rs::Series::window": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series::iter"
+      ],
+      "inherentMethod": true,
+      "name": "Series::window",
+      "namedMethods": [
+        "filter",
+        "iter",
+        "last",
+        "map",
+        "unwrap_or"
+      ]
+    },
     "crates/simbiguity-plot/src/ticks.rs::NiceTicks": {
       "filePath": "crates/simbiguity-plot/src/ticks.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-plot/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::exp",
         "crates/simbiguity-math/src/float.rs::floor",
         "crates/simbiguity-math/src/float.rs::ln",
-        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::format_tick"
       ],
       "name": "NiceTicks"
     },
     "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute": {
       "filePath": "crates/simbiguity-plot/src/ticks.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks"
       ],
       "imports": [
@@ -312,6 +370,19 @@
         "new",
         "push",
         "vec"
+      ]
+    },
+    "crates/simbiguity-plot/src/ticks.rs::NiceTicks::format_tick": {
+      "filePath": "crates/simbiguity-plot/src/ticks.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks"
+      ],
+      "imports": [],
+      "inherentMethod": true,
+      "name": "NiceTicks::format_tick",
+      "namedMethods": [
+        "string"
       ]
     }
   },
@@ -338,7 +409,19 @@
       "imports": [
         "crates/simbiguity-plot/src/axes.rs",
         "crates/simbiguity-plot/src/series.rs",
-        "crates/simbiguity-render/src/commands.rs"
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-plot/src/line.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-plot/src/line.rs",
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-plot/src/line.rs"
       ]
     },
     "crates/simbiguity-plot/src/lib.rs": {
@@ -349,7 +432,9 @@
         "crates/simbiguity-plot/src/series.rs",
         "crates/simbiguity-plot/src/ticks.rs"
       ],
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity/src/lib.rs"
+      ],
       "imports": [
         "crates/simbiguity-plot/src/axes.rs",
         "crates/simbiguity-plot/src/chart.rs",
@@ -367,10 +452,14 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "imports": [
-        "crates/simbiguity-render/src/mesh.rs"
+        "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-math/src/float.rs"
       ]
     },
     "crates/simbiguity-plot/src/series.rs": {
@@ -389,6 +478,10 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",
         "crates/simbiguity-plot/src/lib.rs"
       ],

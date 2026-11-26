@@ -1,3 +1,9 @@
+//! # simbiguity-plot
+//!
+//! A minimal rendering-side crate for 2D time-series plots.
+//! It maps samples from data space to pixel space, computing "nice" axis ticks,
+//! downsampling large datasets dynamically to match the screen's column count,
+//! and building line-strip meshes for the existing WebGL executor to render.
 #![no_std]
 extern crate alloc;
 

@@ -142,7 +142,8 @@
         "crates/simbiguity-render/src/camera.rs::OrbitCamera",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
-        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray"
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
+        "crates/simbiguity-render/src/camera.rs::orthographic_projection"
       ],
       "imports": [],
       "name": "OrbitCamera::far"
@@ -203,7 +204,8 @@
         "crates/simbiguity-render/src/camera.rs::OrbitCamera",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
-        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray"
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
+        "crates/simbiguity-render/src/camera.rs::orthographic_projection"
       ],
       "imports": [],
       "name": "OrbitCamera::near"
@@ -395,6 +397,16 @@
         "is_finite"
       ]
     },
+    "crates/simbiguity-render/src/camera.rs::orthographic_projection": {
+      "filePath": "crates/simbiguity-render/src/camera.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/mat.rs::Mat4",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::far",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera::near"
+      ],
+      "name": "orthographic_projection"
+    },
     "crates/simbiguity-render/src/commands.rs::Blend": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
@@ -446,6 +458,7 @@
     "crates/simbiguity-render/src/commands.rs::Command": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
         "crates/simbiguity-render/src/decode.rs::CommandBuffer",
@@ -761,6 +774,7 @@
     "crates/simbiguity-render/src/commands.rs::Program": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-render/src/commands.rs::Command",
         "crates/simbiguity-render/src/commands.rs::Command::SetProgram",
         "crates/simbiguity-render/src/decode.rs::program",
@@ -814,6 +828,7 @@
     "crates/simbiguity-render/src/commands.rs::Uniform": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-render/src/commands.rs::Command",
         "crates/simbiguity-render/src/commands.rs::Command::SetUniformF32",
         "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4",
@@ -1602,6 +1617,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::append",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-plot/src/line.rs::build_line_mesh",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-render/src/mesh.rs::Mesh::capsule",
@@ -3455,6 +3471,9 @@
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-render/src/decode.rs",
         "crates/simbiguity-render/src/decode.rs",
         "crates/simbiguity-render/src/decode.rs",
@@ -3585,6 +3604,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/lib.rs",

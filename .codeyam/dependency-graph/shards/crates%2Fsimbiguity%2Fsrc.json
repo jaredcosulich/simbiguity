@@ -1,0 +1,9 @@
+{
+  "entities": {},
+  "files": {
+    "crates/simbiguity/src/lib.rs": {
+      "importedBy": [],
+      "imports": []
+    }
+  }
+}

@@ -1,9 +1,7 @@
 {
-  "lastFinalizedAt": null,
-  "lastFinalizedSha": null,
-  "deferred": [],
-  "drained": {
-    "screenshots": 1,
-    "at": "2026-11-26T12:23:44Z"
-  }
+  "lastFinalizedAt": "2026-11-26T12:58:49Z",
+  "lastFinalizedSha": "ace704f0607156afefdb24554ee123eddca5e311",
+  "lastFullFinalizeSha": "ace704f0607156afefdb24554ee123eddca5e311",
+  "lastFullFinalizeTree": "3ac03f3178dd098316a98257d30b0c87e17d50ff2e1b4c1b2ec7f4ebcf37456f",
+  "deferred": []
 }

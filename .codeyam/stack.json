@@ -13,7 +13,7 @@
     "routing": "manual"
   },
   "commands": {
-    "dev": "python3 -m http.server 4781 --bind 127.0.0.1"
+    "dev": "python3 -m http.server 4780 --bind 127.0.0.1"
   },
   "components": {
     "fileExtensions": [

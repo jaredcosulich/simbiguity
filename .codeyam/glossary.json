@@ -1,0 +1,8 @@
+[
+  {
+    "description": "The simbiguity version this build was compiled from (the crate's `Cargo.toml` version), for embedding projects and the status page to report.",
+    "filePath": "crates/simbiguity/src/lib.rs",
+    "name": "version",
+    "testFile": "crates/simbiguity/src/lib.rs"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "tests::version_matches_the_crate_manifest": {
+    "file": "crates/simbiguity/src/lib.rs",
+    "lastRunAt": "2026-11-26T12:57:45.925Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T12:57:45.925Z"
+    ]
+  }
+}

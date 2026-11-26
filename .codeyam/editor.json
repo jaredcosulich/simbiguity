@@ -6,7 +6,7 @@
       "framework": "plain-html",
       "name": "site",
       "port": 4780,
-      "startCommand": "python3 -m http.server 4781 --bind 127.0.0.1",
+      "startCommand": "python3 -m http.server 4780 --bind 127.0.0.1",
       "type": "web"
     }
   ],
@@ -111,7 +111,7 @@
     }
   },
   "hooks": {},
-  "port": 4781,
+  "port": 4780,
   "projectDescription": "An open source simulation engine by The Ambiguity Project. Zero-dependency Rust crates for simulation (circuits, physics, markets), animation and 3D rendering, embedded in static HTML demos via a hand-written WASM interface and a from-scratch WebGL2 renderer.",
   "projectName": "simbiguity",
   "proposedPlans": {
@@ -164,7 +164,7 @@
   },
   "setupBrowserEnabled": false,
   "silenceHookStderr": false,
-  "startCommand": "python3 -m http.server 4781 --bind 127.0.0.1",
+  "startCommand": "python3 -m http.server 4780 --bind 127.0.0.1",
   "staticChecks": [
     {
       "command": "cargo fmt --all -- --check",

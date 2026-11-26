@@ -1,0 +1,77 @@
+{
+  "capabilities": {
+    "http-mocks": "manual",
+    "interactions-click": "manual",
+    "interactions-touch-gestures": "manual",
+    "layout-web": "manual",
+    "native-clipboard": "not-applicable",
+    "native-geolocation": "not-applicable",
+    "native-haptics": "not-applicable",
+    "native-network": "not-applicable",
+    "native-storage": "not-applicable",
+    "real-device": "not-applicable",
+    "routing": "manual"
+  },
+  "commands": {
+    "dev": "python3 -m http.server 4781 --bind 127.0.0.1"
+  },
+  "components": {
+    "fileExtensions": [
+      ".js",
+      ".mjs"
+    ],
+    "primitives": [
+      "div",
+      "span",
+      "h1",
+      "h2",
+      "h3",
+      "p",
+      "img",
+      "ul",
+      "li",
+      "a",
+      "button",
+      "input",
+      "form"
+    ]
+  },
+  "data": {
+    "importStatement": "window.localStorage",
+    "seedAdapterType": "localStorage",
+    "type": "local-storage"
+  },
+  "defaultScreenSize": "Desktop",
+  "framework": "plain-html",
+  "id": "plain-html",
+  "name": "Plain HTML (static)",
+  "preview": {
+    "defaultPort": 4780,
+    "kind": "iframe"
+  },
+  "routing": {
+    "bundler": "none",
+    "componentManifest": ".codeyam/generated/components.js",
+    "serverRoot": "site",
+    "type": "query-param"
+  },
+  "scaffoldedFrom": "plain-html",
+  "screenSizes": {
+    "Desktop": {
+      "height": 900,
+      "width": 1440
+    },
+    "Laptop": {
+      "height": 800,
+      "width": 1280
+    },
+    "Mobile": {
+      "height": 844,
+      "width": 390
+    },
+    "Tablet": {
+      "height": 1024,
+      "width": 768
+    }
+  }
+}

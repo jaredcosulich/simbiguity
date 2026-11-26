@@ -1,0 +1,15 @@
+{
+  "name": "Landing - Coming Soon",
+  "id": "9a89a144-21d9-439e-aefb-11c0fdc43d37",
+  "url": "/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T12:20:10Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/index.html",
+  "description": "Landing - Coming Soon."
+}

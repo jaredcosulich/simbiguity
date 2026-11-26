@@ -13,6 +13,12 @@
       "shortSha": "ac1aeea",
       "subject": "feat: DC circuit engine: simbiguity-circuits with Modified Nodal Analysis and teachable diagnostics",
       "deferredAt": "2026-11-26T17:35:47Z"
+    },
+    {
+      "sha": "837c5c90964b2756dfeaec86aad89ae8e72aba3d",
+      "shortSha": "837c5c9",
+      "subject": "feat: Hello circuit: hand-written WASM bridge, JS loader, first demo page and GitHub Pages deploy",
+      "deferredAt": "2026-11-26T18:02:08Z"
     }
   ],
   "finalizeIntent": "fast",

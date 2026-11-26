@@ -345,6 +345,23 @@
         "rust-toolchain.toml"
       ],
       "testFilePatterns": []
+    },
+    {
+      "dependsOn": [],
+      "excludePatterns": [],
+      "name": "xtask",
+      "runner": "cargo",
+      "runnerArgs": [
+        "-p",
+        "xtask"
+      ],
+      "sourceFilePatterns": [
+        "xtask/**/*",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust-toolchain.toml"
+      ],
+      "testFilePatterns": []
     }
   ],
   "testRunners": [

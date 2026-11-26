@@ -4,6 +4,7 @@
       "filePath": "crates/simbiguity/src/lib.rs",
       "importedBy": [],
       "imports": [
+        "crates/simbiguity-circuits/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-math/src/lib.rs::__file_root__"
       ],
@@ -15,7 +16,8 @@
       "importedBy": [],
       "imports": [
         "crates/simbiguity-math/src/lib.rs",
-        "crates/simbiguity-core/src/lib.rs"
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs"
       ]
     }
   }

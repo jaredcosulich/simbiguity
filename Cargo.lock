@@ -6,6 +6,15 @@ version = 3
 name = "simbiguity"
 version = "0.0.1"
 dependencies = [
+ "simbiguity-circuits",
+ "simbiguity-core",
+ "simbiguity-math",
+]
+
+[[package]]
+name = "simbiguity-circuits"
+version = "0.0.1"
+dependencies = [
  "simbiguity-core",
  "simbiguity-math",
 ]

@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-11-26T17:35:08Z",
+  "title": "DC circuit engine: simbiguity-circuits with Modified Nodal Analysis and teachable diagnostics",
+  "type": "feature",
+  "userRequest": "## Summary\n\nBuild **`simbiguity-circuits`**, a from-scratch DC circuit engine using Modified Nodal Analysis (MNA), sized and designed for education: batteries, resistors, light bulbs, switches and wires. It answers the questions a learner asks (\"why is this bulb dim?\", \"what if I close this switch?\", \"why did that short out?\") with exact numbers and clear, typed diagnostics. It implements the `simbiguity-core` `Simulation` contract, so it composes with other engines and with the 3D puzzle layer later. Zero dependencies beyond `simbiguity-math` and `simbiguity-core`.\n\n## Key Decisions\n\n- **MNA over hand-rolled series/parallel reduction.** MNA handles any topology (bridges, multiple sources), and it is the method real simulators (SPICE) use. That is worth teaching. Node voltages and source currents come from one `lu_solve`.\n- **Components are data, not trait objects, for now.** `enum Component { Battery { emf, internal_r }, Resistor { r }, Bulb { rated_power, rated_voltage }, Switch { closed }, Wire }`, connecting two `NodeId`s. A bulb is a resistor whose resistance comes from its rating (R = V²/P). Its brightness is `P_actual / P_rated`, clamped, and it \"blows\" above a threshold. Wires are near-zero resistances, handled by node merging (union-find) rather than tiny resistors, which keeps the matrix well-conditioned.\n- **Diagnostics are first-class output, not panics.** These come back as typed results the UI can explain: a short circuit (an ideal source across ~0 Ω), a floating node (no path to ground → singular matrix, the node identified), a voltage-source loop, an open circuit (no current), and a blown bulb.\n- **Ground is implicit.** Ground is the node on the negative terminal of the first battery unless the builder sets one, so learners never have to think about it.\n- **Transient (capacitors, inductors) and AC are later plans.** The `Simulation::step(dt)` is a re-solve today, but the struct leaves room for companion models without breaking the API.\n- **Deterministic and snapshot-able.** The circuit state is its component list plus switch states, so `Snapshot` is trivial, and puzzle undo comes for free.\n\n## Implementation\n\n### 1. Netlist and builder\n\n**New file**: `crates/simbiguity-circuits/Cargo.toml`\n**New file**: `crates/simbiguity-circuits/src/lib.rs`\n**New file**: `crates/simbiguity-circuits/src/netlist.rs`: `Circuit`, `NodeId`, `ComponentId`, a builder (`add_battery(a, b, emf)`, `add_bulb`, `add_switch`, `connect`)\n**New file**: `crates/simbiguity-circuits/src/component.rs`: the `Component` enum and per-component stamping into the MNA matrix\n\n### 2. Solver\n\n**New file**: `crates/simbiguity-circuits/src/mna.rs`: merges wires via union-find, assembles G/B/C/D blocks into one dense system, calls `simbiguity_math::lu_solve`, and maps the results back\n**New file**: `crates/simbiguity-circuits/src/solution.rs`: `Solution { node_voltage(n), current(c), power(c), brightness(bulb) }`\n**New file**: `crates/simbiguity-circuits/src/diagnostics.rs`: `CircuitIssue` enum + detection (short, floating node, source loop, blown bulb, open)\n\n### 3. Simulation integration\n\n**New file**: `crates/simbiguity-circuits/src/sim.rs`: `impl Simulation for CircuitSim` (Input = `ToggleSwitch(id)` / `SetValue(id, v)`; State = latest `Solution` + issues), `impl Snapshot`\n\n### 4. Umbrella + codeyam\n\n**File**: `crates/simbiguity/src/lib.rs`\n\nRe-export behind a `circuits` feature. Re-run `configure-test-commands` for the new partition.\n\n## Reused existing code\n\n- `lu_solve` / `SolveError::Singular` from `simbiguity-math` (plan: foundations)\n- `Simulation` / `Snapshot` / `Seconds` from `simbiguity-core` (plan: foundations)\n- No circuit code exists yet.\n\n## Tests (TDD — written first)\n\nEach test is a textbook circuit with a hand-computed answer, so the tests double as worked examples on the public test page:\n- A single battery + resistor: Ohm's law, I = V/R.\n- Two resistors in series and in parallel: the voltage divider and current divider.\n- A battery with internal resistance: the terminal voltage drops under load.\n- A Wheatstone bridge (balanced → zero bridge current; unbalanced → known value): proves MNA beyond series/parallel.\n- Two batteries in parallel with different EMFs: the circulating current.\n- A bulb at its rated voltage → brightness 1.0; at half voltage → 0.25 (P ∝ V²).\n- A switch open → no current and bulb brightness 0; toggled closed → lit (through `Simulation::apply`).\n- A wire straight across the battery → `ShortCircuit` issue naming the battery.\n- A component on its own island → `FloatingNode` naming the node.\n- Overvoltage → bulb `Blown`.\n- Snapshot/restore round-trip across a switch toggle.\n- Determinism: the same circuit solved twice gives bit-identical results.\n\n## Scenarios to Demonstrate\n\n- Library-only in this plan. The hello-circuit page (next plan) is the first visual demo of this engine.",
+  "description": "Added the simbiguity-circuits crate. It is a zero-dependency DC circuit engine with batteries (ideal or with internal resistance), resistors, rated bulbs, switches and wires. It solves any topology with Modified Nodal Analysis: wire-merged nodes via union-find, a 0 V reference per island, and an LU solve. Wire currents come from Kirchhoff's current law over a spanning forest. Problems come back as typed, plain-language CircuitIssue diagnostics instead of panics: shorts, floating parts, battery loops, open circuits and invalid values. Bulbs have a brightness, and an overloaded bulb blows, starting with the most overloaded and re-solving after each one. CircuitSim implements the simbiguity-core Simulation and Snapshot traits, and the umbrella simbiguity crate exposes it behind a circuits feature. 61 tests pass, including hand-checked circuits such as an unbalanced Wheatstone bridge.\n\nSCOPE VERDICT: DELIVERED the DC core of the 'Circuit simulation' deliverable. The deliverable store still lists it as deferred from the foundations cycle, a user decision. DEFERRED, all user-decided as later roadmap plans: physics simulation, market simulation, animation support, the WebGL2 renderer, the WASM interface and the static HTML demos. No agent-decided deferrals.\n\nDisclosed deviations (minor): extra CircuitInput variants; a shorted real battery is not fatal; ground is per island; a loop made only of wires reports 0 A on its closing wire; Bulb has a blown flag; the module split. Open risk: analyze has no iteration cap, though it terminates within n_bulbs passes because each pass blows one intact bulb. Fast Commit: the full audit and reconcile are deferred to session-finalize.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-math%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/dc-circuit-engine-simbiguity-circuits-with-modified-nodal-analysis-and-teachable-diagnostics.md\t.codeyam/plans/completed/dc-circuit-engine-simbiguity-circuits-with-modified-nodal-analysis-and-teachable-diagnostics.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/speed-history.jsonl",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/3a8676cba6f12414e9c00f95d778999c501e6edc906bc99642e27eebbac207c0.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/fd6b6ad45876fe489a4c6a97b5f321adb9345a09f1e94c504294db6393075b41.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity/Cargo.toml",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Fsrc.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Ftests.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/red-proofs/dc-circuit-engine-simbiguity-circuits-with-modified-nodal-analysis-and-teachable-diagnostics.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/1023884d367ab43137b2f17ad39371dabab2ba36b734028cf8cf04e8e48924f0.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/5eedf329f97ce0495f284d7415f01db5bf5ebeb1771997300c43c8b7b0de8608.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7c553de0dec05701752f4e4a4e3b1353987bfd6e408a834e0618c556f54db17d.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/Cargo.toml",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/component.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/diagnostics.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/dsu.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/lib.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/mna.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/netlist.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/sim.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/solution.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/wires.rs",
+      "status": "added"
+    },
+    {
+      "path": "crates/simbiguity-circuits/tests/analysis.rs",
+      "status": "added"
+    }
+  ]
+}

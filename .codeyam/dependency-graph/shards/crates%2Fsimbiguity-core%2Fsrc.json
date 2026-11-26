@@ -810,6 +810,11 @@
     "crates/simbiguity-core/src/simulation.rs::Seconds": {
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
+        "crates/simbiguity-circuits/tests/analysis.rs::blown_bulb_persists_until_replaced",
+        "crates/simbiguity-circuits/tests/analysis.rs::snapshot_round_trip_restores_state",
+        "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
         "crates/simbiguity-core/src/clock.rs::FixedClock",
         "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
         "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
@@ -916,6 +921,8 @@
     "crates/simbiguity-core/src/simulation.rs::Simulation": {
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/lockstep.rs::S",
         "crates/simbiguity-core/src/simulation.rs::Snapshot"
@@ -960,6 +967,9 @@
     "crates/simbiguity-core/src/simulation.rs::Snapshot": {
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Snapshot",
+        "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/simulation.rs::Snapshot::restore",
         "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot"
@@ -1084,6 +1094,12 @@
         "crates/simbiguity-core/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-core/src/clock.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",

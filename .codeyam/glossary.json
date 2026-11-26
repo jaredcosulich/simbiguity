@@ -18,6 +18,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Full circuit analysis: rejects invalid values, solves, blows the most overloaded bulb and re-solves until none is over its limit, then lists blown bulbs last.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "analyze",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
     "description": "Deterministic arcsine on the closed unit interval; NaN outside.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "asin",
@@ -25,6 +34,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Builds the MNA system A x = rhs from every component stamp: conductances, Norton current sources and ideal voltage sources.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "assemble",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
   },
   {
     "description": "Deterministic arctangent within 4 ulp via reciprocal and half-angle reductions.",
@@ -63,6 +81,15 @@
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
   },
   {
+    "description": "Yields a BulbBlown issue for each blown bulb, in component order.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "blown_bulb_issues",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
     "description": "Box-Muller transform: two uniforms become two independent standard normals, cosine output first.",
     "filePath": "crates/simbiguity-core/src/rng.rs",
     "name": "box_muller",
@@ -70,6 +97,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-core/src/rng.rs"
+  },
+  {
+    "description": "Turns solved unknowns into node voltages, voltage across, currents including wires via KCL, powers and bulb brightness.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "build_solution",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
   },
   {
     "description": "Shared right-hand-side length check returning DimensionMismatch.",
@@ -97,6 +133,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-core/src/rng.rs"
+  },
+  {
+    "description": "Current through one component from the voltage across it, per stamp; an ideal battery's MNA unknown is negated to read out of plus.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "component_current",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
     "description": "Returns x with the sign bit of sign, exactly.",
@@ -144,6 +189,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Reports one FloatingNode per connected island that has components but no battery or ground, naming its lowest node.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "floating_islands",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
     "description": "Rounds toward negative infinity exactly.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "floor",
@@ -160,6 +214,24 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Lists an InvalidValue issue for each component with a non-physical value, in order.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "invalid_components",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
+    "description": "Safety net naming the node or battery behind an unexpected singular pivot in the MNA solve.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "issue_for_pivot",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
     "description": "fdlibm cosine polynomial on the reduced interval.",
@@ -207,6 +279,15 @@
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
   },
   {
+    "description": "Picks the intact bulb with the highest power to rated-power ratio above BLOW_RATIO; ties go to the lowest id.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "most_overloaded",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
     "description": "Converts a nanosecond count held as f64 into Seconds; shared by FixedClock step and elapsed.",
     "filePath": "crates/simbiguity-core/src/clock.rs",
     "name": "nanos_to_seconds",
@@ -225,6 +306,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Net current into each node from non-wire components, plus the wire adjacency used to spread it.",
+    "filePath": "crates/simbiguity-circuits/src/wires.rs",
+    "name": "node_inflows",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/wires.rs"
+  },
+  {
     "description": "Horner sum over odd reciprocal denominators, alternating for atan or all-positive for the atanh series in ln.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "odd_series",
@@ -234,6 +324,15 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Reports OpenCircuit for each non-shorted battery with nonzero EMF that delivers no current.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "open_batteries",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
     "description": "Builds the normal f64 power of two 2^k from exponent bits; nested helper of scale_pow2.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "pow2",
@@ -241,6 +340,15 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Power V times I of each component, treating a floating component as zero.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "powers",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
   },
   {
     "description": "Cody-Waite reduction of an angle to about plus or minus pi/4 plus a quadrant mod 4.",
@@ -306,6 +414,33 @@
     "testFile": "crates/simbiguity-math/src/quat.rs"
   },
   {
+    "description": "Solves the circuit as it stands: topology, pre-solve source checks, floating islands, MNA assembly, LU solve, results and open-circuit batteries.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "solve_once",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "Finds shorted batteries, fatal for ideal ones and emf over r for real ones, and loops of ideal batteries closed via union-find.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "source_problems",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "Breadth-first spanning forest of the wire graph rooted at each tree's lowest node; chords of wire loops are left out.",
+    "filePath": "crates/simbiguity-circuits/src/wires.rs",
+    "name": "spanning_forest",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/wires.rs"
+  },
+  {
     "description": "Splits a positive normal into exponent and mantissa in the sqrt-half to sqrt-two band.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "split_mantissa",
@@ -333,6 +468,33 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Adds conductance g between two MNA unknowns, skipping the reference node.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "stamp_conductance",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
+    "description": "Adds a current source into node a and out of node b on the right-hand side.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "stamp_current_source",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
+    "description": "Adds an ideal voltage source with unknown current k: plus and minus one incidence entries and the EMF on the right-hand side.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "stamp_voltage_source",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
     "description": "Deterministic tangent as sin over cos.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "tan",
@@ -351,6 +513,15 @@
     "testFile": "crates/simbiguity-core/src/clock.rs"
   },
   {
+    "description": "Marks which nodes have at least one component attached.",
+    "filePath": "crates/simbiguity-circuits/src/mna.rs",
+    "name": "touched_nodes",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
     "description": "Rounds toward zero exactly; large and non-finite values pass through.",
     "filePath": "crates/simbiguity-math/src/float.rs",
     "name": "trunc",
@@ -367,5 +538,14 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Fills in wire and closed-switch currents from Kirchhoff's current law by walking the spanning forest from leaves to root.",
+    "filePath": "crates/simbiguity-circuits/src/wires.rs",
+    "name": "wire_currents",
+    "tags": [
+      "simbiguity-circuits"
+    ],
+    "testFile": "crates/simbiguity-circuits/src/wires.rs"
   }
 ]

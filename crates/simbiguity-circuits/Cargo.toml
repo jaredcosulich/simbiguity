@@ -1,0 +1,19 @@
+[package]
+name = "simbiguity-circuits"
+description = "A DC circuit engine for education: batteries, resistors, bulbs, switches and wires, solved by Modified Nodal Analysis, with diagnostics a learner can understand."
+keywords = ["circuits", "simulation", "electronics", "education", "no-std"]
+categories = ["simulation", "science", "no-std"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+std = ["simbiguity-math/std", "simbiguity-core/std"]
+
+[dependencies]
+simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }
+simbiguity-core = { path = "../simbiguity-core", version = "0.0.1" }

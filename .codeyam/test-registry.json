@@ -1,6 +1,33 @@
 {
   "tests": [
     {
+      "description": "A balanced Wheatstone bridge carries no current through its bridge resistor — a topology no series/parallel reduction handles.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "balanced_wheatstone_bridge_carries_no_bridge_current",
+      "line": 78,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A blown bulb stays blown in a CircuitSim until replaced, even once the voltage that blew it is lowered.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "blown_bulb_persists_until_replaced",
+      "line": 335,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A bulb at its rated voltage glows at full brightness; at half its rated voltage it draws a quarter of the power, so a quarter of the brightness.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "bulb_brightness_scales_with_power",
+      "line": 146,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Negative and NaN frame times bank nothing; reset empties the bank.",
       "file": "crates/simbiguity-core/src/clock.rs",
       "format": "cargo",
@@ -79,6 +106,132 @@
       "key": "clock::tests::to_nanos_rounds_clamps_and_saturates",
       "line": 214,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Blowing marks a bulb blown and keeps its rating; anything else is unchanged.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::blow_only_affects_bulbs",
+      "line": 187,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A blown bulb is dark whatever the power; non-bulbs have no brightness.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
+      "line": 176,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Brightness is power over rated power, clamped to the 0..=1 range.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::brightness_is_power_ratio_clamped",
+      "line": 167,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "R = V² / P for a bulb.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::bulb_resistance_from_rating",
+      "line": 264,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "set_value changes each component's main value; a wire ignores it.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::set_value_changes_the_main_value",
+      "line": 250,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each component enters the system in the documented way.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::stamps_match_each_component",
+      "line": 203,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Non-physical values are rejected; physical ones accepted.",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::validity_rejects_non_physical_values",
+      "line": 234,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Only invalid values, ideal shorts and source loops stop a solution.",
+      "file": "crates/simbiguity-circuits/src/diagnostics.rs",
+      "format": "cargo",
+      "key": "diagnostics::tests::fatal_issues_are_exactly_the_unsolvable_ones",
+      "line": 124,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each message names the part, so a learner knows where to look.",
+      "file": "crates/simbiguity-circuits/src/diagnostics.rs",
+      "format": "cargo",
+      "key": "diagnostics::tests::messages_name_the_part",
+      "line": 145,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An empty structure is allowed (a circuit with no nodes).",
+      "file": "crates/simbiguity-circuits/src/dsu.rs",
+      "format": "cargo",
+      "key": "dsu::tests::empty_structure_is_allowed",
+      "line": 84,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A fresh set structure has every element as its own root.",
+      "file": "crates/simbiguity-circuits/src/dsu.rs",
+      "format": "cargo",
+      "key": "dsu::tests::fresh_elements_are_their_own_roots",
+      "line": 40,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The lowest index is always the root, whatever order the unions came in, so the solver's numbering is deterministic.",
+      "file": "crates/simbiguity-circuits/src/dsu.rs",
+      "format": "cargo",
+      "key": "dsu::tests::lowest_index_is_root_regardless_of_order",
+      "line": 69,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Joining two sets returns true and makes them share a root.",
+      "file": "crates/simbiguity-circuits/src/dsu.rs",
+      "format": "cargo",
+      "key": "dsu::tests::union_joins_two_sets",
+      "line": 49,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Joining already-joined elements returns false, which is how loops of ideal batteries are detected.",
+      "file": "crates/simbiguity-circuits/src/dsu.rs",
+      "format": "cargo",
+      "key": "dsu::tests::union_of_joined_elements_returns_false",
+      "line": 59,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
     {
@@ -277,6 +430,42 @@
       "key": "float::tests::unit_complement_values",
       "line": 699,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A piece with no battery floats: it is named, its voltages are unknown, and the rest of the circuit still solves.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "floating_island_is_reported_and_unmeasured",
+      "line": 248,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An ideal battery shorted by a wire is fatal: no solution, a named ShortCircuit with unlimited current.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "ideal_battery_short_is_fatal",
+      "line": 183,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Internal resistance makes the terminal voltage sag: 12 V with 1 Ω inside into 5 Ω gives 2 A and 10 V at the terminals.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "internal_resistance_sags_terminal_voltage",
+      "line": 65,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A nonsensical value is reported, fatally, before anything is solved.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "invalid_value_is_fatal",
+      "line": 234,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
     {
@@ -523,6 +712,231 @@
       "runner": "cargo"
     },
     {
+      "description": "Blown bulbs are reported in component order; intact ones are not.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::blown_bulb_issues_lists_blown_bulbs_in_order",
+      "line": 144,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Each stamp turns the voltage across it into the right current, and an ideal battery's unknown is negated to read \"out of +\".",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::component_current_per_stamp",
+      "line": 97,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A conductance between two unknowns stamps the classic ±g pattern; against the reference it only touches the diagonal.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::conductance_stamps_symmetric_block",
+      "line": 69,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A current source adds into `a` and out of `b`, skipping the reference.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::current_source_stamps_plus_into_a_minus_out_of_b",
+      "line": 58,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An explicit ground wins for its own island only; another island still falls back to its battery.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::explicit_ground_applies_to_its_island_only",
+      "line": 29,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every component with a nonsensical value is named, in order.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::invalid_components_names_each_bad_part",
+      "line": 121,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An island with no battery and no ground has no reference.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::island_without_battery_has_no_reference",
+      "line": 41,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The unexpected-singular safety net names a node for a voltage pivot and a battery for a current pivot.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::issue_for_pivot_names_node_or_battery",
+      "line": 165,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Power is V × I, and a floating component's is zero.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::powers_multiply_and_treat_floating_as_zero",
+      "line": 114,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Without an explicit ground, an island measures from the − terminal of its first battery.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::references_default_to_first_battery_minus",
+      "line": 20,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Only nodes with a component attached count as touched.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::touched_nodes_marks_only_connected_nodes",
+      "line": 50,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A voltage source puts ±1 in its row and column and the EMF on the right-hand side.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::voltage_source_stamps_incidence_and_emf",
+      "line": 83,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "In series, only the most overloaded bulb blows; that opens the loop and saves the other one.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "most_overloaded_series_bulb_blows_first_and_saves_the_other",
+      "line": 289,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Placing a component on a node from elsewhere panics.",
+      "file": "crates/simbiguity-circuits/src/netlist.rs",
+      "format": "cargo",
+      "key": "netlist::tests::foreign_node_panics",
+      "line": 259,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Ids are handed out in creation order.",
+      "file": "crates/simbiguity-circuits/src/netlist.rs",
+      "format": "cargo",
+      "key": "netlist::tests::ids_follow_creation_order",
+      "line": 245,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "replace_bulb restores a blown bulb to a fresh one of the same rating.",
+      "file": "crates/simbiguity-circuits/src/netlist.rs",
+      "format": "cargo",
+      "key": "netlist::tests::replace_bulb_unblows",
+      "line": 236,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "set_switch on anything else is a no-op.",
+      "file": "crates/simbiguity-circuits/src/netlist.rs",
+      "format": "cargo",
+      "key": "netlist::tests::set_switch_ignores_non_switches",
+      "line": 217,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "set_switch sets a switch to exactly the requested state.",
+      "file": "crates/simbiguity-circuits/src/netlist.rs",
+      "format": "cargo",
+      "key": "netlist::tests::set_switch_sets_the_state",
+      "line": 205,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "toggle_switch flips and reports the new state, or None for a non-switch.",
+      "file": "crates/simbiguity-circuits/src/netlist.rs",
+      "format": "cargo",
+      "key": "netlist::tests::toggle_switch_flips_and_reports",
+      "line": 226,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A resistor has no brightness.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "non_bulbs_have_no_brightness",
+      "line": 159,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Ohm's law: 6 V across 3 Ω drives 2 A, and the battery delivers the 12 W the resistor absorbs.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "ohms_law_single_resistor",
+      "line": 22,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An overloaded bulb blows, leaving the battery with an open circuit; the blown bulb is listed last.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "overloaded_bulb_blows_and_opens_the_circuit",
+      "line": 266,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Two real batteries with different EMFs in parallel: 1 A circulates, the stronger one discharging and the weaker one charging, at 9 V.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "parallel_batteries_with_different_emfs_circulate_current",
+      "line": 132,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Two ideal batteries side by side contradict each other: fatal loop.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "parallel_ideal_batteries_are_a_voltage_source_loop",
+      "line": 219,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Parallel resistors: 3 Ω ‖ 6 Ω is 2 Ω, so a 6 V battery delivers 3 A.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "parallel_resistors_share_current",
+      "line": 50,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Axis-angle builds unit quaternions that rotate by the right-hand rule; a zero axis gives the identity.",
       "file": "crates/simbiguity-math/src/quat.rs",
       "format": "cargo",
@@ -583,6 +997,15 @@
       "key": "quat::tests::slerp_weights_lerp_fallback_and_sine_ratio",
       "line": 235,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A real battery shorted by a wire still solves, reporting emf / r.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "real_battery_short_reports_emf_over_r",
+      "line": 201,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
     {
@@ -667,6 +1090,15 @@
       "runner": "cargo"
     },
     {
+      "description": "A series divider: 12 V over 1 Ω then 2 Ω puts the middle node at 8 V.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "series_voltage_divider",
+      "line": 37,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Restoring a snapshot and replaying the same inputs reproduces the exact same state bit for bit, RNG included.",
       "file": "crates/simbiguity-core/src/simulation.rs",
       "format": "cargo",
@@ -682,6 +1114,51 @@
       "key": "simulation::tests::seconds_arithmetic",
       "line": 142,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Restoring a snapshot brings back the exact earlier state.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "snapshot_round_trip_restores_state",
+      "line": 356,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Solving the same circuit twice gives bit-identical answers.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "solving_is_deterministic",
+      "line": 373,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Flipping a switch through the Simulation API completes the circuit at the next step.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "switch_input_takes_effect_on_step",
+      "line": 304,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An open switch leaves a bulb dark; closing it through the Simulation API lights it fully at its rated voltage.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "switch_lights_a_bulb",
+      "line": 114,
+      "registeredAt": "2026-11-26T17:33:52.512695894+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "An unbalanced bridge (one lower arm 200 Ω) drives a known current through the bridge, from the hand-solved node equations 4·Vl − 2·Vr = 10 and 7·Vr − 4·Vl = 20.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "unbalanced_wheatstone_bridge_carries_known_current",
+      "line": 96,
+      "registeredAt": "2026-11-26T17:33:52.512695894+00:00",
       "runner": "cargo"
     },
     {
@@ -727,6 +1204,78 @@
       "key": "vec::tests::normalize_unit_or_none",
       "line": 170,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Wire current through merged nodes is recovered from Kirchhoff's law.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "wire_carries_the_loop_current",
+      "line": 169,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "In a loop of wires, the wire that closes the loop is not a tree edge.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::forest_leaves_out_the_chord_of_a_wire_loop",
+      "line": 147,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Every node is visited once, each tree is rooted at its lowest node, and children point at their parent through the joining wire.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::forest_visits_every_node_with_lowest_roots",
+      "line": 137,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A battery's current counts as flowing out of its + terminal and into its − terminal; a resistor's flows out of a and into b.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::inflow_follows_each_components_sign_convention",
+      "line": 110,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A circuit with no wires leaves every current untouched.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::no_wires_changes_nothing",
+      "line": 188,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The current a battery drives through a resistor also flows through the wires on its way, with the sign of each wire's a → b direction.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::wire_currents_carry_the_loop_current",
+      "line": 162,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A loop made only of wires gets zero on its chord, as documented.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::wire_only_loop_chord_reports_zero",
+      "line": 176,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Wires contribute no inflow; they only appear in the adjacency, from both ends.",
+      "file": "crates/simbiguity-circuits/src/wires.rs",
+      "format": "cargo",
+      "key": "wires::tests::wires_go_into_the_adjacency_not_the_inflow",
+      "line": 124,
+      "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     }
   ],

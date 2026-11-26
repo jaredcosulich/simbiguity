@@ -23,3 +23,8 @@ pub use simbiguity_math as math;
 /// the lockstep runner (`simbiguity-core`).
 #[cfg(feature = "core")]
 pub use simbiguity_core as core;
+
+/// The DC circuit engine: batteries, resistors, bulbs, switches and wires,
+/// solved by Modified Nodal Analysis (`simbiguity-circuits`).
+#[cfg(feature = "circuits")]
+pub use simbiguity_circuits as circuits;

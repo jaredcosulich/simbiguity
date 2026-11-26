@@ -166,6 +166,7 @@
     "crates/simbiguity-math/src/float.rs::abs": {
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::open_batteries",
         "crates/simbiguity-math/src/float.rs::atan",
         "crates/simbiguity-math/src/float.rs::round",
         "crates/simbiguity-math/src/float.rs::round_down_if_closer",
@@ -700,6 +701,7 @@
     "crates/simbiguity-math/src/linsolve.rs::SolveError": {
       "filePath": "crates/simbiguity-math/src/linsolve.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-math/src/lib.rs::__file_root__",
         "crates/simbiguity-math/src/linsolve.rs::Lu",
         "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
@@ -855,6 +857,7 @@
     "crates/simbiguity-math/src/linsolve.rs::lu_solve": {
       "filePath": "crates/simbiguity-math/src/linsolve.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-math/src/lib.rs::__file_root__"
       ],
       "imports": [
@@ -899,6 +902,9 @@
     "crates/simbiguity-math/src/mat.rs::DenseMatrix": {
       "filePath": "crates/simbiguity-math/src/mat.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::assemble",
+        "crates/simbiguity-circuits/src/mna.rs::stamp_conductance",
+        "crates/simbiguity-circuits/src/mna.rs::stamp_voltage_source",
         "crates/simbiguity-math/src/lib.rs::__file_root__",
         "crates/simbiguity-math/src/linsolve.rs::Lu",
         "crates/simbiguity-math/src/linsolve.rs::Lu::decompose",
@@ -2208,6 +2214,7 @@
         "crates/simbiguity-math/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-core/src/rng.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/linsolve.rs",
@@ -2262,6 +2269,8 @@
         "crates/simbiguity-math/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
@@ -2279,6 +2288,7 @@
         "crates/simbiguity-math/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",

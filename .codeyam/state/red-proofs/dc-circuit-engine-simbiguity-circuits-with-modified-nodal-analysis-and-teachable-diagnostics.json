@@ -1,0 +1,42 @@
+{
+  "provenAt": "2026-11-26T17:29:12Z",
+  "slug": "dc-circuit-engine-simbiguity-circuits-with-modified-nodal-analysis-and-teachable-diagnostics",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits/src/component.rs",
+    "crates/simbiguity-circuits/tests/analysis.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "find": "            *blown = true;",
+      "replace": "            let _ = blown;"
+    }
+  ],
+  "tests": {
+    "blow_only_affects_bulbs": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    },
+    "overloaded_bulb_blows_and_opens_the_circuit": {
+      "withoutFix": "missing",
+      "withFix": "missing",
+      "established": {
+        "kind": "attestedByHand",
+        "method": "prove-red with Component::blow neutered (blown = true replaced by a no-op)",
+        "evidence": "In the neutered world the test binary never terminated: analyze re-picked the same intact bulb every iteration (no blow), ran over 9 minutes until killed, twice; with the fix restored it passes in under 1s"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "provenByHand",
+    "attested": [
+      "overloaded_bulb_blows_and_opens_the_circuit"
+    ],
+    "method": "prove-red with Component::blow neutered (blown = true replaced by a no-op)",
+    "evidence": "In the neutered world the test binary never terminated: analyze re-picked the same intact bulb every iteration (no blow), ran over 9 minutes until killed, twice; with the fix restored it passes in under 1s"
+  }
+}

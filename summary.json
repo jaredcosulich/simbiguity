@@ -1,0 +1,7 @@
+{
+  "title": "General 3D circuit view",
+  "summary": "The 3D circuit view now dynamically renders parts from any circuit layout on the grid board.\n\n## What you can now do\n* Render arbitrary circuit layouts in 3D\n* Verify component functionality dynamically without stubs\n* Test circuit interactions without accidental short circuits",
+  "severeWarnings": [],
+  "findings": [],
+  "observations": []
+}

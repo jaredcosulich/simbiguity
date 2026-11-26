@@ -97,7 +97,6 @@ blob-report/
 .codeyam/state/last-advance.txt
 .codeyam/state/last-step-show.txt
 .codeyam/state/vitest-report.json
-.codeyam/state/node-junit.xml
 .codeyam/state/handoff-sections/
 .codeyam/state/gitignore-drift-rebuild.json
 .codeyam/state/handoff-said-once.json
@@ -224,6 +223,7 @@ blob-report/
 *.waits
 *.heartbeat
 docker-compose.cloud.yml
+.codeyam/state/node-junit.xml
 # codeyam-editor:end
 
 # CodeYam - local runtime state

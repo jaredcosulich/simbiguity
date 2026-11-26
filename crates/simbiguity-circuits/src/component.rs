@@ -5,6 +5,15 @@
 /// square of voltage, so this is about 1.41 × the rated voltage.)
 pub const BLOW_RATIO: f64 = 2.0;
 
+/// Integration method for transient analysis.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Integrator {
+    /// Backward Euler integration: stable but adds artificial damping.
+    BackwardEuler,
+    /// Trapezoidal integration: more accurate, preserves energy, but can ring.
+    Trapezoidal,
+}
+
 /// A two-terminal circuit element. Terminal `a` and terminal `b` are the
 /// nodes it is placed between (see [`crate::Placed`]).
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -38,6 +47,24 @@ pub enum Component {
     },
     /// An ideal wire: its two ends are the same node.
     Wire,
+    /// A capacitor.
+    Capacitor {
+        /// Capacitance in farads.
+        farads: f64,
+        /// Voltage across the capacitor from the previous step.
+        volts: f64,
+        /// Current through the capacitor from the previous step.
+        amps: f64,
+    },
+    /// An inductor.
+    Inductor {
+        /// Inductance in henries.
+        henries: f64,
+        /// Current through the inductor from the previous step.
+        amps: f64,
+        /// Voltage across the inductor from the previous step.
+        volts: f64,
+    },
 }
 
 /// How one component enters the MNA system.
@@ -63,6 +90,24 @@ pub(crate) enum Stamp {
 }
 
 impl Component {
+    /// A capacitor with no initial charge.
+    pub fn capacitor(farads: f64) -> Component {
+        Component::Capacitor {
+            farads,
+            volts: 0.0,
+            amps: 0.0,
+        }
+    }
+
+    /// An inductor with no initial current.
+    pub fn inductor(henries: f64) -> Component {
+        Component::Inductor {
+            henries,
+            amps: 0.0,
+            volts: 0.0,
+        }
+    }
+
     /// An ideal battery (no internal resistance).
     pub fn battery(emf: f64) -> Component {
         Component::Battery {
@@ -104,6 +149,52 @@ impl Component {
                     && rated_power > 0.0
             }
             Component::Switch { .. } | Component::Wire => true,
+            Component::Capacitor { farads, .. } => farads.is_finite() && farads > 0.0,
+            Component::Inductor { henries, .. } => henries.is_finite() && henries > 0.0,
+        }
+    }
+
+    /// How this component enters the system for transient analysis.
+    pub(crate) fn transient_stamp(&self, dt: f64, integrator: Integrator) -> Stamp {
+        match *self {
+            Component::Capacitor {
+                farads,
+                volts,
+                amps,
+            } => match integrator {
+                Integrator::BackwardEuler => {
+                    let g = farads / dt;
+                    Stamp::Norton {
+                        g,
+                        current: g * volts,
+                    }
+                }
+                Integrator::Trapezoidal => {
+                    let g = 2.0 * farads / dt;
+                    Stamp::Norton {
+                        g,
+                        current: g * volts + amps,
+                    }
+                }
+            },
+            Component::Inductor {
+                henries,
+                amps,
+                volts,
+            } => match integrator {
+                Integrator::BackwardEuler => {
+                    let g = dt / henries;
+                    Stamp::Norton { g, current: amps }
+                }
+                Integrator::Trapezoidal => {
+                    let g = dt / (2.0 * henries);
+                    Stamp::Norton {
+                        g,
+                        current: amps + g * volts,
+                    }
+                }
+            },
+            _ => self.stamp(),
         }
     }
 
@@ -124,6 +215,8 @@ impl Component {
             } => Stamp::Conductance(rated_power / (rated_voltage * rated_voltage)),
             Component::Switch { closed: true } | Component::Wire => Stamp::Merge,
             Component::Switch { closed: false } => Stamp::Open,
+            Component::Capacitor { .. } => Stamp::Open,
+            Component::Inductor { .. } => Stamp::Merge,
         }
     }
 
@@ -153,6 +246,8 @@ impl Component {
             Component::Resistor { r } => *r = v,
             Component::Bulb { rated_voltage, .. } => *rated_voltage = v,
             Component::Switch { closed } => *closed = v != 0.0,
+            Component::Capacitor { farads, .. } => *farads = v,
+            Component::Inductor { henries, .. } => *henries = v,
             Component::Wire => {}
         }
     }

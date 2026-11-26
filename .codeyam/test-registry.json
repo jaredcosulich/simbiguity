@@ -464,7 +464,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blow_only_affects_bulbs",
-      "line": 187,
+      "line": 282,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -473,7 +473,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
-      "line": 176,
+      "line": 271,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -482,7 +482,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::brightness_is_power_ratio_clamped",
-      "line": 167,
+      "line": 262,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -491,7 +491,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::bulb_resistance_from_rating",
-      "line": 264,
+      "line": 359,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -500,7 +500,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::set_value_changes_the_main_value",
-      "line": 250,
+      "line": 345,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -509,7 +509,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::stamps_match_each_component",
-      "line": 203,
+      "line": 298,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -518,7 +518,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::validity_rejects_non_physical_values",
-      "line": 234,
+      "line": 329,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2201,7 +2201,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::blown_bulb_issues_lists_blown_bulbs_in_order",
-      "line": 144,
+      "line": 147,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2210,7 +2210,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::component_current_per_stamp",
-      "line": 97,
+      "line": 100,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2219,7 +2219,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::conductance_stamps_symmetric_block",
-      "line": 69,
+      "line": 72,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2228,7 +2228,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::current_source_stamps_plus_into_a_minus_out_of_b",
-      "line": 58,
+      "line": 61,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2237,7 +2237,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::explicit_ground_applies_to_its_island_only",
-      "line": 29,
+      "line": 30,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2246,7 +2246,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::invalid_components_names_each_bad_part",
-      "line": 121,
+      "line": 124,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2255,7 +2255,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::island_without_battery_has_no_reference",
-      "line": 41,
+      "line": 43,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2264,7 +2264,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::issue_for_pivot_names_node_or_battery",
-      "line": 165,
+      "line": 168,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2273,7 +2273,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::powers_multiply_and_treat_floating_as_zero",
-      "line": 114,
+      "line": 117,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2291,7 +2291,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::touched_nodes_marks_only_connected_nodes",
-      "line": 50,
+      "line": 53,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2300,7 +2300,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::voltage_source_stamps_incidence_and_emf",
-      "line": 83,
+      "line": 86,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2318,7 +2318,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::foreign_node_panics",
-      "line": 259,
+      "line": 269,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2327,7 +2327,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::ids_follow_creation_order",
-      "line": 245,
+      "line": 255,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2336,7 +2336,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::replace_bulb_unblows",
-      "line": 236,
+      "line": 246,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2345,7 +2345,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_ignores_non_switches",
-      "line": 217,
+      "line": 227,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2354,7 +2354,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_sets_the_state",
-      "line": 205,
+      "line": 215,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2363,7 +2363,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::toggle_switch_flips_and_reports",
-      "line": 226,
+      "line": 236,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2746,6 +2746,15 @@
       "runner": "cargo"
     },
     {
+      "description": "An RC circuit charging from a battery: 10 V, 5 Ω, 0.2 F. Time constant τ = R * C = 5 * 0.2 = 1.0 s. Exact V_c(t) = 10 * (1 - exp(-t/τ)).",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "rc_circuit_charging_matches_exact_solution",
+      "line": 389,
+      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Only a blown-bulb issue naming this bulb counts as blown.",
       "file": "site/demos/hello-circuit/readouts.test.js",
       "format": "junit-xml",
@@ -2987,6 +2996,15 @@
       "line": 91,
       "registeredAt": "2026-11-26T19:10:15.100994822+00:00",
       "runner": "node"
+    },
+    {
+      "description": "An RL circuit: 10 V, 2 Ω, 1 H. Time constant τ = L / R = 1 / 2 = 0.5 s. Exact I_L(t) = (V/R) * (1 - exp(-t/τ)) = 5 * (1 - exp(-t/0.5)).",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "rl_circuit_matches_exact_solution",
+      "line": 431,
+      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
     },
     {
       "description": "Box–Muller with u2 = 0 puts everything in the cosine output; u1 = 1 gives radius 0; a known u1 gives the expected radius.",
@@ -3853,6 +3871,33 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies simbiguity core load.",
+      "file": "crates/simbiguity/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_simbiguity",
+      "line": 40,
+      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies view creation.",
+      "file": "crates/simbiguity-physics-view/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_view",
+      "line": 120,
+      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies physics wasm init.",
+      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_wasm",
+      "line": 195,
+      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "is_active is true inside a clip, false at its end and outside it.",
       "file": "crates/simbiguity-anim/src/timeline.rs",
       "format": "cargo",
@@ -4210,6 +4255,15 @@
       "key": "wires::tests::wires_go_into_the_adjacency_not_the_inflow",
       "line": 124,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that a new World is initialized with empty lists.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_world_new",
+      "line": 295,
+      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     }
   ],

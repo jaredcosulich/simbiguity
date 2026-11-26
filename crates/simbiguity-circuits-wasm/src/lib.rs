@@ -76,6 +76,18 @@ pub extern "C" fn circuit_add_bulb(h: u32, a: u32, b: u32, volts: f64, watts: f6
     with_slot(h, |s| s.place(Component::bulb(volts, watts), a, b))
 }
 
+/// A capacitor of `farads`; returns its component id.
+#[no_mangle]
+pub extern "C" fn circuit_add_capacitor(h: u32, a: u32, b: u32, farads: f64) -> i32 {
+    with_slot(h, |s| s.place(Component::capacitor(farads), a, b))
+}
+
+/// An inductor of `henries`; returns its component id.
+#[no_mangle]
+pub extern "C" fn circuit_add_inductor(h: u32, a: u32, b: u32, henries: f64) -> i32 {
+    with_slot(h, |s| s.place(Component::inductor(henries), a, b))
+}
+
 /// A switch, closed when `closed != 0`; returns its component id.
 #[no_mangle]
 pub extern "C" fn circuit_add_switch(h: u32, a: u32, b: u32, closed: i32) -> i32 {
@@ -157,6 +169,12 @@ pub extern "C" fn circuit_replace_bulb(h: u32, id: u32) -> i32 {
 #[no_mangle]
 pub extern "C" fn circuit_solve(h: u32) -> i32 {
     with_slot(h, Slot::solve)
+}
+
+/// Steps the circuit forward in time by `dt` seconds, solving the transient response.
+#[no_mangle]
+pub extern "C" fn circuit_step(h: u32, dt: f64) -> i32 {
+    with_slot(h, |s| s.step(dt))
 }
 
 /// `1` if the last solve produced a solution, `0` if a fatal issue stopped it.

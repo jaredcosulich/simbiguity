@@ -320,6 +320,31 @@
         "node"
       ]
     },
+    "crates/simbiguity-circuits/tests/analysis.rs::rc_circuit_charging_matches_exact_solution": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "rc_circuit_charging_matches_exact_solution",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_capacitor",
+        "add_resistor",
+        "energy",
+        "exp",
+        "new",
+        "node",
+        "solution",
+        "state",
+        "step",
+        "unwrap",
+        "voltage_across"
+      ]
+    },
     "crates/simbiguity-circuits/tests/analysis.rs::real_battery_short_reports_emf_over_r": {
       "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
       "importedBy": [],
@@ -337,6 +362,31 @@
         "node",
         "solution",
         "solve"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/analysis.rs::rl_circuit_matches_exact_solution": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "rl_circuit_matches_exact_solution",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_inductor",
+        "add_resistor",
+        "current",
+        "energy",
+        "exp",
+        "new",
+        "node",
+        "solution",
+        "state",
+        "step",
+        "unwrap"
       ]
     },
     "crates/simbiguity-circuits/tests/analysis.rs::series_voltage_divider": {

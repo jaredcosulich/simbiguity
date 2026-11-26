@@ -76,6 +76,10 @@ export async function loadCircuits(url) {
 
     resistor(a, b, ohms) { return check(w.circuit_add_resistor(this.handle, a, b, ohms)); }
 
+    capacitor(a, b, farads) { return check(w.circuit_add_capacitor(this.handle, a, b, farads)); }
+    
+    inductor(a, b, henries) { return check(w.circuit_add_inductor(this.handle, a, b, henries)); }
+
     /** A bulb rated `watts` at `volts`. */
     bulb(a, b, volts, watts) { return check(w.circuit_add_bulb(this.handle, a, b, volts, watts)); }
 
@@ -90,6 +94,21 @@ export async function loadCircuits(url) {
     setValue(id, value) { check(w.circuit_set_value(this.handle, id, value)); }
 
     replaceBulb(id) { check(w.circuit_replace_bulb(this.handle, id)); }
+
+    /**
+     * Steps the circuit by dt.
+     */
+    step(dt) {
+      const h = this.handle;
+      const issueCount = check(w.circuit_step(h, dt));
+      const solved = check(w.circuit_has_solution(h)) === 1;
+
+      const len = check(w.circuit_results_len(h));
+      const raw = Array.from(f64s(w.circuit_results_ptr(h), len));
+      const val = (x) => (Number.isNaN(x) ? null : x);
+      const parts = raw; // We return the flat array to demo.js directly
+      return { solved, parts };
+    }
 
     /**
      * Solves the circuit and reads everything back in one go.

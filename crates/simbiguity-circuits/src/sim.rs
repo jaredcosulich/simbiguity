@@ -2,6 +2,7 @@
 
 use simbiguity_core::{Seconds, Simulation, Snapshot};
 
+use crate::component::{Component, Integrator};
 use crate::netlist::{Circuit, ComponentId};
 use crate::solution::Analysis;
 
@@ -27,16 +28,27 @@ pub enum CircuitInput {
 pub struct CircuitSim {
     circuit: Circuit,
     analysis: Analysis,
+    integrator: Integrator,
 }
 
 impl CircuitSim {
     /// Wraps a circuit and solves it once, so [`Simulation::state`] is
-    /// meaningful before the first step.
+    /// meaningful before the first step. Defaults to backward Euler.
     pub fn new(circuit: Circuit) -> CircuitSim {
         let analysis = circuit.solve();
-        let mut sim = CircuitSim { circuit, analysis };
+        let mut sim = CircuitSim {
+            circuit,
+            analysis,
+            integrator: Integrator::BackwardEuler,
+        };
         sim.persist_blown();
         sim
+    }
+
+    /// Sets the integration method for capacitors and inductors.
+    pub fn with_integrator(mut self, integrator: Integrator) -> Self {
+        self.integrator = integrator;
+        self
     }
 
     /// The circuit as it currently stands (including blown bulbs).
@@ -50,15 +62,39 @@ impl CircuitSim {
             self.circuit.component_mut(id).blow();
         }
     }
+
+    fn persist_transient_state(&mut self) {
+        let Some(sol) = self.analysis.solution() else {
+            return;
+        };
+        for (i, p) in self.circuit.parts.iter_mut().enumerate() {
+            match &mut p.component {
+                Component::Capacitor { volts, amps, .. } => {
+                    if let Some(v) = sol.across[i] {
+                        *volts = v;
+                    }
+                    *amps = sol.currents[i];
+                }
+                Component::Inductor { volts, amps, .. } => {
+                    if let Some(v) = sol.across[i] {
+                        *volts = v;
+                    }
+                    *amps = sol.currents[i];
+                }
+                _ => {}
+            }
+        }
+    }
 }
 
 impl Simulation for CircuitSim {
     type State = Analysis;
     type Input = CircuitInput;
 
-    fn step(&mut self, _dt: Seconds) {
-        self.analysis = self.circuit.solve();
+    fn step(&mut self, dt: Seconds) {
+        self.analysis = crate::mna::analyze_step(&self.circuit, dt.0, self.integrator);
         self.persist_blown();
+        self.persist_transient_state();
     }
 
     fn apply(&mut self, input: CircuitInput) {

@@ -1,0 +1,15 @@
+{
+  "name": "RC Charging Demo",
+  "id": "e03d2157-d587-4535-ae07-7194cc0f9f00",
+  "url": "/demos/rc-charging/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-26T20:35:50Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/rc-charging/index.html",
+  "description": "RC Charging Demo."
+}

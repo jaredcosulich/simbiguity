@@ -110,9 +110,9 @@ impl Slot {
         id.index() as i32
     }
 
-    /// Re-solves and refreshes the shared results buffer.
-    pub(crate) fn solve(&mut self) -> i32 {
-        self.sim.step(Seconds(0.0));
+    /// Steps forward in time by `dt` seconds, re-solves, and refreshes the shared results buffer.
+    pub(crate) fn step(&mut self, dt: f64) -> i32 {
+        self.sim.step(Seconds(dt));
         let analysis = self.sim.state();
         self.results.clear();
         for &id in &self.parts {
@@ -128,6 +128,11 @@ impl Slot {
             self.results.extend_from_slice(&row);
         }
         analysis.issues().len() as i32
+    }
+
+    /// Re-solves and refreshes the shared results buffer.
+    pub(crate) fn solve(&mut self) -> i32 {
+        self.step(0.0)
     }
 
     pub(crate) fn issue(&self, i: u32) -> Result<CircuitIssue, i32> {

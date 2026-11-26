@@ -19,7 +19,8 @@ fn battery_and_resistor() -> Circuit {
 #[test]
 fn references_default_to_first_battery_minus() {
     let c = battery_and_resistor();
-    let t = Topology::build(&c);
+    let stamps = c.parts.iter().map(|p| p.component.stamp()).collect();
+    let t = Topology::build(&c, stamps);
     assert_eq!(t.reference, vec![Some(1), None]);
 }
 
@@ -31,7 +32,8 @@ fn explicit_ground_applies_to_its_island_only() {
     let (p2, m2) = (c.node(), c.node());
     c.add_battery(p2, m2, 1.5);
     c.set_ground(NodeId(0));
-    let t = Topology::build(&c);
+    let stamps = c.parts.iter().map(|p| p.component.stamp()).collect();
+    let t = Topology::build(&c, stamps);
     assert_eq!(t.reference_of(0), Some(0));
     assert_eq!(t.reference_of(2), Some(3));
 }
@@ -42,7 +44,8 @@ fn island_without_battery_has_no_reference() {
     let mut c = Circuit::new();
     let (a, b) = (c.node(), c.node());
     c.add_resistor(a, b, 1.0);
-    assert_eq!(Topology::build(&c).reference_of(0), None);
+    let stamps = c.parts.iter().map(|p| p.component.stamp()).collect();
+    assert_eq!(Topology::build(&c, stamps).reference_of(0), None);
 }
 
 /// Only nodes with a component attached count as touched.

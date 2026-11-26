@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "site/demos/rc-charging/demo.js::__file_root__": {
+      "filePath": "site/demos/rc-charging/demo.js",
+      "importedBy": [
+        "site/demos/rc-charging/index.html::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/rc-charging/demo.js::main": {
+      "filePath": "site/demos/rc-charging/demo.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "main"
+    },
+    "site/demos/rc-charging/index.html::__file_root__": {
+      "filePath": "site/demos/rc-charging/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/demos/rc-charging/demo.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    }
+  },
+  "files": {
+    "site/demos/rc-charging/demo.js": {
+      "importedBy": [
+        "site/demos/rc-charging/index.html"
+      ],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "site/demos/rc-charging/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/rc-charging/demo.js"
+      ]
+    },
+    "site/demos/rc-charging/state.js": {
+      "importedBy": [],
+      "imports": []
+    },
+    "site/demos/rc-charging/state.test.js": {
+      "importedBy": [],
+      "imports": []
+    }
+  }
+}

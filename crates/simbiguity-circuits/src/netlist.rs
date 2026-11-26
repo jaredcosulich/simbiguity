@@ -119,6 +119,16 @@ impl Circuit {
         self.add(Component::Switch { closed }, a, b)
     }
 
+    /// A capacitor.
+    pub fn add_capacitor(&mut self, a: NodeId, b: NodeId, farads: f64) -> ComponentId {
+        self.add(Component::capacitor(farads), a, b)
+    }
+
+    /// An inductor.
+    pub fn add_inductor(&mut self, a: NodeId, b: NodeId, henries: f64) -> ComponentId {
+        self.add(Component::inductor(henries), a, b)
+    }
+
     /// Joins two nodes with an ideal wire.
     pub fn connect(&mut self, a: NodeId, b: NodeId) -> ComponentId {
         self.add(Component::Wire, a, b)

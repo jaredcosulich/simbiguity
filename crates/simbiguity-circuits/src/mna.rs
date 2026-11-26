@@ -14,7 +14,7 @@ use alloc::vec::Vec;
 
 use simbiguity_math::{float, lu_solve, DenseMatrix, SolveError};
 
-use crate::component::{Component, Stamp, BLOW_RATIO};
+use crate::component::{Component, Integrator, Stamp, BLOW_RATIO};
 use crate::diagnostics::CircuitIssue;
 use crate::dsu::Dsu;
 use crate::netlist::{Circuit, ComponentId, NodeId};
@@ -36,9 +36,8 @@ struct Topology {
 }
 
 impl Topology {
-    fn build(c: &Circuit) -> Topology {
+    fn build(c: &Circuit, stamps: Vec<Stamp>) -> Topology {
         let n = c.node_count;
-        let stamps: Vec<Stamp> = c.parts.iter().map(|p| p.component.stamp()).collect();
         let mut merge = Dsu::new(n);
         let mut islands = Dsu::new(n);
         for (p, s) in c.parts.iter().zip(&stamps) {
@@ -298,11 +297,28 @@ fn build_solution(c: &Circuit, t: &Topology, u: &Unknowns, x: &[f64]) -> Solutio
         .zip(&powers)
         .map(|(p, w)| p.component.brightness(*w))
         .collect();
+    let energies = c
+        .parts
+        .iter()
+        .zip(&across)
+        .zip(&currents)
+        .map(|((p, v), i)| match p.component {
+            Component::Capacitor { farads, .. } => {
+                0.5 * farads * {
+                    let val = v.unwrap_or(0.0);
+                    val * val
+                }
+            }
+            Component::Inductor { henries, .. } => 0.5 * henries * { i * i },
+            _ => 0.0,
+        })
+        .collect();
     Solution {
         node_voltages,
         across,
         currents,
         powers,
+        energies,
         brightness,
     }
 }
@@ -334,8 +350,8 @@ fn open_batteries(c: &Circuit, issues: &[CircuitIssue], s: &Solution) -> Vec<Cir
 }
 
 /// Solves the circuit as it stands (no bulbs blow here).
-fn solve_once(c: &Circuit) -> (Option<Solution>, Vec<CircuitIssue>) {
-    let t = Topology::build(c);
+fn solve_once(c: &Circuit, stamps: Vec<Stamp>) -> (Option<Solution>, Vec<CircuitIssue>) {
+    let t = Topology::build(c, stamps);
     let mut issues = source_problems(c, &t);
     if issues.iter().any(CircuitIssue::is_fatal) {
         return (None, issues);
@@ -400,6 +416,40 @@ fn blown_bulb_issues(c: &Circuit) -> impl Iterator<Item = CircuitIssue> + '_ {
     })
 }
 
+pub(crate) fn analyze_step(c: &Circuit, dt: f64, integrator: Integrator) -> Analysis {
+    let invalid = invalid_components(c);
+    if !invalid.is_empty() {
+        return Analysis {
+            solution: None,
+            issues: invalid,
+        };
+    }
+    let mut work = c.clone();
+    loop {
+        let stamps: Vec<Stamp> = work
+            .parts
+            .iter()
+            .map(|p| p.component.transient_stamp(dt, integrator))
+            .collect();
+        let (solution, mut issues) = solve_once(&work, stamps);
+        let Some(solution) = solution else {
+            return Analysis {
+                solution: None,
+                issues,
+            };
+        };
+        if let Some(i) = most_overloaded(&work, &solution) {
+            work.parts[i].component.blow();
+            continue;
+        }
+        issues.extend(blown_bulb_issues(&work));
+        return Analysis {
+            solution: Some(solution),
+            issues,
+        };
+    }
+}
+
 /// Full analysis: validate, solve, blow overloaded bulbs one at a time
 /// (re-solving after each), and collect every issue.
 pub(crate) fn analyze(c: &Circuit) -> Analysis {
@@ -412,7 +462,8 @@ pub(crate) fn analyze(c: &Circuit) -> Analysis {
     }
     let mut work = c.clone();
     loop {
-        let (solution, mut issues) = solve_once(&work);
+        let stamps: Vec<Stamp> = work.parts.iter().map(|p| p.component.stamp()).collect();
+        let (solution, mut issues) = solve_once(&work, stamps);
         let Some(solution) = solution else {
             return Analysis {
                 solution: None,

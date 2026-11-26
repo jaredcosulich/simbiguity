@@ -18,6 +18,7 @@ pub struct Solution {
     pub(crate) across: Vec<Option<f64>>,
     pub(crate) currents: Vec<f64>,
     pub(crate) powers: Vec<f64>,
+    pub(crate) energies: Vec<f64>,
     pub(crate) brightness: Vec<Option<f64>>,
 }
 
@@ -45,6 +46,11 @@ impl Solution {
     /// Power in watts: delivered by a battery, absorbed by anything else.
     pub fn power(&self, c: ComponentId) -> f64 {
         self.powers[c.0]
+    }
+
+    /// Energy stored in the component, in joules.
+    pub fn energy(&self, c: ComponentId) -> f64 {
+        self.energies[c.0]
     }
 
     /// A bulb's brightness, `P_actual / P_rated` clamped to `0..=1`

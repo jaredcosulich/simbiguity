@@ -70,7 +70,8 @@
     "site/js/simbiguity.js::loadCircuits": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
-        "site/demos/hello-circuit/demo.js::main"
+        "site/demos/hello-circuit/demo.js::main",
+        "site/demos/rc-charging/demo.js::main"
       ],
       "imports": [
         "site/js/simbiguity.js::IssueKind",
@@ -192,6 +193,7 @@
     "site/js/simbiguity.js": {
       "importedBy": [
         "site/demos/hello-circuit/demo.js",
+        "site/demos/rc-charging/demo.js",
         "site/js/simbiguity-render.js"
       ],
       "imports": []

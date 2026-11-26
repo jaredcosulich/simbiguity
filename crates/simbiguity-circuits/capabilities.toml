@@ -4,6 +4,12 @@
 # test's full path; integration tests live under `tests/<file>`.
 
 [[capability]]
+name = "Circuits that change over time"
+description = "Capacitors and inductors evaluated with backward Euler and trapezoidal integration to simulate transient responses."
+demo = "demos/rc-charging/"
+proves = []
+
+[[capability]]
 name = "Ohm's law, series and parallel"
 description = "Current, voltage and power through resistors in series and in parallel, matching the hand calculation to nine decimal places."
 demo = "demos/hello-circuit/#closed"

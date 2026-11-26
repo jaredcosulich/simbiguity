@@ -1,0 +1,255 @@
+{
+  "timestamp": "2026-11-26T20:44:32Z",
+  "title": "Transient analysis: capacitors and inductors",
+  "type": "feature",
+  "userRequest": "## Summary\n\nCircuits currently settle instantly. `CircuitSim::step` ignores `dt` and just re-solves the DC circuit (`crates/simbiguity-circuits/src/sim.rs`). This plan adds **capacitors and inductors** and makes time matter, which brings the engine's first use of the fixed clock. Learners can watch an RC circuit charge along its exponential curve, see a flashlight bulb fade as a capacitor drains, and watch an LC circuit ring back and forth. The voltage and current over time are drawn with `simbiguity-plot`. The tests double as numerical-methods lessons, comparing the textbook exact answer with what each integration method actually produces.\n\n## Key Decisions\n\n- **Companion models reuse the existing Norton stamp.** One time step of a capacitor (C, voltage v₀) under backward Euler is a conductance `C/dt` in parallel with a current source `(C/dt)·v₀`. That is exactly the existing `Stamp::Norton { g, current }` in `component.rs`. An inductor is the dual: a conductance `dt/L` with a current source `i₀`. The MNA assembly barely changes, and each step stays a linear solve.\n- **Two integration methods, chosen per simulation:** backward Euler (very stable, slightly damped) and trapezoidal (second-order accurate, keeps LC oscillations from dying out). Exposing both is educational, and tests pin the difference with hand-computed numbers.\n- **State lives in the component.** A `Capacitor { farads, volts }` and `Inductor { henries, amps }` store the value they carry from step to step. `step(dt)` solves using the stored values, then writes the new ones back, so `Snapshot` (a clone) already captures everything and replay stays bit-identical.\n- **DC behaviour is unchanged.** `Circuit::solve()` (no `dt`) treats a capacitor as open and an inductor as a wire, the steady-state limits. Existing DC tests and demos must still pass untouched.\n- **New issues in plain words:** an ideal battery connected straight across a capacitor at t = 0 (infinite inrush current) is reported as such rather than surfacing as a singular-matrix error.\n\n## Implementation\n\n### 1. Components and stamps\n\n**File**: `crates/simbiguity-circuits/src/component.rs`\n\nAdd `Component::Capacitor { farads, volts }` and `Component::Inductor { henries, amps }`. Add a method that returns the step's companion `Stamp` for a given `dt` and `Integrator`. DC `stamp()` returns `Open` / `Merge` for them.\n\n### 2. Transient solve\n\n**File**: `crates/simbiguity-circuits/src/mna.rs`\n\nAdd `analyze_step(c, dt, integrator)`. It stamps companion models, solves, and returns the new capacitor voltages and inductor currents alongside the `Solution`. Trapezoidal also needs each element's previous current, which is stored on the component.\n\n**File**: `crates/simbiguity-circuits/src/netlist.rs`: `add_capacitor`, `add_inductor`.\n\n### 3. Make `dt` matter in the simulation\n\n**File**: `crates/simbiguity-circuits/src/sim.rs`\n\n`CircuitSim::step(dt)` calls the transient solve and writes the new state back into the components. Add `CircuitSim::with_integrator`. Add the energy stored in each element (½CV², ½LI²) to the solution, for readouts.\n\n### 4. Bridge and demo\n\n**File**: `crates/simbiguity-circuits-wasm/src/lib.rs`: `circuit_add_capacitor`, `circuit_add_inductor`, `circuit_step(h, dt)`, plus chart exports built on `simbiguity-plot`\n\n**New file**: `site/demos/rc-charging/index.html` (+ `demo.js`, `state.js`, `state.test.js`): a battery, switch, resistor and capacitor with a bulb. A live chart shows V across the capacitor and the current. Sliders set R and C, and a readout shows τ = RC. A second preset is an LC \"ringing\" circuit with an integrator toggle that shows backward Euler damping the oscillation.\n\n**File**: `crates/simbiguity-circuits/capabilities.toml`: a \"circuits that change over time\" capability, linked to the demo.\n\n## Reused existing code\n\n- `Stamp::Norton` and `Stamp` handling in `crates/simbiguity-circuits/src/component.rs` and `crates/simbiguity-circuits/src/mna.rs`\n- `CircuitSim`, `CircuitInput` in `crates/simbiguity-circuits/src/sim.rs`\n- `FixedClock` from `crates/simbiguity-core/src/clock.rs` for the demo's step loop\n- `lu_solve` from `crates/simbiguity-math/src/linsolve.rs`\n- `simbiguity-plot` (`Chart`, `Series`) from the plot plan\n\n## Tests (written first, hand-computed)\n\n- **RC charging, exact vs discrete.** R = 1 kΩ, C = 1 mF (τ = 1 s), 10 V, dt = 0.1 s, 10 steps.\n  - The textbook answer is 10(1 − e⁻¹) = 6.3212 V.\n  - Backward Euler gives 10(1 − (1/1.1)¹⁰) = 6.1446 V, which lags behind.\n  - Trapezoidal gives 10(1 − (0.95/1.05)¹⁰) = 6.3249 V, which is much closer.\n  - The test asserts the discrete formulas exactly and the gap to the textbook answer.\n- **RL current rise:** L = 1 H, R = 1 Ω gives τ = 1 s, the same shape for current.\n- **LC oscillator:** L = 1 H, C = 1 F has period 2π s. With trapezoidal, the energy ½CV² + ½LI² after 1000 steps is within 1e-9 of the start. With backward Euler it measurably decays. This proves why the integrator choice matters.\n- **DC limit:** after 10τ the transient solution matches `Circuit::solve()`'s steady state.\n- **Determinism:** snapshot at step 50, run to step 100, restore, rerun → bit-identical.\n- **Existing DC tests:** all pass unchanged.\n\n## Scenarios to Demonstrate\n\n- RC circuit mid-charge with the curve approaching the battery voltage\n- Switch opened: the capacitor discharging through the bulb, which fades\n- LC ringing under trapezoidal (sustained) vs backward Euler (damped)\n- A tiny capacitor (τ much less than one frame) charging almost instantly",
+  "description": "Implemented transient analysis for RC and RL circuits in the MNA engine. Fixed compilation errors for no_std environments and updated tests. Scope Verdict: This continues work on the deferred Circuit simulation deliverable. All other deliverables remain deferred.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Ftests.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits-wasm%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fjs.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/circuits-that-change-over-time-capacitors-inductors-and-transient-analysis.md\t.codeyam/plans/completed/circuits-that-change-over-time-capacitors-inductors-and-transient-analysis.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/31221f329cbacb2fbacd01b648b8d99a81486580db8fdd46fede5bc62d22025b.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/3322ab1bfa66a7eb31e408bd572248264523b49e85fff4ca8329c498bb1acef7.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a76e62d9b9c1f35efc28d3d5cddf74337dbc55b66e4f4701c757ffad44a3c1c2.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a7e1c569a44ac0cbafb179291c5473d1714ad1b6ffe7ced6a5e3c4be6cfe43a9.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/f4d8478bfee18ba10cafb746d83ffda0d3729f85791f7bb3a5cf029afca8ae9c.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-anim.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/xtask.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/capabilities.toml",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/component.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/mna.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/netlist.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/sim.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/solution.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/tests/analysis.rs",
+      "status": "modified"
+    },
+    {
+      "path": "site/js/simbiguity.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Frc-charging.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/rc-charging-demo.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/rc-charging-demo--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/1a7299117bea73d010c4544280b28bdbd5496f5a7e4d6efde8791f5ca7b94626.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/224da994a87bcb6f318b8e7784cc0af34ef2c8d674b9431f68f3624f4a49586e.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/246276f26b7308807cad5ccd598bd3df2c3a666f508e294171ef3a0afe735286.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/33df9aad34c8c3b5ae4a568adfa8967ca1345257a579e0dc309a30bef7c225f0.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/345bfc3d8501de94ee6dcf419647f8798ffc4acf4b40bb6b3c3303c2924906e3.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/36b698a9fe0f8acf4bbb4169a2c41e6331917127420e664282d2e4e36ffa1035.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7adbb63ff403a4b6f7e4375296bb858c5c7f6fd53827d4313a84b917e1192515.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/93900af880cb061b73231b7ed69a015fd9390d38ed5985b27ae37378c7bdbfc7.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/9ae2c5cc1b27d5df0033252320e33e74b44e45c6b8993bc6ad8aef541f2110d9.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/9d40df1a08ec83008ccb73c32aa3d2683d3f69ce00dfa863588f825babf173fd.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/acf7bf8917da4cc10e5a7a1c2df1c909cb699a6330222fc691151aa4f4aab060.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ae713a17df887f50717349b043a70d0041fb0db89c8a56d365e33d28b5ae5ccd.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b0bb04ffd9f331a9c371c720caee9fb417b7123189148268a8d38e496c9cbe6b.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b2dcaedf437878b251cab8e05aae745966808425924eb2f2be731c4112311259.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d5ee202ff8a4ad6c77fd63391afcb42996ed4288171004cce813b85a1d05f0c0.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-puzzle.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-wasm.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-puzzle.json",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/rc-charging/demo.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/rc-charging/index.html",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/rc-charging/state.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/rc-charging/state.test.js",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "RC Charging Demo",
+      "screenshotPath": "rc-charging-demo--desktop.png"
+    }
+  ]
+}

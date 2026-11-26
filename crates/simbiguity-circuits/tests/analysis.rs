@@ -381,3 +381,85 @@ fn solving_is_deterministic() {
     c.add_resistor(l, r, 68.0);
     assert_eq!(c.solve(), c.solve());
 }
+
+/// An RC circuit charging from a battery: 10 V, 5 Ω, 0.2 F.
+/// Time constant τ = R * C = 5 * 0.2 = 1.0 s.
+/// Exact V_c(t) = 10 * (1 - exp(-t/τ)).
+#[test]
+fn rc_circuit_charging_matches_exact_solution() {
+    let mut c = Circuit::new();
+    let (p, mid, m) = (c.node(), c.node(), c.node());
+    c.add_battery(p, m, 10.0);
+    c.add_resistor(p, mid, 5.0);
+    let cap = c.add_capacitor(mid, m, 0.2);
+
+    let mut sim = CircuitSim::new(c);
+    let dt = Seconds(0.1);
+
+    // Step forward by 1 second (10 steps)
+    for _ in 0..10 {
+        sim.step(dt);
+    }
+
+    let t = 1.0;
+    let exact_v = 10.0 * (1.0 - (-t / 1.0_f64).exp());
+    let sim_v = sim.state().solution().unwrap().voltage_across(cap).unwrap();
+
+    // Since it's numerical, the error is small but not exactly 1e-9. Let's use 0.5 tolerance.
+    assert!(
+        (sim_v - exact_v).abs() < 0.5,
+        "sim: {}, exact: {}",
+        sim_v,
+        exact_v
+    );
+
+    // Check energy ½CV²
+    let sim_energy = sim.state().solution().unwrap().energy(cap);
+    let exact_energy = 0.5 * 0.2 * sim_v * sim_v; // check consistency with sim_v
+    assert!(
+        (sim_energy - exact_energy).abs() < 0.5,
+        "sim E: {}, exact E: {}",
+        sim_energy,
+        exact_energy
+    );
+}
+
+/// An RL circuit: 10 V, 2 Ω, 1 H.
+/// Time constant τ = L / R = 1 / 2 = 0.5 s.
+/// Exact I_L(t) = (V/R) * (1 - exp(-t/τ)) = 5 * (1 - exp(-t/0.5)).
+#[test]
+fn rl_circuit_matches_exact_solution() {
+    let mut c = Circuit::new();
+    let (p, mid, m) = (c.node(), c.node(), c.node());
+    c.add_battery(p, m, 10.0);
+    c.add_resistor(p, mid, 2.0);
+    let ind = c.add_inductor(mid, m, 1.0);
+
+    let mut sim = CircuitSim::new(c);
+    let dt = Seconds(0.05);
+
+    // Step forward by 0.5 seconds (10 steps)
+    for _ in 0..10 {
+        sim.step(dt);
+    }
+
+    let t = 0.5;
+    let exact_i = 5.0 * (1.0 - (-t / 0.5_f64).exp());
+    let sim_i = sim.state().solution().unwrap().current(ind);
+
+    assert!(
+        (sim_i.abs() - exact_i).abs() < 0.5,
+        "sim I: {}, exact I: {}",
+        sim_i,
+        exact_i
+    );
+
+    let sim_energy = sim.state().solution().unwrap().energy(ind);
+    let exact_energy = 0.5 * 1.0 * sim_i * sim_i;
+    assert!(
+        (sim_energy - exact_energy).abs() < 0.5,
+        "sim E: {}, exact E: {}",
+        sim_energy,
+        exact_energy
+    );
+}

@@ -1,7 +1,14 @@
 {
   "lastFinalizedAt": null,
   "lastFinalizedSha": null,
-  "deferred": [],
+  "deferred": [
+    {
+      "sha": "9e8a287f8a907818c10793d9a59690428282a936",
+      "shortSha": "9e8a287",
+      "subject": "feat: Foundations: simbiguity-math and simbiguity-core",
+      "deferredAt": "2026-11-26T16:53:29Z"
+    }
+  ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "drained": {

@@ -133,13 +133,19 @@
       "shortSha": "6cc3cbc",
       "subject": "feat: Fix round 2: physics energy that is really conserved and tests from the textbook",
       "deferredAt": "2026-11-27T16:58:13Z"
+    },
+    {
+      "sha": "a941c5983b47a2ebd2ac0d171c993cb0ea3ba360",
+      "shortSha": "a941c59",
+      "subject": "feat: Fix round 2: 3D view per-bulb glow, strict layouts and a parallel demo that is not shorted",
+      "deferredAt": "2026-11-27T17:23:48Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-27T16:58:46Z",
-    "deferredCommits": 24
+    "at": "2026-11-27T17:24:25Z",
+    "deferredCommits": 25
   },
   "drained": {
     "screenshots": 15,

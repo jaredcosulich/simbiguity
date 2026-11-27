@@ -221,10 +221,10 @@
     "crates/simbiguity-plot/src/series.rs::Series": {
       "filePath": "crates/simbiguity-plot/src/series.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
         "crates/simbiguity-plot/src/chart.rs::Chart",
         "crates/simbiguity-plot/src/chart.rs::Chart::series",
-        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+        "crates/simbiguity-plot/src/lib.rs::__file_root__",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series::capacity",
@@ -283,8 +283,8 @@
     "crates/simbiguity-plot/src/series.rs::Series::new": {
       "filePath": "crates/simbiguity-plot/src/series.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
-        "crates/simbiguity-plot/src/series.rs::Series"
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series::capacity",
@@ -490,10 +490,10 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",
-        "crates/simbiguity-plot/src/lib.rs"
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": []
     },

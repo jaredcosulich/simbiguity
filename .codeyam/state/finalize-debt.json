@@ -139,6 +139,12 @@
       "shortSha": "a941c59",
       "subject": "feat: Fix round 2: 3D view per-bulb glow, strict layouts and a parallel demo that is not shorted",
       "deferredAt": "2026-11-27T17:23:48Z"
+    },
+    {
+      "sha": "dcf17e7df38f85852693fb69a77a66a689029582",
+      "shortSha": "dcf17e7",
+      "subject": "feat: Fix round 2: prove the performance work with the missing tests",
+      "deferredAt": "2026-11-27T22:20:23Z"
     }
   ],
   "finalizeIntent": "fast",

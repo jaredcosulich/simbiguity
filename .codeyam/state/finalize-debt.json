@@ -127,6 +127,12 @@
       "shortSha": "3713ad0",
       "subject": "feat: Fix round 2: trapezoidal integrator sign error and hand-computed transient tests",
       "deferredAt": "2026-11-27T15:48:18Z"
+    },
+    {
+      "sha": "6cc3cbcf7fd1bcd34b6b64c77562f3359b212772",
+      "shortSha": "6cc3cbc",
+      "subject": "feat: Fix round 2: physics energy that is really conserved and tests from the textbook",
+      "deferredAt": "2026-11-27T16:58:13Z"
     }
   ],
   "finalizeIntent": "fast",

@@ -115,13 +115,19 @@
       "shortSha": "67eb67b",
       "subject": "feat: Fix round 2: make the branch green and keep it that way",
       "deferredAt": "2026-11-27T14:58:55Z"
+    },
+    {
+      "sha": "42ae66df199c1afc38159347ba21740078973ec7",
+      "shortSha": "42ae66d",
+      "subject": "feat: Fix round 2: plots that actually reach the screen",
+      "deferredAt": "2026-11-27T15:13:33Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-27T14:59:18Z",
-    "deferredCommits": 21
+    "at": "2026-11-27T15:14:05Z",
+    "deferredCommits": 22
   },
   "drained": {
     "screenshots": 14,

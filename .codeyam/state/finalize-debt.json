@@ -85,13 +85,19 @@
       "shortSha": "99c4a8d",
       "subject": "Fix: time-series plots actually draw (Chart::draw stub, line geometry, tick loop)",
       "deferredAt": "2026-11-26T23:32:12Z"
+    },
+    {
+      "sha": "eaa195593ef4854319c32b93d2c96faae73c1201",
+      "shortSha": "eaa1955",
+      "subject": "Fix: performance stale LU on dt change, budget gate that cannot fail, bogus grid bench",
+      "deferredAt": "2026-11-27T00:34:19Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-27T00:17:38Z",
-    "deferredCommits": 15
+    "at": "2026-11-27T00:35:10Z",
+    "deferredCommits": 16
   },
   "drained": {
     "screenshots": 5,

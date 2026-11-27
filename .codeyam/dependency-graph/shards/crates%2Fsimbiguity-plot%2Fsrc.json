@@ -150,12 +150,15 @@
       "importedBy": [],
       "imports": [
         "crates/simbiguity-math/src/float.rs::floor",
+        "crates/simbiguity-math/src/mat.rs::IDENTITY",
+        "crates/simbiguity-math/src/mat.rs::Mat4",
         "crates/simbiguity-plot/src/chart.rs::Chart::axes",
         "crates/simbiguity-plot/src/chart.rs::Chart::series",
         "crates/simbiguity-plot/src/line.rs::build_line_mesh",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks::format_tick",
+        "crates/simbiguity-render/src/camera.rs::orthographic_projection",
         "crates/simbiguity-render/src/commands.rs::Command",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
         "crates/simbiguity-render/src/commands.rs::Program",
@@ -179,6 +182,7 @@
         "max",
         "min",
         "new",
+        "orthographic_projection",
         "push",
         "vertex_count"
       ]
@@ -363,7 +367,8 @@
       "imports": [
         "crates/simbiguity-math/src/float.rs::exp",
         "crates/simbiguity-math/src/float.rs::floor",
-        "crates/simbiguity-math/src/float.rs::ln"
+        "crates/simbiguity-math/src/float.rs::ln",
+        "crates/simbiguity-math/src/float.rs::round"
       ],
       "inherentMethod": true,
       "name": "NiceTicks::compute",
@@ -371,6 +376,7 @@
         "is_empty",
         "new",
         "push",
+        "round",
         "vec"
       ]
     },
@@ -395,6 +401,7 @@
       ],
       "importedBy": [
         "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",
         "crates/simbiguity-plot/src/lib.rs"
       ],
@@ -416,6 +423,8 @@
         "crates/simbiguity-render/src/mesh.rs",
         "crates/simbiguity-render/src/commands.rs",
         "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/line.rs",
@@ -423,7 +432,11 @@
         "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-math/src/float.rs",
-        "crates/simbiguity-plot/src/line.rs"
+        "crates/simbiguity-plot/src/line.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-plot/src/axes.rs"
       ]
     },
     "crates/simbiguity-plot/src/lib.rs": {
@@ -467,6 +480,8 @@
       ],
       "imports": [
         "crates/simbiguity-render/src/mesh.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-math/src/float.rs"
       ]
     },
@@ -495,6 +510,7 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "imports": [
+        "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-math/src/float.rs"

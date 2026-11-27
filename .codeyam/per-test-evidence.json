@@ -2956,8 +2956,8 @@
   },
   "ticks::tests::ticks_for_zero_to_ten_step_by_two": {
     "file": "crates/simbiguity-plot/src/ticks.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-27T15:09:14.127Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T23:28:02.297Z"
@@ -2965,8 +2965,8 @@
   },
   "ticks::tests::ticks_terminate_at_huge_magnitudes": {
     "file": "crates/simbiguity-plot/src/ticks.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-27T15:09:14.127Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T23:28:02.297Z"

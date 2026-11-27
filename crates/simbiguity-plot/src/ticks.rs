@@ -28,18 +28,23 @@ impl NiceTicks {
 
         let start = floor(min / nice_step) * nice_step;
         let mut ticks = Vec::new();
-        let mut t = start;
-        let mut attempts = 0;
-        while t <= max + nice_step * 0.5 && attempts < 100 {
+
+        let decimals = if mag < 0.0 { -mag as i32 } else { 0 };
+        let mut rounding_factor = 1.0;
+        for _ in 0..decimals {
+            rounding_factor *= 10.0;
+        }
+
+        for i in 0..100 {
+            let t_raw = start + (i as f64) * nice_step;
+            let t = simbiguity_math::float::round(t_raw * rounding_factor) / rounding_factor;
+
+            if t > max + nice_step * 0.5 {
+                break;
+            }
             if t >= min {
                 ticks.push(t);
             }
-            let next_t = t + nice_step;
-            if next_t <= t {
-                break;
-            }
-            t = next_t;
-            attempts += 1;
         }
         if ticks.is_empty() {
             ticks.push(min);

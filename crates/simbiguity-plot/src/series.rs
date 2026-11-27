@@ -41,3 +41,30 @@ impl Series {
         self.iter().filter(move |&&(t, _)| t >= min_time)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// pushing capacity + 3 keeps the newest values in order
+    #[test]
+    fn pushing_over_capacity_keeps_newest_in_order() {
+        let mut s = Series::new(3);
+        for i in 0..6 {
+            s.push(i as f64, i as f64);
+        }
+        let values: alloc::vec::Vec<_> = s.iter().map(|&(_, v)| v).collect();
+        assert_eq!(values, alloc::vec![3.0, 4.0, 5.0]);
+    }
+
+    /// window
+    #[test]
+    fn window_returns_recent_values() {
+        let mut s = Series::new(10);
+        s.push(1.0, 1.0);
+        s.push(2.0, 2.0);
+        s.push(3.0, 3.0);
+        let values: alloc::vec::Vec<_> = s.window(1.5).map(|&(_, v)| v).collect();
+        assert_eq!(values, alloc::vec![2.0, 3.0]);
+    }
+}

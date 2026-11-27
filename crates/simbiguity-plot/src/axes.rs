@@ -41,3 +41,27 @@ impl Axes {
         )
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// the corners map exactly.
+    #[test]
+    fn corners_map_exactly() {
+        let axes = Axes {
+            x_min: 0.0,
+            x_max: 10.0,
+            y_min: 0.0,
+            y_max: 100.0,
+            px_x: 10.0,
+            px_y: 20.0,
+            px_w: 200.0,
+            px_h: 100.0,
+        };
+        assert_eq!(axes.data_to_px(0.0, 0.0), (10.0, 120.0));
+        assert_eq!(axes.data_to_px(10.0, 100.0), (210.0, 20.0));
+        assert_eq!(axes.data_to_px(0.0, 100.0), (10.0, 20.0));
+        assert_eq!(axes.data_to_px(10.0, 0.0), (210.0, 120.0));
+    }
+}

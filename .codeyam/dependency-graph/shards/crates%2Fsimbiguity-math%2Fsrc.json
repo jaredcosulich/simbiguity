@@ -422,7 +422,8 @@
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
         "crates/simbiguity-math/src/float.rs::exp",
-        "crates/simbiguity-math/src/float.rs::reduce_quadrant"
+        "crates/simbiguity-math/src/float.rs::reduce_quadrant",
+        "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::abs",
@@ -1187,7 +1188,8 @@
         "crates/simbiguity-math/src/mat.rs::Mat4::default",
         "crates/simbiguity-math/src/mat.rs::Mat4::look_at",
         "crates/simbiguity-math/src/mat.rs::Mat4::scale",
-        "crates/simbiguity-math/src/mat.rs::Mat4::translation"
+        "crates/simbiguity-math/src/mat.rs::Mat4::translation",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs::Mat4",
@@ -1233,7 +1235,8 @@
         "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
         "crates/simbiguity-render/src/scene.rs::Node",
         "crates/simbiguity-render/src/scene.rs::Node::transform",
-        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::tan",
@@ -2749,13 +2752,16 @@
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/mesh.rs",
         "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/line.rs",
+        "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",
-        "crates/simbiguity-render/src/camera.rs",
-        "crates/simbiguity-render/src/mesh.rs"
+        "crates/simbiguity-plot/src/ticks.rs"
       ],
       "imports": [],
       "namedMethods": [
@@ -2832,7 +2838,8 @@
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/pick.rs",
         "crates/simbiguity-render/src/scene.rs",
-        "xtask/src/bench_fixtures.rs"
+        "xtask/src/bench_fixtures.rs",
+        "crates/simbiguity-plot/src/chart.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",

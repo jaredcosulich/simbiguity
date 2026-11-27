@@ -26,6 +26,28 @@ impl<'a> Chart<'a> {
         let mut labels = Vec::new();
         let mut next_mesh_id = start_mesh_id;
 
+        cmd.push(&Command::Viewport(
+            self.axes.px_w as u32,
+            self.axes.px_h as u32,
+        ));
+        cmd.push(&Command::SetUniformMat4(
+            Uniform::ViewProj,
+            simbiguity_render::camera::orthographic_projection(
+                self.axes.px_x,
+                self.axes.px_x + self.axes.px_w,
+                self.axes.px_y + self.axes.px_h,
+                self.axes.px_y,
+                -1.0,
+                1.0,
+            )
+            .m
+            .map(|x| x as f32),
+        ));
+        cmd.push(&Command::SetUniformMat4(
+            Uniform::Model,
+            simbiguity_math::Mat4::IDENTITY.m.map(|x| x as f32),
+        ));
+
         let (ticks_x, step_x) =
             crate::ticks::NiceTicks::compute(self.axes.x_min, self.axes.x_max, 5);
         let (ticks_y, step_y) =
@@ -145,5 +167,72 @@ impl<'a> Chart<'a> {
         }
 
         (meshes, labels)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use simbiguity_render::{Command, CommandBuffer, Uniform};
+
+    fn sample_chart<'a>(s: &'a Series) -> Chart<'a> {
+        Chart {
+            axes: crate::axes::Axes {
+                x_min: 0.0,
+                x_max: 1.0,
+                y_min: 0.0,
+                y_max: 1.0,
+                px_x: 0.0,
+                px_y: 0.0,
+                px_w: 200.0,
+                px_h: 100.0,
+            },
+            series: alloc::vec![(s, [1.0, 0.0, 0.0, 1.0])],
+        }
+    }
+
+    /// The GPU draws a triangle only after it's told how to map positions to the
+    /// screen (the view-projection matrix). A chart that draws its lines without
+    /// first setting that matrix produces nothing visible, however correct its
+    /// data is.
+    #[test]
+    fn chart_sets_view_projection_before_drawing() {
+        let mut s = Series::new(8);
+        s.push(0.0, 0.0);
+        s.push(1.0, 1.0);
+        let chart = sample_chart(&s); // [0,1]×[0,1] on 200×100 px; settle the constructor at execution
+        let mut cmd = CommandBuffer::new();
+        chart.draw(&mut cmd, 0);
+        let cmds = CommandBuffer::decode(cmd.words()).unwrap();
+        let first_draw = cmds
+            .iter()
+            .position(|c| matches!(c, Command::DrawIndexed { .. }))
+            .unwrap();
+        assert!(cmds[..first_draw]
+            .iter()
+            .any(|c| matches!(c, Command::SetUniformMat4(Uniform::ViewProj, _))));
+    }
+
+    /// Verifies that downsampling based on pixel width preserves local max/min spikes.
+    #[test]
+    fn downsampling_preserves_spikes() {
+        let mut s = Series::new(10005);
+        for i in 0..10000 {
+            s.push(i as f64, 0.0);
+        }
+        s.push(5000.0, 1.0); // spike
+        let mut chart = sample_chart(&s);
+        chart.axes.x_max = 10000.0;
+        let mut cmd = CommandBuffer::new();
+        let (meshes, _) = chart.draw(&mut cmd, 0);
+        let mesh = meshes.last().unwrap();
+        // downsampling: max 4 vertices (2 points) per pixel width. 200 px = max 800 vertices
+        assert!(mesh.vertex_count() <= 800);
+        let max_y = mesh
+            .vertices
+            .chunks(6)
+            .map(|v| v[1])
+            .fold(f32::INFINITY, f32::min);
+        assert!(max_y < 50.0); // spike reaches 0 in pixel space (top)
     }
 }

@@ -1,7 +1,11 @@
 [[capability]]
 name = "Time-Series Plotter"
 description = "Plots time-series data using screen-space normal extrusion and nice ticks."
-demo = "demos/plot-demo/#sine"
+demo = "demos/rc-charging/"
 proves = [
-    "ticks::tests"
+    "ticks::tests",
+    "chart::tests",
+    "line::tests",
+    "series::tests",
+    "axes::tests"
 ]

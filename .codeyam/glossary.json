@@ -338,6 +338,12 @@
     "testFile": "xtask/src/test_descriptions_tests.rs"
   },
   {
+    "description": "Builds a line mesh using screen-space normal extrusion with mitre joins.",
+    "filePath": "crates/simbiguity-plot/src/line.rs",
+    "name": "build_line_mesh",
+    "testFile": "crates/simbiguity-plot/src/line.rs"
+  },
+  {
     "description": "Builds the circuit board scene and returns it with the animated parts and the particle mesh.",
     "filePath": "crates/simbiguity-circuits-view/src/board.rs",
     "name": "build_scene",

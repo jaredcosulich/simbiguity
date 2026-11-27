@@ -1,0 +1,31 @@
+{
+  "provenAt": "2026-11-27T15:10:28Z",
+  "slug": "fix-round-2-plots-that-actually-reach-the-screen",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-plot/src/chart.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-plot/src/chart.rs",
+      "find": "            Uniform::ViewProj,\n            simbiguity_render::camera::orthographic_projection",
+      "replace": "            Uniform::Model,\n            simbiguity_render::camera::orthographic_projection"
+    }
+  ],
+  "withFixSource": "re-run",
+  "tests": {
+    "chart_sets_view_projection_before_drawing": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "chart_sets_view_projection_before_drawing"
+    ]
+  }
+}

@@ -111,3 +111,37 @@ pub fn build_line_mesh(points: &[(f64, f64)], width: f64) -> Mesh {
 
     m
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// a horizontal, vertical and diagonal segment each have a pixel width equal to the requested width.
+    #[test]
+    fn segment_width_is_requested_width() {
+        let h = build_line_mesh(&[(0.0, 0.0), (10.0, 0.0)], 4.0);
+        assert_eq!(h.vertices[1], 2.0);
+        assert_eq!(h.vertices[7], -2.0);
+
+        let v = build_line_mesh(&[(0.0, 0.0), (0.0, 10.0)], 4.0);
+        assert_eq!(v.vertices[0], -2.0);
+        assert_eq!(v.vertices[6], 2.0);
+
+        let d = build_line_mesh(&[(0.0, 0.0), (10.0, 10.0)], 4.0);
+        let dist = simbiguity_math::float::sqrt(
+            (d.vertices[0] * d.vertices[0] + d.vertices[1] * d.vertices[1]) as f64,
+        );
+        assert!((dist - 2.0).abs() < 1e-4);
+    }
+
+    /// the mitre is clamped at a sharp turn.
+    #[test]
+    fn mitre_is_clamped_at_sharp_turn() {
+        let m = build_line_mesh(&[(0.0, 0.0), (10.0, 0.0), (0.0, 0.1)], 4.0);
+        let base = 2 * 6; // inner/outer corner vertices
+        let off_x = m.vertices[base] - 10.0;
+        let off_y = m.vertices[base + 1] - 0.0;
+        let miter_len = simbiguity_math::float::sqrt((off_x * off_x + off_y * off_y) as f64);
+        assert!(miter_len <= 4.0 / 2.0 * 5.0 + 1e-4);
+    }
+}

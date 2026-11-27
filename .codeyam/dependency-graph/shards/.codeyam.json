@@ -2,14 +2,16 @@
   "entities": {
     ".codeyam/scenario-content-probe.js::__file_root__": {
       "filePath": ".codeyam/scenario-content-probe.js",
-      "importedBy": [],
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::{\n  collectContentState,\n  collectVisibleTextLength,\n  probeCanvasDominated,\n  probeCanvasTextMiss,\n}"
+      ],
       "imports": [],
       "name": "__file_root__"
     },
     ".codeyam/scenario-metrics.js::__file_root__": {
       "filePath": ".codeyam/scenario-metrics.js",
       "importedBy": [
-        ".codeyam/scenario-playwright.js::{\n  hasLoadingMarkers,\n  isCanvasDominated,\n  shouldStopWaitingForImages,\n}"
+        ".codeyam/scenario-playwright.js::{\n  hasLoadingMarkers,\n  shouldStopWaitingForImages,\n}"
       ],
       "imports": [],
       "name": "__file_root__"
@@ -79,6 +81,7 @@
       "importedBy": [],
       "imports": [
         ".codeyam/scenario-playwright.js::componentManifestPath",
+        ".codeyam/scenario-playwright.js::isolateMissingComponent",
         ".codeyam/scenario-playwright.js::isolateMissingComponentMessage",
         ".codeyam/scenario-playwright.js::servedBuildMissingComponent",
         ".codeyam/scenario-playwright.js::servedBuildMissingComponentMessage"
@@ -95,6 +98,24 @@
       ],
       "name": "componentManifestPath"
     },
+    ".codeyam/scenario-playwright.js::deadInteractionSequenceMessage": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteractionSequence"
+      ],
+      "imports": [
+        ".codeyam/scenario-playwright.js::describeInteractionStep"
+      ],
+      "name": "deadInteractionSequenceMessage"
+    },
+    ".codeyam/scenario-playwright.js::describeInteractionStep": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::deadInteractionSequenceMessage"
+      ],
+      "imports": [],
+      "name": "describeInteractionStep"
+    },
     ".codeyam/scenario-playwright.js::fs": {
       "filePath": ".codeyam/scenario-playwright.js",
       "importedBy": [
@@ -103,6 +124,22 @@
       ],
       "imports": [],
       "name": "fs"
+    },
+    ".codeyam/scenario-playwright.js::isCanvasInteraction": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteractionSequence"
+      ],
+      "imports": [],
+      "name": "isCanvasInteraction"
+    },
+    ".codeyam/scenario-playwright.js::isolateMissingComponent": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::assertIsolatedComponentResolved"
+      ],
+      "imports": [],
+      "name": "isolateMissingComponent"
     },
     ".codeyam/scenario-playwright.js::isolateMissingComponentMessage": {
       "filePath": ".codeyam/scenario-playwright.js",
@@ -130,6 +167,56 @@
       "imports": [],
       "name": "net"
     },
+    ".codeyam/scenario-playwright.js::performInteraction": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteractionSequence"
+      ],
+      "imports": [
+        ".codeyam/scenario-playwright.js::performKeyboardInteraction",
+        ".codeyam/scenario-playwright.js::resolveInteractionTarget",
+        ".codeyam/scenario-playwright.js::waitForPredicate"
+      ],
+      "name": "performInteraction"
+    },
+    ".codeyam/scenario-playwright.js::performInteractionSequence": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [],
+      "imports": [
+        ".codeyam/scenario-playwright.js::deadInteractionSequenceMessage",
+        ".codeyam/scenario-playwright.js::isCanvasInteraction",
+        ".codeyam/scenario-playwright.js::performInteraction",
+        ".codeyam/scenario-playwright.js::pixelSnapshot",
+        ".codeyam/scenario-playwright.js::samePixels",
+        ".codeyam/scenario-playwright.js::waitForPixelStable"
+      ],
+      "name": "performInteractionSequence"
+    },
+    ".codeyam/scenario-playwright.js::performKeyboardInteraction": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteraction"
+      ],
+      "imports": [],
+      "name": "performKeyboardInteraction"
+    },
+    ".codeyam/scenario-playwright.js::pixelSnapshot": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteractionSequence",
+        ".codeyam/scenario-playwright.js::waitForPixelStable"
+      ],
+      "imports": [],
+      "name": "pixelSnapshot"
+    },
+    ".codeyam/scenario-playwright.js::resolveInteractionTarget": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteraction"
+      ],
+      "imports": [],
+      "name": "resolveInteractionTarget"
+    },
     ".codeyam/scenario-playwright.js::resolveTcpTarget": {
       "filePath": ".codeyam/scenario-playwright.js",
       "importedBy": [
@@ -137,6 +224,15 @@
       ],
       "imports": [],
       "name": "resolveTcpTarget"
+    },
+    ".codeyam/scenario-playwright.js::samePixels": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteractionSequence",
+        ".codeyam/scenario-playwright.js::waitForPixelStable"
+      ],
+      "imports": [],
+      "name": "samePixels"
     },
     ".codeyam/scenario-playwright.js::servedBuildMissingComponent": {
       "filePath": ".codeyam/scenario-playwright.js",
@@ -154,6 +250,25 @@
       "imports": [],
       "name": "servedBuildMissingComponentMessage"
     },
+    ".codeyam/scenario-playwright.js::waitForPixelStable": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteractionSequence"
+      ],
+      "imports": [
+        ".codeyam/scenario-playwright.js::pixelSnapshot",
+        ".codeyam/scenario-playwright.js::samePixels"
+      ],
+      "name": "waitForPixelStable"
+    },
+    ".codeyam/scenario-playwright.js::waitForPredicate": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::performInteraction"
+      ],
+      "imports": [],
+      "name": "waitForPredicate"
+    },
     ".codeyam/scenario-playwright.js::{\n  candidateLabelSummary,\n  canvasTextWaitGuidance,\n  pageOf,\n  targetBox,\n  pointIn,\n  devicePixelRatioOf,\n  outsideTargetMessage,\n  outsideTargetError,\n  pointerGeometry,\n  locatorPointGeometry,\n  stepTimeoutMs,\n  pointerOptionsFor,\n  locateInteractionTarget,\n}": {
       "filePath": ".codeyam/scenario-playwright.js",
       "importedBy": [],
@@ -162,13 +277,29 @@
       ],
       "name": "{\n  candidateLabelSummary,\n  canvasTextWaitGuidance,\n  pageOf,\n  targetBox,\n  pointIn,\n  devicePixelRatioOf,\n  outsideTargetMessage,\n  outsideTargetError,\n  pointerGeometry,\n  locatorPointGeometry,\n  stepTimeoutMs,\n  pointerOptionsFor,\n  locateInteractionTarget,\n}"
     },
-    ".codeyam/scenario-playwright.js::{\n  hasLoadingMarkers,\n  isCanvasDominated,\n  shouldStopWaitingForImages,\n}": {
+    ".codeyam/scenario-playwright.js::{\n  collectContentState,\n  collectVisibleTextLength,\n  probeCanvasDominated,\n  probeCanvasTextMiss,\n}": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [],
+      "imports": [
+        ".codeyam/scenario-content-probe.js::__file_root__"
+      ],
+      "name": "{\n  collectContentState,\n  collectVisibleTextLength,\n  probeCanvasDominated,\n  probeCanvasTextMiss,\n}"
+    },
+    ".codeyam/scenario-playwright.js::{\n  hasLoadingMarkers,\n  shouldStopWaitingForImages,\n}": {
       "filePath": ".codeyam/scenario-playwright.js",
       "importedBy": [],
       "imports": [
         ".codeyam/scenario-metrics.js::__file_root__"
       ],
-      "name": "{\n  hasLoadingMarkers,\n  isCanvasDominated,\n  shouldStopWaitingForImages,\n}"
+      "name": "{\n  hasLoadingMarkers,\n  shouldStopWaitingForImages,\n}"
+    },
+    ".codeyam/scenario-playwright.js::{\n  scrollThroughDocument,\n  forceFinalVisualState,\n  centerCaptureWrapper,\n}": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "importedBy": [],
+      "imports": [
+        ".codeyam/scenario-visual-state.js::__file_root__"
+      ],
+      "name": "{\n  scrollThroughDocument,\n  forceFinalVisualState,\n  centerCaptureWrapper,\n}"
     },
     ".codeyam/scenario-targeting.js::__file_root__": {
       "filePath": ".codeyam/scenario-targeting.js",
@@ -307,14 +438,18 @@
     },
     ".codeyam/scenario-visual-state.js::__file_root__": {
       "filePath": ".codeyam/scenario-visual-state.js",
-      "importedBy": [],
+      "importedBy": [
+        ".codeyam/scenario-playwright.js::{\n  scrollThroughDocument,\n  forceFinalVisualState,\n  centerCaptureWrapper,\n}"
+      ],
       "imports": [],
       "name": "__file_root__"
     }
   },
   "files": {
     ".codeyam/scenario-content-probe.js": {
-      "importedBy": [],
+      "importedBy": [
+        ".codeyam/scenario-playwright.js"
+      ],
       "imports": []
     },
     ".codeyam/scenario-metrics.js": {
@@ -327,7 +462,9 @@
       "importedBy": [],
       "imports": [
         ".codeyam/scenario-metrics.js",
-        ".codeyam/scenario-targeting.js"
+        ".codeyam/scenario-content-probe.js",
+        ".codeyam/scenario-targeting.js",
+        ".codeyam/scenario-visual-state.js"
       ]
     },
     ".codeyam/scenario-targeting.js": {
@@ -337,7 +474,9 @@
       "imports": []
     },
     ".codeyam/scenario-visual-state.js": {
-      "importedBy": [],
+      "importedBy": [
+        ".codeyam/scenario-playwright.js"
+      ],
       "imports": []
     }
   }

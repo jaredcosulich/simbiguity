@@ -126,8 +126,7 @@ fn floating_islands(c: &Circuit, t: &Topology) -> Vec<CircuitIssue> {
     let touched = touched_nodes(c);
     let mut reported = vec![false; n];
     let mut issues = Vec::new();
-    for node in 0..n {
-        let isl = t.island[node];
+    for (node, &isl) in t.island.iter().enumerate() {
         if touched[node] && t.reference[isl].is_none() && !reported[isl] {
             reported[isl] = true;
             issues.push(CircuitIssue::FloatingNode { node: NodeId(node) });
@@ -150,8 +149,8 @@ impl Unknowns {
         let n = c.node_count;
         let mut voltage = vec![None; n];
         let mut count = 0;
-        for root in 0..n {
-            if t.group[root] == root && t.reference_of(root).is_some_and(|r| r != root) {
+        for (root, &group) in t.group.iter().enumerate() {
+            if group == root && t.reference_of(root).is_some_and(|r| r != root) {
                 voltage[root] = Some(count);
                 count += 1;
             }

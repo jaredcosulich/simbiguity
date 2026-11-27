@@ -131,6 +131,7 @@ blob-report/
 .codeyam/state/plan-conflict-acks.json
 .codeyam/state/plan-landed-fetch.stamp
 .codeyam/state/recapture-tuning.json
+.codeyam/state/recapture-dead-interactions.json
 .codeyam/state/capture-build-cfg.json
 .codeyam/state/build-disk-growth.json
 .codeyam/state/sampled-freshness.json
@@ -222,8 +223,14 @@ blob-report/
 *.waits
 *.heartbeat
 docker-compose.cloud.yml
-.codeyam/state/recapture-dead-interactions.json
 .codeyam/state/node-junit.xml
 # codeyam-editor:end
 
 # CodeYam - local runtime state
+scratch*
+*.orig
+*.rej
+__pycache__/
+summary.json
+*.patch
+fix_*.sh

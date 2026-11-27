@@ -2801,8 +2801,8 @@
   },
   "tests::pendulum_preset_steps_without_panicking": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-27T01:03:05.584Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-27T13:07:41.005Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"

@@ -1,3 +1,5 @@
+#![no_std]
+
 use simbiguity_math::float::acos;
 use simbiguity_math::mat::Mat4;
 use simbiguity_math::quat::Quat;
@@ -96,7 +98,11 @@ impl PhysicsView {
         } else {
             let axis = up.cross(dir).normalize();
             let angle = acos(dot);
-            Quat::from_axis_angle(axis.unwrap(), angle)
+            if let Some(a) = axis {
+                Quat::from_axis_angle(a, angle)
+            } else {
+                Quat::IDENTITY
+            }
         };
 
         let t = Mat4::translation(center)

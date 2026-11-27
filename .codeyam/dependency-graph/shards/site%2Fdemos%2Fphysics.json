@@ -8,11 +8,54 @@
       "imports": [],
       "name": "__file_root__"
     },
+    "site/demos/physics/demo.js::integratorSelect": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::syncUI"
+      ],
+      "imports": [],
+      "name": "integratorSelect"
+    },
+    "site/demos/physics/demo.js::presetSelect": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::syncUI"
+      ],
+      "imports": [],
+      "name": "presetSelect"
+    },
+    "site/demos/physics/demo.js::syncUI": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/physics/demo.js::integratorSelect",
+        "site/demos/physics/demo.js::presetSelect",
+        "site/demos/physics/state.js::parseState"
+      ],
+      "name": "syncUI"
+    },
     "site/demos/physics/index.html::__file_root__": {
       "filePath": "site/demos/physics/index.html",
       "importedBy": [],
       "imports": [
         "site/demos/physics/demo.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/physics/state.js::parseState": {
+      "filePath": "site/demos/physics/state.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::syncUI",
+        "site/demos/physics/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "parseState"
+    },
+    "site/demos/physics/state.test.js::__file_root__": {
+      "filePath": "site/demos/physics/state.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/physics/state.js::parseState"
       ],
       "name": "__file_root__"
     }
@@ -22,12 +65,27 @@
       "importedBy": [
         "site/demos/physics/index.html"
       ],
-      "imports": []
+      "imports": [
+        "site/demos/physics/state.js"
+      ]
     },
     "site/demos/physics/index.html": {
       "importedBy": [],
       "imports": [
         "site/demos/physics/demo.js"
+      ]
+    },
+    "site/demos/physics/state.js": {
+      "importedBy": [
+        "site/demos/physics/demo.js",
+        "site/demos/physics/state.test.js"
+      ],
+      "imports": []
+    },
+    "site/demos/physics/state.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/physics/state.js"
       ]
     }
   }

@@ -5,8 +5,10 @@
       "importedBy": [
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_spring_mass"
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::acos",
@@ -81,8 +83,7 @@
         "normalize",
         "rotation",
         "scale",
-        "translation",
-        "unwrap"
+        "translation"
       ]
     },
     "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::camera": {

@@ -3,4 +3,7 @@ pub enum PhysicsError {
     NonPositiveMass,
     SelfConnectedSpring,
     SelfConnectedRod,
+    IndexOutOfBounds,
+    InvalidParameter,
+    InvalidTimeStep,
 }

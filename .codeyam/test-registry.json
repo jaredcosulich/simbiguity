@@ -2728,6 +2728,15 @@
       "runner": "cargo"
     },
     {
+      "description": "The pendulum preset is what a learner sees first. It must build two particles (a pinned anchor and a bob) and keep swinging for 10 seconds of frames without crashing the page.",
+      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::pendulum_preset_steps_without_panicking",
+      "line": 331,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Picking at the pixel the switch base projects to hits the switch; a corner of the sky hits nothing.",
       "file": "crates/simbiguity-render-wasm/src/tests.rs",
       "format": "cargo",
@@ -2795,7 +2804,7 @@
       "file": "crates/simbiguity-physics-view/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_view",
-      "line": 120,
+      "line": 126,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },
@@ -3200,8 +3209,62 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_world_new",
-      "line": 295,
+      "line": 337,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Bounce to 0.25 m",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::bounce",
+      "line": 133,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Explicit Euler energy growth over 10% vs Verlet under 0.1%",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::energy_drift",
+      "line": 82,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Pendulum 2.006 s period",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::pendulum_period",
+      "line": 60,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Projectile range 20.387 m",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::projectile_range",
+      "line": 9,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Rod length held to 1e-6",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::rod_length",
+      "line": 112,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Spring period π s",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::spring_period",
+      "line": 33,
+      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     }
   ],

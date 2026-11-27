@@ -16,3 +16,6 @@ pub use error::PhysicsError;
 pub use forces::{Gravity, Spring};
 pub use integrate::Integrator;
 pub use world::{Particle, PhysicsInput, World};
+
+#[cfg(test)]
+mod world_tests;

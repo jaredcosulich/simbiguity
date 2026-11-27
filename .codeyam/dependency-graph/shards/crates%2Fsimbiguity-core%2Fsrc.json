@@ -859,6 +859,12 @@
         "crates/simbiguity-core/src/simulation.rs::ZERO",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::step",
+        "crates/simbiguity-physics/src/world_tests.rs::bounce",
+        "crates/simbiguity-physics/src/world_tests.rs::energy_drift",
+        "crates/simbiguity-physics/src/world_tests.rs::pendulum_period",
+        "crates/simbiguity-physics/src/world_tests.rs::projectile_range",
+        "crates/simbiguity-physics/src/world_tests.rs::rod_length",
+        "crates/simbiguity-physics/src/world_tests.rs::spring_period",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance"
       ],
       "imports": [
@@ -949,6 +955,7 @@
         "crates/simbiguity-core/src/lockstep.rs::S",
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
         "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world_tests.rs::__file_root__",
         "crates/simbiguity-physics-wasm/src/lib.rs::__file_root__"
       ],
       "imports": [
@@ -1151,6 +1158,8 @@
         "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world_tests.rs",
+        "crates/simbiguity-physics/src/world_tests.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs"
       ],

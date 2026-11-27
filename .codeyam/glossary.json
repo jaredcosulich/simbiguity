@@ -17,6 +17,12 @@
     ]
   },
   {
+    "description": "Thrown for a buffer this executor cannot replay.",
+    "filePath": "site/js/webgl2-executor.js",
+    "name": "CommandBufferError",
+    "testFile": "site/js/webgl2-executor.test.js"
+  },
+  {
     "description": "The engine status page: build identity, capability cards with live demos, the crate dependency table and every test with filters.",
     "filePath": "site/status/index.html",
     "name": "EngineStatusPage",
@@ -599,6 +605,18 @@
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
+    "description": "A capacitor of `farads`; returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_capacitor",
+    "testFile": "crates/simbiguity-circuits-wasm/src/lib.rs"
+  },
+  {
+    "description": "An inductor of `henries`; returns its component id.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_add_inductor",
+    "testFile": "crates/simbiguity-circuits-wasm/src/lib.rs"
+  },
+  {
     "description": "Places a resistor between two nodes and returns its component id.",
     "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
     "name": "circuit_add_resistor",
@@ -725,6 +743,12 @@
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
   },
   {
+    "description": "Sets the integration method (0 = BackwardEuler, 1 = Trapezoidal).",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_set_integrator",
+    "testFile": "crates/simbiguity-circuits-wasm/src/lib.rs"
+  },
+  {
     "description": "Sets a component main value such as battery EMF, applied at the next solve.",
     "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
     "name": "circuit_set_value",
@@ -741,6 +765,12 @@
       "hello-circuit"
     ],
     "testFile": "crates/simbiguity-circuits-wasm/src/tests.rs"
+  },
+  {
+    "description": "Steps the circuit forward in time by `dt` seconds, solving the transient response.",
+    "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+    "name": "circuit_step",
+    "testFile": "crates/simbiguity-circuits-wasm/src/lib.rs"
   },
   {
     "description": "Flips a switch and returns its new state; non-switches are ERR_KIND.",
@@ -1643,6 +1673,12 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "Creates an orthographic projection matrix.",
+    "filePath": "crates/simbiguity-render/src/camera.rs",
+    "name": "orthographic_projection",
+    "testFile": "crates/simbiguity-render/src/camera.rs"
   },
   {
     "description": "Turns an ease-in curve into its ease-out mirror by reflecting it in time and value.",

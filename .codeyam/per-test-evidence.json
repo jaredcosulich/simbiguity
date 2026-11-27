@@ -2754,6 +2754,15 @@
       "pass|full|2026-11-26T17:56:23.091Z"
     ]
   },
+  "tests::pendulum_preset_steps_without_panicking": {
+    "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
   "tests::pick_hits_the_switch_and_misses_the_sky": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
     "lastRunAt": "2026-11-26T22:57:01.007Z",
@@ -2819,8 +2828,8 @@
   },
   "tests::test_view": {
     "file": "crates/simbiguity-physics-view/src/lib.rs",
-    "lastRunAt": "2026-11-26T21:41:15.817Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-27T00:46:14.628Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T20:42:10.739Z"
@@ -3236,11 +3245,65 @@
   },
   "world::tests::test_world_new": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-26T21:41:15.817Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-27T00:46:14.628Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T20:42:10.739Z"
+    ]
+  },
+  "world_tests::bounce": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::energy_drift": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::pendulum_period": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::projectile_range": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::rod_length": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::spring_period": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T00:47:12.673Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T00:47:12.673Z"
     ]
   }
 }

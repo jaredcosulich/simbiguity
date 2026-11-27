@@ -54,7 +54,12 @@ impl World {
         position: Vec3,
         pinned: bool,
     ) -> Result<usize, PhysicsError> {
-        if mass <= 0.0 {
+        let mass = if pinned && (mass.is_nan() || mass <= 0.0) {
+            1.0
+        } else {
+            mass
+        };
+        if mass.is_nan() || mass <= 0.0 {
             return Err(PhysicsError::NonPositiveMass);
         }
         let index = self.particles.len();
@@ -76,6 +81,18 @@ impl World {
         k: f64,
         damping: f64,
     ) -> Result<(), PhysicsError> {
+        if p1 >= self.particles.len() || p2 >= self.particles.len() {
+            return Err(PhysicsError::IndexOutOfBounds);
+        }
+        if rest_length.is_nan()
+            || rest_length < 0.0
+            || k.is_nan()
+            || k < 0.0
+            || damping.is_nan()
+            || damping < 0.0
+        {
+            return Err(PhysicsError::InvalidParameter);
+        }
         if p1 == p2 {
             return Err(PhysicsError::SelfConnectedSpring);
         }
@@ -90,6 +107,12 @@ impl World {
     }
 
     pub fn add_rod(&mut self, p1: usize, p2: usize, length: f64) -> Result<(), PhysicsError> {
+        if p1 >= self.particles.len() || p2 >= self.particles.len() {
+            return Err(PhysicsError::IndexOutOfBounds);
+        }
+        if length.is_nan() || length <= 0.0 {
+            return Err(PhysicsError::InvalidParameter);
+        }
         if p1 == p2 {
             return Err(PhysicsError::SelfConnectedRod);
         }
@@ -116,12 +139,17 @@ impl World {
         e
     }
 
-    fn apply_forces(&mut self) {
+    fn apply_forces(&mut self, active_pushes: &[(usize, Vec3)]) {
         for p in &mut self.particles {
             if !p.pinned {
                 p.force = p.mass * self.gravity.acceleration;
             } else {
                 p.force = Vec3::ZERO;
+            }
+        }
+        for &(index, force) in active_pushes {
+            if index < self.particles.len() {
+                self.particles[index].force += force;
             }
         }
         for s in &self.springs {
@@ -155,7 +183,9 @@ impl World {
                 for p in &mut self.particles {
                     if !p.pinned && p.position.y < g.y {
                         p.position.y = g.y;
-                        p.velocity.y *= -g.restitution;
+                        if p.velocity.y < 0.0 {
+                            p.velocity.y *= -g.restitution;
+                        }
                     }
                 }
             }
@@ -189,6 +219,19 @@ impl World {
                         if w2 > 0.0 {
                             self.particles[r.p2].position -= correction * (w2 / w);
                         }
+
+                        // Correct velocity
+                        let dir = diff / dist;
+                        let v1 = self.particles[r.p1].velocity;
+                        let v2 = self.particles[r.p2].velocity;
+                        let rel_v = v2 - v1;
+                        let v_corr = dir * rel_v.dot(dir);
+                        if w1 > 0.0 {
+                            self.particles[r.p1].velocity += v_corr * (w1 / w);
+                        }
+                        if w2 > 0.0 {
+                            self.particles[r.p2].velocity -= v_corr * (w2 / w);
+                        }
                     }
                 }
             }
@@ -208,12 +251,11 @@ impl Simulation for World {
 
     fn step(&mut self, dt: Seconds) {
         let dt = dt.get();
+        let mut active_pushes = alloc::vec::Vec::new();
         for input in self.input_queue.drain(..) {
             match input {
                 PhysicsInput::Push { index, force } => {
-                    if index < self.particles.len() {
-                        self.particles[index].force += force; // Applied once this frame
-                    }
+                    active_pushes.push((index, force));
                 }
                 PhysicsInput::SetPinned { index, pinned } => {
                     if index < self.particles.len() {
@@ -226,7 +268,7 @@ impl Simulation for World {
             }
         }
 
-        self.apply_forces();
+        self.apply_forces(&active_pushes);
 
         match self.integrator {
             Integrator::ExplicitEuler => {
@@ -254,7 +296,7 @@ impl Simulation for World {
                         p.position += p.velocity * dt;
                     }
                 }
-                self.apply_forces();
+                self.apply_forces(&active_pushes);
                 // v(t+dt) = v(t+dt/2) + a(t+dt)*dt/2
                 for p in &mut self.particles {
                     if !p.pinned {

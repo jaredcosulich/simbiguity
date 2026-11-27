@@ -1,18 +1,20 @@
-#![no_std]
-
-extern crate alloc;
-use alloc::vec::Vec;
 use simbiguity_core::simulation::{Seconds, Simulation};
 use simbiguity_math::vec::Vec3;
-use simbiguity_physics::World;
+use simbiguity_physics::{
+    constraints::Ground, error::PhysicsError, Integrator, PhysicsInput, World,
+};
 use simbiguity_physics_view::PhysicsView;
 use simbiguity_render::{encode_frame, FrameBuf};
-use simbiguity_render_wasm::status::{ERR_HANDLE, OK};
+use simbiguity_render_wasm::status::{ERR_HANDLE, ERR_INDEX, OK};
 
-// Minimal slot mapping for handles
-static mut SLOTS: Option<Vec<Option<Session>>> = None;
+fn fail(code: i32, _message: String) -> i32 {
+    code
+}
 
-struct Session {
+use std::cell::RefCell;
+use std::vec::Vec;
+
+pub struct Session {
     world: World,
     view: PhysicsView,
     commands: simbiguity_render::CommandBuffer,
@@ -20,45 +22,79 @@ struct Session {
     time: f64,
 }
 
-#[allow(static_mut_refs)]
-unsafe fn slots() -> &'static mut Vec<Option<Session>> {
-    if SLOTS.is_none() {
-        SLOTS = Some(Vec::new());
-    }
-    SLOTS.as_mut().unwrap()
+thread_local! {
+    static SLOTS: RefCell<Vec<Option<Session>>> = const { RefCell::new(Vec::new()) };
 }
 
 fn insert(session: Session) -> u32 {
-    let s = unsafe { slots() };
-    for (i, slot) in s.iter_mut().enumerate() {
-        if slot.is_none() {
-            *slot = Some(session);
-            return (i as u32) + 1;
+    SLOTS.with(|slots| {
+        let mut slots = slots.borrow_mut();
+        for (i, slot) in slots.iter_mut().enumerate() {
+            if slot.is_none() {
+                *slot = Some(session);
+                return (i as u32) + 1;
+            }
         }
-    }
-    s.push(Some(session));
-    s.len() as u32
+        slots.push(Some(session));
+        slots.len() as u32
+    })
 }
 
 fn with_session<F>(h: u32, f: F) -> i32
 where
     F: FnOnce(&mut Session) -> i32,
 {
-    let idx = (h as usize).wrapping_sub(1);
-    let s = unsafe { slots() };
-    if let Some(Some(session)) = s.get_mut(idx) {
-        return f(session);
+    SLOTS.with(|slots| {
+        let mut slots = slots.borrow_mut();
+        let idx = (h as usize).wrapping_sub(1);
+        if let Some(Some(session)) = slots.get_mut(idx) {
+            f(session)
+        } else {
+            fail(ERR_HANDLE, std::format!("no session with handle {}", h))
+        }
+    })
+}
+
+fn map_error(e: PhysicsError) -> i32 {
+    match e {
+        PhysicsError::IndexOutOfBounds => fail(ERR_INDEX, "index out of bounds".into()),
+        PhysicsError::InvalidParameter => fail(-2, "invalid parameter".into()),
+        PhysicsError::InvalidTimeStep => fail(-2, "invalid time step".into()),
+        _ => fail(-3, "physics error".into()),
     }
-    ERR_HANDLE
+}
+
+fn create_pendulum() -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
+    world.add_particle(1.0, Vec3::new(4.0, 5.0, 0.0), false)?;
+    world.add_rod(0, 1, 4.0)?;
+    Ok(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+    })
 }
 
 #[no_mangle]
 pub extern "C" fn phys_new_pendulum() -> u32 {
+    match create_pendulum() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_spring_mass() -> Result<Session, PhysicsError> {
     let mut world = World::new();
-    let _ = world.add_particle(0.0, Vec3::new(0.0, 5.0, 0.0), true);
-    let _ = world.add_particle(1.0, Vec3::new(4.0, 5.0, 0.0), false);
-    let _ = world.add_rod(0, 1, 4.0);
-    insert(Session {
+    world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
+    world.add_particle(1.0, Vec3::new(0.0, 2.0, 0.0), false)?;
+    world.add_spring(0, 1, 2.0, 10.0, 0.5)?;
+    Ok(Session {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
@@ -69,11 +105,24 @@ pub extern "C" fn phys_new_pendulum() -> u32 {
 
 #[no_mangle]
 pub extern "C" fn phys_new_spring_mass() -> u32 {
+    match create_spring_mass() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_projectile() -> Result<Session, PhysicsError> {
     let mut world = World::new();
-    let _ = world.add_particle(0.0, Vec3::new(0.0, 5.0, 0.0), true);
-    let _ = world.add_particle(1.0, Vec3::new(0.0, 2.0, 0.0), false);
-    let _ = world.add_spring(0, 1, 2.0, 10.0, 0.5);
-    insert(Session {
+    world.ground = Some(Ground {
+        y: 0.0,
+        restitution: 0.25,
+    });
+    let p = world.add_particle(1.0, Vec3::new(0.0, 0.05, 0.0), false)?;
+    world.particles[p].velocity = Vec3::new(10.0, 10.0, 0.0);
+    Ok(Session {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
@@ -83,7 +132,72 @@ pub extern "C" fn phys_new_spring_mass() -> u32 {
 }
 
 #[no_mangle]
+pub extern "C" fn phys_new_projectile() -> u32 {
+    match create_projectile() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_chain() -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
+    for i in 1..5 {
+        world.add_particle(1.0, Vec3::new(i as f64, 5.0, 0.0), false)?;
+        world.add_rod(i - 1, i, 1.0)?;
+    }
+    Ok(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_chain() -> u32 {
+    match create_chain() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn phys_set_integrator(h: u32, kind: u32) -> i32 {
+    with_session(h, |s| {
+        s.world.integrator = match kind {
+            0 => Integrator::VelocityVerlet,
+            1 => Integrator::SymplecticEuler,
+            2 => Integrator::ExplicitEuler,
+            _ => return fail(-2, "invalid integrator".into()),
+        };
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_push(h: u32, index: u32, fx: f64, fy: f64, fz: f64) -> i32 {
+    with_session(h, |s| {
+        s.world.apply(PhysicsInput::Push {
+            index: index as usize,
+            force: Vec3::new(fx, fy, fz),
+        });
+        OK
+    })
+}
+
+#[no_mangle]
 pub extern "C" fn phys_advance(h: u32, dt: f64) -> i32 {
+    if dt.is_nan() || dt <= 0.0 {
+        return fail(-2, "invalid time step".into());
+    }
     with_session(h, |s| {
         s.world.step(Seconds(dt));
         s.time += dt;
@@ -191,13 +305,34 @@ pub extern "C" fn phys_set_camera(h: u32, yaw_deg: f64, pitch_deg: f64, distance
     })
 }
 
+#[no_mangle]
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
+pub extern "C" fn phys_get_energy(h: u32, out_ptr: *mut f64) -> i32 {
+    with_session(h, |s| {
+        let e = s.world.compute_energy();
+        unsafe {
+            *out_ptr.add(0) = e.kinetic;
+            *out_ptr.add(1) = e.potential_gravity;
+            *out_ptr.add(2) = e.potential_spring;
+            *out_ptr.add(3) = e.total();
+        }
+        OK
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-    // Verifies physics wasm init.
+
+    /// The pendulum preset is what a learner sees first. It must build two
+    /// particles (a pinned anchor and a bob) and keep swinging for 10 seconds
+    /// of frames without crashing the page.
     #[test]
-    fn test_wasm() {
-        let handle = phys_new_pendulum();
-        assert!(handle > 0);
+    fn pendulum_preset_steps_without_panicking() {
+        let h = phys_new_pendulum();
+        assert_ne!(h, 0);
+        for _ in 0..600 {
+            assert!(phys_advance(h, 1.0 / 60.0) >= 0);
+        }
     }
 }

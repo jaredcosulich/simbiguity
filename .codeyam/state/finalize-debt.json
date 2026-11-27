@@ -91,6 +91,12 @@
       "shortSha": "eaa1955",
       "subject": "Fix: performance stale LU on dt change, budget gate that cannot fail, bogus grid bench",
       "deferredAt": "2026-11-27T00:34:19Z"
+    },
+    {
+      "sha": "a28fe00e4ff3d6d89ac1d8e9da42c571fbbecaa9",
+      "shortSha": "a28fe00",
+      "subject": "Fix: physics engine presets crash, lost pushes, rod energy, missing worked-example tests",
+      "deferredAt": "2026-11-27T00:54:59Z"
     }
   ],
   "finalizeIntent": "fast",

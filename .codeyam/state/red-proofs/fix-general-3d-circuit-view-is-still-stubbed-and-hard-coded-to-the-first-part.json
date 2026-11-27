@@ -1,0 +1,32 @@
+{
+  "provenAt": "2026-11-27T11:50:06Z",
+  "slug": "fix-general-3d-circuit-view-is-still-stubbed-and-hard-coded-to-the-first-part",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits-view/src/board.rs",
+    "crates/simbiguity-circuits-view/src/view_tests.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits-view/src/board.rs",
+      "find": "p.cell.0 as f64 * 2.0, y, p.cell.1 as f64 * 2.0",
+      "replace": "0.0, y, 0.0"
+    }
+  ],
+  "withFixSource": "re-run",
+  "tests": {
+    "parallel_bulbs_are_drawn_in_their_own_cells": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "parallel_bulbs_are_drawn_in_their_own_cells"
+    ]
+  }
+}

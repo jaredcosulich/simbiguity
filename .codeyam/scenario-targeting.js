@@ -1,5 +1,5 @@
 // codeyam-generated — DO NOT EDIT.
-// codeyam-editor: 0.1.7  protocol: 1  build: 24a38f53b90c16cc5a19c1b851a4367b43c819a4  source-sha256: 05af59cced32beb159ab3af5fc5c050ca9f068a3159dec7ca9b845b4888a76f7
+// codeyam-editor: 0.1.7  protocol: 1  build: 81ebaa032d13a79867191b79453383a8a4c7dd5d  source-sha256: 2f359d5c35d68f9c4fb1ab94f25db7484e85e95b3cce741556d020a1a7ae420d
 // Interaction targeting for the capture harness: turn a step's visible-text or
 // CSS-selector target into the one element to act on, explain a miss in terms
 // the author can act on, and measure where a pointer step lands inside its
@@ -71,9 +71,7 @@ async function candidateLabelSummary(frame) {
 // A text miss on a canvas-dominated page is not a spelling problem: the label
 // is painted into the canvas and is not page text at all, so an empty
 // candidate list would only send the author hunting a typo. That branch names
-// the canvas and the position form instead, plus the accessibility tree that
-// would let the text form work (a text target also searches `aria-label`s —
-// see `resolveTextTarget`).
+// the canvas and the position form instead.
 function noMatchGuidance({ targetDesc, matchedByText, candidateLabels, canvasDominated = false }) {
   const queryParamHint =
     `Many filter/status/sort states are also reachable directly via a ` +
@@ -82,14 +80,12 @@ function noMatchGuidance({ targetDesc, matchedByText, candidateLabels, canvasDom
   if (matchedByText && canvasDominated) {
     return (
       `preview-interact: no element matched ${targetDesc}, and this page is ` +
-      `canvas-dominated (it paints its UI into a canvas covering most of the ` +
-      `viewport), so the label is painted on the canvas and cannot be matched ` +
-      `as text. Target the canvas by position instead: ` +
+      `canvas-dominated (it paints into a canvas with no visible page text), ` +
+      `so the label is painted on the canvas and cannot be matched as text. ` +
+      `Target the canvas by position instead: ` +
       `{"selector":"canvas","position":{"x":120,"y":40}} — a point in CSS ` +
       `pixels from the canvas's top-left corner, read off the frame captured ` +
-      `just before this step. Or have the app expose an accessibility tree ` +
-      `(DOM nodes carrying aria-label, e.g. an AccessKit or semantics ` +
-      `overlay): a text target also matches an aria-label.`
+      `just before this step.`
     );
   }
   if (matchedByText) {
@@ -205,17 +201,6 @@ async function resolveTextTarget(frame, text, action) {
   } else {
     tiers.push(exactBase);
     tiers.push(substrBase);
-  }
-
-  // Accessible-name tiers, tried only after every text tier missed, so a page
-  // whose label is real text resolves exactly as before. A canvas-drawn UI
-  // (egui, Flutter web) has no text to find, but a semantics layer it
-  // publishes names its controls with `aria-label` on positioned DOM nodes;
-  // matching that name lets the click land on the node's centre instead of a
-  // guessed pixel. An icon button labelled only by `aria-label` benefits too.
-  if (typeof frame.getByLabel === "function") {
-    tiers.push(frame.getByLabel(text, { exact: true }));
-    tiers.push(frame.getByLabel(text, { exact: false }));
   }
 
   for (const loc of tiers) {

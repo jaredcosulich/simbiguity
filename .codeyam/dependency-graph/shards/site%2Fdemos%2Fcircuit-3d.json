@@ -3,7 +3,8 @@
     "site/demos/circuit-3d/canvas-input.js::bindCanvasInput": {
       "filePath": "site/demos/circuit-3d/canvas-input.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::main"
+        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d-parallel/demo.js::main"
       ],
       "imports": [
         "site/demos/circuit-3d/pointer.js::__file_root__",
@@ -220,7 +221,8 @@
       "filePath": "site/demos/circuit-3d/readouts.js",
       "importedBy": [
         "site/demos/circuit-3d/demo.js::show",
-        "site/demos/circuit-3d/readouts.test.js::__file_root__"
+        "site/demos/circuit-3d/readouts.test.js::__file_root__",
+        "site/demos/circuit-3d-parallel/demo.js::__file_root__"
       ],
       "imports": [],
       "name": "formatReadouts"
@@ -303,7 +305,8 @@
   "files": {
     "site/demos/circuit-3d/canvas-input.js": {
       "importedBy": [
-        "site/demos/circuit-3d/demo.js"
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d-parallel/demo.js"
       ],
       "imports": [
         "site/demos/circuit-3d/pointer.js"
@@ -378,7 +381,8 @@
     "site/demos/circuit-3d/readouts.js": {
       "importedBy": [
         "site/demos/circuit-3d/demo.js",
-        "site/demos/circuit-3d/readouts.test.js"
+        "site/demos/circuit-3d/readouts.test.js",
+        "site/demos/circuit-3d-parallel/demo.js"
       ],
       "imports": []
     },

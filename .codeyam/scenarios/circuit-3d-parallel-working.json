@@ -1,0 +1,11 @@
+{
+  "name": "Circuit 3D Parallel - Working",
+  "id": "dc57bca1-9db2-4198-9ab4-405a9b22a398",
+  "url": "/demos/circuit-3d-parallel/",
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-27T11:45:00Z"
+  },
+  "scenarioType": "application",
+  "description": "Parallel branches with current visibly splitting."
+}

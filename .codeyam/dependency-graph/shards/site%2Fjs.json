@@ -39,7 +39,8 @@
     "site/js/simbiguity-render.js::loadCircuit3D": {
       "filePath": "site/js/simbiguity-render.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::main"
+        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d-parallel/demo.js::main"
       ],
       "imports": [
         "site/js/simbiguity-render.js::Pick",
@@ -135,6 +136,7 @@
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
         "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d-parallel/demo.js::main",
         "site/demos/rc-charging/demo.js::main"
       ],
       "imports": [
@@ -209,6 +211,7 @@
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d/pointer.js",
         "site/demos/circuit-3d/pointer.test.js",
+        "site/demos/circuit-3d-parallel/demo.js",
         "site/js/simbiguity-render.test.js"
       ],
       "imports": [
@@ -232,6 +235,7 @@
     "site/js/webgl2-executor.js": {
       "importedBy": [
         "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/rc-charging/demo.js",
         "site/js/webgl2-executor.test.js"
       ],

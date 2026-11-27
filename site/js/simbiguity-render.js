@@ -64,8 +64,8 @@ export async function loadCircuit3D(url) {
 
   /** The 3D hello circuit living inside WASM. */
   class Circuit3D {
-    constructor({ volts = 12, closed = false } = {}) {
-      this.handle = w.c3d_new(volts, closed ? 1 : 0);
+    constructor({ volts = 12, closed = false, handle = null } = {}) {
+      this.handle = handle !== null ? handle : w.c3d_new(volts, closed ? 1 : 0);
     }
 
     /** Every mesh, copied out of linear memory, for upload. */

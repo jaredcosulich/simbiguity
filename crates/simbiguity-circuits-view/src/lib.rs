@@ -41,13 +41,14 @@ mod view_tests;
 
 use board_layout::BoardLayout;
 use simbiguity_anim::Spring;
+pub use simbiguity_circuits;
 use simbiguity_circuits::{Circuit, CircuitInput, CircuitSim, Component, ComponentId};
 use simbiguity_core::{FixedClock, Seconds, Simulation};
 use simbiguity_math::Vec3;
 use simbiguity_render::{encode_frame, CommandBuffer, Material, OrbitCamera, Scene};
 
 use board::{build_scene, Parts};
-use layout::{current_loop, knob_transform, lever_transform, particle_offsets, CurrentLoop};
+use layout::{knob_transform, lever_transform, particle_offsets, CurrentLoop};
 use look::{bulb_look, charge_look, Surface};
 
 /// The bulb's rating: 12 V, 6 W (so 0.5 A at full brightness).
@@ -101,11 +102,11 @@ pub struct CircuitView {
     parts: Parts,
     /// The camera the frame is drawn through.
     pub camera: OrbitCamera,
-    path: CurrentLoop,
+    wire_paths: alloc::vec::Vec<CurrentLoop>,
+    phases: alloc::vec::Vec<f64>,
     glows: alloc::vec::Vec<Spring>,
     levers: alloc::vec::Vec<Spring>,
     flashes: alloc::vec::Vec<Spring>,
-    phase: f64,
     time: f64,
     clock: FixedClock,
     commands: CommandBuffer,
@@ -115,15 +116,13 @@ pub struct CircuitView {
 impl CircuitView {
     pub fn new(volts: f64, closed: bool) -> CircuitView {
         let mut c = Circuit::new();
-        let (plus, minus, top) = (c.node(), c.node(), c.node());
-        let battery = c.add_battery(plus, minus, volts);
-        let switch = c.add_switch(plus, top, closed);
-        let bulb = c.add_bulb(top, minus, BULB_VOLTS, BULB_WATTS);
-        let (w1, w2, w3) = (
-            c.connect(plus, plus),
-            c.connect(top, top),
-            c.connect(minus, minus),
-        ); // Fake components
+        let (n1, n2, n3, n4, n5, n6) = (c.node(), c.node(), c.node(), c.node(), c.node(), c.node());
+        let battery = c.add_battery(n1, n6, volts);
+        let switch = c.add_switch(n2, n3, closed);
+        let bulb = c.add_bulb(n4, n5, BULB_VOLTS, BULB_WATTS);
+        let w1 = c.connect(n1, n2);
+        let w2 = c.connect(n3, n4);
+        let w3 = c.connect(n5, n6);
         let layout = BoardLayout::hello_layout(battery, switch, bulb, [w1, w2, w3]);
         Self::from_layout(c, layout)
     }
@@ -132,17 +131,23 @@ impl CircuitView {
         let (scene, parts, _) = build_scene(&circuit, &layout);
         let num_switches = parts.levers.len();
         let num_bulbs = parts.glasses.len();
+        let wire_paths = layout
+            .wires
+            .iter()
+            .map(crate::layout::wire_path)
+            .collect::<alloc::vec::Vec<_>>();
+        let phases = alloc::vec![0.0; layout.wires.len()];
         let mut view = CircuitView {
             sim: CircuitSim::new(circuit),
             layout,
             scene,
             parts,
             camera: default_camera(),
-            path: current_loop(),
+            wire_paths,
+            phases,
             glows: alloc::vec![Spring::critical(0.0, 5.0); num_bulbs],
             levers: alloc::vec![Spring::critical(0.0, 14.0); num_switches],
             flashes: alloc::vec![Spring::critical(0.0, 3.0); num_bulbs],
-            phase: 0.0,
             time: 0.0,
             clock: FixedClock::new(Seconds(STEP)).with_max_steps(30),
             commands: CommandBuffer::new(),
@@ -268,6 +273,35 @@ impl CircuitView {
         self.sync_scene();
     }
 
+    pub fn circuit(&self) -> &Circuit {
+        self.sim.circuit()
+    }
+
+    pub fn toggle_part_by_index(&mut self, id: usize) -> bool {
+        let cid = self
+            .layout
+            .parts
+            .iter()
+            .map(|p| p.component)
+            .chain(self.layout.wires.iter().map(|w| w.component))
+            .find(|c| c.index() == id);
+        if let Some(cid) = cid {
+            self.toggle_part(cid)
+        } else {
+            false
+        }
+    }
+
+    pub fn toggle_part(&mut self, id: ComponentId) -> bool {
+        self.input(CircuitInput::ToggleSwitch(id));
+        if let simbiguity_circuits::Component::Switch { closed } = self.sim.circuit().component(id)
+        {
+            *closed
+        } else {
+            false
+        }
+    }
+
     /// Flips the switch; returns `true` if it is now closed.
     pub fn toggle_switch(&mut self) -> bool {
         if let Some(s) = self.first_switch() {
@@ -346,7 +380,16 @@ impl CircuitView {
         for flash in &mut self.flashes {
             flash.step(dt);
         }
-        self.phase += particle_speed(self.readouts().current) * dt;
+        let solution = self.sim.state().solution();
+        let currents: alloc::vec::Vec<f64> = self
+            .layout
+            .wires
+            .iter()
+            .map(|w| solution.map(|s| s.current(w.component)).unwrap_or(0.0))
+            .collect();
+        for (i, p) in self.phases.iter_mut().enumerate() {
+            *p += particle_speed(currents[i]) * dt;
+        }
         self.time += dt;
     }
 
@@ -381,7 +424,7 @@ impl CircuitView {
             flash.snap(if is_blown { 1.0 } else { 0.0 });
             flash.target = 0.0;
         }
-        self.phase = 0.0;
+        self.phases.fill(0.0);
         self.time = 0.0;
         self.clock.reset();
         let steps = (t.max(0.0) / STEP + 0.5) as u64;
@@ -401,11 +444,11 @@ impl CircuitView {
 
         for (i, &lever_id) in p.levers.iter().enumerate() {
             let angle = self.levers[i].value();
-            s.node_mut(lever_id).transform = lever_transform(angle);
+            s.node_mut(lever_id).transform = lever_transform(p.switch_bases[i], angle);
         }
         for (i, &knob_id) in p.knobs.iter().enumerate() {
             let angle = self.levers[i].value();
-            s.node_mut(knob_id).transform = knob_transform(angle);
+            s.node_mut(knob_id).transform = knob_transform(p.switch_bases[i], angle);
         }
 
         for (i, &glass_id) in p.glasses.iter().enumerate() {
@@ -419,7 +462,17 @@ impl CircuitView {
 
         let charge = charge_look(current);
         let inst = &mut self.scene.instances[0];
-        inst.offsets = particle_offsets(&self.path, self.phase, PARTICLES);
+        inst.offsets.clear();
+        for (i, path) in self.wire_paths.iter().enumerate() {
+            let len = path.length();
+            let count = if len > 0.0 {
+                (len * 2.5 + 0.5) as usize
+            } else {
+                0
+            };
+            inst.offsets
+                .extend(particle_offsets(path, self.phases[i], count));
+        }
         inst.material.color = charge.color;
         inst.material.emissive = charge.emissive;
     }

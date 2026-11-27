@@ -260,6 +260,12 @@
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
   },
   {
+    "description": "The battery, lying along Z with + toward −Z.",
+    "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+    "name": "base_transform",
+    "testFile": "crates/simbiguity-circuits-view/src/board.rs"
+  },
+  {
     "description": "Wires drag-to-orbit, wheel zoom, click picking and Enter or Space toggling on the 3D canvas to the view.",
     "filePath": "site/demos/circuit-3d/canvas-input.js",
     "name": "bindCanvasInput",
@@ -870,15 +876,6 @@
       "engine-status"
     ],
     "testFile": "xtask/src/main_tests.rs"
-  },
-  {
-    "description": "The closed path charge follows: the wires plus hidden stretches through the switch, bulb and battery.",
-    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
-    "name": "current_loop",
-    "tags": [
-      "3d-rendering"
-    ],
-    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
   },
   {
     "description": "The cursor over a picked part: pointer where a click acts, otherwise grab.",
@@ -2724,6 +2721,12 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/src/wires.rs"
+  },
+  {
+    "description": "The loop charge follows: wires, plus the hidden stretches through the switch, the bulb and the battery.",
+    "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
+    "name": "wire_path",
+    "testFile": "crates/simbiguity-circuits-view/src/layout.rs"
   },
   {
     "description": "The three wire polylines of the loop in flow order.",

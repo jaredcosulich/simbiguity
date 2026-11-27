@@ -5,8 +5,20 @@
       "importedBy": [
         "site/demos/circuit-3d-parallel/index.html::__file_root__"
       ],
-      "imports": [],
+      "imports": [
+        "site/demos/circuit-3d/readouts.js::formatReadouts"
+      ],
       "name": "__file_root__"
+    },
+    "site/demos/circuit-3d-parallel/demo.js::main": {
+      "filePath": "site/demos/circuit-3d-parallel/demo.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/webgl2-executor.js::WebGL2Executor"
+      ],
+      "name": "main"
     },
     "site/demos/circuit-3d-parallel/index.html::__file_root__": {
       "filePath": "site/demos/circuit-3d-parallel/index.html",
@@ -22,7 +34,12 @@
       "importedBy": [
         "site/demos/circuit-3d-parallel/index.html"
       ],
-      "imports": []
+      "imports": [
+        "site/js/simbiguity-render.js",
+        "site/js/webgl2-executor.js",
+        "site/demos/circuit-3d/canvas-input.js",
+        "site/demos/circuit-3d/readouts.js"
+      ]
     },
     "site/demos/circuit-3d-parallel/index.html": {
       "importedBy": [],

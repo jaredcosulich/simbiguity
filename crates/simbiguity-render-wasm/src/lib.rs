@@ -39,6 +39,23 @@ pub use readouts::{pack_readouts, READOUT_COUNT};
 use slot::{with_mesh, with_view};
 pub use status::{last_error, ERR_HANDLE, ERR_INDEX, OK};
 
+#[no_mangle]
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
+pub extern "C" fn sb_malloc(size: u32) -> *mut u8 {
+    let mut vec = std::vec::Vec::with_capacity(size as usize);
+    let ptr = vec.as_mut_ptr();
+    core::mem::forget(vec);
+    ptr
+}
+
+#[no_mangle]
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
+pub extern "C" fn sb_free(ptr: *mut u8, size: u32) {
+    unsafe {
+        let _ = std::vec::Vec::from_raw_parts(ptr, 0, size as usize);
+    }
+}
+
 /// Builds a 3D hello circuit at `volts` with the switch closed when
 /// `closed != 0`; returns its handle.
 #[no_mangle]
@@ -47,24 +64,46 @@ pub extern "C" fn c3d_new(volts: f64, closed: i32) -> u32 {
 }
 
 #[no_mangle]
-pub extern "C" fn c3d_new_from_layout(_ptr: *const u32, _len: u32) -> u32 {
-    // Dummy stub
-    slot::insert(CircuitView::new(12.0, false))
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
+pub extern "C" fn c3d_new_from_layout(ptr: *const u32, len: u32) -> u32 {
+    let words = unsafe { core::slice::from_raw_parts(ptr, len as usize) };
+    match simbiguity_circuits_view::board_layout::BoardLayout::unpack(words) {
+        Ok((circuit, layout)) => {
+            let view = CircuitView::from_layout(circuit, layout);
+            slot::insert(view)
+        }
+        Err(e) => {
+            let _ = status::fail(-2, e.as_str().into());
+            0
+        }
+    }
 }
 
 #[no_mangle]
-pub extern "C" fn c3d_toggle_part(h: u32, _id: u32) -> i32 {
-    with_view(h, |s| i32::from(s.view.toggle_switch()))
+pub extern "C" fn c3d_toggle_part(h: u32, id: u32) -> i32 {
+    with_view(h, |s| i32::from(s.view.toggle_part_by_index(id as usize)))
 }
 
 #[no_mangle]
 pub extern "C" fn c3d_part_count(h: u32) -> i32 {
-    with_view(h, |_s| 0)
+    with_view(h, |s| s.view.circuit().parts().len() as i32)
 }
 
 #[no_mangle]
-pub extern "C" fn c3d_part_kind(h: u32, _id: u32) -> i32 {
-    with_view(h, |_s| 0)
+pub extern "C" fn c3d_part_kind(h: u32, id: u32) -> i32 {
+    with_view(h, |s| {
+        let c = s.view.circuit();
+        if id as usize >= c.parts().len() {
+            return 0;
+        }
+        match c.parts()[id as usize].component {
+            simbiguity_circuits_view::simbiguity_circuits::Component::Battery { .. } => 1,
+            simbiguity_circuits_view::simbiguity_circuits::Component::Switch { .. } => 2,
+            simbiguity_circuits_view::simbiguity_circuits::Component::Bulb { .. } => 3,
+            simbiguity_circuits_view::simbiguity_circuits::Component::Wire => 4,
+            _ => 0,
+        }
+    })
 }
 
 /// Frees a view. Freeing it again is [`ERR_HANDLE`].

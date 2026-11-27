@@ -137,12 +137,20 @@
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
       "importedBy": [],
       "imports": [
-        "crates/simbiguity-render-wasm/src/slot.rs::insert"
+        "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
+        "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
+        "crates/simbiguity-render-wasm/src/slot.rs::insert",
+        "crates/simbiguity-render-wasm/src/status.rs::fail"
       ],
       "name": "c3d_new_from_layout",
       "namedMethods": [
+        "as_str",
+        "fail",
+        "from_layout",
+        "from_raw_parts",
         "insert",
-        "new"
+        "into",
+        "unpack"
       ]
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit": {
@@ -164,15 +172,26 @@
       "imports": [
         "crates/simbiguity-render-wasm/src/slot.rs::with_view"
       ],
-      "name": "c3d_part_count"
+      "name": "c3d_part_count",
+      "namedMethods": [
+        "circuit",
+        "len",
+        "parts"
+      ]
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_kind": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
       "importedBy": [],
       "imports": [
+        "crates/simbiguity-circuits/src/lib.rs::__file_root__",
         "crates/simbiguity-render-wasm/src/slot.rs::with_view"
       ],
-      "name": "c3d_part_kind"
+      "name": "c3d_part_kind",
+      "namedMethods": [
+        "circuit",
+        "len",
+        "parts"
+      ]
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
@@ -281,7 +300,7 @@
       "name": "c3d_toggle_part",
       "namedMethods": [
         "from",
-        "toggle_switch"
+        "toggle_part_by_index"
       ]
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom": {
@@ -523,6 +542,7 @@
     "crates/simbiguity-render-wasm/src/status.rs::fail": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout",
         "crates/simbiguity-render-wasm/src/slot.rs::no_view",
         "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
       ],
@@ -778,14 +798,25 @@
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-view/src/board_layout.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-render-wasm/src/slot.rs"
       ],
       "namedMethods": [
+        "as_mut_ptr",
         "expect_used",
+        "forget",
+        "from_raw_parts",
+        "not_unsafe_ptr_arg_deref",
         "panic",
         "unreachable",
-        "unwrap_used"
+        "unwrap_used",
+        "with_capacity"
       ]
     },
     "crates/simbiguity-render-wasm/src/readouts.rs": {
@@ -835,6 +866,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",

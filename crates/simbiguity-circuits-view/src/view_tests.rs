@@ -138,3 +138,86 @@ fn default_camera_is_three_quarter() {
     assert!((c.yaw.to_degrees() - 25.0).abs() < 1e-9);
     assert!(c.distance >= c.min_distance && c.distance <= c.max_distance);
 }
+
+/// A layout is a promise about where things go: two bulbs placed in
+/// different grid cells must be drawn in different places, or a learner
+/// can't see that the circuit is parallel at all.
+#[test]
+fn parallel_bulbs_are_drawn_in_their_own_cells() {
+    let (circuit, layout, bulb_a, bulb_b) = parallel_fixture();
+    let view = CircuitView::from_layout(circuit, layout);
+    assert_ne!(view.part_position(bulb_a), view.part_position(bulb_b));
+}
+
+fn parallel_fixture() -> (Circuit, BoardLayout, ComponentId, ComponentId) {
+    let mut c = Circuit::new();
+    let n0 = c.node();
+    let n1 = c.node();
+    let n2 = c.node();
+    let n3 = c.node();
+    let battery = c.add_battery(n1, n0, 6.0);
+    let switch = c.add_switch(n1, n2, true);
+    let bulb_a = c.add_bulb(n2, n0, 6.0, 3.0);
+    let bulb_b = c.add_bulb(n2, n0, 6.0, 3.0);
+    let w1 = c.connect(n2, n3);
+
+    use crate::board_layout::{PartPlacement, Rotation, WireRoute};
+    let layout = BoardLayout {
+        parts: alloc::vec![
+            PartPlacement {
+                component: battery,
+                cell: (0, 0),
+                rotation: Rotation::Deg0
+            },
+            PartPlacement {
+                component: switch,
+                cell: (1, 0),
+                rotation: Rotation::Deg0
+            },
+            PartPlacement {
+                component: bulb_a,
+                cell: (2, 0),
+                rotation: Rotation::Deg0
+            },
+            PartPlacement {
+                component: bulb_b,
+                cell: (2, 2),
+                rotation: Rotation::Deg0
+            },
+        ],
+        wires: alloc::vec![WireRoute {
+            component: w1,
+            points: alloc::vec![(2, 0), (2, 2)]
+        }],
+    };
+    (c, layout, bulb_a, bulb_b)
+}
+
+impl CircuitView {
+    pub fn part_position(&self, id: ComponentId) -> Vec3 {
+        for (i, p) in self.layout.parts.iter().enumerate() {
+            if p.component == id {
+                if let Component::Bulb { .. } = self.sim.circuit().component(id) {
+                    // find which bulb in glasses array
+                    // wait, glasses is just in order of bulbs.
+                    let mut b_idx = 0;
+                    for part in &self.layout.parts {
+                        if part.component == id {
+                            break;
+                        }
+                        if let Component::Bulb { .. } = self.sim.circuit().component(part.component)
+                        {
+                            b_idx += 1;
+                        }
+                    }
+                    return self
+                        .scene
+                        .node(self.parts.glasses[b_idx])
+                        .transform
+                        .transform_point(Vec3::ZERO);
+                }
+            }
+        }
+        Vec3::ZERO
+    }
+}

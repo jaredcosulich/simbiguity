@@ -97,6 +97,12 @@
       "shortSha": "a28fe00",
       "subject": "Fix: physics engine presets crash, lost pushes, rod energy, missing worked-example tests",
       "deferredAt": "2026-11-27T00:54:59Z"
+    },
+    {
+      "sha": "757fe5a7cd4c91c1635da2f38a4618cf97ea6725",
+      "shortSha": "757fe5a",
+      "subject": "Fix: hardening deliver the invariants, stress tests and native-vs-WASM check",
+      "deferredAt": "2026-11-27T01:08:32Z"
     }
   ],
   "finalizeIntent": "fast",

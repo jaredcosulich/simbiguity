@@ -1,5 +1,5 @@
 {
-  "$comment": "Per-developer settings (port, provider, proxy ports, startCommand, etc.) belong in editor.local.json. That file is gitignored and is deep-merged on top of this one at load time. Changing `provider` after scaffold does NOT install that agent's surface \u2014 re-run `codeyam-editor editor install-hooks` (or `codeyam-editor init --provider <name>`) to install it. See CLAUDE.md or run `codeyam-editor editor config-show` to inspect the effective config.",
+  "$comment": "Per-developer settings (port, provider, proxy ports, startCommand, etc.) belong in editor.local.json. That file is gitignored and is deep-merged on top of this one at load time. Changing `provider` after scaffold does NOT install that agent's surface — re-run `codeyam-editor editor install-hooks` (or `codeyam-editor init --provider <name>`) to install it. See CLAUDE.md or run `codeyam-editor editor config-show` to inspect the effective config.",
   "apps": [
     {
       "dir": "site",
@@ -63,7 +63,7 @@
   },
   "coverageThresholds": {
     "global": {
-      "minLinePercent": 90.0
+      "minLinePercent": 90
     }
   },
   "crossTargetChecks": [
@@ -81,7 +81,7 @@
     }
   ],
   "database": null,
-  "deviceScaleFactor": 2.0,
+  "deviceScaleFactor": 2,
   "env": {},
   "files": {
     "eventLogMaxBytes": null,
@@ -187,7 +187,35 @@
       "name": "cargo-clippy"
     }
   ],
-  "testCacheIgnorePatterns": [],
+  "testCacheIgnorePatterns": [
+    ".gitattributes",
+    ".gitignore",
+    "**/*.md",
+    "**/*.sh",
+    "**/*.py",
+    "**/*.html",
+    "scratch-tests.rs",
+    ".claude/**",
+    "**/.claude/**",
+    ".codex/**",
+    "**/.codex/**",
+    ".gemini/**",
+    "**/.gemini/**",
+    ".opencode/**",
+    "**/.opencode/**",
+    ".agents/**",
+    "**/.agents/**",
+    ".github/workflows/**",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "site/**/*.frag",
+    "site/**/*.vert",
+    "site/**/*.glsl",
+    "site/**/*.json",
+    "README.md",
+    "site/pkg-budget.txt",
+    "summary.json"
+  ],
   "testParallelism": {
     "loadGuard": true
   },
@@ -513,7 +541,9 @@
       "testFilePatterns": [
         "site/**/*.test.js"
       ],
-      "sourceFilePatterns": [],
+      "sourceFilePatterns": [
+        "site/**/*.js"
+      ],
       "excludePatterns": [],
       "dependsOn": []
     }

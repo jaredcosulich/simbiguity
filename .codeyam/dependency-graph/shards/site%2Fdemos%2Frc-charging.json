@@ -12,7 +12,9 @@
       "filePath": "site/demos/rc-charging/demo.js",
       "importedBy": [],
       "imports": [
-        "site/js/simbiguity.js::loadCircuits"
+        "site/js/plot-labels.js::renderLabels",
+        "site/js/simbiguity.js::loadCircuits",
+        "site/js/webgl2-executor.js::WebGL2Executor"
       ],
       "name": "main"
     },
@@ -31,7 +33,9 @@
         "site/demos/rc-charging/index.html"
       ],
       "imports": [
-        "site/js/simbiguity.js"
+        "site/js/simbiguity.js",
+        "site/js/plot-labels.js",
+        "site/js/webgl2-executor.js"
       ]
     },
     "site/demos/rc-charging/index.html": {

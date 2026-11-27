@@ -14,7 +14,13 @@ pub(crate) struct Slot {
     pub(crate) sim: CircuitSim,
     nodes: Vec<NodeId>,
     parts: Vec<ComponentId>,
+
     pub(crate) results: Vec<f64>,
+    pub(crate) chart_series: simbiguity_plot::Series,
+    pub(crate) chart_meshes: Vec<simbiguity_render::Mesh>,
+    pub(crate) chart_commands: Vec<u32>,
+    pub(crate) chart_labels: String,
+    pub(crate) time: f64,
 }
 
 thread_local! {
@@ -31,7 +37,13 @@ pub(crate) fn insert_empty() -> u32 {
             sim: CircuitSim::new(Circuit::new()),
             nodes: Vec::new(),
             parts: Vec::new(),
+
             results: Vec::new(),
+            chart_series: simbiguity_plot::Series::new(200),
+            chart_meshes: Vec::new(),
+            chart_commands: Vec::new(),
+            chart_labels: String::new(),
+            time: 0.0,
         }));
         t.len() as u32
     })
@@ -132,7 +144,22 @@ impl Slot {
 
     /// Re-solves and refreshes the shared results buffer.
     pub(crate) fn solve(&mut self) -> i32 {
-        self.step(0.0)
+        self.sim.solve();
+        let analysis = self.sim.state();
+        self.results.clear();
+        for &id in &self.parts {
+            let row = match analysis.solution() {
+                Some(s) => [
+                    s.voltage_across(id).unwrap_or(f64::NAN),
+                    s.current(id),
+                    s.power(id),
+                    s.brightness(id).unwrap_or(f64::NAN),
+                ],
+                None => [f64::NAN; RESULT_STRIDE],
+            };
+            self.results.extend_from_slice(&row);
+        }
+        analysis.issues().len() as i32
     }
 
     pub(crate) fn issue(&self, i: u32) -> Result<CircuitIssue, i32> {

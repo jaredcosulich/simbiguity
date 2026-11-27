@@ -1,0 +1,3 @@
+simbiguity_circuits_wasm.wasm 164102
+simbiguity_render_wasm.wasm 210394
+simbiguity_physics_wasm.wasm 159795

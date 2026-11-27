@@ -3,6 +3,7 @@
     "site/js/plot-labels.js::renderLabels": {
       "filePath": "site/js/plot-labels.js",
       "importedBy": [
+        "site/demos/rc-charging/demo.js::main",
         "site/js/plot-labels.test.js::__file_root__"
       ],
       "imports": [],
@@ -133,7 +134,8 @@
     "site/js/webgl2-executor.js::WebGL2Executor": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::main"
+        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/rc-charging/demo.js::main"
       ],
       "imports": [
         "site/js/webgl2-executor.js::CommandBufferError",
@@ -187,6 +189,7 @@
   "files": {
     "site/js/plot-labels.js": {
       "importedBy": [
+        "site/demos/rc-charging/demo.js",
         "site/js/plot-labels.test.js"
       ],
       "imports": []
@@ -225,6 +228,7 @@
     "site/js/webgl2-executor.js": {
       "importedBy": [
         "site/demos/circuit-3d/demo.js",
+        "site/demos/rc-charging/demo.js",
         "site/js/webgl2-executor.test.js"
       ],
       "imports": []

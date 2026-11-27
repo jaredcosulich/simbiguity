@@ -7,7 +7,13 @@
 name = "Circuits that change over time"
 description = "Capacitors and inductors evaluated with backward Euler and trapezoidal integration to simulate transient responses."
 demo = "demos/rc-charging/"
-proves = []
+proves = [
+  "tests/analysis::trapezoidal_rc_matches_hand_computed_discrete_answer",
+  "tests/analysis::backward_euler_rc_matches_hand_computed_discrete_answer",
+  "tests/analysis::lc_energy_preservation",
+  "tests/analysis::inductor_dc_as_wire",
+  "tests/analysis::snapshot_determinism_with_integrators"
+]
 
 [[capability]]
 name = "Ohm's law, series and parallel"

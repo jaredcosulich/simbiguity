@@ -950,7 +950,7 @@
       "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
       "format": "cargo",
       "key": "issues::tests::issue_kind_code_solver_failure",
-      "line": 43,
+      "line": 47,
       "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
       "runner": "cargo"
     },
@@ -959,7 +959,7 @@
       "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
       "format": "cargo",
       "key": "issues::tests::issue_part_index_solver_failure",
-      "line": 52,
+      "line": 56,
       "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
       "runner": "cargo"
     },
@@ -2237,7 +2237,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::cache_produces_bit_identical_results",
-      "line": 171,
+      "line": 178,
       "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
       "runner": "cargo"
     },

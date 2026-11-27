@@ -52,6 +52,7 @@
       "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step"
       ],
       "imports": [],
@@ -253,6 +254,154 @@
         "add_node"
       ]
     },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_commands_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_plot_commands_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_commands_ptr": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_plot_commands_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new"
+      ],
+      "name": "circuit_plot_draw",
+      "namedMethods": [
+        "chart_series",
+        "draw",
+        "enumerate",
+        "format",
+        "from",
+        "iter",
+        "max",
+        "new",
+        "push",
+        "push_str",
+        "to_vec",
+        "words"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_labels_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_plot_labels_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_labels_ptr": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_plot_labels_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_count": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_plot_mesh_count",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_indices_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_plot_mesh_indices_len",
+      "namedMethods": [
+        "get",
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_indices_ptr": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_plot_mesh_indices_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "get",
+        "null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_len": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_plot_mesh_vertices_len",
+      "namedMethods": [
+        "get",
+        "len"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_ptr": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_plot_mesh_vertices_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "get",
+        "null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_plot_push",
+      "namedMethods": [
+        "push"
+      ]
+    },
     "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb": {
       "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
       "importedBy": [],
@@ -294,6 +443,22 @@
       "namedMethods": [
         "as_ptr",
         "null"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_integrator": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK",
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::BackwardEuler",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::Trapezoidal"
+      ],
+      "name": "circuit_set_integrator",
+      "namedMethods": [
+        "clone",
+        "with_integrator"
       ]
     },
     "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_value": {
@@ -362,6 +527,10 @@
       "imports": [
         "crates/simbiguity-circuits-wasm/src/lib.rs::RESULT_STRIDE",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_commands",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_labels",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_meshes",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
@@ -373,6 +542,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::time",
         "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
         "crates/simbiguity-circuits-wasm/src/slot.rs::remove",
         "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
@@ -414,6 +584,42 @@
         "push",
         "rebuild"
       ]
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_commands": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::chart_commands"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_labels": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::chart_labels"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_meshes": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::chart_meshes"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::chart_series"
     },
     "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue": {
       "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
@@ -498,6 +704,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
         "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
@@ -551,6 +758,7 @@
       "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
         "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
@@ -563,6 +771,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
         "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
@@ -577,19 +786,32 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
       ],
       "imports": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step"
+        "crates/simbiguity-circuits-wasm/src/lib.rs::RESULT_STRIDE",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim"
       ],
       "inherentMethod": true,
       "name": "Slot::solve",
       "namedMethods": [
-        "step"
+        "brightness",
+        "clear",
+        "current",
+        "extend_from_slice",
+        "issues",
+        "len",
+        "power",
+        "solution",
+        "solve",
+        "state",
+        "unwrap_or",
+        "voltage_across"
       ]
     },
     "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step": {
       "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
       ],
       "imports": [
         "crates/simbiguity-circuits-wasm/src/lib.rs::RESULT_STRIDE",
@@ -615,6 +837,15 @@
         "voltage_across"
       ]
     },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::time": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::time"
+    },
     "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__": {
       "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
       "importedBy": [],
@@ -631,12 +862,19 @@
       ],
       "imports": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_commands",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_labels",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_meshes",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::time",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/series.rs::Series::new"
       ],
       "name": "insert_empty",
       "namedMethods": [
@@ -684,9 +922,21 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_message",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_issue_part",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_node",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_commands_len",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_commands_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_labels_len",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_labels_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_count",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_indices_len",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_indices_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_len",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_len",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_integrator",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_value",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_solve",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_step",
@@ -766,8 +1016,15 @@
       "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_commands_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_labels_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_indices_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_integrator",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_value",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::remove"
@@ -1379,7 +1636,10 @@
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs"
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-render/src/commands.rs"
       ],
       "namedMethods": [
         "expect_used",
@@ -1414,7 +1674,8 @@
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
-        "crates/simbiguity-circuits-wasm/src/lib.rs"
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-plot/src/series.rs"
       ]
     },
     "crates/simbiguity-circuits-wasm/src/status.rs": {

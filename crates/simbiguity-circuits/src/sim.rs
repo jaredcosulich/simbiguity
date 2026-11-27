@@ -51,6 +51,13 @@ impl CircuitSim {
         sim
     }
 
+    /// Runs a DC solve, treating capacitors as open and inductors as wires.
+    pub fn solve(&mut self) {
+        self.analysis = self.circuit.solve();
+        self.dirty = false;
+        self.persist_blown();
+    }
+
     /// Sets the integration method for capacitors and inductors.
     pub fn with_integrator(mut self, integrator: Integrator) -> Self {
         self.integrator = integrator;

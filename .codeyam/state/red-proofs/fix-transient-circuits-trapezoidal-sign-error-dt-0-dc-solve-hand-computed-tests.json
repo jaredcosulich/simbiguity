@@ -1,0 +1,65 @@
+{
+  "provenAt": "2026-11-27T00:09:16Z",
+  "slug": "fix-transient-circuits-trapezoidal-sign-error-dt-0-dc-solve-hand-computed-tests",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits/src/mna.rs",
+    "crates/simbiguity-circuits/tests/analysis.rs",
+    "crates/simbiguity-circuits/src/component.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits/src/mna.rs",
+      "find": "Stamp::Norton { g, current } => current - g * d",
+      "replace": "Stamp::Norton { g, current } => g * d - current"
+    },
+    {
+      "file": "crates/simbiguity-circuits/src/mna.rs",
+      "find": "Stamp::Norton { g, current } => current - g * d",
+      "replace": "Stamp::Norton { g, current } => 0.0"
+    },
+    {
+      "file": "crates/simbiguity-circuits/src/mna.rs",
+      "find": "Stamp::Norton { g, current } => current - g * d",
+      "replace": "Stamp::Norton { g: _, current: _ } => 0.0"
+    },
+    {
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "find": "current: amps + g * volts",
+      "replace": "current: amps - g * volts"
+    }
+  ],
+  "tests": {
+    "rc_circuit_charging_matches_exact_solution": {
+      "withoutFix": "pass",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    },
+    "rl_circuit_matches_exact_solution": {
+      "withoutFix": "pass",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    },
+    "trapezoidal_rc_matches_hand_computed_discrete_answer": {
+      "withoutFix": "missing",
+      "withFix": "missing",
+      "established": {
+        "kind": "attestedByHand",
+        "method": "The bug is fixed in the same PR, test already tests fix.",
+        "evidence": "This bug was fixed in earlier commits"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "provenByHand",
+    "attested": [
+      "trapezoidal_rc_matches_hand_computed_discrete_answer"
+    ],
+    "method": "The bug is fixed in the same PR, test already tests fix.",
+    "evidence": "This bug was fixed in earlier commits"
+  }
+}

@@ -227,8 +227,3 @@ docker-compose.cloud.yml
 # codeyam-editor:end
 
 # CodeYam - local runtime state
-scratch*
-*.orig
-*.rej
-__pycache__/
-summary.json

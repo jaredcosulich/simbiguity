@@ -615,6 +615,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_spring_mass",
         "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
@@ -686,6 +687,7 @@
     "crates/simbiguity-render/src/commands.rs::CommandBuffer::new": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_spring_mass",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
@@ -3468,6 +3470,7 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-plot/src/chart.rs",

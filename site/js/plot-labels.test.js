@@ -1,10 +1,27 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, beforeEach } from 'node:test';
+import assert from 'node:assert';
 import { renderLabels } from './plot-labels.js';
 
 describe('renderLabels', () => {
     let container;
 
     beforeEach(() => {
+        global.document = {
+            createElement: (tag) => {
+                return {
+                    tag,
+                    children: [],
+                    style: {},
+                    innerHTML: "",
+                    appendChild(child) { this.children.push(child); },
+                    querySelectorAll(selector) { return this.children.filter(c => c.tag === selector); }
+                };
+            },
+            body: {
+                children: [],
+                appendChild(child) { this.children.push(child); }
+            }
+        };
         container = document.createElement('div');
         document.body.appendChild(container);
     });
@@ -16,15 +33,15 @@ describe('renderLabels', () => {
         ]);
 
         const spans = container.querySelectorAll('span');
-        expect(spans.length).toBe(2);
+        assert.strictEqual(spans.length, 2);
 
-        expect(spans[0].textContent).toBe("1.0");
-        expect(spans[0].style.position).toBe("absolute");
-        expect(spans[0].style.left).toBe("10.5px");
-        expect(spans[0].style.top).toBe("20px");
+        assert.strictEqual(spans[0].textContent, "1.0");
+        assert.strictEqual(spans[0].style.position, "absolute");
+        assert.strictEqual(spans[0].style.left, "10.5px");
+        assert.strictEqual(spans[0].style.top, "20px");
 
-        expect(spans[1].textContent).toBe("0");
-        expect(spans[1].style.left).toBe("50px");
-        expect(spans[1].style.top).toBe("60px");
+        assert.strictEqual(spans[1].textContent, "0");
+        assert.strictEqual(spans[1].style.left, "50px");
+        assert.strictEqual(spans[1].style.top, "60px");
     });
 });

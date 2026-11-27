@@ -263,3 +263,149 @@ pub extern "C" fn circuit_issue_message(h: u32, i: u32) -> i32 {
         Err(e) => e,
     })
 }
+
+/// Sets the integration method (0 = BackwardEuler, 1 = Trapezoidal).
+#[no_mangle]
+pub extern "C" fn circuit_set_integrator(h: u32, method: i32) -> i32 {
+    with_slot(h, |s| {
+        let integrator = if method == 1 {
+            simbiguity_circuits::component::Integrator::Trapezoidal
+        } else {
+            simbiguity_circuits::component::Integrator::BackwardEuler
+        };
+        s.sim = s.sim.clone().with_integrator(integrator);
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_push(h: u32, v: f64) -> i32 {
+    with_slot(h, |s| {
+        s.chart_series.push(s.time, v);
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_draw(h: u32, width: f64, height: f64) -> i32 {
+    with_slot(h, |s| {
+        let t_max = s.time;
+        let t_min = (t_max - 5.0).max(0.0);
+        let axes = simbiguity_plot::Axes {
+            x_min: t_min,
+            x_max: t_min + 5.0,
+            y_min: 0.0,
+            y_max: 12.0,
+            px_x: 0.0,
+            px_y: 0.0,
+            px_w: width,
+            px_h: height,
+        };
+        let series_list = vec![(&s.chart_series, [1.0, 0.0, 0.0, 1.0])];
+        let chart = simbiguity_plot::Chart {
+            axes,
+            series: series_list,
+        };
+
+        let mut cmd = simbiguity_render::CommandBuffer::new();
+        let (meshes, labels) = chart.draw(&mut cmd, 0);
+
+        s.chart_meshes = meshes;
+        s.chart_commands = cmd.words().to_vec();
+
+        // pack labels into JSON or custom string for plot-labels.js
+        // plot-labels.js expects an array of [text, x, y].
+        let mut js_labels = String::from("[");
+        for (i, (text, x, y)) in labels.iter().enumerate() {
+            if i > 0 {
+                js_labels.push(',');
+            }
+            js_labels.push_str(&std::format!("[\"{}\",{},{}]", text, x, y));
+        }
+        js_labels.push(']');
+        s.chart_labels = js_labels;
+
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_commands_ptr(h: u32) -> *const u32 {
+    let mut ptr = core::ptr::null();
+    with_slot(h, |s| {
+        ptr = s.chart_commands.as_ptr();
+        OK
+    });
+    ptr
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_commands_len(h: u32) -> i32 {
+    with_slot(h, |s| s.chart_commands.len() as i32)
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_mesh_count(h: u32) -> i32 {
+    with_slot(h, |s| s.chart_meshes.len() as i32)
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_mesh_vertices_ptr(h: u32, i: u32) -> *const f32 {
+    let mut ptr = core::ptr::null();
+    with_slot(h, |s| {
+        if let Some(m) = s.chart_meshes.get(i as usize) {
+            ptr = m.vertices.as_ptr();
+        }
+        OK
+    });
+    ptr
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_mesh_vertices_len(h: u32, i: u32) -> i32 {
+    with_slot(h, |s| {
+        if let Some(m) = s.chart_meshes.get(i as usize) {
+            m.vertices.len() as i32
+        } else {
+            0
+        }
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_mesh_indices_ptr(h: u32, i: u32) -> *const u32 {
+    let mut ptr = core::ptr::null();
+    with_slot(h, |s| {
+        if let Some(m) = s.chart_meshes.get(i as usize) {
+            ptr = m.indices.as_ptr();
+        }
+        OK
+    });
+    ptr
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_mesh_indices_len(h: u32, i: u32) -> i32 {
+    with_slot(h, |s| {
+        if let Some(m) = s.chart_meshes.get(i as usize) {
+            m.indices.len() as i32
+        } else {
+            0
+        }
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_labels_ptr(h: u32) -> *const u8 {
+    let mut ptr = core::ptr::null();
+    with_slot(h, |s| {
+        ptr = s.chart_labels.as_ptr();
+        OK
+    });
+    ptr
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_labels_len(h: u32) -> i32 {
+    with_slot(h, |s| s.chart_labels.len() as i32)
+}

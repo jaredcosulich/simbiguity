@@ -17,3 +17,6 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 simbiguity-circuits = { path = "../simbiguity-circuits", version = "0.0.1", features = ["std"] }
 simbiguity-core = { path = "../simbiguity-core", version = "0.0.1", features = ["std"] }
+simbiguity-plot = { path = "../simbiguity-plot", version = "0.0.1", features = ["std"] }
+simbiguity-render = { path = "../simbiguity-render", version = "0.0.1", features = ["std"] }
+

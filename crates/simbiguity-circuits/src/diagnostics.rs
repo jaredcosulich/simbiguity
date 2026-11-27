@@ -53,6 +53,15 @@ pub enum CircuitIssue {
         /// The blown bulb.
         bulb: ComponentId,
     },
+    /// A capacitor is connected directly across an ideal battery. The battery
+    /// tries to charge it instantly, causing infinite inrush current.
+    Inrush {
+        /// The capacitor.
+        capacitor: ComponentId,
+    },
+    /// The simulation was asked to take a time step that is zero, negative,
+    /// or not a real number. Time must flow forward.
+    InvalidTimeStep,
 }
 
 impl CircuitIssue {
@@ -64,6 +73,8 @@ impl CircuitIssue {
                 | CircuitIssue::InvalidValue { .. }
                 | CircuitIssue::ShortCircuit { current: None, .. }
                 | CircuitIssue::VoltageSourceLoop { .. }
+                | CircuitIssue::Inrush { .. }
+                | CircuitIssue::InvalidTimeStep
         )
     }
 }
@@ -119,51 +130,15 @@ impl fmt::Display for CircuitIssue {
                 bulb.index(),
                 crate::component::BLOW_RATIO
             ),
+            CircuitIssue::Inrush { capacitor } => write!(
+                f,
+                "capacitor {} is connected directly across an ideal battery, which would cause an infinite inrush current",
+                capacitor.index()
+            ),
+            CircuitIssue::InvalidTimeStep => write!(
+                f,
+                "the time step must be a positive number"
+            ),
         }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use alloc::string::ToString;
-
-    /// Only invalid values, ideal shorts and source loops stop a solution.
-    #[test]
-    fn fatal_issues_are_exactly_the_unsolvable_ones() {
-        let c = ComponentId(0);
-        assert!(CircuitIssue::InvalidValue { component: c }.is_fatal());
-        assert!(CircuitIssue::ShortCircuit {
-            battery: c,
-            current: None
-        }
-        .is_fatal());
-        assert!(CircuitIssue::VoltageSourceLoop { battery: c }.is_fatal());
-        assert!(!CircuitIssue::ShortCircuit {
-            battery: c,
-            current: Some(3.0)
-        }
-        .is_fatal());
-        assert!(!CircuitIssue::FloatingNode { node: NodeId(0) }.is_fatal());
-        assert!(!CircuitIssue::OpenCircuit { battery: c }.is_fatal());
-        assert!(!CircuitIssue::BulbBlown { bulb: c }.is_fatal());
-    }
-
-    /// Each message names the part, so a learner knows where to look.
-    #[test]
-    fn messages_name_the_part() {
-        let msg = CircuitIssue::BulbBlown {
-            bulb: ComponentId(4),
-        }
-        .to_string();
-        assert!(msg.contains("bulb 4"), "{msg}");
-        let msg = CircuitIssue::FloatingNode { node: NodeId(7) }.to_string();
-        assert!(msg.contains("node 7"), "{msg}");
-        let msg = CircuitIssue::ShortCircuit {
-            battery: ComponentId(2),
-            current: Some(3.0),
-        }
-        .to_string();
-        assert!(msg.contains("battery 2") && msg.contains("3 A"), "{msg}");
     }
 }

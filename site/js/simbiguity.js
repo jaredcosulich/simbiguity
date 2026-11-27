@@ -93,7 +93,13 @@ export async function loadCircuits(url) {
     /** Sets a battery's volts, a resistor's ohms, a bulb's rated volts. */
     setValue(id, value) { check(w.circuit_set_value(this.handle, id, value)); }
 
+
+    setIntegrator(method) { check(w.circuit_set_integrator(this.handle, method)); }
+    plotPush(v) { check(w.circuit_plot_push(this.handle, v)); }
+    plotDraw(width, height) { check(w.circuit_plot_draw(this.handle, width, height)); }
+    
     replaceBulb(id) { check(w.circuit_replace_bulb(this.handle, id)); }
+
 
     /**
      * Steps the circuit by dt.

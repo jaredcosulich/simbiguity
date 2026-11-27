@@ -14,6 +14,8 @@ pub fn issue_kind_code(issue: &CircuitIssue) -> i32 {
         CircuitIssue::FloatingNode { .. } => 4,
         CircuitIssue::OpenCircuit { .. } => 5,
         CircuitIssue::BulbBlown { .. } => 6,
+        CircuitIssue::Inrush { .. } => 7,
+        CircuitIssue::InvalidTimeStep => 8,
     }
 }
 
@@ -28,6 +30,8 @@ pub fn issue_part_index(issue: &CircuitIssue) -> u32 {
         | CircuitIssue::OpenCircuit { battery } => battery.index(),
         CircuitIssue::FloatingNode { node } => node.index(),
         CircuitIssue::BulbBlown { bulb } => bulb.index(),
+        CircuitIssue::Inrush { capacitor } => capacitor.index(),
+        CircuitIssue::InvalidTimeStep => 0,
     }) as u32
 }
 

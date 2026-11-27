@@ -121,6 +121,12 @@
       "shortSha": "42ae66d",
       "subject": "feat: Fix round 2: plots that actually reach the screen",
       "deferredAt": "2026-11-27T15:13:33Z"
+    },
+    {
+      "sha": "3713ad0fd9a4d7ecaea082f01cd6ec598cefd561",
+      "shortSha": "3713ad0",
+      "subject": "feat: Fix round 2: trapezoidal integrator sign error and hand-computed transient tests",
+      "deferredAt": "2026-11-27T15:48:18Z"
     }
   ],
   "finalizeIntent": "fast",

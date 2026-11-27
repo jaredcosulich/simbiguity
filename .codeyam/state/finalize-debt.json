@@ -103,6 +103,12 @@
       "shortSha": "757fe5a",
       "subject": "Fix: hardening deliver the invariants, stress tests and native-vs-WASM check",
       "deferredAt": "2026-11-27T01:08:32Z"
+    },
+    {
+      "sha": "a6ab7c27327ec5e827fcb0c96fc56957a59d4322",
+      "shortSha": "a6ab7c2",
+      "subject": "fix: circuit puzzle game is a placeholder (real levels, goals, undo, share)",
+      "deferredAt": "2026-11-27T14:18:06Z"
     }
   ],
   "finalizeIntent": "fast",

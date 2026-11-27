@@ -2,6 +2,7 @@
 
 use alloc::vec;
 use alloc::vec::Vec;
+use simbiguity_core::Simulation;
 
 use super::*;
 
@@ -183,28 +184,23 @@ fn issue_for_pivot_names_node_or_battery() {
     );
 }
 
-/// SolverFailure when cache topology is missing
+/// A circuit with nothing in it has nothing to solve: no voltages, no
+/// currents, and nothing wrong with it. Reporting a "solver failure" here
+/// would tell a learner who has just cleared the board that something broke.
 #[test]
-fn solve_once_returns_failure_on_missing_topology() {
-    let c = Circuit::new();
-    let mut cache = SolverCache::default();
-    let (solution, issues) = solve_once(&c, vec![], &mut cache, false);
-    assert!(solution.is_none());
-    assert_eq!(issues.len(), 1);
-    assert!(matches!(issues[0], CircuitIssue::SolverFailure { .. }));
+fn empty_circuit_solves_with_no_issues() {
+    let analysis = Circuit::new().solve();
+    assert!(analysis.issues().is_empty(), "{:?}", analysis.issues());
 }
 
-/// SolverFailure when unknowns are missing
+/// The internal cache-miss path must be driven through CircuitSim's history
+/// to prove it initializes properly.
 #[test]
-fn solve_once_returns_failure_on_missing_unknowns() {
-    let c = Circuit::new();
-    let mut cache = SolverCache::default();
-    let stamps = vec![];
-    cache.t = Some(Topology::build(&c, stamps.clone()));
-    let (solution, issues) = solve_once(&c, stamps, &mut cache, false);
-    assert!(solution.is_none());
-    assert_eq!(issues.len(), 1);
-    assert!(matches!(issues[0], CircuitIssue::SolverFailure { .. }));
+fn circuit_sim_solves_empty_circuit_cleanly() {
+    let mut sim = crate::CircuitSim::new(Circuit::new());
+    sim.step(simbiguity_core::Seconds(0.01));
+    let analysis = sim.circuit().solve();
+    assert!(analysis.issues().is_empty(), "{:?}", analysis.issues());
 }
 
 /// assemble_matrix bubbles up an error if an ideal battery lacks a current unknown.

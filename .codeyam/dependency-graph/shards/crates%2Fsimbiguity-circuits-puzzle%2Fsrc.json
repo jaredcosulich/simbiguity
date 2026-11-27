@@ -45,6 +45,12 @@
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits-puzzle/src/share.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-circuits-puzzle/src/share.rs": {

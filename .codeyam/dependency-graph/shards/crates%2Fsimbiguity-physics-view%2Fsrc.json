@@ -278,6 +278,12 @@
         "crates/simbiguity-render/src/scene.rs",
         "crates/simbiguity-render/src/camera.rs",
         "crates/simbiguity-render/src/scene.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     }
   }

@@ -21,6 +21,7 @@ export const IssueKind = Object.freeze({
   4: "floating-node",
   5: "open-circuit",
   6: "bulb-blown",
+  7: "solver-failure",
 });
 
 /** Thrown when a bridge call returns a negative status code. */

@@ -447,6 +447,12 @@
         "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/series.rs",
         "crates/simbiguity-plot/src/ticks.rs"
+      ],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     },
     "crates/simbiguity-plot/src/line.rs": {

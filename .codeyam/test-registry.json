@@ -919,6 +919,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that the native WASM engine produces deterministic outputs matching golden hashes.",
+      "file": "crates/simbiguity-circuits-wasm/src/golden.rs",
+      "format": "cargo",
+      "key": "golden::tests::golden_determinism_check",
+      "line": 5,
+      "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "An ideal battery shorted by a wire is fatal: no solution, a named ShortCircuit with unlimited current.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -943,6 +952,15 @@
       "key": "invalid_value_is_fatal",
       "line": 234,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Kirchhoff's Current Law (KCL) invariants across 2000 randomized seed topologies.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::kcl_invariant",
+      "line": 42,
+      "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
       "runner": "cargo"
     },
     {
@@ -1526,7 +1544,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::assemble_matrix_bubbles_up_solver_failure",
-      "line": 212,
+      "line": 208,
       "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
       "runner": "cargo"
     },
@@ -1535,7 +1553,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::assemble_rhs_bubbles_up_solver_failure",
-      "line": 233,
+      "line": 229,
       "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
       "runner": "cargo"
     },
@@ -1544,8 +1562,17 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::blown_bulb_issues_lists_blown_bulbs_in_order",
-      "line": 147,
+      "line": 148,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "The internal cache-miss path must be driven through CircuitSim's history to prove it initializes properly.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::circuit_sim_solves_empty_circuit_cleanly",
+      "line": 199,
+      "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
       "runner": "cargo"
     },
     {
@@ -1553,7 +1580,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::component_current_per_stamp",
-      "line": 100,
+      "line": 101,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1562,7 +1589,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::conductance_stamps_symmetric_block",
-      "line": 72,
+      "line": 73,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1571,8 +1598,17 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::current_source_stamps_plus_into_a_minus_out_of_b",
-      "line": 61,
+      "line": 62,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A circuit with nothing in it has nothing to solve: no voltages, no currents, and nothing wrong with it. Reporting a \"solver failure\" here would tell a learner who has just cleared the board that something broke.",
+      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
+      "format": "cargo",
+      "key": "mna::tests::empty_circuit_solves_with_no_issues",
+      "line": 191,
+      "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
       "runner": "cargo"
     },
     {
@@ -1580,7 +1616,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::explicit_ground_applies_to_its_island_only",
-      "line": 30,
+      "line": 31,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1589,7 +1625,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::invalid_components_names_each_bad_part",
-      "line": 124,
+      "line": 125,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1598,7 +1634,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::island_without_battery_has_no_reference",
-      "line": 43,
+      "line": 44,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1607,7 +1643,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::issue_for_pivot_names_node_or_battery",
-      "line": 168,
+      "line": 169,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1616,7 +1652,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::powers_multiply_and_treat_floating_as_zero",
-      "line": 117,
+      "line": 118,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1625,7 +1661,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::references_default_to_first_battery_minus",
-      "line": 20,
+      "line": 21,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1652,7 +1688,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::touched_nodes_marks_only_connected_nodes",
-      "line": 53,
+      "line": 54,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1661,7 +1697,7 @@
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
       "key": "mna::tests::voltage_source_stamps_incidence_and_emf",
-      "line": 86,
+      "line": 87,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2503,6 +2539,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies the bridge stress conditions by ensuring heavy circuit loads do not cause WASM panics or incorrect states.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::bridge_stress_test",
+      "line": 280,
+      "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The bypass shorts the battery: no solution, every result NaN, issue 2.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -2732,7 +2777,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::pendulum_preset_steps_without_panicking",
-      "line": 331,
+      "line": 340,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -2786,7 +2831,7 @@
       "file": "crates/simbiguity-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_goal",
-      "line": 33,
+      "line": 42,
       "registeredAt": "2026-11-26T19:55:35.524946133+00:00",
       "runner": "cargo"
     },
@@ -2804,7 +2849,7 @@
       "file": "crates/simbiguity-physics-view/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_view",
-      "line": 126,
+      "line": 135,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },

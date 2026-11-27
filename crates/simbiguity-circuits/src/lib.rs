@@ -67,6 +67,9 @@ pub mod sim;
 pub mod solution;
 mod wires;
 
+#[cfg(test)]
+mod invariants_tests;
+
 pub use component::Component;
 pub use diagnostics::CircuitIssue;
 pub use netlist::{Circuit, ComponentId, NodeId, Placed};

@@ -1,0 +1,32 @@
+{
+  "provenAt": "2026-11-27T01:03:57Z",
+  "slug": "fix-hardening-deliver-the-invariants-stress-tests-and-native-vs-wasm-check",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits/src/mna.rs",
+    "crates/simbiguity-circuits/src/mna_tests.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits/src/mna.rs",
+      "find": "if needs_refactor || cache.matrix.rows() != u.count {",
+      "replace": "if false {"
+    }
+  ],
+  "withFixSource": "re-run",
+  "tests": {
+    "empty_circuit_solves_with_no_issues": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "empty_circuit_solves_with_no_issues"
+    ]
+  }
+}

@@ -28,6 +28,7 @@
 //! natively (`cargo test`) — nothing here is WASM-only.
 
 pub mod alloc;
+pub mod golden;
 pub mod issues;
 mod slot;
 pub mod status;

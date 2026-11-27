@@ -815,6 +815,7 @@
     "crates/simbiguity-core/src/simulation.rs::Seconds": {
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna_tests.rs::circuit_sim_solves_empty_circuit_cleanly",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
         "crates/simbiguity-circuits/tests/analysis.rs::blown_bulb_persists_until_replaced",
@@ -946,6 +947,7 @@
     "crates/simbiguity-core/src/simulation.rs::Simulation": {
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna_tests.rs::__file_root__",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
         "crates/simbiguity-circuits-view/src/lib.rs::__file_root__",
@@ -1123,6 +1125,7 @@
         "crates/simbiguity-core/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits/src/invariants_tests.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/simulation.rs"
@@ -1136,6 +1139,8 @@
         "crates/simbiguity-core/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna_tests.rs",
+        "crates/simbiguity-circuits/src/mna_tests.rs",
         "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/sim.rs",

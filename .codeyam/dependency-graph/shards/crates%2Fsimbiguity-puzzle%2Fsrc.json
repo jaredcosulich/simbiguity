@@ -29,7 +29,13 @@
   "files": {
     "crates/simbiguity-puzzle/src/lib.rs": {
       "importedBy": [],
-      "imports": []
+      "imports": [],
+      "namedMethods": [
+        "expect_used",
+        "panic",
+        "unreachable",
+        "unwrap_used"
+      ]
     }
   }
 }

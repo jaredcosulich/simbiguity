@@ -1181,6 +1181,7 @@
       "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/tests.rs::Hello",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bridge_stress_test",
         "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution",
         "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles",
         "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_set_value_changes_next_solve",
@@ -1232,6 +1233,14 @@
         "is_nan",
         "is_null"
       ]
+    },
+    "crates/simbiguity-circuits-wasm/src/tests.rs::bridge_stress_test": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+      ],
+      "name": "bridge_stress_test"
     },
     "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution": {
       "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
@@ -1591,6 +1600,15 @@
       ],
       "imports": []
     },
+    "crates/simbiguity-circuits-wasm/src/golden.rs": {
+      "declaredBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ],
+      "imports": []
+    },
     "crates/simbiguity-circuits-wasm/src/issues.rs": {
       "declaredBy": [
         "crates/simbiguity-circuits-wasm/src/lib.rs"
@@ -1609,6 +1627,7 @@
     "crates/simbiguity-circuits-wasm/src/lib.rs": {
       "declaresModules": [
         "crates/simbiguity-circuits-wasm/src/alloc.rs",
+        "crates/simbiguity-circuits-wasm/src/golden.rs",
         "crates/simbiguity-circuits-wasm/src/issues.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
@@ -1620,6 +1639,7 @@
       ],
       "imports": [
         "crates/simbiguity-circuits-wasm/src/alloc.rs",
+        "crates/simbiguity-circuits-wasm/src/golden.rs",
         "crates/simbiguity-circuits-wasm/src/issues.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",

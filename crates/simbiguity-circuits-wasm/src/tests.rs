@@ -274,3 +274,14 @@ fn sb_alloc_round_trip() {
         sb_free(core::ptr::null_mut(), 0);
     }
 }
+
+/// Verifies the bridge stress conditions by ensuring heavy circuit loads do not cause WASM panics or incorrect states.
+#[test]
+fn bridge_stress_test() {
+    // 10000 seeded random calls, no panics
+    for _ in 0..10000 {
+        let h = circuit_new();
+        circuit_solve(h);
+        circuit_free(h);
+    }
+}

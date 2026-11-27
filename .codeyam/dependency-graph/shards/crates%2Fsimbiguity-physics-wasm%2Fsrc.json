@@ -570,8 +570,12 @@
         "crates/simbiguity-render/src/commands.rs"
       ],
       "namedMethods": [
+        "expect_used",
         "new",
-        "not_unsafe_ptr_arg_deref"
+        "not_unsafe_ptr_arg_deref",
+        "panic",
+        "unreachable",
+        "unwrap_used"
       ]
     }
   }

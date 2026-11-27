@@ -31,5 +31,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Build the WASM bridge
+        run: sh scripts/build-site.sh
       - name: Test the demo logic
         run: node --test "site/**/*.test.js"

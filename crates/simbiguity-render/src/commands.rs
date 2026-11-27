@@ -222,6 +222,19 @@ impl CommandBuffer {
         let payload = (w.len() - header - 1) as u32;
         w[header] = op | (payload << 8);
     }
+
+    /// Appends a DrawInstanced command directly, avoiding an allocation.
+    pub fn push_draw_instanced(&mut self, count: u32, offsets: &[[f32; 3]]) {
+        let w = &mut self.words;
+        let header = w.len();
+        w.push(0);
+        w.push(count);
+        for o in offsets {
+            w.extend(o.iter().map(|f| f.to_bits()));
+        }
+        let payload = (w.len() - header - 1) as u32;
+        w[header] = 9 | (payload << 8);
+    }
 }
 
 #[cfg(test)]

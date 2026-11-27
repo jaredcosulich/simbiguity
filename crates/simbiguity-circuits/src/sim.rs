@@ -98,6 +98,12 @@ impl CircuitSim {
             }
         }
     }
+
+    /// Force a refactor (for testing)
+    #[cfg(test)]
+    pub fn force_refactor(&mut self) {
+        self.needs_refactor = true;
+    }
 }
 
 impl Simulation for CircuitSim {
@@ -122,7 +128,9 @@ impl Simulation for CircuitSim {
             &mut self.cache,
             self.needs_refactor,
         );
-        self.needs_refactor = false;
+        if self.analysis.solution().is_some() {
+            self.needs_refactor = false;
+        }
         self.persist_blown();
         self.persist_transient_state();
     }
@@ -204,5 +212,43 @@ mod tests {
         sim2.step(Seconds(0.1));
 
         assert_eq!(sim1.state(), sim2.state());
+    }
+
+    /// A capacitor's step model is a conductance C/dt, so the matrix depends on
+    /// dt. If dt changes, a cached simulation must give exactly what a fresh
+    /// simulation (no cache) gives for the same history.
+    #[test]
+    fn changing_dt_refactors_the_matrix() {
+        let build = || {
+            let mut c = Circuit::new();
+            let (p, mid, m) = (c.node(), c.node(), c.node());
+            c.add_battery(p, m, 10.0);
+            c.add_resistor(p, mid, 1000.0);
+            let cap = c.add_capacitor(mid, m, 0.001);
+            (c, cap)
+        };
+        let (c, cap) = build();
+        let mut cached = CircuitSim::new(c);
+        cached.step(Seconds(0.1));
+        cached.step(Seconds(0.01));
+        let v_cached = cached
+            .state()
+            .solution()
+            .unwrap()
+            .voltage_across(cap)
+            .unwrap();
+
+        let (c2, _) = build();
+        let mut fresh = CircuitSim::new(c2);
+        fresh.step(Seconds(0.1));
+        fresh.force_refactor(); // test-only hook, or rebuild from snapshot; decide at execution
+        fresh.step(Seconds(0.01));
+        let v_fresh = fresh
+            .state()
+            .solution()
+            .unwrap()
+            .voltage_across(cap)
+            .unwrap();
+        assert_eq!(v_cached.to_bits(), v_fresh.to_bits());
     }
 }

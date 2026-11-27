@@ -45,7 +45,14 @@ pub fn run_all() -> Vec<BenchResult> {
 
     results.push(bench("10x10 resistor grid", || {
         let mut c = Circuit::new();
-        let nodes = vec![vec![c.node(); 10]; 10];
+        let mut nodes = Vec::new();
+        for _ in 0..10 {
+            let mut row = Vec::new();
+            for _ in 0..10 {
+                row.push(c.node());
+            }
+            nodes.push(row);
+        }
         for i in 0..10 {
             for j in 0..10 {
                 if i > 0 {

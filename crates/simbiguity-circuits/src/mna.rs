@@ -202,6 +202,8 @@ pub struct SolverCache {
     pub lu: Option<simbiguity_math::Lu>,
     t: Option<Topology>,
     u: Option<Unknowns>,
+    dt: Option<f64>,
+    integrator: Option<Integrator>,
 }
 
 impl Default for SolverCache {
@@ -212,6 +214,8 @@ impl Default for SolverCache {
             lu: None,
             t: None,
             u: None,
+            dt: None,
+            integrator: None,
         }
     }
 }
@@ -398,35 +402,23 @@ fn solve_once(
     cache: &mut SolverCache,
     needs_refactor: bool,
 ) -> (Option<Solution>, Vec<CircuitIssue>) {
-    if needs_refactor || cache.t.is_none() {
-        let t = Topology::build(c, stamps);
-        let u = Unknowns::number(c, &t);
-        cache.t = Some(t.clone());
-        cache.u = Some(u.clone());
-    } else {
-        if let Some(t) = cache.t.as_mut() {
+    let (t, u) = match (cache.t.clone(), cache.u.clone()) {
+        (Some(mut t), Some(u)) if !needs_refactor => {
             t.stamps = stamps;
+            (t, u)
         }
-    }
-    let Some(t) = cache.t.clone() else {
-        return (
-            None,
-            alloc::vec![CircuitIssue::SolverFailure {
-                message: alloc::string::String::from("Missing topology")
-            }],
-        );
-    };
-    let Some(u) = cache.u.clone() else {
-        return (
-            None,
-            alloc::vec![CircuitIssue::SolverFailure {
-                message: alloc::string::String::from("Missing unknowns")
-            }],
-        );
+        _ => {
+            let t = Topology::build(c, stamps);
+            let u = Unknowns::number(c, &t);
+            (t, u)
+        }
     };
 
     let mut issues = source_problems(c, &t);
     if issues.iter().any(CircuitIssue::is_fatal) {
+        cache.t = None;
+        cache.u = None;
+        cache.lu = None;
         return (None, issues);
     }
     issues.extend(floating_islands(c, &t));
@@ -437,18 +429,27 @@ fn solve_once(
         }
         if let Err(e) = assemble_matrix(c, &t, &u, &mut cache.matrix) {
             issues.push(CircuitIssue::SolverFailure { message: e });
+            cache.t = None;
+            cache.u = None;
+            cache.lu = None;
             return (None, issues);
         }
-        cache.lu = match simbiguity_math::Lu::decompose(&cache.matrix) {
-            Ok(lu) => Some(lu),
+        match simbiguity_math::Lu::decompose(&cache.matrix) {
+            Ok(lu) => cache.lu = Some(lu),
             Err(SolveError::Singular { pivot_row }) => {
                 issues.push(issue_for_pivot(&u, pivot_row));
+                cache.t = None;
+                cache.u = None;
+                cache.lu = None;
                 return (None, issues);
             }
             Err(e) => {
                 issues.push(CircuitIssue::SolverFailure {
                     message: alloc::format!("MNA always builds a square system: {e}"),
                 });
+                cache.t = None;
+                cache.u = None;
+                cache.lu = None;
                 return (None, issues);
             }
         };
@@ -459,6 +460,9 @@ fn solve_once(
     }
     if let Err(e) = assemble_rhs(c, &t, &u, &mut cache.rhs) {
         issues.push(CircuitIssue::SolverFailure { message: e });
+        cache.t = None;
+        cache.u = None;
+        cache.lu = None;
         return (None, issues);
     }
 
@@ -466,12 +470,25 @@ fn solve_once(
         issues.push(CircuitIssue::SolverFailure {
             message: alloc::string::String::from("Missing LU decomp"),
         });
+        cache.t = None;
+        cache.u = None;
+        cache.lu = None;
         return (None, issues);
     };
     let x = match lu.solve(&cache.rhs) {
         Ok(x) => x,
-        Err(_) => return (None, issues),
+        Err(e) => {
+            issues.push(CircuitIssue::SolverFailure {
+                message: alloc::format!("LU solve failed: {e}"),
+            });
+            cache.t = None;
+            cache.u = None;
+            cache.lu = None;
+            return (None, issues);
+        }
     };
+    cache.t = Some(t.clone());
+    cache.u = Some(u.clone());
     let solution = build_solution(c, &t, &u, &x);
     let open = open_batteries(c, &issues, &solution);
     issues.extend(open);
@@ -535,6 +552,9 @@ pub(crate) fn analyze_step(
             issues: invalid,
         };
     }
+    if cache.dt != Some(dt) || cache.integrator != Some(integrator) {
+        needs_refactor = true;
+    }
     let mut work = c.clone();
     loop {
         let stamps: Vec<Stamp> = work
@@ -544,11 +564,15 @@ pub(crate) fn analyze_step(
             .collect();
         let (solution, mut issues) = solve_once(&work, stamps, cache, needs_refactor);
         let Some(solution) = solution else {
+            cache.dt = None;
+            cache.integrator = None;
             return Analysis {
                 solution: None,
                 issues,
             };
         };
+        cache.dt = Some(dt);
+        cache.integrator = Some(integrator);
         if let Some(i) = most_overloaded(&work, &solution) {
             work.parts[i].component.blow();
             needs_refactor = true;

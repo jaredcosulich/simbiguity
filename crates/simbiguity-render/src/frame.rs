@@ -125,10 +125,7 @@ pub fn encode_frame(
                 .iter()
                 .map(|p| [p.x as f32, p.y as f32, p.z as f32]),
         );
-        enc.out.push(&Command::DrawInstanced {
-            count,
-            offsets: buf.offsets.clone(),
-        });
+        enc.out.push_draw_instanced(count, &buf.offsets);
     }
     enc.out.push(&Command::SetDepth {
         test: true,

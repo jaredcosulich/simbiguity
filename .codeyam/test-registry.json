@@ -347,7 +347,7 @@
       "file": "crates/simbiguity-render/src/commands.rs",
       "format": "cargo",
       "key": "commands::tests::clear_keeps_only_the_header",
-      "line": 253,
+      "line": 266,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -356,7 +356,7 @@
       "file": "crates/simbiguity-render/src/commands.rs",
       "format": "cargo",
       "key": "commands::tests::floats_are_stored_as_bits",
-      "line": 245,
+      "line": 258,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -365,7 +365,7 @@
       "file": "crates/simbiguity-render/src/commands.rs",
       "format": "cargo",
       "key": "commands::tests::headers_pack_opcode_and_length",
-      "line": 233,
+      "line": 246,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -851,7 +851,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::frame_brackets_its_passes",
-      "line": 312,
+      "line": 309,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -860,7 +860,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::frame_buf_reuses_allocations",
-      "line": 399,
+      "line": 396,
       "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
       "runner": "cargo"
     },
@@ -869,7 +869,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::glass_is_sorted_back_to_front",
-      "line": 281,
+      "line": 278,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -878,7 +878,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::instances_draw_in_one_call",
-      "line": 351,
+      "line": 348,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -887,7 +887,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::opaque_nodes_group_by_program",
-      "line": 267,
+      "line": 264,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -896,7 +896,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::programs_are_bound_only_on_change",
-      "line": 336,
+      "line": 333,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -905,7 +905,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::unlit_glows_are_skipped",
-      "line": 295,
+      "line": 292,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -914,7 +914,7 @@
       "file": "crates/simbiguity-render/src/frame.rs",
       "format": "cargo",
       "key": "frame::tests::zero_viewport_is_clamped",
-      "line": 380,
+      "line": 377,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -2237,8 +2237,17 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::cache_produces_bit_identical_results",
-      "line": 178,
+      "line": 186,
       "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A capacitor's step model is a conductance C/dt, so the matrix depends on dt. If dt changes, a cached simulation must give exactly what a fresh simulation (no cache) gives for the same history.",
+      "file": "crates/simbiguity-circuits/src/sim.rs",
+      "format": "cargo",
+      "key": "sim::tests::changing_dt_refactors_the_matrix",
+      "line": 221,
+      "registeredAt": "2026-11-27T00:24:13.422462503+00:00",
       "runner": "cargo"
     },
     {

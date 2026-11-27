@@ -646,6 +646,7 @@
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push_draw_instanced",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
         "crates/simbiguity-render/src/commands.rs::MAGIC",
         "crates/simbiguity-render/src/commands.rs::VERSION",
@@ -710,7 +711,8 @@
     "crates/simbiguity-render/src/commands.rs::CommandBuffer::push": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push_draw_instanced"
       ],
       "imports": [
         "crates/simbiguity-render/src/commands.rs::Command",
@@ -740,6 +742,27 @@
         "to_bits"
       ]
     },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::push_draw_instanced": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::push_draw_instanced",
+      "namedMethods": [
+        "extend",
+        "iter",
+        "len",
+        "map",
+        "push",
+        "to_bits"
+      ]
+    },
     "crates/simbiguity-render/src/commands.rs::CommandBuffer::words": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
@@ -747,6 +770,7 @@
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push_draw_instanced",
         "crates/simbiguity-render/src/commands.rs::words"
       ],
       "imports": [
@@ -937,6 +961,7 @@
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::push_draw_instanced",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
       ],
       "imports": [
@@ -1522,7 +1547,6 @@
       "namedMethods": [
         "any",
         "clear",
-        "clone",
         "draw",
         "extend",
         "eye",
@@ -1534,6 +1558,7 @@
         "map",
         "max",
         "push",
+        "push_draw_instanced",
         "use_program",
         "view_projection"
       ]

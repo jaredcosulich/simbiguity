@@ -1,0 +1,32 @@
+{
+  "provenAt": "2026-11-27T00:23:38Z",
+  "slug": "fix-performance-stale-lu-on-dt-change-budget-gate-that-cannot-fail-bogus-grid-bench",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits/src/mna.rs",
+    "crates/simbiguity-circuits/src/sim.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits/src/mna.rs",
+      "find": "    if cache.dt != Some(dt) || cache.integrator != Some(integrator) {\n        needs_refactor = true;\n    }",
+      "replace": "    // neutered"
+    }
+  ],
+  "withFixSource": "re-run",
+  "tests": {
+    "changing_dt_refactors_the_matrix": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "changing_dt_refactors_the_matrix"
+    ]
+  }
+}

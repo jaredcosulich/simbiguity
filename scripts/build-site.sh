@@ -23,18 +23,19 @@ for crate in $bridges; do
 done
 
 if [ ! -f site/pkg-budget.txt ]; then
-  for crate in $bridges; do
-    file="$(echo "$crate" | tr - _).wasm"
-    size=$(wc -c < "site/pkg/$file")
-    echo "$file $((size + 5000))" >> site/pkg-budget.txt
-  done
+  echo "ERROR: site/pkg-budget.txt is missing"
+  exit 1
 fi
 
 for crate in $bridges; do
   file="$(echo "$crate" | tr - _).wasm"
   size=$(wc -c < "site/pkg/$file")
   budget=$(awk -v f="$file" '$1 == f {print $2}' site/pkg-budget.txt)
-  if [ -n "$budget" ] && [ "$size" -gt "$budget" ]; then
+  if [ -z "$budget" ]; then
+    echo "ERROR: Missing budget entry for $file in site/pkg-budget.txt"
+    exit 1
+  fi
+  if [ "$size" -gt "$budget" ]; then
     echo "ERROR: $file size ($size) exceeds budget ($budget)"
     exit 1
   fi

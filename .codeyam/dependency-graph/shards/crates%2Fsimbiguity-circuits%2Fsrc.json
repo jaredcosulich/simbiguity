@@ -3558,7 +3558,8 @@
         "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-circuits/src/mna.rs",
-        "crates/simbiguity-core/src/simulation.rs"
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/rng.rs"
       ]
     },
     "crates/simbiguity-circuits/src/solution.rs": {

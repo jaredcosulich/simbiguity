@@ -223,7 +223,7 @@ impl CommandBuffer {
         w[header] = op | (payload << 8);
     }
 
-    /// Appends a DrawInstanced command directly, avoiding an allocation.
+    /// Appends a DrawInstanced command directly.
     pub fn push_draw_instanced(&mut self, count: u32, offsets: &[[f32; 3]]) {
         let w = &mut self.words;
         let header = w.len();
@@ -234,6 +234,11 @@ impl CommandBuffer {
         }
         let payload = (w.len() - header - 1) as u32;
         w[header] = 9 | (payload << 8);
+    }
+
+    /// The capacity of the underlying buffer.
+    pub fn capacity(&self) -> usize {
+        self.words.capacity()
     }
 }
 
@@ -269,5 +274,21 @@ mod tests {
         b.clear();
         assert_eq!(b, CommandBuffer::new());
         assert_eq!(Uniform::COUNT, Uniform::Scale as u32 + 1);
+    }
+
+    /// Both forms of DrawInstanced encode identically.
+    #[test]
+    fn push_draw_instanced_matches_enum() {
+        let offsets = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]];
+        let mut b1 = CommandBuffer::new();
+        b1.push_draw_instanced(12, &offsets);
+
+        let mut b2 = CommandBuffer::new();
+        b2.push(&Command::DrawInstanced {
+            count: 12,
+            offsets: offsets.to_vec(),
+        });
+
+        assert_eq!(b1.words(), b2.words());
     }
 }

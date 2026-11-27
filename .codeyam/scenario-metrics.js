@@ -1,5 +1,5 @@
 // codeyam-generated — DO NOT EDIT.
-// codeyam-editor: 0.1.7  protocol: 1  build: 00d59b417f6fbc3833915c474166521340e4013f  source-sha256: a3b0df1ecd455766b4fa8ae31caa9a83b07bf5281a2331a1fcedc09045141576
+// codeyam-editor: 0.1.7  protocol: 1  build: 81ebaa032d13a79867191b79453383a8a4c7dd5d  source-sha256: 51b1d631c98a78e8cfbcc3afb3fc396982266bcc2037255174b344e01017e25f
 const LOADING_MARKERS = [
   "Loading scenario...",
   "Loading tests...",
@@ -223,24 +223,6 @@ function isCanvasDominated(state) {
   return textLength === 0;
 }
 
-// The share of the viewport one canvas must cover before a text miss is read
-// as "this UI is painted". Half the viewport: an app shell whose whole working
-// area is a canvas (egui, Flutter web, a game) clears it even with a DOM title
-// bar or a version badge beside it; a chart embedded in a DOM page does not.
-const CANVAS_COVERAGE_MIN = 0.5;
-
-// Whether the page's largest visible canvas covers at least
-// CANVAS_COVERAGE_MIN of the viewport. Pure: `geometry` is
-// `{ largestCanvasArea, viewportArea }` in CSS px², measured by the caller. An
-// unmeasurable viewport (zero or missing area) is never a canvas page, so a
-// probe that could not read the page keeps the ordinary DOM message.
-function canvasCoversViewport(geometry) {
-  if (!geometry) return false;
-  const { largestCanvasArea, viewportArea } = geometry;
-  if (!(viewportArea > 0) || !(largestCanvasArea > 0)) return false;
-  return largestCanvasArea / viewportArea >= CANVAS_COVERAGE_MIN;
-}
-
 // Mirrors `frame_has_visual_content` in
 // crates/control-api/src/screenshot/frame_settle.rs, which the simulator capture
 // paths use: downsample the frame's luma to CONTENT_SAMPLE_EDGE² cells and call
@@ -455,8 +437,6 @@ module.exports = {
   hasLoadingMarkers,
   hasRenderableContent,
   isCanvasDominated,
-  canvasCoversViewport,
-  CANVAS_COVERAGE_MIN,
   isDecodedFrame,
   frameHasVisualContent,
   frameContentStats,

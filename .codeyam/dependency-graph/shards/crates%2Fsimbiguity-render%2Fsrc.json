@@ -646,6 +646,7 @@
         "crates/simbiguity-render/src/commands.rs::Command::SetUniformMat4",
         "crates/simbiguity-render/src/commands.rs::Command::SetUniformVec4",
         "crates/simbiguity-render/src/commands.rs::Command::Viewport",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::capacity",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
@@ -657,6 +658,21 @@
         "crates/simbiguity-render/src/commands.rs::words"
       ],
       "name": "CommandBuffer"
+    },
+    "crates/simbiguity-render/src/commands.rs::CommandBuffer::capacity": {
+      "filePath": "crates/simbiguity-render/src/commands.rs",
+      "importedBy": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
+      ],
+      "imports": [
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
+        "crates/simbiguity-render/src/commands.rs::words"
+      ],
+      "inherentMethod": true,
+      "name": "CommandBuffer::capacity",
+      "namedMethods": [
+        "capacity"
+      ]
     },
     "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
@@ -773,6 +789,7 @@
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::capacity",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",
@@ -964,6 +981,7 @@
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::capacity",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::clear",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::push",

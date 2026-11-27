@@ -105,12 +105,22 @@ fn bench(name: &str, mut f: impl FnMut()) -> BenchResult {
         f();
         times.push(start.elapsed().as_micros() as f64);
     }
-    times.sort_by(|a, b| a.partial_cmp(b).unwrap());
+    let (median_us, p95_us) = compute_stats(times);
     BenchResult {
         name: name.to_string(),
-        median_us: times[times.len() / 2],
-        p95_us: times[(times.len() as f64 * 0.95) as usize],
+        median_us,
+        p95_us,
     }
+}
+
+pub fn compute_stats(mut times: Vec<f64>) -> (f64, f64) {
+    if times.is_empty() {
+        return (0.0, 0.0);
+    }
+    times.sort_by(|a, b| a.partial_cmp(b).unwrap());
+    let median = times[times.len() / 2];
+    let p95 = times[(times.len() as f64 * 0.95) as usize];
+    (median, p95)
 }
 
 pub fn to_json(results: &[BenchResult]) -> String {
@@ -127,4 +137,42 @@ pub fn to_json(results: &[BenchResult]) -> String {
     }
     out.push_str("]\n");
     out
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// JSON representation has the required fields.
+    #[test]
+    fn to_json_shape() {
+        let results = vec![
+            BenchResult {
+                name: "A".to_string(),
+                median_us: 10.0,
+                p95_us: 20.0,
+            },
+            BenchResult {
+                name: "B".to_string(),
+                median_us: 100.0,
+                p95_us: 200.0,
+            },
+        ];
+        let json = to_json(&results);
+        assert!(json.contains(r#"  { "name": "A", "medianUs": 10, "p95Us": 20 },"#));
+        assert!(json.contains(r#"  { "name": "B", "medianUs": 100, "p95Us": 200 }"#));
+        assert!(json.starts_with("[\n"));
+        assert!(json.ends_with("]\n"));
+    }
+
+    /// Median and p95 compute the correct indices.
+    #[test]
+    fn stats_calculations() {
+        let times: Vec<f64> = (1..=100).map(|x| x as f64).collect();
+        let (median, p95) = compute_stats(times);
+        assert_eq!(median, 51.0); // times[50] is 51
+        assert_eq!(p95, 96.0); // times[95] is 96
+
+        assert_eq!(compute_stats(vec![]), (0.0, 0.0));
+    }
 }

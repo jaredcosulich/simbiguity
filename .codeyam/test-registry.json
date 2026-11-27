@@ -19,6 +19,24 @@
       "runner": "cargo"
     },
     {
+      "description": "Median and p95 compute the correct indices.",
+      "file": "xtask/src/bench_fixtures.rs",
+      "format": "cargo",
+      "key": "bench_fixtures::tests::stats_calculations",
+      "line": 170,
+      "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "JSON representation has the required fields.",
+      "file": "xtask/src/bench_fixtures.rs",
+      "format": "cargo",
+      "key": "bench_fixtures::tests::to_json_shape",
+      "line": 148,
+      "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A blown bulb stays blown in a CircuitSim until replaced, even once the voltage that blew it is lowered.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -289,6 +307,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies the budget check script correctly fails builds that exceed limits and parses correctly.",
+      "file": "xtask/src/check_budgets_tests.rs",
+      "format": "cargo",
+      "key": "check_budgets_tests::tests::test_check_budgets_script",
+      "line": 8,
+      "registeredAt": "2026-11-27T20:08:35.586379983+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Negative and NaN frame times bank nothing; reset empties the bank.",
       "file": "crates/simbiguity-core/src/clock.rs",
       "format": "cargo",
@@ -374,7 +401,7 @@
       "file": "crates/simbiguity-render/src/commands.rs",
       "format": "cargo",
       "key": "commands::tests::clear_keeps_only_the_header",
-      "line": 266,
+      "line": 271,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -383,7 +410,7 @@
       "file": "crates/simbiguity-render/src/commands.rs",
       "format": "cargo",
       "key": "commands::tests::floats_are_stored_as_bits",
-      "line": 258,
+      "line": 263,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -392,8 +419,17 @@
       "file": "crates/simbiguity-render/src/commands.rs",
       "format": "cargo",
       "key": "commands::tests::headers_pack_opcode_and_length",
-      "line": 246,
+      "line": 251,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Both forms of DrawInstanced encode identically.",
+      "file": "crates/simbiguity-render/src/commands.rs",
+      "format": "cargo",
+      "key": "commands::tests::push_draw_instanced_matches_enum",
+      "line": 281,
+      "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
     {
@@ -2410,6 +2446,33 @@
       "key": "sim::tests::changing_dt_refactors_the_matrix",
       "line": 221,
       "registeredAt": "2026-11-27T00:24:13.422462503+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Seeded random-history equivalence test: 500 histories mixing toggles, value changes, EMF changes, capacitors and dt changes.",
+      "file": "crates/simbiguity-circuits/src/sim.rs",
+      "format": "cargo",
+      "key": "sim::tests::random_history_equivalence",
+      "line": 257,
+      "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Resistance change invalidation: changing a resistor value must force a refactor.",
+      "file": "crates/simbiguity-circuits/src/sim.rs",
+      "format": "cargo",
+      "key": "sim::tests::resistance_change_invalidation",
+      "line": 334,
+      "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Wheatstone EMF factorisation reuse: changing only a battery voltage should reuse the factorisation.",
+      "file": "crates/simbiguity-circuits/src/sim.rs",
+      "format": "cargo",
+      "key": "sim::tests::wheatstone_emf_factorisation_reuse",
+      "line": 306,
+      "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
     {

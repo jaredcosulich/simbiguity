@@ -391,16 +391,23 @@ mod tests {
         );
     }
 
-    /// Verifies that FrameBuf retains its memory allocations across consecutive frames, preventing steady-state allocation overhead.
+    /// Verifies that FrameBuf and CommandBuffer retain their memory allocations across consecutive frames, preventing steady-state allocation overhead.
     #[test]
     fn frame_buf_reuses_allocations() {
         let s = scene();
         let mut out = CommandBuffer::new();
         let mut buf = FrameBuf::new();
         encode_frame(&s, &OrbitCamera::default(), 640, 400, &mut buf, &mut out);
-        let cap = buf.capacity();
-        assert!(cap > 0);
-        encode_frame(&s, &OrbitCamera::default(), 640, 400, &mut buf, &mut out);
-        assert_eq!(buf.capacity(), cap);
+
+        let buf_cap = buf.capacity();
+        let out_cap = out.capacity();
+        assert!(buf_cap > 0);
+        assert!(out_cap > 0);
+
+        for _ in 0..100 {
+            encode_frame(&s, &OrbitCamera::default(), 640, 400, &mut buf, &mut out);
+            assert_eq!(buf.capacity(), buf_cap);
+            assert_eq!(out.capacity(), out_cap);
+        }
     }
 }

@@ -77,20 +77,32 @@
         "xtask/src/bench_fixtures.rs::BenchResult",
         "xtask/src/bench_fixtures.rs::BenchResult::median_us",
         "xtask/src/bench_fixtures.rs::BenchResult::name",
-        "xtask/src/bench_fixtures.rs::BenchResult::p95_us"
+        "xtask/src/bench_fixtures.rs::BenchResult::p95_us",
+        "xtask/src/bench_fixtures.rs::compute_stats"
       ],
       "name": "bench",
       "namedMethods": [
         "as_micros",
         "contains",
         "elapsed",
-        "len",
         "new",
         "now",
-        "partial_cmp",
         "push",
+        "to_string"
+      ]
+    },
+    "xtask/src/bench_fixtures.rs::compute_stats": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [
+        "xtask/src/bench_fixtures.rs::bench"
+      ],
+      "imports": [],
+      "name": "compute_stats",
+      "namedMethods": [
+        "is_empty",
+        "len",
+        "partial_cmp",
         "sort_by",
-        "to_string",
         "unwrap"
       ]
     },
@@ -2858,6 +2870,15 @@
         "unwrap_err"
       ]
     },
+    "xtask/src/check_budgets_tests.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs"
+      ],
+      "imports": []
+    },
     "xtask/src/libtest_output.rs": {
       "declaredBy": [
         "xtask/src/main.rs"
@@ -2902,6 +2923,7 @@
         "xtask/src/bench.rs",
         "xtask/src/bench_fixtures.rs",
         "xtask/src/capabilities.rs",
+        "xtask/src/check_budgets_tests.rs",
         "xtask/src/libtest_output.rs",
         "xtask/src/report.rs",
         "xtask/src/test_descriptions.rs",
@@ -2914,6 +2936,7 @@
         "xtask/src/bench.rs",
         "xtask/src/bench_fixtures.rs",
         "xtask/src/capabilities.rs",
+        "xtask/src/check_budgets_tests.rs",
         "xtask/src/libtest_output.rs",
         "xtask/src/report.rs",
         "xtask/src/test_descriptions.rs",

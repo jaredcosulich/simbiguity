@@ -13,6 +13,7 @@
 mod bench;
 mod bench_fixtures;
 mod capabilities;
+mod check_budgets_tests;
 mod libtest_output;
 mod report;
 mod test_descriptions;

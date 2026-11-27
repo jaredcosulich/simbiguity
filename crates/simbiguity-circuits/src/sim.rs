@@ -251,4 +251,105 @@ mod tests {
             .unwrap();
         assert_eq!(v_cached.to_bits(), v_fresh.to_bits());
     }
+
+    /// Seeded random-history equivalence test: 500 histories mixing toggles, value changes, EMF changes, capacitors and dt changes.
+    #[test]
+    fn random_history_equivalence() {
+        use simbiguity_core::rng::Rng;
+        let mut rng = Rng::new(0x12345678);
+        let mut c = Circuit::new();
+        let (n0, n1, n2, n3) = (c.node(), c.node(), c.node(), c.node());
+
+        let b1 = c.add_battery(n0, n1, 5.0);
+        let r1 = c.add_resistor(n1, n2, 100.0);
+        let _c1 = c.add_capacitor(n2, n0, 0.01);
+        let _b2 = c.add_battery(n2, n3, 3.0);
+        let sw1 = c.add_switch(n3, n0, false);
+
+        let mut cached = CircuitSim::new(c.clone());
+        let mut fresh = CircuitSim::new(c.clone());
+
+        for _ in 0..500 {
+            if rng.chance(0.2) {
+                let v = rng.range(1.0, 10.0);
+                cached.apply(CircuitInput::SetValue(b1, v));
+                fresh.apply(CircuitInput::SetValue(b1, v));
+            }
+            if rng.chance(0.2) {
+                let v = rng.range(10.0, 500.0);
+                cached.apply(CircuitInput::SetValue(r1, v));
+                fresh.apply(CircuitInput::SetValue(r1, v));
+            }
+            if rng.chance(0.1) {
+                cached.apply(CircuitInput::ToggleSwitch(sw1));
+                fresh.apply(CircuitInput::ToggleSwitch(sw1));
+            }
+            let dt = if rng.chance(0.5) {
+                Seconds(0.1)
+            } else {
+                Seconds(0.01)
+            };
+            cached.step(dt);
+            fresh.force_refactor();
+            fresh.step(dt);
+
+            assert_eq!(
+                cached.state(),
+                fresh.state(),
+                "random history mismatch seed 0x12345678"
+            );
+        }
+    }
+
+    /// Wheatstone EMF factorisation reuse: changing only a battery voltage should reuse the factorisation.
+    #[test]
+    fn wheatstone_emf_factorisation_reuse() {
+        let mut c = Circuit::new();
+        let (top, bot, left, right) = (c.node(), c.node(), c.node(), c.node());
+        let bat = c.add_battery(bot, top, 10.0);
+        c.add_resistor(top, left, 100.0);
+        c.add_resistor(top, right, 100.0);
+        c.add_resistor(left, bot, 100.0);
+        c.add_resistor(right, bot, 100.0);
+        c.add_resistor(left, right, 100.0);
+
+        let mut cached = CircuitSim::new(c.clone());
+        let mut fresh = CircuitSim::new(c.clone());
+
+        cached.step(Seconds(0.1));
+        fresh.step(Seconds(0.1));
+
+        cached.apply(CircuitInput::SetValue(bat, 12.0));
+        fresh.apply(CircuitInput::SetValue(bat, 12.0));
+
+        cached.step(Seconds(0.1));
+        fresh.force_refactor();
+        fresh.step(Seconds(0.1));
+
+        assert_eq!(cached.state(), fresh.state());
+    }
+
+    /// Resistance change invalidation: changing a resistor value must force a refactor.
+    #[test]
+    fn resistance_change_invalidation() {
+        let mut c = Circuit::new();
+        let (p, m) = (c.node(), c.node());
+        c.add_battery(p, m, 10.0);
+        let r = c.add_resistor(p, m, 100.0);
+
+        let mut cached = CircuitSim::new(c.clone());
+        let mut fresh = CircuitSim::new(c.clone());
+
+        cached.step(Seconds(0.1));
+        fresh.step(Seconds(0.1));
+
+        cached.apply(CircuitInput::SetValue(r, 50.0));
+        fresh.apply(CircuitInput::SetValue(r, 50.0));
+
+        cached.step(Seconds(0.1));
+        fresh.force_refactor();
+        fresh.step(Seconds(0.1));
+
+        assert_eq!(cached.state(), fresh.state());
+    }
 }

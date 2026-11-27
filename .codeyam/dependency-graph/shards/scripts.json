@@ -4,6 +4,10 @@
     "scripts/build-site.sh": {
       "importedBy": [],
       "imports": []
+    },
+    "scripts/check-budgets.sh": {
+      "importedBy": [],
+      "imports": []
     }
   }
 }

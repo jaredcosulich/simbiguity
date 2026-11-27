@@ -1124,6 +1124,7 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/simulation.rs"

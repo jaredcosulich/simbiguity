@@ -493,6 +493,7 @@
     "crates/simbiguity-render-wasm/src/status.rs::ERR_HANDLE": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
         "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
         "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
         "crates/simbiguity-render-wasm/src/slot.rs::no_view"
@@ -515,12 +516,13 @@
       "importedBy": [
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_commands_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_get_energy",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_len",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_ptr",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_len",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_ptr",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_push",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_results_ptr",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_camera",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance",
@@ -542,6 +544,10 @@
     "crates/simbiguity-render-wasm/src/status.rs::fail": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
+        "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout",
         "crates/simbiguity-render-wasm/src/slot.rs::no_view",
         "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
@@ -863,6 +869,7 @@
         "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",

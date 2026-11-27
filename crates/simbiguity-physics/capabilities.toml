@@ -1,2 +1,15 @@
-[capabilities]
-"physics" = "Simulation of point masses, springs, rods, and gravity."
+[[capability]]
+name = "physics"
+description = "Simulation of point masses, springs, rods, and gravity."
+proves = [
+    "world_tests::determinism",
+    "world_tests::pendulum_energy_is_conserved_by_verlet",
+    "world_tests::projectile_range",
+    "world_tests::spring_period",
+    "world_tests::pendulum_small_angle",
+    "world_tests::pendulum_large_angle",
+    "world_tests::rod_length",
+    "world_tests::bounce",
+    "world_tests::error_paths",
+    "world_tests::undamped_spring_energy_grows_under_euler"
+]

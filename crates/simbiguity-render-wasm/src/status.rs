@@ -19,7 +19,7 @@ thread_local! {
 }
 
 /// Records `message` as the last error and returns `code`.
-pub(crate) fn fail(code: i32, message: String) -> i32 {
+pub fn fail(code: i32, message: String) -> i32 {
     LAST_ERROR.with(|e| *e.borrow_mut() = message);
     code
 }

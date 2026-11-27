@@ -1,0 +1,36 @@
+{
+  "provenAt": "2026-11-27T16:17:21Z",
+  "slug": "fix-round-2-physics-energy-that-is-really-conserved-and-tests-from-the-textbook",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-physics/src/world.rs",
+    "crates/simbiguity-physics/src/world_tests.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "find": "self.particles[r.p1].velocity += delta1 / dt;",
+      "replace": "// neutered"
+    },
+    {
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "find": "self.particles[r.p2].velocity += delta2 / dt;",
+      "replace": "// neutered"
+    }
+  ],
+  "tests": {
+    "pendulum_energy_is_conserved_by_verlet": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "pendulum_energy_is_conserved_by_verlet"
+    ]
+  }
+}

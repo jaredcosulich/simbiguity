@@ -79,6 +79,7 @@
     "site/js/simbiguity.js::SimbiguityError": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
+        "site/demos/physics/demo.js::__file_root__",
         "site/js/simbiguity-render.js::loadCircuit3D",
         "site/js/simbiguity.js::loadCircuits"
       ],
@@ -227,6 +228,7 @@
     "site/js/simbiguity.js": {
       "importedBy": [
         "site/demos/hello-circuit/demo.js",
+        "site/demos/physics/demo.js",
         "site/demos/rc-charging/demo.js",
         "site/js/simbiguity-render.js"
       ],

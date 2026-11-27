@@ -2958,8 +2958,8 @@
   },
   "tests::pendulum_preset_steps_without_panicking": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-27T13:07:41.005Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-27T16:00:17.179Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
@@ -3041,8 +3041,8 @@
   },
   "tests::test_view": {
     "file": "crates/simbiguity-physics-view/src/lib.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-27T16:00:17.179Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T20:42:10.739Z"
@@ -3491,7 +3491,7 @@
   },
   "world::tests::test_world_new": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
@@ -3500,11 +3500,22 @@
   },
   "world_tests::bounce": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-27T16:13:07.506Z",
+      "fail|targeted|2026-11-27T16:00:17.179Z",
       "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::determinism": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T16:17:40.711Z"
     ]
   },
   "world_tests::energy_drift": {
@@ -3516,6 +3527,33 @@
       "pass|full|2026-11-27T00:47:12.673Z"
     ]
   },
+  "world_tests::error_paths": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T16:17:40.711Z"
+    ]
+  },
+  "world_tests::pendulum_energy_is_conserved_by_verlet": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T16:17:40.711Z"
+    ]
+  },
+  "world_tests::pendulum_large_angle": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T16:18:19.564Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T16:18:19.564Z"
+    ]
+  },
   "world_tests::pendulum_period": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
     "lastRunAt": "2026-11-27T13:16:00.967Z",
@@ -3525,9 +3563,18 @@
       "pass|full|2026-11-27T00:47:12.673Z"
     ]
   },
+  "world_tests::pendulum_small_angle": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T16:18:19.564Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T16:18:19.564Z"
+    ]
+  },
   "world_tests::projectile_range": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
@@ -3536,7 +3583,7 @@
   },
   "world_tests::rod_length": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
@@ -3545,11 +3592,20 @@
   },
   "world_tests::spring_period": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
+    ]
+  },
+  "world_tests::undamped_spring_energy_grows_under_euler": {
+    "file": "crates/simbiguity-physics/src/world_tests.rs",
+    "lastRunAt": "2026-11-27T16:18:09.222Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-27T16:17:40.711Z"
     ]
   }
 }

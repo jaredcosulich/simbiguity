@@ -1,9 +1,15 @@
-import { test } from 'node:test';
-import assert from 'node:assert/strict';
-import { parseState } from './state.js';
+import test from "node:test";
+import assert from "node:assert";
+import { parseState } from "./state.js";
 
-test('parses preset and integrator', () => {
-    const state = parseState('#preset=spring&integrator=explicit');
-    assert.equal(state.preset, 'spring');
-    assert.equal(state.integrator, 'explicit');
+test("parseState defaults", () => {
+    const s = parseState("");
+    assert.strictEqual(s.preset, "pendulum");
+    assert.strictEqual(s.integrator, "verlet");
+});
+
+test("parseState with values", () => {
+    const s = parseState("#preset=chain&integrator=explicit_euler");
+    assert.strictEqual(s.preset, "chain");
+    assert.strictEqual(s.integrator, "explicit_euler");
 });

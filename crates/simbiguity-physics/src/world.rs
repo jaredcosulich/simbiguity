@@ -3,7 +3,6 @@ use crate::energy::Energy;
 use crate::error::PhysicsError;
 use crate::forces::{Gravity, Spring};
 use crate::integrate::Integrator;
-use simbiguity_core::simulation::{Seconds, Simulation, Snapshot};
 use simbiguity_math::vec::Vec3;
 
 #[derive(Debug, Clone)]
@@ -175,30 +174,56 @@ impl World {
         }
     }
 
-    fn satisfy_constraints(&mut self) {
-        // Project positions 10 iterations
+    fn satisfy_position_constraints(&mut self, dt: f64, old_diffs: &[Vec3]) {
         for _ in 0..10 {
-            // Ground
-            if let Some(ref g) = self.ground {
-                for p in &mut self.particles {
-                    if !p.pinned && p.position.y < g.y {
-                        p.position.y = g.y;
-                        if p.velocity.y < 0.0 {
-                            p.velocity.y *= -g.restitution;
-                        }
+            for (i, r) in self.rods.iter().enumerate() {
+                let n0 = if old_diffs[i].length_squared() > 1e-9 {
+                    old_diffs[i].normalize().unwrap_or(Vec3::new(1.0, 0.0, 0.0))
+                } else {
+                    Vec3::new(1.0, 0.0, 0.0)
+                };
+                let diff = self.particles[r.p2].position - self.particles[r.p1].position;
+                let m1 = if self.particles[r.p1].pinned {
+                    0.0
+                } else {
+                    self.particles[r.p1].mass
+                };
+                let m2 = if self.particles[r.p2].pinned {
+                    0.0
+                } else {
+                    self.particles[r.p2].mass
+                };
+                let w1 = if m1 > 0.0 { 1.0 / m1 } else { 0.0 };
+                let w2 = if m2 > 0.0 { 1.0 / m2 } else { 0.0 };
+                let w = w1 + w2;
+                if w > 0.0 {
+                    let dot = diff.dot(n0);
+                    if dot.abs() > 1e-6 {
+                        let lambda =
+                            (r.length * r.length - diff.length_squared()) / (2.0 * w * dot);
+                        let delta1 = n0 * (-lambda * w1);
+                        let delta2 = n0 * (lambda * w2);
+                        self.particles[r.p1].position += delta1;
+                        self.particles[r.p1].velocity += delta1 / dt;
+                        self.particles[r.p2].position += delta2;
+                        self.particles[r.p2].velocity += delta2 / dt;
                     }
                 }
             }
+        }
+    }
 
-            // Rods
+    fn satisfy_velocity_constraints(&mut self) {
+        for _ in 0..10 {
             for r in &self.rods {
-                let p1 = self.particles[r.p1].position;
-                let p2 = self.particles[r.p2].position;
-                let diff = p2 - p1;
+                let diff = self.particles[r.p2].position - self.particles[r.p1].position;
                 let dist = diff.length();
                 if dist > 1e-9 {
-                    let err = dist - r.length;
-                    let correction = diff * (err / dist);
+                    let dir = diff / dist;
+                    let v1 = self.particles[r.p1].velocity;
+                    let v2 = self.particles[r.p2].velocity;
+                    let rel_v = v2 - v1;
+                    let v_corr = dir * rel_v.dot(dir);
                     let m1 = if self.particles[r.p1].pinned {
                         0.0
                     } else {
@@ -214,19 +239,6 @@ impl World {
                     let w = w1 + w2;
                     if w > 0.0 {
                         if w1 > 0.0 {
-                            self.particles[r.p1].position += correction * (w1 / w);
-                        }
-                        if w2 > 0.0 {
-                            self.particles[r.p2].position -= correction * (w2 / w);
-                        }
-
-                        // Correct velocity
-                        let dir = diff / dist;
-                        let v1 = self.particles[r.p1].velocity;
-                        let v2 = self.particles[r.p2].velocity;
-                        let rel_v = v2 - v1;
-                        let v_corr = dir * rel_v.dot(dir);
-                        if w1 > 0.0 {
                             self.particles[r.p1].velocity += v_corr * (w1 / w);
                         }
                         if w2 > 0.0 {
@@ -237,20 +249,12 @@ impl World {
             }
         }
     }
-}
 
-impl Default for World {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
-impl Simulation for World {
-    type State = Self;
-    type Input = PhysicsInput;
-
-    fn step(&mut self, dt: Seconds) {
-        let dt = dt.get();
+    /// Validates `dt` and executes one integration step.
+    pub fn step(&mut self, dt: f64) -> Result<(), PhysicsError> {
+        if dt.is_nan() || dt <= 0.0 {
+            return Err(PhysicsError::InvalidTimeStep);
+        }
         let mut active_pushes = alloc::vec::Vec::new();
         for input in self.input_queue.drain(..) {
             match input {
@@ -270,6 +274,11 @@ impl Simulation for World {
 
         self.apply_forces(&active_pushes);
 
+        let mut old_diffs = alloc::vec::Vec::with_capacity(self.rods.len());
+        for r in &self.rods {
+            old_diffs.push(self.particles[r.p2].position - self.particles[r.p1].position);
+        }
+
         match self.integrator {
             Integrator::ExplicitEuler => {
                 for p in &mut self.particles {
@@ -278,6 +287,8 @@ impl Simulation for World {
                         p.velocity += (p.force / p.mass) * dt;
                     }
                 }
+                self.satisfy_position_constraints(dt, &old_diffs);
+                self.satisfy_velocity_constraints();
             }
             Integrator::SymplecticEuler => {
                 for p in &mut self.particles {
@@ -286,45 +297,58 @@ impl Simulation for World {
                         p.position += p.velocity * dt;
                     }
                 }
+                self.satisfy_position_constraints(dt, &old_diffs);
+                self.satisfy_velocity_constraints();
             }
             Integrator::VelocityVerlet => {
-                // v(t+dt/2) = v(t) + a(t)*dt/2
-                // x(t+dt) = x(t) + v(t+dt/2)*dt
                 for p in &mut self.particles {
                     if !p.pinned {
                         p.velocity += (p.force / p.mass) * (dt * 0.5);
+                        let y_old = p.position.y;
                         p.position += p.velocity * dt;
+
+                        if let Some(ref g) = self.ground {
+                            if p.position.y < g.y && p.velocity.y < 0.0 {
+                                let f = (g.y - y_old) / (p.velocity.y * dt);
+                                let a = p.force.y / p.mass;
+                                let v_impact = p.velocity.y + a * (f - 0.5) * dt;
+                                let v_impact_new = -v_impact * g.restitution;
+                                p.velocity.y = v_impact_new + a * (0.5 - f) * dt;
+                                p.position.y = g.y + p.velocity.y * (dt * (1.0 - f));
+                            }
+                        }
                     }
                 }
+                self.satisfy_position_constraints(dt, &old_diffs);
                 self.apply_forces(&active_pushes);
-                // v(t+dt) = v(t+dt/2) + a(t+dt)*dt/2
                 for p in &mut self.particles {
                     if !p.pinned {
                         p.velocity += (p.force / p.mass) * (dt * 0.5);
                     }
                 }
+                self.satisfy_velocity_constraints();
             }
         }
 
-        self.satisfy_constraints();
+        Ok(())
     }
 
-    fn apply(&mut self, input: Self::Input) {
+    pub fn apply(&mut self, input: PhysicsInput) {
         self.input_queue.push(input);
     }
 
-    fn state(&self) -> &Self::State {
-        self
+    pub fn snapshot(&self) -> Self {
+        self.clone()
+    }
+
+    pub fn restore(&mut self, snapshot: &Self) {
+        *self = snapshot.clone();
     }
 }
 
-impl Snapshot for World {
-    type Snapshot = Self;
-    fn snapshot(&self) -> Self::Snapshot {
-        self.clone()
-    }
-    fn restore(&mut self, snapshot: &Self::Snapshot) {
-        *self = snapshot.clone();
+impl Default for World {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -332,7 +356,6 @@ impl Snapshot for World {
 mod tests {
     use super::*;
 
-    // Verifies that a new World is initialized with empty lists.
     #[test]
     fn test_world_new() {
         let world = World::new();

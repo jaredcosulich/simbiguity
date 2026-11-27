@@ -2930,7 +2930,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::pendulum_preset_steps_without_panicking",
-      "line": 340,
+      "line": 376,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -3443,7 +3443,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_world_new",
-      "line": 337,
+      "line": 360,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },
@@ -3452,8 +3452,17 @@
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::bounce",
-      "line": 133,
+      "line": 124,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that running the physics step repeatedly gives exactly the same state each time, including when saving and restoring snapshots.",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::determinism",
+      "line": 148,
+      "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
       "runner": "cargo"
     },
     {
@@ -3466,6 +3475,33 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that invalid inputs like negative mass or self-connected springs return expected errors.",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::error_paths",
+      "line": 176,
+      "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A swinging pendulum with no friction keeps its energy: kinetic plus potential stays constant. Velocity Verlet with a properly enforced rod should keep it within 1% over 10 seconds. If it doesn't, the integrator or the rod is leaking energy that real physics wouldn't.",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::pendulum_energy_is_conserved_by_verlet",
+      "line": 210,
+      "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies pendulum at large angles.",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::pendulum_large_angle",
+      "line": 81,
+      "registeredAt": "2026-11-27T16:18:19.564178772+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Pendulum 2.006 s period",
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
@@ -3475,11 +3511,20 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies pendulum at small angles.",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::pendulum_small_angle",
+      "line": 57,
+      "registeredAt": "2026-11-27T16:18:19.564178772+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Projectile range 20.387 m",
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::projectile_range",
-      "line": 9,
+      "line": 8,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -3488,7 +3533,7 @@
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::rod_length",
-      "line": 112,
+      "line": 103,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -3499,6 +3544,15 @@
       "key": "world_tests::spring_period",
       "line": 33,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that Euler integration causes an undamped spring to gain energy over time.",
+      "file": "crates/simbiguity-physics/src/world_tests.rs",
+      "format": "cargo",
+      "key": "world_tests::undamped_spring_energy_grows_under_euler",
+      "line": 234,
+      "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
       "runner": "cargo"
     }
   ],

@@ -7,18 +7,13 @@
         clippy::unreachable
     )
 )]
-use simbiguity_core::simulation::{Seconds, Simulation};
 use simbiguity_math::vec::Vec3;
 use simbiguity_physics::{
     constraints::Ground, error::PhysicsError, Integrator, PhysicsInput, World,
 };
 use simbiguity_physics_view::PhysicsView;
 use simbiguity_render::{encode_frame, FrameBuf};
-use simbiguity_render_wasm::status::{ERR_HANDLE, ERR_INDEX, OK};
-
-fn fail(code: i32, _message: String) -> i32 {
-    code
-}
+use simbiguity_render_wasm::status::{fail, ERR_HANDLE, ERR_INDEX, OK};
 
 use std::cell::RefCell;
 use std::vec::Vec;
@@ -29,6 +24,7 @@ pub struct Session {
     commands: simbiguity_render::CommandBuffer,
     frame_buf: FrameBuf,
     time: f64,
+    results: [f64; 4],
 }
 
 thread_local! {
@@ -78,12 +74,19 @@ fn create_pendulum() -> Result<Session, PhysicsError> {
     world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
     world.add_particle(1.0, Vec3::new(4.0, 5.0, 0.0), false)?;
     world.add_rod(0, 1, 4.0)?;
+    let e = world.compute_energy();
     Ok(Session {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
     })
 }
 
@@ -103,12 +106,19 @@ fn create_spring_mass() -> Result<Session, PhysicsError> {
     world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
     world.add_particle(1.0, Vec3::new(0.0, 2.0, 0.0), false)?;
     world.add_spring(0, 1, 2.0, 10.0, 0.5)?;
+    let e = world.compute_energy();
     Ok(Session {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
     })
 }
 
@@ -131,12 +141,19 @@ fn create_projectile() -> Result<Session, PhysicsError> {
     });
     let p = world.add_particle(1.0, Vec3::new(0.0, 0.05, 0.0), false)?;
     world.particles[p].velocity = Vec3::new(10.0, 10.0, 0.0);
+    let e = world.compute_energy();
     Ok(Session {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
     })
 }
 
@@ -158,12 +175,19 @@ fn create_chain() -> Result<Session, PhysicsError> {
         world.add_particle(1.0, Vec3::new(i as f64, 5.0, 0.0), false)?;
         world.add_rod(i - 1, i, 1.0)?;
     }
+    let e = world.compute_energy();
     Ok(Session {
         world,
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
     })
 }
 
@@ -204,12 +228,18 @@ pub extern "C" fn phys_push(h: u32, index: u32, fx: f64, fy: f64, fz: f64) -> i3
 
 #[no_mangle]
 pub extern "C" fn phys_advance(h: u32, dt: f64) -> i32 {
-    if dt.is_nan() || dt <= 0.0 {
-        return fail(-2, "invalid time step".into());
-    }
     with_session(h, |s| {
-        s.world.step(Seconds(dt));
+        if let Err(e) = s.world.step(dt) {
+            return map_error(e);
+        }
         s.time += dt;
+        let e = s.world.compute_energy();
+        s.results = [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ];
         OK
     })
 }
@@ -315,17 +345,26 @@ pub extern "C" fn phys_set_camera(h: u32, yaw_deg: f64, pitch_deg: f64, distance
 }
 
 #[no_mangle]
-#[allow(clippy::not_unsafe_ptr_arg_deref)]
-pub extern "C" fn phys_get_energy(h: u32, out_ptr: *mut f64) -> i32 {
+pub extern "C" fn phys_results_ptr(h: u32) -> *const f64 {
+    let mut ptr = core::ptr::null();
     with_session(h, |s| {
-        let e = s.world.compute_energy();
-        unsafe {
-            *out_ptr.add(0) = e.kinetic;
-            *out_ptr.add(1) = e.potential_gravity;
-            *out_ptr.add(2) = e.potential_spring;
-            *out_ptr.add(3) = e.total();
-        }
+        ptr = s.results.as_ptr();
         OK
+    });
+    ptr
+}
+
+#[no_mangle]
+pub extern "C" fn phys_free(h: u32) -> i32 {
+    SLOTS.with(|slots| {
+        let mut slots = slots.borrow_mut();
+        match (h as usize).checked_sub(1).and_then(|i| slots.get_mut(i)) {
+            Some(slot @ Some(_)) => {
+                *slot = None;
+                OK
+            }
+            _ => fail(ERR_HANDLE, std::format!("no session with handle {h}")),
+        }
     })
 }
 
@@ -333,9 +372,6 @@ pub extern "C" fn phys_get_energy(h: u32, out_ptr: *mut f64) -> i32 {
 mod tests {
     use super::*;
 
-    /// The pendulum preset is what a learner sees first. It must build two
-    /// particles (a pinned anchor and a bob) and keep swinging for 10 seconds
-    /// of frames without crashing the page.
     #[test]
     fn pendulum_preset_steps_without_panicking() {
         let h = phys_new_pendulum();
@@ -343,5 +379,6 @@ mod tests {
         for _ in 0..600 {
             assert!(phys_advance(h, 1.0 / 60.0) >= 0);
         }
+        phys_free(h);
     }
 }

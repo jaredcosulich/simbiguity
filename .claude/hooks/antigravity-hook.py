@@ -23,21 +23,11 @@ parse, runs the right one, and translates its answer back.
   PreInvocation / SessionStart: answer {"injectSteps": [...]} to add context
   Stop: answers {"decision": "continue", "reason"} to keep the agent going
 
-Tool names and PascalCase arguments are translated through TOOL_NAME_MAP and
-`to_claude_tool_input`; both generations of `agy` file tools are mapped
-(`edit_file` / `write_file` / `read_file` with `Path`, `Target`,
-`Replacement`, `Content`, and the older `replace_file_content` /
-`write_to_file` / `view_file` with `TargetFile`, `TargetContent`,
-`ReplacementContent`, `CodeContent`). An unmapped tool that carries a file
-path is logged once per conversation to stderr.
-
 A refusal is a stdout DOCUMENT, not an exit code — which is the translation
 this shim exists for. Antigravity has no UserPromptSubmit; PreInvocation (once
 per agent invocation) is where the step context goes. PostToolUse has no
 injection slot, so the step hook's per-tool restriction reminder is not shown;
-the next PreInvocation carries the step context regardless. Stop is forwarded
-as `{hook_event_name: "Stop", ..., stop_hook_active: false}`; the step hook
-classifies it by the event name and runs its turn-end idle-stop check.
+the next PreInvocation carries the step context regardless.
 
 ## Idle hook
 
@@ -65,28 +55,14 @@ import time
 import urllib.request
 
 SESSION_RECORD_REL = os.path.join(".codeyam", "state", "antigravity-session.json")
-UNMAPPED_TOOLS_REL = os.path.join(".codeyam", "state", "antigravity-unmapped-tools.json")
-# Argument keys that mark a tool call as file-shaped: an unmapped tool carrying
-# one is the shape that silently skips the Write/Edit guards.
-FILE_ARG_KEYS = ("Path", "TargetFile", "AbsolutePath", "FilePath", "file_path")
 SESSION_TOKEN_REL = os.path.join(".codeyam", "session-token")
 IDLE_HOOK_TIMEOUT_SECS = 3
 
 # Antigravity tool name -> the Claude Code tool name the Python hooks match on.
 # An unmapped name passes through verbatim: guessing would write wrong tracking
 # state, and the hooks' allow-lists treat an unknown name conservatively.
-#
-# Two generations of file tools are mapped. `agy` 1.5.18 edits with
-# `edit_file` {Path, Target, Replacement}, creates with `write_file`
-# {Path, Content, Overwrite} and reads with `read_file` {Path}; older builds
-# used `replace_file_content` / `write_to_file` / `view_file`. An unmapped file
-# tool reaches the pretool hook under its own name with no `file_path`, so no
-# Write/Edit guard runs on it — see `note_unmapped_file_tool`.
 TOOL_NAME_MAP = {
     "run_command": "Bash",
-    "write_file": "Write",
-    "edit_file": "Edit",
-    "read_file": "Read",
     "write_to_file": "Write",
     "replace_file_content": "Edit",
     "multi_replace_file_content": "Edit",
@@ -140,10 +116,10 @@ def to_claude_tool_input(args):
     out = dict(a)
     for alias, keys in (
         ("command", ("CommandLine", "command")),
-        ("file_path", ("TargetFile", "AbsolutePath", "FilePath", "Path", "file_path")),
-        ("content", ("CodeContent", "Content", "content")),
-        ("old_string", ("TargetContent", "Target", "old_string")),
-        ("new_string", ("ReplacementContent", "Replacement", "new_string")),
+        ("file_path", ("TargetFile", "AbsolutePath", "FilePath", "file_path")),
+        ("content", ("CodeContent", "content")),
+        ("old_string", ("TargetContent", "old_string")),
+        ("new_string", ("ReplacementContent", "new_string")),
         ("path", ("DirectoryPath", "SearchPath", "path")),
         ("pattern", ("Query", "Pattern", "pattern")),
         ("url", ("Url", "url")),
@@ -172,22 +148,15 @@ def record_session(project_dir, payload):
         "transcriptPath": payload.get("transcriptPath") or None,
         "recordedAt": int(time.time()),
     }
-    _write_json_atomic(os.path.join(project_dir, SESSION_RECORD_REL), record)
-
-
-def _write_json_atomic(path, doc):
-    """Write `doc` to `path` through a temp file and a rename, so a reader never
-    sees a half-written file. Returns False when the write failed; a state file
-    the shim cannot write must never fail the agent's turn."""
+    path = os.path.join(project_dir, SESSION_RECORD_REL)
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         tmp = path + ".tmp"
         with open(tmp, "w") as f:
-            json.dump(doc, f)
+            json.dump(record, f)
         os.replace(tmp, path)
     except OSError:
-        return False
-    return True
+        pass
 
 
 def _post_idle_hook_once(port, body, token):
@@ -317,62 +286,12 @@ def inject(text):
 
 
 def base_payload(event, payload):
-    # `harness` lets the Claude hooks word a recovery in this harness's own tool
-    # names (`edit_file` / `Target` / `Replacement`, not `Edit` / `old_string`);
-    # Claude Code sends no such key, so its absence means Claude.
     return {
-        "harness": "antigravity",
         "hook_event_name": event,
         "session_id": payload.get("conversationId") or "",
         "transcript_path": payload.get("transcriptPath") or "",
         "cwd": project_dir_from(payload),
     }
-
-
-def note_unmapped_file_tool(project_dir, payload, name, tool_input):
-    """Write one stderr line for an unmapped tool that carries a file path.
-
-    Such a call reaches the pretool hook under its own name, so every
-    Write/Edit guard misses it, which is how a whole `agy` rename went
-    unnoticed. The shim's stderr lands in `.codeyam/logs/editor-hook-stderr.log`,
-    so one line there makes the gap visible on a field VM. It is written once
-    per tool name per conversation (tracked in UNMAPPED_TOOLS_REL) so the log
-    is not flooded. Returns True when it wrote the line."""
-    if not is_unmapped_file_tool(name, tool_input):
-        return False
-    conversation_id = payload.get("conversationId") or ""
-    path = os.path.join(project_dir, UNMAPPED_TOOLS_REL)
-    seen = _seen_unmapped_tools(path, conversation_id)
-    if name in seen:
-        return False
-    sys.stderr.write(
-        f"antigravity-hook: unmapped file tool `{name}` passed through without a "
-        "Claude tool name, so no Write/Edit guard checked it. Map it in "
-        "TOOL_NAME_MAP (.claude/hooks/antigravity-hook.py).\n"
-    )
-    _write_json_atomic(path, {"conversationId": conversation_id, "names": seen + [name]})
-    return True
-
-
-def is_unmapped_file_tool(name, tool_input):
-    """True for a tool name TOOL_NAME_MAP does not translate whose input names a
-    file: the shape that reaches the pretool hook with no Write/Edit guard."""
-    if not name or name in TOOL_NAME_MAP:
-        return False
-    return any(isinstance(tool_input.get(k), str) and tool_input.get(k) for k in FILE_ARG_KEYS)
-
-
-def _seen_unmapped_tools(path, conversation_id):
-    """The unmapped tool names already reported in this conversation. A record
-    from another conversation, or an unreadable one, counts as none seen."""
-    try:
-        with open(path) as f:
-            doc = json.load(f)
-    except (OSError, ValueError):
-        return []
-    if not isinstance(doc, dict) or doc.get("conversationId") != conversation_id:
-        return []
-    return [n for n in doc.get("names") or [] if isinstance(n, str)]
 
 
 def pre_tool_use(project_dir, payload):
@@ -381,7 +300,6 @@ def pre_tool_use(project_dir, payload):
     claude = base_payload("PreToolUse", payload)
     claude["tool_name"] = TOOL_NAME_MAP.get(name, name)
     claude["tool_input"] = to_claude_tool_input(call.get("args"))
-    note_unmapped_file_tool(project_dir, payload, name, claude["tool_input"])
     result = run_hook(project_dir, "editor-pretool-hook.py", claude)
     if result is None:
         return {"decision": "allow"}
@@ -422,10 +340,6 @@ def context_event(project_dir, payload, claude_event):
 
 def stop(project_dir, payload):
     claude = base_payload("Stop", payload)
-    # Antigravity has no re-entry signal; the step hook's per-step one-shot
-    # claim is the real loop guard. Send Claude's field explicitly anyway, so
-    # the payload matches the shape `emit_wedge_block` documents.
-    claude["stop_hook_active"] = False
     result = run_hook(project_dir, "editor-step-hook.py", claude)
     try:
         doc = json.loads((result.stdout if result else "") or "")

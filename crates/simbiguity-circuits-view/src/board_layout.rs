@@ -10,6 +10,9 @@ pub enum LayoutError {
     BufferTooShort,
     UnknownComponentKind,
     BadNodeId,
+    TrailingWords,
+    BadCoord,
+    MismatchedTerminals,
 }
 
 impl LayoutError {
@@ -22,6 +25,9 @@ impl LayoutError {
             Self::BufferTooShort => "buffer too short",
             Self::UnknownComponentKind => "unknown component kind",
             Self::BadNodeId => "bad node id",
+            Self::TrailingWords => "trailing words in buffer",
+            Self::BadCoord => "coordinate out of bounds",
+            Self::MismatchedTerminals => "wire endpoints do not match component terminals",
         }
     }
 }
@@ -71,10 +77,31 @@ impl BoardLayout {
             }
             let start = w.points.first().ok_or(LayoutError::RouteTooShort)?;
             let end = w.points.last().ok_or(LayoutError::RouteTooShort)?;
-            let start_ok = self.parts.iter().any(|p| &p.cell == start);
-            let end_ok = self.parts.iter().any(|p| &p.cell == end);
-            if !start_ok || !end_ok {
-                return Err(LayoutError::DanglingWire);
+            let p_start = self
+                .parts
+                .iter()
+                .find(|p| &p.cell == start)
+                .ok_or(LayoutError::DanglingWire)?;
+            let p_end = self
+                .parts
+                .iter()
+                .find(|p| &p.cell == end)
+                .ok_or(LayoutError::DanglingWire)?;
+
+            let term =
+                |cid: ComponentId| -> (simbiguity_circuits::NodeId, simbiguity_circuits::NodeId) {
+                    let p = &circuit.parts()[cid.index()];
+                    (p.a, p.b)
+                };
+
+            let (wa, wb) = term(w.component);
+            let (ps_a, ps_b) = term(p_start.component);
+            let (pe_a, pe_b) = term(p_end.component);
+
+            let matches_fwd = (wa == ps_a || wa == ps_b) && (wb == pe_a || wb == pe_b);
+            let matches_rev = (wb == ps_a || wb == ps_b) && (wa == pe_a || wa == pe_b);
+            if !matches_fwd && !matches_rev {
+                return Err(LayoutError::MismatchedTerminals);
             }
         }
         placed.sort();
@@ -105,6 +132,15 @@ impl BoardLayout {
             f64::from_bits((words[i] as u64) | ((words[i + 1] as u64) << 32))
         };
 
+        let as_coord = |w: u32| -> Result<i32, LayoutError> {
+            let v = w as i32;
+            if !(-100..=100).contains(&v) {
+                Err(LayoutError::BadCoord)
+            } else {
+                Ok(v)
+            }
+        };
+
         for _ in 0..num_parts {
             if pos >= words.len() {
                 return Err(LayoutError::BufferTooShort);
@@ -121,23 +157,22 @@ impl BoardLayout {
             let a = nodes[a_idx];
             let b = nodes[b_idx];
 
-            let rotation = match words.get(pos + 5).copied().unwrap_or(0) {
-                0 => Rotation::Deg0,
-                1 => Rotation::Deg90,
-                2 => Rotation::Deg180,
-                _ => Rotation::Deg270,
-            };
-
             match kind {
                 1 => {
                     if pos + 8 > words.len() {
                         return Err(LayoutError::BufferTooShort);
                     }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
                     let emf = f64_from(words, pos + 6);
                     let cid = c.add_battery(a, b, emf);
                     parts.push(PartPlacement {
                         component: cid,
-                        cell: (words[pos + 3] as i32, words[pos + 4] as i32),
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
                         rotation,
                     });
                     pos += 8;
@@ -146,10 +181,16 @@ impl BoardLayout {
                     if pos + 7 > words.len() {
                         return Err(LayoutError::BufferTooShort);
                     }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
                     let cid = c.add_switch(a, b, words[pos + 6] != 0);
                     parts.push(PartPlacement {
                         component: cid,
-                        cell: (words[pos + 3] as i32, words[pos + 4] as i32),
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
                         rotation,
                     });
                     pos += 7;
@@ -158,12 +199,18 @@ impl BoardLayout {
                     if pos + 10 > words.len() {
                         return Err(LayoutError::BufferTooShort);
                     }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
                     let volts = f64_from(words, pos + 6);
                     let watts = f64_from(words, pos + 8);
                     let cid = c.add_bulb(a, b, volts, watts);
                     parts.push(PartPlacement {
                         component: cid,
-                        cell: (words[pos + 3] as i32, words[pos + 4] as i32),
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
                         rotation,
                     });
                     pos += 10;
@@ -179,7 +226,10 @@ impl BoardLayout {
                     let cid = c.connect(a, b);
                     let mut points = alloc::vec::Vec::new();
                     for i in 0..pts {
-                        points.push((words[pos + 4 + i * 2] as i32, words[pos + 5 + i * 2] as i32));
+                        points.push((
+                            as_coord(words[pos + 4 + i * 2])?,
+                            as_coord(words[pos + 5 + i * 2])?,
+                        ));
                     }
                     wires.push(WireRoute {
                         component: cid,
@@ -189,6 +239,9 @@ impl BoardLayout {
                 }
                 _ => return Err(LayoutError::UnknownComponentKind),
             }
+        }
+        if pos != words.len() {
+            return Err(LayoutError::TrailingWords);
         }
         let layout = BoardLayout { parts, wires };
         layout.validate(&c)?;

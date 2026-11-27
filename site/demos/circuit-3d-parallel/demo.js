@@ -14,16 +14,10 @@ async function main() {
 
   // Layout buffer format for a parallel circuit
   // Words: node_count, num_parts, [parts...]
-  // Nodes: 0, 1, 2, 3, 4, 5
-  // Components:
-  // Battery: 1, a=1, b=0, x=0, z=0, r=0, emf=12.0
-  // Bulb 1:  3, a=2, b=0, x=3, z=-1, r=0, volts=12.0, watts=6.0
-  // Bulb 2:  3, a=2, b=0, x=3, z=1, r=0, volts=12.0, watts=6.0
-  // Wire 1:  4, a=1, b=2, pts=2, [(0,0), (3,0)] // Wait, battery cell is (0,0)?
-  const buf = new Uint32Array(100);
+  const buf = new Uint32Array(200);
   let pos = 0;
-  buf[pos++] = 4; // nodes: 0(minus), 1(plus), 2(switch top), 3(split)
-  buf[pos++] = 6; // 3 parts, 3 wires
+  buf[pos++] = 5; // nodes: 0(minus), 1(batt+), 2(series-), 3(split), 4(top switch-)
+  buf[pos++] = 9; // 5 parts, 4 wires
   
   const putF64 = (v) => {
     const arr = new Float64Array([v]);
@@ -32,37 +26,48 @@ async function main() {
     buf[pos++] = u32[1];
   };
 
-  // Battery: kind=1, nodes 1, 0, cell 0, 0, rot 0
-  buf[pos++] = 1; buf[pos++] = 1; buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 0; putF64(12.0);
+  // Battery: kind=1, nodes 1, 0, cell -2, 0, rot 0
+  buf[pos++] = 1; buf[pos++] = 1; buf[pos++] = 0; buf[pos++] = -2 >>> 0; buf[pos++] = 0; buf[pos++] = 0; putF64(24.0);
   
-  // Switch: kind=2, nodes 1, 2, cell 1, 0, rot 0
-  buf[pos++] = 2; buf[pos++] = 1; buf[pos++] = 2; buf[pos++] = 1; buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 1; // closed=1
-  
-  // Bulb 1 (top branch): kind=3, nodes 2, 0, cell 3, -2, rot 0
-  buf[pos++] = 3; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 3; buf[pos++] = -2 >>> 0; buf[pos++] = 0; putF64(12.0); putF64(6.0);
-  
-  // Bulb 2 (bottom branch): kind=3, nodes 2, 0, cell 3, 2, rot 0
-  buf[pos++] = 3; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 3; buf[pos++] = 2; buf[pos++] = 0; putF64(12.0); putF64(6.0);
+  // Series Bulb: kind=3, nodes 1, 2, cell 0, 0, rot 0
+  buf[pos++] = 3; buf[pos++] = 1; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 0; putF64(12.0); putF64(6.0);
 
-  // Wire 1 (split): kind=4, nodes 2, 3(wait actually it connects switch to bulbs), cell 2,0
-  buf[pos++] = 4; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 3; // 3 points
-  buf[pos++] = 1; buf[pos++] = 0; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 3; buf[pos++] = -2 >>> 0;
+  // Switch (top branch): kind=2, nodes 2, 4, cell 2, -2, rot 0
+  buf[pos++] = 2; buf[pos++] = 2; buf[pos++] = 4; buf[pos++] = 2; buf[pos++] = -2 >>> 0; buf[pos++] = 0; buf[pos++] = 1; // closed=1
   
-  // Wire 2: bottom branch
-  buf[pos++] = 4; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 3; // 3 points
-  buf[pos++] = 1; buf[pos++] = 0; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 3; buf[pos++] = 2;
+  // Bulb 1 (top branch): kind=3, nodes 4, 0, cell 4, -2, rot 0
+  buf[pos++] = 3; buf[pos++] = 4; buf[pos++] = 0; buf[pos++] = 4; buf[pos++] = -2 >>> 0; buf[pos++] = 0; putF64(12.0); putF64(6.0);
   
+  // Bulb 2 (bottom branch): kind=3, nodes 2, 0, cell 4, 2, rot 0
+  buf[pos++] = 3; buf[pos++] = 2; buf[pos++] = 0; buf[pos++] = 4; buf[pos++] = 2; buf[pos++] = 0; putF64(12.0); putF64(6.0);
+
+  // Wire 1: batt- to bottom branch and up to top branch
+  buf[pos++] = 4; buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 4; // 4 points
+  buf[pos++] = -2 >>> 0; buf[pos++] = 0; buf[pos++] = 4; buf[pos++] = 2; buf[pos++] = 4; buf[pos++] = 0; buf[pos++] = 4; buf[pos++] = -2 >>> 0;
+  
+  // Wire 2: batt+ to series bulb
+  buf[pos++] = 4; buf[pos++] = 1; buf[pos++] = 1; buf[pos++] = 2; // 2 points
+  buf[pos++] = -2 >>> 0; buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 0;
+
+  // Wire 3: series bulb to switch and bottom bulb
+  buf[pos++] = 4; buf[pos++] = 2; buf[pos++] = 2; buf[pos++] = 3; // 3 points
+  buf[pos++] = 0; buf[pos++] = 0; buf[pos++] = 2; buf[pos++] = -2 >>> 0; buf[pos++] = 4; buf[pos++] = 2;
+
+  // Wire 4: switch to top bulb
+  buf[pos++] = 4; buf[pos++] = 4; buf[pos++] = 4; buf[pos++] = 2; // 2 points
+  buf[pos++] = 2; buf[pos++] = -2 >>> 0; buf[pos++] = 4; buf[pos++] = -2 >>> 0;
+
   const ptr = w.sb_malloc(pos * 4);
   const mem = new Uint32Array(w.memory.buffer, ptr, pos);
   mem.set(buf.subarray(0, pos));
   
   const handle = w.c3d_new_from_layout(ptr, pos);
+  w.sb_free(ptr, pos * 4);
   if (handle === 0) {
     const err = new TextDecoder().decode(new Uint8Array(w.memory.buffer, w.sb_last_error_ptr(), w.sb_last_error_len()));
     console.error("Layout error:", err);
     return;
   }
-  w.sb_free(ptr, pos * 4);
   
   const view = new Circuit3D({ handle });
   

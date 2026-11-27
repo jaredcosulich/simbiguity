@@ -79,7 +79,7 @@ fn toggle_swings_the_lever() {
     v.seek(0.0);
     let open_tip = v.scene().node(v.parts.knobs[0]).transform.get(1, 3);
     assert!(v.toggle_switch());
-    assert!(v.is_closed());
+    assert!(v.readouts().closed);
     v.advance(1.0);
     let closed_tip = v.scene().node(v.parts.knobs[0]).transform.get(1, 3);
     assert!(closed_tip < open_tip, "the knob drops as the lever closes");
@@ -92,7 +92,7 @@ fn toggle_swings_the_lever() {
 fn blowing_and_replacing_the_bulb() {
     let mut v = CircuitView::new(12.0, true);
     v.set_volts(24.0);
-    assert!(v.is_blown());
+    assert!(v.readouts().blown);
     let r = v.readouts();
     assert_eq!((r.current, r.particle_speed), (0.0, 0.0));
     let s = v.scene();
@@ -107,7 +107,7 @@ fn blowing_and_replacing_the_bulb() {
     );
     v.set_volts(12.0);
     v.replace_bulb();
-    assert!(!v.is_blown());
+    assert!(!v.readouts().blown);
     assert!((v.readouts().current - 0.5).abs() < 1e-9);
 }
 
@@ -144,24 +144,47 @@ fn default_camera_is_three_quarter() {
 /// can't see that the circuit is parallel at all.
 #[test]
 fn parallel_bulbs_are_drawn_in_their_own_cells() {
-    let (circuit, layout, bulb_a, bulb_b) = parallel_fixture();
-    let view = CircuitView::from_layout(circuit, layout);
-    assert_ne!(view.part_position(bulb_a), view.part_position(bulb_b));
+    let (view, lone, series_a) = one_bright_two_dim_fixture();
+    assert_ne!(view.part_position(lone), view.part_position(series_a));
 }
 
-fn parallel_fixture() -> (Circuit, BoardLayout, ComponentId, ComponentId) {
-    let mut c = Circuit::new();
-    let n0 = c.node();
-    let n1 = c.node();
-    let n2 = c.node();
-    let n3 = c.node();
-    let battery = c.add_battery(n1, n0, 6.0);
-    let switch = c.add_switch(n1, n2, true);
-    let bulb_a = c.add_bulb(n2, n0, 6.0, 3.0);
-    let bulb_b = c.add_bulb(n2, n0, 6.0, 3.0);
-    let w1 = c.connect(n2, n3);
+/// Put a bulb on its own across the battery, and two more bulbs in series on
+/// a parallel branch. The lone bulb gets the full voltage and the series pair
+/// get half each, so they're much dimmer. Their glows must differ, or the 3D
+/// view is lying about the circuit.
+#[test]
+fn each_bulb_glows_at_its_own_brightness() {
+    let (view, lone, series_a) = one_bright_two_dim_fixture();
+    let view = settle(view);
+    assert!(view.glow_of(lone) > 2.0 * view.glow_of(series_a));
+}
 
-    use crate::board_layout::{PartPlacement, Rotation, WireRoute};
+fn one_bright_two_dim_fixture() -> (CircuitView, ComponentId, ComponentId) {
+    let mut c = Circuit::new();
+    let batt_minus = c.node();
+    let batt_plus = c.node();
+
+    let lone_minus = c.node();
+    let lone_plus = c.node();
+
+    let series_a_plus = c.node();
+    let series_a_minus = c.node();
+
+    let series_b_plus = c.node();
+    let series_b_minus = c.node();
+
+    let battery = c.add_battery(batt_plus, batt_minus, 12.0);
+    let lone = c.add_bulb(lone_plus, lone_minus, 12.0, 6.0);
+    let series_a = c.add_bulb(series_a_plus, series_a_minus, 12.0, 6.0);
+    let series_b = c.add_bulb(series_b_plus, series_b_minus, 12.0, 6.0);
+
+    let w1 = c.connect(batt_plus, lone_plus);
+    let w2 = c.connect(batt_plus, series_a_plus);
+    let w3 = c.connect(series_a_minus, series_b_plus);
+    let w4 = c.connect(series_b_minus, batt_minus);
+    let w5 = c.connect(lone_minus, batt_minus);
+
+    use crate::board_layout::{BoardLayout, PartPlacement, Rotation, WireRoute};
     let layout = BoardLayout {
         parts: alloc::vec![
             PartPlacement {
@@ -170,36 +193,58 @@ fn parallel_fixture() -> (Circuit, BoardLayout, ComponentId, ComponentId) {
                 rotation: Rotation::Deg0
             },
             PartPlacement {
-                component: switch,
+                component: lone,
+                cell: (0, 1),
+                rotation: Rotation::Deg0
+            },
+            PartPlacement {
+                component: series_a,
                 cell: (1, 0),
                 rotation: Rotation::Deg0
             },
             PartPlacement {
-                component: bulb_a,
+                component: series_b,
                 cell: (2, 0),
                 rotation: Rotation::Deg0
             },
-            PartPlacement {
-                component: bulb_b,
-                cell: (2, 2),
-                rotation: Rotation::Deg0
+        ],
+        wires: alloc::vec![
+            WireRoute {
+                component: w1,
+                points: alloc::vec![(0, 0), (0, 1)]
+            },
+            WireRoute {
+                component: w2,
+                points: alloc::vec![(0, 0), (1, 0)]
+            },
+            WireRoute {
+                component: w3,
+                points: alloc::vec![(1, 0), (2, 0)]
+            },
+            WireRoute {
+                component: w4,
+                points: alloc::vec![(2, 0), (0, 0)]
+            },
+            WireRoute {
+                component: w5,
+                points: alloc::vec![(0, 1), (0, 0)]
             },
         ],
-        wires: alloc::vec![WireRoute {
-            component: w1,
-            points: alloc::vec![(2, 0), (2, 2)]
-        }],
     };
-    (c, layout, bulb_a, bulb_b)
+    let view = CircuitView::from_layout(c, layout).unwrap();
+    (view, lone, series_a)
+}
+
+fn settle(mut view: CircuitView) -> CircuitView {
+    view.seek(3.0);
+    view
 }
 
 impl CircuitView {
     pub fn part_position(&self, id: ComponentId) -> Vec3 {
-        for (i, p) in self.layout.parts.iter().enumerate() {
+        for p in &self.layout.parts {
             if p.component == id {
                 if let Component::Bulb { .. } = self.sim.circuit().component(id) {
-                    // find which bulb in glasses array
-                    // wait, glasses is just in order of bulbs.
                     let mut b_idx = 0;
                     for part in &self.layout.parts {
                         if part.component == id {

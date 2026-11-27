@@ -32,7 +32,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::append_rebases_indices",
-      "line": 324,
+      "line": 339,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -41,7 +41,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::charges_start_empty",
-      "line": 299,
+      "line": 308,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -50,7 +50,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::every_component_is_pickable",
-      "line": 251,
+      "line": 253,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -59,7 +59,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::filament_paths_share_their_feet",
-      "line": 315,
+      "line": 330,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -68,7 +68,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::parts_point_at_the_animated_nodes",
-      "line": 273,
+      "line": 275,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1031,7 +1031,7 @@
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
       "key": "layout::tests::empty_loop_is_inert",
-      "line": 155,
+      "line": 128,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1040,7 +1040,7 @@
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
       "key": "layout::tests::lever_and_knob_follow_the_angle",
-      "line": 170,
+      "line": 145,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1076,7 +1076,7 @@
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
       "key": "layout::tests::wrap_maps_into_the_period",
-      "line": 162,
+      "line": 136,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -2872,6 +2872,24 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that layout buffer unpacking works and bridge methods can instantiate components.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::layout_bridge_exports",
+      "line": 147,
+      "registeredAt": "2026-11-27T17:20:09.756943591+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that the bridge safely rejects structurally invalid layout buffers.",
+      "file": "crates/simbiguity-render-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::layout_bridge_rejects_malformed_buffer",
+      "line": 170,
+      "registeredAt": "2026-11-27T17:20:09.756943591+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Package keys are read from the package table only, with escaped quotes.",
       "file": "xtask/src/main_tests.rs",
       "format": "cargo",
@@ -3301,6 +3319,15 @@
       "key": "view_tests::default_camera_is_three_quarter",
       "line": 136,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Put a bulb on its own across the battery, and two more bulbs in series on a parallel branch. The lone bulb gets the full voltage and the series pair get half each, so they're much dimmer. Their glows must differ, or the 3D view is lying about the circuit.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::each_bulb_glows_at_its_own_brightness",
+      "line": 156,
+      "registeredAt": "2026-11-27T17:20:09.756943591+00:00",
       "runner": "cargo"
     },
     {

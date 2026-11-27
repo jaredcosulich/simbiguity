@@ -24,7 +24,6 @@
 //! Time advances through a [`FixedClock`] at [`STEP`], so the same inputs
 //! give the same frame on every machine, and [`CircuitView::seek`] can jump
 //! to an exact moment for pixel-stable captures.
-#![allow(missing_docs, dead_code, unused_imports, unused_variables)]
 #![no_std]
 #![forbid(unsafe_code)]
 
@@ -114,6 +113,7 @@ pub struct CircuitView {
 }
 
 impl CircuitView {
+    #[allow(clippy::unwrap_used)]
     pub fn new(volts: f64, closed: bool) -> CircuitView {
         let mut c = Circuit::new();
         let (n1, n2, n3, n4, n5, n6) = (c.node(), c.node(), c.node(), c.node(), c.node(), c.node());
@@ -124,10 +124,14 @@ impl CircuitView {
         let w2 = c.connect(n3, n4);
         let w3 = c.connect(n5, n6);
         let layout = BoardLayout::hello_layout(battery, switch, bulb, [w1, w2, w3]);
-        Self::from_layout(c, layout)
+        Self::from_layout(c, layout).unwrap()
     }
 
-    pub fn from_layout(circuit: Circuit, layout: BoardLayout) -> CircuitView {
+    pub fn from_layout(
+        circuit: Circuit,
+        layout: BoardLayout,
+    ) -> Result<CircuitView, crate::board_layout::LayoutError> {
+        layout.validate(&circuit)?;
         let (scene, parts, _) = build_scene(&circuit, &layout);
         let num_switches = parts.levers.len();
         let num_bulbs = parts.glasses.len();
@@ -153,9 +157,8 @@ impl CircuitView {
             commands: CommandBuffer::new(),
             frame_buf: simbiguity_render::FrameBuf::new(),
         };
-        // Initial setup omitted for brevity in minimal prototype
         view.seek(0.0);
-        view
+        Ok(view)
     }
 
     fn lever_target(&self, i: usize) -> f64 {
@@ -187,77 +190,66 @@ impl CircuitView {
     }
 
     /// Is the switch closed?
-    fn first_battery(&self) -> Option<simbiguity_circuits::ComponentId> {
-        self.layout
-            .parts
-            .iter()
-            .find(|p| {
-                matches!(
-                    self.sim.circuit().component(p.component),
-                    Component::Battery { .. }
-                )
-            })
-            .map(|p| p.component)
+    pub fn is_closed(&self, id: ComponentId) -> bool {
+        matches!(
+            self.sim.circuit().component(id),
+            Component::Switch { closed: true }
+        )
     }
 
-    fn first_switch(&self) -> Option<simbiguity_circuits::ComponentId> {
-        self.layout
-            .parts
-            .iter()
-            .find(|p| {
-                matches!(
-                    self.sim.circuit().component(p.component),
-                    Component::Switch { .. }
-                )
-            })
-            .map(|p| p.component)
+    pub fn is_blown(&self, id: ComponentId) -> bool {
+        matches!(
+            self.sim.circuit().component(id),
+            Component::Bulb { blown: true, .. }
+        )
     }
 
-    fn first_bulb(&self) -> Option<simbiguity_circuits::ComponentId> {
-        self.layout
+    pub fn glow_of(&self, id: ComponentId) -> f64 {
+        let i = self
+            .layout
             .parts
             .iter()
-            .find(|p| {
+            .filter(|p| {
                 matches!(
                     self.sim.circuit().component(p.component),
                     Component::Bulb { .. }
                 )
             })
-            .map(|p| p.component)
-    }
-
-    pub fn is_closed(&self) -> bool {
-        self.first_switch()
-            .map(|s| {
-                matches!(
-                    self.sim.circuit().component(s),
-                    Component::Switch { closed: true }
-                )
-            })
-            .unwrap_or(false)
-    }
-
-    /// Is the bulb blown?
-    pub fn is_blown(&self) -> bool {
-        self.first_bulb()
-            .map(|b| {
-                matches!(
-                    self.sim.circuit().component(b),
-                    Component::Bulb { blown: true, .. }
-                )
-            })
-            .unwrap_or(false)
+            .position(|p| p.component == id)
+            .unwrap_or(0);
+        self.glows[i].value()
     }
 
     /// Applies an input and re-solves; a bulb that blows now flashes.
     fn input(&mut self, input: CircuitInput) {
-        let was_blown = self.is_blown();
+        let mut was_blown = alloc::vec::Vec::new();
+        for p in &self.layout.parts {
+            if matches!(
+                self.sim.circuit().component(p.component),
+                Component::Bulb { .. }
+            ) {
+                was_blown.push(self.is_blown(p.component));
+            }
+        }
         self.sim.apply(input);
         self.sim.step(Seconds(0.0));
-        let is_blown = self.is_blown();
-        if is_blown && !was_blown {
-            for f in &mut self.flashes {
-                f.snap(1.0);
+
+        let blown_now: alloc::vec::Vec<bool> = self
+            .layout
+            .parts
+            .iter()
+            .filter(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| self.is_blown(p.component))
+            .collect();
+
+        for (i, flash) in self.flashes.iter_mut().enumerate() {
+            if blown_now[i] && !was_blown[i] {
+                flash.snap(1.0);
             }
         }
         let targets: alloc::vec::Vec<_> = (0..self.levers.len())
@@ -266,9 +258,28 @@ impl CircuitView {
         for (i, lever) in self.levers.iter_mut().enumerate() {
             lever.target = targets[i];
         }
-        let brightness = self.readouts().brightness;
-        for glow in &mut self.glows {
-            glow.target = brightness;
+
+        let bulb_targets: alloc::vec::Vec<_> = self
+            .layout
+            .parts
+            .iter()
+            .filter(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| {
+                self.sim
+                    .state()
+                    .solution()
+                    .and_then(|s| s.brightness(p.component))
+                    .unwrap_or(0.0)
+            })
+            .collect();
+
+        for (i, glow) in self.glows.iter_mut().enumerate() {
+            glow.target = bulb_targets[i];
         }
         self.sync_scene();
     }
@@ -293,10 +304,15 @@ impl CircuitView {
     }
 
     pub fn toggle_part(&mut self, id: ComponentId) -> bool {
-        self.input(CircuitInput::ToggleSwitch(id));
-        if let simbiguity_circuits::Component::Switch { closed } = self.sim.circuit().component(id)
-        {
-            *closed
+        if matches!(self.sim.circuit().component(id), Component::Switch { .. }) {
+            self.input(CircuitInput::ToggleSwitch(id));
+            if let simbiguity_circuits::Component::Switch { closed } =
+                self.sim.circuit().component(id)
+            {
+                *closed
+            } else {
+                false
+            }
         } else {
             false
         }
@@ -304,22 +320,57 @@ impl CircuitView {
 
     /// Flips the switch; returns `true` if it is now closed.
     pub fn toggle_switch(&mut self) -> bool {
-        if let Some(s) = self.first_switch() {
+        let id = self
+            .layout
+            .parts
+            .iter()
+            .find(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Switch { .. }
+                )
+            })
+            .map(|p| p.component);
+        if let Some(s) = id {
             self.input(CircuitInput::ToggleSwitch(s));
+            self.is_closed(s)
+        } else {
+            false
         }
-        self.is_closed()
     }
 
     /// Sets the battery voltage.
     pub fn set_volts(&mut self, volts: f64) {
-        if let Some(b) = self.first_battery() {
+        let id = self
+            .layout
+            .parts
+            .iter()
+            .find(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Battery { .. }
+                )
+            })
+            .map(|p| p.component);
+        if let Some(b) = id {
             self.input(CircuitInput::SetValue(b, volts));
         }
     }
 
     /// Screws in a fresh bulb.
     pub fn replace_bulb(&mut self) {
-        if let Some(b) = self.first_bulb() {
+        let id = self
+            .layout
+            .parts
+            .iter()
+            .find(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| p.component);
+        if let Some(b) = id {
             self.input(CircuitInput::ReplaceBulb(b));
         }
     }
@@ -334,9 +385,39 @@ impl CircuitView {
         ) -> f64|
          -> f64 { comp.and_then(|c| sol.map(|s| f(s, c))).unwrap_or(0.0) };
 
-        let battery = self.first_battery();
-        let switch = self.first_switch();
-        let bulb = self.first_bulb();
+        let battery = self
+            .layout
+            .parts
+            .iter()
+            .find(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Battery { .. }
+                )
+            })
+            .map(|p| p.component);
+        let switch = self
+            .layout
+            .parts
+            .iter()
+            .find(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Switch { .. }
+                )
+            })
+            .map(|p| p.component);
+        let bulb = self
+            .layout
+            .parts
+            .iter()
+            .find(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| p.component);
 
         let current = val(battery, &|s, c| s.current(c));
         let battery_volts = battery
@@ -347,19 +428,15 @@ impl CircuitView {
             .unwrap_or(0.0);
 
         Readouts {
-            closed: self.is_closed(),
+            closed: switch.map(|s| self.is_closed(s)).unwrap_or(false),
             battery_volts,
             current,
             bulb_volts: val(bulb, &|s, c| s.voltage_across(c).unwrap_or(0.0)),
             bulb_power: val(bulb, &|s, c| s.power(c)),
             brightness: val(bulb, &|s, c| s.brightness(c).unwrap_or(0.0)),
-            glow: self
-                .glows
-                .first()
-                .map(|g| g.value().clamp(0.0, 1.0))
-                .unwrap_or(0.0),
+            glow: bulb.map(|b| self.glow_of(b).clamp(0.0, 1.0)).unwrap_or(0.0),
             particle_speed: particle_speed(current),
-            blown: self.is_blown(),
+            blown: bulb.map(|b| self.is_blown(b)).unwrap_or(false),
             solved: sol.is_some(),
         }
     }
@@ -407,10 +484,28 @@ impl CircuitView {
     /// `t` exactly: the bulb starts cold, the lever starts where the switch
     /// is, a blown bulb starts its flash. Same inputs, same frame.
     pub fn seek(&mut self, t: f64) {
-        let brightness = self.readouts().brightness;
-        for glow in &mut self.glows {
+        let bulb_targets: alloc::vec::Vec<_> = self
+            .layout
+            .parts
+            .iter()
+            .filter(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| {
+                self.sim
+                    .state()
+                    .solution()
+                    .and_then(|s| s.brightness(p.component))
+                    .unwrap_or(0.0)
+            })
+            .collect();
+
+        for (i, glow) in self.glows.iter_mut().enumerate() {
             glow.snap(0.0);
-            glow.target = brightness;
+            glow.target = bulb_targets[i];
         }
         let targets: alloc::vec::Vec<_> = (0..self.levers.len())
             .map(|i| self.lever_target(i))
@@ -419,9 +514,22 @@ impl CircuitView {
             lever.target = targets[i];
             lever.snap(lever.target);
         }
-        let is_blown = self.is_blown();
-        for flash in &mut self.flashes {
-            flash.snap(if is_blown { 1.0 } else { 0.0 });
+
+        let blown_now: alloc::vec::Vec<bool> = self
+            .layout
+            .parts
+            .iter()
+            .filter(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| self.is_blown(p.component))
+            .collect();
+
+        for (i, flash) in self.flashes.iter_mut().enumerate() {
+            flash.snap(if blown_now[i] { 1.0 } else { 0.0 });
             flash.target = 0.0;
         }
         self.phases.fill(0.0);
@@ -436,8 +544,18 @@ impl CircuitView {
 
     /// Writes the animated state into the scene.
     fn sync_scene(&mut self) {
-        let current = self.readouts().current;
-        let is_blown = self.is_blown();
+        let blown_now: alloc::vec::Vec<bool> = self
+            .layout
+            .parts
+            .iter()
+            .filter(|p| {
+                matches!(
+                    self.sim.circuit().component(p.component),
+                    Component::Bulb { .. }
+                )
+            })
+            .map(|p| self.is_blown(p.component))
+            .collect();
 
         let p = &self.parts;
         let s = &mut self.scene;
@@ -452,6 +570,7 @@ impl CircuitView {
         }
 
         for (i, &glass_id) in p.glasses.iter().enumerate() {
+            let is_blown = blown_now[i];
             let look = bulb_look(self.glows[i].value(), self.flashes[i].value(), is_blown);
             paint(&mut s.node_mut(glass_id).material, look.glass);
             paint(&mut s.node_mut(p.filaments[i]).material, look.filament);
@@ -460,21 +579,28 @@ impl CircuitView {
             s.node_mut(p.filaments_broken[i]).visible = look.blown;
         }
 
-        let charge = charge_look(current);
-        let inst = &mut self.scene.instances[0];
-        inst.offsets.clear();
         for (i, path) in self.wire_paths.iter().enumerate() {
+            let wire_id = self.layout.wires[i].component;
+            let current = self
+                .sim
+                .state()
+                .solution()
+                .map(|sol| sol.current(wire_id))
+                .unwrap_or(0.0);
+            let charge = charge_look(current);
             let len = path.length();
             let count = if len > 0.0 {
                 (len * 2.5 + 0.5) as usize
             } else {
                 0
             };
+            let inst = &mut s.instances[i];
+            inst.offsets.clear();
             inst.offsets
                 .extend(particle_offsets(path, self.phases[i], count));
+            inst.material.color = charge.color;
+            inst.material.emissive = charge.emissive;
         }
-        inst.material.color = charge.color;
-        inst.material.emissive = charge.emissive;
     }
 
     /// The scene as it stands now.

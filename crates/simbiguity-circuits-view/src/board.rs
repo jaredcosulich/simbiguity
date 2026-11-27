@@ -7,8 +7,7 @@ use simbiguity_math::{Mat4, Quat, Vec3};
 use simbiguity_render::{Instances, Material, Mesh, MeshId, NodeId, Scene};
 
 use crate::layout::{
-    knob_transform, lever_transform, wires, BATTERY_X, BATTERY_Y, BULB_CENTRE, BULB_X,
-    LEVER_LENGTH, PICK_BATTERY, PICK_BULB, PICK_SWITCH, WIRE_RADIUS, WIRE_Y,
+    knob_transform, lever_transform, BATTERY_Y, LEVER_LENGTH, WIRE_RADIUS, WIRE_Y,
 };
 
 const WOOD: [f32; 3] = [0.52, 0.37, 0.24];
@@ -93,7 +92,7 @@ pub fn build_scene(
         }
     }
     add_wires(&mut s, layout);
-    let particle = add_charges(&mut s);
+    let particle = add_charges(&mut s, layout.wires.len());
     (s, parts, particle)
 }
 
@@ -220,14 +219,16 @@ fn add_wires(s: &mut Scene, layout: &crate::board_layout::BoardLayout) {
 }
 
 /// The (initially empty) instanced charge particles; returns their mesh.
-fn add_charges(s: &mut Scene) -> MeshId {
+fn add_charges(s: &mut Scene, wire_count: usize) -> MeshId {
     let particle = s.add_mesh(Mesh::sphere(1.0, 8, 12));
-    s.instances.push(Instances {
-        mesh: particle,
-        material: Material::unlit([1.0, 0.85, 0.3]),
-        scale: 0.085,
-        offsets: Vec::new(),
-    });
+    for _ in 0..wire_count {
+        s.instances.push(Instances {
+            mesh: particle,
+            material: Material::unlit([1.0, 0.85, 0.3]),
+            scale: 0.085,
+            offsets: Vec::new(),
+        });
+    }
     particle
 }
 
@@ -241,6 +242,7 @@ fn append(a: &mut Mesh, b: &Mesh) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::layout::{PICK_BATTERY, PICK_BULB, PICK_SWITCH};
 
     fn tags(s: &Scene) -> Vec<u32> {
         s.nodes.iter().filter_map(|n| n.pick).collect()
@@ -272,14 +274,21 @@ mod tests {
     #[test]
     fn parts_point_at_the_animated_nodes() {
         let mut circuit = simbiguity_circuits::Circuit::new();
-        let (plus, minus, top) = (circuit.node(), circuit.node(), circuit.node());
-        let battery = circuit.add_battery(plus, minus, 12.0);
-        let switch = circuit.add_switch(plus, top, false);
-        let bulb = circuit.add_bulb(top, minus, 12.0, 5.0);
+        let (n1, n2, n3, n4, n5, n6) = (
+            circuit.node(),
+            circuit.node(),
+            circuit.node(),
+            circuit.node(),
+            circuit.node(),
+            circuit.node(),
+        );
+        let battery = circuit.add_battery(n1, n6, 12.0);
+        let switch = circuit.add_switch(n2, n3, false);
+        let bulb = circuit.add_bulb(n4, n5, 12.0, 5.0);
         let (w1, w2, w3) = (
-            circuit.connect(plus, plus),
-            circuit.connect(top, top),
-            circuit.connect(minus, minus),
+            circuit.connect(n1, n2),
+            circuit.connect(n3, n4),
+            circuit.connect(n5, n6),
         );
         let layout =
             crate::board_layout::BoardLayout::hello_layout(battery, switch, bulb, [w1, w2, w3]);
@@ -289,7 +298,7 @@ mod tests {
         assert!(glass_mat.alpha < 1.0);
 
         let halo_mat = s.node(parts.halos[0]).material;
-        assert!(halo_mat.emissive > -1.0);
+        assert_eq!(halo_mat.emissive, 0.0);
 
         assert!(!s.node(parts.filaments_broken[0]).visible);
     }
@@ -297,15 +306,21 @@ mod tests {
     /// There is one particle set, empty until the view fills it, using the returned mesh.
     #[test]
     fn charges_start_empty() {
-        let circuit = simbiguity_circuits::Circuit::new();
-        let (s, _, particle) = build_scene(
-            &circuit,
-            &crate::board_layout::BoardLayout {
-                parts: alloc::vec![],
-                wires: alloc::vec![],
-            },
-        );
-        assert_eq!(s.instances.len(), 1);
+        let mut circuit = simbiguity_circuits::Circuit::new();
+        let plus = circuit.node();
+        let minus = circuit.node();
+        let top = circuit.node();
+        let battery = circuit.add_battery(plus, minus, 12.0);
+        let switch = circuit.add_switch(plus, top, false);
+        let bulb = circuit.add_bulb(top, minus, 12.0, 5.0);
+        let w1 = circuit.connect(plus, plus);
+        let w2 = circuit.connect(top, top);
+        let w3 = circuit.connect(minus, minus);
+        let layout =
+            crate::board_layout::BoardLayout::hello_layout(battery, switch, bulb, [w1, w2, w3]);
+
+        let (s, _, particle) = build_scene(&circuit, &layout);
+        assert_eq!(s.instances.len(), 3);
         assert_eq!(s.instances[0].mesh, particle);
         assert!(s.instances[0].offsets.is_empty());
     }

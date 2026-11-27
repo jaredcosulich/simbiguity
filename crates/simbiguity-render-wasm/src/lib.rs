@@ -63,15 +63,28 @@ pub extern "C" fn c3d_new(volts: f64, closed: i32) -> u32 {
     slot::insert(CircuitView::new(volts, closed != 0))
 }
 
+/// Maximum length of a layout buffer, in words.
+pub const MAX_LAYOUT_WORDS: usize = 65536;
+
 #[no_mangle]
 #[allow(clippy::not_unsafe_ptr_arg_deref)]
 pub extern "C" fn c3d_new_from_layout(ptr: *const u32, len: u32) -> u32 {
+    if ptr.is_null() || len as usize > MAX_LAYOUT_WORDS {
+        let _ = status::fail(-2, "invalid layout buffer".into());
+        return 0;
+    }
+    // SAFETY: The caller guarantees `ptr` points to `len` consecutive valid `u32`s
+    // allocated by `sb_malloc`. We enforce a non-null pointer and a maximum length
+    // to bound the slice within reasonable memory limits.
     let words = unsafe { core::slice::from_raw_parts(ptr, len as usize) };
     match simbiguity_circuits_view::board_layout::BoardLayout::unpack(words) {
-        Ok((circuit, layout)) => {
-            let view = CircuitView::from_layout(circuit, layout);
-            slot::insert(view)
-        }
+        Ok((circuit, layout)) => match CircuitView::from_layout(circuit, layout) {
+            Ok(view) => slot::insert(view),
+            Err(e) => {
+                let _ = status::fail(-2, e.as_str().into());
+                0
+            }
+        },
         Err(e) => {
             let _ = status::fail(-2, e.as_str().into());
             0

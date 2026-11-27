@@ -141,3 +141,43 @@ fn mesh_exports_cover_every_mesh() {
     assert!(error_message().contains("no mesh"));
     c3d_free(h);
 }
+
+/// Verifies that layout buffer unpacking works and bridge methods can instantiate components.
+#[test]
+fn layout_bridge_exports() {
+    let buf = std::vec![
+        2, // node_count
+        1, // num_parts
+        2, // kind=2 (switch)
+        0, // a
+        1, // b
+        0, // x
+        0, // z
+        0, // rot
+        0, // open
+    ];
+
+    let h = c3d_new_from_layout(buf.as_ptr(), buf.len() as u32);
+    assert_ne!(h, 0);
+    assert_eq!(c3d_part_count(h), 1);
+    assert_eq!(c3d_part_kind(h, 0), 2); // switch
+    assert_eq!(c3d_toggle_part(h, 0), 1); // toggles to closed
+    c3d_free(h);
+}
+
+/// Verifies that the bridge safely rejects structurally invalid layout buffers.
+#[test]
+fn layout_bridge_rejects_malformed_buffer() {
+    let buf = std::vec![2, 1, 99]; // Unknown component kind
+    let h = c3d_new_from_layout(buf.as_ptr(), buf.len() as u32);
+    assert_eq!(h, 0);
+    assert!(error_message().contains("buffer too short") || error_message().contains("unknown"));
+
+    let h2 = c3d_new_from_layout(std::ptr::null(), 100);
+    assert_eq!(h2, 0);
+    assert!(error_message().contains("invalid layout"));
+
+    let h3 = c3d_new_from_layout(buf.as_ptr(), 999999);
+    assert_eq!(h3, 0);
+    assert!(error_message().contains("invalid layout"));
+}

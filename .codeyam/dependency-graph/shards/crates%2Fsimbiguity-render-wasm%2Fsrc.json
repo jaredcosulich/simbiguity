@@ -1,5 +1,13 @@
 {
   "entities": {
+    "crates/simbiguity-render-wasm/src/lib.rs::MAX_LAYOUT_WORDS": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout"
+      ],
+      "imports": [],
+      "name": "MAX_LAYOUT_WORDS"
+    },
     "crates/simbiguity-render-wasm/src/lib.rs::__file_root__": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
       "importedBy": [
@@ -139,6 +147,7 @@
       "imports": [
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
+        "crates/simbiguity-render-wasm/src/lib.rs::MAX_LAYOUT_WORDS",
         "crates/simbiguity-render-wasm/src/slot.rs::insert",
         "crates/simbiguity-render-wasm/src/status.rs::fail"
       ],
@@ -150,6 +159,7 @@
         "from_raw_parts",
         "insert",
         "into",
+        "is_null",
         "unpack"
       ]
     },
@@ -676,6 +686,7 @@
       "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
       "importedBy": [
         "crates/simbiguity-render-wasm/src/tests.rs::bad_handles_are_rejected",
+        "crates/simbiguity-render-wasm/src/tests.rs::layout_bridge_rejects_malformed_buffer",
         "crates/simbiguity-render-wasm/src/tests.rs::mesh_exports_cover_every_mesh"
       ],
       "imports": [
@@ -715,6 +726,21 @@
       "name": "inputs_reach_the_view",
       "namedMethods": [
         "abs"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::layout_bridge_rejects_malformed_buffer": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::error_message"
+      ],
+      "name": "layout_bridge_rejects_malformed_buffer",
+      "namedMethods": [
+        "as_ptr",
+        "contains",
+        "len",
+        "null",
+        "vec"
       ]
     },
     "crates/simbiguity-render-wasm/src/tests.rs::mesh_exports_cover_every_mesh": {
@@ -804,8 +830,10 @@
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-circuits-view/src/board_layout.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
@@ -879,6 +907,8 @@
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
@@ -906,6 +936,11 @@
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-render/src/commands.rs",
         "crates/simbiguity-render/src/commands.rs"
+      ],
+      "namedMethods": [
+        "as_ptr",
+        "len",
+        "vec"
       ]
     }
   }

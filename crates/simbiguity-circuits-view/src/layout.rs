@@ -28,9 +28,7 @@ pub const BULB_CENTRE: Vec3 = Vec3::new(2.6, 1.05, 0.0);
 
 pub(crate) const WIRE_RADIUS: f64 = 0.06;
 pub const WIRE_Y: f64 = 0.12;
-pub(crate) const BATTERY_X: f64 = -2.6;
 pub(crate) const BATTERY_Y: f64 = 0.42;
-pub(crate) const BULB_X: f64 = 2.6;
 
 /// One stretch of the current loop; particles are drawn only on wires.
 #[derive(Debug, Clone, PartialEq)]
@@ -67,31 +65,6 @@ impl CurrentLoop {
         }
         (Vec3::ZERO, false)
     }
-}
-
-/// The three wires, in flow order.
-pub(crate) fn wires() -> [Vec<Vec3>; 3] {
-    let y = WIRE_Y;
-    [
-        vec![
-            Vec3::new(BATTERY_X, BATTERY_Y, -1.12),
-            Vec3::new(BATTERY_X, BATTERY_Y, -1.4),
-            Vec3::new(BATTERY_X, y, -1.8),
-            Vec3::new(-0.53, y, -1.8),
-        ],
-        vec![
-            Vec3::new(0.53, y, -1.8),
-            Vec3::new(BULB_X, y, -1.8),
-            Vec3::new(BULB_X, y, -0.34),
-        ],
-        vec![
-            Vec3::new(BULB_X, y, 0.34),
-            Vec3::new(BULB_X, y, 1.8),
-            Vec3::new(BATTERY_X, y, 1.8),
-            Vec3::new(BATTERY_X, BATTERY_Y, 1.4),
-            Vec3::new(BATTERY_X, BATTERY_Y, 1.0),
-        ],
-    ]
 }
 
 /// The loop charge follows: wires, plus the hidden stretches through the
@@ -149,8 +122,8 @@ pub fn particle_offsets(path: &CurrentLoop, phase: f64, count: usize) -> Vec<Vec
 #[cfg(test)]
 mod tests {
     use super::*;
-    use simbiguity_render::path::path_length;
 
+    /// Verifies that an empty loop has zero length and returns the origin for any offset.
     #[test]
     fn empty_loop_is_inert() {
         let l = CurrentLoop { sections: vec![] };
@@ -158,6 +131,7 @@ mod tests {
         assert_eq!(l.at(3.0), (Vec3::ZERO, false));
     }
 
+    /// Verifies that the wrapping logic correctly bounds negative and positive values into [0, length).
     #[test]
     fn wrap_maps_into_the_period() {
         assert_eq!(wrap(5.0, 4.0), 1.0);
@@ -166,6 +140,7 @@ mod tests {
         assert_eq!(wrap(4.0, 4.0), 0.0);
     }
 
+    /// Verifies that the visual lever representation tracks the designated rotation angle correctly.
     #[test]
     fn lever_and_knob_follow_the_angle() {
         let closed = lever_transform(Mat4::IDENTITY, 0.0).transform_point(Vec3::ZERO);

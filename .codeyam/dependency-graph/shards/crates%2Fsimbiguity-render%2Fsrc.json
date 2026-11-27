@@ -3667,7 +3667,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/layout.rs",
         "crates/simbiguity-circuits-view/src/layout.rs",
-        "crates/simbiguity-circuits-view/src/layout.rs",
         "crates/simbiguity-render/src/lib.rs"
       ],
       "imports": [

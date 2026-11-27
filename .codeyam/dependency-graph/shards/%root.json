@@ -4,6 +4,10 @@
     "patch_ticks.sh": {
       "importedBy": [],
       "imports": []
+    },
+    "reg_commands.sh": {
+      "importedBy": [],
+      "imports": []
     }
   }
 }

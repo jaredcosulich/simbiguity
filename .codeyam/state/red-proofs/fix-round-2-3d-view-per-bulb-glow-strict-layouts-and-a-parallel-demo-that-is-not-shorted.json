@@ -1,0 +1,31 @@
+{
+  "provenAt": "2026-11-27T17:19:45Z",
+  "slug": "fix-round-2-3d-view-per-bulb-glow-strict-layouts-and-a-parallel-demo-that-is-not-shorted",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits-view/src/lib.rs",
+    "crates/simbiguity-circuits-view/src/view_tests.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits-view/src/lib.rs",
+      "find": "glow.snap(0.0);\n            glow.target = bulb_targets[i];",
+      "replace": "glow.snap(0.0);\n            glow.target = bulb_targets.first().copied().unwrap_or(0.0);"
+    }
+  ],
+  "tests": {
+    "view_tests::each_bulb_glows_at_its_own_brightness": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "view_tests::each_bulb_glows_at_its_own_brightness"
+    ]
+  }
+}

@@ -42,3 +42,12 @@ proves = [
   "view_tests::advance_runs_fixed_steps",
   "view_tests::commands_returns_the_last_frame",
 ]
+
+[[capability]]
+name = "draws any circuit on a board"
+description = "Places components from a layout buffer and renders any circuit on the 3D board."
+demo = "demos/circuit-3d-parallel/"
+proves = [
+  "view_tests::parallel_bulbs_are_drawn_in_their_own_cells",
+  "view_tests::each_bulb_glows_at_its_own_brightness",
+]

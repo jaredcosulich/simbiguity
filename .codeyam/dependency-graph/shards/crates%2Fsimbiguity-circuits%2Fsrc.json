@@ -2213,6 +2213,7 @@
         "crates/simbiguity-circuits/tests/analysis.rs::most_overloaded_series_bulb_blows_first_and_saves_the_other",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::hello_layout",
+        "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::validate",
         "crates/simbiguity-circuits-view/src/board_layout.rs::PartPlacement",
         "crates/simbiguity-circuits-view/src/board_layout.rs::PartPlacement::component",
         "crates/simbiguity-circuits-view/src/board_layout.rs::WireRoute",

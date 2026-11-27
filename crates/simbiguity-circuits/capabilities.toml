@@ -9,10 +9,12 @@ description = "Capacitors and inductors evaluated with backward Euler and trapez
 demo = "demos/rc-charging/"
 proves = [
   "tests/analysis::trapezoidal_rc_matches_hand_computed_discrete_answer",
-  "tests/analysis::backward_euler_rc_matches_hand_computed_discrete_answer",
-  "tests/analysis::lc_energy_preservation",
-  "tests/analysis::inductor_dc_as_wire",
-  "tests/analysis::snapshot_determinism_with_integrators"
+  "tests/analysis::rc_circuit_charging_matches_exact_solution",
+  "tests/analysis::lc_ringing_trapezoidal_preserves_energy",
+  "tests/analysis::lc_ringing_backward_euler_decays_energy",
+  "tests/analysis::rl_circuit_matches_exact_solution",
+  "tests/analysis::rc_dc_limit_matches_solve",
+  "tests/analysis::transient_snapshot_restore_replay_is_bit_identical"
 ]
 
 [[capability]]

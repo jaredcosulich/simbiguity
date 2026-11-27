@@ -1,6 +1,15 @@
 {
   "tests": [
     {
+      "description": "the corners map exactly.",
+      "file": "crates/simbiguity-plot/src/axes.rs",
+      "format": "cargo",
+      "key": "axes::tests::corners_map_exactly",
+      "line": 51,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A balanced Wheatstone bridge carries no current through its bridge resistor — a topology no series/parallel reduction handles.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -262,6 +271,24 @@
       "runner": "cargo"
     },
     {
+      "description": "The GPU draws a triangle only after it's told how to map positions to the screen (the view-projection matrix). A chart that draws its lines without first setting that matrix produces nothing visible, however correct its data is.",
+      "file": "crates/simbiguity-plot/src/chart.rs",
+      "format": "cargo",
+      "key": "chart::tests::chart_sets_view_projection_before_drawing",
+      "line": 199,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that downsampling based on pixel width preserves local max/min spikes.",
+      "file": "crates/simbiguity-plot/src/chart.rs",
+      "format": "cargo",
+      "key": "chart::tests::downsampling_preserves_spikes",
+      "line": 218,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Negative and NaN frame times bank nothing; reset empties the bank.",
       "file": "crates/simbiguity-core/src/clock.rs",
       "format": "cargo",
@@ -374,7 +401,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blow_only_affects_bulbs",
-      "line": 282,
+      "line": 290,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -383,7 +410,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
-      "line": 271,
+      "line": 279,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -392,7 +419,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::brightness_is_power_ratio_clamped",
-      "line": 262,
+      "line": 270,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -401,7 +428,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::bulb_resistance_from_rating",
-      "line": 359,
+      "line": 367,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -410,7 +437,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::set_value_changes_the_main_value",
-      "line": 345,
+      "line": 353,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -419,7 +446,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::stamps_match_each_component",
-      "line": 298,
+      "line": 306,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -428,7 +455,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::validity_rejects_non_physical_values",
-      "line": 329,
+      "line": 337,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -509,7 +536,7 @@
       "file": "crates/simbiguity-circuits/src/diagnostics.rs",
       "format": "cargo",
       "key": "diagnostics::tests::fatal_issues_are_exactly_the_unsolvable_ones",
-      "line": 133,
+      "line": 153,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -518,7 +545,7 @@
       "file": "crates/simbiguity-circuits/src/diagnostics.rs",
       "format": "cargo",
       "key": "diagnostics::tests::messages_name_the_part",
-      "line": 154,
+      "line": 176,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -964,6 +991,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Ensures every type of CircuitIssue maps to a distinct code.",
+      "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
+      "format": "cargo",
+      "key": "issues::tests::issue_kind_code_distinct_for_all_variants",
+      "line": 56,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Bridge monkey tests for solver failure mappings.",
       "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
       "format": "cargo",
@@ -977,7 +1013,7 @@
       "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
       "format": "cargo",
       "key": "issues::tests::issue_part_index_solver_failure",
-      "line": 56,
+      "line": 86,
       "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
       "runner": "cargo"
     },
@@ -1042,6 +1078,24 @@
       "key": "layout::tests::wrap_maps_into_the_period",
       "line": 162,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "LC ringing (L = 1 H, C = 1 F, V₀ = 1 V, dt = 0.01), backward Euler. Energy decays. After 1000 steps, assert below 0.46 J.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "lc_ringing_backward_euler_decays_energy",
+      "line": 513,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "LC ringing (L = 1 H, C = 1 F, V₀ = 1 V, dt = 0.01), trapezoidal. Energy should be preserved within 1e-9 of 0.5 J after 1000 steps.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "lc_ringing_trapezoidal_preserves_energy",
+      "line": 489,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
     {
@@ -1168,6 +1222,24 @@
       "key": "libtest_output::tests::unrelated_lines_are_ignored",
       "line": 85,
       "registeredAt": "2026-11-26T19:09:43.546001715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "the mitre is clamped at a sharp turn.",
+      "file": "crates/simbiguity-plot/src/line.rs",
+      "format": "cargo",
+      "key": "line::tests::mitre_is_clamped_at_sharp_turn",
+      "line": 139,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "a horizontal, vertical and diagonal segment each have a pixel width equal to the requested width.",
+      "file": "crates/simbiguity-plot/src/line.rs",
+      "format": "cargo",
+      "key": "line::tests::segment_width_is_requested_width",
+      "line": 121,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
     {
@@ -1999,6 +2071,15 @@
       "runner": "cargo"
     },
     {
+      "description": "DC limit after 10τ equals Circuit::solve().",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "rc_dc_limit_matches_solve",
+      "line": 537,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Every field lands in its documented slot, booleans as one or zero.",
       "file": "crates/simbiguity-render-wasm/src/readouts.rs",
       "format": "cargo",
@@ -2120,7 +2201,7 @@
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
       "key": "rl_circuit_matches_exact_solution",
-      "line": 431,
+      "line": 427,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },
@@ -2257,6 +2338,24 @@
       "key": "scene::tests::pick_returns_the_nearest_hit",
       "line": 256,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "pushing capacity + 3 keeps the newest values in order",
+      "file": "crates/simbiguity-plot/src/series.rs",
+      "format": "cargo",
+      "key": "series::tests::pushing_over_capacity_keeps_newest_in_order",
+      "line": 51,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "window",
+      "file": "crates/simbiguity-plot/src/series.rs",
+      "format": "cargo",
+      "key": "series::tests::window_returns_recent_values",
+      "line": 62,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
     {
@@ -2570,7 +2669,7 @@
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
       "key": "tests::bridge_stress_test",
-      "line": 280,
+      "line": 296,
       "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
       "runner": "cargo"
     },
@@ -2617,6 +2716,15 @@
       "key": "tests::circuit_new_returns_distinct_nonzero_handles",
       "line": 70,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "NaN/inf labels are dropped and strings are escaped in circuit_plot_draw.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::circuit_plot_draw_escapes_and_drops_nan",
+      "line": 280,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
     {
@@ -2930,7 +3038,7 @@
       "file": "crates/simbiguity-plot/src/ticks.rs",
       "format": "cargo",
       "key": "ticks::tests::ticks_for_zero_to_ten_step_by_two",
-      "line": 72,
+      "line": 77,
       "registeredAt": "2026-11-26T23:28:02.297088049+00:00",
       "runner": "cargo"
     },
@@ -2939,7 +3047,7 @@
       "file": "crates/simbiguity-plot/src/ticks.rs",
       "format": "cargo",
       "key": "ticks::tests::ticks_terminate_at_huge_magnitudes",
-      "line": 79,
+      "line": 84,
       "registeredAt": "2026-11-26T23:28:02.297088049+00:00",
       "runner": "cargo"
     },
@@ -3031,6 +3139,24 @@
       "key": "track::tests::segments_use_the_arriving_keys_ease",
       "line": 104,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Snapshot and restore correctly preserves the transient state so replay is bit identical.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "transient_snapshot_restore_replay_is_bit_identical",
+      "line": 558,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "RC charging, R = 1 kΩ and C = 1 mF (so τ = 1 s), from 10 V, using ten trapezoidal steps of dt = 0.1 s. Each step multiplies the remaining gap by (1 - dt/2τ)/(1 + dt/2τ) = 0.95/1.05, so V = 10·(1 - (0.95/1.05)^10) = 6.3249 V. That is very close to the textbook 10·(1 - e⁻¹) = 6.3212 V, which is why trapezoidal is called second-order accurate.",
+      "file": "crates/simbiguity-circuits/tests/analysis.rs",
+      "format": "cargo",
+      "key": "trapezoidal_rc_matches_hand_computed_discrete_answer",
+      "line": 468,
+      "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
     {

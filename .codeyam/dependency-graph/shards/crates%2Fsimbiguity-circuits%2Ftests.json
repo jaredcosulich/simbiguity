@@ -188,6 +188,61 @@
         "solve"
       ]
     },
+    "crates/simbiguity-circuits/tests/analysis.rs::lc_ringing_backward_euler_decays_energy": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::BackwardEuler",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "lc_ringing_backward_euler_decays_energy",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "component_mut",
+        "energy",
+        "new",
+        "node",
+        "set_ground",
+        "solution",
+        "state",
+        "step",
+        "unwrap",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/analysis.rs::lc_ringing_trapezoidal_preserves_energy": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::Trapezoidal",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "lc_ringing_trapezoidal_preserves_energy",
+      "namedMethods": [
+        "abs",
+        "add_capacitor",
+        "add_inductor",
+        "component_mut",
+        "energy",
+        "new",
+        "node",
+        "set_ground",
+        "solution",
+        "state",
+        "step",
+        "unwrap",
+        "with_integrator"
+      ]
+    },
     "crates/simbiguity-circuits/tests/analysis.rs::most_overloaded_series_bulb_blows_first_and_saves_the_other": {
       "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
       "importedBy": [],
@@ -324,6 +379,8 @@
       "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
       "importedBy": [],
       "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::BackwardEuler",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-core/src/simulation.rs::Seconds"
@@ -335,14 +392,42 @@
         "add_capacitor",
         "add_resistor",
         "energy",
-        "exp",
         "new",
         "node",
         "solution",
         "state",
         "step",
         "unwrap",
-        "voltage_across"
+        "voltage_across",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/analysis.rs::rc_dc_limit_matches_solve": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::Trapezoidal",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "rc_dc_limit_matches_solve",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_capacitor",
+        "add_resistor",
+        "clone",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "state",
+        "step",
+        "unwrap",
+        "voltage_across",
+        "with_integrator"
       ]
     },
     "crates/simbiguity-circuits/tests/analysis.rs::real_battery_short_reports_emf_over_r": {
@@ -368,6 +453,8 @@
       "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
       "importedBy": [],
       "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::BackwardEuler",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-core/src/simulation.rs::Seconds"
@@ -380,13 +467,13 @@
         "add_resistor",
         "current",
         "energy",
-        "exp",
         "new",
         "node",
         "solution",
         "state",
         "step",
-        "unwrap"
+        "unwrap",
+        "with_integrator"
       ]
     },
     "crates/simbiguity-circuits/tests/analysis.rs::series_voltage_divider": {
@@ -526,6 +613,58 @@
         "unwrap"
       ]
     },
+    "crates/simbiguity-circuits/tests/analysis.rs::transient_snapshot_restore_replay_is_bit_identical": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::Trapezoidal",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "transient_snapshot_restore_replay_is_bit_identical",
+      "namedMethods": [
+        "add_battery",
+        "add_capacitor",
+        "add_resistor",
+        "new",
+        "node",
+        "restore",
+        "snapshot",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/analysis.rs::trapezoidal_rc_matches_hand_computed_discrete_answer": {
+      "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::Trapezoidal",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "trapezoidal_rc_matches_hand_computed_discrete_answer",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_capacitor",
+        "add_resistor",
+        "component_mut",
+        "new",
+        "node",
+        "powi",
+        "solution",
+        "state",
+        "step",
+        "unwrap",
+        "voltage_across",
+        "with_integrator"
+      ]
+    },
     "crates/simbiguity-circuits/tests/analysis.rs::unbalanced_wheatstone_bridge_carries_known_current": {
       "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
       "importedBy": [],
@@ -579,7 +718,17 @@
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-core/src/simulation.rs",
         "crates/simbiguity-core/src/simulation.rs",
-        "crates/simbiguity-core/src/simulation.rs"
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs"
       ]
     }
   }

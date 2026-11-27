@@ -1224,6 +1224,7 @@
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::projection",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::ray",
@@ -1235,8 +1236,7 @@
         "crates/simbiguity-render/src/pick.rs::Aabb::transformed",
         "crates/simbiguity-render/src/scene.rs::Node",
         "crates/simbiguity-render/src/scene.rs::Node::transform",
-        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
-        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::tan",
@@ -2752,8 +2752,6 @@
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
-        "crates/simbiguity-render/src/camera.rs",
-        "crates/simbiguity-render/src/mesh.rs",
         "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/line.rs",
         "crates/simbiguity-plot/src/line.rs",
@@ -2761,7 +2759,9 @@
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",
         "crates/simbiguity-plot/src/ticks.rs",
-        "crates/simbiguity-plot/src/ticks.rs"
+        "crates/simbiguity-plot/src/ticks.rs",
+        "crates/simbiguity-render/src/camera.rs",
+        "crates/simbiguity-render/src/mesh.rs"
       ],
       "imports": [],
       "namedMethods": [
@@ -2834,12 +2834,12 @@
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-render/src/camera.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/pick.rs",
         "crates/simbiguity-render/src/scene.rs",
-        "xtask/src/bench_fixtures.rs",
-        "crates/simbiguity-plot/src/chart.rs"
+        "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",

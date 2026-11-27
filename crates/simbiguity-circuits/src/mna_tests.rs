@@ -104,10 +104,10 @@ fn component_current_per_stamp() {
         g: 1.0,
         current: 6.0,
     };
-    assert_eq!(component_current(norton, 4.0, None), 2.0);
+    assert_eq!(component_current(norton, 4.0, None), -2.0);
     assert_eq!(
         component_current(Stamp::VoltageSource(6.0), 6.0, Some(-2.0)),
-        2.0
+        -2.0
     );
     assert_eq!(component_current(Stamp::Open, 6.0, None), 0.0);
     assert_eq!(component_current(Stamp::Merge, 0.0, None), 0.0);

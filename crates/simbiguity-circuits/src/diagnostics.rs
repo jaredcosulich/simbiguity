@@ -142,3 +142,50 @@ impl fmt::Display for CircuitIssue {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use alloc::string::ToString;
+
+    /// Only invalid values, ideal shorts and source loops stop a solution.
+    #[test]
+    fn fatal_issues_are_exactly_the_unsolvable_ones() {
+        let c = ComponentId(0);
+        assert!(CircuitIssue::InvalidValue { component: c }.is_fatal());
+        assert!(CircuitIssue::ShortCircuit {
+            battery: c,
+            current: None
+        }
+        .is_fatal());
+        assert!(CircuitIssue::VoltageSourceLoop { battery: c }.is_fatal());
+        assert!(CircuitIssue::Inrush { capacitor: c }.is_fatal());
+        assert!(CircuitIssue::InvalidTimeStep.is_fatal());
+        assert!(!CircuitIssue::ShortCircuit {
+            battery: c,
+            current: Some(3.0)
+        }
+        .is_fatal());
+        assert!(!CircuitIssue::FloatingNode { node: NodeId(0) }.is_fatal());
+        assert!(!CircuitIssue::OpenCircuit { battery: c }.is_fatal());
+        assert!(!CircuitIssue::BulbBlown { bulb: c }.is_fatal());
+    }
+
+    /// Each message names the part, so a learner knows where to look.
+    #[test]
+    fn messages_name_the_part() {
+        let msg = CircuitIssue::BulbBlown {
+            bulb: ComponentId(4),
+        }
+        .to_string();
+        assert!(msg.contains("bulb 4"), "{msg}");
+        let msg = CircuitIssue::FloatingNode { node: NodeId(7) }.to_string();
+        assert!(msg.contains("node 7"), "{msg}");
+        let msg = CircuitIssue::ShortCircuit {
+            battery: ComponentId(2),
+            current: Some(3.0),
+        }
+        .to_string();
+        assert!(msg.contains("battery 2") && msg.contains("3 A"), "{msg}");
+    }
+}

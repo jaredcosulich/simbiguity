@@ -70,7 +70,7 @@ mod wires;
 #[cfg(test)]
 mod invariants_tests;
 
-pub use component::Component;
+pub use component::{Component, Integrator};
 pub use diagnostics::CircuitIssue;
 pub use netlist::{Circuit, ComponentId, NodeId, Placed};
 pub use sim::{CircuitInput, CircuitSim};

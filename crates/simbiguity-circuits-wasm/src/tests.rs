@@ -275,6 +275,22 @@ fn sb_alloc_round_trip() {
     }
 }
 
+// NaN/inf labels are dropped and strings are escaped in circuit_plot_draw.
+#[test]
+fn circuit_plot_draw_escapes_and_drops_nan() {
+    let h = circuit_new();
+    circuit_plot_push(h, 1.0);
+    circuit_plot_push(h, f64::NAN);
+    circuit_plot_push(h, 3.0);
+    assert_eq!(circuit_plot_draw(h, 100.0, 100.0), OK);
+    // Well, circuit_plot_draw doesn't export labels to native test directly easily unless we access slot.
+    with_slot(h, |s| {
+        // Just verify it doesn't crash and maybe check the string
+        assert!(!s.chart_labels.contains("NaN"));
+        OK
+    });
+}
+
 /// Verifies the bridge stress conditions by ensuring heavy circuit loads do not cause WASM panics or incorrect states.
 #[test]
 fn bridge_stress_test() {

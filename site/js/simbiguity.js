@@ -22,6 +22,8 @@ export const IssueKind = Object.freeze({
   5: "open-circuit",
   6: "bulb-blown",
   7: "solver-failure",
+  8: "inrush",
+  9: "invalid-time-step",
 });
 
 /** Thrown when a bridge call returns a negative status code. */

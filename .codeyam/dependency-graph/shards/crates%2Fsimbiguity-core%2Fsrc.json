@@ -819,17 +819,24 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
         "crates/simbiguity-circuits/tests/analysis.rs::blown_bulb_persists_until_replaced",
+        "crates/simbiguity-circuits/tests/analysis.rs::lc_ringing_backward_euler_decays_energy",
+        "crates/simbiguity-circuits/tests/analysis.rs::lc_ringing_trapezoidal_preserves_energy",
         "crates/simbiguity-circuits/tests/analysis.rs::rc_circuit_charging_matches_exact_solution",
+        "crates/simbiguity-circuits/tests/analysis.rs::rc_dc_limit_matches_solve",
         "crates/simbiguity-circuits/tests/analysis.rs::rl_circuit_matches_exact_solution",
         "crates/simbiguity-circuits/tests/analysis.rs::snapshot_round_trip_restores_state",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_lights_a_bulb",
+        "crates/simbiguity-circuits/tests/analysis.rs::transient_snapshot_restore_replay_is_bit_identical",
+        "crates/simbiguity-circuits/tests/analysis.rs::trapezoidal_rc_matches_hand_computed_discrete_answer",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
         "crates/simbiguity-core/src/clock.rs::FixedClock",
         "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
         "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
@@ -864,9 +871,7 @@
         "crates/simbiguity-physics/src/world_tests.rs::projectile_range",
         "crates/simbiguity-physics/src/world_tests.rs::rod_length",
         "crates/simbiguity-physics/src/world_tests.rs::spring_period",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Output",
@@ -952,6 +957,7 @@
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
         "crates/simbiguity-circuits-view/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/lockstep.rs::S",
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
@@ -959,8 +965,7 @@
         "crates/simbiguity-physics/src/world_tests.rs::__file_root__",
         "crates/simbiguity-physics-wasm/src/lib.rs::__file_root__",
         "crates/simbiguity-puzzle/src/lib.rs::Goal",
-        "crates/simbiguity-puzzle/src/lib.rs::check",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__"
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1160,6 +1165,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-core/src/clock.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
@@ -1176,9 +1183,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-puzzle/src/lib.rs",
         "crates/simbiguity-puzzle/src/lib.rs",
-        "crates/simbiguity-puzzle/src/lib.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs"
+        "crates/simbiguity-puzzle/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs"

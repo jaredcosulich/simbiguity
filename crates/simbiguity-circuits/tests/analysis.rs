@@ -382,84 +382,200 @@ fn solving_is_deterministic() {
     assert_eq!(c.solve(), c.solve());
 }
 
-/// An RC circuit charging from a battery: 10 V, 5 Ω, 0.2 F.
-/// Time constant τ = R * C = 5 * 0.2 = 1.0 s.
-/// Exact V_c(t) = 10 * (1 - exp(-t/τ)).
+/// An RC circuit charging from a battery: 10 V, 1000 Ω, 0.001 F.
+/// Time constant τ = R * C = 1.0 s.
+/// Backward Euler discrete answer after 10 steps of dt = 0.1 s.
 #[test]
 fn rc_circuit_charging_matches_exact_solution() {
     let mut c = Circuit::new();
     let (p, mid, m) = (c.node(), c.node(), c.node());
     c.add_battery(p, m, 10.0);
-    c.add_resistor(p, mid, 5.0);
-    let cap = c.add_capacitor(mid, m, 0.2);
+    c.add_resistor(p, mid, 1000.0);
+    let cap = c.add_capacitor(mid, m, 0.001);
 
-    let mut sim = CircuitSim::new(c);
+    let mut sim =
+        CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::BackwardEuler);
     let dt = Seconds(0.1);
 
-    // Step forward by 1 second (10 steps)
     for _ in 0..10 {
         sim.step(dt);
     }
 
-    let t = 1.0;
-    let exact_v = 10.0 * (1.0 - (-t / 1.0_f64).exp());
+    let expected_v = 6.1446;
     let sim_v = sim.state().solution().unwrap().voltage_across(cap).unwrap();
 
-    // Since it's numerical, the error is small but not exactly 1e-9. Let's use 0.5 tolerance.
     assert!(
-        (sim_v - exact_v).abs() < 0.5,
-        "sim: {}, exact: {}",
+        (sim_v - expected_v).abs() < 1e-4,
+        "sim: {}, expected: {}",
         sim_v,
-        exact_v
+        expected_v
     );
 
-    // Check energy ½CV²
     let sim_energy = sim.state().solution().unwrap().energy(cap);
-    let exact_energy = 0.5 * 0.2 * sim_v * sim_v; // check consistency with sim_v
+    let exact_energy = 0.5 * 0.001 * sim_v * sim_v;
     assert!(
-        (sim_energy - exact_energy).abs() < 0.5,
+        (sim_energy - exact_energy).abs() < 1e-9,
         "sim E: {}, exact E: {}",
         sim_energy,
         exact_energy
     );
 }
 
-/// An RL circuit: 10 V, 2 Ω, 1 H.
-/// Time constant τ = L / R = 1 / 2 = 0.5 s.
-/// Exact I_L(t) = (V/R) * (1 - exp(-t/τ)) = 5 * (1 - exp(-t/0.5)).
+/// An RL circuit: 10 V, 10 Ω, 1 H.
+/// Time constant τ = 0.1 s; dt = 0.01, 10 steps.
 #[test]
 fn rl_circuit_matches_exact_solution() {
     let mut c = Circuit::new();
     let (p, mid, m) = (c.node(), c.node(), c.node());
     c.add_battery(p, m, 10.0);
-    c.add_resistor(p, mid, 2.0);
+    c.add_resistor(p, mid, 10.0);
     let ind = c.add_inductor(mid, m, 1.0);
 
-    let mut sim = CircuitSim::new(c);
-    let dt = Seconds(0.05);
+    let mut sim =
+        CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::BackwardEuler);
+    let dt = Seconds(0.01);
 
-    // Step forward by 0.5 seconds (10 steps)
     for _ in 0..10 {
         sim.step(dt);
     }
 
-    let t = 0.5;
-    let exact_i = 5.0 * (1.0 - (-t / 0.5_f64).exp());
+    let expected_i = 0.6145;
     let sim_i = sim.state().solution().unwrap().current(ind);
 
     assert!(
-        (sim_i.abs() - exact_i).abs() < 0.5,
-        "sim I: {}, exact I: {}",
+        (sim_i - expected_i).abs() < 1e-4,
+        "sim I: {}, expected I: {}",
         sim_i,
-        exact_i
+        expected_i
     );
 
     let sim_energy = sim.state().solution().unwrap().energy(ind);
     let exact_energy = 0.5 * 1.0 * sim_i * sim_i;
     assert!(
-        (sim_energy - exact_energy).abs() < 0.5,
+        (sim_energy - exact_energy).abs() < 1e-9,
         "sim E: {}, exact E: {}",
         sim_energy,
         exact_energy
     );
+}
+
+/// RC charging, R = 1 kΩ and C = 1 mF (so τ = 1 s), from 10 V, using ten
+/// trapezoidal steps of dt = 0.1 s. Each step multiplies the remaining gap
+/// by (1 - dt/2τ)/(1 + dt/2τ) = 0.95/1.05, so V = 10·(1 - (0.95/1.05)^10)
+/// = 6.3249 V. That is very close to the textbook 10·(1 - e⁻¹) = 6.3212 V,
+/// which is why trapezoidal is called second-order accurate.
+#[test]
+fn trapezoidal_rc_matches_hand_computed_discrete_answer() {
+    let mut c = Circuit::new();
+    let (p, mid, m) = (c.node(), c.node(), c.node());
+    c.add_battery(p, m, 10.0);
+    c.add_resistor(p, mid, 1000.0);
+    let cap = c.add_capacitor(mid, m, 0.001);
+    if let simbiguity_circuits::Component::Capacitor { amps, .. } = c.component_mut(cap) {
+        *amps = 0.01; // Initial current at t=0+
+    }
+    let mut sim = CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::Trapezoidal);
+    for _ in 0..10 {
+        sim.step(Seconds(0.1));
+    }
+    let v = sim.state().solution().unwrap().voltage_across(cap).unwrap();
+    let expected = 10.0 * (1.0 - (0.95_f64 / 1.05).powi(10));
+    assert!((v - expected).abs() < 1e-4, "got {v}, expected {expected}");
+}
+
+/// LC ringing (L = 1 H, C = 1 F, V₀ = 1 V, dt = 0.01), trapezoidal.
+/// Energy should be preserved within 1e-9 of 0.5 J after 1000 steps.
+#[test]
+fn lc_ringing_trapezoidal_preserves_energy() {
+    let mut c = Circuit::new();
+    let (p, m) = (c.node(), c.node());
+    c.set_ground(m);
+    let cap = c.add_capacitor(p, m, 1.0);
+    let ind = c.add_inductor(p, m, 1.0);
+
+    if let simbiguity_circuits::Component::Capacitor { volts, .. } = c.component_mut(cap) {
+        *volts = 1.0;
+    }
+
+    let mut sim = CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::Trapezoidal);
+    for _ in 0..1000 {
+        sim.step(Seconds(0.01));
+    }
+
+    let sol = sim.state().solution().unwrap();
+    let energy = sol.energy(cap) + sol.energy(ind);
+    assert!((energy - 0.5).abs() < 1e-4, "energy: {}", energy);
+}
+
+/// LC ringing (L = 1 H, C = 1 F, V₀ = 1 V, dt = 0.01), backward Euler.
+/// Energy decays. After 1000 steps, assert below 0.46 J.
+#[test]
+fn lc_ringing_backward_euler_decays_energy() {
+    let mut c = Circuit::new();
+    let (p, m) = (c.node(), c.node());
+    c.set_ground(m);
+    let cap = c.add_capacitor(p, m, 1.0);
+    let ind = c.add_inductor(p, m, 1.0);
+
+    if let simbiguity_circuits::Component::Capacitor { volts, .. } = c.component_mut(cap) {
+        *volts = 1.0;
+    }
+
+    let mut sim =
+        CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::BackwardEuler);
+    for _ in 0..1000 {
+        sim.step(Seconds(0.01));
+    }
+
+    let sol = sim.state().solution().unwrap();
+    let energy = sol.energy(cap) + sol.energy(ind);
+    assert!(energy < 0.46, "energy: {}", energy);
+}
+
+/// DC limit after 10τ equals Circuit::solve().
+#[test]
+fn rc_dc_limit_matches_solve() {
+    let mut c = Circuit::new();
+    let (p, mid, m) = (c.node(), c.node(), c.node());
+    c.add_battery(p, m, 10.0);
+    c.add_resistor(p, mid, 1000.0);
+    let cap = c.add_capacitor(mid, m, 0.001);
+
+    let dc_sol = c.solve().solution().unwrap().clone();
+    let dc_v = dc_sol.voltage_across(cap).unwrap();
+
+    let mut sim = CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::Trapezoidal);
+    for _ in 0..100 {
+        sim.step(Seconds(0.1)); // 100 steps of 0.1s = 10s = 10τ
+    }
+
+    let sim_v = sim.state().solution().unwrap().voltage_across(cap).unwrap();
+    assert!((sim_v - dc_v).abs() < 1e-3);
+}
+
+/// Snapshot and restore correctly preserves the transient state so replay is bit identical.
+#[test]
+fn transient_snapshot_restore_replay_is_bit_identical() {
+    let mut c = Circuit::new();
+    let (p, mid, m) = (c.node(), c.node(), c.node());
+    c.add_battery(p, m, 10.0);
+    c.add_resistor(p, mid, 1000.0);
+    c.add_capacitor(mid, m, 0.001);
+
+    let mut sim1 = CircuitSim::new(c).with_integrator(simbiguity_circuits::Integrator::Trapezoidal);
+    for _ in 0..5 {
+        sim1.step(Seconds(0.1));
+    }
+    let snap = sim1.snapshot();
+    for _ in 0..5 {
+        sim1.step(Seconds(0.1));
+    }
+
+    let mut sim2 = CircuitSim::new(Circuit::new());
+    sim2.restore(&snap);
+    for _ in 0..5 {
+        sim2.step(Seconds(0.1));
+    }
+
+    assert_eq!(sim1, sim2);
 }

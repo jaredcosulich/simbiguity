@@ -106,6 +106,18 @@ fn source_problems(c: &Circuit, t: &Topology) -> Vec<CircuitIssue> {
             _ => {}
         }
     }
+    for (i, p) in c.parts.iter().enumerate() {
+        if let Component::Capacitor { volts, .. } = p.component {
+            if volts == 0.0 {
+                let (ga, gb) = (t.group[p.a.0], t.group[p.b.0]);
+                if ga != gb && sources.find(ga) == sources.find(gb) {
+                    issues.push(CircuitIssue::Inrush {
+                        capacitor: ComponentId(i),
+                    });
+                }
+            }
+        }
+    }
     issues
 }
 
@@ -293,15 +305,13 @@ fn issue_for_pivot(u: &Unknowns, pivot: usize) -> CircuitIssue {
     }
 }
 
-/// Current through one component from the voltage `d` across it. An ideal
-/// battery's comes from its MNA unknown, which is the current into `+`, so
-/// it is negated to give the current delivered out of `+`. Wires get theirs
-/// later, from [`wire_currents`].
+/// Current through one component from the voltage `d` across it, in the passive
+/// convention (current into `+`). Wires get theirs later, from [`wire_currents`].
 fn component_current(s: Stamp, d: f64, source_unknown: Option<f64>) -> f64 {
     match s {
         Stamp::Conductance(g) => d * g,
-        Stamp::Norton { g, current } => current - g * d,
-        Stamp::VoltageSource(_) => source_unknown.map_or(0.0, |x| -x),
+        Stamp::Norton { g, current } => d * g - current,
+        Stamp::VoltageSource(_) => source_unknown.unwrap_or(0.0),
         Stamp::Merge | Stamp::Open => 0.0,
     }
 }
@@ -331,7 +341,11 @@ fn build_solution(c: &Circuit, t: &Topology, u: &Unknowns, x: &[f64]) -> Solutio
             _ => None,
         };
         let source_current = u.source[i].map(|k| x[k]);
-        currents.push(component_current(*s, v.unwrap_or(0.0), source_current));
+        let mut i_val = component_current(*s, v.unwrap_or(0.0), source_current);
+        if matches!(p.component, Component::Battery { .. }) {
+            i_val = -i_val; // Present batteries in the active convention (delivering current)
+        }
+        currents.push(i_val);
         across.push(v);
     }
     wire_currents(c, &t.stamps, &mut currents);
@@ -544,6 +558,24 @@ pub(crate) fn analyze_step(
     cache: &mut SolverCache,
     mut needs_refactor: bool,
 ) -> Analysis {
+    if !dt.is_finite() || dt < 0.0 {
+        return Analysis {
+            solution: None,
+            issues: vec![CircuitIssue::InvalidTimeStep],
+        };
+    }
+    let has_transients = c.parts.iter().any(|p| {
+        matches!(
+            p.component,
+            Component::Capacitor { .. } | Component::Inductor { .. }
+        )
+    });
+    if dt == 0.0 && has_transients {
+        return Analysis {
+            solution: None,
+            issues: vec![CircuitIssue::InvalidTimeStep],
+        };
+    }
     let invalid = invalid_components(c);
     if !invalid.is_empty() {
         return Analysis {

@@ -25,6 +25,31 @@
         "site/demos/rc-charging/demo.js::__file_root__"
       ],
       "name": "__file_root__"
+    },
+    "site/demos/rc-charging/state.js::hashFromState": {
+      "filePath": "site/demos/rc-charging/state.js",
+      "importedBy": [
+        "site/demos/rc-charging/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "hashFromState"
+    },
+    "site/demos/rc-charging/state.js::stateFromHash": {
+      "filePath": "site/demos/rc-charging/state.js",
+      "importedBy": [
+        "site/demos/rc-charging/state.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "stateFromHash"
+    },
+    "site/demos/rc-charging/state.test.js::__file_root__": {
+      "filePath": "site/demos/rc-charging/state.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/rc-charging/state.js::hashFromState",
+        "site/demos/rc-charging/state.js::stateFromHash"
+      ],
+      "name": "__file_root__"
     }
   },
   "files": {
@@ -45,12 +70,16 @@
       ]
     },
     "site/demos/rc-charging/state.js": {
-      "importedBy": [],
+      "importedBy": [
+        "site/demos/rc-charging/state.test.js"
+      ],
       "imports": []
     },
     "site/demos/rc-charging/state.test.js": {
       "importedBy": [],
-      "imports": []
+      "imports": [
+        "site/demos/rc-charging/state.js"
+      ]
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "provenAt": "2026-11-27T15:41:36Z",
+  "slug": "fix-round-2-trapezoidal-integrator-sign-error-and-hand-computed-transient-tests",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits/src/mna.rs",
+    "crates/simbiguity-circuits/tests/analysis.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits/src/mna.rs",
+      "find": "Stamp::Norton { g, current } => d * g - current,",
+      "replace": "Stamp::Norton { g, current } => current - g * d,"
+    }
+  ],
+  "tests": {
+    "trapezoidal_rc_matches_hand_computed_discrete_answer": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "trapezoidal_rc_matches_hand_computed_discrete_answer"
+    ]
+  }
+}

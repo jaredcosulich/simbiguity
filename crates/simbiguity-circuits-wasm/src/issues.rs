@@ -7,15 +7,15 @@ use simbiguity_circuits::CircuitIssue;
 /// `site/js/simbiguity.js` maps these to names in `IssueKind`.
 pub fn issue_kind_code(issue: &CircuitIssue) -> i32 {
     match issue {
-        CircuitIssue::SolverFailure { .. } => 7,
         CircuitIssue::InvalidValue { .. } => 1,
         CircuitIssue::ShortCircuit { .. } => 2,
         CircuitIssue::VoltageSourceLoop { .. } => 3,
         CircuitIssue::FloatingNode { .. } => 4,
         CircuitIssue::OpenCircuit { .. } => 5,
         CircuitIssue::BulbBlown { .. } => 6,
-        CircuitIssue::Inrush { .. } => 7,
-        CircuitIssue::InvalidTimeStep => 8,
+        CircuitIssue::SolverFailure { .. } => 7,
+        CircuitIssue::Inrush { .. } => 8,
+        CircuitIssue::InvalidTimeStep => 9,
     }
 }
 
@@ -49,6 +49,36 @@ mod tests {
             message: String::from("boom"),
         };
         assert_eq!(issue_kind_code(&issue), 7);
+    }
+
+    /// Ensures every type of CircuitIssue maps to a distinct code.
+    #[test]
+    fn issue_kind_code_distinct_for_all_variants() {
+        let mut c = simbiguity_circuits::Circuit::new();
+        let n = c.node();
+        let comp = c.add_resistor(n, n, 1.0);
+        let issues = vec![
+            CircuitIssue::InvalidValue { component: comp },
+            CircuitIssue::ShortCircuit {
+                battery: comp,
+                current: None,
+            },
+            CircuitIssue::VoltageSourceLoop { battery: comp },
+            CircuitIssue::FloatingNode { node: n },
+            CircuitIssue::OpenCircuit { battery: comp },
+            CircuitIssue::BulbBlown { bulb: comp },
+            CircuitIssue::SolverFailure {
+                message: String::from(""),
+            },
+            CircuitIssue::Inrush { capacitor: comp },
+            CircuitIssue::InvalidTimeStep,
+        ];
+        let mut codes = vec![];
+        for issue in issues {
+            let code = issue_kind_code(&issue);
+            assert!(!codes.contains(&code), "duplicate code {}", code);
+            codes.push(code);
+        }
     }
 
     /// Verifies that solver failures point to part index 0 since they lack a specific component.

@@ -317,11 +317,17 @@ pub extern "C" fn circuit_plot_draw(h: u32, width: f64, height: f64) -> i32 {
         // pack labels into JSON or custom string for plot-labels.js
         // plot-labels.js expects an array of [text, x, y].
         let mut js_labels = String::from("[");
-        for (i, (text, x, y)) in labels.iter().enumerate() {
-            if i > 0 {
+        let mut first = true;
+        for (text, x, y) in labels.iter() {
+            if !x.is_finite() || !y.is_finite() {
+                continue;
+            }
+            if !first {
                 js_labels.push(',');
             }
-            js_labels.push_str(&std::format!("[\"{}\",{},{}]", text, x, y));
+            first = false;
+            let escaped_text = text.replace('\\', "\\\\").replace('"', "\\\"");
+            js_labels.push_str(&std::format!("[\"{}\",{},{}]", escaped_text, x, y));
         }
         js_labels.push(']');
         s.chart_labels = js_labels;

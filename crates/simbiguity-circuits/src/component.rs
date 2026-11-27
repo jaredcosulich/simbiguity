@@ -169,6 +169,10 @@ impl Component {
                         current: g * volts,
                     }
                 }
+                // Trapezoidal derivation: i_{n+1} + i_n = (2C/dt) * (v_{n+1} - v_n).
+                // Rearranged for Norton equivalent (where i_passive = g * v_{n+1} - I_source):
+                // i_{n+1} = (2C/dt) * v_{n+1} - (2C/dt * v_n + i_n).
+                // Thus g = 2C/dt, and current = g * volts + amps.
                 Integrator::Trapezoidal => {
                     let g = 2.0 * farads / dt;
                     Stamp::Norton {
@@ -184,13 +188,17 @@ impl Component {
             } => match integrator {
                 Integrator::BackwardEuler => {
                     let g = dt / henries;
-                    Stamp::Norton { g, current: amps }
+                    Stamp::Norton { g, current: -amps }
                 }
+                // Trapezoidal derivation: v_{n+1} + v_n = (2L/dt) * (i_{n+1} - i_n).
+                // Rearranged for i_{n+1}: i_{n+1} = (dt/2L) * v_{n+1} + (dt/2L * v_n + i_n).
+                // Since Norton passive readback is i_{passive} = g * v_{n+1} - current,
+                // we need -current = dt/2L * v_n + i_n, so current = -(amps + g * volts).
                 Integrator::Trapezoidal => {
                     let g = dt / (2.0 * henries);
                     Stamp::Norton {
                         g,
-                        current: amps + g * volts,
+                        current: -(amps + g * volts),
                     }
                 }
             },

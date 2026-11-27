@@ -1,0 +1,30 @@
+{
+  "provenAt": "2026-11-27T13:15:31Z",
+  "slug": "fix-circuit-puzzle-game-is-a-placeholder-real-levels-goals-undo-share",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits-puzzle/src/share.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "find": "if sol.contains('!') {\n        Err(())\n    } else {\n        Ok(sol.to_string())\n    }",
+      "replace": "Ok(sol.to_string())"
+    }
+  ],
+  "tests": {
+    "corrupted_share_link_is_rejected": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "corrupted_share_link_is_rejected"
+    ]
+  }
+}

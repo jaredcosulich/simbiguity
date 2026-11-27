@@ -8,3 +8,4 @@ authors.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+simbiguity-core = { version = "0.0.1", path = "../simbiguity-core" }

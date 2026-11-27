@@ -31,6 +31,10 @@ dependencies = [
 [[package]]
 name = "simbiguity-circuits-puzzle"
 version = "0.0.1"
+dependencies = [
+ "simbiguity-circuits",
+ "simbiguity-puzzle",
+]
 
 [[package]]
 name = "simbiguity-circuits-view"
@@ -105,6 +109,9 @@ dependencies = [
 [[package]]
 name = "simbiguity-puzzle"
 version = "0.0.1"
+dependencies = [
+ "simbiguity-core",
+]
 
 [[package]]
 name = "simbiguity-render"

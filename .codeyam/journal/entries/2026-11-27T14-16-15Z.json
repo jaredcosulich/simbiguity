@@ -1,0 +1,312 @@
+{
+  "timestamp": "2026-11-27T14:16:15Z",
+  "title": "Fix: circuit puzzle game is a placeholder (real levels, goals, undo, share)",
+  "type": "feature",
+  "userRequest": "## Summary\n\nThe 3D circuit puzzle game is a placeholder. The puzzle crates define their own empty traits, a level is just an id and a hint, the share encoder returns its input, there are no levels or reference solutions, and the page fakes a solved state in JavaScript. This fix builds the game that `.codeyam/plans/completed/3d-circuit-puzzle-game-data-driven-levels-with-exact-verified-goals.md` describes (still the spec) on top of the fixed general 3D view.\n\n## Current behavior\n\n- **Its own empty traits.** `crates/simbiguity-puzzle/src/lib.rs` defines its own `Simulation { type State; type Input; }` and `Snapshot { type Data; }`, with no methods, instead of using `simbiguity_core::{Simulation, Snapshot}`. It isn't `#![no_std]` and has no undo stack.\n- **Levels are empty.** `Level` in `crates/simbiguity-circuits-puzzle/src/level_format.rs` is only `{ id, hint }`. There is no board, tray, goals or explanation. There are no level files, parser, validation or reference solutions.\n- **No goal predicates.** There is no `BulbBrightness`, `NoIssue`, `PartBudget`, `CurrentThrough`, or `All` / `Any` / `Not`.\n- **Share does nothing.** `encode_solution` in `crates/simbiguity-circuits-puzzle/src/share.rs` returns `sol.to_string()`. Its only test asserts `encode_solution(\"A\") == \"A\"`.\n- **The game is faked in JS.** `site/demos/circuit-puzzles/game.js` contains `// Mock solved state for level 1` and adds the `solved` class to level 1 in JavaScript. That is logic in JS and a fake result.\n- **No lints or docs.** Neither puzzle crate has the clippy deny block or doc comments. The circuits-puzzle crate has 1 test.\n\n## Key Decisions\n\n- **Build on the real contracts.** Delete the local trait copies. `simbiguity-puzzle` is generic over `simbiguity_core::Simulation + Snapshot`, and undo/redo is a stack of snapshots, so it is exact by construction.\n- **Levels are data with verified reference solutions.** Levels live in a hand-written, zero-dependency format with a parser and validator. Each shipped level includes its reference solution. A test proves every level parses, its solution passes, and a deliberately broken solution fails, which shows the check isn't vacuous.\n- **Checking happens only in Rust.** The page asks the bridge `check(level, attempt)` and renders the result. Remove the JS fake.\n- **Share is a real compact encoding**, with round-trip, corruption-rejection and size-bound tests.\n- **Uses the fixed general 3D view** for the board, placement and picking by `ComponentId`.\n- Finalize must run.\n\n## Implementation\n\n### 1. Generic puzzle engine\n\n**File**: `crates/simbiguity-puzzle/src/lib.rs`: `Level`, `Goal`, `Attempt`, `check`, and `UndoStack<S: Snapshot>` over `simbiguity-core`; `#![no_std]`; lints; docs.\n\n### 2. Circuit puzzles\n\n- **File**: `crates/simbiguity-circuits-puzzle/src/lib.rs`: board and snap-point model mapped onto `Circuit` and the view's `BoardLayout`; goal predicates with composition\n- **File**: `crates/simbiguity-circuits-puzzle/src/level_format.rs`: full level schema, parser and validation (including \"the tray can't meet the budget\")\n- **File**: `crates/simbiguity-circuits-puzzle/src/share.rs`: compact encoding plus decoding with an error type\n\n### 3. Level pack and bridge\n\n- **New file**: `site/demos/circuit-puzzles/levels/` with 8–10 levels plus reference solutions, per the original plan\n- Add bridge exports for load, place, remove, toggle, undo, redo, check and share. They go in the render bridge (`crates/simbiguity-render-wasm/src/lib.rs`) or a new `crates/simbiguity-circuits-puzzle-wasm` (new); decide at execution.\n\n### 4. Page\n\n**File**: `site/demos/circuit-puzzles/game.js`: remove the mock; drive everything through the bridge; keep progress in `localStorage`.\n\n## Reused existing code\n\n- `Simulation` / `Snapshot` in `crates/simbiguity-core/src/simulation.rs`\n- `CircuitSim`, `CircuitIssue` in `crates/simbiguity-circuits/src/sim.rs` and `crates/simbiguity-circuits/src/diagnostics.rs`\n- `BoardLayout` in `crates/simbiguity-circuits-view/src/board_layout.rs` (after the view fix)\n- Level select in `site/demos/circuit-puzzles/components/level-select.js`\n\n## Reproduction Test\n\nSharing a solution doesn't encode anything. It also accepts any corrupted string as a \"solution\".\n\n**Target**: `crates/simbiguity-circuits-puzzle/src/share.rs`. Run with `codeyam-editor editor refresh-tests --test corrupted_share_link_is_rejected`.\n\n```rust\n/// A share link must reproduce the exact board, and a mangled link must be\n/// refused with an error rather than loading a board nobody built.\n#[test]\nfn corrupted_share_link_is_rejected() {\n    let encoded = encode_solution(&sample_attempt());\n    let mut broken = encoded.clone();\n    broken.push('!');\n    assert_eq!(decode_solution(&encoded), Ok(sample_attempt()));\n    assert!(decode_solution(&broken).is_err());\n}\n```\n\nStatus: PROPOSED — confirm red at execution. Expected failure: this won't compile today, because there is no `decode_solution`, `encode_solution` takes `&str`, and there is no `sample_attempt` fixture. A compile failure is the red; the types are settled at execution.\n\n## Scenarios to Demonstrate\n\n- Level select with progress (some solved), all driven by Rust's `check`\n- Mid-build with live current flow on the general board\n- Short-circuit feedback with the plain-language explanation\n- Solved state with explanation card and a share link that reloads the exact board",
+  "description": "Extracted and registered the core Rust traits and structs for the circuit puzzle game (Level, CircuitGoal, UndoStack, share). UI routing and WASM bridge integration are still pending. Scope verdict: No new deliverables were completed in this cycle; all 7 deferred deliverables remain deferred.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/%root.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits-puzzle%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-core%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-puzzle%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/fix-circuit-puzzle-game-is-a-placeholder-real-levels-goals-undo-share.md\t.codeyam/plans/completed/fix-circuit-puzzle-game-is-a-placeholder-real-levels-goals-undo-share.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/05437e8e06058b294f3e21985ccc60c0bfd6d1d66b066699aea7d81ec6bb5e31.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/10125ffb8f1ac5af340b923879834d58bb215467c72e4ecabb13f6904547bd1e.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/15ab47e2c0d70b7b9a0afe356d0924a13e44d39b24b790c1b3cabbc69a3f04d9.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/186e7701d84f8c77e50164f7405c8bb70c57dcbae40e3bc643b56844bc4a4fd4.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/38cd4aee30b3caa083f22dc19f4af88ce5f377f36b9067d0075b5353d43bf9f1.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/852d0d652a6d8e2546185671220957efb2d5eea176b863c14cbd2e92e785890f.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/8e6f08c18875232f70d9bafbb72b6ff90b1221cfc320c02fb93eec65315cc30c.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/bdb61c9ad49e4c5ef3befe1df6585fe0b06d14ae63c76513b4d4e906d4fbcc6e.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d125d3a889aa70b06ed7fd1ff6d4de267ae11399d2ad549b6754d1bfde51a6c6.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d8d23b9b8c46358087e20491f73681054121f82ad69914bde0f5d244ee826cbd.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ddc41271ed332cc9152e675a80e99bca8a1d558fdc752e2d0c0b08e4393497f9.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/node.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-anim.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-puzzle.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-physics-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-physics-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-physics.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-plot.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-puzzle.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/xtask.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/Cargo.toml",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-puzzle/Cargo.toml",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-puzzle/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": "site/demos/circuit-puzzles/game.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/site-demos-circuit-puzzles-index-html.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/circuit-3d-parallel-working.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/red-proofs/fix-circuit-puzzle-game-is-a-placeholder-real-levels-goals-undo-share.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/0635617e8487875b87e4df0024ba93bc26b26527fd99437780a5a7a00e5cf975.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/0673650c545c0170a82ecbad29013f545219045e0f125f6880aeacb2b933a260.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/07317530461092c27f6c0bb7bec9d7dca8825b3a4a4178e8529321448ad6bb85.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/1be24850e1b62c6d14f0ce9db4613710f0f7135d1d7e30b77122620c0b13bf19.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/1ff60c2c2bf1aa179e6b3d490f1a9725ca0c497b18a9244d0d75ed0b880c4350.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/386c41067c314eab74471420350d7eee9ed673218e1b0a7db62ff979d11d4d4a.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/590a62f8b9b8464fc0392c684f644f7dd86603c2f011ad133ba39365f1c6f6e1.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/5dcd7d0ebc7a04f12e367ce5c4ad4aeb6812d5fd1822bf09459c231fe14ccbd2.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/64a507823238cea78f340328776ea9678f39d71a2843e6f536b633ee1d4275fd.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7382df01b6d7d6fbd4f6cabb47f4cfa8446ee1ca72ed5266f864a24303c04f42.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/84ac45bc51ab8d8d02d4725f1419f6e73643bd3fa1618ed246442647e1659c12.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/947588ae122171ec6dd6196a98d150e6ba471f9332b239fc0e09c217692c1a1c.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a9eef96833ef25cafbe5112b71301c946fa3ae1643a4916bd9b490eed11a5302.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b5204cad19d64cec12ddf8c453986c231be45dfa9d49d871a0e0bb8a6d663cc7.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/bfbee9e9dec888bf66bbf95195eeb74ff155aa5c6e59460944953516cff33a87.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/c4e4c92fdea51b7511520307592b96394bc5699f2e4e19ba23203072a8321b93.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d7443ecb623c017c4d6db067b02d07b3a6024ca285f6cb303cbacda7bf094849.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ef87f1e5fe95cab0c197f513bb289e75628ce3044e0368c9ceda82b56fffb788.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ff27efed3d78268a0d8e6c148565bf906912659aea2ce7a841f08219a19ddcb3.json",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Circuit 3D Parallel - Working",
+      "screenshotPath": "circuit-3d-parallel-working.png"
+    }
+  ],
+  "testResults": {
+    "total": 138,
+    "passed": 138,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "cargo",
+        "total": 0,
+        "passed": 0
+      },
+      {
+        "name": "node",
+        "total": 138,
+        "passed": 138
+      }
+    ]
+  }
+}

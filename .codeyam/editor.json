@@ -536,16 +536,16 @@
       "testFilePatterns": []
     },
     {
+      "dependsOn": [],
+      "excludePatterns": [],
       "name": "node",
       "runner": "node",
-      "testFilePatterns": [
-        "site/**/*.test.js"
-      ],
       "sourceFilePatterns": [
         "site/**/*.js"
       ],
-      "excludePatterns": [],
-      "dependsOn": []
+      "testFilePatterns": [
+        "site/**/*.test.js"
+      ]
     }
   ],
   "testRunners": [

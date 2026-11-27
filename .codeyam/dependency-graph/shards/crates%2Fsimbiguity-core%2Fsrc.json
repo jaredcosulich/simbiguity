@@ -958,7 +958,9 @@
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world_tests.rs::__file_root__",
-        "crates/simbiguity-physics-wasm/src/lib.rs::__file_root__"
+        "crates/simbiguity-physics-wasm/src/lib.rs::__file_root__",
+        "crates/simbiguity-puzzle/src/lib.rs::Goal",
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1009,7 +1011,14 @@
         "crates/simbiguity-physics/src/world.rs::Snapshot",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::restore",
-        "crates/simbiguity-physics/src/world.rs::World::snapshot"
+        "crates/simbiguity-physics/src/world.rs::World::snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo",
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1166,7 +1175,10 @@
         "crates/simbiguity-physics/src/world_tests.rs",
         "crates/simbiguity-physics/src/world_tests.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs"
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-puzzle/src/lib.rs",
+        "crates/simbiguity-puzzle/src/lib.rs",
+        "crates/simbiguity-puzzle/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs"

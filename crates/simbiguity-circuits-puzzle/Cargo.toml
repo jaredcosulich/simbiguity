@@ -8,3 +8,5 @@ authors.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+simbiguity-circuits = { version = "0.0.1", path = "../simbiguity-circuits" }
+simbiguity-puzzle = { version = "0.0.1", path = "../simbiguity-puzzle" }

@@ -2,7 +2,9 @@
   "entities": {
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level"
+      ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id"
@@ -12,7 +14,8 @@
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level"
       ],
       "imports": [],
       "name": "Level::hint"
@@ -20,10 +23,63 @@
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level"
       ],
       "imports": [],
       "name": "Level::id"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id"
+      ],
+      "name": "load_level",
+      "namedMethods": [
+        "from",
+        "into"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::LitBulbs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check",
+        "crates/simbiguity-circuits/src/sim.rs::__file_root__",
+        "crates/simbiguity-circuits/src/solution.rs::Analysis",
+        "crates/simbiguity-puzzle/src/lib.rs::Goal"
+      ],
+      "name": "CircuitGoal",
+      "namedMethods": [
+        "sim"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::LitBulbs": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [],
+      "name": "CircuitGoal::LitBulbs"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::LitBulbs",
+        "crates/simbiguity-circuits/src/solution.rs::Analysis"
+      ],
+      "name": "CircuitGoal::check"
     }
   },
   "files": {
@@ -44,7 +100,11 @@
       "importedBy": [],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-        "crates/simbiguity-circuits-puzzle/src/share.rs"
+        "crates/simbiguity-circuits-puzzle/src/share.rs",
+        "crates/simbiguity-circuits/src/solution.rs",
+        "crates/simbiguity-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/netlist.rs"
       ],
       "namedMethods": [
         "expect_used",
@@ -62,6 +122,7 @@
       ],
       "imports": [],
       "namedMethods": [
+        "contains",
         "to_string"
       ]
     }

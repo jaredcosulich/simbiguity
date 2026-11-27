@@ -2,34 +2,222 @@
   "entities": {
     "crates/simbiguity-puzzle/src/lib.rs::Goal": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-puzzle/src/lib.rs::check"
+      ],
       "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
         "crates/simbiguity-puzzle/src/lib.rs::Goal::check",
-        "crates/simbiguity-puzzle/src/lib.rs::Simulation"
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
       "name": "Goal"
     },
     "crates/simbiguity-puzzle/src/lib.rs::Goal::check": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-puzzle/src/lib.rs::Goal"
+        "crates/simbiguity-puzzle/src/lib.rs::Goal",
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
-      "imports": [],
+      "imports": [
+        "crates/simbiguity-puzzle/src/lib.rs::check"
+      ],
       "name": "Goal::check"
     },
-    "crates/simbiguity-puzzle/src/lib.rs::Simulation": {
+    "crates/simbiguity-puzzle/src/lib.rs::Level": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-puzzle/src/lib.rs::Goal"
+        "crates/simbiguity-puzzle/src/lib.rs::check"
+      ],
+      "imports": [
+        "crates/simbiguity-puzzle/src/lib.rs::Level::goals",
+        "crates/simbiguity-puzzle/src/lib.rs::Level::hint",
+        "crates/simbiguity-puzzle/src/lib.rs::Level::id"
+      ],
+      "name": "Level"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::Level::goals": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::Level",
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
       "imports": [],
-      "name": "Simulation"
+      "name": "Level::goals"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::Level::hint": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::Level"
+      ],
+      "imports": [],
+      "name": "Level::hint"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::Level::id": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::Level"
+      ],
+      "imports": [],
+      "name": "Level::id"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo"
+      ],
+      "name": "UndoStack"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::new",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "name": "UndoStack::history"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::new",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo"
+      ],
+      "name": "UndoStack::redo"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::default": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::new"
+      ],
+      "name": "UndoStack<S>::default",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::new": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::default"
+      ],
+      "imports": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo"
+      ],
+      "inherentMethod": true,
+      "name": "UndoStack<S>::new",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo"
+      ],
+      "inherentMethod": true,
+      "name": "UndoStack<S>::push",
+      "namedMethods": [
+        "clear",
+        "push"
+      ]
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::new",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push"
+      ],
+      "inherentMethod": true,
+      "name": "UndoStack<S>::redo",
+      "namedMethods": [
+        "pop",
+        "push"
+      ]
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack::redo",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push",
+        "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo"
+      ],
+      "inherentMethod": true,
+      "name": "UndoStack<S>::undo",
+      "namedMethods": [
+        "pop",
+        "push"
+      ]
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::check": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::Goal",
+        "crates/simbiguity-puzzle/src/lib.rs::Goal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot",
+        "crates/simbiguity-puzzle/src/lib.rs::Goal",
+        "crates/simbiguity-puzzle/src/lib.rs::Goal::check",
+        "crates/simbiguity-puzzle/src/lib.rs::Level",
+        "crates/simbiguity-puzzle/src/lib.rs::Level::goals"
+      ],
+      "name": "check",
+      "namedMethods": [
+        "all",
+        "check",
+        "iter"
+      ]
     }
   },
   "files": {
     "crates/simbiguity-puzzle/src/lib.rs": {
-      "importedBy": [],
-      "imports": [],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs"
+      ],
       "namedMethods": [
         "expect_used",
         "panic",

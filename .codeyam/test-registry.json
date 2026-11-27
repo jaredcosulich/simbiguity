@@ -23,7 +23,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::append_rebases_indices",
-      "line": 280,
+      "line": 324,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -32,7 +32,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::charges_start_empty",
-      "line": 255,
+      "line": 299,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -41,7 +41,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::every_component_is_pickable",
-      "line": 229,
+      "line": 251,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -50,7 +50,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::filament_paths_share_their_feet",
-      "line": 271,
+      "line": 315,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -59,7 +59,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::parts_point_at_the_animated_nodes",
-      "line": 251,
+      "line": 273,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -995,7 +995,7 @@
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
       "key": "layout::tests::empty_loop_is_inert",
-      "line": 204,
+      "line": 155,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1004,7 +1004,7 @@
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
       "key": "layout::tests::lever_and_knob_follow_the_angle",
-      "line": 221,
+      "line": 170,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1040,7 +1040,7 @@
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
       "key": "layout::tests::wrap_maps_into_the_period",
-      "line": 212,
+      "line": 162,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1078,6 +1078,15 @@
       "key": "lerp::tests::vectors_blend_per_component",
       "line": 68,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that load level returns a valid level.",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::load_level_test",
+      "line": 21,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
     {
@@ -2260,6 +2269,24 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that tampered strings with exclamation marks are blocked.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::corrupted_share_link_is_rejected",
+      "line": 29,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that normal solutions encode and decode smoothly.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::encoded_solution_round_trips",
+      "line": 21,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that a solution string can be encoded",
       "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "format": "cargo",
@@ -2566,6 +2593,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that check matches all goals",
+      "file": "crates/simbiguity-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::check_all_goals",
+      "line": 104,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Freeing twice, or freeing handle 0, is ERR_HANDLE with a readable message.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -2680,6 +2716,15 @@
       "key": "tests::freed_handle_stays_dead_after_new_circuits",
       "line": 91,
       "registeredAt": "2026-11-26T17:56:23.091449930+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that LitBulbs check works.",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::goal_lit_bulbs",
+      "line": 39,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
     {
@@ -2842,6 +2887,15 @@
       "key": "tests::test_simbiguity",
       "line": 44,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies undo redo behavior",
+      "file": "crates/simbiguity-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_undo_redo",
+      "line": 122,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
     {
@@ -3139,6 +3193,15 @@
       "key": "view_tests::open_switch_leaves_charges_still",
       "line": 17,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "A layout is a promise about where things go: two bulbs placed in different grid cells must be drawn in different places, or a learner can't see that the circuit is parallel at all.",
+      "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
+      "format": "cargo",
+      "key": "view_tests::parallel_bulbs_are_drawn_in_their_own_cells",
+      "line": 146,
+      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
     {

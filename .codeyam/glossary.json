@@ -17,6 +17,12 @@
     ]
   },
   {
+    "description": "A goal specific to circuits",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+    "name": "CircuitGoal",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/lib.rs"
+  },
+  {
     "description": "Thrown for a buffer this executor cannot replay.",
     "filePath": "site/js/webgl2-executor.js",
     "name": "CommandBufferError",
@@ -37,6 +43,12 @@
     "tags": [
       "engine-status"
     ]
+  },
+  {
+    "description": "Generic puzzle goal",
+    "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+    "name": "Goal",
+    "testFile": "crates/simbiguity-puzzle/src/lib.rs"
   },
   {
     "description": "The Hello, circuit demo page: SVG circuit, readouts panel, voltage slider and explanation panel.",
@@ -65,6 +77,12 @@
     ]
   },
   {
+    "description": "Generic puzzle level",
+    "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+    "name": "Level",
+    "testFile": "crates/simbiguity-puzzle/src/lib.rs"
+  },
+  {
     "description": "Computes human-readable tick values for axes based on a data range.",
     "filePath": "crates/simbiguity-plot/src/ticks.rs",
     "name": "NiceTicks",
@@ -78,6 +96,12 @@
       "engine-status"
     ],
     "testFile": "xtask/src/libtest_output_tests.rs"
+  },
+  {
+    "description": "Undo/redo stack for simulation snapshots",
+    "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+    "name": "UndoStack",
+    "testFile": "crates/simbiguity-puzzle/src/lib.rs"
   },
   {
     "description": "Deterministic absolute value by clearing the sign bit.",
@@ -575,6 +599,12 @@
     "testFile": "crates/simbiguity-circuits-view/src/look.rs"
   },
   {
+    "description": "Checks if all goals are met",
+    "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+    "name": "check",
+    "testFile": "crates/simbiguity-puzzle/src/lib.rs"
+  },
+  {
     "description": "Shared right-hand-side length check returning DimensionMismatch.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "check_rhs_len",
@@ -905,6 +935,12 @@
     "testFile": "crates/simbiguity-render/src/decode.rs"
   },
   {
+    "description": "Decodes a solution",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "name": "decode_solution",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/share.rs"
+  },
+  {
     "description": "The opening three-quarter orbit camera of the 3D circuit.",
     "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
     "name": "default_camera",
@@ -1017,6 +1053,12 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-render/src/frame.rs"
+  },
+  {
+    "description": "Encodes a solution",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "name": "encode_solution",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/share.rs"
   },
   {
     "description": "Builds a manifest error for a line.",
@@ -1458,6 +1500,12 @@
       "justification": "browser fetch boundary",
       "kind": "platform-glue"
     }
+  },
+  {
+    "description": "Loads a specific level by id",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "name": "load_level",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/level_format.rs"
   },
   {
     "description": "One-call dense solve of A x = b by LU with partial pivoting.",

@@ -580,6 +580,14 @@ def _terminal_signal_missing(project_dir, state):
         return False
 
 
+_EVENT_BY_HOOK_NAME = {
+    "SessionStart": "session_start",
+    "PostToolUse": "post_tool_use",
+    "Stop": "stop",
+    "UserPromptSubmit": "user_prompt",
+}
+
+
 def detect_event():
     """Detect whether this is a PostToolUse, Stop, UserPromptSubmit, or SessionStart hook from stdin."""
     try:
@@ -587,8 +595,14 @@ def detect_event():
         if not raw.strip():
             return "unknown", {}
         data = json.loads(raw)
-        if data.get("hook_event_name") == "SessionStart":
-            return "session_start", data
+        # The named event is the provider-agnostic contract: the Antigravity
+        # and OpenCode shims send `hook_event_name` but not Claude's
+        # `stop_hook_active`, so sniffing keys alone classified their Stop as
+        # "unknown" and skipped the whole turn-end backstop. The key heuristics
+        # below stay as the fallback for a payload that names no known event.
+        named = _EVENT_BY_HOOK_NAME.get(data.get("hook_event_name"))
+        if named:
+            return named, data
         if "tool_name" in data:
             return "post_tool_use", data
         elif "stop_hook_active" in data:
@@ -1673,6 +1687,81 @@ def _record_machine_task_tools(project_dir, available):
         pass
 
 
+# The per-project record of which Demo capture frames the agent actually
+# opened with its file-read tool. Shared with `FRAME_VIEWS_REL` in
+# `crates/codeyam-editor/src/commands/editor/demo_frame_views.rs`, which
+# `demo-attest` reads to refuse an attestation of a frame nobody looked at.
+_FRAME_VIEWS_REL = os.path.join(".codeyam", "run", "frame-views.json")
+# Where every capture command writes its immutable per-capture frame snapshot.
+_CAPTURES_DIR_MARKER = ".codeyam/run/captures/"
+# Enough history for every capture a Demo step plausibly takes, small enough
+# that the read-modify-write on every Read stays cheap.
+_FRAME_VIEWS_MAX = 50
+
+
+def _project_relative(project_dir, path):
+    """`path` relative to `project_dir`, with `/` separators, when it lies
+    inside it; otherwise `path` unchanged (separators normalized)."""
+    normalized = path.replace(os.sep, "/")
+    root = os.path.abspath(project_dir).replace(os.sep, "/").rstrip("/") + "/"
+    if normalized.startswith(root):
+        return normalized[len(root):]
+    return normalized
+
+
+def _observe_frame_view(project_dir, tool_name, tool_input, now=None):
+    """Record what a just-finished file read proves for the Demo attestation.
+
+    Two facts, both written to `_FRAME_VIEWS_REL`:
+    - `readsObservedAt`: this harness's file reads DO reach this hook. Set on
+      any `Read`, whatever the path. `demo-attest` only demands a frame view
+      where this is recorded, so a harness whose reads never reach the hook
+      (Codex, OpenCode, an unmapped future tool) is never wedged.
+    - `views`: each `Read` of a capture frame under `.codeyam/run/captures/`,
+      with the time it happened. `demo-attest` accepts only a view newer than
+      the capture it attests.
+
+    A shell `cat` of the frame is deliberately not a view: it shows the agent
+    bytes, not a picture. Never raises: a hook failure must not break the
+    tool call it observes."""
+    if tool_name != "Read":
+        return
+    path = (tool_input or {}).get("file_path") or ""
+    if not isinstance(path, str):
+        return
+    at = time.time() if now is None else now
+    record_path = os.path.join(project_dir, _FRAME_VIEWS_REL)
+    try:
+        doc = _frame_views_with_read(
+            _read_json_dict(record_path) or {},
+            _project_relative(project_dir, path),
+            at,
+        )
+        if doc is None:
+            return
+        os.makedirs(os.path.dirname(record_path), exist_ok=True)
+        with open(record_path, "w") as f:
+            json.dump(doc, f)
+    except Exception:
+        pass
+
+
+def _frame_views_with_read(doc, relative, at):
+    """The view record `doc` after a `Read` of project-relative `relative` at
+    unix time `at`, or None when the read changes nothing (a non-frame read
+    once `readsObservedAt` is already stamped), so the hook skips the write."""
+    is_frame = _CAPTURES_DIR_MARKER in "/" + relative
+    if not is_frame and doc.get("readsObservedAt"):
+        return None
+    doc = dict(doc)
+    doc.setdefault("readsObservedAt", at)
+    if is_frame:
+        views = list(doc["views"]) if isinstance(doc.get("views"), list) else []
+        views.append({"path": relative, "at": at})
+        doc["views"] = views[-_FRAME_VIEWS_MAX:]
+    return doc
+
+
 def _session_start_tool_preload(project_dir):
     """The SessionStart tool-preload instructions, ending in a newline.
 
@@ -2071,6 +2160,9 @@ def main():
         _observe_task_tool_capability(
             project_dir, tool_name, tool_input, event_data.get("tool_response")
         )
+        # Record a Read of a Demo capture frame, the proof `demo-attest`
+        # demands that the agent looked before describing what it shows.
+        _observe_frame_view(project_dir, tool_name, tool_input)
         # TaskCreate → mark the current step's task as created, provided
         # the subject references this step. If no subject is provided, trust
         # the agent and flip the flag anyway.

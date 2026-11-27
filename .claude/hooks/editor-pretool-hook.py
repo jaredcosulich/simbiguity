@@ -575,7 +575,9 @@ def record_awaiting_user(project_dir):
 # payload goes through, so a finding the agent judges wrong costs one round
 # trip, never a stranded question — the checker's vocabulary has known false
 # positives, and a hard gate would teach agents to word around the lint
-# instead of for the reader. The step hook reads the same file to record
+# instead of for the reader. The `recommended` finding is the exception: it
+# is not a wording judgment but "this is yours to decide", so a re-send of a
+# choice already told that is refused (`gate_question_copy`). The step hook reads the same file to record
 # `bouncedFirst` on the question that finally reaches the user.
 QUESTION_COPY_BOUNCE_FILE = "question-copy-bounce.json"
 QUESTION_COPY_CHECK_TIMEOUT_S = 3
@@ -619,7 +621,43 @@ def question_findings_already_raised(project_dir, session_id):
     return set(raised) if isinstance(raised, list) else set()
 
 
-def next_bounce_record(bounces, key, payload_hash, raised=()):
+def question_recommended_already_raised(project_dir, session_id):
+    """The recommended-subjects this session was already told are its own call.
+
+    Same fail-open rule as `question_findings_already_raised`: a malformed
+    record reads as "none", so the worst case is one more advisory bounce."""
+    entry = _load_question_copy_bounces(project_dir).get(session_id or "") or {}
+    subjects = entry.get("recommendedSubjects") if isinstance(entry, dict) else None
+    return set(subjects) if isinstance(subjects, list) else set()
+
+
+def recommended_subject(question):
+    """A stable key for "this choice", taken from its option labels.
+
+    Keyed on the options, not the body, because the body is what an agent
+    rewords to clear the other findings: VM-21 cae4881b reworded only a gloss
+    and re-sent the same three options. The `(Recommended)` marker and case
+    are dropped so moving the marker or re-casing a label is the same choice."""
+    labels = sorted(
+        re.sub(r"\(recommended\)", "", (label or "").lower()).strip()
+        for label in _option_labels(question)
+    )
+    digest = hashlib.sha256("\x1f".join(labels).encode("utf-8")).hexdigest()[:16]
+    return f"rec:{digest}"
+
+
+def recommended_subjects(questions, keyed):
+    """The subjects of every question in `questions` whose findings in
+    `keyed` include the `recommended` advisory (key `q<i>:recommended`)."""
+    keys = {key for key, _ in keyed}
+    return [
+        recommended_subject(question)
+        for index, question in enumerate(questions)
+        if f"q{index}:recommended" in keys
+    ]
+
+
+def next_bounce_record(bounces, key, payload_hash, raised=(), recommended=()):
     """Return `bounces` with `payload_hash` recorded for session `key`.
 
     Pure, so the caps are testable without a file: the session's hashes are
@@ -632,7 +670,11 @@ def next_bounce_record(bounces, key, payload_hash, raised=()):
     session's `raised` list (capped to the newest
     `QUESTION_COPY_BOUNCE_MAX_RAISED`), which is what lets a REWORDED draft
     through when every finding it still carries was already shown. The key is
-    omitted while the list is empty, so a record without it is unchanged."""
+    omitted while the list is empty, so a record without it is unchanged.
+
+    `recommended` is the subjects (`recommended_subject`) this bounce told the
+    agent were its own call. They are merged into `recommendedSubjects` the
+    same way, and a re-send of any of them is refused, never let through."""
     bounces = dict(bounces)
     entry = bounces.pop(key, None)
     if not isinstance(entry, dict):
@@ -646,6 +688,9 @@ def next_bounce_record(bounces, key, payload_hash, raised=()):
     merged = _merged_raised(entry.get("raised"), raised)
     if merged:
         record["raised"] = merged
+    subjects = _merged_raised(entry.get("recommendedSubjects"), recommended)
+    if subjects:
+        record["recommendedSubjects"] = subjects
     bounces[key] = record
     while len(bounces) > QUESTION_COPY_BOUNCE_MAX_SESSIONS:
         bounces.pop(next(iter(bounces)))
@@ -662,7 +707,7 @@ def _merged_raised(previous, raised):
     return merged[-QUESTION_COPY_BOUNCE_MAX_RAISED:]
 
 
-def remember_question_bounce(project_dir, session_id, payload_hash, raised=()):
+def remember_question_bounce(project_dir, session_id, payload_hash, raised=(), recommended=()):
     """Record that this payload was bounced, so its re-send passes, and which
     findings it showed, so a reworded draft is not shown them again.
 
@@ -671,7 +716,11 @@ def remember_question_bounce(project_dir, session_id, payload_hash, raised=()):
     failure means the re-send is bounced once more, never that it is stuck."""
     try:
         bounces = next_bounce_record(
-            _load_question_copy_bounces(project_dir), session_id or "", payload_hash, raised
+            _load_question_copy_bounces(project_dir),
+            session_id or "",
+            payload_hash,
+            raised,
+            recommended,
         )
         path = _question_copy_bounce_path(project_dir)
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -817,6 +866,29 @@ def question_copy_keyed_findings(project_dir, questions):
     return findings
 
 
+def refuse_recommended_resend(project_dir, session_id, subjects, payload_hash, call):
+    """Refuse (exit 2) when any of `subjects` was already told to this session
+    as its own call; return otherwise. No escape: an identical re-send is
+    refused too, because the finding is not about wording."""
+    told = question_recommended_already_raised(project_dir, session_id)
+    if not any(subject in told for subject in subjects):
+        return
+    block(
+        project_dir,
+        "question-recommended-resend",
+        "you were already told this choice is yours to make: a wrong pick can be undone, "
+        "and you marked one option Recommended. Asking it again would park the run on a "
+        "question you can answer yourself.",
+        "take the Recommended option, do the work, and tell the user in one line what you "
+        "chose and how to undo it. Do not ask. If the choice genuinely cannot be undone, "
+        "say so in the question body and drop the (Recommended) marker.",
+        detail=payload_hash,
+        evidence=f"payload {payload_hash}; bounce record at {_question_copy_bounce_path(project_dir)}",
+        call=call,
+        count_rule=False,
+    )
+
+
 def gate_question_copy(project_dir, session_id, questions, call):
     """Bounce a question whose real payload has copy findings the session has
     not already been shown.
@@ -826,20 +898,31 @@ def gate_question_copy(project_dir, session_id, questions, call):
     was already raised: the agent has seen that finding and judged it, and
     bouncing it again on every reword is what made one closing question cost
     three round trips. A draft with any NEW finding still bounces, listing only
-    the new ones."""
+    the new ones.
+
+    The one finding with NO escape is `recommended`: the checker only raises
+    it where a wrong pick can be undone and the question is not one a gate
+    requires the user to answer (the test-expectation gate and the approval
+    gates are exempt in the checker). Once the session has been told a choice
+    is its own call, re-sending that choice — unchanged or reworded — is
+    refused. VM-21 cae4881b re-sent one twice and the run stalled 4h16m on it."""
     if not questions:
         return
     payload_hash = question_payload_hash(questions)
+    keyed = question_copy_keyed_findings(project_dir, questions)
+    subjects = recommended_subjects(questions, keyed)
+    refuse_recommended_resend(project_dir, session_id, subjects, payload_hash, call)
     if question_payload_was_bounced(project_dir, session_id, payload_hash):
         return
-    keyed = question_copy_keyed_findings(project_dir, questions)
     if not keyed:
         return
     raised = question_findings_already_raised(project_dir, session_id)
     findings = [line for key, line in keyed if key not in raised]
     if not findings:
         return
-    remember_question_bounce(project_dir, session_id, payload_hash, [key for key, _ in keyed])
+    remember_question_bounce(
+        project_dir, session_id, payload_hash, [key for key, _ in keyed], subjects
+    )
     block(
         project_dir,
         "question-copy",
@@ -849,11 +932,74 @@ def gate_question_copy(project_dir, session_id, questions, call):
         "fix those words and send the revised question. If a finding is wrong, send the "
         "SAME question again unchanged — each payload is bounced at most once, so the "
         "re-send goes through. A finding is raised once per session: a reworded question "
-        "is bounced again only for a finding it has not been shown yet.",
+        "is bounced again only for a finding it has not been shown yet. The exception is a "
+        "finding that says the choice is yours to make: decide it and report it, because "
+        "re-sending that choice is refused.",
         detail=payload_hash,
         evidence=f"payload {payload_hash}; bounce record at {_question_copy_bounce_path(project_dir)}",
         call=call,
         count_rule=False,
+    )
+
+
+# A waived check-in's body says "REPORT, DO NOT ASK". Claude obeyed the text;
+# a Gemini agent asked anyway through its question tool and parked an
+# unattended scheduled run on a question nobody was watching. The verdict is
+# the CLI's (`check-in-status --format json`), resolved by the same rule that
+# renders the waived body, so the refusal and the step text cannot disagree.
+WAIVED_QUESTION_CHECK_TIMEOUT_S = 5
+
+
+def read_waived_question_verdict(project_dir, slug):
+    """`(questions_waived, exception_open)` for `slug`, or None when the
+    verdict could not be read. None fails OPEN: a waived run that asks is
+    today's behaviour, while a hook bug refusing every question would be worse."""
+    try:
+        proc = subprocess.run(
+            [cli_command(), "editor", "check-in-status", "--slug", slug, "--format", "json"],
+            cwd=project_dir,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            timeout=WAIVED_QUESTION_CHECK_TIMEOUT_S,
+        )
+        if proc.returncode != 0:
+            return None
+        doc = json.loads(proc.stdout.decode("utf-8", "replace"))
+    except Exception:
+        return None
+    if not isinstance(doc, dict):
+        return None
+    waived = doc.get("questionsWaived")
+    exception_open = doc.get("testExpectationExceptionOpen")
+    if not isinstance(waived, bool) or not isinstance(exception_open, bool):
+        return None
+    return waived, exception_open
+
+
+def gate_waived_check_in_question(project_dir, slug, call):
+    """Refuse a question at a check-in the user waived, unless the review
+    check-in's changed-test-expectation question is still owed."""
+    if not slug:
+        return
+    verdict = read_waived_question_verdict(project_dir, slug)
+    if verdict is None:
+        return
+    questions_waived, exception_open = verdict
+    if not questions_waived or exception_open:
+        return
+    cli = cli_command()
+    block(
+        project_dir,
+        "waived-check-in-question",
+        f"this check-in ({slug}) is waived — the user turned approvals off for this "
+        f"work, so nobody is there to answer a question and the run would stall on it.",
+        f"report the step's results to the user as a statement (no question), then run "
+        f"`{cli} editor advance` in this same turn.",
+        reference=f"`{cli} editor check-in-status --slug {slug}` shows the waiver.",
+        detail=slug,
+        evidence=f"check-in-status --slug {slug}: questionsWaived=true, "
+        f"testExpectationExceptionOpen=false",
+        call=call,
     )
 
 
@@ -1011,7 +1157,7 @@ def resolved_context(project_dir, consulted=""):
     return "; ".join(parts)
 
 
-def _test_run_block_message(state, slug, info, project_dir=None):
+def _test_run_block_message(state, slug, info, project_dir=None, at_test_edit_slug=False):
     """Word the test-run block for `slug` from its phase kind.
 
     Returns a `(reason, next_action)` pair for `block`, which owns the
@@ -1081,12 +1227,7 @@ def _test_run_block_message(state, slug, info, project_dir=None):
             "advance — no test-running step remains in this mode, so there is "
             "nowhere left to re-run this."
         )
-    file_clause = (
-        f" At push, `{cli_command()} editor refresh-tests --file <path>` — the "
-        f"deferred-commit push refusal's own recovery — is allowed too."
-        if slug in _FILE_NARROWED_SLUGS
-        else ""
-    )
+    file_clause = _file_narrowed_clause(slug, at_test_edit_slug)
     return (
         f"test runs are not allowed at {where} "
         f"(test_scope: none). The hardening phases already ran the tests; this "
@@ -1111,6 +1252,70 @@ _TEST_GATING_SLUGS = ("pre-commit-sync", "push")
 # widened a few-file run to a 30k-test partition (~10 min). It fires only at
 # push, so the `--file` admission stays there.
 _FILE_NARROWED_SLUGS = ("push",)
+
+
+def _file_narrowed_clause(slug, at_test_edit_slug):
+    """The test-run refusal's sentence naming which `refresh-tests --file` run
+    `slug` admits: any path at push, test code only at a test-edit slug, and
+    none (the empty string) everywhere else."""
+    if slug in _FILE_NARROWED_SLUGS:
+        return (
+            f" At push, `{cli_command()} editor refresh-tests --file <path>` — the "
+            f"deferred-commit push refusal's own recovery — is allowed too."
+        )
+    if at_test_edit_slug:
+        return (
+            f" This step allows TEST edits, so `{cli_command()} editor "
+            f"refresh-tests --file <the test file you wrote>` is allowed too — "
+            f"for a test file, or a Rust file included as a `#[cfg(test)]` "
+            f"module; a `--file` naming production code is not."
+        )
+    return ""
+
+
+def _is_refresh_tests(tokens):
+    """True when the tokenized segment `tokens` runs codeyam's own
+    `refresh-tests` verb."""
+    return bool(
+        tokens
+        and _program_name(tokens[0]) in _CODEYAM_CLIS
+        and _codeyam_verb(tokens[1:]) == "refresh-tests"
+    )
+
+
+def refresh_file_args(command):
+    """Every `--file` value passed to a `refresh-tests` in `command`, in order.
+    An untokenizable segment contributes nothing; the caller's other checks
+    refuse it on their own."""
+    out = []
+    for segment in _split_commands(command):
+        try:
+            tokens = shlex.split(segment, posix=True)
+        except ValueError:
+            continue
+        if not _is_refresh_tests(tokens):
+            continue
+        for i, tok in enumerate(tokens):
+            if tok == "--file" and i + 1 < len(tokens):
+                out.append(tokens[i + 1])
+            elif tok.startswith("--file="):
+                out.append(tok[len("--file="):])
+    return out
+
+
+def file_narrowed_run_is_test_code(command, project_dir):
+    """True when `command` names at least one `refresh-tests --file` and every
+    one is test code by `is_test_file`. That is the narrowed run that checks a
+    test written at a test-edit slug; a `--file` on production code stays a
+    test run outside this step's scope."""
+    files = refresh_file_args(command)
+    if not files:
+        return False
+    for path in files:
+        rel = _repo_relative(path, project_dir)
+        if rel is None or not is_test_file(rel, project_dir):
+            return False
+    return True
 
 
 def is_narrowed_refresh_only(command, project_dir, allow_file=False):
@@ -1141,12 +1346,8 @@ def is_narrowed_refresh_only(command, project_dir, allow_file=False):
             or _shell_c_payload(tokens)
         ):
             continue
-        is_refresh = (
-            tokens
-            and _program_name(tokens[0]) in _CODEYAM_CLIS
-            and _codeyam_verb(tokens[1:]) == "refresh-tests"
-        )
-        flags = ("--partition", "--test") + (("--file",) if allow_file else ())
+        is_refresh = _is_refresh_tests(tokens)
+        flags =("--partition", "--test") + (("--file",) if allow_file else ())
         is_narrowed = any(
             tok in flags or tok.startswith(tuple(f"{f}=" for f in flags))
             for tok in tokens
@@ -2433,6 +2634,55 @@ _PGREP_LONG_VALUE_FLAGS = frozenset(
 # Where a `pgrep` invocation starts within one command. Where it ENDS is the end
 # of that command, as `_split_commands` cuts it.
 _PGREP_WORD = re.compile(r"\bpgrep\b")
+
+
+# The `codeyam-editor editor` subcommands that write a Demo capture frame. One
+# of these chained with `demo-attest` in a single command writes the
+# attestation before the frame exists, so the "observation" cannot be one.
+_CAPTURE_SUBCOMMANDS = frozenset(
+    ("preview-verify", "preview", "preview-interact", "preview-flow", "capture")
+)
+
+
+def _editor_subcommands(command):
+    """Every `codeyam-editor editor <subcommand>` that `command` RUNS, in
+    order. Position-aware like `_gating_subcommand`, so the name inside a
+    quoted message or a `grep` pattern is not an invocation. A stage that
+    cannot be tokenized contributes nothing."""
+    found = []
+    for segment in _split_commands(command):
+        try:
+            tokens = shlex.split(segment, posix=True)
+        except ValueError:
+            continue
+        for index, tok in enumerate(tokens):
+            if not _in_command_position(tokens, index):
+                continue
+            if _program_name(tok) not in _CODEYAM_CLIS:
+                continue
+            rest = tokens[index + 1:]
+            if len(rest) >= 2 and rest[0] == "editor":
+                found.append(rest[1])
+                break
+    return found
+
+
+def capture_and_attest_command(command):
+    """The capture subcommand `command` runs alongside `demo-attest`, or None.
+
+    Measured on VM-2's unattended Gemini run (2026-11-26):
+    `preview-verify '{…}' && codeyam-editor editor demo-attest --observed "…"`
+    in ONE shell command recorded what the capture "showed" before the capture
+    existed, and the attestation described a view that was not on screen.
+    Whatever order the two appear in, the agent cannot have looked at the
+    frame in between, so the shape is refused outright."""
+    subcommands = _editor_subcommands(command)
+    if "demo-attest" not in subcommands:
+        return None
+    for subcommand in subcommands:
+        if subcommand in _CAPTURE_SUBCOMMANDS:
+            return subcommand
+    return None
 
 
 def _pgrep_calls(command):
@@ -4771,10 +5021,56 @@ def _untracked_beside_tracked(path, project_dir):
     return bool(listed) and path not in listed
 
 
-def untracked_source_append_refusal(path):
+# --- Per-harness edit vocabulary --------------------------------------------
+#
+# The scripted-rewrite refusals tell the agent what to do instead, and that
+# answer is a tool call. Claude Code's tool is `Edit` with `old_string` /
+# `new_string` / `replace_all`; Antigravity's is `edit_file` with `Target` /
+# `Replacement` and no replace-all. Naming Claude's parameters to a Gemini agent
+# hands it a recovery it cannot perform — on VM-2 (2026-11-26) one run was
+# refused ~15 times and followed each with a failed `edit_file`. The harness is
+# read from the payload's `harness` marker (the Antigravity shim stamps it);
+# Claude Code sends none, so an absent or unknown marker keeps Claude's wording.
+#
+#   tool    — how the recovery names the edit tool
+#   batch   — the answer to "batching is why I scripted it"
+#   anchor  — how to append: the tool's own parameter names
+#   replace — the replace-every-occurrence advice; a harness with no
+#             replace-all says "one edit per occurrence" instead
+_EDIT_VOCAB = {
+    "claude": {
+        "tool": "the Edit tool",
+        "batch": "several Edit calls in ONE message run in parallel",
+        "anchor": (
+            "`old_string` is that construct verbatim, `new_string` is that same "
+            "construct followed by the new content"
+        ),
+        "replace": "use Edit with `replace_all: true`",
+    },
+    "antigravity": {
+        "tool": "your file-edit tool (`edit_file`, with `Target` / `Replacement`)",
+        "batch": "make one `edit_file` call per change, several in one turn",
+        "anchor": (
+            "`Target` is that construct verbatim, `Replacement` is that same "
+            "construct followed by the new content"
+        ),
+        "replace": "make one `edit_file` call per occurrence",
+    },
+}
+
+
+def edit_vocab(harness):
+    """The `_EDIT_VOCAB` row for `harness` — Claude's when it is absent or
+    unknown, so a payload without a marker reads exactly as before. Pure."""
+    return _EDIT_VOCAB.get(harness or "claude", _EDIT_VOCAB["claude"])
+
+
+def untracked_source_append_refusal(path, harness=None):
     """The `(reason, next_action)` pair for an `untracked_source_append_target`
     match. Says why an untracked file is judged at all, so the refusal is not
-    read as the tracked check misfiring. Pure."""
+    read as the tracked check misfiring. `harness` picks the edit vocabulary
+    (`edit_vocab`). Pure."""
+    vocab = edit_vocab(harness)
     return (
         f"this command appends to `{path}`, an untracked source file beside "
         f"tracked source of the same kind. Code written there is reviewed as "
@@ -4782,9 +5078,8 @@ def untracked_source_append_refusal(path):
         f"is computed at runtime, so the change never appears in the transcript "
         f"a reviewer reads, and it bypasses the file-state tracking that lets "
         f"Edit refuse a file that changed underneath it.",
-        f"use the Edit tool anchored on the file's existing final construct: "
-        f"`old_string` is that construct verbatim, `new_string` is that same "
-        f"construct followed by the new content (Read the file first). Writing "
+        f"use {vocab['tool']} anchored on the file's existing final construct: "
+        f"{vocab['anchor']} (Read the file first). Writing "
         f"to /tmp or to the scratchpad is unaffected.",
     )
 
@@ -5150,23 +5445,25 @@ def write_after_scripted_refusal_target(tool_input, project_dir):
     return rel, age
 
 
-def write_after_scripted_refusal_notice(rel_path, age_secs):
+def write_after_scripted_refusal_notice(rel_path, age_secs, harness=None):
     """The notice for a whole-file Write over a tracked file shortly after a
-    scripted rewrite of that same file was refused. Pure.
+    scripted rewrite of that same file was refused. `harness` picks the edit
+    vocabulary (`edit_vocab`). Pure.
 
     A notice, not a block: a whole-file Write is sometimes right (a generated
     file, a rewrite the user asked for). But every measured case came minutes
     after the refusal on the same path — the agent swapping one way around the
     Edit rule for another."""
+    vocab = edit_vocab(harness)
     minutes = round(age_secs / 60)
     when = "under a minute ago" if minutes < 1 else f"about {minutes} minute(s) ago"
     return (
         f"NOTICE (write-after-scripted-refusal): a scripted rewrite of `{rel_path}` "
         f"was refused {when}, and this Write replaces the "
         f"whole tracked file. A whole-file Write shows the reviewer no old/new text, "
-        f"which is what the refusal protected. The move the refusal named is Edit: "
-        f"several Edits in one message run in parallel, and `replace_all` covers a "
-        f"true replace-everywhere. If a full rewrite is genuinely intended (the user "
+        f"which is what the refusal protected. The move the refusal named is "
+        f"{vocab['tool']}: {vocab['batch']}, and for a true replace-everywhere "
+        f"{vocab['replace']}. If a full rewrite is genuinely intended (the user "
         f"asked for one, or the file is generated), carry on."
     )
 
@@ -5441,7 +5738,7 @@ def _prefix_trap_lead(command):
     )
 
 
-def _inferred_target_refusal(path, append_only, command=""):
+def _inferred_target_refusal(path, append_only, command="", harness=None):
     """The `(reason, next_action)` pair when the write's destination could not
     be resolved and `path` is only a tracked file the command MENTIONS.
 
@@ -5455,6 +5752,7 @@ def _inferred_target_refusal(path, append_only, command=""):
     did not resolve, so the reason leads with it and the corrected form."""
     construct = "an append" if append_only else "a scripted write"
     prefix = _prefix_trap_lead(command)
+    vocab = edit_vocab(harness)
     return (
         f"{prefix}this command performs {construct} whose destination could not be "
         f"resolved statically, and `{path}` is a tracked source file the command "
@@ -5467,18 +5765,20 @@ def _inferred_target_refusal(path, append_only, command=""):
         f"`open(p, \"w\")`, or `F=path; python3 - \"$F\"` (a separate "
         f"assignment, not a `F=path python3 …` prefix) reading "
         f"`sys.argv[1]` — and the hook judges that path instead of every path the "
-        f"command mentions. If it IS tracked source, use the Edit tool; several "
-        f"Edit calls in ONE message run in parallel, and `replace_all: true` covers "
-        f"a replace-every-occurrence pass.",
+        f"command mentions. If it IS tracked source, use {vocab['tool']}; "
+        f"{vocab['batch']}, and for a replace-every-occurrence pass "
+        f"{vocab['replace']}.",
     )
 
 
-def _script_run_refusal(path, append_only, target_inferred, script, command=""):
+def _script_run_refusal(path, append_only, target_inferred, script, command="", harness=None):
     """`scripted_rewrite_refusal` for a write found inside the script file
     `script` rather than in the command. Its first sentence — the claim about
     what THIS command does — is replaced with one about running the script; the
     explanation and the recovery are the command-text variant's, unchanged."""
-    reason, next_action = scripted_rewrite_refusal(path, append_only, target_inferred)
+    reason, next_action = scripted_rewrite_refusal(
+        path, append_only, target_inferred, harness=harness
+    )
     lead = _prefix_trap_lead(command) if target_inferred else ""
     if target_inferred:
         construct = "an append" if append_only else "a scripted write"
@@ -5498,7 +5798,9 @@ def _script_run_refusal(path, append_only, target_inferred, script, command=""):
     )
 
 
-def scripted_rewrite_refusal(path, append_only=False, target_inferred=False, script="", command=""):
+def scripted_rewrite_refusal(
+    path, append_only=False, target_inferred=False, script="", command="", harness=None
+):
     """The `(reason, next_action)` pair for a refused scripted write. Names the
     path that matched and the sanctioned alternatives — batching is the reason
     agents reach for a script, so the refusal has to answer it.
@@ -5525,13 +5827,19 @@ def scripted_rewrite_refusal(path, append_only=False, target_inferred=False, scr
     reason then names a prefix-assignment binding that left it unresolved.
 
     A `.json` path reaches here only through `textual_json_rewrite_targets` —
-    the suffix is outside `SOURCE_SUFFIXES` — so it gets its own wording."""
+    the suffix is outside `SOURCE_SUFFIXES` — so it gets its own wording.
+
+    `harness` (the payload's `harness` marker) picks the edit tool the recovery
+    names — see `edit_vocab`; absent, the wording is Claude Code's."""
     if path.lower().endswith(".json"):
-        return textual_json_rewrite_refusal(path, script)
+        return textual_json_rewrite_refusal(path, script, harness)
     if script:
-        return _script_run_refusal(path, append_only, target_inferred, script, command)
+        return _script_run_refusal(
+            path, append_only, target_inferred, script, command, harness
+        )
     if target_inferred:
-        return _inferred_target_refusal(path, append_only, command)
+        return _inferred_target_refusal(path, append_only, command, harness)
+    vocab = edit_vocab(harness)
     if append_only:
         return (
             f"this command appends to the tracked source file `{path}`. "
@@ -5539,10 +5847,9 @@ def scripted_rewrite_refusal(path, append_only=False, target_inferred=False, scr
             f"the change never appears in the transcript a reviewer reads; and "
             f"it bypasses the file-state tracking that lets Edit refuse a file "
             f"that changed underneath it.",
-            f"use the Edit tool anchored on the file's existing final construct: "
-            f"`old_string` is that construct verbatim, `new_string` is that same "
-            f"construct followed by the new content. Batching is not a reason to "
-            f"script — several Edit calls in ONE message run in parallel. Writing "
+            f"use {vocab['tool']} anchored on the file's existing final construct: "
+            f"{vocab['anchor']}. Batching is not a reason to "
+            f"script — {vocab['batch']}. Writing "
             f"to an untracked file, to /tmp, or to the scratchpad is unaffected.",
         )
     return (
@@ -5553,22 +5860,23 @@ def scripted_rewrite_refusal(path, append_only=False, target_inferred=False, scr
         f"grammar and self-matches the code it just generated; and it bypasses the "
         f"file-state tracking that lets Edit refuse a file that changed underneath "
         f"it.",
-        f"use the Edit tool. Batching is not a reason to script — "
-        f"several Edit calls in ONE message run in parallel. For a genuine "
-        f"replace-every-occurrence pass use Edit with `replace_all: true`; to rename "
+        f"use {vocab['tool']}. Batching is not a reason to script — "
+        f"{vocab['batch']}. For a genuine "
+        f"replace-every-occurrence pass {vocab['replace']}; to rename "
         f"an identifier across source + glossary + registry run "
         f"`{cli_command()} editor rename-symbol`. Writing to an untracked file, to "
         f"/tmp, or to the scratchpad is unaffected.",
     )
 
 
-def textual_json_rewrite_refusal(path, script=""):
+def textual_json_rewrite_refusal(path, script="", harness=None):
     """The `(reason, next_action)` pair for a text-surgery rewrite of the
     tracked JSON file `path`. Says why parse-and-dump is still fine, so the
     refusal is not read as "JSON may never be scripted"; for
     `.codeyam/editor.json` it names the editor's own writers, because a
     `testRunners` command or a per-machine override is what dbae0c51 was
-    actually changing."""
+    actually changing. `harness` picks the edit vocabulary (`edit_vocab`)."""
+    vocab = edit_vocab(harness)
     actor = f"running `{script}`" if script else "this command"
     reason = (
         f"{actor} rewrites the tracked JSON file `{path}` by text surgery "
@@ -5585,14 +5893,13 @@ def textual_json_rewrite_refusal(path, script=""):
             f"for a `testRunners` entry run `{cli} editor configure-test-runner "
             f"'<json>'`; for a per-machine change run `{cli} editor "
             f"config-override <path> <value>` (it writes `editor.local.json`); "
-            f"otherwise use the Edit tool — several Edit calls in ONE message run "
-            f"in parallel."
+            f"otherwise use {vocab['tool']} — {vocab['batch']}."
         )
     else:
         next_action = (
-            "use the Edit tool (several Edit calls in ONE message run in parallel, "
-            "and `replace_all: true` covers a replace-every-occurrence pass), or "
-            "rewrite it through a parser: load the JSON, change the value, dump it."
+            f"use {vocab['tool']} — {vocab['batch']}, and for a "
+            f"replace-every-occurrence pass {vocab['replace']} — or "
+            f"rewrite it through a parser: load the JSON, change the value, dump it."
         )
     return reason, next_action
 
@@ -7612,19 +7919,36 @@ def is_test_path(rel):
     if ".test." in name or ".spec." in name:
         return True
     stem = name.rsplit(".", 1)[0] if "." in name else ""
-    return stem.startswith("test_") or stem.endswith(("_test", "_tests"))
+    # `_test_cases` is this repo's own test-module stem: the
+    # `llvm-cov-blind-spot` static check forbids `*_tests.rs` under
+    # `crates/*/src`, so every test-only module file is named this way.
+    return stem.startswith("test_") or stem.endswith(("_test", "_tests", "_test_cases"))
+
+
+# The item a column-0 `#[cfg(test)]` decorates, when that item is an INLINE
+# module: any further single-line attributes, an optional visibility, then
+# `mod <ident> {`. Anything else it decorates — a `use a::{b, c};`, a `fn`, an
+# `impl`, an out-of-line `mod x;` — is not a test module.
+_INLINE_TEST_MOD_RE = re.compile(
+    r"\s*(?:#\[[^\n]*\]\s*)*"
+    r"(?:pub(?:\([^)\n]*\))?[ \t]+)?mod[ \t]+[A-Za-z_][A-Za-z0-9_]*[ \t]*\{"
+)
 
 
 def inline_test_module_span(body):
     """`(start, end)` character offsets of the first top-level `#[cfg(test)]`
     module in a Rust source `body`, or None when it has no inline one.
 
+    A column-0 `#[cfg(test)]` opens a span only when the item it decorates is
+    `mod <ident> {` (after any further attributes). Every other decorated item
+    is skipped — a brace-grouped `#[cfg(test)] use a::{b, c};` puts its `{`
+    before its `;`, and reading that as a module opening once gave push.rs a
+    span that ended hundreds of lines before its real `mod tests` (VM-3
+    06c72b9e).
+
     The span runs from the marker to the end of the first column-0 `}` line
-    after it. That relies on rustfmt's layout — every line inside the module is
-    indented — which `cargo fmt` enforces on this kind of file. An out-of-line
-    `#[cfg(test)] mod tests;` (its `;` comes before any `{`) is skipped, as is a
-    `#[cfg(test)] use …;`, rather than given a span that swallows what follows
-    it."""
+    after the module's `{`. That relies on rustfmt's layout — every line inside
+    the module is indented — which `cargo fmt` enforces on this kind of file."""
     padded = "\n" + body
     search_from = 0
     while True:
@@ -7632,12 +7956,102 @@ def inline_test_module_span(body):
         if hit < 0:
             return None
         start = hit  # offset into `body`: `padded` is one character longer
-        brace = body.find("{", start)
-        semi = body.find(";", start)
-        if brace >= 0 and not 0 <= semi < brace:
+        after = start + len(_INLINE_TEST_MARKER)
+        item = _INLINE_TEST_MOD_RE.match(body, after)
+        if item:
+            brace = item.end() - 1
             close = body.find("\n}", brace)
             return None if close < 0 else (start, close + 2)
         search_from = hit + 1
+
+
+# A `#[cfg(test)]` declaring an out-of-line module, with the attributes between
+# them (group 1) and the module's name (group 2). Indentation-agnostic: the
+# declaration may sit inside an inline module of its includer.
+_CFG_TEST_OUT_OF_LINE_MOD_RE = re.compile(
+    r"#\[cfg\(test\)\]\s*((?:#\[[^\]\n]*\]\s*)*)"
+    r"(?:pub(?:\([^)\n]*\))?\s+)?mod\s+([A-Za-z_][A-Za-z0-9_]*)\s*;"
+)
+_PATH_ATTR_RE = re.compile(r'#\[path\s*=\s*"([^"]+)"\s*\]')
+
+
+def _includer_candidates(abs_path):
+    """The files that could declare `abs_path` as a module: every sibling `.rs`
+    (a `#[path]` include names its file relative to the includer's directory)
+    and the parent module file `<dir>.rs` one level up."""
+    directory = os.path.dirname(abs_path)
+    try:
+        names = sorted(os.listdir(directory))
+    except OSError:
+        names = []
+    out = [
+        os.path.join(directory, n)
+        for n in names
+        if n.endswith(".rs") and os.path.join(directory, n) != abs_path
+    ]
+    parent_mod = directory + ".rs"
+    if os.path.isfile(parent_mod):
+        out.append(parent_mod)
+    return out
+
+
+def included_as_test_module(rel, project_dir):
+    """True when the Rust file `rel` is a test-only module: some includer
+    declares it under `#[cfg(test)]`, either as `#[path = "<file>"] mod …;` or
+    as `mod <stem>;` from its parent module (`mod.rs` / `lib.rs` / `main.rs`
+    beside it, or `<dir>.rs` above it).
+
+    Stack assumption: Rust-only, like the inline-module check it extends. A
+    file no includer declares this way reads as production — today's
+    behaviour — so a miss costs an `editor change`, never a production edit
+    slipping through."""
+    if not rel.endswith(".rs"):
+        return False
+    abs_path = os.path.normpath(os.path.join(project_dir, rel))
+    stem = os.path.basename(abs_path)[: -len(".rs")]
+    for includer in _includer_candidates(abs_path):
+        try:
+            with open(includer, "r", encoding="utf-8") as f:
+                text = f.read()
+        except (OSError, UnicodeDecodeError):
+            continue
+        if stem in text and _declares_test_module(text, includer, abs_path):
+            return True
+    return False
+
+
+def _is_parent_module_file(includer, directory):
+    """True when `includer` is the parent module of files in `directory`, so a
+    bare `mod <stem>;` in it resolves there: a `mod.rs` / `lib.rs` / `main.rs`
+    (the caller only offers ones beside the file) or `<directory>.rs` above."""
+    return os.path.basename(includer) in ("mod.rs", "lib.rs", "main.rs") or (
+        includer == directory + ".rs"
+    )
+
+
+def _declares_test_module(text, includer, abs_path):
+    """True when the Rust source `text` of the file `includer` declares the
+    file `abs_path` as a `#[cfg(test)]` out-of-line module — by a `#[path]`
+    resolving to it from `includer`'s directory, or, when `includer` is its
+    parent module file, by a bare `mod <stem>;`. Pure over `text`: no disk."""
+    stem = os.path.basename(abs_path)[: -len(".rs")]
+    includer_dir = os.path.dirname(includer)
+    parent_style = _is_parent_module_file(includer, os.path.dirname(abs_path))
+    for m in _CFG_TEST_OUT_OF_LINE_MOD_RE.finditer(text):
+        path_attr = _PATH_ATTR_RE.search(m.group(1))
+        if path_attr:
+            target = os.path.normpath(os.path.join(includer_dir, path_attr.group(1)))
+            if target == abs_path:
+                return True
+        elif parent_style and m.group(2) == stem:
+            return True
+    return False
+
+
+def is_test_file(rel, project_dir):
+    """The path half of `is_test_edit`: a test file by naming convention, or a
+    Rust file an includer declares as a `#[cfg(test)]` module."""
+    return is_test_path(rel) or included_as_test_module(rel, project_dir)
 
 
 def edits_only_inline_tests(tool_name, tool_input, abs_path):
@@ -7667,8 +8081,9 @@ def edits_only_inline_tests(tool_name, tool_input, abs_path):
 
 def is_test_edit(tool_name, tool_input, rel, project_dir):
     """True when this Write/Edit touches test code only — a test file by path
-    convention, or an Edit confined to a Rust file's inline test module."""
-    if is_test_path(rel):
+    convention or `#[cfg(test)]` inclusion, or an Edit confined to a Rust
+    file's inline test module."""
+    if is_test_file(rel, project_dir):
         return True
     return edits_only_inline_tests(tool_name, tool_input, os.path.join(project_dir, rel))
 
@@ -8082,7 +8497,7 @@ def main():
             rewrite_target, stage, stage_count, append_only, target_inferred = found
             reason, next_action = scripted_rewrite_refusal(
                 rewrite_target, append_only, target_inferred, script,
-                tool_input.get("command", ""),
+                tool_input.get("command", ""), event.get("harness"),
             )
             evidence = resolved_context(project_dir, consulted)
             if session_start_directory(session_cwd, project_dir):
@@ -8104,7 +8519,9 @@ def main():
             tool_input.get("command", ""), project_dir, session_cwd
         )
         if appended:
-            reason, next_action = untracked_source_append_refusal(appended)
+            reason, next_action = untracked_source_append_refusal(
+                appended, event.get("harness")
+            )
             block(
                 project_dir,
                 "scripted-rewrite",
@@ -8144,7 +8561,9 @@ def main():
         if after_refusal:
             notice(
                 "write-after-scripted-refusal",
-                write_after_scripted_refusal_notice(*after_refusal),
+                write_after_scripted_refusal_notice(
+                    *after_refusal, harness=event.get("harness")
+                ),
             )
 
     # Preview-origin hand-write guard. Same scope as the guard above: a
@@ -8243,6 +8662,27 @@ def main():
         compound = None if piped else compound_gating_command(command)
         if compound and not refused_live_handoff(command):
             notice("compound-gating-command", compound_gating_notice(*compound))
+
+    # Capture-and-attest guard. Not step-scoped: `demo-attest` is only ever
+    # meaningful after looking at the frame, in any session.
+    if tool_name == "Bash":
+        capture = capture_and_attest_command(tool_input.get("command", ""))
+        if capture:
+            block(
+                project_dir,
+                "capture-and-attest",
+                f"this runs `{cli_command()} editor {capture}` and `demo-attest` "
+                f"in ONE command, so the attestation is written before you could "
+                f"have looked at the frame the capture produces. `--observed` must "
+                f"describe what you saw, not what you expect.",
+                f"run `{cli_command()} editor {capture} …` on its own, open the "
+                f"frame it prints (under `.codeyam/run/captures/`) with your "
+                f"file-read tool, then run `{cli_command()} editor demo-attest` "
+                f"as a separate command describing what the frame shows.",
+                detail=capture,
+                evidence=f"one Bash command runs both `{capture}` and `demo-attest`",
+                call=call,
+            )
 
     # Recursive-delete guard. Neither step-scoped nor editor-mode-scoped, for
     # the same reason as the two above: `rm -rf` over tracked files is a loss in
@@ -8500,21 +8940,32 @@ def main():
         # `--test`-narrowed `refresh-tests`, the recoveries a stale-partition
         # commit refusal and a red owed run name at exactly these slugs. At
         # push (`_FILE_NARROWED_SLUGS`) a `--file`-narrowed one is admitted
-        # too: the deferred-commit push refusal's own recovery.
+        # too: the deferred-commit push refusal's own recovery. At a test-edit
+        # slug (`testEditSlugs`) a `--file` run is admitted when every path is
+        # test code: the step admits writing a test, so it admits the narrowed
+        # run that checks it (VM-13 635fbc17).
         # Pre-Demo slugs get no carve-out.
         test_run = False
+        at_test_edit_slug = bool(slug) and slug in test_edit_slugs
         if slug and test_run_slugs and slug not in test_run_slugs:
             test_run = is_test_run_command(command, project_dir)
             post_hardening = (no_test_slugs.get(slug) or {}).get("kind") == "post-hardening"
+            allow_file = slug in _FILE_NARROWED_SLUGS or (
+                at_test_edit_slug and file_narrowed_run_is_test_code(command, project_dir)
+            )
             if test_run and post_hardening and is_narrowed_refresh_only(
-                command, project_dir, allow_file=slug in _FILE_NARROWED_SLUGS
+                command, project_dir, allow_file=allow_file
             ):
                 test_run = False
         if test_run is None:
             refuse_unparseable(project_dir, command, call)
         if test_run:
             reason, next_action = _test_run_block_message(
-                state, slug, no_test_slugs.get(slug), project_dir
+                state,
+                slug,
+                no_test_slugs.get(slug),
+                project_dir,
+                at_test_edit_slug=at_test_edit_slug,
             )
             kind = (no_test_slugs.get(slug) or {}).get("kind") or "unclassified"
             block(
@@ -8558,6 +9009,7 @@ def main():
 
     # Gate AskUserQuestion at preview-required slugs — require preview marker first
     if tool_name == "AskUserQuestion":
+        gate_waived_check_in_question(project_dir, slug, call)
         if slug and slug in preview_required_slugs:
             marker_path = os.path.join(project_dir, ".codeyam", "preview-shown.json")
             preview_ok, observed = preview_marker_state(marker_path, step)
@@ -8812,7 +9264,9 @@ def main():
                     "Staging the fix for a test this session claimed with `test-fix-claim "
                     "take`? Run `codeyam-editor editor commit --out-of-workflow --fixes "
                     "'<test>' --stage <path> -m \"fix: …\"` — it stages exactly those paths "
-                    "and commits them — then `codeyam-editor editor push --fix-only HEAD`.",
+                    "and commits them — then `codeyam-editor editor push --fix-only HEAD`. "
+                    "Out-of-workflow work that is not a claimed fix? Run `codeyam-editor "
+                    "editor commit --out-of-workflow --stage <path> -m \"…\"`.",
                     reference="Plan-file commits (.codeyam/plans/*.md) are allowed at any step, "
                     "and `git add` is permitted while a rebase/merge is paused mid-operation.",
                     detail=slug,

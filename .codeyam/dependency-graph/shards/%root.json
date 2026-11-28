@@ -1,6 +1,117 @@
 {
-  "entities": {},
+  "entities": {
+    "debug_js.js::run": {
+      "filePath": "debug_js.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "run"
+    },
+    "debug_js2.js::run": {
+      "filePath": "debug_js2.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "run"
+    },
+    "debug_js3.js::run": {
+      "filePath": "debug_js3.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "run"
+    },
+    "debug_js4.js::run": {
+      "filePath": "debug_js4.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "run"
+    },
+    "debug_js5.js::run": {
+      "filePath": "debug_js5.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "run"
+    }
+  },
   "files": {
+    "debug_js.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "debug_js2.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "debug_js3.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "debug_js4.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "debug_js5.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    },
+    "fix_array.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_clippy.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_clippy2.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_clippy3.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_snapshot.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_snapshot2.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_snapshot3.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_snapshot4.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_snapshot5.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "fix_snapshot6.py": {
+      "importedBy": [],
+      "imports": []
+    },
     "golden_hashes_gen.rs": {
       "importedBy": [],
       "imports": [],
@@ -18,10 +129,6 @@
       ]
     },
     "patch_comments.py": {
-      "importedBy": [],
-      "imports": []
-    },
-    "patch_component.sh": {
       "importedBy": [],
       "imports": []
     },

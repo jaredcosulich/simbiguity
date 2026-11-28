@@ -1,12 +1,30 @@
 {
   "tests": [
     {
+      "description": "Verifies AC snapshot restore is bit identical.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "ac_snapshot_restore_is_bit_identical",
+      "line": 268,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "the corners map exactly.",
       "file": "crates/simbiguity-plot/src/axes.rs",
       "format": "cargo",
       "key": "axes::tests::corners_map_exactly",
       "line": 51,
       "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies backward Euler damps resonance.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "backward_euler_damps_resonance",
+      "line": 244,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
       "runner": "cargo"
     },
     {
@@ -536,7 +554,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blow_only_affects_bulbs",
-      "line": 361,
+      "line": 426,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -545,7 +563,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
-      "line": 350,
+      "line": 415,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -554,7 +572,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::brightness_is_power_ratio_clamped",
-      "line": 341,
+      "line": 406,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -563,7 +581,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::bulb_resistance_from_rating",
-      "line": 474,
+      "line": 542,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -572,7 +590,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::diode_params_and_nonlinear_check",
-      "line": 439,
+      "line": 507,
       "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
@@ -581,7 +599,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::set_value_changes_the_main_value",
-      "line": 424,
+      "line": 492,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -590,7 +608,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::stamps_match_each_component",
-      "line": 377,
+      "line": 442,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -599,7 +617,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::validity_rejects_non_physical_values",
-      "line": 408,
+      "line": 476,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1177,6 +1195,15 @@
       "key": "gravity_tests::two_body_binary_momentum_and_separation",
       "line": 161,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies half wave rectifier behavior.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "half_wave_rectifier",
+      "line": 175,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
       "runner": "cargo"
     },
     {
@@ -2192,7 +2219,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::foreign_node_panics",
-      "line": 310,
+      "line": 335,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2201,7 +2228,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::ids_follow_creation_order",
-      "line": 296,
+      "line": 321,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2210,7 +2237,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::replace_bulb_unblows",
-      "line": 287,
+      "line": 312,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2219,7 +2246,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_ignores_non_switches",
-      "line": 268,
+      "line": 293,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2228,7 +2255,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_sets_the_state",
-      "line": 256,
+      "line": 281,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2237,7 +2264,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::toggle_switch_flips_and_reports",
-      "line": 277,
+      "line": 302,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2482,6 +2509,24 @@
       "key": "rc_dc_limit_matches_solve",
       "line": 537,
       "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies RC low pass at 10*fc.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "rc_low_pass_at_10fc",
+      "line": 152,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies RC low pass at fc.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "rc_low_pass_at_fc",
+      "line": 119,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
       "runner": "cargo"
     },
     {
@@ -2764,6 +2809,33 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies series RLC at 2*f0.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "series_rlc_at_2f0",
+      "line": 71,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies series RLC at half f0.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "series_rlc_at_half_f0",
+      "line": 95,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies series RLC at resonance draws R-limited current.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "series_rlc_at_resonance_draws_r_limited_current",
+      "line": 47,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A series divider: 12 V over 1 Ω then 2 Ω puts the middle node at 8 V.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -2849,7 +2921,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::cache_produces_bit_identical_results",
-      "line": 186,
+      "line": 275,
       "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
       "runner": "cargo"
     },
@@ -2858,7 +2930,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::changing_dt_refactors_the_matrix",
-      "line": 221,
+      "line": 310,
       "registeredAt": "2026-11-27T00:24:13.422462503+00:00",
       "runner": "cargo"
     },
@@ -2867,7 +2939,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::random_history_equivalence",
-      "line": 257,
+      "line": 346,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -2876,7 +2948,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::resistance_change_invalidation",
-      "line": 334,
+      "line": 423,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -2885,7 +2957,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::wheatstone_emf_factorisation_reuse",
-      "line": 306,
+      "line": 395,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -3013,6 +3085,15 @@
       "key": "spring::tests::zero_omega_coasts",
       "line": 237,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies square wave into RC circuit.",
+      "file": "crates/simbiguity-circuits/tests/ac.rs",
+      "format": "cargo",
+      "key": "square_wave_into_rc",
+      "line": 209,
+      "registeredAt": "2026-11-28T14:18:48.021848396+00:00",
       "runner": "cargo"
     },
     {

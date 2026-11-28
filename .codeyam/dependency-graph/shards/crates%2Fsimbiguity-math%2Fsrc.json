@@ -470,6 +470,7 @@
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
         "crates/simbiguity-anim/src/easing.rs::elastic_in",
+        "crates/simbiguity-circuits/src/component.rs::Component::stamp",
         "crates/simbiguity-math/src/quat.rs::slerp_weights"
       ],
       "imports": [
@@ -2897,6 +2898,8 @@
       "importedBy": [
         "crates/simbiguity-anim/src/easing.rs",
         "crates/simbiguity-anim/src/spring.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-core/src/rng.rs",
         "crates/simbiguity-math/src/lib.rs",

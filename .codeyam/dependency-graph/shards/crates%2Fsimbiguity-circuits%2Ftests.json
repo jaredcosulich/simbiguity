@@ -1,5 +1,297 @@
 {
   "entities": {
+    "crates/simbiguity-circuits/tests/ac.rs::__file_root__": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation",
+        "crates/simbiguity-core/src/simulation.rs::Snapshot"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::ac_snapshot_restore_is_bit_identical": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "ac_snapshot_restore_is_bit_identical",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "iter",
+        "len",
+        "new",
+        "node",
+        "probe_samples",
+        "set_ground",
+        "snapshot",
+        "step",
+        "with_integrator",
+        "zip"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::assert_close": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/tests/ac.rs::half_wave_rectifier",
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_10fc",
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_half_f0",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_resonance_draws_r_limited_current",
+        "crates/simbiguity-circuits/tests/ac.rs::square_wave_into_rc"
+      ],
+      "imports": [],
+      "name": "assert_close",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::backward_euler_damps_resonance": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "backward_euler_damps_resonance",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::find_peak_time": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::ProbeId"
+      ],
+      "name": "find_peak_time",
+      "namedMethods": [
+        "probe_samples"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::half_wave_rectifier": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "half_wave_rectifier",
+      "namedMethods": [
+        "add_diode",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "probe_samples",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/tests/ac.rs::backward_euler_damps_resonance",
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_10fc",
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_half_f0",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_resonance_draws_r_limited_current"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::ProbeId"
+      ],
+      "name": "measure_amplitude",
+      "namedMethods": [
+        "probe_samples"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_10fc": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "rc_low_pass_at_10fc",
+      "namedMethods": [
+        "add_capacitor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-circuits/tests/ac.rs::find_peak_time",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "rc_low_pass_at_fc",
+      "namedMethods": [
+        "add_capacitor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "series_rlc_at_2f0",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_half_f0": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "series_rlc_at_half_f0",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_resonance_draws_r_limited_current": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "series_rlc_at_resonance_draws_r_limited_current",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::square_wave_into_rc": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::assert_close",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "square_wave_into_rc",
+      "namedMethods": [
+        "add_capacitor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "probe_samples",
+        "set_ground",
+        "step",
+        "with_integrator"
+      ]
+    },
     "crates/simbiguity-circuits/tests/analysis.rs::EPS": {
       "filePath": "crates/simbiguity-circuits/tests/analysis.rs",
       "importedBy": [
@@ -848,6 +1140,19 @@
     }
   },
   "files": {
+    "crates/simbiguity-circuits/tests/ac.rs": {
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs"
+      ]
+    },
     "crates/simbiguity-circuits/tests/analysis.rs": {
       "importedBy": [],
       "imports": [

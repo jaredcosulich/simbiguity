@@ -1,0 +1,20 @@
+{
+  "entities": {
+    "site/test/ac.test.js::__file_root__": {
+      "filePath": "site/test/ac.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "__file_root__"
+    }
+  },
+  "files": {
+    "site/test/ac.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
+    }
+  }
+}

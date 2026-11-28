@@ -319,6 +319,12 @@
       "subject": "audit: fix clippy warning and test cache ignore patterns",
       "deferredAt": "2026-11-28T20:05:54+00:00",
       "derived": true
+    },
+    {
+      "sha": "b1e894384f5ea2e683643ecc1660fb1a256bcb02",
+      "shortSha": "b1e8943",
+      "subject": "feat: Analogies demo: an RLC circuit and a mass on a spring resonate identically",
+      "deferredAt": "2026-11-28T20:45:43Z"
     }
   ],
   "finalizeIntent": "fast",

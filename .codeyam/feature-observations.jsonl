@@ -1,1 +1,2 @@
 {"id":"obs-9bcd7203778f","at":"2026-11-28T14:22:47.091614496+00:00","session":"Circuits: AC signal sources, oscilloscope probes and RLC resonance","text":"The implicit ground logic in MNA was broken for SignalSources, treating them differently from Batteries. This had to be fixed."}
+{"id":"obs-34f5493c6426","at":"2026-11-28T15:56:41.019582269+00:00","session":"Site Gallery & Smoke Test","text":"The user needed a resilient smoke test and graceful failure handling for GitHub Pages."}

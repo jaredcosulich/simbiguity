@@ -247,13 +247,19 @@
       "shortSha": "c85abd5",
       "subject": "feat: Physics Lab demo: every engine capability on one page",
       "deferredAt": "2026-11-28T15:39:59Z"
+    },
+    {
+      "sha": "449daeeaeb76a0236ed4b973dddc73e81761db9b",
+      "shortSha": "449daee",
+      "subject": "feat: Site gallery, smoke test and graceful failure before GitHub Pages",
+      "deferredAt": "2026-11-28T15:55:46Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T15:40:51Z",
-    "deferredCommits": 43
+    "at": "2026-11-28T15:56:12Z",
+    "deferredCommits": 44
   },
   "drained": {
     "screenshots": 18,

@@ -145,6 +145,12 @@
       "shortSha": "dcf17e7",
       "subject": "feat: Fix round 2: prove the performance work with the missing tests",
       "deferredAt": "2026-11-27T22:20:23Z"
+    },
+    {
+      "sha": "5f1a4f5417f5147e720af68365b25cf6d00aace5",
+      "shortSha": "5f1a4f5",
+      "subject": "feat: Fix round 2: hardening tests that can actually fail",
+      "deferredAt": "2026-11-28T00:10:24Z"
     }
   ],
   "finalizeIntent": "fast",

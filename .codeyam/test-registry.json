@@ -2990,7 +2990,7 @@
       "file": "crates/simbiguity-plot/src/series.rs",
       "format": "cargo",
       "key": "series::tests::pushing_over_capacity_keeps_newest_in_order",
-      "line": 51,
+      "line": 55,
       "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
@@ -2999,7 +2999,7 @@
       "file": "crates/simbiguity-plot/src/series.rs",
       "format": "cargo",
       "key": "series::tests::window_returns_recent_values",
-      "line": 62,
+      "line": 66,
       "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
       "runner": "cargo"
     },
@@ -3098,7 +3098,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::cache_produces_bit_identical_results",
-      "line": 275,
+      "line": 285,
       "registeredAt": "2026-11-26T20:57:55.560044318+00:00",
       "runner": "cargo"
     },
@@ -3107,8 +3107,17 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::changing_dt_refactors_the_matrix",
-      "line": 310,
+      "line": 320,
       "registeredAt": "2026-11-27T00:24:13.422462503+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that the charge probe correctly measures the charge on a capacitor (Q = C * V)",
+      "file": "crates/simbiguity-circuits/src/sim.rs",
+      "format": "cargo",
+      "key": "sim::tests::charge_probe_measures_capacitance_times_voltage",
+      "line": 457,
+      "registeredAt": "2026-11-28T20:41:47.042520945+00:00",
       "runner": "cargo"
     },
     {
@@ -3116,7 +3125,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::random_history_equivalence",
-      "line": 346,
+      "line": 356,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -3125,7 +3134,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::resistance_change_invalidation",
-      "line": 423,
+      "line": 433,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -3134,7 +3143,7 @@
       "file": "crates/simbiguity-circuits/src/sim.rs",
       "format": "cargo",
       "key": "sim::tests::wheatstone_emf_factorisation_reuse",
-      "line": 395,
+      "line": 405,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -5250,7 +5259,7 @@
       "file": "crates/simbiguity/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_simbiguity",
-      "line": 46,
+      "line": 52,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },
@@ -5277,7 +5286,7 @@
       "file": "crates/simbiguity/src/lib.rs",
       "format": "cargo",
       "key": "tests::version_matches_the_crate_manifest",
-      "line": 27,
+      "line": 61,
       "registeredAt": "2026-11-26T12:57:45.925589+00:00",
       "runner": "cargo"
     },

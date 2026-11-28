@@ -119,8 +119,10 @@ export async function loadCircuits(source) {
 
     time() { return w.sim_time(this.handle); }
 
-    addProbe(isCurrent, targetId, capacity) {
-      const probeId = check(w.sim_add_probe(this.handle, isCurrent ? 1 : 0, targetId, capacity));
+    addProbe(probeType, targetId, capacity) {
+      // probeType: 0 = node voltage, 1 = current, 2 = charge
+      let typeNum = typeof probeType === "boolean" ? (probeType ? 1 : 0) : probeType;
+      const probeId = check(w.sim_add_probe(this.handle, typeNum, targetId, capacity));
       return {
         read: () => {
           const ptr = w.sim_probe_samples_ptr(this.handle, probeId);
@@ -147,7 +149,8 @@ export async function loadCircuits(source) {
 
     setIntegrator(method) { check(w.circuit_set_integrator(this.handle, method)); }
     plotPush(v) { check(w.circuit_plot_push(this.handle, v)); }
-    plotDraw(width, height) { check(w.circuit_plot_draw(this.handle, width, height)); }
+    plotPush2(v) { check(w.circuit_plot_push2(this.handle, v)); }
+    plotDraw(width, height, yMin = 0.0, yMax = 12.0) { check(w.circuit_plot_draw(this.handle, width, height, yMin, yMax)); }
     
     replaceBulb(id) { check(w.circuit_replace_bulb(this.handle, id)); }
 

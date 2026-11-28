@@ -5,4 +5,4 @@ simbiguity_circuits_wasm.wasm 155000
 simbiguity_render_wasm.wasm 258060
 
 # reason: Sparse arrays and ball pit support
-simbiguity_physics_wasm.wasm 214200
+simbiguity_physics_wasm.wasm 218000

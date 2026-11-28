@@ -33,7 +33,7 @@ export async function loadPhysics(source) {
     return status;
   }
   class Physics {
-    constructor(preset = "pendulum", offset = 1e-9) {
+    constructor(preset = "pendulum", offset = 1e-9, m=1, k=100, c=0.2, f0=1, omega=10) {
       if (preset === "spring") this.handle = check(w.phys_new_spring_mass());
       else if (preset === "projectile") this.handle = check(w.phys_new_projectile());
       else if (preset === "chain") this.handle = check(w.phys_new_chain());
@@ -45,8 +45,11 @@ export async function loadPhysics(source) {
       else if (preset === "binary") this.handle = check(w.phys_new_binary());
       else if (preset === "figure_eight") this.handle = check(w.phys_new_figure_eight());
       else if (preset === "cloth") this.handle = check(w.phys_new_cloth(20));
+      else if (preset === "driven_oscillator") this.handle = check(w.phys_new_driven_oscillator(m, k, c, f0, omega));
       else this.handle = check(w.phys_new_pendulum());
     }
+    setDrivenOscillatorOmega(omega) { check(w.phys_set_driven_oscillator_omega(this.handle, omega)); }
+    setDrivenOscillatorC(c) { check(w.phys_set_driven_oscillator_c(this.handle, c)); }
     setIntegrator(method) { 
         let m = 0;
         if (method === "symplectic_euler" || method === "symplectic") m = 1;

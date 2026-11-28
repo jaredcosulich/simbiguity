@@ -1,5 +1,12 @@
 [
   {
+    "slug": "analogies",
+    "title": "Analogies",
+    "description": "An RLC circuit and a mass on a spring resonate identically.",
+    "capabilities": ["circuits.ac.resonance", "physics.oscillator.driven"],
+    "thumbnail": "analogies/thumb.png"
+  },
+  {
     "slug": "circuit-3d",
     "title": "Circuit in 3D",
     "description": "Battery, switch and bulb on a 3D board. Watch charge flow and the bulb glow.",

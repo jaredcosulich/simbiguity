@@ -25,6 +25,10 @@ impl Series {
         }
     }
 
+    pub fn is_empty(&self) -> bool {
+        self.samples.is_empty()
+    }
+
     pub fn iter(&self) -> impl Iterator<Item = &(f64, f64)> {
         let (first, second) = if self.samples.len() < self.capacity {
             (self.samples.as_slice(), &[][..])

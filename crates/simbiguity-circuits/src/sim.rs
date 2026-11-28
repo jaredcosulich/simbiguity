@@ -13,6 +13,8 @@ pub enum Probe {
     NodeVoltage(NodeId),
     /// Current through a component.
     Current(ComponentId),
+    /// Charge on a capacitor (q = C * V_c).
+    Charge(ComponentId),
 }
 
 /// A handle to a registered probe.
@@ -216,6 +218,14 @@ impl Simulation for CircuitSim {
                 let val = match p.probe {
                     Probe::NodeVoltage(n) => sol.node_voltages[n.0].unwrap_or(0.0),
                     Probe::Current(c) => sol.currents[c.0],
+                    Probe::Charge(c) => {
+                        let c_val = match self.circuit.component(c) {
+                            Component::Capacitor { farads, .. } => *farads,
+                            _ => 0.0,
+                        };
+                        let v = sol.voltage_across(c).unwrap_or(0.0);
+                        c_val * v
+                    }
                 };
                 p.push(t_eval, val);
             }
@@ -440,5 +450,30 @@ mod tests {
         fresh.step(Seconds(0.1));
 
         assert_eq!(cached.state(), fresh.state());
+    }
+
+    /// Verifies that the charge probe correctly measures the charge on a capacitor (Q = C * V)
+    #[test]
+    fn charge_probe_measures_capacitance_times_voltage() {
+        let mut c = Circuit::new();
+        let (p, m, mid) = (c.node(), c.node(), c.node());
+        // 5V battery, 1000 ohm resistor, 1 µF capacitor
+        c.add_battery(p, m, 5.0);
+        c.add_resistor(p, mid, 1000.0);
+        let cap = c.add_capacitor(mid, m, 1e-6);
+
+        let mut sim = CircuitSim::new(c);
+        let probe = sim.add_probe(Probe::Charge(cap), 10);
+
+        sim.step(Seconds(0.1));
+
+        let samples = sim.probe_samples(probe);
+        let last_val = samples.last().unwrap().1;
+
+        assert!(
+            (last_val - 4.95049504950495e-6).abs() < 1e-12,
+            "expected ~4.95e-6, got {}",
+            last_val
+        );
     }
 }

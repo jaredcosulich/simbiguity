@@ -11,6 +11,7 @@
     "site/js/boot.js::boot": {
       "filePath": "site/js/boot.js",
       "importedBy": [
+        "site/demos/analogies/analogies.js::__file_root__",
         "site/demos/circuit-3d/demo.js::__file_root__",
         "site/demos/circuit-3d-parallel/demo.js::__file_root__",
         "site/demos/circuit-lab/lab.js::__file_root__",
@@ -78,6 +79,7 @@
     "site/js/simbiguity-render.js::loadCircuit3D": {
       "filePath": "site/js/simbiguity-render.js",
       "importedBy": [
+        "site/demos/analogies/analogies.js::main",
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
         "site/demos/circuit-lab/components/board-view.js::BoardView",
@@ -129,6 +131,8 @@
     "site/js/simbiguity.js::loadCircuits": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
+        "site/demos/analogies/analogies.js::main",
+        "site/demos/analogies/analogies.test.js::__file_root__",
         "site/demos/circuit-lab/lab.js::main",
         "site/demos/circuit-puzzles/game-state.test.js::__file_root__",
         "site/demos/hello-circuit/demo.js::main",
@@ -181,6 +185,7 @@
     "site/js/webgl2-executor.js::WebGL2Executor": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
+        "site/demos/analogies/analogies.js::main",
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
         "site/demos/circuit-lab/components/board-view.js::BoardView",
@@ -243,6 +248,7 @@
     "site/js/boot.js": {
       "importedBy": [
         "site/boot.test.js",
+        "site/demos/analogies/analogies.js",
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/circuit-lab/lab.js",
@@ -280,6 +286,7 @@
     },
     "site/js/simbiguity-render.js": {
       "importedBy": [
+        "site/demos/analogies/analogies.js",
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d/pointer.js",
         "site/demos/circuit-3d/pointer.test.js",
@@ -300,6 +307,8 @@
     },
     "site/js/simbiguity.js": {
       "importedBy": [
+        "site/demos/analogies/analogies.js",
+        "site/demos/analogies/analogies.test.js",
         "site/demos/circuit-lab/lab.js",
         "site/demos/circuit-puzzles/game-state.test.js",
         "site/demos/hello-circuit/demo.js",
@@ -313,6 +322,7 @@
     },
     "site/js/webgl2-executor.js": {
       "importedBy": [
+        "site/demos/analogies/analogies.js",
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/circuit-lab/components/board-view.js",

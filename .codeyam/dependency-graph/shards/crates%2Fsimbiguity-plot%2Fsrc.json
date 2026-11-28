@@ -229,6 +229,7 @@
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series::capacity",
         "crates/simbiguity-plot/src/series.rs::Series::head",
+        "crates/simbiguity-plot/src/series.rs::Series::is_empty",
         "crates/simbiguity-plot/src/series.rs::Series::iter",
         "crates/simbiguity-plot/src/series.rs::Series::new",
         "crates/simbiguity-plot/src/series.rs::Series::push",
@@ -258,6 +259,20 @@
       ],
       "imports": [],
       "name": "Series::head"
+    },
+    "crates/simbiguity-plot/src/series.rs::Series::is_empty": {
+      "filePath": "crates/simbiguity-plot/src/series.rs",
+      "importedBy": [
+        "crates/simbiguity-plot/src/series.rs::Series"
+      ],
+      "imports": [
+        "crates/simbiguity-plot/src/series.rs::Series::samples"
+      ],
+      "inherentMethod": true,
+      "name": "Series::is_empty",
+      "namedMethods": [
+        "is_empty"
+      ]
     },
     "crates/simbiguity-plot/src/series.rs::Series::iter": {
       "filePath": "crates/simbiguity-plot/src/series.rs",
@@ -318,6 +333,7 @@
       "filePath": "crates/simbiguity-plot/src/series.rs",
       "importedBy": [
         "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-plot/src/series.rs::Series::is_empty",
         "crates/simbiguity-plot/src/series.rs::Series::iter",
         "crates/simbiguity-plot/src/series.rs::Series::new",
         "crates/simbiguity-plot/src/series.rs::Series::push"
@@ -490,6 +506,7 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",

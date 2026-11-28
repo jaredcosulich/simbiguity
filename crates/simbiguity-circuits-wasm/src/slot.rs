@@ -17,6 +17,7 @@ pub(crate) struct Slot {
 
     pub(crate) results: Vec<f64>,
     pub(crate) chart_series: simbiguity_plot::Series,
+    pub(crate) chart_series2: simbiguity_plot::Series,
     pub(crate) chart_meshes: Vec<simbiguity_render::Mesh>,
     pub(crate) chart_commands: Vec<u32>,
     pub(crate) chart_labels: String,
@@ -40,6 +41,7 @@ pub(crate) fn insert_empty() -> u32 {
 
             results: Vec::new(),
             chart_series: simbiguity_plot::Series::new(200),
+            chart_series2: simbiguity_plot::Series::new(200),
             chart_meshes: Vec::new(),
             chart_commands: Vec::new(),
             chart_labels: String::new(),

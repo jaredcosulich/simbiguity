@@ -188,17 +188,23 @@ pub extern "C" fn sim_time(h: u32) -> f64 {
 }
 
 #[no_mangle]
-pub extern "C" fn sim_add_probe(h: u32, is_current: u32, target_id: u32, capacity: u32) -> i32 {
+pub extern "C" fn sim_add_probe(h: u32, probe_type: u32, target_id: u32, capacity: u32) -> i32 {
     with_slot(h, |s| {
-        let probe = if is_current != 0 {
-            match s.part(target_id) {
-                Ok(id) => simbiguity_circuits::sim::Probe::Current(id),
-                Err(e) => return e,
+        let probe = if probe_type == 0 {
+            if let Ok(id) = s.node(target_id) {
+                simbiguity_circuits::sim::Probe::NodeVoltage(id)
+            } else {
+                return -1;
             }
         } else {
-            match s.node(target_id) {
-                Ok(id) => simbiguity_circuits::sim::Probe::NodeVoltage(id),
-                Err(e) => return e,
+            if let Ok(id) = s.part(target_id) {
+                if probe_type == 1 {
+                    simbiguity_circuits::sim::Probe::Current(id)
+                } else {
+                    simbiguity_circuits::sim::Probe::Charge(id)
+                }
+            } else {
+                return -1;
             }
         };
         let id = s.sim.add_probe(probe, capacity as usize);
@@ -469,21 +475,42 @@ pub extern "C" fn circuit_plot_push(h: u32, v: f64) -> i32 {
 }
 
 #[no_mangle]
-pub extern "C" fn circuit_plot_draw(h: u32, width: f64, height: f64) -> i32 {
+pub extern "C" fn circuit_plot_push2(h: u32, v: f64) -> i32 {
+    with_slot(h, |s| {
+        s.chart_series2.push(s.time, v);
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_plot_draw(
+    h: u32,
+    width: f64,
+    height: f64,
+    y_min: f64,
+    y_max: f64,
+) -> i32 {
     with_slot(h, |s| {
         let t_max = s.time;
         let t_min = (t_max - 5.0).max(0.0);
         let axes = simbiguity_plot::Axes {
             x_min: t_min,
             x_max: t_min + 5.0,
-            y_min: 0.0,
-            y_max: 12.0,
+            y_min,
+            y_max,
             px_x: 0.0,
             px_y: 0.0,
             px_w: width,
             px_h: height,
         };
-        let series_list = vec![(&s.chart_series, [1.0, 0.0, 0.0, 1.0])];
+        let series_list = if s.chart_series2.is_empty() {
+            vec![(&s.chart_series, [1.0, 0.0, 0.0, 1.0])]
+        } else {
+            vec![
+                (&s.chart_series, [1.0, 0.0, 0.0, 1.0]),
+                (&s.chart_series2, [0.0, 0.5, 1.0, 1.0]),
+            ]
+        };
         let chart = simbiguity_plot::Chart {
             axes,
             series: series_list,

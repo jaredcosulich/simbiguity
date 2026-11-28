@@ -8,295 +8,317 @@
       "sha": "9e8a287f8a907818c10793d9a59690428282a936",
       "shortSha": "9e8a287",
       "subject": "feat: Foundations: simbiguity-math and simbiguity-core",
-      "deferredAt": "2026-11-26T16:53:29Z"
+      "deferredAt": "2026-11-26T16:53:29+00:00"
     },
     {
       "sha": "ac1aeeafa6f4419daa659216b97b907b34dd7b41",
       "shortSha": "ac1aeea",
       "subject": "feat: DC circuit engine: simbiguity-circuits with Modified Nodal Analysis and teachable diagnostics",
-      "deferredAt": "2026-11-26T17:35:47Z"
+      "deferredAt": "2026-11-26T17:35:47+00:00"
     },
     {
       "sha": "837c5c90964b2756dfeaec86aad89ae8e72aba3d",
       "shortSha": "837c5c9",
       "subject": "feat: Hello circuit: hand-written WASM bridge, JS loader, first demo page and GitHub Pages deploy",
-      "deferredAt": "2026-11-26T18:02:08Z"
+      "deferredAt": "2026-11-26T18:02:08+00:00"
     },
     {
       "sha": "e0c171d47d43b04685dee96e6b6a2ef3abe9c43d",
       "shortSha": "e0c171d",
       "subject": "feat: 3D rendering and animation: simbiguity-anim, simbiguity-render, a WebGL2 executor and the 3D circuit view",
-      "deferredAt": "2026-11-26T18:47:42Z"
+      "deferredAt": "2026-11-26T18:47:42+00:00"
     },
     {
       "sha": "19b15024b39eb233f1bc6cac36454375dfb0002e",
       "shortSha": "19b1502",
       "subject": "feat: Engine status page: public demos and every test that proves them",
-      "deferredAt": "2026-11-26T19:18:09Z"
+      "deferredAt": "2026-11-26T19:18:08+00:00"
     },
     {
       "sha": "16cb5cdea4662e69ad0b3e53f62be7d43688eb55",
       "shortSha": "16cb5cd",
       "subject": "feat: 3D circuit puzzle game: data-driven levels with exact, verified goals",
-      "deferredAt": "2026-11-26T20:00:08Z"
+      "deferredAt": "2026-11-26T20:00:08+00:00"
     },
     {
       "sha": "685a876409d61052baf39dae005fd212a9eaaa37",
       "shortSha": "685a876",
       "subject": "feat: Time-series plots: simbiguity-plot draws values over time with the existing renderer",
-      "deferredAt": "2026-11-26T20:11:26Z"
+      "deferredAt": "2026-11-26T20:11:26+00:00"
     },
     {
       "sha": "479eed1bbb09557b94ebb340f87211fb2e76fe8b",
       "shortSha": "479eed1",
       "subject": "feat: Physics engine: simbiguity-physics with particles, springs, rods and comparable integrators",
-      "deferredAt": "2026-11-26T20:27:18Z"
+      "deferredAt": "2026-11-26T20:27:18+00:00"
     },
     {
       "sha": "42fce3c3e3f385605be23c744deec253e2d6bebb",
       "shortSha": "42fce3c",
       "subject": "feat: Circuits that change over time: capacitors, inductors and transient analysis",
-      "deferredAt": "2026-11-26T20:45:23Z"
+      "deferredAt": "2026-11-26T20:45:23+00:00"
     },
     {
       "sha": "4a7bd35d5cdedc0e989041406f03d519b6747f56",
       "shortSha": "4a7bd35",
       "subject": "feat: Performance: benchmarks, WASM size budgets and an incremental circuit solve",
-      "deferredAt": "2026-11-26T21:04:23Z"
+      "deferredAt": "2026-11-26T21:04:23+00:00"
     },
     {
       "sha": "4971487eaab61dd19d7f6b31742a4997c73e9614",
       "shortSha": "4971487",
       "subject": "feat: General 3D circuit view: render any circuit laid out on a grid board",
-      "deferredAt": "2026-11-26T21:25:42Z"
+      "deferredAt": "2026-11-26T21:25:42+00:00"
     },
     {
       "sha": "cc0b50c05fcbb116190b26a4b24bfff42fa1f039",
       "shortSha": "cc0b50c",
       "subject": "feat: Hardening: randomized physics-law invariants, no panics, native-vs-WASM determinism",
-      "deferredAt": "2026-11-26T21:43:46Z"
+      "deferredAt": "2026-11-26T21:43:46+00:00"
     },
     {
       "sha": "a0c5ca12c35971376a4cc5b902481468a0aeceff",
       "shortSha": "a0c5ca1",
       "subject": "Fix: get fast-sim-1 green and clean (clippy, toolchain pin, committed junk)",
-      "deferredAt": "2026-11-26T22:59:47Z"
+      "deferredAt": "2026-11-26T22:59:47+00:00"
     },
     {
       "sha": "99c4a8d2a3c46bd27f60532686dd75a182179f0a",
       "shortSha": "99c4a8d",
       "subject": "Fix: time-series plots actually draw (Chart::draw stub, line geometry, tick loop)",
-      "deferredAt": "2026-11-26T23:32:12Z"
+      "deferredAt": "2026-11-26T23:32:12+00:00"
     },
     {
       "sha": "eaa195593ef4854319c32b93d2c96faae73c1201",
       "shortSha": "eaa1955",
       "subject": "Fix: performance stale LU on dt change, budget gate that cannot fail, bogus grid bench",
-      "deferredAt": "2026-11-27T00:34:19Z"
+      "deferredAt": "2026-11-27T00:34:19+00:00"
     },
     {
       "sha": "a28fe00e4ff3d6d89ac1d8e9da42c571fbbecaa9",
       "shortSha": "a28fe00",
       "subject": "Fix: physics engine presets crash, lost pushes, rod energy, missing worked-example tests",
-      "deferredAt": "2026-11-27T00:54:59Z"
+      "deferredAt": "2026-11-27T00:54:58+00:00"
     },
     {
       "sha": "757fe5a7cd4c91c1635da2f38a4618cf97ea6725",
       "shortSha": "757fe5a",
       "subject": "Fix: hardening deliver the invariants, stress tests and native-vs-WASM check",
-      "deferredAt": "2026-11-27T01:08:32Z"
+      "deferredAt": "2026-11-27T01:08:32+00:00"
     },
     {
       "sha": "a6ab7c27327ec5e827fcb0c96fc56957a59d4322",
       "shortSha": "a6ab7c2",
       "subject": "fix: circuit puzzle game is a placeholder (real levels, goals, undo, share)",
-      "deferredAt": "2026-11-27T14:18:06Z"
+      "deferredAt": "2026-11-27T14:18:06+00:00"
     },
     {
       "sha": "67eb67bab81e944266a5e42a9bd520e7c48112ed",
       "shortSha": "67eb67b",
       "subject": "feat: Fix round 2: make the branch green and keep it that way",
-      "deferredAt": "2026-11-27T14:58:55Z"
+      "deferredAt": "2026-11-27T14:58:55+00:00"
     },
     {
       "sha": "42ae66df199c1afc38159347ba21740078973ec7",
       "shortSha": "42ae66d",
       "subject": "feat: Fix round 2: plots that actually reach the screen",
-      "deferredAt": "2026-11-27T15:13:33Z"
+      "deferredAt": "2026-11-27T15:13:33+00:00"
     },
     {
       "sha": "3713ad0fd9a4d7ecaea082f01cd6ec598cefd561",
       "shortSha": "3713ad0",
       "subject": "feat: Fix round 2: trapezoidal integrator sign error and hand-computed transient tests",
-      "deferredAt": "2026-11-27T15:48:18Z"
+      "deferredAt": "2026-11-27T15:48:18+00:00"
     },
     {
       "sha": "6cc3cbcf7fd1bcd34b6b64c77562f3359b212772",
       "shortSha": "6cc3cbc",
       "subject": "feat: Fix round 2: physics energy that is really conserved and tests from the textbook",
-      "deferredAt": "2026-11-27T16:58:13Z"
+      "deferredAt": "2026-11-27T16:58:13+00:00"
     },
     {
       "sha": "a941c5983b47a2ebd2ac0d171c993cb0ea3ba360",
       "shortSha": "a941c59",
       "subject": "feat: Fix round 2: 3D view per-bulb glow, strict layouts and a parallel demo that is not shorted",
-      "deferredAt": "2026-11-27T17:23:48Z"
+      "deferredAt": "2026-11-27T17:23:48+00:00"
     },
     {
       "sha": "dcf17e7df38f85852693fb69a77a66a689029582",
       "shortSha": "dcf17e7",
       "subject": "feat: Fix round 2: prove the performance work with the missing tests",
-      "deferredAt": "2026-11-27T22:20:23Z"
+      "deferredAt": "2026-11-27T22:20:23+00:00"
     },
     {
       "sha": "5f1a4f5417f5147e720af68365b25cf6d00aace5",
       "shortSha": "5f1a4f5",
       "subject": "feat: Fix round 2: hardening tests that can actually fail",
-      "deferredAt": "2026-11-28T00:10:24Z"
+      "deferredAt": "2026-11-28T00:10:24+00:00"
     },
     {
       "sha": "0ff9ce509e069260b08060bfaf3487266e791b67",
       "shortSha": "0ff9ce5",
       "subject": "feat: Fix round 2: puzzle engine with real goals, verified levels, undo and share",
-      "deferredAt": "2026-11-28T01:54:04Z"
+      "deferredAt": "2026-11-28T01:54:04+00:00"
     },
     {
       "sha": "624512de59d0e8b5dd4eb6c389b96437b0e92e86",
       "shortSha": "624512d",
       "subject": "feat: Fix round 2: playable puzzle game page driven by the bridge",
-      "deferredAt": "2026-11-28T02:14:30Z"
+      "deferredAt": "2026-11-28T02:14:30+00:00"
     },
     {
       "sha": "b57a12846888a0ec20bfb1898e415c4cbd955c97",
       "shortSha": "b57a128",
       "subject": "feat: Add WebGL2Executor and demo.js tests",
-      "deferredAt": "2026-11-28T02:51:56Z"
+      "deferredAt": "2026-11-28T02:51:56+00:00"
     },
     {
       "sha": "9efa5e660b44d9a8f2414be659361fce15f39352",
       "shortSha": "9efa5e6",
       "subject": "feat: Round 3: site build under budget, no junk, and a determinism test that can fail",
-      "deferredAt": "2026-11-28T03:06:02Z"
+      "deferredAt": "2026-11-28T03:06:02+00:00"
     },
     {
       "sha": "3ee1b7e2b1d129cc029d0b82102583c5bd8e1e23",
       "shortSha": "3ee1b7e",
       "subject": "feat: Physics: collisions, restitution, friction and a broadphase",
-      "deferredAt": "2026-11-28T11:55:37Z"
+      "deferredAt": "2026-11-28T11:55:37+00:00"
     },
     {
       "sha": "4bcdf1c04d7aa1e6f17c09fc354d2bb39ed29db8",
       "shortSha": "4bcdf1c",
       "subject": "Fix: the physics WASM is 20 KB over its 180,000-byte budget, so the site build and the preview fail",
-      "deferredAt": "2026-11-28T12:30:21Z"
+      "deferredAt": "2026-11-28T12:30:21+00:00"
     },
     {
       "sha": "46bff0d3d8955590783c98f765993d5a6524a6e3",
       "shortSha": "46bff0d",
       "subject": "feat: Round 3: puzzle engine with eight authored levels, a real parser, goals and share codes",
-      "deferredAt": "2026-11-28T12:50:18Z"
-    },
-    {
-      "sha": "712f95a136c09eb5d4a14e9b9b57c986a56b622d",
-      "shortSha": "712f95a",
-      "subject": "feat: Round 3: puzzle game page that plays the real levels through the bridge",
-      "deferredAt": "2026-11-28T13:14:17Z"
+      "deferredAt": "2026-11-28T12:50:18+00:00"
     },
     {
       "sha": "ec9567e82ca1d711826f62ed163ba43c238c6c39",
       "shortSha": "ec9567e",
       "subject": "feat: Round 3: puzzle game page that plays the real levels through the bridge",
-      "deferredAt": "2026-11-28T13:14:29Z"
+      "deferredAt": "2026-11-28T13:14:29+00:00"
     },
     {
       "sha": "7d134f4c60639d374bc494902cc0d67bc96b967d",
       "shortSha": "7d134f4",
       "subject": "feat: Physics: inverse-square gravity and Kepler-checked orbits",
-      "deferredAt": "2026-11-28T13:32:47Z"
+      "deferredAt": "2026-11-28T13:32:47+00:00"
     },
     {
       "sha": "54a362624c42806f03a14c8b735b382db231c263",
       "shortSha": "54a3626",
       "subject": "feat: Circuits: Newton-Raphson solver with diodes and LEDs",
-      "deferredAt": "2026-11-28T13:58:29Z"
+      "deferredAt": "2026-11-28T13:58:29+00:00"
     },
     {
       "sha": "117056b842a02e97c514886517bff559659e7d61",
       "shortSha": "117056b",
       "subject": "feat: Circuits: AC signal sources, oscilloscope probes and RLC resonance",
-      "deferredAt": "2026-11-28T14:21:02Z"
+      "deferredAt": "2026-11-28T14:21:02+00:00"
     },
     {
       "sha": "b917e10b0209c77fd69e5d533564ad65bf4cc95d",
       "shortSha": "b917e10",
       "subject": "feat: Circuits: AC signal sources, oscilloscope probes and RLC resonance",
-      "deferredAt": "2026-11-28T14:21:09Z"
+      "deferredAt": "2026-11-28T14:21:09+00:00"
     },
     {
       "sha": "e64398260293df090add106e7c49e9ba284b1077",
       "shortSha": "e643982",
       "subject": "feat: Circuits: sparse solver for thousand-node circuits",
-      "deferredAt": "2026-11-28T14:45:59Z"
+      "deferredAt": "2026-11-28T14:45:58+00:00"
     },
     {
       "sha": "6a2d862c2d16dba1a5d7732273fec88d0324a7fe",
       "shortSha": "6a2d862",
       "subject": "feat: Circuit Lab demo: LEDs, rectifiers, resonance and a live oscilloscope",
-      "deferredAt": "2026-11-28T15:11:59Z"
+      "deferredAt": "2026-11-28T15:11:59+00:00"
     },
     {
       "sha": "c85abd5d9daf312ba458978fb2e7a5d18398b826",
       "shortSha": "c85abd5",
       "subject": "feat: Physics Lab demo: every engine capability on one page",
-      "deferredAt": "2026-11-28T15:39:59Z"
+      "deferredAt": "2026-11-28T15:39:59+00:00"
     },
     {
       "sha": "449daeeaeb76a0236ed4b973dddc73e81761db9b",
       "shortSha": "449daee",
       "subject": "feat: Site gallery, smoke test and graceful failure before GitHub Pages",
-      "deferredAt": "2026-11-28T15:55:46Z"
+      "deferredAt": "2026-11-28T15:55:46+00:00"
     },
     {
       "sha": "f41666d8f97ac3f92f0abb0ae4e208657c9dd0e1",
       "shortSha": "f41666d",
       "subject": "feat: Round 4: trustworthy gates — bench check that can fail, honest size budgets, junk and duplicate-screenshot tests",
-      "deferredAt": "2026-11-28T17:24:28Z"
+      "deferredAt": "2026-11-28T17:24:28+00:00"
     },
     {
       "sha": "3374bb0f2860d2582d73baacecf01dd660e187af",
       "shortSha": "3374bb0",
       "subject": "feat: Round 4: Circuit Lab with a real oscilloscope and all six experiments",
-      "deferredAt": "2026-11-28T17:52:49Z"
+      "deferredAt": "2026-11-28T17:52:49+00:00"
     },
     {
       "sha": "dd5100c73f084fa3da4a75320005d0d8cff42795",
       "shortSha": "dd5100c",
       "subject": "feat: Circuits: bipolar transistors (Ebers-Moll) as amplifiers and switches",
-      "deferredAt": "2026-11-28T18:17:09Z"
+      "deferredAt": "2026-11-28T18:17:08+00:00"
     },
     {
       "sha": "9cd1434e849d7ee2f20fced3b157c82a7ca482a6",
       "shortSha": "9cd1434",
       "subject": "feat: Circuits: op-amps and controlled sources",
-      "deferredAt": "2026-11-28T19:00:54Z"
+      "deferredAt": "2026-11-28T19:00:54+00:00"
     },
     {
       "sha": "bc04b76afd17c41d23d71944576dfc4dae4068fb",
       "shortSha": "bc04b76",
       "subject": "feat: Round 4: physics accuracy — fix friction to v²/2μg and restore the original gravity tolerances",
-      "deferredAt": "2026-11-28T19:17:37Z"
+      "deferredAt": "2026-11-28T19:17:37+00:00"
     },
     {
       "sha": "2106eaccc6479235a95c502c25a6c08892e4bc5a",
       "shortSha": "2106eac",
       "subject": "feat: Round 4: Physics Lab behaviour tests through the real WASM",
-      "deferredAt": "2026-11-28T19:45:07Z"
+      "deferredAt": "2026-11-28T19:45:07+00:00"
     },
     {
       "sha": "2eeb90fec591ae38ff9f6507c6fe116786a4f8be",
       "shortSha": "2eeb90f",
       "subject": "feat: Physics: damped and driven oscillators checked against resonance theory",
-      "deferredAt": "2026-11-28T19:58:03Z"
+      "deferredAt": "2026-11-28T19:58:03+00:00"
+    },
+    {
+      "sha": "1f989510598a620cb6dd5e4d1f2afa96c8f2017f",
+      "shortSha": "1f98951",
+      "subject": "feat: Fix: transient circuits trapezoidal sign error, dt=0 DC solve, hand-computed tests",
+      "deferredAt": "2026-11-27T00:15:58+00:00",
+      "derived": true
+    },
+    {
+      "sha": "c229af7cef57a7eb32d605e6317fb892f05cd7aa",
+      "shortSha": "c229af7",
+      "subject": "feat: Fix: general 3D circuit view is still stubbed and hard-coded to the first part",
+      "deferredAt": "2026-11-27T13:07:23+00:00",
+      "derived": true
+    },
+    {
+      "sha": "60be1fbfbd3d4b486031e9f316b2bc778edb0cac",
+      "shortSha": "60be1fb",
+      "subject": "Merge origin/main into fast-sim-1",
+      "deferredAt": "2026-11-28T20:04:28+00:00",
+      "derived": true
+    },
+    {
+      "sha": "09c54c41ae0e1d5ebee0add38ada26d3de4e8788",
+      "shortSha": "09c54c4",
+      "subject": "audit: fix clippy warning and test cache ignore patterns",
+      "deferredAt": "2026-11-28T20:05:54+00:00",
+      "derived": true
     }
   ],
   "finalizeIntent": "fast",
@@ -306,7 +328,7 @@
     "deferredCommits": 51
   },
   "drained": {
-    "screenshots": 38,
-    "at": "2026-11-28T20:02:19Z"
+    "screenshots": 41,
+    "at": "2026-11-28T20:28:59Z"
   }
 }

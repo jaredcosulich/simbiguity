@@ -1,0 +1,404 @@
+{
+  "timestamp": "2026-11-28T20:45:05Z",
+  "title": "Analogies demo: an RLC circuit and a mass on a spring resonate identically",
+  "type": "feature",
+  "userRequest": "## Summary\n\nThe two engines now each simulate a resonator: the series RLC circuit (`crates/simbiguity-circuits/tests/ac.rs`) and the damped driven mass–spring (from the oscillator plan). The two systems obey the same equation:\n\n| Mechanical | Electrical |\n|---|---|\n| m·ẍ + c·ẋ + k·x = F | L·q̈ + R·q̇ + q/C = V |\n| mass m | inductance L |\n| damping c | resistance R |\n| stiffness k | 1/C |\n| displacement x | charge q |\n| velocity v | current i |\n\nThis is one of the most illuminating ideas in physics, and a perfect showcase for having two engines that share deterministic infrastructure.\n\nThis plan builds an **\"Analogies\" demo**:\n- the 3D mass–spring and the 3D RLC board sit side by side;\n- one set of sliders drives both;\n- one plot overlays their responses, which are numerically identical.\n\n## Key Decisions\n\n**One slider set, mapped by the analogy.**\n- Mass m ↔ L, damping c ↔ R, stiffness k ↔ 1/C, drive amplitude F₀ ↔ V₀, drive frequency ω.\n- Each engine runs its own simulation.\n- The page plots x(t) from physics and q(t) = ∫i dt from circuits, by adding a charge probe on the capacitor (q = C·V_C) on the same axes.\n\n**The match is a test, not an assertion of faith.**\n- With m = L = 1, c = R = 0.2, k = 1/C = 100 and F₀ = V₀ = 1 at ω = 10, both engines run at dt = 1e-4.\n- Physics uses Verlet; circuits uses trapezoidal.\n- At steady state the two amplitudes match within 1%, and each matches the analytic 0.5.\n\n**Teaching overlay.** A table shows the mapping and the live values: ω₀ = 1/√(m/k) = 1/√(LC), and Q = √(mk)/c = √(L/C)/R. All values come from the engines' parameters, never hard-coded.\n\n## Implementation\n\n### 1. Capacitor charge probe\n\n**File**: `crates/simbiguity-circuits/src/sim.rs`\n\n1. Add `Probe::Charge(capacitor)` (q = C·V_C).\n2. Add a test: a 1 µF capacitor at 5 V reads 5e-6 C.\n3. Expose it in the bridge and in `simbiguity.js`.\n\n### 2. Page\n\n**New files**: `site/demos/analogies/index.html`, `analogies.js`, `mapping.js`, `state.js`\n\n1. Put the two canvases side by side: `WebGL2Executor` for each, or one canvas with two viewports.\n2. Add the shared sliders.\n3. Plot x(t) and q(t) overlaid with `simbiguity-plot`.\n4. Add a resonance sweep that plots amplitude against ω for both engines.\n5. Show the mapping table, and keep state in the URL hash.\n\n### 3. Node tests through both WASMs\n\n**File**: `site/demos/analogies/analogies.test.js` (new)\n\n| Test | Expected |\n|---|---|\n| Resonance case above | both engines' steady amplitudes are 0.500 ± 1%, and they agree with each other within 1% |\n| ω = 20 | both 0.003333 ± 2% |\n| Sweep | both peak at ω = 10 ± 1% |\n| `mapping.js` | maps the slider values to both parameter sets exactly, and is invertible (round trip) |\n\n### 4. Manifest and gallery\n\n**File**: `site/demos/manifest.json`\n\nAdd the demo with its capabilities: \"AC signal sources and resonance\" and \"Damped and driven oscillators\". Add a thumbnail.\n\n### 5. Scenarios\n\nCapture three distinct scenarios: at resonance, off-resonance (ω = 20), and heavily damped (c = R = 5).\n\n## Reused existing code\n\n- `Sim.addProbe` and `loadCircuits` (`site/js/simbiguity.js`)\n- the `Physics` class (`site/demos/physics/physics.js`, from the Physics Lab tests plan)\n- the driven-oscillator preset\n- `WebGL2Executor`\n- `renderLabels` and the `simbiguity-plot` chart\n- `site/js/boot.js`\n\n## Reproduction Test\n\n`rlc_and_mass_spring_resonate_identically` (Node) fails today, because the demo and the charge probe don't exist.\n\n## Acceptance rules (the whole build must meet these)\n\nEvery rule below comes from a failure seen in an earlier round on this branch. Finalize may be deferred; that is the owner's choice. These rules still apply to every plan.\n\n- **If you can't hit a number, say so. Don't move it.**\n  - When code can't meet a value in this plan, keep the test with the plan's value and tolerance, and mark it `#[ignore = \"misses plan value: observed <x>\"]` (Rust) or `test.todo` (Node).\n  - List it under **NOT DELIVERED** in the commit body.\n  - An honest ignored test is fine. A test whose expected value or tolerance was changed to match the code is not. In round 3, the friction test was changed from 0.4077 to 0.4177, and four gravity tolerances were loosened up to 500×.\n- **Red first.** Write the named tests before the code, and watch them fail on the starting tree.\n- **No hollow tests.** Every test must assert on a value the code computed. Forbidden:\n  - a test that only checks the code \"doesn't panic\";\n  - asserting a constant;\n  - an always-true condition;\n  - an empty loop body.\n- **No fake output.** Display code may only show values that came from the engine. Examples of what's forbidden: `Math.sin(now…)` drawn as a scope trace, or hard-coded messages pretending to be engine output.\n- **No placeholders.** These phrases must not appear in new code: \"stub\", \"would go here\", \"wait\", \"for prototype\", \"We just verify\", \"once the TDD phase starts\", \"omitted\".\n- **Don't drop plan content.** Every goal, experiment, preset and test this plan lists must exist, or be listed under NOT DELIVERED.\n- **Budgets aren't raised to pass.** That covers `site/pkg-budget.txt`, `site/bench-budget.txt` and any test tolerance. The exception is the budget-reset plan, which does it once with a written reason.\n- **Touch only what's listed.**\n  - `git diff --stat <start>..HEAD` must show no changes to `rust-toolchain.toml`, `.gitignore`, or crates and demos this plan doesn't name.\n  - Don't commit junk at the repo root: `test_*.rs`, `patch.diff`, scratch files, or `.orig`, `.rej` or `.patch` files.\n- **Distinct screenshots.** Each scenario's screenshot hash must differ from every other's.\n- **Green before commit.** All five must pass:\n  - `cargo fmt --all -- --check`\n  - `cargo clippy --workspace --all-targets -- -D warnings`\n  - `cargo test --workspace`\n  - `sh scripts/build-site.sh`\n  - `node --test \"site/**/*.test.js\"`\n- **Delivery ledger.** The final commit body lists each Implementation section and named test as DELIVERED (with its test name) or NOT DELIVERED (with the reason). Never describe an item as \"deferred by the user\" unless the user said so.\n- **Capabilities.** Each new capability goes in that crate's `capabilities.toml`, with `proves` entries naming tests that exist and pass.",
+  "description": "Built the analogies demo showcasing identical resonance behavior between an RLC circuit and a mass on a spring, and extracted state mapping/parsing helpers from the UI loop. This targeted UI change delivered no new roadmap deliverables; all 7 deferred deliverables remain deferred as later roadmap plans.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph/index.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-circuits-wasm%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/crates%2Fsimbiguity-plot%2Fsrc.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fcircuit-lab.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fphysics.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fjs.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/onboarding-report.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/analogies-demo-an-rlc-circuit-and-a-mass-on-a-spring-resonate-identically.md\t.codeyam/plans/completed/analogies-demo-an-rlc-circuit-and-a-mass-on-a-spring-resonate-identically.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/speed-history.jsonl",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/021979efd6c89f2acf6c4a8920b5d1b7b346be9acf1bd30d04acb2c688814c53.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/13ac86dbcf7811e6a8cc28893c59499564a4fdcf923b4ccb6ac02766ac2fa78b.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/2f25787744c27559b4ee1c441e2b40d71f9732fd27c5378a66efdd12614d2f1b.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/37c1ba5fc798b93686b1c80736b2ce74ee572b5db1bd1ba99c016666bfd901e4.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/3de3c7f8976a41d45684b5b651a46acb9f953a536f29ded90c9f49fc25ec890b.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/3fbe41fba8ac60e3bf9b6b37a281568ed6d3ec3918eef611c17607df52ef750d.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/47480185beffbe339efa0d267955c539f2ac9a3fa073be9ed8e380bedded3bd5.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/48602e64d662bb5b5845cae80e66bfe7c4bc49058751a4f96694d6244918b4cc.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/4f6841d27c8a80611bd33dbea68d0824e2fae12af1b4d947a0d714e2f238f8a0.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/561e033e20ac81069d01dcababb7c6e8a869355bca876bba48aa76ba6622df91.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/677909c825f8fda6551c018511242f110a1bd0b6d5f164d60f61617a8fc7f742.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/6ebd3ffe5d053f4dcbef32c25b10ddfa81548389e0a93be90389264f088f7e7d.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/70442c6cd7f0b4fc5e5666a6cea02f183dc4d79a2a60643755f610e6cc885444.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/76afe2d9092ccbe4db5c8bb450d95aa2e6e054142e33046c4c8c0e827c13baa0.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/79a7ec8c0026022c18c9e9b46bd88d52c8fe714a9e197bb72b52f9c93f15604b.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/7b5229aa6d09cced9c469c347900723be354c4965163fd56d3acc195aa469dff.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/820561f2ac468e583987a298ebc9c9c5cb595d57e6d9f1bda30edc06660c8304.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a36c8c78c30fbf855bdb8ae6683c6a2d76aa5668d977fdeabae0f106c6ae7bc6.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b1c6cf7dc496c5a579d7829e5312be3a5f1283c8ad55d4976dc3b0e081c33ec6.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b9878c1804d500d546974412952a1396ec1e82d6694de1f40befebffbd8e0c79.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/c46d3a6811b7afa92146c1d6231f49fd2bc4eaf680d6bf7e02b5ee120a776fa2.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/cb7a8e140d996ae14680cebdff4ba709bcb8f3ea36e94fcfb119a67bdc45d557.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d33ba4bba9f03dfa128dec523401e8d257e546097ed5ab61cc136ef4f4f157a6.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/e12007c23abd445ce2001b0eb2b5cd5919ec24a0f75fe94a497a23840474f3d0.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/e329636b2f409fb350e414388147e0f70ba2e6010f5460874adccf93c7327717.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/eba6827e73adefd3ffa79f6ff325c136a432ace3338bc2692265836a0c5cf17d.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/f0fae5493726c9786c925077200f3659f65deca6a644efd04da59cf1a8967546.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/f397b3a4c4072e66a0a7b5afd407f1b602533b88269c6d9a0966236cfffdb927.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-anim.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-puzzle.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-circuits.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-core.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-math.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-physics-view.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-physics-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-physics.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-plot.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-puzzle.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render-wasm.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity-render.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/simbiguity.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/xtask.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-circuits/src/sim.rs",
+      "status": "modified"
+    },
+    {
+      "path": "crates/simbiguity-plot/src/series.rs",
+      "status": "modified"
+    },
+    {
+      "path": "site/demos/manifest.json",
+      "status": "modified"
+    },
+    {
+      "path": "site/demos/physics/physics.js",
+      "status": "modified"
+    },
+    {
+      "path": "site/js/simbiguity.js",
+      "status": "modified"
+    },
+    {
+      "path": "site/pkg-budget.txt",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph/shards/site%2Fdemos%2Fanalogies.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/analogies-heavily-damped.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/analogies-off-resonance.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/analogies-resonance.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/analogies-heavily-damped--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/analogies-heavily-damped--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/analogies-off-resonance--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/analogies-off-resonance--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/analogies-resonance--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/analogies-resonance--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/166fe67fb4a43244cf01786d92460925db99fa8e50d443f931e21111815a29e4.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/17590805a0f3d4b47373e07f305a1de808206da3e1e9512b43bd92ff819b5d4a.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/4ebd6c0131a85ca077de64557d3b0d18126e265822aa0facc584eb60c7c22994.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a02614913f4c93fbd33b3f3986e7f0d08c284163bbd7c40656b2e2b3b77f388c.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d1acacf0859b0c5c126fdb8e8c0953f6502131afaa73e978afa94f8aea2abef7.json",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/analogies/analogies.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/analogies/analogies.test.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/analogies/index.html",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/analogies/mapping.js",
+      "status": "added"
+    },
+    {
+      "path": "site/demos/analogies/state.js",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Analogies - Heavily Damped",
+      "screenshotPath": "analogies-heavily-damped--desktop.png"
+    },
+    {
+      "name": "Analogies - Off Resonance",
+      "screenshotPath": "analogies-off-resonance--desktop.png"
+    },
+    {
+      "name": "Analogies - Resonance",
+      "screenshotPath": "analogies-resonance--desktop.png"
+    }
+  ],
+  "testResults": {
+    "total": 172,
+    "passed": 171,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "cargo",
+        "total": 0,
+        "passed": 0
+      },
+      {
+        "name": "node",
+        "total": 172,
+        "passed": 171
+      }
+    ]
+  }
+}

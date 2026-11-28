@@ -16,7 +16,13 @@
   "files": {
     "crates/simbiguity/src/lib.rs": {
       "importedBy": [],
-      "imports": []
+      "imports": [
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-core/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-physics/src/lib.rs",
+        "crates/simbiguity-plot/src/lib.rs"
+      ]
     }
   }
 }

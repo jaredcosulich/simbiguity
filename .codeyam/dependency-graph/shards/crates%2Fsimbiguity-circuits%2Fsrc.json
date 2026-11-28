@@ -3077,6 +3077,7 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::persist_blown",
         "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/src/sim.rs::Probe::Charge",
         "crates/simbiguity-circuits/src/sim.rs::Probe::Current",
         "crates/simbiguity-circuits/src/solution.rs::Analysis",
         "crates/simbiguity-circuits/src/solution.rs::Analysis::blown_bulbs",
@@ -3601,6 +3602,7 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::with_integrator",
         "crates/simbiguity-circuits/src/sim.rs::Input",
         "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/src/sim.rs::Probe::Charge",
         "crates/simbiguity-circuits/src/sim.rs::Probe::Current",
         "crates/simbiguity-circuits/src/sim.rs::Probe::NodeVoltage",
         "crates/simbiguity-circuits/src/sim.rs::ProbeId",
@@ -4004,6 +4006,7 @@
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::probes",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim::time",
         "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/src/sim.rs::Probe::Charge",
         "crates/simbiguity-circuits/src/sim.rs::Probe::Current",
         "crates/simbiguity-circuits/src/sim.rs::Probe::NodeVoltage",
         "crates/simbiguity-circuits/src/sim.rs::ProbeState::probe",
@@ -4022,7 +4025,8 @@
         "persist_transient_state",
         "push",
         "solution",
-        "unwrap_or"
+        "unwrap_or",
+        "voltage_across"
       ]
     },
     "crates/simbiguity-circuits/src/sim.rs::CircuitSim::time": {
@@ -4104,10 +4108,24 @@
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs::ComponentId",
         "crates/simbiguity-circuits/src/netlist.rs::NodeId",
+        "crates/simbiguity-circuits/src/sim.rs::Probe::Charge",
         "crates/simbiguity-circuits/src/sim.rs::Probe::Current",
         "crates/simbiguity-circuits/src/sim.rs::Probe::NodeVoltage"
       ],
       "name": "Probe"
+    },
+    "crates/simbiguity-circuits/src/sim.rs::Probe::Charge": {
+      "filePath": "crates/simbiguity-circuits/src/sim.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::sim_add_probe"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId"
+      ],
+      "name": "Probe::Charge"
     },
     "crates/simbiguity-circuits/src/sim.rs::Probe::Current": {
       "filePath": "crates/simbiguity-circuits/src/sim.rs",
@@ -5090,6 +5108,7 @@
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",

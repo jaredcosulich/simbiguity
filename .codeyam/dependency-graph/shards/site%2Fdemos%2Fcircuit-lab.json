@@ -12,6 +12,7 @@
     "site/demos/circuit-lab/experiments.js::buildLayout": {
       "filePath": "site/demos/circuit-lab/experiments.js",
       "importedBy": [
+        "site/demos/analogies/analogies.js::main",
         "site/demos/circuit-lab/components/board-view.js::BoardView",
         "site/demos/circuit-lab/experiments.test.js::__file_root__"
       ],
@@ -118,6 +119,7 @@
   "files": {
     "site/demos/circuit-lab/experiments.js": {
       "importedBy": [
+        "site/demos/analogies/analogies.js",
         "site/demos/circuit-lab/components/board-view.js",
         "site/demos/circuit-lab/experiments.test.js",
         "site/demos/circuit-lab/lab.js"

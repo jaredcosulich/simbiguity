@@ -372,9 +372,11 @@
       "name": "circuit_plot_draw",
       "namedMethods": [
         "chart_series",
+        "chart_series2",
         "draw",
         "format",
         "from",
+        "is_empty",
         "is_finite",
         "iter",
         "max",
@@ -481,6 +483,18 @@
         "crates/simbiguity-circuits-wasm/src/status.rs::OK"
       ],
       "name": "circuit_plot_push",
+      "namedMethods": [
+        "push"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push2": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/status.rs::OK"
+      ],
+      "name": "circuit_plot_push2",
       "namedMethods": [
         "push"
       ]
@@ -605,6 +619,7 @@
       "imports": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
         "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/src/sim.rs::Probe::Charge",
         "crates/simbiguity-circuits/src/sim.rs::Probe::Current",
         "crates/simbiguity-circuits/src/sim.rs::Probe::NodeVoltage"
       ],
@@ -672,6 +687,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_labels",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_meshes",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series2",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
@@ -763,6 +779,15 @@
       ],
       "imports": [],
       "name": "Slot::chart_series"
+    },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series2": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
+      ],
+      "imports": [],
+      "name": "Slot::chart_series2"
     },
     "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue": {
       "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
@@ -1057,6 +1082,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_labels",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_meshes",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::chart_series2",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
@@ -1130,6 +1156,7 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_len",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_ptr",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push2",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_len",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr",
@@ -1222,6 +1249,7 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_indices_ptr",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_mesh_vertices_ptr",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_push2",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_replace_bulb",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_results_ptr",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_set_integrator",
@@ -1911,6 +1939,7 @@
         "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-render/src/commands.rs"
@@ -1949,6 +1978,7 @@
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-plot/src/series.rs",
         "crates/simbiguity-plot/src/series.rs"
       ]
     },

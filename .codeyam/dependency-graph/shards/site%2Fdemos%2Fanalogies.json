@@ -1,0 +1,163 @@
+{
+  "entities": {
+    "site/demos/analogies/analogies.js::$": {
+      "filePath": "site/demos/analogies/analogies.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main"
+      ],
+      "imports": [],
+      "name": "$"
+    },
+    "site/demos/analogies/analogies.js::__file_root__": {
+      "filePath": "site/demos/analogies/analogies.js",
+      "importedBy": [
+        "site/demos/analogies/index.html::__file_root__"
+      ],
+      "imports": [
+        "site/demos/analogies/state.js::__file_root__",
+        "site/js/boot.js::boot"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/analogies/analogies.js::main": {
+      "filePath": "site/demos/analogies/analogies.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/analogies/analogies.js::$",
+        "site/demos/analogies/mapping.js::__file_root__",
+        "site/demos/analogies/mapping.js::getCircuitParams",
+        "site/demos/analogies/mapping.js::getDerived",
+        "site/demos/analogies/mapping.js::getPhysicsParams",
+        "site/demos/analogies/state.js::formatState",
+        "site/demos/analogies/state.js::parseState",
+        "site/demos/circuit-lab/experiments.js::buildLayout",
+        "site/demos/physics/physics.js::loadPhysics",
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/simbiguity.js::loadCircuits",
+        "site/js/webgl2-executor.js::WebGL2Executor"
+      ],
+      "name": "main"
+    },
+    "site/demos/analogies/analogies.test.js::__file_root__": {
+      "filePath": "site/demos/analogies/analogies.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/analogies/mapping.js::getCircuitParams",
+        "site/demos/analogies/mapping.js::getPhysicsParams",
+        "site/demos/physics/physics.js::loadPhysics",
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/analogies/index.html::__file_root__": {
+      "filePath": "site/demos/analogies/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/demos/analogies/analogies.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/analogies/mapping.js::__file_root__": {
+      "filePath": "site/demos/analogies/mapping.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/analogies/mapping.js::getCircuitParams": {
+      "filePath": "site/demos/analogies/mapping.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main",
+        "site/demos/analogies/analogies.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "getCircuitParams"
+    },
+    "site/demos/analogies/mapping.js::getDerived": {
+      "filePath": "site/demos/analogies/mapping.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main"
+      ],
+      "imports": [],
+      "name": "getDerived"
+    },
+    "site/demos/analogies/mapping.js::getPhysicsParams": {
+      "filePath": "site/demos/analogies/mapping.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main",
+        "site/demos/analogies/analogies.test.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "getPhysicsParams"
+    },
+    "site/demos/analogies/state.js::__file_root__": {
+      "filePath": "site/demos/analogies/state.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/analogies/state.js::formatState": {
+      "filePath": "site/demos/analogies/state.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main"
+      ],
+      "imports": [],
+      "name": "formatState"
+    },
+    "site/demos/analogies/state.js::parseState": {
+      "filePath": "site/demos/analogies/state.js",
+      "importedBy": [
+        "site/demos/analogies/analogies.js::main"
+      ],
+      "imports": [],
+      "name": "parseState"
+    }
+  },
+  "files": {
+    "site/demos/analogies/analogies.js": {
+      "importedBy": [
+        "site/demos/analogies/index.html"
+      ],
+      "imports": [
+        "site/js/boot.js",
+        "site/js/simbiguity.js",
+        "site/js/simbiguity-render.js",
+        "site/demos/physics/physics.js",
+        "site/js/webgl2-executor.js",
+        "site/demos/analogies/state.js",
+        "site/demos/analogies/mapping.js",
+        "site/demos/circuit-lab/experiments.js"
+      ]
+    },
+    "site/demos/analogies/analogies.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/physics/physics.js",
+        "site/js/simbiguity.js",
+        "site/demos/analogies/mapping.js"
+      ]
+    },
+    "site/demos/analogies/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/analogies/analogies.js"
+      ]
+    },
+    "site/demos/analogies/mapping.js": {
+      "importedBy": [
+        "site/demos/analogies/analogies.js",
+        "site/demos/analogies/analogies.test.js"
+      ],
+      "imports": []
+    },
+    "site/demos/analogies/state.js": {
+      "importedBy": [
+        "site/demos/analogies/analogies.js"
+      ],
+      "imports": []
+    }
+  }
+}

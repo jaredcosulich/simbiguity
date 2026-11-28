@@ -1,0 +1,11 @@
+{
+  "name": "Analogies - Resonance",
+  "id": "analogies-resonance-1234",
+  "url": "/demos/analogies/#m=1&c=0.2&k=100&f0=1&omega=10",
+  "dimensions": ["Desktop"],
+  "mocks": {},
+  "clock": { "now": "2026-11-26T12:00:00Z" },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/analogies/index.html",
+  "description": "Analogies demo at resonance (omega = 10)."
+}

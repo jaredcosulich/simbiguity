@@ -282,7 +282,7 @@ fn circuit_plot_draw_escapes_and_drops_nan() {
     circuit_plot_push(h, 1.0);
     circuit_plot_push(h, f64::NAN);
     circuit_plot_push(h, 3.0);
-    assert_eq!(circuit_plot_draw(h, 100.0, 100.0), OK);
+    assert_eq!(circuit_plot_draw(h, 100.0, 100.0, -1.0, 1.0), OK);
     // Well, circuit_plot_draw doesn't export labels to native test directly easily unless we access slot.
     with_slot(h, |s| {
         // Just verify it doesn't crash and maybe check the string

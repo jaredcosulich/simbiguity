@@ -1453,6 +1453,15 @@
     "testFile": "site/demos/circuit-3d/readouts.test.js"
   },
   {
+    "description": "Formats state",
+    "filePath": "site/demos/analogies/state.js",
+    "name": "formatState",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
     "description": "Solves L y = P b with the implied unit diagonal.",
     "filePath": "crates/simbiguity-math/src/linsolve.rs",
     "name": "forward_substitute",
@@ -1460,6 +1469,33 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/linsolve.rs"
+  },
+  {
+    "description": "Computes circuit params from state",
+    "filePath": "site/demos/analogies/mapping.js",
+    "name": "getCircuitParams",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Computes derived resonance parameters",
+    "filePath": "site/demos/analogies/mapping.js",
+    "name": "getDerived",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Computes physics params from state",
+    "filePath": "site/demos/analogies/mapping.js",
+    "name": "getPhysicsParams",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "Runs a git command and returns its trimmed output on success.",
@@ -2017,6 +2053,15 @@
       "engine-status"
     ],
     "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Parses state",
+    "filePath": "site/demos/analogies/state.js",
+    "name": "parseState",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "Parses the benchmark results from JSON.",
@@ -2791,6 +2836,15 @@
     "testFile": "crates/simbiguity-math/src/quat.rs"
   },
   {
+    "description": "Parses slider input",
+    "filePath": "site/demos/analogies/mapping.js",
+    "name": "sliderToState",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
     "description": "Solves the circuit as it stands: topology, pre-solve source checks, floating islands, MNA assembly, LU solve, results and open-circuit batteries.",
     "filePath": "crates/simbiguity-circuits/src/mna.rs",
     "name": "solve_once",
@@ -2905,6 +2959,15 @@
       "hello-circuit"
     ],
     "testFile": "site/demos/hello-circuit/state.test.js"
+  },
+  {
+    "description": "Formats state for slider",
+    "filePath": "site/demos/analogies/mapping.js",
+    "name": "stateToSlider",
+    "untestabilityReason": {
+      "justification": "Extracted from UI loop",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "Reads a whole quoted manifest string value, refusing trailing text.",

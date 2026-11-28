@@ -30,6 +30,8 @@
     "site/demos/physics/physics.js::loadPhysics": {
       "filePath": "site/demos/physics/physics.js",
       "importedBy": [
+        "site/demos/analogies/analogies.js::main",
+        "site/demos/analogies/analogies.test.js::__file_root__",
         "site/demos/physics/physics.test.js::__file_root__",
         "site/demos/physics/ui-controller.js::setupUI"
       ],
@@ -115,6 +117,8 @@
     },
     "site/demos/physics/physics.js": {
       "importedBy": [
+        "site/demos/analogies/analogies.js",
+        "site/demos/analogies/analogies.test.js",
         "site/demos/physics/physics.test.js",
         "site/demos/physics/ui-controller.js"
       ],

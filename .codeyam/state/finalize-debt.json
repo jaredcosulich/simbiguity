@@ -175,6 +175,12 @@
       "shortSha": "9efa5e6",
       "subject": "feat: Round 3: site build under budget, no junk, and a determinism test that can fail",
       "deferredAt": "2026-11-28T03:06:02Z"
+    },
+    {
+      "sha": "3ee1b7e2b1d129cc029d0b82102583c5bd8e1e23",
+      "shortSha": "3ee1b7e",
+      "subject": "feat: Physics: collisions, restitution, friction and a broadphase",
+      "deferredAt": "2026-11-28T11:55:37Z"
     }
   ],
   "finalizeIntent": "fast",

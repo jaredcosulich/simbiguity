@@ -235,6 +235,12 @@
       "shortSha": "e643982",
       "subject": "feat: Circuits: sparse solver for thousand-node circuits",
       "deferredAt": "2026-11-28T14:45:59Z"
+    },
+    {
+      "sha": "6a2d862c2d16dba1a5d7732273fec88d0324a7fe",
+      "shortSha": "6a2d862",
+      "subject": "feat: Circuit Lab demo: LEDs, rectifiers, resonance and a live oscilloscope",
+      "deferredAt": "2026-11-28T15:11:59Z"
     }
   ],
   "finalizeIntent": "fast",

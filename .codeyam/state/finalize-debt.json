@@ -259,6 +259,12 @@
       "shortSha": "f41666d",
       "subject": "feat: Round 4: trustworthy gates — bench check that can fail, honest size budgets, junk and duplicate-screenshot tests",
       "deferredAt": "2026-11-28T17:24:28Z"
+    },
+    {
+      "sha": "3374bb0f2860d2582d73baacecf01dd660e187af",
+      "shortSha": "3374bb0",
+      "subject": "feat: Round 4: Circuit Lab with a real oscilloscope and all six experiments",
+      "deferredAt": "2026-11-28T17:52:49Z"
     }
   ],
   "finalizeIntent": "fast",

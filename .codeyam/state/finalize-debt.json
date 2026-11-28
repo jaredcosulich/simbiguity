@@ -211,13 +211,19 @@
       "shortSha": "7d134f4",
       "subject": "feat: Physics: inverse-square gravity and Kepler-checked orbits",
       "deferredAt": "2026-11-28T13:32:47Z"
+    },
+    {
+      "sha": "54a362624c42806f03a14c8b735b382db231c263",
+      "shortSha": "54a3626",
+      "subject": "feat: Circuits: Newton-Raphson solver with diodes and LEDs",
+      "deferredAt": "2026-11-28T13:58:29Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T13:15:36Z",
-    "deferredCommits": 36
+    "at": "2026-11-28T13:59:02Z",
+    "deferredCommits": 38
   },
   "drained": {
     "screenshots": 18,

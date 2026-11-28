@@ -27,6 +27,7 @@ pub(crate) fn node_inflows(
     c: &Circuit,
     stamps: &[Stamp],
     currents: &[f64],
+    node_voltages: &[Option<f64>],
 ) -> (Vec<f64>, Adjacency) {
     let n = c.node_count;
     let mut inflow = vec![0.0; n];
@@ -38,6 +39,46 @@ pub(crate) fn node_inflows(
             adj[b].push((i, a));
             continue;
         }
+
+        if let Component::Bjt {
+            polarity,
+            saturation_amps,
+            beta_f,
+            beta_r,
+        } = p.component
+        {
+            let vc = node_voltages[a].unwrap_or(0.0);
+            let vb = node_voltages[b].unwrap_or(0.0);
+            let e = p.c.unwrap_or(crate::netlist::NodeId(0)).0;
+            let ve = node_voltages[e].unwrap_or(0.0);
+
+            let (v_be, v_bc) = match polarity {
+                crate::component::Polarity::Npn => (vb - ve, vb - vc),
+                crate::component::Polarity::Pnp => (ve - vb, vc - vb),
+            };
+
+            let vt = 0.025852;
+            let exp_be = simbiguity_math::float::exp(v_be / vt);
+            let exp_bc = simbiguity_math::float::exp(v_bc / vt);
+
+            let mut i_c =
+                saturation_amps * (exp_be - exp_bc) - (saturation_amps / beta_r) * (exp_bc - 1.0);
+            let mut i_b = (saturation_amps / beta_f) * (exp_be - 1.0)
+                + (saturation_amps / beta_r) * (exp_bc - 1.0);
+
+            if polarity == crate::component::Polarity::Pnp {
+                i_c = -i_c;
+                i_b = -i_b;
+            }
+
+            let i_e = -(i_c + i_b);
+
+            inflow[a] += i_c;
+            inflow[b] += i_b;
+            inflow[e] += i_e;
+            continue;
+        }
+
         // Batteries push current out of `a`; everything else carries it a → b.
         let into_a = match p.component {
             Component::Battery { .. } => currents[i],
@@ -80,8 +121,13 @@ pub(crate) fn spanning_forest(adj: &Adjacency) -> Forest {
 
 /// Fills in wire and closed-switch currents (a → b) from Kirchhoff's
 /// current law. Wires closing a wire-only loop keep a current of zero.
-pub(crate) fn wire_currents(c: &Circuit, stamps: &[Stamp], currents: &mut [f64]) {
-    let (mut inflow, adj) = node_inflows(c, stamps, currents);
+pub(crate) fn wire_currents(
+    c: &Circuit,
+    stamps: &[Stamp],
+    currents: &mut [f64],
+    node_voltages: &[Option<f64>],
+) {
+    let (mut inflow, adj) = node_inflows(c, stamps, currents, node_voltages);
     let forest = spanning_forest(&adj);
     for &node in forest.order.iter().rev() {
         if let Some((edge, up)) = forest.parent[node] {
@@ -112,9 +158,19 @@ mod tests {
         let (p, m) = (c.node(), c.node());
         c.add_battery(p, m, 6.0);
         c.add_resistor(p, m, 3.0);
-        let (inflow, _) = node_inflows(&c, &stamps(&c), &[2.0, 2.0]);
+        let (inflow, _) = node_inflows(
+            &c,
+            &stamps(&c),
+            &[2.0, 2.0],
+            &vec![Some(0.0); c.node_count()],
+        );
         assert_eq!(inflow, vec![0.0, 0.0]);
-        let (inflow, _) = node_inflows(&c, &stamps(&c), &[2.0, 0.0]);
+        let (inflow, _) = node_inflows(
+            &c,
+            &stamps(&c),
+            &[2.0, 0.0],
+            &vec![Some(0.0); c.node_count()],
+        );
         assert_eq!(inflow, vec![2.0, -2.0]);
     }
 
@@ -125,7 +181,8 @@ mod tests {
         let mut c = Circuit::new();
         let (a, b) = (c.node(), c.node());
         c.connect(a, b);
-        let (inflow, adj) = node_inflows(&c, &stamps(&c), &[99.0]);
+        let (inflow, adj) =
+            node_inflows(&c, &stamps(&c), &[99.0], &vec![Some(0.0); c.node_count()]);
         assert_eq!(inflow, vec![0.0, 0.0]);
         assert_eq!(adj[0], vec![(0, 1)]);
         assert_eq!(adj[1], vec![(0, 0)]);
@@ -167,7 +224,12 @@ mod tests {
         c.add_resistor(x, y, 3.0); // 2
         c.connect(m, y); // 3: backward (b is upstream)
         let mut currents = vec![2.0, 0.0, 2.0, 0.0];
-        wire_currents(&c, &stamps(&c), &mut currents);
+        wire_currents(
+            &c,
+            &stamps(&c),
+            &mut currents,
+            &vec![Some(0.0); c.node_count()],
+        );
         assert_eq!(currents, vec![2.0, 2.0, 2.0, -2.0]);
     }
 
@@ -179,7 +241,12 @@ mod tests {
         c.connect(a, b);
         c.connect(a, b);
         let mut currents = vec![0.0, 0.0];
-        wire_currents(&c, &stamps(&c), &mut currents);
+        wire_currents(
+            &c,
+            &stamps(&c),
+            &mut currents,
+            &vec![Some(0.0); c.node_count()],
+        );
         assert_eq!(currents, vec![0.0, 0.0]);
     }
 
@@ -191,7 +258,12 @@ mod tests {
         c.add_battery(p, m, 6.0);
         c.add_resistor(p, m, 3.0);
         let mut currents = vec![2.0, 2.0];
-        wire_currents(&c, &stamps(&c), &mut currents);
+        wire_currents(
+            &c,
+            &stamps(&c),
+            &mut currents,
+            &vec![Some(0.0); c.node_count()],
+        );
         assert_eq!(currents, vec![2.0, 2.0]);
     }
 }

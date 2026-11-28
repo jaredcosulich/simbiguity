@@ -1676,6 +1676,7 @@
       "filePath": "crates/simbiguity-render/src/mesh.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -2681,6 +2682,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3017,6 +3019,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3057,6 +3060,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3106,6 +3110,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3136,6 +3141,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3181,6 +3187,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3213,6 +3220,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3245,6 +3253,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3279,6 +3288,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3318,6 +3328,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3352,6 +3363,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3386,6 +3398,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3423,6 +3436,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -3471,6 +3485,7 @@
       "filePath": "crates/simbiguity-render/src/scene.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",

@@ -88,18 +88,24 @@ impl BoardLayout {
                 .find(|p| &p.cell == end)
                 .ok_or(LayoutError::DanglingWire)?;
 
-            let term =
-                |cid: ComponentId| -> (simbiguity_circuits::NodeId, simbiguity_circuits::NodeId) {
-                    let p = &circuit.parts()[cid.index()];
-                    (p.a, p.b)
-                };
+            let term = |cid: ComponentId| -> alloc::vec::Vec<simbiguity_circuits::NodeId> {
+                let p = &circuit.parts()[cid.index()];
+                let mut nodes = alloc::vec![p.a, p.b];
+                if let Some(c) = p.c {
+                    nodes.push(c);
+                }
+                nodes
+            };
 
-            let (wa, wb) = term(w.component);
-            let (ps_a, ps_b) = term(p_start.component);
-            let (pe_a, pe_b) = term(p_end.component);
+            let wt = term(w.component);
+            let ps_t = term(p_start.component);
+            let pe_t = term(p_end.component);
 
-            let matches_fwd = (wa == ps_a || wa == ps_b) && (wb == pe_a || wb == pe_b);
-            let matches_rev = (wb == ps_a || wb == ps_b) && (wa == pe_a || wa == pe_b);
+            let wa = wt[0];
+            let wb = wt[1];
+
+            let matches_fwd = ps_t.contains(&wa) && pe_t.contains(&wb);
+            let matches_rev = ps_t.contains(&wb) && pe_t.contains(&wa);
             if !matches_fwd && !matches_rev {
                 return Err(LayoutError::MismatchedTerminals);
             }
@@ -358,6 +364,38 @@ impl BoardLayout {
                         rotation,
                     });
                     pos += 8;
+                }
+                11 => {
+                    if pos + 14 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let e_idx = words[pos + 6] as usize;
+                    if e_idx >= node_count {
+                        return Err(LayoutError::BadNodeId);
+                    }
+                    let e = nodes[e_idx];
+
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let polarity = if words[pos + 7] != 0 {
+                        simbiguity_circuits::component::Polarity::Pnp
+                    } else {
+                        simbiguity_circuits::component::Polarity::Npn
+                    };
+                    let saturation_amps = f64_from(words, pos + 8);
+                    let beta_f = f64_from(words, pos + 10);
+                    let beta_r = f64_from(words, pos + 12);
+                    let cid = c.add_bjt(a, b, e, polarity, saturation_amps, beta_f, beta_r);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 14;
                 }
                 _ => return Err(LayoutError::UnknownComponentKind),
             }

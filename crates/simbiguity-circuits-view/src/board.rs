@@ -100,6 +100,9 @@ pub fn build_scene(
             simbiguity_circuits::Component::SignalSource { .. } => {
                 add_signal_source(&mut s, p);
             }
+            simbiguity_circuits::Component::Bjt { .. } => {
+                add_bjt(&mut s, p);
+            }
             _ => {}
         }
     }
@@ -297,6 +300,18 @@ fn add_signal_source(s: &mut Scene, p: &crate::board_layout::PartPlacement) {
     let disc = s.add_mesh(Mesh::cylinder(0.8, 0.1, 32));
     let n = s.add_node(disc, base_mat, Material::lit(STEEL));
     pickable(s, n, p.component.index() as u32 + 1);
+}
+
+fn add_bjt(s: &mut Scene, p: &crate::board_layout::PartPlacement) {
+    let base_mat = base_transform(p, 0.15);
+    let body = s.add_mesh(Mesh::cuboid(Vec3::new(0.4, 0.4, 0.2)));
+    let n = s.add_node(body, base_mat, Material::lit(CHARCOAL));
+    pickable(s, n, p.component.index() as u32 + 1);
+    for x in [-0.15, 0.0, 0.15] {
+        let leg = s.add_mesh(Mesh::cylinder(0.02, 0.15, 8));
+        let leg_mat = base_mat * at(Vec3::new(x, -0.075, 0.0));
+        s.add_node(leg, leg_mat, Material::lit(STEEL));
+    }
 }
 
 #[cfg(test)]

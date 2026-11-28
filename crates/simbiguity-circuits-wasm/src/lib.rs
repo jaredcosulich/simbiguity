@@ -87,6 +87,37 @@ pub extern "C" fn circuit_add_bulb(h: u32, a: u32, b: u32, volts: f64, watts: f6
 }
 
 #[no_mangle]
+pub extern "C" fn circuit_add_bjt(
+    h: u32,
+    c: u32,
+    b: u32,
+    e: u32,
+    is_pnp: u32,
+    saturation_amps: f64,
+    beta_f: f64,
+    beta_r: f64,
+) -> i32 {
+    let polarity = if is_pnp != 0 {
+        simbiguity_circuits::component::Polarity::Pnp
+    } else {
+        simbiguity_circuits::component::Polarity::Npn
+    };
+    with_slot(h, |s| {
+        s.place_3(
+            Component::Bjt {
+                polarity,
+                saturation_amps,
+                beta_f,
+                beta_r,
+            },
+            c,
+            b,
+            e,
+        )
+    })
+}
+
+#[no_mangle]
 pub extern "C" fn circuit_add_signal(
     h: u32,
     a: u32,

@@ -42,10 +42,12 @@ impl ComponentId {
 pub struct Placed {
     /// What it is and its values.
     pub component: Component,
-    /// Terminal `a` (a battery's `+`).
+    /// Terminal `a` (a battery's `+`, or a BJT's collector).
     pub a: NodeId,
-    /// Terminal `b` (a battery's `−`).
+    /// Terminal `b` (a battery's `−`, or a BJT's base).
     pub b: NodeId,
+    /// Terminal `c` (a BJT's emitter).
+    pub c: Option<NodeId>,
 }
 
 /// A DC circuit: the complete, deterministic description of what is on the
@@ -100,8 +102,53 @@ impl Circuit {
             a.0 < self.node_count && b.0 < self.node_count,
             "node does not belong to this circuit"
         );
-        self.parts.push(Placed { component, a, b });
+        self.parts.push(Placed {
+            component,
+            a,
+            b,
+            c: None,
+        });
         ComponentId(self.parts.len() - 1)
+    }
+
+    /// Places a 3-terminal component (e.g. BJT) between nodes `a`, `b`, and `c`.
+    pub fn add_3(&mut self, component: Component, a: NodeId, b: NodeId, c: NodeId) -> ComponentId {
+        assert!(
+            a.0 < self.node_count && b.0 < self.node_count && c.0 < self.node_count,
+            "node does not belong to this circuit"
+        );
+        self.parts.push(Placed {
+            component,
+            a,
+            b,
+            c: Some(c),
+        });
+        ComponentId(self.parts.len() - 1)
+    }
+
+    /// Adds a BJT. `c` is collector, `b` is base, `e` is emitter.
+    #[allow(clippy::too_many_arguments)]
+    pub fn add_bjt(
+        &mut self,
+        c: NodeId,
+        b: NodeId,
+        e: NodeId,
+        polarity: crate::component::Polarity,
+        saturation_amps: f64,
+        beta_f: f64,
+        beta_r: f64,
+    ) -> ComponentId {
+        self.add_3(
+            Component::Bjt {
+                polarity,
+                saturation_amps,
+                beta_f,
+                beta_r,
+            },
+            c,
+            b,
+            e,
+        )
     }
 
     /// An ideal battery: `plus` sits `emf` volts above `minus`.

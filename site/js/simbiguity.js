@@ -99,6 +99,10 @@ export async function loadCircuits(source) {
     /** A bulb rated `watts` at `volts`. */
     bulb(a, b, volts, watts) { return check(w.circuit_add_bulb(this.handle, a, b, volts, watts)); }
 
+    addBjt(c, b, e, is_pnp, saturation_amps = 1e-14, beta_f = 100, beta_r = 1) {
+        return check(w.circuit_add_bjt(this.handle, c, b, e, is_pnp ? 1 : 0, saturation_amps, beta_f, beta_r));
+    }
+
     diode(a, b, is = 1e-14, n = 1.0) { return check(w.circuit_add_diode(this.handle, a, b, is, n)); }
 
     signal(a, b, waveform, amplitude, frequency, phase = 0.0, offset = 0.0) {

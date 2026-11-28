@@ -14,10 +14,30 @@ pub enum Integrator {
     Trapezoidal,
 }
 
-/// A two-terminal circuit element. Terminal `a` and terminal `b` are the
-/// nodes it is placed between (see [`crate::Placed`]).
+/// A circuit element.
+/// Transistor polarity.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Polarity {
+    /// NPN transistor.
+    Npn,
+    /// PNP transistor.
+    Pnp,
+}
+
+/// A circuit element.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Component {
+    /// A bipolar junction transistor.
+    Bjt {
+        /// NPN or PNP.
+        polarity: Polarity,
+        /// Saturation current (Is) in amps.
+        saturation_amps: f64,
+        /// Forward current gain.
+        beta_f: f64,
+        /// Reverse current gain.
+        beta_r: f64,
+    },
     /// A battery. Terminal `a` is `+`, terminal `b` is `−`.
     Battery {
         /// Electromotive force in volts: the voltage with no current flowing.
@@ -120,6 +140,15 @@ pub(crate) enum Stamp {
     VoltageSource(f64),
     /// Conducts nothing (open switches, blown bulbs).
     Open,
+    /// A 3-terminal linearized BJT companion.
+    Bjt {
+        g_b_be: f64,
+        g_b_bc: f64,
+        g_c_be: f64,
+        g_c_bc: f64,
+        i_eq_b: f64,
+        i_eq_c: f64,
+    },
 }
 
 impl Component {
@@ -220,6 +249,19 @@ impl Component {
                     && phase.is_finite()
                     && offset.is_finite()
             }
+            Component::Bjt {
+                saturation_amps,
+                beta_f,
+                beta_r,
+                ..
+            } => {
+                saturation_amps.is_finite()
+                    && saturation_amps > 0.0
+                    && beta_f.is_finite()
+                    && beta_f > 0.0
+                    && beta_r.is_finite()
+                    && beta_r > 0.0
+            }
         }
     }
 
@@ -295,6 +337,14 @@ impl Component {
             Component::Diode { .. } => Stamp::Open,
             Component::Led { blown: true, .. } => Stamp::Open,
             Component::Led { .. } => Stamp::Open,
+            Component::Bjt { .. } => Stamp::Bjt {
+                g_b_be: 0.0,
+                g_b_bc: 0.0,
+                g_c_be: 0.0,
+                g_c_bc: 0.0,
+                i_eq_b: 0.0,
+                i_eq_c: 0.0,
+            },
             Component::Capacitor { .. } => Stamp::Open,
             Component::Inductor { .. } => Stamp::Merge,
             Component::SignalSource {
@@ -375,7 +425,7 @@ impl Component {
 
     /// Returns whether this component requires Newton-Raphson iteration.
     pub fn is_nonlinear(&self) -> bool {
-        self.diode_params().is_some()
+        self.diode_params().is_some() || matches!(self, Component::Bjt { .. })
     }
 
     /// Sets the component's main value: a battery's EMF, a resistor's
@@ -392,6 +442,7 @@ impl Component {
             Component::Wire
             | Component::Diode { .. }
             | Component::Led { .. }
+            | Component::Bjt { .. }
             | Component::SignalSource { .. } => {}
         }
     }

@@ -255,10 +255,39 @@ fn assemble_matrix(
     for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
         let a = u.voltage[t.group[p.a.0]];
         let b = u.voltage[t.group[p.b.0]];
+        let c_node = p.c.and_then(|n| u.voltage[t.group[n.0]]);
         match *s {
             Stamp::Conductance(g) => stamp_conductance(m, a, b, g),
             Stamp::Norton { g, .. } => {
                 stamp_conductance(m, a, b, g);
+            }
+            Stamp::Bjt {
+                g_b_be,
+                g_b_bc,
+                g_c_be,
+                g_c_bc,
+                ..
+            } => {
+                let e_term = c_node;
+                let c_term = a;
+                let b_term = b;
+
+                let mut add_m = |row: Option<usize>, col: Option<usize>, val: f64| {
+                    if let (Some(r), Some(c)) = (row, col) {
+                        m[(r, c)] += val;
+                    }
+                };
+                add_m(b_term, b_term, g_b_be + g_b_bc);
+                add_m(b_term, e_term, -g_b_be);
+                add_m(b_term, c_term, -g_b_bc);
+
+                add_m(c_term, b_term, g_c_be + g_c_bc);
+                add_m(c_term, e_term, -g_c_be);
+                add_m(c_term, c_term, -g_c_bc);
+
+                add_m(e_term, b_term, -(g_b_be + g_b_bc + g_c_be + g_c_bc));
+                add_m(e_term, e_term, g_b_be + g_c_be);
+                add_m(e_term, c_term, g_b_bc + g_c_bc);
             }
             Stamp::VoltageSource(_) => {
                 let Some(k) = u.source[i] else {
@@ -286,6 +315,7 @@ fn assemble_sparse_matrix(
     for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
         let a = u.voltage[t.group[p.a.0]];
         let b = u.voltage[t.group[p.b.0]];
+        let c_node = p.c.and_then(|n| u.voltage[t.group[n.0]]);
         match *s {
             Stamp::Conductance(g) | Stamp::Norton { g, .. } => {
                 if let Some(a) = a {
@@ -298,6 +328,34 @@ fn assemble_sparse_matrix(
                     m.add(a, b, -g);
                     m.add(b, a, -g);
                 }
+            }
+            Stamp::Bjt {
+                g_b_be,
+                g_b_bc,
+                g_c_be,
+                g_c_bc,
+                ..
+            } => {
+                let e_term = c_node;
+                let c_term = a;
+                let b_term = b;
+
+                let mut add_m = |row: Option<usize>, col: Option<usize>, val: f64| {
+                    if let (Some(r), Some(c)) = (row, col) {
+                        m.add(r, c, val);
+                    }
+                };
+                add_m(b_term, b_term, g_b_be + g_b_bc);
+                add_m(b_term, e_term, -g_b_be);
+                add_m(b_term, c_term, -g_b_bc);
+
+                add_m(c_term, b_term, g_c_be + g_c_bc);
+                add_m(c_term, e_term, -g_c_be);
+                add_m(c_term, c_term, -g_c_bc);
+
+                add_m(e_term, b_term, -(g_b_be + g_b_bc + g_c_be + g_c_bc));
+                add_m(e_term, e_term, g_b_be + g_c_be);
+                add_m(e_term, c_term, g_b_bc + g_c_bc);
             }
             Stamp::VoltageSource(_) => {
                 let Some(k) = u.source[i] else {
@@ -326,9 +384,24 @@ fn assemble_rhs(
     for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
         let a = u.voltage[t.group[p.a.0]];
         let b = u.voltage[t.group[p.b.0]];
+        let c_node = p.c.and_then(|n| u.voltage[t.group[n.0]]);
         match *s {
             Stamp::Norton { current, .. } => {
                 stamp_current_source(rhs, a, b, current);
+            }
+            Stamp::Bjt { i_eq_b, i_eq_c, .. } => {
+                let e = c_node;
+                let c_term = a;
+                let b_term = b;
+                if let Some(n) = b_term {
+                    rhs[n] -= i_eq_b;
+                }
+                if let Some(n) = c_term {
+                    rhs[n] -= i_eq_c;
+                }
+                if let Some(n) = e {
+                    rhs[n] += i_eq_b + i_eq_c;
+                }
             }
             Stamp::VoltageSource(emf) => {
                 let Some(k) = u.source[i] else {
@@ -361,7 +434,7 @@ fn component_current(s: Stamp, d: f64, source_unknown: Option<f64>) -> f64 {
         Stamp::Conductance(g) => d * g,
         Stamp::Norton { g, current } => d * g - current,
         Stamp::VoltageSource(_) => source_unknown.unwrap_or(0.0),
-        Stamp::Merge | Stamp::Open => 0.0,
+        Stamp::Merge | Stamp::Open | Stamp::Bjt { .. } => 0.0,
     }
 }
 
@@ -397,7 +470,7 @@ fn build_solution(c: &Circuit, t: &Topology, u: &Unknowns, x: &[f64]) -> Solutio
         currents.push(i_val);
         across.push(v);
     }
-    wire_currents(c, &t.stamps, &mut currents);
+    wire_currents(c, &t.stamps, &mut currents, &node_voltages);
     let powers = powers(&across, &currents);
     let brightness = c
         .parts
@@ -499,6 +572,86 @@ fn limit_diode_voltage(is: f64, n: f64, vnew: f64, vold: f64, vt_base: f64) -> f
     pnjlim(vnew, vold, vt, vcrit)
 }
 
+fn linearize_bjt(
+    polarity: crate::component::Polarity,
+    is: f64,
+    beta_f: f64,
+    beta_r: f64,
+    v_be_old: f64,
+    v_bc_old: f64,
+    vt: f64,
+) -> Stamp {
+    let exp_be = float::exp(v_be_old / vt);
+    let exp_bc = float::exp(v_bc_old / vt);
+
+    let d_ic_d_vbe = (is / vt) * exp_be;
+    let d_ic_d_vbc = -(is / vt) * exp_bc * (1.0 + 1.0 / beta_r);
+
+    let d_ib_d_vbe = (is / vt) * exp_be / beta_f;
+    let d_ib_d_vbc = (is / vt) * exp_bc / beta_r;
+
+    let i_c_actual = is * (exp_be - exp_bc) - (is / beta_r) * (exp_bc - 1.0);
+    let i_b_actual = (is / beta_f) * (exp_be - 1.0) + (is / beta_r) * (exp_bc - 1.0);
+
+    let mut i_b = i_b_actual;
+    let mut i_c = i_c_actual;
+
+    if polarity == crate::component::Polarity::Pnp {
+        i_b = -i_b;
+        i_c = -i_c;
+    }
+
+    // For both NPN and PNP, the Jacobian is the same because for PNP:
+    // I_B_in = - I_B(v_e - v_b, v_c - v_b)
+    // and we take derivatives w.r.t (v_b - v_e) and (v_b - v_c).
+    // Let's verify for PNP: v_be = -(v_b - v_e)
+    // d I_B_in / d (v_b - v_e) = d (-I_B) / d (-v_be) = d I_B / d v_be = d_ib_d_vbe. Yes, identical.
+
+    let (v_be_for_eq, v_bc_for_eq) = if polarity == crate::component::Polarity::Pnp {
+        (-v_be_old, -v_bc_old)
+    } else {
+        (v_be_old, v_bc_old)
+    };
+    let i_eq_b = i_b - d_ib_d_vbe * v_be_for_eq - d_ib_d_vbc * v_bc_for_eq;
+    let i_eq_c = i_c - d_ic_d_vbe * v_be_for_eq - d_ic_d_vbc * v_bc_for_eq;
+
+    Stamp::Bjt {
+        g_b_be: d_ib_d_vbe,
+        g_b_bc: d_ib_d_vbc,
+        g_c_be: d_ic_d_vbe,
+        g_c_bc: d_ic_d_vbc,
+        i_eq_b,
+        i_eq_c,
+    }
+}
+
+fn limit_bjt_voltages(
+    is: f64,
+    v_be_new: f64,
+    v_bc_new: f64,
+    v_be_old: f64,
+    v_bc_old: f64,
+    vt: f64,
+) -> (f64, f64) {
+    let vcrit = vt * float::ln(vt / (core::f64::consts::SQRT_2 * is));
+    (
+        pnjlim(v_be_new, v_be_old, vt, vcrit),
+        pnjlim(v_bc_new, v_bc_old, vt, vcrit),
+    )
+}
+
+fn check_bjt_convergence(
+    _is: f64,
+    _beta_f: f64,
+    _beta_r: f64,
+    _v_be: f64,
+    _v_bc: f64,
+    _vt: f64,
+) -> bool {
+    // We just rely on voltage convergence for BJT, similar to SPICE.
+    true
+}
+
 fn check_voltage_convergence(prev: &Solution, current: &Solution) -> bool {
     for (v_new_opt, v_old_opt) in current.node_voltages.iter().zip(&prev.node_voltages) {
         if let (Some(v_new), Some(v_old)) = (v_new_opt, v_old_opt) {
@@ -519,7 +672,7 @@ fn solve_once(
     mut needs_refactor: bool,
 ) -> (Option<Solution>, Vec<CircuitIssue>) {
     let vt_base = 0.025852;
-    let mut v_diodes = alloc::vec![0.6; c.parts.len()];
+    let mut v_junctions = alloc::vec![(0.6, 0.6); c.parts.len()];
 
     let has_nonlinear = c.parts.iter().any(|p| p.component.is_nonlinear());
 
@@ -532,7 +685,23 @@ fn solve_once(
 
         for (i, p) in c.parts.iter().enumerate() {
             if let Some((is, n)) = p.component.diode_params() {
-                stamps[i] = linearize_diode(is, n, v_diodes[i], vt_base);
+                stamps[i] = linearize_diode(is, n, v_junctions[i].0, vt_base);
+            } else if let Component::Bjt {
+                polarity,
+                saturation_amps,
+                beta_f,
+                beta_r,
+            } = p.component
+            {
+                stamps[i] = linearize_bjt(
+                    polarity,
+                    saturation_amps,
+                    beta_f,
+                    beta_r,
+                    v_junctions[i].0,
+                    v_junctions[i].1,
+                    vt_base,
+                );
             }
         }
 
@@ -747,6 +916,31 @@ fn solve_once(
                             converged = false;
                             break;
                         }
+                    } else if let Component::Bjt {
+                        polarity,
+                        saturation_amps,
+                        beta_f,
+                        beta_r,
+                    } = p.component
+                    {
+                        let vb = solution.node_voltages[p.b.0].unwrap_or(0.0);
+                        let ve = p.c.and_then(|c| solution.node_voltages[c.0]).unwrap_or(0.0);
+                        let vc = solution.node_voltages[p.a.0].unwrap_or(0.0);
+                        let (v_be_new, v_bc_new) = match polarity {
+                            crate::component::Polarity::Npn => (vb - ve, vb - vc),
+                            crate::component::Polarity::Pnp => (ve - vb, vc - vb),
+                        };
+                        if !check_bjt_convergence(
+                            saturation_amps,
+                            beta_f,
+                            beta_r,
+                            v_be_new,
+                            v_bc_new,
+                            vt_base,
+                        ) {
+                            converged = false;
+                            break;
+                        }
                     }
                 }
             }
@@ -767,7 +961,29 @@ fn solve_once(
         for (i, p) in c.parts.iter().enumerate() {
             if let Some((is, n)) = p.component.diode_params() {
                 let vnew = solution.across[i].unwrap_or(0.0);
-                v_diodes[i] = limit_diode_voltage(is, n, vnew, v_diodes[i], vt_base);
+                v_junctions[i].0 = limit_diode_voltage(is, n, vnew, v_junctions[i].0, vt_base);
+            } else if let Component::Bjt {
+                polarity,
+                saturation_amps,
+                ..
+            } = p.component
+            {
+                let vb = solution.node_voltages[p.b.0].unwrap_or(0.0);
+                let ve = p.c.and_then(|c| solution.node_voltages[c.0]).unwrap_or(0.0);
+                let vc = solution.node_voltages[p.a.0].unwrap_or(0.0);
+                let (v_be_new, v_bc_new) = match polarity {
+                    crate::component::Polarity::Npn => (vb - ve, vb - vc),
+                    crate::component::Polarity::Pnp => (ve - vb, vc - vb),
+                };
+                let (limited_be, limited_bc) = limit_bjt_voltages(
+                    saturation_amps,
+                    v_be_new,
+                    v_bc_new,
+                    v_junctions[i].0,
+                    v_junctions[i].1,
+                    vt_base,
+                );
+                v_junctions[i] = (limited_be, limited_bc);
             }
         }
 

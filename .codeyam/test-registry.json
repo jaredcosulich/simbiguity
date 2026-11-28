@@ -98,6 +98,33 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that an open base terminal correctly places the BJT in cutoff region.",
+      "file": "crates/simbiguity-circuits/tests/bjt.rs",
+      "format": "cargo",
+      "key": "bjt_base_open_is_cutoff",
+      "line": 84,
+      "registeredAt": "2026-11-28T18:14:53.778016644+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that an NPN BJT with a 470k base resistor provides roughly beta=100 amplification.",
+      "file": "crates/simbiguity-circuits/tests/bjt.rs",
+      "format": "cargo",
+      "key": "bjt_forward_active_470k_gives_beta_100",
+      "line": 17,
+      "registeredAt": "2026-11-28T18:14:53.778016644+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that an NPN BJT saturates properly with a 47k base resistor.",
+      "file": "crates/simbiguity-circuits/tests/bjt.rs",
+      "format": "cargo",
+      "key": "bjt_saturated_47k",
+      "line": 51,
+      "registeredAt": "2026-11-28T18:14:53.778016644+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A blown bulb stays blown in a CircuitSim until replaced, even once the voltage that blew it is lowered.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -111,7 +138,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::append_rebases_indices",
-      "line": 399,
+      "line": 414,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -120,7 +147,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::charges_start_empty",
-      "line": 368,
+      "line": 383,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -129,7 +156,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::every_component_is_pickable",
-      "line": 313,
+      "line": 328,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -138,7 +165,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::filament_paths_share_their_feet",
-      "line": 390,
+      "line": 405,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -147,8 +174,16 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::parts_point_at_the_animated_nodes",
-      "line": 335,
+      "line": 350,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that a BJT in forward active mode properly amplifies current through the bridge layer.",
+      "file": "",
+      "format": "cargo",
+      "key": "bridge_test_bjt_forward_active",
+      "registeredAt": "2026-11-28T18:15:03.924189795+00:00",
       "runner": "cargo"
     },
     {
@@ -597,7 +632,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blow_only_affects_bulbs",
-      "line": 426,
+      "line": 477,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -606,7 +641,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
-      "line": 415,
+      "line": 466,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -615,7 +650,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::brightness_is_power_ratio_clamped",
-      "line": 406,
+      "line": 457,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -624,7 +659,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::bulb_resistance_from_rating",
-      "line": 542,
+      "line": 593,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -633,7 +668,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::diode_params_and_nonlinear_check",
-      "line": 507,
+      "line": 558,
       "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
@@ -642,7 +677,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::set_value_changes_the_main_value",
-      "line": 492,
+      "line": 543,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -651,7 +686,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::stamps_match_each_component",
-      "line": 442,
+      "line": 493,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -660,7 +695,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::validity_rejects_non_physical_values",
-      "line": 476,
+      "line": 527,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -1457,6 +1492,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies a transistor switch correctly driving an LED.",
+      "file": "crates/simbiguity-circuits/tests/bjt.rs",
+      "format": "cargo",
+      "key": "led_driven_by_transistor_switch",
+      "line": 146,
+      "registeredAt": "2026-11-28T18:14:53.778016644+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies LED with a standard 160 ohm series resistor matches operating point.",
       "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
       "format": "cargo",
@@ -2190,7 +2234,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::foreign_node_panics",
-      "line": 363,
+      "line": 410,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2199,7 +2243,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::ids_follow_creation_order",
-      "line": 349,
+      "line": 396,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2208,7 +2252,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::replace_bulb_unblows",
-      "line": 340,
+      "line": 387,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2217,7 +2261,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_ignores_non_switches",
-      "line": 321,
+      "line": 368,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2226,7 +2270,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_sets_the_state",
-      "line": 309,
+      "line": 356,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2235,7 +2279,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::toggle_switch_flips_and_reports",
-      "line": 330,
+      "line": 377,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2399,6 +2443,15 @@
       "key": "pkg_budget_tests::tests::test_pkg_budget_reasons_and_limits",
       "line": 14,
       "registeredAt": "2026-11-28T17:20:23.885923564+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies PNP BJT functioning as a mirror of forward active NPN.",
+      "file": "crates/simbiguity-circuits/tests/bjt.rs",
+      "format": "cargo",
+      "key": "pnp_mirror_of_forward_active",
+      "line": 114,
+      "registeredAt": "2026-11-28T18:14:53.778016644+00:00",
       "runner": "cargo"
     },
     {
@@ -4428,6 +4481,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that a BJT in forward active mode properly amplifies current through the bridge layer.",
+      "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
+      "format": "cargo",
+      "key": "tests::bridge_test_bjt_forward_active",
+      "line": 335,
+      "registeredAt": "2026-11-28T18:14:53.778016644+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The bypass shorts the battery: no solution, every result NaN, issue 2.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -5233,7 +5295,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::forest_leaves_out_the_chord_of_a_wire_loop",
-      "line": 147,
+      "line": 204,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -5242,7 +5304,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::forest_visits_every_node_with_lowest_roots",
-      "line": 137,
+      "line": 194,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -5251,7 +5313,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::inflow_follows_each_components_sign_convention",
-      "line": 110,
+      "line": 156,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -5260,7 +5322,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::no_wires_changes_nothing",
-      "line": 188,
+      "line": 255,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -5269,7 +5331,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::wire_currents_carry_the_loop_current",
-      "line": 162,
+      "line": 219,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -5278,7 +5340,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::wire_only_loop_chord_reports_zero",
-      "line": 176,
+      "line": 238,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -5287,7 +5349,7 @@
       "file": "crates/simbiguity-circuits/src/wires.rs",
       "format": "cargo",
       "key": "wires::tests::wires_go_into_the_adjacency_not_the_inflow",
-      "line": 124,
+      "line": 180,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },

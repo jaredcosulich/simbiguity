@@ -122,6 +122,20 @@ impl Slot {
         id.index() as i32
     }
 
+    pub(crate) fn place_3(&mut self, component: Component, a: u32, b: u32, c_node: u32) -> i32 {
+        let (a, b) = match (self.node(a), self.node(b)) {
+            (Ok(a), Ok(b)) => (a, b),
+            (Err(e), _) | (_, Err(e)) => return e,
+        };
+        let c_node = match self.node(c_node) {
+            Ok(x) => x,
+            Err(e) => return e,
+        };
+        let id = self.rebuild(|c| c.add_3(component, a, b, c_node));
+        self.parts.push(id);
+        id.index() as i32
+    }
+
     /// Steps forward in time by `dt` seconds, re-solves, and refreshes the shared results buffer.
     pub(crate) fn step(&mut self, dt: f64) -> i32 {
         self.sim.step(Seconds(dt));

@@ -3,8 +3,8 @@
     "site/demos/circuit-lab/experiments.js::__file_root__": {
       "filePath": "site/demos/circuit-lab/experiments.js",
       "importedBy": [
-        "site/demos/circuit-lab/lab.js::main",
-        "site/demos/circuit-lab/experiments.test.js::__file_root__"
+        "site/demos/circuit-lab/experiments.test.js::__file_root__",
+        "site/demos/circuit-lab/lab.js::main"
       ],
       "imports": [],
       "name": "__file_root__"
@@ -119,8 +119,8 @@
     "site/demos/circuit-lab/experiments.js": {
       "importedBy": [
         "site/demos/circuit-lab/components/board-view.js",
-        "site/demos/circuit-lab/lab.js",
-        "site/demos/circuit-lab/experiments.test.js"
+        "site/demos/circuit-lab/experiments.test.js",
+        "site/demos/circuit-lab/lab.js"
       ],
       "imports": []
     },

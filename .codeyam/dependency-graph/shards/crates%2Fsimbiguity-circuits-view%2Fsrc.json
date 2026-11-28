@@ -12,6 +12,7 @@
       "filePath": "crates/simbiguity-circuits-view/src/board.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode"
       ],
       "imports": [],
@@ -172,6 +173,7 @@
       "filePath": "crates/simbiguity-circuits-view/src/board.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_signal_source",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch"
@@ -235,6 +237,51 @@
         "new",
         "rotation",
         "translation"
+      ]
+    },
+    "crates/simbiguity-circuits-view/src/board.rs::add_bjt": {
+      "filePath": "crates/simbiguity-circuits-view/src/board.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/board.rs::CHARCOAL",
+        "crates/simbiguity-circuits-view/src/board.rs::STEEL",
+        "crates/simbiguity-circuits-view/src/board.rs::at",
+        "crates/simbiguity-circuits-view/src/board.rs::base_transform",
+        "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/board_layout.rs::__file_root__",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-render/src/mesh.rs::Mesh",
+        "crates/simbiguity-render/src/scene.rs::Material",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "name": "add_bjt",
+      "namedMethods": [
+        "add_mesh",
+        "add_node",
+        "board_layout",
+        "cuboid",
+        "cylinder",
+        "index",
+        "lit",
+        "new"
       ]
     },
     "crates/simbiguity-circuits-view/src/board.rs::add_board": {
@@ -606,6 +653,7 @@
     "crates/simbiguity-circuits-view/src/board.rs::at": {
       "filePath": "crates/simbiguity-circuits-view/src/board.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
@@ -628,6 +676,7 @@
       "filePath": "crates/simbiguity-circuits-view/src/board.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
@@ -676,6 +725,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::Parts::levers",
         "crates/simbiguity-circuits-view/src/board.rs::Parts::switch_bases",
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_board",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
@@ -731,6 +781,7 @@
       "filePath": "crates/simbiguity-circuits-view/src/board.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
@@ -867,6 +918,9 @@
         "crates/simbiguity-circuits-view/src/board_layout.rs::WireRoute",
         "crates/simbiguity-circuits-view/src/board_layout.rs::WireRoute::component",
         "crates/simbiguity-circuits-view/src/board_layout.rs::WireRoute::points",
+        "crates/simbiguity-circuits/src/component.rs::Polarity",
+        "crates/simbiguity-circuits/src/component.rs::Polarity::Npn",
+        "crates/simbiguity-circuits/src/component.rs::Polarity::Pnp",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::new"
       ],
@@ -874,6 +928,7 @@
       "name": "BoardLayout::unpack",
       "namedMethods": [
         "add_battery",
+        "add_bjt",
         "add_bulb",
         "add_capacitor",
         "add_diode",
@@ -917,6 +972,8 @@
       "inherentMethod": true,
       "name": "BoardLayout::validate",
       "namedMethods": [
+        "a",
+        "b",
         "contains",
         "dedup",
         "find",
@@ -929,7 +986,8 @@
         "ok_or",
         "parts",
         "push",
-        "sort"
+        "sort",
+        "vec"
       ]
     },
     "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::wires": {
@@ -1295,6 +1353,7 @@
       "filePath": "crates/simbiguity-circuits-view/src/board_layout.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
+        "crates/simbiguity-circuits-view/src/board.rs::add_bjt",
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
@@ -3542,6 +3601,8 @@
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits-view/src/board_layout.rs",
         "crates/simbiguity-circuits-view/src/board_layout.rs",
         "crates/simbiguity-circuits-view/src/board_layout.rs",
         "crates/simbiguity-circuits-view/src/board_layout.rs",
@@ -3586,6 +3647,7 @@
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/layout.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
@@ -3607,7 +3669,9 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs",
-        "crates/simbiguity-circuits/src/netlist.rs"
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/component.rs"
       ]
     },
     "crates/simbiguity-circuits-view/src/layout.rs": {

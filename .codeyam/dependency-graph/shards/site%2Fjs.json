@@ -136,8 +136,7 @@
         "site/demos/rc-charging/demo.js::main",
         "site/js/determinism.test.js::__file_root__",
         "site/js/nonlinear.test.js::__file_root__",
-        "site/test/ac.test.js::__file_root__",
-        "test.js::__file_root__"
+        "site/test/ac.test.js::__file_root__"
       ],
       "imports": [
         "site/js/simbiguity.js::IssueKind",
@@ -310,8 +309,7 @@
         "site/js/determinism.test.js",
         "site/js/nonlinear.test.js",
         "site/js/simbiguity-render.js",
-        "site/test/ac.test.js",
-        "test.js"
+        "site/test/ac.test.js"
       ],
       "imports": []
     },

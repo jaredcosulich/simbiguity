@@ -1028,6 +1028,145 @@
         "unwrap"
       ]
     },
+    "crates/simbiguity-circuits/tests/bjt.rs::assert_close": {
+      "filePath": "crates/simbiguity-circuits/tests/bjt.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/tests/bjt.rs::bjt_base_open_is_cutoff",
+        "crates/simbiguity-circuits/tests/bjt.rs::bjt_forward_active_470k_gives_beta_100",
+        "crates/simbiguity-circuits/tests/bjt.rs::bjt_saturated_47k",
+        "crates/simbiguity-circuits/tests/bjt.rs::pnp_mirror_of_forward_active"
+      ],
+      "imports": [],
+      "name": "assert_close",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/bjt.rs::bjt_base_open_is_cutoff": {
+      "filePath": "crates/simbiguity-circuits/tests/bjt.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Polarity",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/bjt.rs::assert_close"
+      ],
+      "name": "bjt_base_open_is_cutoff",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_bjt",
+        "add_resistor",
+        "bjt_currents_and_region",
+        "index",
+        "new",
+        "node",
+        "parts",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/bjt.rs::bjt_forward_active_470k_gives_beta_100": {
+      "filePath": "crates/simbiguity-circuits/tests/bjt.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Polarity",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/bjt.rs::assert_close"
+      ],
+      "name": "bjt_forward_active_470k_gives_beta_100",
+      "namedMethods": [
+        "add_battery",
+        "add_bjt",
+        "add_resistor",
+        "bjt_currents_and_region",
+        "index",
+        "is_some",
+        "new",
+        "node",
+        "node_voltage",
+        "parts",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/bjt.rs::bjt_saturated_47k": {
+      "filePath": "crates/simbiguity-circuits/tests/bjt.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Polarity",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/bjt.rs::assert_close"
+      ],
+      "name": "bjt_saturated_47k",
+      "namedMethods": [
+        "add_battery",
+        "add_bjt",
+        "add_resistor",
+        "bjt_currents_and_region",
+        "index",
+        "new",
+        "node",
+        "node_voltage",
+        "parts",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/bjt.rs::led_driven_by_transistor_switch": {
+      "filePath": "crates/simbiguity-circuits/tests/bjt.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Polarity",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "led_driven_by_transistor_switch",
+      "namedMethods": [
+        "add_battery",
+        "add_bjt",
+        "add_led",
+        "add_resistor",
+        "add_switch",
+        "brightness",
+        "new",
+        "node",
+        "set_ground",
+        "set_switch",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/bjt.rs::pnp_mirror_of_forward_active": {
+      "filePath": "crates/simbiguity-circuits/tests/bjt.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Polarity",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/bjt.rs::assert_close"
+      ],
+      "name": "pnp_mirror_of_forward_active",
+      "namedMethods": [
+        "add_battery",
+        "add_bjt",
+        "add_resistor",
+        "bjt_currents_and_region",
+        "index",
+        "new",
+        "node",
+        "node_voltage",
+        "parts",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
     "crates/simbiguity-circuits/tests/large.rs::__file_root__": {
       "filePath": "crates/simbiguity-circuits/tests/large.rs",
       "importedBy": [],
@@ -1293,6 +1432,13 @@
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/bjt.rs": {
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/netlist.rs"
       ]
     },
     "crates/simbiguity-circuits/tests/large.rs": {

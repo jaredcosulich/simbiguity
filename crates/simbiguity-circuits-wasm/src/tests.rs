@@ -329,3 +329,39 @@ fn bridge_stress_test() {
         }
     }
 }
+
+/// Verifies that a BJT in forward active mode properly amplifies current through the bridge layer.
+#[test]
+fn bridge_test_bjt_forward_active() {
+    let h = circuit_new();
+    let vcc = circuit_node(h) as u32;
+    let base = circuit_node(h) as u32;
+    let col = circuit_node(h) as u32;
+    let gnd = circuit_node(h) as u32;
+
+    circuit_add_battery(h, vcc, gnd, 9.0);
+    circuit_add_resistor(h, vcc, base, 470_000.0);
+    circuit_add_resistor(h, vcc, col, 1_000.0);
+    circuit_add_bjt(h, col, base, gnd, 0, 1e-14, 100.0, 1.0);
+
+    let issues = circuit_solve(h);
+    assert_eq!(issues, 0);
+
+    with_slot(h, |s| {
+        let solution = s.sim.state().solution().unwrap();
+        let vc = solution
+            .node_voltage(simbiguity_circuits::NodeId::from_index(col as usize))
+            .unwrap();
+        let vb = solution
+            .node_voltage(simbiguity_circuits::NodeId::from_index(base as usize))
+            .unwrap();
+        let ve = solution
+            .node_voltage(simbiguity_circuits::NodeId::from_index(gnd as usize))
+            .unwrap_or(0.0);
+        let v_be = vb - ve;
+        let v_ce = vc - ve;
+        assert!((v_be - 0.669587).abs() < 1e-4, "V_BE was {}", v_be);
+        assert!((v_ce - 7.227572).abs() < 1e-4, "V_CE was {}", v_ce);
+        OK
+    });
+}

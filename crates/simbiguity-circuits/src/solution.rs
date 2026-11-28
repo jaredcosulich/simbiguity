@@ -60,6 +60,56 @@ impl Solution {
         self.brightness[c.0]
     }
 
+    /// Currents for a BJT `(I_c, I_b, I_e)` and operating region.
+    pub fn bjt_currents_and_region(
+        &self,
+        placed: &crate::netlist::Placed,
+    ) -> Option<((f64, f64, f64), &'static str)> {
+        if let crate::component::Component::Bjt {
+            polarity,
+            saturation_amps,
+            beta_f,
+            beta_r,
+        } = placed.component
+        {
+            let vc = self.node_voltage(placed.a)?;
+            let vb = self.node_voltage(placed.b)?;
+            let ve = self.node_voltage(placed.c?)?;
+
+            let (v_be, v_bc) = match polarity {
+                crate::component::Polarity::Npn => (vb - ve, vb - vc),
+                crate::component::Polarity::Pnp => (ve - vb, vc - vb),
+            };
+
+            let vt = 0.025852;
+            let exp_be = simbiguity_math::float::exp(v_be / vt);
+            let exp_bc = simbiguity_math::float::exp(v_bc / vt);
+
+            let mut i_c =
+                saturation_amps * (exp_be - exp_bc) - (saturation_amps / beta_r) * (exp_bc - 1.0);
+            let mut i_b = (saturation_amps / beta_f) * (exp_be - 1.0)
+                + (saturation_amps / beta_r) * (exp_bc - 1.0);
+
+            if polarity == crate::component::Polarity::Pnp {
+                i_c = -i_c;
+                i_b = -i_b;
+            }
+
+            let i_e = -(i_c + i_b);
+
+            let region = match (v_be > 0.4, v_bc > 0.4) {
+                (false, false) => "Cutoff",
+                (true, false) => "Active",
+                (true, true) => "Saturation",
+                (false, true) => "Reverse",
+            };
+
+            Some(((i_c, i_b, i_e), region))
+        } else {
+            None
+        }
+    }
+
     /// Number of Newton-Raphson iterations taken to solve the circuit.
     pub fn newton_iterations(&self) -> usize {
         self.newton_iterations

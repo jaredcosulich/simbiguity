@@ -265,6 +265,12 @@
       "shortSha": "3374bb0",
       "subject": "feat: Round 4: Circuit Lab with a real oscilloscope and all six experiments",
       "deferredAt": "2026-11-28T17:52:49Z"
+    },
+    {
+      "sha": "dd5100c73f084fa3da4a75320005d0d8cff42795",
+      "shortSha": "dd5100c",
+      "subject": "feat: Circuits: bipolar transistors (Ebers-Moll) as amplifiers and switches",
+      "deferredAt": "2026-11-28T18:17:09Z"
     }
   ],
   "finalizeIntent": "fast",

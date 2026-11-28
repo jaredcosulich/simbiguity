@@ -241,6 +241,12 @@
       "shortSha": "6a2d862",
       "subject": "feat: Circuit Lab demo: LEDs, rectifiers, resonance and a live oscilloscope",
       "deferredAt": "2026-11-28T15:11:59Z"
+    },
+    {
+      "sha": "c85abd5d9daf312ba458978fb2e7a5d18398b826",
+      "shortSha": "c85abd5",
+      "subject": "feat: Physics Lab demo: every engine capability on one page",
+      "deferredAt": "2026-11-28T15:39:59Z"
     }
   ],
   "finalizeIntent": "fast",

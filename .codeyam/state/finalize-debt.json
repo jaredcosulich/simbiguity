@@ -289,13 +289,19 @@
       "shortSha": "2106eac",
       "subject": "feat: Round 4: Physics Lab behaviour tests through the real WASM",
       "deferredAt": "2026-11-28T19:45:07Z"
+    },
+    {
+      "sha": "2eeb90fec591ae38ff9f6507c6fe116786a4f8be",
+      "shortSha": "2eeb90f",
+      "subject": "feat: Physics: damped and driven oscillators checked against resonance theory",
+      "deferredAt": "2026-11-28T19:58:03Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T19:45:38Z",
-    "deferredCommits": 50
+    "at": "2026-11-28T19:58:56Z",
+    "deferredCommits": 51
   },
   "drained": {
     "screenshots": 32,

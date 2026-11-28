@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 13
+      "sightings": 14
     }
   ],
   "rounds": [
@@ -397,6 +397,12 @@
     {
       "at": "2026-11-28T19:46:02.077534574+00:00",
       "feature": "Physics Lab Component Extraction",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T19:59:08.660309342+00:00",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

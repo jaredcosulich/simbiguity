@@ -229,6 +229,12 @@
       "shortSha": "b917e10",
       "subject": "feat: Circuits: AC signal sources, oscilloscope probes and RLC resonance",
       "deferredAt": "2026-11-28T14:21:09Z"
+    },
+    {
+      "sha": "e64398260293df090add106e7c49e9ba284b1077",
+      "shortSha": "e643982",
+      "subject": "feat: Circuits: sparse solver for thousand-node circuits",
+      "deferredAt": "2026-11-28T14:45:59Z"
     }
   ],
   "finalizeIntent": "fast",

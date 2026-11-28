@@ -151,6 +151,12 @@
       "shortSha": "5f1a4f5",
       "subject": "feat: Fix round 2: hardening tests that can actually fail",
       "deferredAt": "2026-11-28T00:10:24Z"
+    },
+    {
+      "sha": "0ff9ce509e069260b08060bfaf3487266e791b67",
+      "shortSha": "0ff9ce5",
+      "subject": "feat: Fix round 2: puzzle engine with real goals, verified levels, undo and share",
+      "deferredAt": "2026-11-28T01:54:04Z"
     }
   ],
   "finalizeIntent": "fast",

@@ -602,8 +602,6 @@
     "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout": {
       "filePath": "crates/simbiguity-circuits-view/src/board_layout.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::reference_solution",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
         "crates/simbiguity-circuits-view/src/view_tests.rs::one_bright_two_dim_fixture",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout"
@@ -3360,7 +3358,6 @@
         "crates/simbiguity-circuits-view/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",

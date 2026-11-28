@@ -1342,6 +1342,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies parsing a fixed part line array.",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_fixed_part_valid",
+      "line": 257,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies level parsing rejects empty strings",
       "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "format": "cargo",
@@ -1366,6 +1375,42 @@
       "key": "level_format::tests::parse_level_valid_succeeds",
       "line": 71,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies parsing a palette entry line array.",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_palette_entry_valid",
+      "line": 272,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that parsing an invalid part kind string returns an error.",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_part_kind_invalid",
+      "line": 251,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that parsing a valid part kind string works.",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_part_kind_valid",
+      "line": 241,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies parsing a solution part line array.",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_solution_part_valid",
+      "line": 280,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
       "runner": "cargo"
     },
     {
@@ -2602,6 +2647,33 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies invalid Base64 decoding.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::base64_decode_invalid",
+      "line": 165,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Base64 decoding.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::base64_decode_test",
+      "line": 159,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Base64 encoding.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::base64_encode_test",
+      "line": 153,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that tampered strings with exclamation marks are blocked.",
       "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "format": "cargo",
@@ -2611,12 +2683,30 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies the CRC32 function against a known good value.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::crc32_check_value",
+      "line": 147,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that normal solutions encode and decode smoothly.",
       "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "format": "cargo",
       "key": "share::tests::encoded_solution_round_trips",
-      "line": 32,
+      "line": 171,
       "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies various share error conditions.",
+      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+      "format": "cargo",
+      "key": "share::tests::share_error_tests",
+      "line": 193,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
       "runner": "cargo"
     },
     {
@@ -3182,7 +3272,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::lit_bulb_goal_fails_when_the_bulb_is_dark",
-      "line": 167,
+      "line": 384,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3295,11 +3385,20 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that circuit builder connects the right components.",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_build_circuit",
+      "line": 346,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies calculation of brightness from power",
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_calculate_brightness",
-      "line": 184,
+      "line": 401,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3308,7 +3407,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_check_current_tolerance",
-      "line": 203,
+      "line": 420,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3317,7 +3416,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_count_parts_by_kind",
-      "line": 191,
+      "line": 408,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3328,6 +3427,15 @@
       "key": "tests::test_goal",
       "line": 42,
       "registeredAt": "2026-11-26T19:55:35.524946133+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies undo/redo over board edits",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_puzzle_session_undo_redo",
+      "line": 429,
+      "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
       "runner": "cargo"
     },
     {

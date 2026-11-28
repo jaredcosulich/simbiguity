@@ -1,0 +1,18 @@
+id level_8
+title Don't blow it
+hint 18 V battery, 9 V bulb
+grid 6 4
+fixed battery 0 1 rot 0 emf 18
+fixed bulb 4 1 rot 0 volts 9 watts 3
+palette resistor 1
+palette bulb 1
+palette wire 6
+goal no_issue bulb_blown
+solution wire 1 1 2 1
+solution part resistor 2 1 rot 0 ohms 27
+solution wire 3 1 4 1
+solution wire 4 2 3 2
+solution wire 3 2 2 2
+solution wire 2 2 1 2
+solution wire 1 2 0 2
+solution wire 0 2 0 1

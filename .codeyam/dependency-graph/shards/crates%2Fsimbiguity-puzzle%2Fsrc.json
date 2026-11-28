@@ -28,8 +28,8 @@
     "crates/simbiguity-puzzle/src/lib.rs::Goal": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
-        "crates/simbiguity-puzzle/src/lib.rs::check"
+        "crates/simbiguity-puzzle/src/lib.rs::check",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Simulation",
@@ -88,7 +88,11 @@
     },
     "crates/simbiguity-puzzle/src/lib.rs::UndoStack": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::new",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::stack"
+      ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
         "crates/simbiguity-puzzle/src/lib.rs::UndoStack::history",
@@ -236,6 +240,7 @@
   "files": {
     "crates/simbiguity-puzzle/src/lib.rs": {
       "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs"
       ],
       "imports": [

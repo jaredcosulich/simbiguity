@@ -1355,6 +1355,15 @@
       "pass|full|2026-11-27T13:15:45.602Z"
     ]
   },
+  "level_format::tests::parse_fixed_part_valid": {
+    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "lastRunAt": "2026-11-28T12:49:54.956Z",
+    "lastRunKind": "targeted",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
   "level_format::tests::parse_level_empty_fails": {
     "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
     "lastRunAt": "2026-11-28T02:49:13.325Z",
@@ -1380,6 +1389,42 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T01:51:46.411Z"
+    ]
+  },
+  "level_format::tests::parse_palette_entry_valid": {
+    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "lastRunAt": "2026-11-28T12:49:54.956Z",
+    "lastRunKind": "targeted",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
+  "level_format::tests::parse_part_kind_invalid": {
+    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "lastRunAt": "2026-11-28T12:49:54.956Z",
+    "lastRunKind": "targeted",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
+  "level_format::tests::parse_part_kind_valid": {
+    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "lastRunAt": "2026-11-28T12:49:54.956Z",
+    "lastRunKind": "targeted",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
+  "level_format::tests::parse_solution_part_valid": {
+    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "lastRunAt": "2026-11-28T12:49:54.956Z",
+    "lastRunKind": "targeted",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
     ]
   },
   "level_format::tests::test_level": {
@@ -2634,6 +2679,33 @@
       "pass|full|2026-11-26T17:29:47.731Z"
     ]
   },
+  "share::tests::base64_decode_invalid": {
+    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
+  "share::tests::base64_decode_test": {
+    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
+  "share::tests::base64_encode_test": {
+    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
   "share::tests::corrupted_share_link_is_rejected": {
     "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
     "lastRunAt": "2026-11-28T01:51:05.673Z",
@@ -2643,13 +2715,31 @@
       "pass|full|2026-11-27T13:15:45.602Z"
     ]
   },
+  "share::tests::crc32_check_value": {
+    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
   "share::tests::encoded_solution_round_trips": {
     "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
-    "lastRunAt": "2026-11-28T01:51:05.673Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T12:43:49.909Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T13:15:45.602Z"
+    ]
+  },
+  "share::tests::share_error_tests": {
+    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
     ]
   },
   "share::tests::test_encode": {
@@ -3218,8 +3308,8 @@
   },
   "tests::lit_bulb_goal_fails_when_the_bulb_is_dark": {
     "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T12:43:49.909Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T01:51:46.411Z"
@@ -3339,10 +3429,19 @@
       "pass|full|2026-11-26T19:12:14.789Z"
     ]
   },
+  "tests::test_build_circuit": {
+    "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
+    ]
+  },
   "tests::test_calculate_brightness": {
     "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T12:43:49.909Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T01:51:46.411Z"
@@ -3350,8 +3449,8 @@
   },
   "tests::test_check_current_tolerance": {
     "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T12:43:49.909Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T01:51:46.411Z"
@@ -3359,8 +3458,8 @@
   },
   "tests::test_count_parts_by_kind": {
     "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T12:43:49.909Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T01:51:46.411Z"
@@ -3373,6 +3472,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T19:55:58.345Z"
+    ]
+  },
+  "tests::test_puzzle_session_undo_redo": {
+    "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+    "lastRunAt": "2026-11-28T12:44:56.313Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T12:44:56.313Z"
     ]
   },
   "tests::test_simbiguity": {

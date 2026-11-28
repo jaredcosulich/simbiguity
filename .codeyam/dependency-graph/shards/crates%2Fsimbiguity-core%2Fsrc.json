@@ -947,7 +947,6 @@
         "crates/simbiguity-circuits/src/mna_tests.rs::__file_root__",
         "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-view/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__",
@@ -955,7 +954,8 @@
         "crates/simbiguity-core/src/lockstep.rs::S",
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
         "crates/simbiguity-puzzle/src/lib.rs::Goal",
-        "crates/simbiguity-puzzle/src/lib.rs::check"
+        "crates/simbiguity-puzzle/src/lib.rs::check",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1009,7 +1009,11 @@
         "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::push",
         "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::redo",
         "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo",
-        "crates/simbiguity-puzzle/src/lib.rs::check"
+        "crates/simbiguity-puzzle/src/lib.rs::check",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::restore",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::snapshot",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::Snapshot"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1152,7 +1156,6 @@
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
@@ -1167,7 +1170,9 @@
         "crates/simbiguity-core/src/lockstep.rs",
         "crates/simbiguity-puzzle/src/lib.rs",
         "crates/simbiguity-puzzle/src/lib.rs",
-        "crates/simbiguity-puzzle/src/lib.rs"
+        "crates/simbiguity-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs"

@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-11-28T02:51:39Z",
+  "title": "Add WebGL2Executor and demo.js tests",
+  "type": "feature",
+  "userRequest": "## Summary\n\nThe cycle that built plan `3d-rendering-and-animation-simbiguity-anim-simbiguity-render-a-webgl2-executor-and-the-3d-circuit-view` closed with this follow-up open on a file it changed:\n\n> WebGL2Executor's GL calls and demo.js's history.replaceState hash write have no observing unit test; they are observed only by the seven captured circuit-3d scenarios.\n\nRe-read the completed plan and the current code before planning: the rest of that plan has shipped.",
+  "description": "Added unit tests for WebGL2Executor's GL calls and demo.js's history.replaceState hash write. Mocked global objects directly in the test files since Node was used as the test runner.\n\nScope verdict: No deliverables delivered this cycle. Deferred deliverables: Circuit simulation, Physics simulation, Market simulation, Animation support, From-scratch 3D rendering via a WebGL2 renderer, Hand-written WASM interface exposing the crates to the browser, and Static HTML demos embedding the simulations (all deferred to later roadmap plan).",
+  "testResults": {
+    "total": 143,
+    "passed": 143,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "cargo",
+        "total": 0,
+        "passed": 0
+      },
+      {
+        "name": "node",
+        "total": 143,
+        "passed": 143
+      }
+    ]
+  }
+}

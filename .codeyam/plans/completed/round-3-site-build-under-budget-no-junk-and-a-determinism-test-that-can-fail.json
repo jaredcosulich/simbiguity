@@ -1,0 +1,31 @@
+{
+  "claimStartedAt": "2026-11-28T02:53:04Z",
+  "completedAt": "2026-11-28T03:05:16Z",
+  "completedBy": {
+    "agentProvider": "gemini",
+    "codeyamEditorVersion": "0.1.7",
+    "currentStep": "backend-step15",
+    "machine": "codeyam-editor-codeyam-editor-2",
+    "originId": "2529c5ad-2bef-469d-be8a-e34608393066",
+    "pid": 6,
+    "priority": 0,
+    "selectedPlan": "round-3-site-build-under-budget-no-junk-and-a-determinism-test-that-can-fail",
+    "sessionId": "fbe69876-a673-444a-905b-e4db3f553906",
+    "startedAt": "2026-11-28T02:53:04Z"
+  },
+  "createdAt": "2026-11-28T02:43:18Z",
+  "deliverables": [
+    "Cargo.toml",
+    "crates/simbiguity-render-wasm/src/lib.rs",
+    "site/demos/circuit-3d/demo.js",
+    "site/demos/circuit-3d/demo.test.js",
+    "site/js/determinism.test.js",
+    "site/js/simbiguity.js",
+    "site/js/webgl2-executor.test.js"
+  ],
+  "journalTimestamp": "2026-11-28T03:05:16Z",
+  "mode": "backend",
+  "planFile": "completed/round-3-site-build-under-budget-no-junk-and-a-determinism-test-that-can-fail.md",
+  "slug": "round-3-site-build-under-budget-no-junk-and-a-determinism-test-that-can-fail",
+  "title": "Round 3: site build under budget, no junk, and a determinism test that can fail"
+}

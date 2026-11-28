@@ -14,3 +14,4 @@ rust-version = "1.80"
 opt-level = "s"
 lto = true
 codegen-units = 1
+panic = "abort"

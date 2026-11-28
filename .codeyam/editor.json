@@ -23,6 +23,16 @@
         "filePath": "crates/simbiguity-circuits/src/mna_tests.rs",
         "name": "battery_and_resistor",
         "reason": "test-fixture"
+      },
+      {
+        "filePath": "site/js/determinism.test.js",
+        "name": "buildHelloFixture",
+        "reason": "test-fixture"
+      },
+      {
+        "filePath": "site/js/determinism.test.js",
+        "name": "solveAndHash",
+        "reason": "test-fixture"
       }
     ],
     "itemShape": {

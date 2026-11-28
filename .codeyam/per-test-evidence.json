@@ -2726,13 +2726,31 @@
       "pass|full|2026-11-26T17:33:52.512Z"
     ]
   },
-  "test › demo.js history.replaceState hash write": {
-    "file": "site/demos/circuit-3d/demo.test.js",
-    "lastRunAt": "2026-11-28T02:49:36.802Z",
+  "test › WASM determinism hash": {
+    "file": "site/js/determinism.test.js",
+    "lastRunAt": "2026-11-28T03:03:51.735Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-11-28T03:03:51.735Z"
+    ]
+  },
+  "test › demo.js history.replaceState hash write": {
+    "file": "site/demos/circuit-3d/demo.test.js",
+    "lastRunAt": "2026-11-28T03:00:07.660Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
       "pass|full|2026-11-28T02:49:36.802Z"
+    ]
+  },
+  "test › executes GL calls from decoded commands": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T03:03:14.361Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T03:03:14.361Z"
     ]
   },
   "test_descriptions::tests::brace_delta_ignores_literals_and_comments": {

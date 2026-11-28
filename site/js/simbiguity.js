@@ -40,14 +40,27 @@ export class SimbiguityError extends Error {
  * @param {string | URL} url where simbiguity_circuits_wasm.wasm is served
  * @returns {Promise<{ Circuit: typeof Circuit, exports: WebAssembly.Exports }>}
  */
-export async function loadCircuits(url) {
+export async function loadCircuits(source) {
   // The module imports nothing: the engine needs no host functions.
-  const response = fetch(url);
-  const { instance } = WebAssembly.instantiateStreaming
-    ? await WebAssembly.instantiateStreaming(response, {}).catch(async () =>
+  const isUrl = typeof source === "string" || source instanceof URL;
+  
+  let instance;
+  if (isUrl) {
+    const response = fetch(source);
+    if (WebAssembly.instantiateStreaming) {
+      instance = (await WebAssembly.instantiateStreaming(response, {}).catch(async () =>
         // Some servers send .wasm without `application/wasm`; fall back.
-        WebAssembly.instantiate(await (await fetch(url)).arrayBuffer(), {}))
-    : await WebAssembly.instantiate(await (await response).arrayBuffer(), {});
+        WebAssembly.instantiate(await (await fetch(source)).arrayBuffer(), {})
+      )).instance;
+    } else {
+      instance = (await WebAssembly.instantiate(await (await response).arrayBuffer(), {})).instance;
+    }
+  } else if (source instanceof WebAssembly.Module) {
+    instance = await WebAssembly.instantiate(source, {});
+  } else {
+    // ArrayBuffer, Uint8Array
+    instance = (await WebAssembly.instantiate(source, {})).instance;
+  }
   const w = instance.exports;
   const utf8 = new TextDecoder();
 

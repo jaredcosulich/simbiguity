@@ -1,5 +1,13 @@
 {
   "entities": {
+    "site/js/determinism.test.js::__file_root__": {
+      "filePath": "site/js/determinism.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "__file_root__"
+    },
     "site/js/plot-labels.js::renderLabels": {
       "filePath": "site/js/plot-labels.js",
       "importedBy": [
@@ -91,7 +99,8 @@
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
         "site/demos/hello-circuit/demo.js::main",
-        "site/demos/rc-charging/demo.js::main"
+        "site/demos/rc-charging/demo.js::main",
+        "site/js/determinism.test.js::__file_root__"
       ],
       "imports": [
         "site/js/simbiguity.js::IssueKind",
@@ -196,7 +205,9 @@
   "files": {
     "site/js/determinism.test.js": {
       "importedBy": [],
-      "imports": []
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
     },
     "site/js/plot-labels.js": {
       "importedBy": [
@@ -235,6 +246,7 @@
         "site/demos/hello-circuit/demo.js",
         "site/demos/physics/demo.js",
         "site/demos/rc-charging/demo.js",
+        "site/js/determinism.test.js",
         "site/js/simbiguity-render.js"
       ],
       "imports": []

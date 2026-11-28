@@ -31,3 +31,28 @@ test("LED with 160 ohm resistor", async () => {
     
     c.free();
 });
+
+test("OpAmp inverting amplifier", async () => {
+    const wasm = fs.readFileSync(new URL("../pkg/simbiguity_circuits_wasm.wasm", import.meta.url));
+    const { Circuit } = await loadCircuits(wasm);
+    
+    const c = new Circuit();
+    const gnd = c.node();
+    const inNode = c.node();
+    const invNode = c.node();
+    const outNode = c.node();
+    
+    c.battery(inNode, gnd, 0.5);
+    c.resistor(inNode, invNode, 1000.0);
+    c.resistor(invNode, outNode, 10000.0);
+    const op = c.addOpAmp(gnd, invNode, outNode, 1e5, 12.0);
+    
+    const { solved, parts, issues } = c.solve();
+    assert.strictEqual(solved, true);
+    
+    const opResult = parts[op];
+    // Inverting amp: V_out = -4.999414 V (approx -5V)
+    assert.ok(Math.abs(opResult.across - (-4.999414)) < 1e-3, `V_out was ${opResult.across}`);
+    
+    c.free();
+});

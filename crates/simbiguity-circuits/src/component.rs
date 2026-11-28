@@ -118,6 +118,18 @@ pub enum Component {
         /// DC offset in volts.
         offset: f64,
     },
+    /// A linear voltage-controlled voltage source.
+    Vcvs {
+        /// Voltage gain.
+        gain: f64,
+    },
+    /// An operational amplifier with tanh saturation.
+    OpAmp {
+        /// Linear voltage gain near zero.
+        gain: f64,
+        /// Output voltage saturation limit (V_sat).
+        v_sat: f64,
+    },
 }
 
 /// How one component enters the MNA system.
@@ -149,6 +161,10 @@ pub(crate) enum Stamp {
         i_eq_b: f64,
         i_eq_c: f64,
     },
+    /// A voltage-controlled voltage source, possibly with offset.
+    Vcvs { gain: f64, offset: f64 },
+    /// An operational amplifier (3 terminals: plus, minus, out).
+    OpAmp { eq_gain: f64, offset: f64 },
 }
 
 impl Component {
@@ -262,6 +278,10 @@ impl Component {
                     && beta_r.is_finite()
                     && beta_r > 0.0
             }
+            Component::Vcvs { gain } => gain.is_finite(),
+            Component::OpAmp { gain, v_sat } => {
+                gain.is_finite() && v_sat.is_finite() && v_sat > 0.0
+            }
         }
     }
 
@@ -337,6 +357,11 @@ impl Component {
             Component::Diode { .. } => Stamp::Open,
             Component::Led { blown: true, .. } => Stamp::Open,
             Component::Led { .. } => Stamp::Open,
+            Component::Vcvs { gain } => Stamp::Vcvs { gain, offset: 0.0 },
+            Component::OpAmp { .. } => Stamp::Vcvs {
+                gain: 0.0,
+                offset: 0.0,
+            },
             Component::Bjt { .. } => Stamp::Bjt {
                 g_b_be: 0.0,
                 g_b_bc: 0.0,
@@ -425,7 +450,8 @@ impl Component {
 
     /// Returns whether this component requires Newton-Raphson iteration.
     pub fn is_nonlinear(&self) -> bool {
-        self.diode_params().is_some() || matches!(self, Component::Bjt { .. })
+        self.diode_params().is_some()
+            || matches!(self, Component::Bjt { .. } | Component::OpAmp { .. })
     }
 
     /// Sets the component's main value: a battery's EMF, a resistor's
@@ -443,6 +469,8 @@ impl Component {
             | Component::Diode { .. }
             | Component::Led { .. }
             | Component::Bjt { .. }
+            | Component::Vcvs { .. }
+            | Component::OpAmp { .. }
             | Component::SignalSource { .. } => {}
         }
     }

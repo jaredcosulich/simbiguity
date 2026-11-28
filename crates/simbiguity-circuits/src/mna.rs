@@ -47,6 +47,12 @@ impl Topology {
             }
             if *s != Stamp::Open {
                 islands.union(p.a.0, p.b.0);
+                if let Some(c_node) = p.c {
+                    islands.union(p.a.0, c_node.0);
+                }
+                if let Some(d_node) = p.d {
+                    islands.union(p.a.0, d_node.0);
+                }
             }
         }
         let group: Vec<usize> = (0..n).map(|i| merge.find(i)).collect();
@@ -94,15 +100,17 @@ fn source_problems(c: &Circuit, t: &Topology) -> Vec<CircuitIssue> {
         let battery = ComponentId(i);
         let (ga, gb) = (t.group[p.a.0], t.group[p.b.0]);
         match *s {
-            Stamp::VoltageSource(_) if ga == gb => issues.push(CircuitIssue::ShortCircuit {
-                battery,
-                current: None,
-            }),
+            Stamp::VoltageSource(_) | Stamp::Vcvs { .. } if ga == gb => {
+                issues.push(CircuitIssue::ShortCircuit {
+                    battery,
+                    current: None,
+                })
+            }
             Stamp::Norton { current, .. } if ga == gb => issues.push(CircuitIssue::ShortCircuit {
                 battery,
                 current: Some(current),
             }),
-            Stamp::VoltageSource(_) if !sources.union(ga, gb) => {
+            Stamp::VoltageSource(_) | Stamp::Vcvs { .. } if !sources.union(ga, gb) => {
                 issues.push(CircuitIssue::VoltageSourceLoop { battery })
             }
             _ => {}
@@ -129,6 +137,12 @@ fn touched_nodes(c: &Circuit) -> Vec<bool> {
     for p in &c.parts {
         touched[p.a.0] = true;
         touched[p.b.0] = true;
+        if let Some(c_node) = p.c {
+            touched[c_node.0] = true;
+        }
+        if let Some(d_node) = p.d {
+            touched[d_node.0] = true;
+        }
     }
     touched
 }
@@ -171,7 +185,10 @@ impl Unknowns {
         }
         let mut source = vec![None; c.parts.len()];
         for (i, s) in t.stamps.iter().enumerate() {
-            if matches!(s, Stamp::VoltageSource(_)) {
+            if matches!(
+                s,
+                Stamp::VoltageSource(_) | Stamp::Vcvs { .. } | Stamp::OpAmp { .. }
+            ) {
                 source[i] = Some(count);
                 count += 1;
             }
@@ -300,6 +317,37 @@ fn assemble_matrix(
                     }
                 }
             }
+            Stamp::Vcvs { gain, .. } => {
+                let Some(k) = u.source[i] else {
+                    return Err("every VCVS has a current unknown".into());
+                };
+                let ctrl_plus = p.c.and_then(|n| u.voltage[t.group[n.0]]);
+                let ctrl_minus = p.d.and_then(|n| u.voltage[t.group[n.0]]);
+                for (node, sign) in [(a, 1.0), (b, -1.0), (ctrl_plus, -gain), (ctrl_minus, gain)] {
+                    if let Some(node) = node {
+                        m[(k, node)] += sign;
+                    }
+                }
+                for (node, sign) in [(a, 1.0), (b, -1.0)] {
+                    if let Some(node) = node {
+                        m[(node, k)] += sign;
+                    }
+                }
+            }
+            Stamp::OpAmp { eq_gain, .. } => {
+                let Some(k) = u.source[i] else {
+                    return Err("every OpAmp has a current unknown".into());
+                };
+                let out = p.c.and_then(|n| u.voltage[t.group[n.0]]);
+                for (node, sign) in [(out, 1.0), (a, -eq_gain), (b, eq_gain)] {
+                    if let Some(node) = node {
+                        m[(k, node)] += sign;
+                    }
+                }
+                if let Some(node) = out {
+                    m[(node, k)] += 1.0;
+                }
+            }
             Stamp::Merge | Stamp::Open => {}
         }
     }
@@ -368,6 +416,37 @@ fn assemble_sparse_matrix(
                     }
                 }
             }
+            Stamp::Vcvs { gain, .. } => {
+                let Some(k) = u.source[i] else {
+                    return Err("every VCVS has a current unknown".into());
+                };
+                let ctrl_plus = p.c.and_then(|n| u.voltage[t.group[n.0]]);
+                let ctrl_minus = p.d.and_then(|n| u.voltage[t.group[n.0]]);
+                for (node, sign) in [(a, 1.0), (b, -1.0), (ctrl_plus, -gain), (ctrl_minus, gain)] {
+                    if let Some(node) = node {
+                        m.add(k, node, sign);
+                    }
+                }
+                for (node, sign) in [(a, 1.0), (b, -1.0)] {
+                    if let Some(node) = node {
+                        m.add(node, k, sign);
+                    }
+                }
+            }
+            Stamp::OpAmp { eq_gain, .. } => {
+                let Some(k) = u.source[i] else {
+                    return Err("every OpAmp has a current unknown".into());
+                };
+                let out = p.c.and_then(|n| u.voltage[t.group[n.0]]);
+                for (node, sign) in [(out, 1.0), (a, -eq_gain), (b, eq_gain)] {
+                    if let Some(node) = node {
+                        m.add(k, node, sign);
+                    }
+                }
+                if let Some(node) = out {
+                    m.add(node, k, 1.0);
+                }
+            }
             Stamp::Merge | Stamp::Open => {}
         }
     }
@@ -409,6 +488,12 @@ fn assemble_rhs(
                 };
                 rhs[k] = emf;
             }
+            Stamp::Vcvs { offset, .. } | Stamp::OpAmp { offset, .. } => {
+                let Some(k) = u.source[i] else {
+                    return Err("every VCVS/OpAmp has a current unknown".into());
+                };
+                rhs[k] = offset;
+            }
             _ => {}
         }
     }
@@ -433,7 +518,9 @@ fn component_current(s: Stamp, d: f64, source_unknown: Option<f64>) -> f64 {
     match s {
         Stamp::Conductance(g) => d * g,
         Stamp::Norton { g, current } => d * g - current,
-        Stamp::VoltageSource(_) => source_unknown.unwrap_or(0.0),
+        Stamp::VoltageSource(_) | Stamp::Vcvs { .. } | Stamp::OpAmp { .. } => {
+            source_unknown.unwrap_or(0.0)
+        }
         Stamp::Merge | Stamp::Open | Stamp::Bjt { .. } => 0.0,
     }
 }
@@ -458,9 +545,12 @@ fn build_solution(c: &Circuit, t: &Topology, u: &Unknowns, x: &[f64]) -> Solutio
     let mut across = Vec::with_capacity(c.parts.len());
     let mut currents = Vec::with_capacity(c.parts.len());
     for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
-        let v = match (node_voltages[p.a.0], node_voltages[p.b.0]) {
-            (Some(va), Some(vb)) => Some(va - vb),
-            _ => None,
+        let v = match p.component {
+            Component::OpAmp { .. } => p.c.and_then(|out| node_voltages[out.0]),
+            _ => match (node_voltages[p.a.0], node_voltages[p.b.0]) {
+                (Some(va), Some(vb)) => Some(va - vb),
+                _ => None,
+            },
         };
         let source_current = u.source[i].map(|k| x[k]);
         let mut i_val = component_current(*s, v.unwrap_or(0.0), source_current);
@@ -570,6 +660,21 @@ fn limit_diode_voltage(is: f64, n: f64, vnew: f64, vold: f64, vt_base: f64) -> f
     let vt = n * vt_base;
     let vcrit = vt * float::ln(vt / (core::f64::consts::SQRT_2 * is));
     pnjlim(vnew, vold, vt, vcrit)
+}
+
+fn linearize_opamp(gain: f64, v_sat: f64, v_in_old: f64) -> Stamp {
+    let x = (gain * v_in_old) / v_sat;
+    let t = float::tanh(x);
+    let v_out_actual = v_sat * t;
+    let eq_gain = gain * (1.0 - t * t);
+    let offset = v_out_actual - eq_gain * v_in_old;
+    Stamp::OpAmp { eq_gain, offset }
+}
+
+fn check_opamp_convergence(gain: f64, v_sat: f64, v_in: f64, v_out: f64) -> bool {
+    let x = (gain * v_in) / v_sat;
+    let expected_out = v_sat * float::tanh(x);
+    float::abs(expected_out - v_out) <= 1e-3
 }
 
 fn linearize_bjt(
@@ -702,6 +807,8 @@ fn solve_once(
                     v_junctions[i].1,
                     vt_base,
                 );
+            } else if let Component::OpAmp { gain, v_sat } = p.component {
+                stamps[i] = linearize_opamp(gain, v_sat, v_junctions[i].0);
             }
         }
 
@@ -941,6 +1048,18 @@ fn solve_once(
                             converged = false;
                             break;
                         }
+                    } else if let Component::OpAmp { gain, v_sat } = p.component {
+                        let ctrl_plus = p.a;
+                        let ctrl_minus = p.b;
+                        if let Some(out) = p.c {
+                            let v_plus = solution.node_voltages[ctrl_plus.0].unwrap_or(0.0);
+                            let v_minus = solution.node_voltages[ctrl_minus.0].unwrap_or(0.0);
+                            let v_out = solution.node_voltages[out.0].unwrap_or(0.0);
+                            if !check_opamp_convergence(gain, v_sat, v_plus - v_minus, v_out) {
+                                converged = false;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -984,6 +1103,14 @@ fn solve_once(
                     vt_base,
                 );
                 v_junctions[i] = (limited_be, limited_bc);
+            } else if let Component::OpAmp { .. } = p.component {
+                let v_plus = solution.node_voltages[p.a.0].unwrap_or(0.0);
+                let v_minus = solution.node_voltages[p.b.0].unwrap_or(0.0);
+                let mut v_in_new = v_plus - v_minus;
+                if v_in_new * v_junctions[i].0 < 0.0 {
+                    v_in_new = 0.0;
+                }
+                v_junctions[i].0 = v_in_new;
             }
         }
 

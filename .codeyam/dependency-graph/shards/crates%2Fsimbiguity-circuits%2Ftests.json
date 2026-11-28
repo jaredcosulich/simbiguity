@@ -1393,6 +1393,203 @@
         "unwrap",
         "voltage_across"
       ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::__file_root__": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::active_low_pass": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "active_low_pass",
+      "namedMethods": [
+        "abs",
+        "add_capacitor",
+        "add_opamp",
+        "add_resistor",
+        "add_signal_source",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "state",
+        "step",
+        "time",
+        "unwrap",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::comparator_open_loop": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "comparator_open_loop",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_opamp",
+        "is_none",
+        "issues",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::integrator_ramp": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "integrator_ramp",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_capacitor",
+        "add_opamp",
+        "add_resistor",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "state",
+        "step",
+        "unwrap",
+        "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::inverting_amp_gain_of_minus_ten": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "inverting_amp_gain_of_minus_ten",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_opamp",
+        "add_resistor",
+        "is_none",
+        "issues",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::inverting_amp_saturated": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "inverting_amp_saturated",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_opamp",
+        "add_resistor",
+        "is_none",
+        "issues",
+        "new",
+        "newton_iterations",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::non_inverting_amp": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "non_inverting_amp",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_opamp",
+        "add_resistor",
+        "is_none",
+        "issues",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::vcvs_gain_10": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "vcvs_gain_10",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_vcvs",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs::voltage_follower": {
+      "filePath": "crates/simbiguity-circuits/tests/opamp.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "voltage_follower",
+      "namedMethods": [
+        "abs",
+        "add_battery",
+        "add_opamp",
+        "is_none",
+        "issues",
+        "new",
+        "node",
+        "node_voltage",
+        "set_ground",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
     }
   },
   "files": {
@@ -1457,6 +1654,16 @@
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/diagnostics.rs"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/opamp.rs": {
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-core/src/simulation.rs"
       ]
     }
   }

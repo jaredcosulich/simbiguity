@@ -48,6 +48,8 @@ pub struct Placed {
     pub b: NodeId,
     /// Terminal `c` (a BJT's emitter).
     pub c: Option<NodeId>,
+    /// Terminal `d`.
+    pub d: Option<NodeId>,
 }
 
 /// A DC circuit: the complete, deterministic description of what is on the
@@ -107,6 +109,7 @@ impl Circuit {
             a,
             b,
             c: None,
+            d: None,
         });
         ComponentId(self.parts.len() - 1)
     }
@@ -122,6 +125,33 @@ impl Circuit {
             a,
             b,
             c: Some(c),
+            d: None,
+        });
+        ComponentId(self.parts.len() - 1)
+    }
+
+    /// Places a 4-terminal component between nodes `a`, `b`, `c`, and `d`.
+    pub fn add_4(
+        &mut self,
+        component: Component,
+        a: NodeId,
+        b: NodeId,
+        c: NodeId,
+        d: NodeId,
+    ) -> ComponentId {
+        assert!(
+            a.0 < self.node_count
+                && b.0 < self.node_count
+                && c.0 < self.node_count
+                && d.0 < self.node_count,
+            "node does not belong to this circuit"
+        );
+        self.parts.push(Placed {
+            component,
+            a,
+            b,
+            c: Some(c),
+            d: Some(d),
         });
         ComponentId(self.parts.len() - 1)
     }
@@ -149,6 +179,36 @@ impl Circuit {
             b,
             e,
         )
+    }
+
+    /// Adds a VCVS (Voltage Controlled Voltage Source).
+    pub fn add_vcvs(
+        &mut self,
+        out_plus: NodeId,
+        out_minus: NodeId,
+        ctrl_plus: NodeId,
+        ctrl_minus: NodeId,
+        gain: f64,
+    ) -> ComponentId {
+        self.add_4(
+            Component::Vcvs { gain },
+            out_plus,
+            out_minus,
+            ctrl_plus,
+            ctrl_minus,
+        )
+    }
+
+    /// Adds an Op-Amp. `ctrl_plus` is non-inverting input, `ctrl_minus` is inverting input, `out` is the output.
+    pub fn add_opamp(
+        &mut self,
+        ctrl_plus: NodeId,
+        ctrl_minus: NodeId,
+        out: NodeId,
+        gain: f64,
+        v_sat: f64,
+    ) -> ComponentId {
+        self.add_3(Component::OpAmp { gain, v_sat }, ctrl_plus, ctrl_minus, out)
     }
 
     /// An ideal battery: `plus` sits `emf` volts above `minus`.

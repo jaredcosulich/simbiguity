@@ -144,6 +144,40 @@ pub extern "C" fn circuit_add_signal(
 }
 
 #[no_mangle]
+pub extern "C" fn circuit_add_vcvs(
+    h: u32,
+    out_plus: u32,
+    out_minus: u32,
+    ctrl_plus: u32,
+    ctrl_minus: u32,
+    gain: f64,
+) -> i32 {
+    with_slot(h, |s| {
+        s.place_4(
+            Component::Vcvs { gain },
+            out_plus,
+            out_minus,
+            ctrl_plus,
+            ctrl_minus,
+        )
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_add_opamp(
+    h: u32,
+    ctrl_plus: u32,
+    ctrl_minus: u32,
+    out: u32,
+    gain: f64,
+    v_sat: f64,
+) -> i32 {
+    with_slot(h, |s| {
+        s.place_3(Component::OpAmp { gain, v_sat }, ctrl_plus, ctrl_minus, out)
+    })
+}
+
+#[no_mangle]
 pub extern "C" fn sim_time(h: u32) -> f64 {
     let mut out = 0.0;
     with_slot(h, |s| {

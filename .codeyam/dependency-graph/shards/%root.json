@@ -1,19 +1,7 @@
 {
   "entities": {},
   "files": {
-    "bjt_patch.sh": {
-      "importedBy": [],
-      "imports": []
-    },
-    "patch2.sh": {
-      "importedBy": [],
-      "imports": []
-    },
     "patch_comments.py": {
-      "importedBy": [],
-      "imports": []
-    },
-    "patch_solution.sh": {
       "importedBy": [],
       "imports": []
     },
@@ -30,10 +18,6 @@
       "imports": []
     },
     "rewrite_collide.py": {
-      "importedBy": [],
-      "imports": []
-    },
-    "run_bjt.rs": {
       "importedBy": [],
       "imports": []
     },

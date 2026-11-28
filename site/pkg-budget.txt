@@ -1,5 +1,5 @@
-# reason: The AC circuit support and diodes added some weight
-simbiguity_circuits_wasm.wasm 150000
+# reason: The AC circuit support, diodes, Op-Amp, and VCVS added some weight
+simbiguity_circuits_wasm.wasm 155000
 
 # reason: 3D puzzle rendering and materials library
 simbiguity_render_wasm.wasm 258060

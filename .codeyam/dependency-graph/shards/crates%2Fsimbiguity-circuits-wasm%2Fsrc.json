@@ -165,6 +165,17 @@
         "place"
       ]
     },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_opamp": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_opamp",
+      "namedMethods": [
+        "place_3"
+      ]
+    },
     "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_resistor": {
       "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
       "importedBy": [],
@@ -196,6 +207,17 @@
       "name": "circuit_add_switch",
       "namedMethods": [
         "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_vcvs": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_vcvs",
+      "namedMethods": [
+        "place_4"
       ]
     },
     "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_wire": {
@@ -657,6 +679,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_3",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_4",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::results",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
@@ -769,7 +792,8 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_3"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_3",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_4"
       ],
       "imports": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::nodes",
@@ -826,6 +850,7 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_3",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_4",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::solve",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
         "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
@@ -877,13 +902,35 @@
         "rebuild"
       ]
     },
+    "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_4": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::parts",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild",
+        "crates/simbiguity-circuits/src/component.rs::Component"
+      ],
+      "inherentMethod": true,
+      "name": "Slot::place_4",
+      "namedMethods": [
+        "add_4",
+        "index",
+        "node",
+        "push",
+        "rebuild"
+      ]
+    },
     "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::rebuild": {
       "filePath": "crates/simbiguity-circuits-wasm/src/slot.rs",
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::add_node",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_3"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_3",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::place_4"
       ],
       "imports": [
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::sim",
@@ -1060,9 +1107,11 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_diode",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_inductor",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_led",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_opamp",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_resistor",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_signal",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_switch",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_vcvs",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_wire",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_bulb_brightness",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_has_solution",

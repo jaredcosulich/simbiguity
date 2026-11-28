@@ -136,3 +136,13 @@ proves = [
   "tests/large::lc_chain_200_section_delay",
   "invariants_tests::dense_and_sparse_agree"
 ]
+
+[[capability]]
+name = "Op-amps and controlled sources"
+proves = [
+  "tests/opamp::inverting_amp_gain_of_minus_ten",
+  "tests/opamp::inverting_amp_saturated",
+  "tests/opamp::voltage_follower",
+  "tests/opamp::comparator_open_loop",
+  "tests/opamp::non_inverting_amp"
+]

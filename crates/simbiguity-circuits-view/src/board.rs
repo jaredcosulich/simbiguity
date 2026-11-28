@@ -103,6 +103,9 @@ pub fn build_scene(
             simbiguity_circuits::Component::Bjt { .. } => {
                 add_bjt(&mut s, p);
             }
+            simbiguity_circuits::Component::OpAmp { .. } => {
+                add_opamp(&mut s, p);
+            }
             _ => {}
         }
     }
@@ -310,6 +313,42 @@ fn add_bjt(s: &mut Scene, p: &crate::board_layout::PartPlacement) {
     for x in [-0.15, 0.0, 0.15] {
         let leg = s.add_mesh(Mesh::cylinder(0.02, 0.15, 8));
         let leg_mat = base_mat * at(Vec3::new(x, -0.075, 0.0));
+        s.add_node(leg, leg_mat, Material::lit(STEEL));
+    }
+}
+
+fn add_opamp(s: &mut Scene, p: &crate::board_layout::PartPlacement) {
+    let base_mat = base_transform(p, 0.15);
+    let body = s.add_mesh(Mesh::cylinder(0.4, 0.2, 3));
+    let n = s.add_node(
+        body,
+        base_mat * Mat4::rotation(Quat::from_axis_angle(Vec3::Y, core::f64::consts::FRAC_PI_2)),
+        Material::lit(CHARCOAL),
+    );
+    pickable(s, n, p.component.index() as u32 + 1);
+
+    let plus_h = s.add_mesh(Mesh::cuboid(Vec3::new(0.08, 0.02, 0.02)));
+    let plus_v = s.add_mesh(Mesh::cuboid(Vec3::new(0.02, 0.02, 0.08)));
+    s.add_node(
+        plus_h,
+        base_mat * at(Vec3::new(-0.2, 0.11, -0.15)),
+        Material::lit([1.0, 1.0, 1.0]),
+    );
+    s.add_node(
+        plus_v,
+        base_mat * at(Vec3::new(-0.2, 0.11, -0.15)),
+        Material::lit([1.0, 1.0, 1.0]),
+    );
+
+    s.add_node(
+        plus_h,
+        base_mat * at(Vec3::new(-0.2, 0.11, 0.15)),
+        Material::lit([1.0, 1.0, 1.0]),
+    );
+
+    for (x, z) in [(-0.15, -0.2), (-0.15, 0.2), (0.15, 0.0)] {
+        let leg = s.add_mesh(Mesh::cylinder(0.02, 0.15, 8));
+        let leg_mat = base_mat * at(Vec3::new(x, -0.075, z));
         s.add_node(leg, leg_mat, Material::lit(STEEL));
     }
 }

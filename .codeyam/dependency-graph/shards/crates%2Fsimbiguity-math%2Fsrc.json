@@ -166,10 +166,12 @@
     "crates/simbiguity-math/src/float.rs::abs": {
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::check_opamp_convergence",
         "crates/simbiguity-circuits/src/mna.rs::open_batteries",
         "crates/simbiguity-math/src/float.rs::atan",
         "crates/simbiguity-math/src/float.rs::round",
         "crates/simbiguity-math/src/float.rs::round_down_if_closer",
+        "crates/simbiguity-math/src/float.rs::tanh",
         "crates/simbiguity-math/src/float.rs::trunc",
         "crates/simbiguity-math/src/linsolve.rs::choose_pivot",
         "crates/simbiguity-math/src/linsolve.rs::max_abs_entry"
@@ -289,6 +291,7 @@
         "crates/simbiguity-circuits/src/mna.rs::linearize_diode",
         "crates/simbiguity-circuits/src/solution.rs::Solution::bjt_currents_and_region",
         "crates/simbiguity-circuits/src/wires.rs::node_inflows",
+        "crates/simbiguity-math/src/float.rs::tanh",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
       ],
@@ -568,6 +571,18 @@
         "crates/simbiguity-math/src/float.rs::sin_cos"
       ],
       "name": "tan"
+    },
+    "crates/simbiguity-math/src/float.rs::tanh": {
+      "filePath": "crates/simbiguity-math/src/float.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::check_opamp_convergence",
+        "crates/simbiguity-circuits/src/mna.rs::linearize_opamp"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::abs",
+        "crates/simbiguity-math/src/float.rs::exp"
+      ],
+      "name": "tanh"
     },
     "crates/simbiguity-math/src/float.rs::trunc": {
       "filePath": "crates/simbiguity-math/src/float.rs",
@@ -1224,6 +1239,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::Parts::switch_bases",
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::at",
@@ -1639,6 +1655,7 @@
         "crates/simbiguity-anim/src/lerp.rs::Quat::lerp",
         "crates/simbiguity-circuits-view/src/board.rs::add_battery",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::base_transform",
         "crates/simbiguity-circuits-view/src/layout.rs::knob_transform",
         "crates/simbiguity-circuits-view/src/layout.rs::lever_transform",
@@ -2748,6 +2765,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::at",
@@ -2906,6 +2924,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::at",
@@ -3066,6 +3085,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::at",
@@ -3220,6 +3240,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::at",
@@ -3374,6 +3395,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_bulb",
         "crates/simbiguity-circuits-view/src/board.rs::add_diode",
         "crates/simbiguity-circuits-view/src/board.rs::add_led",
+        "crates/simbiguity-circuits-view/src/board.rs::add_opamp",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::at",

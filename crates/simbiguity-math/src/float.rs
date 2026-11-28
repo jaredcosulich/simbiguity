@@ -373,6 +373,21 @@ pub fn asin(x: f64) -> f64 {
     atan2(x, unit_complement(x))
 }
 
+/// Computes the hyperbolic tangent of `x`.
+pub fn tanh(x: f64) -> f64 {
+    let ax = abs(x);
+    if ax > 22.0 {
+        return if x > 0.0 { 1.0 } else { -1.0 };
+    }
+    let e2x = exp(2.0 * ax);
+    let t = (e2x - 1.0) / (e2x + 1.0);
+    if x < 0.0 {
+        -t
+    } else {
+        t
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

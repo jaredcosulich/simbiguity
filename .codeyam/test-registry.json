@@ -10,6 +10,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that an active low pass filter correctly attenuates high frequency AC signals by 3dB at its cutoff frequency.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "active_low_pass",
+      "line": 178,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "the corners map exactly.",
       "file": "crates/simbiguity-plot/src/axes.rs",
       "format": "cargo",
@@ -138,7 +147,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::append_rebases_indices",
-      "line": 414,
+      "line": 453,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -147,7 +156,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::charges_start_empty",
-      "line": 383,
+      "line": 422,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -156,7 +165,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::every_component_is_pickable",
-      "line": 328,
+      "line": 367,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -165,7 +174,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::filament_paths_share_their_feet",
-      "line": 405,
+      "line": 444,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -174,7 +183,7 @@
       "file": "crates/simbiguity-circuits-view/src/board.rs",
       "format": "cargo",
       "key": "board::tests::parts_point_at_the_animated_nodes",
-      "line": 350,
+      "line": 389,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -628,11 +637,20 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that an open loop operational amplifier correctly rails to its saturation voltage when inputs differ.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "comparator_open_loop",
+      "line": 78,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Blowing marks a bulb blown and keeps its rating; anything else is unchanged.",
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blow_only_affects_bulbs",
-      "line": 477,
+      "line": 505,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -641,7 +659,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
-      "line": 466,
+      "line": 494,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -650,7 +668,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::brightness_is_power_ratio_clamped",
-      "line": 457,
+      "line": 485,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -659,7 +677,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::bulb_resistance_from_rating",
-      "line": 593,
+      "line": 621,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -668,7 +686,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::diode_params_and_nonlinear_check",
-      "line": 558,
+      "line": 586,
       "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
@@ -677,7 +695,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::set_value_changes_the_main_value",
-      "line": 543,
+      "line": 571,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -686,7 +704,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::stamps_match_each_component",
-      "line": 493,
+      "line": 521,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -695,7 +713,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::validity_rejects_non_physical_values",
-      "line": 527,
+      "line": 555,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -929,7 +947,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::abs_and_copysign_handle_sign_bit_exactly",
-      "line": 396,
+      "line": 411,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -938,7 +956,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::acos_asin_match_platform_and_domain",
-      "line": 685,
+      "line": 700,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -947,7 +965,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::atan2_quadrants_and_zeros",
-      "line": 662,
+      "line": 677,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -956,7 +974,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::atan_matches_platform_within_four_ulp",
-      "line": 629,
+      "line": 644,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -965,7 +983,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::atan_reduce_flips_and_shrinks",
-      "line": 649,
+      "line": 664,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -974,7 +992,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::exp_matches_platform_within_two_ulp",
-      "line": 543,
+      "line": 558,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -983,7 +1001,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::exp_taylor_is_accurate_on_reduced_interval",
-      "line": 570,
+      "line": 585,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -992,7 +1010,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::exp_thresholds_and_extremes",
-      "line": 556,
+      "line": 571,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1001,7 +1019,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::ln_matches_platform_and_special_cases",
-      "line": 608,
+      "line": 623,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1010,7 +1028,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::next_down_steps_toward_negative_infinity",
-      "line": 409,
+      "line": 424,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1019,7 +1037,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::odd_series_signs_and_values",
-      "line": 580,
+      "line": 595,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1028,7 +1046,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::reduce_quadrant_lands_in_the_central_interval",
-      "line": 521,
+      "line": 536,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1037,7 +1055,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::round_down_if_closer_picks_the_nearer_neighbour",
-      "line": 490,
+      "line": 505,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1046,7 +1064,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::scale_pow2_splits_large_shifts",
-      "line": 442,
+      "line": 457,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1055,7 +1073,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::sin_cos_match_platform",
-      "line": 501,
+      "line": 516,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1064,7 +1082,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::split_mantissa_reconstructs_input",
-      "line": 593,
+      "line": 608,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1073,7 +1091,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::sqrt_matches_platform_within_one_ulp",
-      "line": 452,
+      "line": 467,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1082,7 +1100,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::sqrt_newton_converges_to_within_one_ulp",
-      "line": 481,
+      "line": 496,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1091,7 +1109,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::sqrt_special_and_subnormal_inputs",
-      "line": 466,
+      "line": 481,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1100,7 +1118,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::tan_matches_platform_away_from_poles",
-      "line": 533,
+      "line": 548,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1109,7 +1127,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::trunc_floor_round_are_exact",
-      "line": 424,
+      "line": 439,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1118,7 +1136,7 @@
       "file": "crates/simbiguity-math/src/float.rs",
       "format": "cargo",
       "key": "float::tests::unit_complement_values",
-      "line": 699,
+      "line": 714,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
       "runner": "cargo"
     },
@@ -1321,6 +1339,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that an op-amp integrator circuit generates a linear voltage ramp given a constant input, until reaching rail saturation.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "integrator_ramp",
+      "line": 144,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Internal resistance makes the terminal voltage sag: 12 V with 1 Ω inside into 5 Ω gives 2 A and 10 V at the terminals.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -1399,6 +1426,24 @@
       "key": "invariants_tests::tests::tellegen_invariant",
       "line": 88,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that an ideal inverting operational amplifier circuit with R_f/R_in = 10 provides a voltage gain of -10.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "inverting_amp_gain_of_minus_ten",
+      "line": 6,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that an operational amplifier correctly saturates to its power rail limits when the theoretical linear output exceeds it.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "inverting_amp_saturated",
+      "line": 30,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
       "runner": "cargo"
     },
     {
@@ -2234,7 +2279,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::foreign_node_panics",
-      "line": 410,
+      "line": 470,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2243,7 +2288,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::ids_follow_creation_order",
-      "line": 396,
+      "line": 456,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2252,7 +2297,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::replace_bulb_unblows",
-      "line": 387,
+      "line": 447,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2261,7 +2306,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_ignores_non_switches",
-      "line": 368,
+      "line": 428,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2270,7 +2315,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_sets_the_state",
-      "line": 356,
+      "line": 416,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2279,7 +2324,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::toggle_switch_flips_and_reports",
-      "line": 377,
+      "line": 437,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2299,6 +2344,15 @@
       "key": "non_bulbs_have_no_brightness",
       "line": 159,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that a non-inverting operational amplifier circuit with R_f/R_in = 9 provides a voltage gain of +10.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "non_inverting_amp",
+      "line": 101,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
       "runner": "cargo"
     },
     {
@@ -5120,6 +5174,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that a pure VCVS (Voltage Controlled Voltage Source) scales the control voltage by exactly its configured gain.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "vcvs_gain_10",
+      "line": 125,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "The macro-generated operators must act componentwise on both types.",
       "file": "crates/simbiguity-math/src/vec.rs",
       "format": "cargo",
@@ -5279,6 +5342,15 @@
       "key": "view_tests::toggle_swings_the_lever",
       "line": 77,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that an operational amplifier configured with 100% negative feedback (voltage follower) maintains unity gain.",
+      "file": "crates/simbiguity-circuits/tests/opamp.rs",
+      "format": "cargo",
+      "key": "voltage_follower",
+      "line": 55,
+      "registeredAt": "2026-11-28T18:56:47.386074109+00:00",
       "runner": "cargo"
     },
     {

@@ -103,6 +103,14 @@ export async function loadCircuits(source) {
         return check(w.circuit_add_bjt(this.handle, c, b, e, is_pnp ? 1 : 0, saturation_amps, beta_f, beta_r));
     }
 
+    addVcvs(out_plus, out_minus, ctrl_plus, ctrl_minus, gain) {
+        return check(w.circuit_add_vcvs(this.handle, out_plus, out_minus, ctrl_plus, ctrl_minus, gain));
+    }
+
+    addOpAmp(ctrl_plus, ctrl_minus, out, gain = 1e5, v_sat = 12.0) {
+        return check(w.circuit_add_opamp(this.handle, ctrl_plus, ctrl_minus, out, gain, v_sat));
+    }
+
     diode(a, b, is = 1e-14, n = 1.0) { return check(w.circuit_add_diode(this.handle, a, b, is, n)); }
 
     signal(a, b, waveform, amplitude, frequency, phase = 0.0, offset = 0.0) {

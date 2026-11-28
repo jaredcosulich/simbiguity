@@ -1,0 +1,24 @@
+{
+  "provenAt": "2026-11-28T17:22:28Z",
+  "slug": "round-4-trustworthy-gates-bench-check-that-can-fail-honest-size-budgets-junk-and-duplicate-screenshot-tests",
+  "paths": [
+    "xtask/src/bench.rs"
+  ],
+  "runScope": [
+    "xtask/src/bench.rs"
+  ],
+  "withFixSource": "re-run",
+  "tests": {
+    "check_bench_rejects_a_fixture_over_budget": {
+      "withoutFix": "didNotBuild",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "inconclusive",
+    "reason": "the without-fix world FAILED TO COMPILE, so check_bench_rejects_a_fixture_over_budget never got a verdict — even though prove-red spliced the working tree's `#[cfg(test)] mod` back into the reverted copy of xtask/src/bench.rs. That is the INTERFACE-CHANGE case: the test references a symbol the fix introduces (a new function, field, variant, or signature), so the symbol it needs IS the fix and no revert of any size yields a world that both compiles and contains the test. Re-running prove-red with --path will fail the same way. Prove redness by NEUTERING instead, and let prove-red measure it: drop --path and re-run with `--neuter-file <file> --neuter-find \"<the fix's expression>\" --neuter-replace \"<the pre-fix behaviour>\"`, disabling the behaviour while keeping every type, signature, and visibility intact. Only if no single text replacement can express it, do it by hand: (1) disable the behaviour in place; (2) re-run the test (`codeyam-editor editor refresh-tests --test <name>`) and confirm it now fails; (3) restore the fix; (4) record it with `codeyam-editor editor prove-red-attest --test <name> --method \"surgical neuter: <what you disabled>\" --evidence \"<what failed>\"`. Do NOT move or rename the test — where it lives is not the problem"
+  }
+}

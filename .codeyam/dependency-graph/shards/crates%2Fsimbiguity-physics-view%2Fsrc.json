@@ -13,33 +13,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
-        "lib_old.rs::Session",
-        "lib_old.rs::Session::view",
-        "lib_old.rs::create_binary",
-        "lib_old.rs::create_chain",
-        "lib_old.rs::create_figure_eight",
-        "lib_old.rs::create_orbit",
-        "lib_old.rs::create_pendulum",
-        "lib_old.rs::create_projectile",
-        "lib_old.rs::create_spring_mass",
-        "lib_old.rs::phys_new_ball_pit",
-        "lib_old.rs::phys_new_cradle",
-        "mod_lib.rs::Session",
-        "mod_lib.rs::Session::view",
-        "mod_lib.rs::create_binary",
-        "mod_lib.rs::create_chain",
-        "mod_lib.rs::create_cloth",
-        "mod_lib.rs::create_double_pendulum",
-        "mod_lib.rs::create_figure_eight",
-        "mod_lib.rs::create_orbit",
-        "mod_lib.rs::create_pendulum",
-        "mod_lib.rs::create_projectile",
-        "mod_lib.rs::create_sliding_block",
-        "mod_lib.rs::create_spring_mass",
-        "mod_lib.rs::new_session",
-        "mod_lib.rs::phys_new_ball_pit",
-        "mod_lib.rs::phys_new_cradle"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::acos",
@@ -396,9 +370,7 @@
   "files": {
     "crates/simbiguity-physics-view/src/lib.rs": {
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "lib_old.rs",
-        "mod_lib.rs"
+        "crates/simbiguity-physics-wasm/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",

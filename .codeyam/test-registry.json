@@ -37,6 +37,42 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies parsing bench results handles missing medians gracefully",
+      "file": "xtask/src/bench.rs",
+      "format": "cargo",
+      "key": "bench::tests::test_parse_bench_results_missing_median",
+      "line": 160,
+      "registeredAt": "2026-11-28T17:20:05.700390375+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies parsing a typical bench JSON extracts the median values",
+      "file": "xtask/src/bench.rs",
+      "format": "cargo",
+      "key": "bench::tests::test_parse_bench_results_valid",
+      "line": 140,
+      "registeredAt": "2026-11-28T17:20:05.700390375+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies parsing fails on malformed numbers",
+      "file": "xtask/src/bench.rs",
+      "format": "cargo",
+      "key": "bench::tests::test_parse_budget_invalid_number",
+      "line": 132,
+      "registeredAt": "2026-11-28T17:20:05.700390375+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies parsing a standard budget file",
+      "file": "xtask/src/bench.rs",
+      "format": "cargo",
+      "key": "bench::tests::test_parse_budget_valid",
+      "line": 116,
+      "registeredAt": "2026-11-28T17:20:05.700390375+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Median and p95 compute the correct indices.",
       "file": "xtask/src/bench_fixtures.rs",
       "format": "cargo",
@@ -2449,6 +2485,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Ensures package budgets are documented and tight",
+      "file": "xtask/src/pkg_budget_tests.rs",
+      "format": "cargo",
+      "key": "pkg_budget_tests::tests::test_pkg_budget_reasons_and_limits",
+      "line": 14,
+      "registeredAt": "2026-11-28T17:20:23.885923564+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that an empty board fails the check for level 1.",
       "file": "crates/simbiguity-render-wasm/src/lib.rs",
       "format": "cargo",
@@ -2581,6 +2626,15 @@
       "key": "real_battery_short_reports_emf_over_r",
       "line": 201,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Ensures no junk files in tree",
+      "file": "xtask/src/repo_hygiene_tests.rs",
+      "format": "cargo",
+      "key": "repo_hygiene_tests::tests::test_no_junk_files_in_tree",
+      "line": 14,
+      "registeredAt": "2026-11-28T17:20:24.020481845+00:00",
       "runner": "cargo"
     },
     {
@@ -2824,6 +2878,15 @@
       "key": "scene::tests::pick_returns_the_nearest_hit",
       "line": 256,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Ensures screenshots are unique",
+      "file": "xtask/src/screenshot_tests.rs",
+      "format": "cargo",
+      "key": "screenshot_tests::tests::test_screenshot_uniqueness",
+      "line": 15,
+      "registeredAt": "2026-11-28T17:20:24.165395257+00:00",
       "runner": "cargo"
     },
     {

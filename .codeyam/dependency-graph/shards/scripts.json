@@ -9,6 +9,14 @@
       "importedBy": [],
       "imports": []
     },
+    "scripts/golden_hashes_gen.rs": {
+      "importedBy": [],
+      "imports": [],
+      "namedMethods": [
+        "unwrap",
+        "write"
+      ]
+    },
     "scripts/invariants_prototype.rs": {
       "importedBy": [],
       "imports": []

@@ -1931,6 +1931,18 @@
     "testFile": "site/status/report-view.test.js"
   },
   {
+    "description": "Parses the benchmark results from JSON.",
+    "filePath": "xtask/src/bench.rs",
+    "name": "parse_bench_results",
+    "testFile": "xtask/src/bench.rs"
+  },
+  {
+    "description": "Parses the budget file content.",
+    "filePath": "xtask/src/bench.rs",
+    "name": "parse_budget",
+    "testFile": "xtask/src/bench.rs"
+  },
+  {
     "description": "Parse level from content string",
     "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
     "name": "parse_level",

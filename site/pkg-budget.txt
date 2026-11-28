@@ -1,3 +1,8 @@
-simbiguity_circuits_wasm.wasm 164102
-simbiguity_render_wasm.wasm 253000
-simbiguity_physics_wasm.wasm 210000
+# reason: The AC circuit support and diodes added some weight
+simbiguity_circuits_wasm.wasm 150000
+
+# reason: 3D puzzle rendering and materials library
+simbiguity_render_wasm.wasm 258060
+
+# reason: Sparse arrays and ball pit support
+simbiguity_physics_wasm.wasm 214200

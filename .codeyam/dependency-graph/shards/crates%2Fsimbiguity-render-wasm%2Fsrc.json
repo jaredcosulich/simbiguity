@@ -976,11 +976,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
         "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
         "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/slot.rs::no_view",
-        "lib_old.rs::phys_free",
-        "lib_old.rs::with_session",
-        "mod_lib.rs::phys_free",
-        "mod_lib.rs::with_session"
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view"
       ],
       "imports": [],
       "name": "ERR_HANDLE"
@@ -990,9 +986,7 @@
       "importedBy": [
         "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
         "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
-        "lib_old.rs::map_error",
-        "mod_lib.rs::map_error"
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
       ],
       "imports": [],
       "name": "ERR_INDEX"
@@ -1035,37 +1029,7 @@
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_reset",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_undo",
-        "crates/simbiguity-render-wasm/src/slot.rs::remove",
-        "lib_old.rs::phys_advance",
-        "lib_old.rs::phys_commands_ptr",
-        "lib_old.rs::phys_free",
-        "lib_old.rs::phys_mesh_indices_len",
-        "lib_old.rs::phys_mesh_indices_ptr",
-        "lib_old.rs::phys_mesh_vertices_len",
-        "lib_old.rs::phys_mesh_vertices_ptr",
-        "lib_old.rs::phys_push",
-        "lib_old.rs::phys_results_ptr",
-        "lib_old.rs::phys_set_camera",
-        "lib_old.rs::phys_set_integrator",
-        "mod_lib.rs::phys_advance",
-        "mod_lib.rs::phys_commands_ptr",
-        "mod_lib.rs::phys_free",
-        "mod_lib.rs::phys_mesh_indices_len",
-        "mod_lib.rs::phys_mesh_indices_ptr",
-        "mod_lib.rs::phys_mesh_vertices_len",
-        "mod_lib.rs::phys_mesh_vertices_ptr",
-        "mod_lib.rs::phys_momentum",
-        "mod_lib.rs::phys_particle_count",
-        "mod_lib.rs::phys_positions_ptr",
-        "mod_lib.rs::phys_push",
-        "mod_lib.rs::phys_results_ptr",
-        "mod_lib.rs::phys_set_camera",
-        "mod_lib.rs::phys_set_friction",
-        "mod_lib.rs::phys_set_integrator",
-        "mod_lib.rs::phys_set_restitution",
-        "mod_lib.rs::phys_set_time_scale",
-        "mod_lib.rs::phys_step_time_ms",
-        "mod_lib.rs::phys_time"
+        "crates/simbiguity-render-wasm/src/slot.rs::remove"
       ],
       "imports": [],
       "name": "OK"
@@ -1085,15 +1049,7 @@
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
         "crates/simbiguity-render-wasm/src/slot.rs::no_view",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
-        "lib_old.rs::map_error",
-        "lib_old.rs::phys_free",
-        "lib_old.rs::phys_set_integrator",
-        "lib_old.rs::with_session",
-        "mod_lib.rs::map_error",
-        "mod_lib.rs::phys_free",
-        "mod_lib.rs::phys_set_integrator",
-        "mod_lib.rs::with_session"
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
       ],
       "imports": [],
       "name": "fail",
@@ -1586,15 +1542,7 @@
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/tests.rs",
-        "crates/simbiguity-render-wasm/src/tests.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "mod_lib.rs",
-        "mod_lib.rs",
-        "mod_lib.rs",
-        "mod_lib.rs"
+        "crates/simbiguity-render-wasm/src/tests.rs"
       ],
       "imports": [],
       "namedMethods": [

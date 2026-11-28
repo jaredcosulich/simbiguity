@@ -1,5 +1,68 @@
 {
   "entities": {
+    "xtask/src/bench.rs::check_bench": {
+      "filePath": "xtask/src/bench.rs",
+      "importedBy": [
+        "xtask/src/main.rs::main"
+      ],
+      "imports": [
+        "xtask/src/bench.rs::parse_bench_results",
+        "xtask/src/bench.rs::parse_budget"
+      ],
+      "name": "check_bench",
+      "namedMethods": [
+        "get",
+        "into",
+        "len",
+        "map_err",
+        "ok_or_else",
+        "read_to_string"
+      ]
+    },
+    "xtask/src/bench.rs::parse_bench_results": {
+      "filePath": "xtask/src/bench.rs",
+      "importedBy": [
+        "xtask/src/bench.rs::check_bench"
+      ],
+      "imports": [],
+      "name": "parse_bench_results",
+      "namedMethods": [
+        "clone",
+        "contains",
+        "insert",
+        "lines",
+        "new",
+        "next",
+        "parse",
+        "split",
+        "split_once",
+        "to_string",
+        "trim",
+        "unwrap_or"
+      ]
+    },
+    "xtask/src/bench.rs::parse_budget": {
+      "filePath": "xtask/src/bench.rs",
+      "importedBy": [
+        "xtask/src/bench.rs::check_bench"
+      ],
+      "imports": [],
+      "name": "parse_budget",
+      "namedMethods": [
+        "collect",
+        "insert",
+        "is_empty",
+        "len",
+        "lines",
+        "map_err",
+        "new",
+        "parse",
+        "split_whitespace",
+        "starts_with",
+        "to_string",
+        "trim"
+      ]
+    },
     "xtask/src/bench.rs::run": {
       "filePath": "xtask/src/bench.rs",
       "importedBy": [
@@ -756,6 +819,7 @@
       "filePath": "xtask/src/main.rs",
       "importedBy": [],
       "imports": [
+        "xtask/src/bench.rs::check_bench",
         "xtask/src/bench.rs::run",
         "xtask/src/main.rs::site_report"
       ],
@@ -763,6 +827,7 @@
       "namedMethods": [
         "args",
         "as_str",
+        "check_bench",
         "collect",
         "first",
         "map",
@@ -2820,6 +2885,7 @@
       ],
       "importedBy": [
         "xtask/src/main.rs",
+        "xtask/src/main.rs",
         "xtask/src/main.rs"
       ],
       "imports": [
@@ -2953,7 +3019,10 @@
         "xtask/src/capabilities.rs",
         "xtask/src/check_budgets_tests.rs",
         "xtask/src/libtest_output.rs",
+        "xtask/src/pkg_budget_tests.rs",
+        "xtask/src/repo_hygiene_tests.rs",
         "xtask/src/report.rs",
+        "xtask/src/screenshot_tests.rs",
         "xtask/src/test_descriptions.rs",
         "xtask/src/main_tests.rs"
       ],
@@ -2966,10 +3035,14 @@
         "xtask/src/capabilities.rs",
         "xtask/src/check_budgets_tests.rs",
         "xtask/src/libtest_output.rs",
+        "xtask/src/pkg_budget_tests.rs",
+        "xtask/src/repo_hygiene_tests.rs",
         "xtask/src/report.rs",
+        "xtask/src/screenshot_tests.rs",
         "xtask/src/test_descriptions.rs",
         "xtask/src/report.rs",
         "xtask/src/report.rs",
+        "xtask/src/bench.rs",
         "xtask/src/bench.rs",
         "xtask/src/libtest_output.rs",
         "xtask/src/test_descriptions.rs",
@@ -3013,6 +3086,24 @@
         "write"
       ]
     },
+    "xtask/src/pkg_budget_tests.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs"
+      ],
+      "imports": []
+    },
+    "xtask/src/repo_hygiene_tests.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs"
+      ],
+      "imports": []
+    },
     "xtask/src/report.rs": {
       "declaredBy": [
         "xtask/src/main.rs"
@@ -3051,6 +3142,15 @@
         "xtask/src/libtest_output.rs",
         "xtask/src/test_descriptions.rs"
       ]
+    },
+    "xtask/src/screenshot_tests.rs": {
+      "declaredBy": [
+        "xtask/src/main.rs"
+      ],
+      "importedBy": [
+        "xtask/src/main.rs"
+      ],
+      "imports": []
     },
     "xtask/src/test_descriptions.rs": {
       "declaredBy": [

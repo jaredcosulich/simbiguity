@@ -15,7 +15,10 @@ mod bench_fixtures;
 mod capabilities;
 mod check_budgets_tests;
 mod libtest_output;
+mod pkg_budget_tests;
+mod repo_hygiene_tests;
 mod report;
+mod screenshot_tests;
 mod test_descriptions;
 
 use std::fs::{self, File};
@@ -39,6 +42,13 @@ fn main() -> ExitCode {
             Ok(()) => ExitCode::SUCCESS,
             Err(e) => {
                 eprintln!("bench: {e}");
+                ExitCode::FAILURE
+            }
+        },
+        Some("check-bench") => match bench::check_bench(&args[1..]) {
+            Ok(()) => ExitCode::SUCCESS,
+            Err(e) => {
+                eprintln!("check-bench: {e}");
                 ExitCode::FAILURE
             }
         },

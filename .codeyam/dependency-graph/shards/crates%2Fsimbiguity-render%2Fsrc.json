@@ -635,17 +635,7 @@
         "crates/simbiguity-render/src/frame.rs::Encoder::out",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame",
-        "lib_old.rs::create_binary",
-        "lib_old.rs::create_chain",
-        "lib_old.rs::create_figure_eight",
-        "lib_old.rs::create_orbit",
-        "lib_old.rs::create_pendulum",
-        "lib_old.rs::create_projectile",
-        "lib_old.rs::create_spring_mass",
-        "lib_old.rs::phys_new_ball_pit",
-        "lib_old.rs::phys_new_cradle",
-        "mod_lib.rs::new_session"
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame"
       ],
       "imports": [
         "crates/simbiguity-render/src/commands.rs::Command",
@@ -734,17 +724,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
-        "lib_old.rs::create_binary",
-        "lib_old.rs::create_chain",
-        "lib_old.rs::create_figure_eight",
-        "lib_old.rs::create_orbit",
-        "lib_old.rs::create_pendulum",
-        "lib_old.rs::create_projectile",
-        "lib_old.rs::create_spring_mass",
-        "lib_old.rs::phys_new_ball_pit",
-        "lib_old.rs::phys_new_cradle",
-        "mod_lib.rs::new_session"
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
       ],
       "imports": [
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
@@ -1381,21 +1361,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "lib_old.rs::Session",
-        "lib_old.rs::Session::frame_buf",
-        "lib_old.rs::create_binary",
-        "lib_old.rs::create_chain",
-        "lib_old.rs::create_figure_eight",
-        "lib_old.rs::create_orbit",
-        "lib_old.rs::create_pendulum",
-        "lib_old.rs::create_projectile",
-        "lib_old.rs::create_spring_mass",
-        "lib_old.rs::phys_new_ball_pit",
-        "lib_old.rs::phys_new_cradle",
-        "mod_lib.rs::Session",
-        "mod_lib.rs::Session::frame_buf",
-        "mod_lib.rs::new_session"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/frame.rs::FrameBuf::capacity",
@@ -1578,9 +1544,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "lib_old.rs::phys_encode",
-        "mod_lib.rs::phys_encode"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/camera.rs::OrbitCamera",
@@ -3662,17 +3626,7 @@
         "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-render-wasm/src/tests.rs",
-        "crates/simbiguity-render-wasm/src/tests.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "mod_lib.rs"
+        "crates/simbiguity-render-wasm/src/tests.rs"
       ],
       "imports": []
     },
@@ -3705,11 +3659,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "lib_old.rs",
-        "lib_old.rs",
-        "mod_lib.rs",
-        "mod_lib.rs"
+        "crates/simbiguity-render/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs",

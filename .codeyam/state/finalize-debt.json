@@ -271,6 +271,12 @@
       "shortSha": "dd5100c",
       "subject": "feat: Circuits: bipolar transistors (Ebers-Moll) as amplifiers and switches",
       "deferredAt": "2026-11-28T18:17:09Z"
+    },
+    {
+      "sha": "9cd1434e849d7ee2f20fced3b157c82a7ca482a6",
+      "shortSha": "9cd1434",
+      "subject": "feat: Circuits: op-amps and controlled sources",
+      "deferredAt": "2026-11-28T19:00:54Z"
     }
   ],
   "finalizeIntent": "fast",

@@ -181,6 +181,12 @@
       "shortSha": "3ee1b7e",
       "subject": "feat: Physics: collisions, restitution, friction and a broadphase",
       "deferredAt": "2026-11-28T11:55:37Z"
+    },
+    {
+      "sha": "4bcdf1c04d7aa1e6f17c09fc354d2bb39ed29db8",
+      "shortSha": "4bcdf1c",
+      "subject": "Fix: the physics WASM is 20 KB over its 180,000-byte budget, so the site build and the preview fail",
+      "deferredAt": "2026-11-28T12:30:21Z"
     }
   ],
   "finalizeIntent": "fast",

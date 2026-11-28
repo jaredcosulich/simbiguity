@@ -187,6 +187,12 @@
       "shortSha": "4bcdf1c",
       "subject": "Fix: the physics WASM is 20 KB over its 180,000-byte budget, so the site build and the preview fail",
       "deferredAt": "2026-11-28T12:30:21Z"
+    },
+    {
+      "sha": "46bff0d3d8955590783c98f765993d5a6524a6e3",
+      "shortSha": "46bff0d",
+      "subject": "feat: Round 3: puzzle engine with eight authored levels, a real parser, goals and share codes",
+      "deferredAt": "2026-11-28T12:50:18Z"
     }
   ],
   "finalizeIntent": "fast",

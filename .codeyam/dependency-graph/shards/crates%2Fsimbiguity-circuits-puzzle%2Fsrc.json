@@ -273,7 +273,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::solution_parts",
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_solution_part"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_solution_part",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_place"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelFixedPart::kind",
@@ -371,7 +372,9 @@
         "crates/simbiguity-circuits-puzzle/src/lib.rs::BoardEdits",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::BoardEdits::wires",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::place"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::place",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_place"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelSolutionWire::points"
@@ -397,7 +400,10 @@
     },
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_level_title",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load"
+      ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id",
@@ -614,7 +620,8 @@
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::All",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Any",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Not",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::parse_goal"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::BoardEdits::parts",
@@ -789,7 +796,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::NoIssue",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::parse_goal"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::BulbBlown",
@@ -928,7 +936,10 @@
         "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::add_part",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::build_circuit",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::kind_from_int",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::parse_goal",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_place"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
@@ -1049,7 +1060,9 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::stack",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::encode_solution"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::encode_solution",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
@@ -1367,7 +1380,11 @@
     },
     "crates/simbiguity-circuits-puzzle/src/lib.rs::build_circuit": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_status",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_issue_text"
+      ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::BoardEdits",
@@ -1504,7 +1521,8 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::decode_b64",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::ShareError::BadCharacter",
@@ -1519,7 +1537,8 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::ShareError",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_b64"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_b64",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
       ],
       "imports": [],
       "name": "ShareError::BadCharacter"
@@ -1528,7 +1547,8 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::ShareError",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
       ],
       "imports": [],
       "name": "ShareError::CrcMismatch"
@@ -1537,7 +1557,8 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::ShareError",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
       ],
       "imports": [],
       "name": "ShareError::LevelMismatch"
@@ -1546,7 +1567,8 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::ShareError",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
       ],
       "imports": [],
       "name": "ShareError::TooShort"
@@ -1555,7 +1577,8 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::ShareError",
-        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution"
+        "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
       ],
       "imports": [],
       "name": "ShareError::UnknownVersion"
@@ -1589,7 +1612,9 @@
     },
     "crates/simbiguity-circuits-puzzle/src/share.rs::decode_solution": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share"
+      ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/share.rs::Attempt",
         "crates/simbiguity-circuits-puzzle/src/share.rs::Attempt::data",
@@ -1632,7 +1657,9 @@
     },
     "crates/simbiguity-circuits-puzzle/src/share.rs::encode_solution": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share"
+      ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
         "crates/simbiguity-circuits-puzzle/src/share.rs::Attempt::data",
@@ -1667,8 +1694,12 @@
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/share.rs",
-        "crates/simbiguity-circuits-puzzle/src/share.rs"
+        "crates/simbiguity-circuits-puzzle/src/share.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs"
@@ -1681,7 +1712,14 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-        "crates/simbiguity-circuits-puzzle/src/share.rs"
+        "crates/simbiguity-circuits-puzzle/src/share.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
@@ -1699,6 +1737,8 @@
         "crates/simbiguity-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+        "crates/simbiguity-core/src/simulation.rs",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
@@ -1721,7 +1761,14 @@
         "crates/simbiguity-circuits-puzzle/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/lib.rs"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs",

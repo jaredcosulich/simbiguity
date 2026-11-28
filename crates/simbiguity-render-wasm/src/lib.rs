@@ -26,6 +26,8 @@
 //! - Calls that can fail return `i32 < 0` with a message at
 //!   `sb_last_error_ptr()/sb_last_error_len()`.
 
+#[cfg(feature = "puzzle")]
+pub mod puzzle;
 pub mod readouts;
 mod slot;
 pub mod status;

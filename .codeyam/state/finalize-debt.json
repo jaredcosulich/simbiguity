@@ -193,6 +193,12 @@
       "shortSha": "46bff0d",
       "subject": "feat: Round 3: puzzle engine with eight authored levels, a real parser, goals and share codes",
       "deferredAt": "2026-11-28T12:50:18Z"
+    },
+    {
+      "sha": "712f95a136c09eb5d4a14e9b9b57c986a56b622d",
+      "shortSha": "712f95a",
+      "subject": "feat: Round 3: puzzle game page that plays the real levels through the bridge",
+      "deferredAt": "2026-11-28T13:14:17Z"
     }
   ],
   "finalizeIntent": "fast",

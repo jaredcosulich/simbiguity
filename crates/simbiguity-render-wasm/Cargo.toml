@@ -16,8 +16,15 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 simbiguity-circuits-view = { path = "../simbiguity-circuits-view", version = "0.0.1", features = ["std"] }
+simbiguity-circuits = { path = "../simbiguity-circuits", version = "0.0.1", optional = true }
+simbiguity-circuits-puzzle = { path = "../simbiguity-circuits-puzzle", version = "0.0.1", optional = true }
+simbiguity-puzzle = { path = "../simbiguity-puzzle", version = "0.0.1", optional = true }
 simbiguity-core = { path = "../simbiguity-core", version = "0.0.1" }
 simbiguity-render = { path = "../simbiguity-render", version = "0.0.1", features = ["std"] }
 
 [dev-dependencies]
 simbiguity-math = { path = "../simbiguity-math", version = "0.0.1" }
+
+[features]
+default = ["puzzle"]
+puzzle = ["dep:simbiguity-circuits", "dep:simbiguity-circuits-puzzle", "dep:simbiguity-puzzle"]

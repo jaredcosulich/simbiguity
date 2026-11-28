@@ -290,6 +290,15 @@
     "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
+    "description": "Event binding wrapper",
+    "filePath": "site/demos/circuit-puzzles/components/board-interaction.js",
+    "name": "bindBoardInteraction",
+    "untestabilityReason": {
+      "justification": "Event binding wrapper",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
     "description": "Wires drag-to-orbit, wheel zoom, click picking and Enter or Space toggling on the 3D canvas to the view.",
     "filePath": "site/demos/circuit-3d/canvas-input.js",
     "name": "bindCanvasInput",
@@ -300,6 +309,15 @@
     "tags": [
       "3d-rendering"
     ]
+  },
+  {
+    "description": "Event binding wrapper",
+    "filePath": "site/demos/circuit-puzzles/components/parts-tray.js",
+    "name": "bindPartsTray",
+    "untestabilityReason": {
+      "justification": "Event binding wrapper",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "Yields a BulbBlown issue for each blown bulb, in component order.",
@@ -1291,6 +1309,15 @@
     "untestabilityReason": {
       "justification": "spawns git as a subprocess",
       "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Browser history helper",
+    "filePath": "site/demos/circuit-puzzles/components/url-state.js",
+    "name": "handleHash",
+    "untestabilityReason": {
+      "justification": "Browser history/hash helper",
+      "kind": "trivial-wrapper"
     }
   },
   {
@@ -2793,6 +2820,33 @@
       "simbiguity-foundations"
     ],
     "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
+    "description": "Pure DOM mutation helper",
+    "filePath": "site/demos/circuit-puzzles/components/explanation-ui.js",
+    "name": "updateExplanationUI",
+    "untestabilityReason": {
+      "justification": "Pure DOM mutation helper",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Pure DOM mutation helper",
+    "filePath": "site/demos/circuit-puzzles/components/goals.js",
+    "name": "updateGoalsUI",
+    "untestabilityReason": {
+      "justification": "Pure DOM mutation helper",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Pure DOM mutation helper",
+    "filePath": "site/demos/circuit-puzzles/components/level-select.js",
+    "name": "updateLevelSelectUI",
+    "untestabilityReason": {
+      "justification": "Pure DOM mutation helper",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "Follows mod declarations from file to file on disk, collecting tests.",

@@ -12,6 +12,8 @@ use crate::status::{fail, ERR_HANDLE, ERR_INDEX, OK};
 pub(crate) struct Slot {
     pub(crate) view: CircuitView,
     pub(crate) readouts: [f64; READOUT_COUNT],
+    #[cfg(feature = "puzzle")]
+    pub(crate) puzzle: Option<simbiguity_circuits_puzzle::PuzzleSession>,
 }
 
 thread_local! {
@@ -29,6 +31,8 @@ pub(crate) fn insert(view: CircuitView) -> u32 {
         t.push(Some(Slot {
             view,
             readouts: [0.0; READOUT_COUNT],
+            #[cfg(feature = "puzzle")]
+            puzzle: None,
         }));
         t.len() as u32
     })

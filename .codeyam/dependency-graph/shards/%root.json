@@ -1,5 +1,14 @@
 {
-  "entities": {},
+  "entities": {
+    "run_test_debug.js::run": {
+      "filePath": "run_test_debug.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "run"
+    }
+  },
   "files": {
     "golden_hashes_gen.rs": {
       "importedBy": [],
@@ -44,6 +53,12 @@
     "run_golden.rs": {
       "importedBy": [],
       "imports": []
+    },
+    "run_test_debug.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
     },
     "test_x.rs": {
       "importedBy": [],

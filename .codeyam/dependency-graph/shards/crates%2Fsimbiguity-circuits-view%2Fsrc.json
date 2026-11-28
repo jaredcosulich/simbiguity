@@ -1016,7 +1016,8 @@
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
         "crates/simbiguity-circuits-view/src/board_layout.rs::PartPlacement",
         "crates/simbiguity-circuits-view/src/board_layout.rs::PartPlacement::rotation",
-        "crates/simbiguity-circuits-view/src/view_tests.rs::one_bright_two_dim_fixture"
+        "crates/simbiguity-circuits-view/src/view_tests.rs::one_bright_two_dim_fixture",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation::Deg0",
@@ -1033,7 +1034,8 @@
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::hello_layout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
-        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation"
+        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view"
       ],
       "imports": [],
       "name": "Rotation::Deg0"
@@ -1044,7 +1046,8 @@
         "crates/simbiguity-circuits-view/src/board.rs::base_transform",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
-        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation"
+        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view"
       ],
       "imports": [],
       "name": "Rotation::Deg180"
@@ -1055,7 +1058,8 @@
         "crates/simbiguity-circuits-view/src/board.rs::base_transform",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
-        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation"
+        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view"
       ],
       "imports": [],
       "name": "Rotation::Deg270"
@@ -1066,7 +1070,8 @@
         "crates/simbiguity-circuits-view/src/board.rs::base_transform",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout",
         "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout::unpack",
-        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation"
+        "crates/simbiguity-circuits-view/src/board_layout.rs::Rotation",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view"
       ],
       "imports": [],
       "name": "Rotation::Deg90"
@@ -1131,7 +1136,8 @@
         "crates/simbiguity-circuits-view/src/board.rs::base_transform",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/layout.rs::wire_path",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view"
       ],
       "imports": [],
       "name": "__file_root__"
@@ -1491,6 +1497,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::build_puzzle_view",
         "crates/simbiguity-render-wasm/src/slot.rs::Slot",
         "crates/simbiguity-render-wasm/src/slot.rs::Slot::view",
         "crates/simbiguity-render-wasm/src/slot.rs::insert",
@@ -3379,7 +3386,16 @@
         "crates/simbiguity-circuits-view/src/view_tests.rs",
         "crates/simbiguity-circuits-view/src/view_tests.rs",
         "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs"
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs",
@@ -3430,6 +3446,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/view_tests.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/readouts.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/tests.rs",

@@ -3,35 +3,47 @@
     "site/demos/circuit-puzzles/game-state.js::GameState": {
       "filePath": "site/demos/circuit-puzzles/game-state.js",
       "importedBy": [
+        "site/demos/circuit-puzzles/game-state.test.js::__file_root__",
         "site/demos/circuit-puzzles/game.js::main"
       ],
       "imports": [],
       "name": "GameState"
     },
-    "site/demos/circuit-puzzles/game.js::$": {
-      "filePath": "site/demos/circuit-puzzles/game.js",
-      "importedBy": [
-        "site/demos/circuit-puzzles/game.js::main"
+    "site/demos/circuit-puzzles/game-state.test.js::__file_root__": {
+      "filePath": "site/demos/circuit-puzzles/game-state.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-puzzles/game-state.js::GameState",
+        "site/js/simbiguity.js::loadCircuits"
       ],
-      "imports": [],
-      "name": "$"
+      "name": "__file_root__"
     },
     "site/demos/circuit-puzzles/game.js::__file_root__": {
       "filePath": "site/demos/circuit-puzzles/game.js",
       "importedBy": [
         "site/demos/circuit-puzzles/index.html::__file_root__"
       ],
-      "imports": [],
+      "imports": [
+        "site/js/simbiguity-render.js::Pick"
+      ],
       "name": "__file_root__"
     },
     "site/demos/circuit-puzzles/game.js::main": {
       "filePath": "site/demos/circuit-puzzles/game.js",
       "importedBy": [],
       "imports": [
+        "site/demos/circuit-puzzles/components/board-interaction.js::bindBoardInteraction",
         "site/demos/circuit-puzzles/components/controls.js::bindControls",
+        "site/demos/circuit-puzzles/components/explanation-ui.js::showExplanation",
+        "site/demos/circuit-puzzles/components/explanation-ui.js::updateExplanationUI",
+        "site/demos/circuit-puzzles/components/goals.js::updateGoalsUI",
         "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect",
+        "site/demos/circuit-puzzles/components/level-select.js::updateLevelSelectUI",
+        "site/demos/circuit-puzzles/components/parts-tray.js::bindPartsTray",
+        "site/demos/circuit-puzzles/components/url-state.js::handleHash",
+        "site/demos/circuit-puzzles/components/utils.js::$",
+        "site/demos/circuit-puzzles/components/utils.js::stringFromWasm",
         "site/demos/circuit-puzzles/game-state.js::GameState",
-        "site/demos/circuit-puzzles/game.js::$",
         "site/js/simbiguity-render.js::loadCircuit3D",
         "site/js/webgl2-executor.js::WebGL2Executor"
       ],
@@ -49,9 +61,17 @@
   "files": {
     "site/demos/circuit-puzzles/game-state.js": {
       "importedBy": [
+        "site/demos/circuit-puzzles/game-state.test.js",
         "site/demos/circuit-puzzles/game.js"
       ],
       "imports": []
+    },
+    "site/demos/circuit-puzzles/game-state.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js",
+        "site/demos/circuit-puzzles/game-state.js"
+      ]
     },
     "site/demos/circuit-puzzles/game.js": {
       "importedBy": [
@@ -62,7 +82,13 @@
         "site/js/webgl2-executor.js",
         "site/demos/circuit-puzzles/components/level-select.js",
         "site/demos/circuit-puzzles/components/controls.js",
-        "site/demos/circuit-puzzles/game-state.js"
+        "site/demos/circuit-puzzles/game-state.js",
+        "site/demos/circuit-puzzles/components/utils.js",
+        "site/demos/circuit-puzzles/components/goals.js",
+        "site/demos/circuit-puzzles/components/explanation-ui.js",
+        "site/demos/circuit-puzzles/components/url-state.js",
+        "site/demos/circuit-puzzles/components/parts-tray.js",
+        "site/demos/circuit-puzzles/components/board-interaction.js"
       ]
     },
     "site/demos/circuit-puzzles/index.html": {

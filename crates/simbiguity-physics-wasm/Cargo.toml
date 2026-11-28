@@ -15,6 +15,6 @@ crate-type = ["cdylib"]
 simbiguity-physics = { path = "../simbiguity-physics" }
 simbiguity-physics-view = { path = "../simbiguity-physics-view" }
 simbiguity-core = { path = "../simbiguity-core" }
-simbiguity-render-wasm = { path = "../simbiguity-render-wasm" }
+simbiguity-render-wasm = { path = "../simbiguity-render-wasm", default-features = false }
 simbiguity-render = { path = "../simbiguity-render" }
 simbiguity-math = { path = "../simbiguity-math" }

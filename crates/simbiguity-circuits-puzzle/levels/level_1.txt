@@ -3,7 +3,7 @@ title First light
 hint A bulb only lights when current can flow out of the battery, through the bulb, and back.
 grid 6 4
 fixed battery 0 1 rot 0 emf 9
-fixed bulb 4 1 rot 0 volts 9 watts 3
+fixed bulb 4 1 rot 90 volts 9 watts 3
 palette wire 6
 goal lit_bulbs 1
 goal no_issue short_circuit

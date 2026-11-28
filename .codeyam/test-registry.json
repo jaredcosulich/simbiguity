@@ -3196,6 +3196,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Ensures all 8 authored levels evaluate successfully with their reference solutions.",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::every_level_reference_solution_meets_all_its_goals",
+      "line": 346,
+      "registeredAt": "2026-11-28T13:11:06.783378862+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A freed handle is never reused, so it cannot alias a newer circuit.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -3272,7 +3281,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::lit_bulb_goal_fails_when_the_bulb_is_dark",
-      "line": 384,
+      "line": 411,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3389,7 +3398,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_build_circuit",
-      "line": 346,
+      "line": 372,
       "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
       "runner": "cargo"
     },
@@ -3398,7 +3407,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_calculate_brightness",
-      "line": 401,
+      "line": 428,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3407,7 +3416,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_check_current_tolerance",
-      "line": 420,
+      "line": 447,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3416,7 +3425,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_count_parts_by_kind",
-      "line": 408,
+      "line": 435,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -3434,7 +3443,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_puzzle_session_undo_redo",
-      "line": 429,
+      "line": 456,
       "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
       "runner": "cargo"
     },

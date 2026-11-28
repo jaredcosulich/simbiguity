@@ -1,5 +1,13 @@
 {
   "entities": {
+    "site/demos/circuit-puzzles/components/board-interaction.js::bindBoardInteraction": {
+      "filePath": "site/demos/circuit-puzzles/components/board-interaction.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "bindBoardInteraction"
+    },
     "site/demos/circuit-puzzles/components/controls.js::$": {
       "filePath": "site/demos/circuit-puzzles/components/controls.js",
       "importedBy": [
@@ -18,13 +26,41 @@
       ],
       "name": "bindControls"
     },
-    "site/demos/circuit-puzzles/components/level-select.js::$": {
-      "filePath": "site/demos/circuit-puzzles/components/level-select.js",
+    "site/demos/circuit-puzzles/components/explanation-ui.js::__file_root__": {
+      "filePath": "site/demos/circuit-puzzles/components/explanation-ui.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js::stringFromWasm"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-puzzles/components/explanation-ui.js::showExplanation": {
+      "filePath": "site/demos/circuit-puzzles/components/explanation-ui.js",
       "importedBy": [
-        "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect"
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js::$"
+      ],
+      "name": "showExplanation"
+    },
+    "site/demos/circuit-puzzles/components/explanation-ui.js::updateExplanationUI": {
+      "filePath": "site/demos/circuit-puzzles/components/explanation-ui.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
       ],
       "imports": [],
-      "name": "$"
+      "name": "updateExplanationUI"
+    },
+    "site/demos/circuit-puzzles/components/goals.js::updateGoalsUI": {
+      "filePath": "site/demos/circuit-puzzles/components/goals.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js::stringFromWasm"
+      ],
+      "name": "updateGoalsUI"
     },
     "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect": {
       "filePath": "site/demos/circuit-puzzles/components/level-select.js",
@@ -32,20 +68,114 @@
         "site/demos/circuit-puzzles/game.js::main"
       ],
       "imports": [
-        "site/demos/circuit-puzzles/components/level-select.js::$"
+        "site/demos/circuit-puzzles/components/utils.js::$"
       ],
       "name": "bindLevelSelect"
+    },
+    "site/demos/circuit-puzzles/components/level-select.js::updateLevelSelectUI": {
+      "filePath": "site/demos/circuit-puzzles/components/level-select.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js::$",
+        "site/demos/circuit-puzzles/components/utils.js::stringFromWasm"
+      ],
+      "name": "updateLevelSelectUI"
+    },
+    "site/demos/circuit-puzzles/components/parts-tray.js::bindPartsTray": {
+      "filePath": "site/demos/circuit-puzzles/components/parts-tray.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "bindPartsTray"
+    },
+    "site/demos/circuit-puzzles/components/url-state.js::handleHash": {
+      "filePath": "site/demos/circuit-puzzles/components/url-state.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "handleHash"
+    },
+    "site/demos/circuit-puzzles/components/utils.js::$": {
+      "filePath": "site/demos/circuit-puzzles/components/utils.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/components/explanation-ui.js::showExplanation",
+        "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect",
+        "site/demos/circuit-puzzles/components/level-select.js::updateLevelSelectUI",
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "$"
+    },
+    "site/demos/circuit-puzzles/components/utils.js::stringFromWasm": {
+      "filePath": "site/demos/circuit-puzzles/components/utils.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/components/explanation-ui.js::__file_root__",
+        "site/demos/circuit-puzzles/components/goals.js::updateGoalsUI",
+        "site/demos/circuit-puzzles/components/level-select.js::updateLevelSelectUI",
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "stringFromWasm"
     }
   },
   "files": {
+    "site/demos/circuit-puzzles/components/board-interaction.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": []
+    },
     "site/demos/circuit-puzzles/components/controls.js": {
       "importedBy": [
         "site/demos/circuit-puzzles/game.js"
       ],
       "imports": []
     },
+    "site/demos/circuit-puzzles/components/explanation-ui.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js"
+      ]
+    },
+    "site/demos/circuit-puzzles/components/goals.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js"
+      ]
+    },
     "site/demos/circuit-puzzles/components/level-select.js": {
       "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/utils.js"
+      ]
+    },
+    "site/demos/circuit-puzzles/components/parts-tray.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-puzzles/components/url-state.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-puzzles/components/utils.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/components/explanation-ui.js",
+        "site/demos/circuit-puzzles/components/goals.js",
+        "site/demos/circuit-puzzles/components/level-select.js",
         "site/demos/circuit-puzzles/game.js"
       ],
       "imports": []

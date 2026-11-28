@@ -2098,6 +2098,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that an empty board fails the check for level 1.",
+      "file": "crates/simbiguity-render-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "puzzle_tests::checking_level_1_with_an_empty_board_reports_its_goal_as_failed",
+      "line": 335,
+      "registeredAt": "2026-11-28T02:10:29.079142047+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Axis-angle builds unit quaternions that rotate by the right-hand rule; a zero axis gives the identity.",
       "file": "crates/simbiguity-math/src/quat.rs",
       "format": "cargo",

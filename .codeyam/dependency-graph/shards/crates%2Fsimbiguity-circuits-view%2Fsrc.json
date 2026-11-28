@@ -39,7 +39,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/board.rs::Parts::filaments",
@@ -511,8 +511,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/board.rs::Parts",
@@ -1168,7 +1167,7 @@
         "crates/simbiguity-circuits-view/src/layout.rs::particle_offsets",
         "crates/simbiguity-circuits-view/src/layout.rs::wire_path",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::wire_paths"
       ],
       "imports": [
@@ -1360,7 +1359,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
@@ -1386,7 +1384,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
@@ -1411,7 +1408,6 @@
       "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
@@ -1476,8 +1472,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [],
       "name": "BULB_VOLTS"
@@ -1487,8 +1482,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [],
       "name": "BULB_WATTS"
@@ -1498,8 +1492,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-render-wasm/src/slot.rs::Slot",
         "crates/simbiguity-render-wasm/src/slot.rs::Slot::view",
         "crates/simbiguity-render-wasm/src/slot.rs::insert",
@@ -1536,13 +1529,11 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::pick",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch",
@@ -1564,6 +1555,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::paint",
         "crates/simbiguity-circuits-view/src/lib.rs::particle_speed",
         "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::time",
         "crates/simbiguity-circuits-view/src/look.rs::bulb_look",
         "crates/simbiguity-circuits-view/src/look.rs::charge_look",
@@ -1591,8 +1583,7 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
@@ -1616,8 +1607,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::pick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-render/src/camera.rs::OrbitCamera"
@@ -1636,16 +1626,16 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
       ],
       "imports": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::circuit",
@@ -1659,9 +1649,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-core/src/clock.rs::FixedClock"
@@ -1676,7 +1665,6 @@
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::frame_buf",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::commands",
         "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-render/src/frame.rs::encode_frame"
@@ -1693,11 +1681,10 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick"
       ],
       "imports": [],
       "name": "CircuitView::flashes",
@@ -1711,8 +1698,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [],
       "name": "CircuitView::frame_buf"
@@ -1722,8 +1708,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
@@ -1741,15 +1726,14 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::phases",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::wire_paths",
         "crates/simbiguity-circuits-view/src/lib.rs::STEP",
         "crates/simbiguity-circuits-view/src/lib.rs::commands",
         "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
         "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::time",
         "crates/simbiguity-core/src/clock.rs::FixedClock",
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1780,15 +1764,15 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glows",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::glow_of",
@@ -1810,11 +1794,10 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glow_of",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick"
       ],
       "imports": [],
       "name": "CircuitView::glows",
@@ -1827,9 +1810,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
       ],
@@ -1847,6 +1829,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::brightness",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-core/src/simulation.rs::Seconds"
       ],
       "inherentMethod": true,
@@ -1884,15 +1867,15 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::blown"
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::blown",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::is_blown",
@@ -1907,14 +1890,14 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed"
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::is_closed",
@@ -1935,12 +1918,11 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
       ],
@@ -1952,9 +1934,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/layout.rs::LEVER_OPEN_ANGLE",
@@ -1962,7 +1943,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed"
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::lever_target",
@@ -1983,11 +1965,10 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick"
       ],
       "imports": [],
       "name": "CircuitView::levers",
@@ -2001,8 +1982,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::default_camera"
       ],
       "imports": [
@@ -2037,11 +2017,10 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
       ],
@@ -2055,11 +2034,10 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick"
       ],
       "imports": [],
       "name": "CircuitView::phases",
@@ -2074,7 +2052,6 @@
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::scene"
       ],
       "inherentMethod": true,
@@ -2088,9 +2065,7 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
@@ -2111,7 +2086,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::particle_speed",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::solved",
-        "crates/simbiguity-circuits-view/src/lib.rs::particle_speed"
+        "crates/simbiguity-circuits-view/src/lib.rs::particle_speed",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::readouts",
@@ -2140,16 +2116,15 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::replace_bulb",
@@ -2163,105 +2138,12 @@
         "sim"
       ]
     },
-    "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene": {
-      "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
-      "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::pick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
-      ],
-      "imports": [
-        "crates/simbiguity-circuits-view/src/board.rs::Parts",
-        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
-        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop",
-        "crates/simbiguity-circuits-view/src/layout.rs::knob_transform",
-        "crates/simbiguity-circuits-view/src/layout.rs::lever_transform",
-        "crates/simbiguity-circuits-view/src/layout.rs::particle_offsets",
-        "crates/simbiguity-circuits-view/src/lib.rs::BULB_VOLTS",
-        "crates/simbiguity-circuits-view/src/lib.rs::BULB_WATTS",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::flashes",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::frame_buf",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glow_of",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glows",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_blown",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_closed",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::levers",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::phases",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::wire_paths",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::battery_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::blown",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::brightness",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::bulb_power",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::bulb_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::current",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::particle_speed",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::solved",
-        "crates/simbiguity-circuits-view/src/lib.rs::STEP",
-        "crates/simbiguity-circuits-view/src/lib.rs::commands",
-        "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
-        "crates/simbiguity-circuits-view/src/lib.rs::paint",
-        "crates/simbiguity-circuits-view/src/lib.rs::particle_speed",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::time",
-        "crates/simbiguity-circuits-view/src/look.rs::bulb_look",
-        "crates/simbiguity-circuits-view/src/look.rs::charge_look",
-        "crates/simbiguity-core/src/clock.rs::FixedClock",
-        "crates/simbiguity-core/src/simulation.rs::Seconds",
-        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
-        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
-        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
-        "crates/simbiguity-render/src/scene.rs::Scene::clear",
-        "crates/simbiguity-render/src/scene.rs::Scene::default",
-        "crates/simbiguity-render/src/scene.rs::Scene::instances",
-        "crates/simbiguity-render/src/scene.rs::Scene::light",
-        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
-        "crates/simbiguity-render/src/scene.rs::Scene::new",
-        "crates/simbiguity-render/src/scene.rs::Scene::node",
-        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
-        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
-        "crates/simbiguity-render/src/scene.rs::Scene::pick",
-        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
-      ],
-      "inherentMethod": true,
-      "name": "CircuitView::scene"
-    },
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
@@ -2277,10 +2159,10 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::brightness",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
         "crates/simbiguity-circuits-view/src/lib.rs::STEP",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::time"
       ],
       "inherentMethod": true,
@@ -2315,16 +2197,15 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::set_volts",
@@ -2351,17 +2232,74 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
-      "imports": [],
-      "name": "CircuitView::sim"
+      "imports": [
+        "crates/simbiguity-circuits-view/src/board.rs::Parts",
+        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
+        "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop",
+        "crates/simbiguity-circuits-view/src/lib.rs::BULB_VOLTS",
+        "crates/simbiguity-circuits-view/src/lib.rs::BULB_WATTS",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::flashes",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::frame_buf",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glow_of",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glows",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_blown",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_closed",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::levers",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::phases",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::wire_paths",
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::blown",
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::brightness",
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed",
+        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
+        "crates/simbiguity-circuits-view/src/lib.rs::STEP",
+        "crates/simbiguity-circuits-view/src/lib.rs::commands",
+        "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::time",
+        "crates/simbiguity-core/src/clock.rs::FixedClock",
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
+        "crates/simbiguity-render/src/camera.rs::OrbitCamera",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
+        "crates/simbiguity-render/src/scene.rs::Scene::clear",
+        "crates/simbiguity-render/src/scene.rs::Scene::default",
+        "crates/simbiguity-render/src/scene.rs::Scene::instances",
+        "crates/simbiguity-render/src/scene.rs::Scene::light",
+        "crates/simbiguity-render/src/scene.rs::Scene::meshes",
+        "crates/simbiguity-render/src/scene.rs::Scene::new",
+        "crates/simbiguity-render/src/scene.rs::Scene::node",
+        "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
+        "crates/simbiguity-render/src/scene.rs::Scene::nodes",
+        "crates/simbiguity-render/src/scene.rs::Scene::pick",
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
+      ],
+      "inherentMethod": true,
+      "name": "CircuitView::sim",
+      "namedMethods": [
+        "unwrap_used"
+      ]
     },
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
@@ -2369,9 +2307,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/layout.rs::knob_transform",
@@ -2385,13 +2322,13 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::levers",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::phases",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::wire_paths",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::blown",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::current",
         "crates/simbiguity-circuits-view/src/lib.rs::paint",
         "crates/simbiguity-circuits-view/src/lib.rs::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-circuits-view/src/look.rs::bulb_look",
         "crates/simbiguity-circuits-view/src/look.rs::charge_look"
       ],
@@ -2424,7 +2361,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek"
       ],
       "imports": [
@@ -2434,11 +2370,11 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::levers",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::phases",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::current",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::particle_speed",
         "crates/simbiguity-circuits-view/src/lib.rs::particle_speed",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::time"
       ],
       "inherentMethod": true,
@@ -2457,82 +2393,10 @@
         "vec"
       ]
     },
-    "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time": {
-      "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
-      "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::time"
-      ],
-      "imports": [
-        "crates/simbiguity-circuits-view/src/board.rs::build_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::BULB_VOLTS",
-        "crates/simbiguity-circuits-view/src/lib.rs::BULB_WATTS",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::flashes",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::frame_buf",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glow_of",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glows",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_blown",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_closed",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::levers",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::phases",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::wire_paths",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::battery_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::blown",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::brightness",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::bulb_power",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::bulb_volts",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::current",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::glow",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::particle_speed",
-        "crates/simbiguity-circuits-view/src/lib.rs::Readouts::solved",
-        "crates/simbiguity-circuits-view/src/lib.rs::STEP",
-        "crates/simbiguity-circuits-view/src/lib.rs::commands",
-        "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
-        "crates/simbiguity-circuits-view/src/lib.rs::particle_speed",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::time",
-        "crates/simbiguity-core/src/clock.rs::FixedClock",
-        "crates/simbiguity-core/src/simulation.rs::Seconds",
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer"
-      ],
-      "inherentMethod": true,
-      "name": "CircuitView::time",
-      "namedMethods": [
-        "unwrap_used"
-      ]
-    },
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index"
       ],
       "imports": [
@@ -2540,6 +2404,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::closed",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim",
         "crates/simbiguity-circuits/src/component.rs::Component"
       ],
       "inherentMethod": true,
@@ -2554,9 +2419,7 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part_by_index": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
@@ -2577,9 +2440,7 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
@@ -2587,7 +2448,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_closed",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::parts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::sim"
       ],
       "inherentMethod": true,
       "name": "CircuitView::toggle_switch",
@@ -2607,9 +2469,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/layout.rs::CurrentLoop"
@@ -2624,8 +2485,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts"
       ],
       "imports": [
@@ -2648,8 +2507,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2661,9 +2518,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_blown",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2675,9 +2531,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2688,8 +2543,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2700,8 +2553,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2715,8 +2566,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
@@ -2728,10 +2578,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2743,10 +2591,9 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2757,9 +2604,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::particle_speed"
       ],
@@ -2773,8 +2618,6 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts"
       ],
       "imports": [],
@@ -2794,9 +2637,8 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [],
       "name": "STEP"
@@ -2817,8 +2659,7 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
       ],
       "imports": [],
       "name": "commands",
@@ -2831,8 +2672,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-render-wasm/src/tests.rs::pick_hits_the_switch_and_misses_the_sky"
       ],
       "imports": [
@@ -2855,7 +2695,6 @@
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
@@ -2869,9 +2708,7 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::particle_speed"
       ],
@@ -2888,12 +2725,10 @@
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::pick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
         "crates/simbiguity-render/src/scene.rs::Scene::add_node",
         "crates/simbiguity-render/src/scene.rs::Scene::clear",
@@ -2910,19 +2745,42 @@
       ],
       "name": "scene"
     },
+    "crates/simbiguity-circuits-view/src/lib.rs::sim": {
+      "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::circuit",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::glow_of",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_blown",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::is_closed",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::replace_bulb",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::set_volts",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_part",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::toggle_switch"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+      ],
+      "name": "sim"
+    },
     "crates/simbiguity-circuits-view/src/lib.rs::time": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::seek",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::tick"
       ],
-      "imports": [
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
-      ],
+      "imports": [],
       "name": "time"
     },
     "crates/simbiguity-circuits-view/src/look.rs::BulbLook": {
@@ -3113,7 +2971,6 @@
       "filePath": "crates/simbiguity-circuits-view/src/look.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [
@@ -3145,7 +3002,6 @@
       "filePath": "crates/simbiguity-circuits-view/src/look.rs",
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sync_scene"
       ],
       "imports": [

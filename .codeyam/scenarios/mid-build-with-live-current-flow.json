@@ -1,0 +1,15 @@
+{
+  "name": "Mid-build with live current flow",
+  "id": "11cabc80-3e23-4b33-982b-c8b933b7a18c",
+  "url": "/demos/circuit-puzzles/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T02:03:38Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-puzzles/index.html",
+  "description": "Mid-build with live current flow."
+}

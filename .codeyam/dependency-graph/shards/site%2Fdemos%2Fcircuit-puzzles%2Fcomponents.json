@@ -1,5 +1,23 @@
 {
   "entities": {
+    "site/demos/circuit-puzzles/components/controls.js::$": {
+      "filePath": "site/demos/circuit-puzzles/components/controls.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/components/controls.js::bindControls"
+      ],
+      "imports": [],
+      "name": "$"
+    },
+    "site/demos/circuit-puzzles/components/controls.js::bindControls": {
+      "filePath": "site/demos/circuit-puzzles/components/controls.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-puzzles/components/controls.js::$"
+      ],
+      "name": "bindControls"
+    },
     "site/demos/circuit-puzzles/components/level-select.js::$": {
       "filePath": "site/demos/circuit-puzzles/components/level-select.js",
       "importedBy": [
@@ -11,7 +29,7 @@
     "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect": {
       "filePath": "site/demos/circuit-puzzles/components/level-select.js",
       "importedBy": [
-        "site/demos/circuit-puzzles/game.js::__file_root__"
+        "site/demos/circuit-puzzles/game.js::main"
       ],
       "imports": [
         "site/demos/circuit-puzzles/components/level-select.js::$"
@@ -20,6 +38,12 @@
     }
   },
   "files": {
+    "site/demos/circuit-puzzles/components/controls.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": []
+    },
     "site/demos/circuit-puzzles/components/level-select.js": {
       "importedBy": [
         "site/demos/circuit-puzzles/game.js"

@@ -1,14 +1,41 @@
 {
   "entities": {
+    "site/demos/circuit-puzzles/game-state.js::GameState": {
+      "filePath": "site/demos/circuit-puzzles/game-state.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "GameState"
+    },
+    "site/demos/circuit-puzzles/game.js::$": {
+      "filePath": "site/demos/circuit-puzzles/game.js",
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js::main"
+      ],
+      "imports": [],
+      "name": "$"
+    },
     "site/demos/circuit-puzzles/game.js::__file_root__": {
       "filePath": "site/demos/circuit-puzzles/game.js",
       "importedBy": [
         "site/demos/circuit-puzzles/index.html::__file_root__"
       ],
-      "imports": [
-        "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect"
-      ],
+      "imports": [],
       "name": "__file_root__"
+    },
+    "site/demos/circuit-puzzles/game.js::main": {
+      "filePath": "site/demos/circuit-puzzles/game.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-puzzles/components/controls.js::bindControls",
+        "site/demos/circuit-puzzles/components/level-select.js::bindLevelSelect",
+        "site/demos/circuit-puzzles/game-state.js::GameState",
+        "site/demos/circuit-puzzles/game.js::$",
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/webgl2-executor.js::WebGL2Executor"
+      ],
+      "name": "main"
     },
     "site/demos/circuit-puzzles/index.html::__file_root__": {
       "filePath": "site/demos/circuit-puzzles/index.html",
@@ -20,12 +47,22 @@
     }
   },
   "files": {
+    "site/demos/circuit-puzzles/game-state.js": {
+      "importedBy": [
+        "site/demos/circuit-puzzles/game.js"
+      ],
+      "imports": []
+    },
     "site/demos/circuit-puzzles/game.js": {
       "importedBy": [
         "site/demos/circuit-puzzles/index.html"
       ],
       "imports": [
-        "site/demos/circuit-puzzles/components/level-select.js"
+        "site/js/simbiguity-render.js",
+        "site/js/webgl2-executor.js",
+        "site/demos/circuit-puzzles/components/level-select.js",
+        "site/demos/circuit-puzzles/components/controls.js",
+        "site/demos/circuit-puzzles/game-state.js"
       ]
     },
     "site/demos/circuit-puzzles/index.html": {

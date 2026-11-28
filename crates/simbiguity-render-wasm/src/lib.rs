@@ -293,3 +293,51 @@ pub extern "C" fn c3d_mesh_indices_len(h: u32, i: u32) -> i32 {
 pub extern "C" fn c3d_vertex_stride() -> u32 {
     VERTEX_STRIDE as u32
 }
+
+#[no_mangle]
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
+pub extern "C" fn puzzle_load(id: *const core::ffi::c_char) -> u32 {
+    if id.is_null() {
+        return 0;
+    }
+    slot::insert(CircuitView::new(12.0, false))
+}
+
+#[no_mangle]
+pub extern "C" fn puzzle_check(h: u32) -> i32 {
+    let mut ok = false;
+    with_view(h, |s| {
+        let readouts = s.view.readouts();
+        if readouts.bulb_power.abs() > 0.0 {
+            ok = true;
+        }
+        0 // OK constant used by with_view
+    });
+    if ok {
+        1
+    } else {
+        0
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn puzzle_free(h: u32) -> i32 {
+    c3d_free(h)
+}
+
+#[cfg(test)]
+mod puzzle_tests {
+    use super::*;
+    use std::ffi::CString;
+
+    /// Verifies that an empty board fails the check for level 1.
+    #[test]
+    fn checking_level_1_with_an_empty_board_reports_its_goal_as_failed() {
+        let level = CString::new("1").unwrap();
+        let h = puzzle_load(level.as_ptr());
+        assert!(h > 0);
+        let check_res = puzzle_check(h);
+        assert_eq!(check_res, 0); // 0 means fail
+        puzzle_free(h);
+    }
+}

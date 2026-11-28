@@ -1,0 +1,20 @@
+{
+  "name": "Short-circuit feedback",
+  "id": "ef5a9f61-7e20-4fd8-8651-44ce537aad40",
+  "url": "/demos/circuit-puzzles/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T02:03:38Z"
+  },
+  "browserState": {
+    "localStorage": {
+      "prototype": "short-circuit"
+    }
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/circuit-puzzles/index.html",
+  "description": "Short-circuit feedback."
+}

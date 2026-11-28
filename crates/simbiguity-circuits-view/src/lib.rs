@@ -288,6 +288,10 @@ impl CircuitView {
         self.sim.circuit()
     }
 
+    pub fn sim(&self) -> &CircuitSim {
+        &self.sim
+    }
+
     pub fn toggle_part_by_index(&mut self, id: usize) -> bool {
         let cid = self
             .layout

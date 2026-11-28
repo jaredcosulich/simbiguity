@@ -127,6 +127,7 @@ name = "simbiguity-render-wasm"
 version = "0.0.1"
 dependencies = [
  "simbiguity-circuits-view",
+ "simbiguity-core",
  "simbiguity-math",
  "simbiguity-render",
 ]

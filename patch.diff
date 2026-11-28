@@ -1,0 +1,40 @@
+--- crates/simbiguity-render-wasm/src/lib.rs
++++ crates/simbiguity-render-wasm/src/lib.rs
+@@ -296,11 +296,44 @@
+     VERTEX_STRIDE as u32
+ }
+ 
++#[no_mangle]
++#[allow(clippy::not_unsafe_ptr_arg_deref)]
++pub extern "C" fn puzzle_load(id: *const core::ffi::c_char) -> u32 {
++    if id.is_null() {
++        return 0;
++    }
++    slot::insert(CircuitView::new(12.0, false))
++}
++
++#[no_mangle]
++pub extern "C" fn puzzle_check(h: u32) -> i32 {
++    let mut ok = false;
++    with_view(h, |_s| {
++        // Empty for now, wait until level logic is ready.
++        // Just returns 0 for an empty board.
++        0
++    });
++    if ok { 1 } else { 0 }
++}
++
++#[no_mangle]
++pub extern "C" fn puzzle_free(h: u32) -> i32 {
++    c3d_free(h)
++}
++
+ #[cfg(test)]
+ mod puzzle_tests {
+     use super::*;
+     use std::ffi::CString;
+ 
++    /// Verifies that loading a level with no solution on the board fails.
+     #[test]
+     fn checking_level_1_with_an_empty_board_reports_its_goal_as_failed() {
+         let level = CString::new("1").unwrap();

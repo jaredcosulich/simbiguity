@@ -294,10 +294,38 @@ fn circuit_plot_draw_escapes_and_drops_nan() {
 /// Verifies the bridge stress conditions by ensuring heavy circuit loads do not cause WASM panics or incorrect states.
 #[test]
 fn bridge_stress_test() {
+    use simbiguity_core::Rng;
+    let mut rng = Rng::new(0x1337);
+
     // 10000 seeded random calls, no panics
     for _ in 0..10000 {
-        let h = circuit_new();
-        circuit_solve(h);
-        circuit_free(h);
+        let op = rng.next_u32() % 6;
+        let h = if rng.chance(0.8) { circuit_new() } else { 0 };
+        let h2 = if rng.chance(0.8) {
+            circuit_new()
+        } else {
+            999999
+        };
+        match op {
+            0 => {
+                circuit_solve(h);
+            }
+            1 => {
+                circuit_free(h);
+            }
+            2 => {
+                circuit_add_battery(h, rng.next_u32() % 10, rng.next_u32() % 10, f64::NAN);
+            }
+            3 => {
+                circuit_results_len(h2);
+            }
+            4 => {
+                circuit_results_ptr(h);
+            }
+            5 => {
+                circuit_issue_message(h2, rng.next_u32() % 10);
+            }
+            _ => unreachable!(),
+        }
     }
 }

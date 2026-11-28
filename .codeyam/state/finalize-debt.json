@@ -277,6 +277,12 @@
       "shortSha": "9cd1434",
       "subject": "feat: Circuits: op-amps and controlled sources",
       "deferredAt": "2026-11-28T19:00:54Z"
+    },
+    {
+      "sha": "bc04b76afd17c41d23d71944576dfc4dae4068fb",
+      "shortSha": "bc04b76",
+      "subject": "feat: Round 4: physics accuracy — fix friction to v²/2μg and restore the original gravity tolerances",
+      "deferredAt": "2026-11-28T19:17:37Z"
     }
   ],
   "finalizeIntent": "fast",

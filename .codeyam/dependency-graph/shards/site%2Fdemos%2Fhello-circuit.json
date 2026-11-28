@@ -128,10 +128,10 @@
     "site/demos/hello-circuit/state.js::__file_root__": {
       "filePath": "site/demos/hello-circuit/state.js",
       "importedBy": [
+        "site/demos/hello-circuit/state.test.js::__file_root__",
         "site/demos/hello-circuit/demo.js::main",
         "site/demos/hello-circuit/explain.js::__file_root__",
-        "site/demos/hello-circuit/explain.js::explanation",
-        "site/demos/hello-circuit/state.test.js::__file_root__"
+        "site/demos/hello-circuit/explain.js::explanation"
       ],
       "imports": [],
       "name": "__file_root__"
@@ -139,8 +139,8 @@
     "site/demos/hello-circuit/state.js::hashFromState": {
       "filePath": "site/demos/hello-circuit/state.js",
       "importedBy": [
-        "site/demos/hello-circuit/demo.js::main",
-        "site/demos/hello-circuit/state.test.js::__file_root__"
+        "site/demos/hello-circuit/state.test.js::__file_root__",
+        "site/demos/hello-circuit/demo.js::main"
       ],
       "imports": [],
       "name": "hashFromState"
@@ -148,8 +148,8 @@
     "site/demos/hello-circuit/state.js::stateFromHash": {
       "filePath": "site/demos/hello-circuit/state.js",
       "importedBy": [
-        "site/demos/hello-circuit/demo.js::main",
-        "site/demos/hello-circuit/state.test.js::__file_root__"
+        "site/demos/hello-circuit/state.test.js::__file_root__",
+        "site/demos/hello-circuit/demo.js::main"
       ],
       "imports": [],
       "name": "stateFromHash"
@@ -214,9 +214,9 @@
     },
     "site/demos/hello-circuit/state.js": {
       "importedBy": [
+        "site/demos/hello-circuit/state.test.js",
         "site/demos/hello-circuit/demo.js",
-        "site/demos/hello-circuit/explain.js",
-        "site/demos/hello-circuit/state.test.js"
+        "site/demos/hello-circuit/explain.js"
       ],
       "imports": []
     },

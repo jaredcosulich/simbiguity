@@ -1,0 +1,15 @@
+{
+  "name": "Ball pit settled",
+  "id": "468c2534-8af3-4581-b392-7271e9659757",
+  "url": "/demos/physics/#preset=ball_pit",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:28:50Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/physics/index.html",
+  "description": "Ball pit settled."
+}

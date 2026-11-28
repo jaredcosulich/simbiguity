@@ -1,15 +1,15 @@
 [
-  { "name": "hello circuit solve", "medianUs": 3, "p95Us": 3 },
-  { "name": "10-resistor ladder", "medianUs": 84, "p95Us": 103 },
-  { "name": "100-resistor ladder", "medianUs": 971, "p95Us": 1059 },
-  { "name": "500-resistor ladder", "medianUs": 8409, "p95Us": 15333 },
-  { "name": "ladder_1000_dc", "medianUs": 30684, "p95Us": 32198 },
-  { "name": "mesh_32_transient_100_steps", "medianUs": 13360, "p95Us": 14378 },
-  { "name": "10x10 resistor grid", "medianUs": 427, "p95Us": 464 },
-  { "name": "CircuitView advance + encode (600 frames)", "medianUs": 5825, "p95Us": 6485 },
-  { "name": "Lu::decompose (n=10)", "medianUs": 4, "p95Us": 4 },
-  { "name": "Lu::decompose (n=50)", "medianUs": 401, "p95Us": 420 },
-  { "name": "Lu::decompose (n=200)", "medianUs": 24536, "p95Us": 26682 },
-  { "name": "ball_pit_1000_one_second", "medianUs": 20105, "p95Us": 32892 }
+  { "name": "hello circuit solve", "medianUs": 2, "p95Us": 2 },
+  { "name": "10-resistor ladder", "medianUs": 38, "p95Us": 47 },
+  { "name": "100-resistor ladder", "medianUs": 517, "p95Us": 1024 },
+  { "name": "500-resistor ladder", "medianUs": 7534, "p95Us": 7911 },
+  { "name": "ladder_1000_dc", "medianUs": 27842, "p95Us": 32071 },
+  { "name": "mesh_32_transient_100_steps", "medianUs": 13279, "p95Us": 13873 },
+  { "name": "10x10 resistor grid", "medianUs": 419, "p95Us": 447 },
+  { "name": "CircuitView advance + encode (600 frames)", "medianUs": 6113, "p95Us": 6491 },
+  { "name": "Lu::decompose (n=10)", "medianUs": 3, "p95Us": 3 },
+  { "name": "Lu::decompose (n=50)", "medianUs": 282, "p95Us": 306 },
+  { "name": "Lu::decompose (n=200)", "medianUs": 17420, "p95Us": 32379 },
+  { "name": "ball_pit_1000_one_second", "medianUs": 20965, "p95Us": 21940 }
 ]
 

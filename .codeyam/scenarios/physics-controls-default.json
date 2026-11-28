@@ -1,0 +1,15 @@
+{
+  "name": "Physics Controls - Default",
+  "id": "2e0f59c6-ed83-43be-9f34-43099d1c41a5",
+  "url": "/?isolate=PhysicsControls",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:40:03Z"
+  },
+  "componentName": "PhysicsControls",
+  "scenarioType": "component",
+  "description": "The PhysicsControls component."
+}

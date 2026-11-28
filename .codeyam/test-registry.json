@@ -4557,7 +4557,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::binary_returns_to_start",
-      "line": 588,
+      "line": 948,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -4737,7 +4737,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::figure_eight_returns_to_start",
-      "line": 608,
+      "line": 968,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -4863,7 +4863,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::orbit_preset_energy_drift_euler_vs_verlet",
-      "line": 628,
+      "line": 988,
       "registeredAt": "2026-11-28T15:38:04.871205078+00:00",
       "runner": "cargo"
     },
@@ -4872,7 +4872,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::orbit_returns_to_start",
-      "line": 569,
+      "line": 929,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -4890,7 +4890,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::pendulum_preset_steps_without_panicking",
-      "line": 513,
+      "line": 873,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -4937,6 +4937,15 @@
       "key": "tests::site_report_requires_a_path_after_out",
       "line": 113,
       "registeredAt": "2026-11-26T19:12:14.789253623+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that all fundamental WASM bridge functions are exported and callable",
+      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_bridge_exports",
+      "line": 859,
+      "registeredAt": "2026-11-28T19:38:10.049790209+00:00",
       "runner": "cargo"
     },
     {

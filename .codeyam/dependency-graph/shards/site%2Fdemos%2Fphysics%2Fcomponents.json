@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "site/demos/physics/components/controls.js::PhysicsControls": {
+      "filePath": "site/demos/physics/components/controls.js",
+      "importedBy": [
+        "site/demos/physics/ui-controller.js::setupUI"
+      ],
+      "imports": [],
+      "name": "PhysicsControls"
+    },
+    "site/demos/physics/components/energy-chart.js::EnergyChart": {
+      "filePath": "site/demos/physics/components/energy-chart.js",
+      "importedBy": [
+        "site/demos/physics/ui-controller.js::setupUI"
+      ],
+      "imports": [],
+      "name": "EnergyChart"
+    },
+    "site/demos/physics/components/header.js::PhysicsHeader": {
+      "filePath": "site/demos/physics/components/header.js",
+      "importedBy": [
+        "site/demos/physics/ui-controller.js::setupUI"
+      ],
+      "imports": [],
+      "name": "PhysicsHeader"
+    },
+    "site/demos/physics/components/readouts.js::PhysicsReadouts": {
+      "filePath": "site/demos/physics/components/readouts.js",
+      "importedBy": [
+        "site/demos/physics/ui-controller.js::setupUI"
+      ],
+      "imports": [],
+      "name": "PhysicsReadouts"
+    },
+    "site/demos/physics/components/simulation-view.js::SimulationView": {
+      "filePath": "site/demos/physics/components/simulation-view.js",
+      "importedBy": [
+        "site/demos/physics/ui-controller.js::setupUI"
+      ],
+      "imports": [],
+      "name": "SimulationView"
+    }
+  },
+  "files": {
+    "site/demos/physics/components/controls.js": {
+      "importedBy": [
+        "site/demos/physics/ui-controller.js"
+      ],
+      "imports": []
+    },
+    "site/demos/physics/components/energy-chart.js": {
+      "importedBy": [
+        "site/demos/physics/ui-controller.js"
+      ],
+      "imports": []
+    },
+    "site/demos/physics/components/header.js": {
+      "importedBy": [
+        "site/demos/physics/ui-controller.js"
+      ],
+      "imports": []
+    },
+    "site/demos/physics/components/readouts.js": {
+      "importedBy": [
+        "site/demos/physics/ui-controller.js"
+      ],
+      "imports": []
+    },
+    "site/demos/physics/components/simulation-view.js": {
+      "importedBy": [
+        "site/demos/physics/ui-controller.js"
+      ],
+      "imports": []
+    }
+  }
+}

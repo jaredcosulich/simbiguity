@@ -1,0 +1,15 @@
+{
+  "name": "Physics Readouts - Default",
+  "id": "e12dea60-c6a9-423c-8ad5-471aa83cf4dd",
+  "url": "/?isolate=PhysicsReadouts",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:40:03Z"
+  },
+  "componentName": "PhysicsReadouts",
+  "scenarioType": "component",
+  "description": "The PhysicsReadouts component."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Cloth",
+  "id": "ebd14776-d7a3-474b-9b93-efdcb1ed888a",
+  "url": "/demos/physics/#preset=cloth",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:28:50Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/physics/index.html",
+  "description": "Cloth."
+}

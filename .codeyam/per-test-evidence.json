@@ -4730,8 +4730,8 @@
   },
   "tests::binary_returns_to_start": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:37:37.800Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -4739,8 +4739,8 @@
   },
   "tests::bridge_stress_test": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:37:37.800Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T01:04:14Z"
@@ -4910,8 +4910,8 @@
   },
   "tests::figure_eight_returns_to_start": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:37:37.800Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -5044,8 +5044,8 @@
   },
   "tests::orbit_preset_energy_drift_euler_vs_verlet": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:37:37.800Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T15:38:04.871Z"
@@ -5053,8 +5053,8 @@
   },
   "tests::orbit_returns_to_start": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:37:37.800Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -5071,8 +5071,8 @@
   },
   "tests::pendulum_preset_steps_without_panicking": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:37:37.800Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
@@ -5123,6 +5123,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T19:12:14.789Z"
+    ]
+  },
+  "tests::test_bridge_exports": {
+    "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+    "lastRunAt": "2026-11-28T19:38:10.049Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:38:10.049Z"
     ]
   },
   "tests::test_build_circuit": {

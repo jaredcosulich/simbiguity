@@ -134,8 +134,8 @@
     "site/demos/circuit-3d/explain.js::explanation": {
       "filePath": "site/demos/circuit-3d/explain.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::show",
-        "site/demos/circuit-3d/explain.test.js::__file_root__"
+        "site/demos/circuit-3d/explain.test.js::__file_root__",
+        "site/demos/circuit-3d/demo.js::show"
       ],
       "imports": [
         "site/demos/circuit-3d/state.js::__file_root__"
@@ -169,8 +169,8 @@
     "site/demos/circuit-3d/pointer.js::canvasPixel": {
       "filePath": "site/demos/circuit-3d/pointer.js",
       "importedBy": [
-        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
-        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+        "site/demos/circuit-3d/pointer.test.js::__file_root__",
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput"
       ],
       "imports": [],
       "name": "canvasPixel"
@@ -178,8 +178,8 @@
     "site/demos/circuit-3d/pointer.js::canvasSize": {
       "filePath": "site/demos/circuit-3d/pointer.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::main",
-        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+        "site/demos/circuit-3d/pointer.test.js::__file_root__",
+        "site/demos/circuit-3d/demo.js::main"
       ],
       "imports": [],
       "name": "canvasSize"
@@ -187,9 +187,9 @@
     "site/demos/circuit-3d/pointer.js::clickAction": {
       "filePath": "site/demos/circuit-3d/pointer.js",
       "importedBy": [
-        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
         "site/demos/circuit-3d/pointer.js::cursorFor",
-        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+        "site/demos/circuit-3d/pointer.test.js::__file_root__",
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput"
       ],
       "imports": [
         "site/js/simbiguity-render.js::Pick"
@@ -199,8 +199,8 @@
     "site/demos/circuit-3d/pointer.js::cursorFor": {
       "filePath": "site/demos/circuit-3d/pointer.js",
       "importedBy": [
-        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
-        "site/demos/circuit-3d/pointer.test.js::__file_root__"
+        "site/demos/circuit-3d/pointer.test.js::__file_root__",
+        "site/demos/circuit-3d/canvas-input.js::bindCanvasInput"
       ],
       "imports": [
         "site/demos/circuit-3d/pointer.js::clickAction"
@@ -266,8 +266,8 @@
     "site/demos/circuit-3d/state.js::__file_root__": {
       "filePath": "site/demos/circuit-3d/state.js",
       "importedBy": [
-        "site/demos/circuit-3d/explain.js::explanation",
-        "site/demos/circuit-3d/state.test.js::__file_root__"
+        "site/demos/circuit-3d/state.test.js::__file_root__",
+        "site/demos/circuit-3d/explain.js::explanation"
       ],
       "imports": [],
       "name": "__file_root__"
@@ -275,8 +275,8 @@
     "site/demos/circuit-3d/state.js::hashFromState": {
       "filePath": "site/demos/circuit-3d/state.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::saveHash",
-        "site/demos/circuit-3d/state.test.js::__file_root__"
+        "site/demos/circuit-3d/state.test.js::__file_root__",
+        "site/demos/circuit-3d/demo.js::saveHash"
       ],
       "imports": [
         "site/demos/circuit-3d/state.js::round"
@@ -302,8 +302,8 @@
     "site/demos/circuit-3d/state.js::stateFromHash": {
       "filePath": "site/demos/circuit-3d/state.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::main",
-        "site/demos/circuit-3d/state.test.js::__file_root__"
+        "site/demos/circuit-3d/state.test.js::__file_root__",
+        "site/demos/circuit-3d/demo.js::main"
       ],
       "imports": [
         "site/demos/circuit-3d/state.js::num"
@@ -364,8 +364,8 @@
     },
     "site/demos/circuit-3d/explain.js": {
       "importedBy": [
-        "site/demos/circuit-3d/demo.js",
-        "site/demos/circuit-3d/explain.test.js"
+        "site/demos/circuit-3d/explain.test.js",
+        "site/demos/circuit-3d/demo.js"
       ],
       "imports": [
         "site/demos/circuit-3d/state.js"
@@ -385,9 +385,9 @@
     },
     "site/demos/circuit-3d/pointer.js": {
       "importedBy": [
+        "site/demos/circuit-3d/pointer.test.js",
         "site/demos/circuit-3d/canvas-input.js",
-        "site/demos/circuit-3d/demo.js",
-        "site/demos/circuit-3d/pointer.test.js"
+        "site/demos/circuit-3d/demo.js"
       ],
       "imports": [
         "site/js/simbiguity-render.js"
@@ -422,9 +422,9 @@
     },
     "site/demos/circuit-3d/state.js": {
       "importedBy": [
+        "site/demos/circuit-3d/state.test.js",
         "site/demos/circuit-3d/demo.js",
-        "site/demos/circuit-3d/explain.js",
-        "site/demos/circuit-3d/state.test.js"
+        "site/demos/circuit-3d/explain.js"
       ],
       "imports": []
     },

@@ -1,0 +1,15 @@
+{
+  "name": "Physics Header - Default",
+  "id": "34959797-b93e-4b88-94c5-228ae77f70a9",
+  "url": "/?isolate=PhysicsHeader",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:40:03Z"
+  },
+  "componentName": "PhysicsHeader",
+  "scenarioType": "component",
+  "description": "The PhysicsHeader component."
+}

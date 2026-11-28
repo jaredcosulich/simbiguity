@@ -11,13 +11,13 @@
     "site/js/boot.js::boot": {
       "filePath": "site/js/boot.js",
       "importedBy": [
+        "site/demos/rc-charging/demo.js::__file_root__",
         "site/demos/circuit-3d/demo.js::__file_root__",
         "site/demos/circuit-3d-parallel/demo.js::__file_root__",
         "site/demos/circuit-lab/lab.js::__file_root__",
         "site/demos/circuit-puzzles/game.js::__file_root__",
         "site/demos/hello-circuit/demo.js::__file_root__",
-        "site/demos/physics/demo.js::__file_root__",
-        "site/demos/rc-charging/demo.js::__file_root__"
+        "site/demos/physics/demo.js::__file_root__"
       ],
       "imports": [],
       "name": "boot"
@@ -41,7 +41,6 @@
     "site/js/plot-labels.js::renderLabels": {
       "filePath": "site/js/plot-labels.js",
       "importedBy": [
-        "site/demos/physics/demo.js::__file_root__",
         "site/demos/rc-charging/demo.js::main",
         "site/js/plot-labels.test.js::__file_root__"
       ],
@@ -130,13 +129,13 @@
     "site/js/simbiguity.js::loadCircuits": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
-        "site/demos/circuit-lab/lab.js::main",
         "site/demos/circuit-puzzles/game-state.test.js::__file_root__",
-        "site/demos/hello-circuit/demo.js::main",
         "site/demos/rc-charging/demo.js::main",
         "site/js/determinism.test.js::__file_root__",
         "site/js/nonlinear.test.js::__file_root__",
-        "site/test/ac.test.js::__file_root__"
+        "site/test/ac.test.js::__file_root__",
+        "site/demos/circuit-lab/lab.js::main",
+        "site/demos/hello-circuit/demo.js::main"
       ],
       "imports": [
         "site/js/simbiguity.js::IssueKind",
@@ -182,12 +181,12 @@
     "site/js/webgl2-executor.js::WebGL2Executor": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
+        "site/demos/rc-charging/demo.js::main",
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
         "site/demos/circuit-lab/components/board-view.js::BoardView",
         "site/demos/circuit-puzzles/game.js::main",
-        "site/demos/physics/demo.js::main",
-        "site/demos/rc-charging/demo.js::main",
+        "site/demos/physics/ui-controller.js::setupUI",
         "site/js/webgl2-executor.test.js::__file_root__"
       ],
       "imports": [
@@ -244,13 +243,13 @@
     "site/js/boot.js": {
       "importedBy": [
         "site/boot.test.js",
+        "site/demos/rc-charging/demo.js",
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/circuit-lab/lab.js",
         "site/demos/circuit-puzzles/game.js",
         "site/demos/hello-circuit/demo.js",
-        "site/demos/physics/demo.js",
-        "site/demos/rc-charging/demo.js"
+        "site/demos/physics/demo.js"
       ],
       "imports": []
     },
@@ -268,7 +267,6 @@
     },
     "site/js/plot-labels.js": {
       "importedBy": [
-        "site/demos/physics/demo.js",
         "site/demos/rc-charging/demo.js",
         "site/js/plot-labels.test.js"
       ],
@@ -282,9 +280,9 @@
     },
     "site/js/simbiguity-render.js": {
       "importedBy": [
-        "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d/pointer.js",
         "site/demos/circuit-3d/pointer.test.js",
+        "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/circuit-lab/components/board-view.js",
         "site/demos/circuit-puzzles/game.js",
@@ -302,25 +300,25 @@
     },
     "site/js/simbiguity.js": {
       "importedBy": [
-        "site/demos/circuit-lab/lab.js",
         "site/demos/circuit-puzzles/game-state.test.js",
-        "site/demos/hello-circuit/demo.js",
         "site/demos/rc-charging/demo.js",
         "site/js/determinism.test.js",
         "site/js/nonlinear.test.js",
-        "site/js/simbiguity-render.js",
-        "site/test/ac.test.js"
+        "site/test/ac.test.js",
+        "site/demos/circuit-lab/lab.js",
+        "site/demos/hello-circuit/demo.js",
+        "site/js/simbiguity-render.js"
       ],
       "imports": []
     },
     "site/js/webgl2-executor.js": {
       "importedBy": [
+        "site/demos/rc-charging/demo.js",
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/circuit-lab/components/board-view.js",
         "site/demos/circuit-puzzles/game.js",
-        "site/demos/physics/demo.js",
-        "site/demos/rc-charging/demo.js",
+        "site/demos/physics/ui-controller.js",
         "site/js/webgl2-executor.test.js"
       ],
       "imports": []

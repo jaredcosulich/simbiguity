@@ -1,0 +1,15 @@
+{
+  "name": "Figure eight",
+  "id": "aad65a1b-ca0f-404a-8a24-6e4b8f2f3b5d",
+  "url": "/demos/physics/#preset=figure_eight",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:28:50Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/physics/index.html",
+  "description": "Figure eight."
+}

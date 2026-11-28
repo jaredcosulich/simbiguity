@@ -1,0 +1,15 @@
+{
+  "name": "Simulation View - Default",
+  "id": "de29fecc-0fdc-41f9-83f0-88fb1e082463",
+  "url": "/?isolate=SimulationView",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:40:03Z"
+  },
+  "componentName": "SimulationView",
+  "scenarioType": "component",
+  "description": "The SimulationView component."
+}

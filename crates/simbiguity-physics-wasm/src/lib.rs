@@ -7,6 +7,7 @@
         clippy::unreachable
     )
 )]
+extern crate alloc;
 use simbiguity_math::vec::Vec3;
 use simbiguity_physics::{
     constraints::Ground, error::PhysicsError, Integrator, PhysicsInput, World,
@@ -24,7 +25,9 @@ pub struct Session {
     commands: simbiguity_render::CommandBuffer,
     frame_buf: FrameBuf,
     time: f64,
+    step_time_ms: f64,
     results: [f64; 4],
+    positions_buf: Vec<f64>,
 }
 
 thread_local! {
@@ -76,17 +79,27 @@ fn create_pendulum() -> Result<Session, PhysicsError> {
     world.add_rod(0, 1, 4.0)?;
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -108,17 +121,27 @@ fn create_spring_mass() -> Result<Session, PhysicsError> {
     world.add_spring(0, 1, 2.0, 10.0, 0.5)?;
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -144,17 +167,27 @@ fn create_projectile() -> Result<Session, PhysicsError> {
     world.particles[p].velocity = Vec3::new(10.0, 10.0, 0.0);
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -178,17 +211,27 @@ fn create_chain() -> Result<Session, PhysicsError> {
     }
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -227,17 +270,27 @@ pub extern "C" fn phys_new_cradle() -> u32 {
     world.particles[0].velocity.x = 1.0;
     let e = world.compute_energy();
     insert(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -248,17 +301,27 @@ pub extern "C" fn phys_new_ball_pit(count: u32) -> u32 {
 
     let e = world.compute_energy();
     insert(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -276,6 +339,9 @@ pub extern "C" fn phys_push(h: u32, index: u32, fx: f64, fy: f64, fz: f64) -> i3
 #[no_mangle]
 pub extern "C" fn phys_advance(h: u32, dt: f64) -> i32 {
     with_session(h, |s| {
+        #[cfg(not(target_arch = "wasm32"))]
+        let start = std::time::Instant::now();
+
         if let Err(e) = s.world.step(dt) {
             return map_error(e);
         }
@@ -287,6 +353,18 @@ pub extern "C" fn phys_advance(h: u32, dt: f64) -> i32 {
             e.potential_spring,
             e.total(),
         ];
+        s.positions_buf.clear();
+        for p in &s.world.particles {
+            s.positions_buf.push(p.position.x);
+            s.positions_buf.push(p.position.y);
+            s.positions_buf.push(p.position.z);
+        }
+
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            s.step_time_ms = start.elapsed().as_secs_f64() * 1000.0;
+        }
+
         OK
     })
 }
@@ -420,17 +498,27 @@ fn create_orbit() -> Result<Session, PhysicsError> {
     world.setup_orbit()?;
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -450,17 +538,27 @@ fn create_binary() -> Result<Session, PhysicsError> {
     world.setup_binary()?;
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -480,17 +578,27 @@ fn create_figure_eight() -> Result<Session, PhysicsError> {
     world.setup_figure_eight()?;
     let e = world.compute_energy();
     Ok(Session {
-        world,
+        world: world.clone(),
         view: PhysicsView::new(),
         commands: simbiguity_render::CommandBuffer::new(),
         frame_buf: FrameBuf::new(),
         time: 0.0,
+        step_time_ms: 0.0,
         results: [
             e.kinetic,
             e.potential_gravity,
             e.potential_spring,
             e.total(),
         ],
+        positions_buf: {
+            let mut b = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+            for p in &world.particles {
+                b.push(p.position.x);
+                b.push(p.position.y);
+                b.push(p.position.z);
+            }
+            b
+        },
     })
 }
 
@@ -505,9 +613,261 @@ pub extern "C" fn phys_new_figure_eight() -> u32 {
     }
 }
 
+#[no_mangle]
+pub extern "C" fn phys_time(h: u32) -> f64 {
+    let mut t = 0.0;
+    with_session(h, |s| {
+        t = s.time;
+        OK
+    });
+    t
+}
+
+#[no_mangle]
+pub extern "C" fn phys_step_time_ms(h: u32) -> f64 {
+    let mut t = 0.0;
+    with_session(h, |s| {
+        t = s.step_time_ms;
+        OK
+    });
+    t
+}
+
+#[no_mangle]
+pub extern "C" fn phys_particle_count(h: u32) -> i32 {
+    let mut count = 0;
+    with_session(h, |s| {
+        count = s.world.particles.len() as i32;
+        OK
+    });
+    count
+}
+
+#[no_mangle]
+pub extern "C" fn phys_positions_ptr(h: u32) -> *const f64 {
+    let mut ptr = core::ptr::null();
+    with_session(h, |s| {
+        ptr = s.positions_buf.as_ptr();
+        OK
+    });
+    ptr
+}
+
+#[no_mangle]
+pub extern "C" fn phys_momentum(h: u32) -> f64 {
+    let mut p = 0.0;
+    with_session(h, |s| {
+        let mut px = 0.0;
+        let mut py = 0.0;
+        let mut pz = 0.0;
+        for part in &s.world.particles {
+            if !part.pinned {
+                px += part.mass * part.velocity.x;
+                py += part.mass * part.velocity.y;
+                pz += part.mass * part.velocity.z;
+            }
+        }
+        p = (px * px + py * py + pz * pz).sqrt();
+        OK
+    });
+    p
+}
+
+fn create_double_pendulum(offset: f64) -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
+    world.add_particle(1.0, Vec3::new(2.0, 5.0, 0.0), false)?;
+    world.add_particle(1.0, Vec3::new(4.0 + offset, 5.0, 0.0), false)?;
+    world.add_rod(0, 1, 2.0)?;
+    world.add_rod(1, 2, 2.0)?;
+    let e = world.compute_energy();
+    let mut positions_buf = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+    for p in &world.particles {
+        positions_buf.push(p.position.x);
+        positions_buf.push(p.position.y);
+        positions_buf.push(p.position.z);
+    }
+    Ok(Session {
+        world: world.clone(),
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        step_time_ms: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+        positions_buf,
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_double_pendulum(offset: f64) -> u32 {
+    match create_double_pendulum(offset) {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_sliding_block() -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.ground = Some(Ground {
+        y: 0.0,
+        restitution: 0.0,
+        friction: 0.4177,
+    });
+    world.add_particle(1.0, Vec3::new(0.0, 0.5, 0.0), false)?;
+    world.particles[0].velocity = Vec3::new(10.0, 0.0, 0.0);
+    let e = world.compute_energy();
+    let mut positions_buf = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+    for p in &world.particles {
+        positions_buf.push(p.position.x);
+        positions_buf.push(p.position.y);
+        positions_buf.push(p.position.z);
+    }
+    Ok(Session {
+        world: world.clone(),
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        step_time_ms: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+        positions_buf,
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_sliding_block() -> u32 {
+    match create_sliding_block() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_cloth(n: u32) -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    let spacing = 1.0;
+    for z in 0..n {
+        for x in 0..n {
+            let pinned = (z == 0 && x == 0) || (z == 0 && x == n - 1);
+            world.add_particle(
+                1.0,
+                Vec3::new(x as f64 * spacing, 5.0, z as f64 * spacing),
+                pinned,
+            )?;
+        }
+    }
+    for z in 0..n {
+        for x in 0..n {
+            let i = z * n + x;
+            if x < n - 1 {
+                world.add_spring(i as usize, (i + 1) as usize, spacing, 100.0, 1.0)?;
+            }
+            if z < n - 1 {
+                world.add_spring(i as usize, (i + n) as usize, spacing, 100.0, 1.0)?;
+            }
+        }
+    }
+    let e = world.compute_energy();
+    let mut positions_buf = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+    for p in &world.particles {
+        positions_buf.push(p.position.x);
+        positions_buf.push(p.position.y);
+        positions_buf.push(p.position.z);
+    }
+    let mut s = Session {
+        world: world.clone(),
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        step_time_ms: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+        positions_buf,
+    };
+    s.view.cloth_grid = Some(n);
+    let world_ref = &s.world as *const World;
+    s.view.update(unsafe { &*world_ref });
+    Ok(s)
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_cloth(n: u32) -> u32 {
+    match create_cloth(n) {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn phys_set_time_scale(_h: u32, _scale: f64) -> i32 {
+    OK
+}
+
+#[no_mangle]
+pub extern "C" fn phys_set_restitution(h: u32, r: f64) -> i32 {
+    with_session(h, |s| {
+        if let Some(ref mut g) = s.world.ground {
+            g.restitution = r;
+        }
+        for p in &mut s.world.particles {
+            p.restitution = r;
+        }
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_set_friction(h: u32, f: f64) -> i32 {
+    with_session(h, |s| {
+        if let Some(ref mut g) = s.world.ground {
+            g.friction = f;
+        }
+        OK
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    // Verifies that all fundamental WASM bridge functions are exported and callable
+    #[test]
+    fn test_bridge_exports() {
+        let h = phys_new_pendulum();
+        assert!(phys_time(h) == 0.0);
+        assert!(phys_particle_count(h) == 2);
+        assert!(phys_momentum(h) == 0.0);
+        let ptr = phys_positions_ptr(h);
+        assert!(!ptr.is_null());
+        phys_advance(h, 0.016);
+        assert!(phys_time(h) > 0.0);
+        assert!(phys_step_time_ms(h) >= 0.0);
+        phys_free(h);
+    }
 
     #[test]
     fn pendulum_preset_steps_without_panicking() {

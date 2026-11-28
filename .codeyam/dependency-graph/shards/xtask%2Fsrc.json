@@ -1032,8 +1032,8 @@
     "xtask/src/report.rs::Build": {
       "filePath": "xtask/src/report.rs",
       "importedBy": [
-        "xtask/src/main.rs::site_report",
-        "xtask/src/report.rs::to_json"
+        "xtask/src/report.rs::to_json",
+        "xtask/src/main.rs::site_report"
       ],
       "imports": [
         "xtask/src/report.rs::Build::commit",
@@ -1219,8 +1219,8 @@
     "xtask/src/report.rs::CrateInput": {
       "filePath": "xtask/src/report.rs",
       "importedBy": [
-        "xtask/src/main.rs::site_report",
-        "xtask/src/report.rs::join"
+        "xtask/src/report.rs::join",
+        "xtask/src/main.rs::site_report"
       ],
       "imports": [
         "xtask/src/capabilities.rs::Capability",
@@ -2925,11 +2925,11 @@
       ],
       "importedBy": [
         "xtask/src/capabilities_tests.rs",
-        "xtask/src/main.rs",
-        "xtask/src/main.rs",
         "xtask/src/report.rs",
         "xtask/src/report.rs",
-        "xtask/src/report.rs"
+        "xtask/src/report.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs"
       ],
       "imports": [
         "xtask/src/capabilities_tests.rs"
@@ -2982,12 +2982,12 @@
       ],
       "importedBy": [
         "xtask/src/libtest_output_tests.rs",
-        "xtask/src/main.rs",
-        "xtask/src/main.rs",
         "xtask/src/report.rs",
         "xtask/src/report.rs",
         "xtask/src/report_tests.rs",
-        "xtask/src/report_tests.rs"
+        "xtask/src/report_tests.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs"
       ],
       "imports": [
         "xtask/src/libtest_output_tests.rs"
@@ -3112,12 +3112,12 @@
         "xtask/src/report_tests.rs"
       ],
       "importedBy": [
+        "xtask/src/report_tests.rs",
         "xtask/src/main.rs",
         "xtask/src/main.rs",
         "xtask/src/main.rs",
         "xtask/src/main.rs",
-        "xtask/src/main.rs",
-        "xtask/src/report_tests.rs"
+        "xtask/src/main.rs"
       ],
       "imports": [
         "xtask/src/capabilities.rs",
@@ -3160,11 +3160,11 @@
         "xtask/src/test_descriptions_tests.rs"
       ],
       "importedBy": [
-        "xtask/src/main.rs",
-        "xtask/src/main.rs",
         "xtask/src/report.rs",
         "xtask/src/report_tests.rs",
-        "xtask/src/test_descriptions_tests.rs"
+        "xtask/src/test_descriptions_tests.rs",
+        "xtask/src/main.rs",
+        "xtask/src/main.rs"
       ],
       "imports": [
         "xtask/src/test_descriptions_tests.rs"

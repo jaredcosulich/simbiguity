@@ -1,0 +1,15 @@
+{
+  "name": "Euler orbit spiral",
+  "id": "4271756e-a8d5-49ed-9c0d-f17a6ebc9f02",
+  "url": "/demos/physics/#preset=orbit&integrator=explicit_euler",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:28:50Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/physics/index.html",
+  "description": "Euler orbit spiral."
+}

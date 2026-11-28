@@ -1,0 +1,15 @@
+{
+  "name": "Energy Chart - Default",
+  "id": "03c6f9ed-34ab-45e6-98d5-ca2ee41a30cf",
+  "url": "/?isolate=EnergyChart",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:40:03Z"
+  },
+  "componentName": "EnergyChart",
+  "scenarioType": "component",
+  "description": "The EnergyChart component."
+}

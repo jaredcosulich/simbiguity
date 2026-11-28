@@ -1,0 +1,15 @@
+{
+  "name": "Double pendulum diverged",
+  "id": "253843b2-ebc7-402f-a4bf-844e4b2b5faf",
+  "url": "/demos/physics/#preset=double_pendulum",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T19:28:50Z"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "site/demos/physics/index.html",
+  "description": "Double pendulum diverged."
+}

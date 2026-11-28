@@ -7,10 +7,13 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_binary",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_cloth",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_double_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_figure_eight",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_orbit",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_sliding_block",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"

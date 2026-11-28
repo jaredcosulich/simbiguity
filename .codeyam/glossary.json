@@ -43,6 +43,14 @@
     "testFile": "site/js/webgl2-executor.test.js"
   },
   {
+    "description": "DOM container for rendering the chart",
+    "filePath": "site/demos/physics/components/energy-chart.js",
+    "name": "EnergyChart",
+    "scenarios": [
+      "energy-chart-default"
+    ]
+  },
+  {
     "description": "The engine status page: build identity, capability cards with live demos, the crate dependency table and every test with filters.",
     "filePath": "site/status/index.html",
     "name": "EngineStatusPage",
@@ -109,10 +117,42 @@
     "testFile": "crates/simbiguity-plot/src/ticks.rs"
   },
   {
+    "description": "Inputs for simulation preset, integrator, and parameters",
+    "filePath": "site/demos/physics/components/controls.js",
+    "name": "PhysicsControls",
+    "scenarios": [
+      "physics-controls-default"
+    ]
+  },
+  {
+    "description": "Site header and navigation back link",
+    "filePath": "site/demos/physics/components/header.js",
+    "name": "PhysicsHeader",
+    "scenarios": [
+      "physics-header-default"
+    ]
+  },
+  {
+    "description": "Displays for simulation metrics",
+    "filePath": "site/demos/physics/components/readouts.js",
+    "name": "PhysicsReadouts",
+    "scenarios": [
+      "physics-readouts-default"
+    ]
+  },
+  {
     "description": "Visualizes live simulation samples as an oscilloscope trace using Canvas 2D.",
     "filePath": "site/demos/circuit-lab/components/scope-view.js",
     "name": "ScopeView",
     "testFile": "site/demos/circuit-lab/components/scope-view.test.js"
+  },
+  {
+    "description": "Canvas container for rendering the physics simulation",
+    "filePath": "site/demos/physics/components/simulation-view.js",
+    "name": "SimulationView",
+    "scenarios": [
+      "simulation-view-default"
+    ]
   },
   {
     "description": "The word a test status is written as in the report: passed, failed or ignored.",
@@ -2587,6 +2627,14 @@
     "testFile": "crates/simbiguity-anim/src/spring.rs"
   },
   {
+    "description": "Central state syncing between UI components, hash state, and physics loop",
+    "filePath": "site/demos/physics/ui-controller.js",
+    "name": "setupUI",
+    "scenarios": [
+      "physics-engine-demo"
+    ]
+  },
+  {
     "description": "Sets up a binary system",
     "filePath": "crates/simbiguity-physics/src/world.rs",
     "name": "setup_binary",
@@ -2807,6 +2855,14 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
+    "description": "Simulation loop, update dispatch, and WebGL execution",
+    "filePath": "site/demos/physics/loop.js",
+    "name": "startPhysicsLoop",
+    "scenarios": [
+      "physics-engine-demo"
+    ]
   },
   {
     "description": "Reads the 3D demo state from the URL hash: switch, volts, frozen time and camera.",

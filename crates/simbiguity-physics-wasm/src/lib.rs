@@ -55,7 +55,7 @@ where
         if let Some(Some(session)) = slots.get_mut(idx) {
             f(session)
         } else {
-            fail(ERR_HANDLE, std::format!("no session with handle {}", h))
+            fail(ERR_HANDLE, "invalid handle".into())
         }
     })
 }
@@ -410,7 +410,7 @@ pub extern "C" fn phys_free(h: u32) -> i32 {
                 *slot = None;
                 OK
             }
-            _ => fail(ERR_HANDLE, std::format!("no session with handle {h}")),
+            _ => fail(ERR_HANDLE, "invalid handle".into()),
         }
     })
 }

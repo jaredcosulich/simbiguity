@@ -115,6 +115,7 @@ blob-report/
 .codeyam/state/context-reset-last.json
 .codeyam/state/provider-auth-verdict.json
 .codeyam/state/antigravity-session.json
+.codeyam/state/antigravity-unmapped-tools.json
 .codeyam/state/provider-switch.json
 .codeyam/state/pre-commit-sync-last-integration.json
 .codeyam/state/pre-commit-sync-integrations.json
@@ -131,6 +132,7 @@ blob-report/
 .codeyam/state/plan-conflict-acks.json
 .codeyam/state/plan-landed-fetch.stamp
 .codeyam/state/recapture-tuning.json
+.codeyam/state/recapture-dead-interactions.json
 .codeyam/state/capture-build-cfg.json
 .codeyam/state/build-disk-growth.json
 .codeyam/state/sampled-freshness.json
@@ -151,6 +153,7 @@ blob-report/
 .codeyam/state/relaunch-progress/
 .codeyam/state/needs-login.json
 .codeyam/state/check-in-grant.json
+.codeyam/state/hollow-work-findings.json
 .codeyam/state/expectation-decisions.jsonl
 .codeyam/state/plan-run-schedule.json
 .codeyam/state/idle-recapture.json
@@ -222,7 +225,10 @@ blob-report/
 *.waits
 *.heartbeat
 docker-compose.cloud.yml
-.codeyam/state/recapture-dead-interactions.json
+*.orig
+*.rej
+__pycache__/
+*.pyc
 .codeyam/state/node-junit.xml
 # codeyam-editor:end
 
@@ -234,3 +240,6 @@ __pycache__/
 summary.json
 *.patch
 fix_*.sh
+.codeyam/state/antigravity-unmapped-tools.json
+.codeyam/state/hollow-work-findings.json
+*.pyc

@@ -378,8 +378,8 @@
         "and_then",
         "borrow_mut",
         "checked_sub",
-        "format",
         "get_mut",
+        "into",
         "with"
       ]
     },
@@ -637,8 +637,8 @@
       "name": "with_session",
       "namedMethods": [
         "borrow_mut",
-        "format",
         "get_mut",
+        "into",
         "with",
         "wrapping_sub"
       ]

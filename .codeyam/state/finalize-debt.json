@@ -186,11 +186,11 @@
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T11:56:14Z",
+    "at": "2026-11-28T12:21:54Z",
     "deferredCommits": 32
   },
   "drained": {
-    "screenshots": 17,
-    "at": "2026-11-27T18:10:42Z"
+    "screenshots": 18,
+    "at": "2026-11-28T11:59:48Z"
   }
 }

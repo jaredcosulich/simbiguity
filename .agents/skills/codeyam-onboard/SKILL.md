@@ -43,7 +43,7 @@ The old codeyam tool wrote `.codeyam/config.json` with a different schema. Trans
 1. Read `.codeyam/config.json`. Extract:
    - `projectSlug` / `projectTitle` → `project_name`
    - `projectDescription` → `project_description`
-   - `webapps[0].startCommand` (or `.command + .args`) → translate to a single `start_command` string. For `sh -c "npm run dev -- --port $PORT"` use the inner command as-is — the new editor sets `PORT` from `editor.json:port` so `$PORT` resolves to the configured port at spawn time. If the project's port is fixed and unlikely to change, prefer the literal form (`npm run dev -- --port 3000`) — it reads cleaner to humans and is robust to env_builder regressions.
+   - `webapps[0].startCommand` (or `.command + .args`) → translate to a single `start_command` string. For `sh -c "npm run dev -- --port $PORT"` use the inner command as-is — the new editor sets `PORT` in the dev server's env to the internal port (app port + 1, see Phase 4), so `$PORT` resolves to the port the proxy forwards to. If the project's port is fixed and unlikely to change, prefer the literal form (`npm run dev -- --port 3000`) — it reads cleaner to humans and is robust to env_builder regressions.
    - `webapps[].appDirectory`, `framework` → an entry in `apps[]` (existing config docs in the codeyam-editor source).
    - `screenSizes`, `defaultScreenSize` → carry over verbatim.
    - `provider` → carry over (defaults to `claude`).
@@ -81,7 +81,15 @@ codeyam-editor init
 
 Note: `init` is a **top-level** subcommand, not under `editor`. If the user already ran `init` before invoking this skill (recommended path post-bootstrap-fix), `init` was idempotent — re-running it here is safe and just confirms the bundle is in place. On legacy projects, `init` deliberately skipped creating `editor.json` so this skill's Phase 1 classification stayed `legacy`; Phase 3 lets the legacy branch create `editor.json` after Phase 2 archived the legacy config.
 
-This is mechanical and idempotent — installs `.claude/hooks/`, `.claude/skills/`, `.claude/settings.local.json`, `.codex/config.toml`, `.git/hooks/pre-commit`, and auto-detects a seed adapter (Prisma and Supabase are supported out of the box).
+This is mechanical and idempotent. It writes the `.codeyam/` config, `.git/hooks/pre-commit`, and auto-detects a seed adapter (Prisma and Supabase are supported out of the box).
+
+**`init` alone installs no agent assets on a fresh project.** When no build agent is recorded yet it prints "No build agent selected yet — skipping the agent-specific assets", and the `.claude/hooks/`, `.claude/skills/`, `.claude/settings.local.json` (or `.codex/`, `.gemini/`, …) that `migration-status` listed as missing still do not exist. Follow it with your own provider, which you know because you are running this skill:
+
+```
+codeyam-editor editor install-hooks --provider <claude|codex|gemini|opencode|muse>
+```
+
+`install-hooks` records the provider in `editor.json` and installs that agent's surface. It also auto-commits the installed tooling as `chore: refresh codeyam tooling` (on a repo with no commits yet, that is the root commit) and prints an undo line. That commit is expected; record its hash for the report (see Constraints).
 
 After it runs, read the current `.codeyam/editor.json`. If it has placeholder values (`start_command: ""`, no `apps[]`, missing `port`), proceed to phase 4. If you already drafted values in phase 2, merge them in now via Edit.
 
@@ -135,9 +143,11 @@ Inspect:
 
 Fields to populate when missing:
 - `project_name`, `project_description` (synthesize from README + package.json description + routes).
-- `start_command` — match the project's `dev` script. For Next: `next dev --turbopack` or `npm run dev -- --port 3000` (literal port form — recommended when the project's port is stable). The shell-expansion form `npm run dev -- --port $PORT` also works: the editor sets `PORT` in the child env from `editor.json:port`, so `$PORT` resolves at spawn time. Prefer the literal form by default — it reads cleaner to humans and survives env_builder regressions.
-- `port` — pick the project's customary dev port (Next defaults to 3000; Vite 5173).
-- `apps[]` — at minimum one entry: `name`, `dir` (typically `.` for a single-app repo), `type: "web"`, `port`, optional `start_command` overrides.
+- `start_command` — match the project's `dev` script. For Next: `next dev --turbopack` or `npm run dev -- --port 3000` (literal port form — recommended when the project's port is stable). The shell-expansion form `npm run dev -- --port $PORT` also works: the editor sets `PORT` in the child env to the internal port (app port + 1), so `$PORT` resolves to the port the proxy forwards to. Prefer the literal form by default — it reads cleaner to humans and survives env_builder regressions.
+- `port` — pick the project's customary dev port (Next defaults to 3000; Vite 5173). **This is the app port, and it claims two ports.** The editor's proxy binds the app port and runs the dev server on **app port + 1**. It rewrites the literal app port in `start_command` to that internal port (and sets `PORT` to it). Consequences:
+  - Pick an app port whose successor is also free on this machine. If another project's dev server already holds app port + 1, the preview shows that project instead of this one.
+  - Write the app port (not app port + 1) in `start_command`; the editor does the rewrite.
+- `apps[]` — at minimum one entry: `name`, `dir` (typically `.` for a single-app repo), `type: "web"`, `port`, optional `start_command` overrides. `start_command` runs **inside** `apps[].dir`, so do not repeat the dir in the command: `python3 -m http.server 8000 --directory site` with `dir: "site"` serves `site/site` and every page returns 404. Use `dir: "site"` with `python3 -m http.server 8000`, or `dir: "."` with `--directory site`.
 - `test_runners[]` — derive from `package.json` scripts. Concrete vitest example:
   ```json
   {
@@ -163,6 +173,8 @@ Write the changes via Edit on `.codeyam/editor.json`. Do **not** overwrite the w
 
 **Then declare per-unit test partitions.** Run `codeyam-editor editor configure-test-commands`. Besides its runner proposals, it reads the workspace manifests (Cargo `members` + `path =` deps, or `package.json` `workspaces` / `pnpm-workspace.yaml` + sibling deps) and writes one `testPartitions` entry per unit with `dependsOn` from that graph, plus the runner's `changedPartitionRoot` when every unit shares a parent (`crates/*`). It fills only what is absent and never edits a declared entry. Its stderr prints the resulting partition table (`partitions: …`, one row per partition), and it prints one line when the stack has no manifest reader yet. Copy that table, or that line, into the report's `editor.json` section. Without partitions, every change and every cache invalidation re-runs the whole suite.
 
+**Greenfield workspaces: a static check needs something to check.** A Cargo workspace whose virtual manifest has no members yet fails both `cargo fmt --all -- --check` and `cargo clippy --workspace`, and an empty npm/pnpm workspace fails the same way under its linters. The pre-commit hook runs `static_checks`, so declaring them on an empty workspace blocks every commit. Scaffold the first member (an umbrella or first crate/package; a docs-only crate is enough) before you declare the static checks, then re-run `codeyam-editor editor configure-test-commands` so the new member gets its partition.
+
 ## Phase 4b — Index the code (all branches)
 
 By the end of this phase the editor UI is functional. Without it, the App tab fills with phantom routes and entity detail pages show zeros. Three commands; each is idempotent and safe to re-run.
@@ -185,7 +197,11 @@ By the end of this phase the editor UI is functional. Without it, the App tab fi
 
 3. **Test registry.** Required by entity-detail page "tests for this function" and the audit's coverage check.
 
+   `bootstrap-registry` needs a live editor server. On a greenfield repo nothing has registered the project yet, so `codeyam-editor start` refuses with "No registered project matches". Register the project first; it is idempotent, so run it even when the project may already be registered:
+
    ```
+   codeyam-editor editor project-register
+   codeyam-editor start --no-open --project <project dir>
    codeyam-editor editor bootstrap-registry
    ```
 
@@ -201,18 +217,20 @@ Two goals: (a) prove the registration pipeline works on this project, (b) leave 
    - The home/landing page.
    - Top 1–2 most-prominent components (look at imports across the app directory).
    - One auth or data-loaded page if applicable.
-2. For each, register it. Component scenarios use isolation routes; application scenarios use real URLs. The exact invocation is:
+2. For each, register it. Component scenarios use isolation routes; application scenarios use real URLs. Write the payload to a unique scratch path with your file-writing tool (not a shell heredoc), e.g. `.codeyam/tmp/register-home-<unique>.json`. An application scenario needs `name`, `scenarioType: "application"`, `url` (the real route), and `pageFilePath` (the source file that serves it):
 
-   ```
-   # write the scratch file first
-   cat > .codeyam/tmp/register-home-<unique>.json <<'EOF'
-   { "slug": "home", "kind": "application", "url": "/", "screen_size": "Desktop" }
-   EOF
-   codeyam-editor editor register --file .codeyam/tmp/register-home-<unique>.json
+   ```json
+   { "name": "Home - Default", "scenarioType": "application", "url": "/", "pageFilePath": "index.html", "dimensions": ["Desktop"] }
    ```
 
-   `register` deletes the scratch file on success. Do NOT reuse the same filename across calls — each invocation needs a unique path.
-3. If the dev server is running, attempt capture via `codeyam-editor editor recapture-stale --skip-when-clean --prefer-touched` (`--prefer-touched` orders the scenarios you just registered first so the budget captures them before any unrelated environmentally-drifted surface; pure reordering, never expands the set). If not running, skip and note it.
+   Then pass it as a positional `@path` (there is no `--file` flag):
+
+   ```
+   codeyam-editor editor register @.codeyam/tmp/register-home-<unique>.json
+   ```
+
+   `codeyam-editor editor register --help` has the component, DB-seeded, and HTTP-mocked shapes. On success `register` archives the scratch file to `.codeyam/tmp/consumed/<name>-<timestamp>.json` and the original path is gone. Do NOT reuse the same filename across calls — each invocation needs a unique path.
+3. `register` captures each scenario as it goes when the dev server is up. Only if a capture failed (or the server was down at register time and is up now) run `codeyam-editor editor recapture-stale --skip-when-clean --prefer-touched` (`--prefer-touched` orders the scenarios you just registered first; pure reordering, never expands the set). If the server is not running, skip and note it.
 
 This phase is **best-effort**. If registration fails on a specific component, log it in the report and continue — do not block the whole onboarding on one bad scenario.
 
@@ -254,6 +272,7 @@ Write `.codeyam/onboarding-report.md` with these sections:
 **Branch taken:** greenfield | legacy | repair
 **Started:** <ISO timestamp>
 **Completed:** <ISO timestamp>
+**Tooling commit:** <hash of the installer's `chore: refresh codeyam tooling` commit, or "none">
 
 ## Translation decisions
 (legacy branch only: every field you mapped from .codeyam/config.json to .codeyam/editor.json, with before/after values)
@@ -297,8 +316,8 @@ If any of these are zero, the editor UI for this project will not show component
 
 ## Constraints
 
-- **Do not commit.** Write files and leave them uncommitted; the user decides when to commit.
-- **Do not start the dev server.** If it's not running, phase 6 will note it; that's fine.
+- **Onboarding commits nothing of its own.** The one exception is the installer's `chore: refresh codeyam tooling` commit from Phase 3 (`install-hooks` makes it and prints its undo line). That commit is expected; list its hash in the report's opening section. Leave every file this skill writes uncommitted; the user decides when to commit.
+- **Do not start the dev server by hand.** The editor server started in Phase 4b manages it. If it is not running, phase 6 will note it; that's fine.
 - **Do not edit `.codeyam/_legacy/`** after archiving — it's a frozen reference.
 - **One log line per phase boundary** so the user can follow progress. Skip narration during a phase.
 - **No tests written during onboarding.** Test registration is part of the per-feature workflow, not this skill.

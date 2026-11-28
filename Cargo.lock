@@ -95,7 +95,6 @@ dependencies = [
  "simbiguity-math",
  "simbiguity-physics",
  "simbiguity-physics-view",
- "simbiguity-plot",
  "simbiguity-render",
  "simbiguity-render-wasm",
 ]

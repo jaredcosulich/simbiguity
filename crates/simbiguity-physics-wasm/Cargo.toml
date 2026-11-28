@@ -18,4 +18,3 @@ simbiguity-core = { path = "../simbiguity-core" }
 simbiguity-render-wasm = { path = "../simbiguity-render-wasm" }
 simbiguity-render = { path = "../simbiguity-render" }
 simbiguity-math = { path = "../simbiguity-math" }
-simbiguity-plot = { path = "../simbiguity-plot" }

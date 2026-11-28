@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 1
+      "sightings": 2
     }
   ],
   "rounds": [
@@ -314,6 +314,13 @@
     {
       "at": "2026-11-28T14:22:47.091614496+00:00",
       "feature": "Circuits: AC signal sources, oscilloscope probes and RLC resonance",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T14:47:16.671675721+00:00",
+      "feature": "Circuits: sparse solver for thousand-node circuits",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

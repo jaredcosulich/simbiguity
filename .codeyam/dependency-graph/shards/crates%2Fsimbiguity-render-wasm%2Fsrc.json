@@ -973,10 +973,10 @@
     "crates/simbiguity-render-wasm/src/status.rs::ERR_HANDLE": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
-        "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
         "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/slot.rs::no_view"
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
+        "crates/simbiguity-physics-wasm/src/lib.rs::with_session"
       ],
       "imports": [],
       "name": "ERR_HANDLE"
@@ -984,9 +984,9 @@
     "crates/simbiguity-render-wasm/src/status.rs::ERR_INDEX": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
         "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
+        "crates/simbiguity-physics-wasm/src/lib.rs::map_error"
       ],
       "imports": [],
       "name": "ERR_INDEX"
@@ -994,25 +994,6 @@
     "crates/simbiguity-render-wasm/src/status.rs::OK": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_commands_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_len",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_len",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_momentum",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_particle_count",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_positions_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_push",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_results_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_camera",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_friction",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_restitution",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_time_scale",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_step_time_ms",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_time",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_commands_ptr",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_ptr",
@@ -1037,7 +1018,28 @@
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_reset",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_undo",
-        "crates/simbiguity-render-wasm/src/slot.rs::remove"
+        "crates/simbiguity-render-wasm/src/slot.rs::remove",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_commands_ptr",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_len",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_ptr",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_len",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_ptr",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_momentum",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_particle_count",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_positions_ptr",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_push",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_results_ptr",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_camera",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_driven_oscillator_c",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_driven_oscillator_omega",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_friction",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_restitution",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_time_scale",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_step_time_ms",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_time"
       ],
       "imports": [],
       "name": "OK"
@@ -1045,10 +1047,6 @@
     "crates/simbiguity-render-wasm/src/status.rs::fail": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
-        "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_add_probe",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_text",
@@ -1057,7 +1055,11 @@
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
         "crates/simbiguity-render-wasm/src/slot.rs::no_view",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
+        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
+        "crates/simbiguity-physics-wasm/src/lib.rs::with_session"
       ],
       "imports": [],
       "name": "fail",
@@ -1529,10 +1531,6 @@
         "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
@@ -1550,7 +1548,11 @@
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/tests.rs",
-        "crates/simbiguity-render-wasm/src/tests.rs"
+        "crates/simbiguity-render-wasm/src/tests.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs"
       ],
       "imports": [],
       "namedMethods": [

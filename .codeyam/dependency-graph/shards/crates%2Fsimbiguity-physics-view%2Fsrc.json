@@ -9,6 +9,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_cloth",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_double_pendulum",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_driven_oscillator",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_figure_eight",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_orbit",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",

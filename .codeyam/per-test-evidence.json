@@ -500,8 +500,8 @@
   },
   "collide::tests::test_apply_friction_impulse": {
     "file": "crates/simbiguity-physics/src/collide.rs",
-    "lastRunAt": "2026-11-28T19:14:38.318Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T19:14:38.318Z"
@@ -509,8 +509,8 @@
   },
   "collide::tests::test_apply_normal_impulse": {
     "file": "crates/simbiguity-physics/src/collide.rs",
-    "lastRunAt": "2026-11-28T19:14:38.318Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T19:14:38.318Z"
@@ -518,8 +518,8 @@
   },
   "collide::tests::test_build_spatial_grid": {
     "file": "crates/simbiguity-physics/src/collide.rs",
-    "lastRunAt": "2026-11-28T19:14:38.318Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T19:14:38.318Z"
@@ -527,8 +527,8 @@
   },
   "collide::tests::test_find_pairs_broadphase": {
     "file": "crates/simbiguity-physics/src/collide.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -536,8 +536,8 @@
   },
   "collide::tests::test_resolve_ground_collision": {
     "file": "crates/simbiguity-physics/src/collide.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -545,8 +545,8 @@
   },
   "collide::tests::test_resolve_particle_collision": {
     "file": "crates/simbiguity-physics/src/collide.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -554,8 +554,8 @@
   },
   "collide_tests::balls_in_box_overlap_and_momentum": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -563,8 +563,8 @@
   },
   "collide_tests::bounce_drop": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -572,8 +572,8 @@
   },
   "collide_tests::broadphase_equivalence": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -581,8 +581,8 @@
   },
   "collide_tests::elastic_collision_one_kg_into_three_kg_bounces_back_at_minus_one": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -590,8 +590,8 @@
   },
   "collide_tests::equal_masses_elastic_head_on": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -599,8 +599,8 @@
   },
   "collide_tests::ground_friction_slide": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -608,8 +608,8 @@
   },
   "collide_tests::newtons_cradle": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -617,8 +617,8 @@
   },
   "collide_tests::perfectly_inelastic_collision": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -626,8 +626,8 @@
   },
   "collide_tests::stop_distance_matches_v_squared_over_two_mu_g": {
     "file": "crates/simbiguity-physics/src/collide_tests.rs",
-    "lastRunAt": "2026-11-28T19:14:38.318Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T19:14:38.318Z"
@@ -1269,8 +1269,8 @@
   },
   "gravity_tests::circular_orbit_energy_drift_is_bounded": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -1278,8 +1278,8 @@
   },
   "gravity_tests::circular_orbit_euler_explodes": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -1287,8 +1287,8 @@
   },
   "gravity_tests::circular_orbit_period_is_two_pi": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -1296,8 +1296,8 @@
   },
   "gravity_tests::ellipse_keplers_second_law": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -1305,8 +1305,8 @@
   },
   "gravity_tests::ellipse_period_and_aphelion": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -1314,8 +1314,8 @@
   },
   "gravity_tests::three_body_figure_eight_returns_to_start": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:14:02.607Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T19:14:02.607Z",
@@ -1325,8 +1325,8 @@
   },
   "gravity_tests::two_body_binary_momentum_and_separation": {
     "file": "crates/simbiguity-physics/src/gravity_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -1352,8 +1352,8 @@
   },
   "integrate::tests::test_explicit_euler": {
     "file": "crates/simbiguity-physics/src/integrate.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -1361,8 +1361,8 @@
   },
   "integrate::tests::test_symplectic_euler": {
     "file": "crates/simbiguity-physics/src/integrate.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -1370,8 +1370,8 @@
   },
   "integrate::tests::test_velocity_verlet": {
     "file": "crates/simbiguity-physics/src/integrate.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -2380,8 +2380,8 @@
   },
   "no_subcommand_prints_usage": {
     "file": "xtask/tests/cli.rs",
-    "lastRunAt": "2026-11-28T15:52:05.823Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-26T20:56:52.317Z",
@@ -2416,6 +2416,60 @@
       "pass|targeted|2026-11-26T23:52:22.021Z",
       "fail|targeted|2026-11-26T23:51:30.493Z",
       "pass|full|2026-11-26T17:29:47.731Z"
+    ]
+  },
+  "oscillator_tests::test_add_drag": {
+    "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+    "lastRunAt": "2026-11-28T19:54:27.121Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:54:27.121Z"
+    ]
+  },
+  "oscillator_tests::test_add_drive": {
+    "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+    "lastRunAt": "2026-11-28T19:54:27.121Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:54:27.121Z"
+    ]
+  },
+  "oscillator_tests::test_apply_drags": {
+    "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+    "lastRunAt": "2026-11-28T19:54:27.121Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:54:27.121Z"
+    ]
+  },
+  "oscillator_tests::test_apply_drives": {
+    "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+    "lastRunAt": "2026-11-28T19:54:27.121Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:54:27.121Z"
+    ]
+  },
+  "oscillator_tests::test_damped_oscillator_decay": {
+    "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+    "lastRunAt": "2026-11-28T19:54:27.121Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:54:27.121Z"
+    ]
+  },
+  "oscillator_tests::test_driven_oscillator_resonance": {
+    "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+    "lastRunAt": "2026-11-28T19:54:27.121Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T19:54:27.121Z"
     ]
   },
   "overloaded_bulb_blows_and_opens_the_circuit": {
@@ -2699,10 +2753,12 @@
   },
   "repo_hygiene_tests::tests::test_no_junk_files_in_tree": {
     "file": "xtask/src/repo_hygiene_tests.rs",
-    "lastRunAt": "2026-11-28T18:56:21.425Z",
+    "lastRunAt": "2026-11-28T19:54:04.240Z",
     "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|targeted|2026-11-28T19:54:04.240Z",
+      "fail|targeted|2026-11-28T19:53:14.643Z",
       "pass|targeted|2026-11-28T18:56:21.425Z",
       "fail|targeted|2026-11-28T18:55:28.865Z",
       "pass|full|2026-11-28T17:20:24.109Z"
@@ -3137,8 +3193,8 @@
   },
   "site_report_error_fails_the_command": {
     "file": "xtask/tests/cli.rs",
-    "lastRunAt": "2026-11-28T15:52:05.823Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T19:12:14.789Z"
@@ -5127,8 +5183,8 @@
   },
   "tests::test_bridge_exports": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:38:10.049Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T19:38:10.049Z"
@@ -5199,8 +5255,8 @@
   },
   "tests::test_view": {
     "file": "crates/simbiguity-physics-view/src/lib.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T20:42:10.739Z"
@@ -5398,8 +5454,8 @@
   },
   "unknown_subcommand_prints_usage": {
     "file": "xtask/tests/cli.rs",
-    "lastRunAt": "2026-11-28T15:52:05.823Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T19:12:14.789Z"
@@ -5677,8 +5733,8 @@
   },
   "world::tests::test_apply_attractors": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -5686,8 +5742,8 @@
   },
   "world::tests::test_apply_external_pushes": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -5695,8 +5751,8 @@
   },
   "world::tests::test_apply_gravity": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -5704,8 +5760,8 @@
   },
   "world::tests::test_apply_spring_forces": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -5713,8 +5769,8 @@
   },
   "world::tests::test_compute_energy_partitions": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -5722,8 +5778,8 @@
   },
   "world::tests::test_mutual_gravity": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -5731,8 +5787,8 @@
   },
   "world::tests::test_setup_deterministic_ball_pit": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:24:57.708Z"
@@ -5740,8 +5796,8 @@
   },
   "world::tests::test_setup_orbit": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T13:28:33.598Z"
@@ -5749,8 +5805,8 @@
   },
   "world::tests::test_world_new": {
     "file": "crates/simbiguity-physics/src/world.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T20:42:10.739Z"
@@ -5758,8 +5814,8 @@
   },
   "world_tests::bounce": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-27T16:13:07.506Z",
@@ -5769,8 +5825,8 @@
   },
   "world_tests::determinism": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:17:40.711Z"
@@ -5787,8 +5843,8 @@
   },
   "world_tests::error_paths": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:17:40.711Z"
@@ -5796,8 +5852,8 @@
   },
   "world_tests::pendulum_energy_is_conserved_by_verlet": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:17:40.711Z"
@@ -5805,8 +5861,8 @@
   },
   "world_tests::pendulum_large_angle": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:18:19.564Z"
@@ -5814,8 +5870,8 @@
   },
   "world_tests::pendulum_small_angle": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:18:19.564Z"
@@ -5823,8 +5879,8 @@
   },
   "world_tests::projectile_range": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
@@ -5832,8 +5888,8 @@
   },
   "world_tests::rod_length": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
@@ -5841,8 +5897,8 @@
   },
   "world_tests::spring_period": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
@@ -5850,8 +5906,8 @@
   },
   "world_tests::undamped_spring_energy_grows_under_euler": {
     "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-28T19:13:05.314Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T19:53:14.643Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:17:40.711Z"

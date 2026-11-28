@@ -224,6 +224,18 @@
     "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
+    "description": "Adds a drag coefficient for a specific particle",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "add_drag",
+    "testFile": "crates/simbiguity-physics/src/oscillator_tests.rs"
+  },
+  {
+    "description": "Adds a drive force configuration to a specific particle",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "add_drive",
+    "testFile": "crates/simbiguity-physics/src/oscillator_tests.rs"
+  },
+  {
     "description": "Adds the switch base, posts, lever and knob, all pickable as the switch; returns the lever and knob.",
     "filePath": "crates/simbiguity-circuits-view/src/board.rs",
     "name": "add_switch",
@@ -264,6 +276,18 @@
     "filePath": "crates/simbiguity-physics/src/world.rs",
     "name": "apply_attractors",
     "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
+    "description": "Applies drag forces (F = -c * v) to particles during the integration step",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "apply_drags",
+    "testFile": "crates/simbiguity-physics/src/oscillator_tests.rs"
+  },
+  {
+    "description": "Applies explicit time-dependent drive forces (Sine, Step) to particles",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "apply_drives",
+    "testFile": "crates/simbiguity-physics/src/oscillator_tests.rs"
   },
   {
     "description": "Computes and applies kinetic and static friction during a ground collision, correctly integrating exact stopping distance.",

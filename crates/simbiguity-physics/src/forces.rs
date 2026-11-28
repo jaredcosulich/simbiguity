@@ -20,3 +20,18 @@ pub struct Spring {
     pub k: f64,
     pub damping: f64,
 }
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum DriveKind {
+    Sine,
+    Step,
+}
+
+#[derive(Debug, Clone)]
+pub struct Drive {
+    pub axis: Vec3,
+    pub amplitude: f64,
+    pub omega: f64,
+    pub phase: f64,
+    pub kind: DriveKind,
+}

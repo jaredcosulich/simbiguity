@@ -34,9 +34,69 @@ pub struct World {
     pub input_queue: alloc::vec::Vec<PhysicsInput>,
     pub attractors: alloc::vec::Vec<Attractor>,
     pub mutual_gravity: Option<f64>,
+    pub time: f64,
+    pub drags: alloc::vec::Vec<(usize, f64)>,
+    pub drives: alloc::vec::Vec<(usize, crate::forces::Drive)>,
 }
 
 impl World {
+    pub fn time(&self) -> f64 {
+        self.time
+    }
+
+    pub fn add_drive(
+        &mut self,
+        particle: usize,
+        drive: crate::forces::Drive,
+    ) -> Result<(), PhysicsError> {
+        if particle >= self.particles.len() {
+            return Err(PhysicsError::IndexOutOfBounds);
+        }
+        self.drives.push((particle, drive));
+        Ok(())
+    }
+
+    pub fn add_drag(&mut self, particle: usize, c: f64) -> Result<(), PhysicsError> {
+        if particle >= self.particles.len() {
+            return Err(PhysicsError::IndexOutOfBounds);
+        }
+        if c.is_nan() || c < 0.0 {
+            return Err(PhysicsError::InvalidParameter);
+        }
+        self.drags.push((particle, c));
+        Ok(())
+    }
+
+    pub fn apply_drags(&mut self) {
+        for &(p, c) in &self.drags {
+            if !self.particles[p].pinned {
+                let v = self.particles[p].velocity;
+                self.particles[p].force -= v * c;
+            }
+        }
+    }
+
+    pub fn apply_drives(&mut self, time: f64) {
+        for (p, drive) in &self.drives {
+            if !self.particles[*p].pinned {
+                let mag = match drive.kind {
+                    crate::forces::DriveKind::Sine => {
+                        drive.amplitude
+                            * simbiguity_math::float::sin(drive.omega * time + drive.phase)
+                    }
+                    crate::forces::DriveKind::Step => {
+                        if time >= 0.0 {
+                            drive.amplitude
+                        } else {
+                            0.0
+                        }
+                    }
+                };
+                self.particles[*p].force += drive.axis * mag;
+            }
+        }
+    }
+
     pub fn new() -> Self {
         World {
             particles: alloc::vec::Vec::new(),
@@ -50,6 +110,9 @@ impl World {
             input_queue: alloc::vec::Vec::new(),
             attractors: alloc::vec::Vec::new(),
             mutual_gravity: None,
+            time: 0.0,
+            drags: alloc::vec::Vec::new(),
+            drives: alloc::vec::Vec::new(),
         }
     }
 
@@ -395,12 +458,14 @@ impl World {
         }
     }
 
-    pub fn apply_forces(&mut self, active_pushes: &[(usize, Vec3)]) {
+    pub fn apply_forces(&mut self, active_pushes: &[(usize, Vec3)], time: f64) {
         self.apply_gravity();
         self.apply_attractors();
         self.apply_mutual_gravity();
         self.apply_external_pushes(active_pushes);
         self.apply_spring_forces();
+        self.apply_drags();
+        self.apply_drives(time);
     }
 
     fn satisfy_position_constraints(&mut self, dt: f64, old_diffs: &[Vec3]) {
@@ -501,7 +566,8 @@ impl World {
             }
         }
 
-        self.apply_forces(&active_pushes);
+        let t = self.time;
+        self.apply_forces(&active_pushes, t);
 
         let mut old_diffs = alloc::vec::Vec::with_capacity(self.rods.len());
         for r in &self.rods {
@@ -522,7 +588,7 @@ impl World {
             Integrator::VelocityVerlet => {
                 crate::integrate::step_velocity_verlet_part1(&mut self.particles, dt);
                 self.satisfy_position_constraints(dt, &old_diffs);
-                self.apply_forces(&active_pushes);
+                self.apply_forces(&active_pushes, t + dt);
                 crate::integrate::step_velocity_verlet_part2(&mut self.particles, dt);
                 self.satisfy_velocity_constraints();
             }
@@ -534,6 +600,8 @@ impl World {
             dt,
             self.gravity.acceleration.length(),
         );
+
+        self.time += dt;
 
         Ok(())
     }

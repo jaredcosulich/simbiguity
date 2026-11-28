@@ -51,3 +51,10 @@ proves = [
     "gravity_tests::two_body_binary_momentum_and_separation",
     "gravity_tests::three_body_figure_eight_returns_to_start"
 ]
+
+[[capability]]
+name = "Damped and driven oscillators (resonance)"
+description = "Simulates damped and driven oscillators (resonance)."
+proves = [
+    "oscillator_tests::driven_oscillator_at_resonance_has_amplitude_f0_over_c_omega"
+]

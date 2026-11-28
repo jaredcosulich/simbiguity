@@ -617,7 +617,7 @@ pub extern "C" fn phys_new_figure_eight() -> u32 {
 pub extern "C" fn phys_time(h: u32) -> f64 {
     let mut t = 0.0;
     with_session(h, |s| {
-        t = s.time;
+        t = s.world.time();
         OK
     });
     t
@@ -845,6 +845,87 @@ pub extern "C" fn phys_set_friction(h: u32, f: f64) -> i32 {
     with_session(h, |s| {
         if let Some(ref mut g) = s.world.ground {
             g.friction = f;
+        }
+        OK
+    })
+}
+
+fn create_driven_oscillator(
+    m: f64,
+    k: f64,
+    c: f64,
+    f0: f64,
+    omega: f64,
+) -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.gravity.acceleration = Vec3::ZERO;
+    let anchor = world.add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), true)?;
+    let p = world.add_particle(m, Vec3::new(0.1, 5.0, 0.0), false)?;
+
+    world.add_spring(anchor, p, 0.0, k, 0.0)?;
+    world.add_drag(p, c)?;
+    world.add_drive(
+        p,
+        simbiguity_physics::forces::Drive {
+            axis: Vec3::new(1.0, 0.0, 0.0),
+            amplitude: f0,
+            omega,
+            phase: 0.0,
+            kind: simbiguity_physics::forces::DriveKind::Sine,
+        },
+    )?;
+
+    let e = world.compute_energy();
+    let mut positions_buf = alloc::vec::Vec::with_capacity(world.particles.len() * 3);
+    for pt in &world.particles {
+        positions_buf.push(pt.position.x);
+        positions_buf.push(pt.position.y);
+        positions_buf.push(pt.position.z);
+    }
+
+    Ok(Session {
+        world: world.clone(),
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        step_time_ms: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+        positions_buf,
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_driven_oscillator(m: f64, k: f64, c: f64, f0: f64, omega: f64) -> u32 {
+    match create_driven_oscillator(m, k, c, f0, omega) {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn phys_set_driven_oscillator_omega(h: u32, omega: f64) -> i32 {
+    with_session(h, |s| {
+        if let Some((_, drive)) = s.world.drives.first_mut() {
+            drive.omega = omega;
+        }
+        OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_set_driven_oscillator_c(h: u32, c: f64) -> i32 {
+    with_session(h, |s| {
+        if let Some((_, drag)) = s.world.drags.first_mut() {
+            *drag = c;
         }
         OK
     })

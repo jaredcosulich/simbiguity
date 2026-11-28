@@ -2401,6 +2401,60 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies `add_drag` works and handles invalid inputs properly.",
+      "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+      "format": "cargo",
+      "key": "oscillator_tests::test_add_drag",
+      "line": 11,
+      "registeredAt": "2026-11-28T19:54:27.121998399+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies `add_drive` works and handles invalid inputs properly.",
+      "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+      "format": "cargo",
+      "key": "oscillator_tests::test_add_drive",
+      "line": 38,
+      "registeredAt": "2026-11-28T19:54:27.121998399+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies `apply_drags` correctly adds the damping force `F = -c * v`.",
+      "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+      "format": "cargo",
+      "key": "oscillator_tests::test_apply_drags",
+      "line": 26,
+      "registeredAt": "2026-11-28T19:54:27.121998399+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies `apply_drives` correctly applies sine and step functions over time.",
+      "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+      "format": "cargo",
+      "key": "oscillator_tests::test_apply_drives",
+      "line": 58,
+      "registeredAt": "2026-11-28T19:54:27.121998399+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies closed-form expectations for a damped harmonic oscillator.",
+      "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+      "format": "cargo",
+      "key": "oscillator_tests::test_damped_oscillator_decay",
+      "line": 80,
+      "registeredAt": "2026-11-28T19:54:27.121998399+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies driven oscillator resonance behavior compared to theoretical expectations.",
+      "file": "crates/simbiguity-physics/src/oscillator_tests.rs",
+      "format": "cargo",
+      "key": "oscillator_tests::test_driven_oscillator_resonance",
+      "line": 124,
+      "registeredAt": "2026-11-28T19:54:27.121998399+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "An overloaded bulb blows, leaving the battery with an open circuit; the blown bulb is listed last.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -4557,7 +4611,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::binary_returns_to_start",
-      "line": 948,
+      "line": 1029,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -4737,7 +4791,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::figure_eight_returns_to_start",
-      "line": 968,
+      "line": 1049,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -4863,7 +4917,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::orbit_preset_energy_drift_euler_vs_verlet",
-      "line": 988,
+      "line": 1069,
       "registeredAt": "2026-11-28T15:38:04.871205078+00:00",
       "runner": "cargo"
     },
@@ -4872,7 +4926,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::orbit_returns_to_start",
-      "line": 929,
+      "line": 1010,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -4890,7 +4944,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::pendulum_preset_steps_without_panicking",
-      "line": 873,
+      "line": 954,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -4944,7 +4998,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_bridge_exports",
-      "line": 859,
+      "line": 940,
       "registeredAt": "2026-11-28T19:38:10.049790209+00:00",
       "runner": "cargo"
     },
@@ -5475,7 +5529,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_attractors",
-      "line": 610,
+      "line": 678,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -5484,7 +5538,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_external_pushes",
-      "line": 650,
+      "line": 718,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -5493,7 +5547,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_gravity",
-      "line": 638,
+      "line": 706,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -5502,7 +5556,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_spring_forces",
-      "line": 662,
+      "line": 730,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -5511,7 +5565,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_compute_energy_partitions",
-      "line": 566,
+      "line": 634,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -5520,7 +5574,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_mutual_gravity",
-      "line": 589,
+      "line": 657,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -5529,7 +5583,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_setup_deterministic_ball_pit",
-      "line": 678,
+      "line": 746,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -5538,7 +5592,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_setup_orbit",
-      "line": 623,
+      "line": 691,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -5547,7 +5601,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_world_new",
-      "line": 631,
+      "line": 699,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },

@@ -24,14 +24,6 @@
     "run_dbg.sh": {
       "importedBy": [],
       "imports": []
-    },
-    "test_instant.rs": {
-      "importedBy": [],
-      "imports": [],
-      "namedMethods": [
-        "elapsed",
-        "now"
-      ]
     }
   }
 }

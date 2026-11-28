@@ -1051,10 +1051,10 @@
     "crates/simbiguity-circuits/src/lib.rs::__file_root__": {
       "filePath": "crates/simbiguity-circuits/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity/src/lib.rs::__file_root__",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_add_probe",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_kind",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_ptr"
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_ptr",
+        "crates/simbiguity/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
@@ -4877,7 +4877,6 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits/src/invariants_tests.rs",
-        "crates/simbiguity/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
@@ -4887,7 +4886,8 @@
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs"
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs",

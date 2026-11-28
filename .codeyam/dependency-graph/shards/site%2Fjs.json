@@ -140,7 +140,8 @@
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
         "site/demos/circuit-puzzles/game.js::main",
-        "site/demos/rc-charging/demo.js::main"
+        "site/demos/rc-charging/demo.js::main",
+        "site/js/webgl2-executor.test.js::__file_root__"
       ],
       "imports": [
         "site/js/webgl2-executor.js::CommandBufferError",
@@ -185,6 +186,7 @@
       "imports": [
         "site/js/webgl2-executor.js::CommandBufferError",
         "site/js/webgl2-executor.js::UNIFORMS",
+        "site/js/webgl2-executor.js::WebGL2Executor",
         "site/js/webgl2-executor.js::__file_root__",
         "site/js/webgl2-executor.js::decodeCommands"
       ],

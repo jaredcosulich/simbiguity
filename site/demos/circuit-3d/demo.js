@@ -45,22 +45,10 @@ async function main() {
     show(view.readouts());
   }
 
-  function saveHash() {
-    const r = view.readouts();
-    const camera = r.camera;
-    const custom = state.camera !== null;
-    history.replaceState(null, "", location.pathname + location.search + hashFromState({
-      closed: r.closed,
-      volts: r.batteryVolts,
-      fixedTime: state.fixedTime,
-      camera: custom ? camera : null,
-    }));
-  }
-
   /** After any input: frozen pages re-run to the same moment. */
   function changed() {
     if (frozen) view.seek(state.fixedTime);
-    saveHash();
+    saveHash(view.readouts(), state);
     draw();
   }
 
@@ -89,7 +77,7 @@ async function main() {
     onOrbit: orbited,
     onCamera: () => {
       orbited();
-      saveHash();
+      saveHash(view.readouts(), state);
     },
     onKeyToggle: () => $("toggle").onclick(),
   });
@@ -121,6 +109,17 @@ function show(r) {
   lastShown = key;
   showReadouts(d);
   showExplanation(e);
+}
+
+export function saveHash(r, state) {
+  const camera = r.camera;
+  const custom = state.camera !== null;
+  history.replaceState(null, "", location.pathname + location.search + hashFromState({
+    closed: r.closed,
+    volts: r.batteryVolts,
+    fixedTime: state.fixedTime,
+    camera: custom ? camera : null,
+  }));
 }
 
 main().catch((err) => {

@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 
-import { CommandBufferError, MAGIC, UNIFORMS, VERSION, decodeCommands } from "./webgl2-executor.js";
+import { CommandBufferError, MAGIC, UNIFORMS, VERSION, decodeCommands, WebGL2Executor } from "./webgl2-executor.js";
 
 const f = (x) => new Uint32Array(Float32Array.of(x).buffer)[0];
 const head = (op, len) => op | (len << 8);
@@ -79,5 +79,62 @@ describe("UNIFORMS", () => {
     assert.equal(UNIFORMS.length, 8);
     assert.equal(UNIFORMS[0], "u_viewProj");
     assert.equal(UNIFORMS[7], "u_scale");
+  });
+});
+
+describe("WebGL2Executor", () => {
+  it("executes GL calls from decoded commands", async () => {
+    const originalFetch = global.fetch;
+    let fetched = false;
+    global.fetch = async () => {
+      fetched = true;
+      return new Response("fake shader text");
+    };
+
+    try {
+      let clearArgs = null;
+      let clearCalled = false;
+      const gl = {
+        CULL_FACE: 1, BACK: 2, VERTEX_SHADER: 3, FRAGMENT_SHADER: 4, LINK_STATUS: 5, COMPILE_STATUS: 6,
+        ARRAY_BUFFER: 7, STATIC_DRAW: 8, FLOAT: 9, ELEMENT_ARRAY_BUFFER: 10, TRIANGLES: 11, UNSIGNED_INT: 12,
+        COLOR_BUFFER_BIT: 13, DEPTH_BUFFER_BIT: 14, BLEND: 15, SRC_ALPHA: 16, ONE_MINUS_SRC_ALPHA: 17, ONE: 18,
+        DEPTH_TEST: 19,
+        enable: () => {}, cullFace: () => {}, createShader: () => ({}),
+        shaderSource: () => {}, compileShader: () => {},
+        getShaderParameter: () => true, createProgram: () => ({}),
+        attachShader: () => {}, linkProgram: () => {},
+        getProgramParameter: () => true, getUniformLocation: () => ({}),
+        createVertexArray: () => {}, bindVertexArray: () => {},
+        createBuffer: () => {}, bindBuffer: () => {}, bufferData: () => {},
+        enableVertexAttribArray: () => {}, vertexAttribPointer: () => {},
+        disableVertexAttribArray: () => {}, vertexAttribDivisor: () => {},
+        drawElementsInstanced: () => {}, drawElements: () => {},
+        clearColor: (r, g, b, a) => { clearArgs = [r, g, b, a]; },
+        clear: () => { clearCalled = true; }, viewport: () => {},
+        useProgram: () => {}, uniformMatrix4fv: () => {},
+        uniform4fv: () => {}, uniform1f: () => {},
+        disable: () => {}, blendFunc: () => {}, depthMask: () => {}
+      };
+      
+      const exec = await WebGL2Executor.create(gl);
+      
+      const words = new Uint32Array(8);
+      words[0] = MAGIC;
+      words[1] = VERSION;
+      words[2] = 0x00000401; // op=1 (clear), len=4
+      const f32 = new Float32Array(words.buffer);
+      f32[3] = 0.1; f32[4] = 0.2; f32[5] = 0.3; f32[6] = 1.0;
+      
+      exec.execute(words.slice(0, 7));
+      
+      assert.ok(fetched, "should fetch shaders");
+      assert.ok(clearCalled, "should call gl.clear");
+      assert.ok(Math.abs(clearArgs[0] - 0.1) < 0.0001);
+      assert.ok(Math.abs(clearArgs[1] - 0.2) < 0.0001);
+      assert.ok(Math.abs(clearArgs[2] - 0.3) < 0.0001);
+      assert.equal(clearArgs[3], 1.0);
+    } finally {
+      global.fetch = originalFetch;
+    }
   });
 });

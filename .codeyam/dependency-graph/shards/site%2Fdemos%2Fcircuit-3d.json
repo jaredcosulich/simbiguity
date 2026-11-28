@@ -25,6 +25,7 @@
     "site/demos/circuit-3d/demo.js::__file_root__": {
       "filePath": "site/demos/circuit-3d/demo.js",
       "importedBy": [
+        "site/demos/circuit-3d/demo.test.js::__file_root__",
         "site/demos/circuit-3d/index.html::__file_root__"
       ],
       "imports": [
@@ -38,14 +39,24 @@
       "imports": [
         "site/demos/circuit-3d/canvas-input.js::bindCanvasInput",
         "site/demos/circuit-3d/demo.js::$",
+        "site/demos/circuit-3d/demo.js::saveHash",
         "site/demos/circuit-3d/demo.js::show",
         "site/demos/circuit-3d/pointer.js::canvasSize",
-        "site/demos/circuit-3d/state.js::hashFromState",
         "site/demos/circuit-3d/state.js::stateFromHash",
         "site/js/simbiguity-render.js::loadCircuit3D",
         "site/js/webgl2-executor.js::WebGL2Executor"
       ],
       "name": "main"
+    },
+    "site/demos/circuit-3d/demo.js::saveHash": {
+      "filePath": "site/demos/circuit-3d/demo.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::main"
+      ],
+      "imports": [
+        "site/demos/circuit-3d/state.js::hashFromState"
+      ],
+      "name": "saveHash"
     },
     "site/demos/circuit-3d/demo.js::show": {
       "filePath": "site/demos/circuit-3d/demo.js",
@@ -59,6 +70,14 @@
         "site/demos/circuit-3d/readouts.js::formatReadouts"
       ],
       "name": "show"
+    },
+    "site/demos/circuit-3d/demo.test.js::__file_root__": {
+      "filePath": "site/demos/circuit-3d/demo.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/demo.js::__file_root__"
+      ],
+      "name": "__file_root__"
     },
     "site/demos/circuit-3d/explain-panel.js::box": {
       "filePath": "site/demos/circuit-3d/explain-panel.js",
@@ -255,7 +274,7 @@
     "site/demos/circuit-3d/state.js::hashFromState": {
       "filePath": "site/demos/circuit-3d/state.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::main",
+        "site/demos/circuit-3d/demo.js::saveHash",
         "site/demos/circuit-3d/state.test.js::__file_root__"
       ],
       "imports": [
@@ -314,6 +333,7 @@
     },
     "site/demos/circuit-3d/demo.js": {
       "importedBy": [
+        "site/demos/circuit-3d/demo.test.js",
         "site/demos/circuit-3d/index.html"
       ],
       "imports": [
@@ -326,6 +346,12 @@
         "site/demos/circuit-3d/readouts.js",
         "site/demos/circuit-3d/readouts-panel.js",
         "site/demos/circuit-3d/state.js"
+      ]
+    },
+    "site/demos/circuit-3d/demo.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-3d/demo.js"
       ]
     },
     "site/demos/circuit-3d/explain-panel.js": {

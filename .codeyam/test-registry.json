@@ -1,6 +1,15 @@
 {
   "tests": [
     {
+      "description": "Test WebGL2Executor GL calls",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "WebGL2Executor › executes GL calls from decoded commands",
+      "line": 86,
+      "registeredAt": "2026-11-28T02:49:36.611964514+00:00",
+      "runner": "node"
+    },
+    {
       "description": "the corners map exactly.",
       "file": "crates/simbiguity-plot/src/axes.rs",
       "format": "cargo",
@@ -2690,6 +2699,15 @@
       "line": 114,
       "registeredAt": "2026-11-26T17:33:52.512695894+00:00",
       "runner": "cargo"
+    },
+    {
+      "description": "Test demo.js history replaceState hash write",
+      "file": "site/demos/circuit-3d/demo.test.js",
+      "format": "junit-xml",
+      "key": "test › demo.js history.replaceState hash write",
+      "line": 5,
+      "registeredAt": "2026-11-28T02:49:36.733828261+00:00",
+      "runner": "node"
     },
     {
       "description": "Braces in strings, char literals and comments do not count.",

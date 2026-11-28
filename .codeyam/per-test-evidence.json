@@ -5262,6 +5262,15 @@
       "pass|full|2026-11-26T20:42:10.739Z"
     ]
   },
+  "tests::version_matches_the_crate_manifest": {
+    "file": "crates/simbiguity/src/lib.rs",
+    "lastRunAt": "2026-11-26T12:58:43.263Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-26T12:57:45.925Z"
+    ]
+  },
   "thousand_rung_ladder_draws_one_over_phi_amps": {
     "file": "crates/simbiguity-circuits/tests/large.rs",
     "lastRunAt": "2026-11-28T18:14:07.076Z",

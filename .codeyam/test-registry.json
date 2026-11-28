@@ -5273,6 +5273,15 @@
       "runner": "cargo"
     },
     {
+      "description": "The published version must match the crate manifest, so the engine status page and embedding projects can report exactly which simbiguity build they are running.",
+      "file": "crates/simbiguity/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::version_matches_the_crate_manifest",
+      "line": 27,
+      "registeredAt": "2026-11-26T12:57:45.925589+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "1. Ladder test",
       "file": "crates/simbiguity-circuits/tests/large.rs",
       "format": "cargo",

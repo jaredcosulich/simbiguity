@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 7
+      "sightings": 8
     }
   ],
   "rounds": [
@@ -355,6 +355,13 @@
     {
       "at": "2026-11-28T15:56:41.019582269+00:00",
       "feature": "Site Gallery & Smoke Test",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T17:25:41.927435485+00:00",
+      "feature": "Round 4: Trustworthy Gates",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

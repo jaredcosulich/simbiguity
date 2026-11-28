@@ -253,13 +253,19 @@
       "shortSha": "449daee",
       "subject": "feat: Site gallery, smoke test and graceful failure before GitHub Pages",
       "deferredAt": "2026-11-28T15:55:46Z"
+    },
+    {
+      "sha": "f41666d8f97ac3f92f0abb0ae4e208657c9dd0e1",
+      "shortSha": "f41666d",
+      "subject": "feat: Round 4: trustworthy gates — bench check that can fail, honest size budgets, junk and duplicate-screenshot tests",
+      "deferredAt": "2026-11-28T17:24:28Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T15:56:12Z",
-    "deferredCommits": 44
+    "at": "2026-11-28T17:24:59Z",
+    "deferredCommits": 45
   },
   "drained": {
     "screenshots": 27,

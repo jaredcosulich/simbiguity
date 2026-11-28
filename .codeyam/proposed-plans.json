@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 11
+      "sightings": 12
     }
   ],
   "rounds": [
@@ -383,6 +383,13 @@
     {
       "at": "2026-11-28T19:02:52.075776598+00:00",
       "feature": "Circuits: op-amps and controlled sources",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T19:19:29.660971024+00:00",
+      "feature": "Physics Accuracy: v²/2μg friction and restored gravity",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

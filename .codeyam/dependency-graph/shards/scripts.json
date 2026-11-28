@@ -8,6 +8,10 @@
     "scripts/check-budgets.sh": {
       "importedBy": [],
       "imports": []
+    },
+    "scripts/invariants_prototype.rs": {
+      "importedBy": [],
+      "imports": []
     }
   }
 }

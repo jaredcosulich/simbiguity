@@ -46,8 +46,8 @@
   },
   "board::tests::append_rebases_indices": {
     "file": "crates/simbiguity-circuits-view/src/board.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -55,8 +55,8 @@
   },
   "board::tests::charges_start_empty": {
     "file": "crates/simbiguity-circuits-view/src/board.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-27T17:18:33.703Z",
@@ -66,8 +66,8 @@
   },
   "board::tests::every_component_is_pickable": {
     "file": "crates/simbiguity-circuits-view/src/board.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-26T21:17:43.998Z",
@@ -77,8 +77,8 @@
   },
   "board::tests::filament_paths_share_their_feet": {
     "file": "crates/simbiguity-circuits-view/src/board.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -86,8 +86,8 @@
   },
   "board::tests::parts_point_at_the_animated_nodes": {
     "file": "crates/simbiguity-circuits-view/src/board.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -311,8 +311,8 @@
   },
   "check_budgets_tests::tests::test_check_budgets_script": {
     "file": "xtask/src/check_budgets_tests.rs",
-    "lastRunAt": "2026-11-27T20:08:35.586Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-11-28T00:05:00.754Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T20:08:35.586Z"
@@ -986,10 +986,14 @@
   },
   "golden::tests::golden_determinism_check": {
     "file": "crates/simbiguity-circuits-wasm/src/golden.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:07:07.942Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-11-28T00:06:01.186Z",
+      "fail|targeted|2026-11-28T00:05:21.361Z",
+      "pass|changed|2026-11-28T00:04:16.873Z",
+      "fail|targeted|2026-11-28T00:00:24.224Z",
       "pass|full|2026-11-27T01:04:14Z"
     ]
   },
@@ -1026,17 +1030,19 @@
   },
   "invariants_tests::tests::kcl_invariant": {
     "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
-    "lastRunAt": "2026-11-27T20:08:00.792Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-11-28T00:06:30.063Z",
+    "lastRunKind": "targeted",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-11-28T00:01:08.007Z",
+      "fail|targeted|2026-11-27T23:59:50.400Z",
       "pass|full|2026-11-27T01:04:14Z"
     ]
   },
   "issues::tests::issue_kind_code_distinct_for_all_variants": {
     "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T15:42:25.533Z"
@@ -1044,8 +1050,8 @@
   },
   "issues::tests::issue_kind_code_solver_failure": {
     "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T21:39:50.102Z"
@@ -1053,8 +1059,8 @@
   },
   "issues::tests::issue_part_index_solver_failure": {
     "file": "crates/simbiguity-circuits-wasm/src/issues.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T21:39:50.102Z"
@@ -1071,8 +1077,8 @@
   },
   "layout::tests::empty_loop_is_inert": {
     "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1080,8 +1086,8 @@
   },
   "layout::tests::lever_and_knob_follow_the_angle": {
     "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1116,8 +1122,8 @@
   },
   "layout::tests::wrap_maps_into_the_period": {
     "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1441,8 +1447,8 @@
   },
   "look::tests::blown_bulb_is_smoky_and_flashes": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1450,8 +1456,8 @@
   },
   "look::tests::charges_warm_with_current": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1459,8 +1465,8 @@
   },
   "look::tests::cold_bulb_is_clear_and_dark": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1468,8 +1474,8 @@
   },
   "look::tests::glow_brightens_monotonically": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1477,8 +1483,8 @@
   },
   "look::tests::inputs_are_clamped": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1486,8 +1492,8 @@
   },
   "look::tests::lerp3_blends_channels": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -1495,8 +1501,8 @@
   },
   "look::tests::lit_bulb_is_warm_and_glowing": {
     "file": "crates/simbiguity-circuits-view/src/look.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -2142,8 +2148,8 @@
   },
   "readouts::tests::fields_land_in_their_slots": {
     "file": "crates/simbiguity-render-wasm/src/readouts.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -2151,8 +2157,8 @@
   },
   "readouts::tests::flags_flip": {
     "file": "crates/simbiguity-render-wasm/src/readouts.rs",
-    "lastRunAt": "2026-11-27T17:18:50.731Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -2459,8 +2465,8 @@
   },
   "sim::tests::cache_produces_bit_identical_results": {
     "file": "crates/simbiguity-circuits/src/sim.rs",
-    "lastRunAt": "2026-11-27T20:11:26.083Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:00:18.477Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T20:57:55.560Z"
@@ -2468,8 +2474,8 @@
   },
   "sim::tests::changing_dt_refactors_the_matrix": {
     "file": "crates/simbiguity-circuits/src/sim.rs",
-    "lastRunAt": "2026-11-27T20:11:26.083Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:00:18.477Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-27T20:08:00.792Z",
@@ -2479,8 +2485,8 @@
   },
   "sim::tests::random_history_equivalence": {
     "file": "crates/simbiguity-circuits/src/sim.rs",
-    "lastRunAt": "2026-11-27T20:11:26.083Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:00:18.477Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T20:08:07.139Z"
@@ -2488,8 +2494,8 @@
   },
   "sim::tests::resistance_change_invalidation": {
     "file": "crates/simbiguity-circuits/src/sim.rs",
-    "lastRunAt": "2026-11-27T20:11:26.083Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:00:18.477Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T20:08:07.139Z"
@@ -2497,8 +2503,8 @@
   },
   "sim::tests::wheatstone_emf_factorisation_reuse": {
     "file": "crates/simbiguity-circuits/src/sim.rs",
-    "lastRunAt": "2026-11-27T20:11:26.083Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:00:18.477Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T20:08:07.139Z"
@@ -2740,8 +2746,8 @@
   },
   "tests::bad_handle_fails_every_export": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2749,8 +2755,8 @@
   },
   "tests::bad_handles_are_rejected": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -2758,8 +2764,8 @@
   },
   "tests::bridge_stress_test": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:20.506Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T01:04:14Z"
@@ -2767,8 +2773,8 @@
   },
   "tests::bypass_short_has_no_solution": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2776,8 +2782,8 @@
   },
   "tests::camera_exports_use_degrees_and_clamp": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -2794,8 +2800,8 @@
   },
   "tests::circuit_free_rejects_dead_and_zero_handles": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2803,8 +2809,8 @@
   },
   "tests::circuit_new_returns_distinct_nonzero_handles": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2812,8 +2818,8 @@
   },
   "tests::circuit_plot_draw_escapes_and_drops_nan": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T15:42:25.533Z"
@@ -2821,8 +2827,8 @@
   },
   "tests::circuit_set_value_changes_next_solve": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2830,8 +2836,8 @@
   },
   "tests::circuit_toggle_returns_new_state": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2848,8 +2854,8 @@
   },
   "tests::closed_loop_lights_bulb_at_rating": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2857,8 +2863,8 @@
   },
   "tests::component_calls_check_id_and_kind": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2902,8 +2908,8 @@
   },
   "tests::encode_writes_a_decodable_frame": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -2911,8 +2917,8 @@
   },
   "tests::freed_handle_stays_dead_after_new_circuits": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2929,8 +2935,8 @@
   },
   "tests::ids_count_up_in_creation_order": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2938,8 +2944,8 @@
   },
   "tests::inputs_reach_the_view": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-27T15:41:02.687Z",
@@ -2951,8 +2957,8 @@
   },
   "tests::issue_kind_code_and_part_match_the_engine": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2960,8 +2966,8 @@
   },
   "tests::issue_messages_and_index_bounds": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -2969,8 +2975,8 @@
   },
   "tests::layout_bridge_exports": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T17:20:09.756Z"
@@ -2978,8 +2984,8 @@
   },
   "tests::layout_bridge_rejects_malformed_buffer": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T17:20:09.756Z"
@@ -2996,8 +3002,8 @@
   },
   "tests::mesh_exports_cover_every_mesh": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3005,8 +3011,8 @@
   },
   "tests::new_view_reads_back_its_state": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-26T23:52:22.021Z",
@@ -3027,8 +3033,8 @@
   },
   "tests::open_switch_carries_no_current": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -3036,8 +3042,8 @@
   },
   "tests::overvoltage_blows_bulb_until_replaced": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -3045,8 +3051,8 @@
   },
   "tests::pendulum_preset_steps_without_panicking": {
     "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:20.506Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T00:47:12.673Z"
@@ -3054,8 +3060,8 @@
   },
   "tests::pick_hits_the_switch_and_misses_the_sky": {
     "file": "crates/simbiguity-render-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:02:31.188Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-27T11:49:28.249Z",
@@ -3065,8 +3071,8 @@
   },
   "tests::place_rejects_unknown_node": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -3074,8 +3080,8 @@
   },
   "tests::sb_alloc_round_trip": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
-    "lastRunAt": "2026-11-27T15:31:33.047Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:03:28.193Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T17:56:23.091Z"
@@ -3381,8 +3387,8 @@
   },
   "view_tests::advance_runs_fixed_steps": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3390,8 +3396,8 @@
   },
   "view_tests::blowing_and_replacing_the_bulb": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-27T15:41:02.687Z",
@@ -3405,8 +3411,8 @@
   },
   "view_tests::closed_switch_moves_charges": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-27T11:49:00.374Z",
@@ -3420,8 +3426,8 @@
   },
   "view_tests::commands_returns_the_last_frame": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3429,8 +3435,8 @@
   },
   "view_tests::default_camera_is_three_quarter": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3438,8 +3444,8 @@
   },
   "view_tests::each_bulb_glows_at_its_own_brightness": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T17:20:09.756Z"
@@ -3447,8 +3453,8 @@
   },
   "view_tests::glow_follows_brightness_through_the_spring": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-26T21:17:43.998Z",
@@ -3458,8 +3464,8 @@
   },
   "view_tests::open_switch_leaves_charges_still": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3467,8 +3473,8 @@
   },
   "view_tests::parallel_bulbs_are_drawn_in_their_own_cells": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T13:15:45.602Z"
@@ -3476,8 +3482,8 @@
   },
   "view_tests::particle_speed_is_proportional_to_current": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3485,8 +3491,8 @@
   },
   "view_tests::pick_finds_the_switch": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-27T11:49:28.249Z",
@@ -3496,8 +3502,8 @@
   },
   "view_tests::seek_is_deterministic": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-26T18:40:50.408Z"
@@ -3505,8 +3511,8 @@
   },
   "view_tests::toggle_swings_the_lever": {
     "file": "crates/simbiguity-circuits-view/src/view_tests.rs",
-    "lastRunAt": "2026-11-27T20:07:38.802Z",
-    "lastRunKind": "targeted",
+    "lastRunAt": "2026-11-28T00:04:57.662Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
       "pass|targeted|2026-11-26T21:18:28.541Z",

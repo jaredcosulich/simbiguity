@@ -181,3 +181,44 @@ fn layout_bridge_rejects_malformed_buffer() {
     assert_eq!(h3, 0);
     assert!(error_message().contains("invalid layout"));
 }
+
+/// Verifies the bridge stress conditions by ensuring heavy render loads do not cause WASM panics.
+#[test]
+fn bridge_stress_test() {
+    struct Lcg(u32);
+    impl Lcg {
+        fn next(&mut self) -> u32 {
+            self.0 = self.0.wrapping_mul(1664525).wrapping_add(1013904223);
+            self.0
+        }
+        fn chance(&mut self, p: f64) -> bool {
+            (self.next() as f64 / u32::MAX as f64) < p
+        }
+    }
+    let mut rng = Lcg(0x1337);
+    for _ in 0..10000 {
+        let op = rng.next() % 6;
+        let h = if rng.chance(0.8) { c3d_new(12.0, 1) } else { 0 };
+        match op {
+            0 => {
+                c3d_advance(h, 0.016);
+            }
+            1 => {
+                c3d_free(h);
+            }
+            2 => {
+                c3d_toggle(h);
+            }
+            3 => {
+                c3d_encode(h, 800, 600);
+            }
+            4 => {
+                c3d_readouts_ptr(h);
+            }
+            5 => {
+                c3d_mesh_count(h);
+            }
+            _ => unreachable!(),
+        }
+    }
+}

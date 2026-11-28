@@ -1259,8 +1259,8 @@
     "crates/simbiguity-circuits-view/src/layout.rs::LEVER_OPEN_ANGLE": {
       "filePath": "crates/simbiguity-circuits-view/src/layout.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-view/src/view_tests.rs::toggle_swings_the_lever",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::lever_target",
+        "crates/simbiguity-circuits-view/src/view_tests.rs::toggle_swings_the_lever"
       ],
       "imports": [],
       "name": "LEVER_OPEN_ANGLE"
@@ -1494,14 +1494,14 @@
     "crates/simbiguity-circuits-view/src/lib.rs::CircuitView": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-render-wasm/src/slot.rs::Slot::view",
-        "crates/simbiguity-render-wasm/src/slot.rs::insert",
-        "xtask/src/bench_fixtures.rs::run_all",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-render-wasm/src/slot.rs::Slot::view",
+        "crates/simbiguity-render-wasm/src/slot.rs::insert",
+        "xtask/src/bench_fixtures.rs::run_all"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/board.rs::Parts",
@@ -2620,11 +2620,11 @@
     "crates/simbiguity-circuits-view/src/lib.rs::Readouts": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::readouts",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::Readouts::battery_volts",
@@ -2827,11 +2827,11 @@
     "crates/simbiguity-circuits-view/src/lib.rs::default_camera": {
       "filePath": "crates/simbiguity-circuits-view/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-render-wasm/src/tests.rs::pick_hits_the_switch_and_misses_the_sky",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-render-wasm/src/tests.rs::pick_hits_the_switch_and_misses_the_sky"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::new",
@@ -3046,13 +3046,13 @@
     "crates/simbiguity-circuits-view/src/look.rs::Surface": {
       "filePath": "crates/simbiguity-circuits-view/src/look.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::paint",
         "crates/simbiguity-circuits-view/src/look.rs::BulbLook",
         "crates/simbiguity-circuits-view/src/look.rs::BulbLook::filament",
         "crates/simbiguity-circuits-view/src/look.rs::BulbLook::glass",
         "crates/simbiguity-circuits-view/src/look.rs::BulbLook::halo",
         "crates/simbiguity-circuits-view/src/look.rs::bulb_look",
-        "crates/simbiguity-circuits-view/src/look.rs::charge_look",
-        "crates/simbiguity-circuits-view/src/lib.rs::paint"
+        "crates/simbiguity-circuits-view/src/look.rs::charge_look"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/look.rs::Surface::alpha",
@@ -3516,14 +3516,14 @@
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/layout.rs",
-        "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs"
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/view_tests.rs",
+        "crates/simbiguity-circuits-view/src/view_tests.rs",
+        "crates/simbiguity-circuits-view/src/view_tests.rs",
+        "crates/simbiguity-circuits-view/src/view_tests.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs",
@@ -3544,15 +3544,15 @@
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-circuits-view/src/view_tests.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs"
+        "crates/simbiguity-circuits-view/src/view_tests.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs",

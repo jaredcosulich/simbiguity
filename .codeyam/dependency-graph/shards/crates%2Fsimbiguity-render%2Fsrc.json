@@ -3,17 +3,17 @@
     "crates/simbiguity-render/src/camera.rs::OrbitCamera": {
       "filePath": "crates/simbiguity-render/src/camera.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::default_camera",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::camera",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-render/src/camera.rs::OrbitCamera::default",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::camera",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::default_camera"
+        "crates/simbiguity-render-wasm/src/readouts.rs::pack_readouts"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::sin_cos",
@@ -613,6 +613,11 @@
     "crates/simbiguity-render/src/commands.rs::CommandBuffer": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
@@ -626,12 +631,7 @@
         "crates/simbiguity-render/src/frame.rs::Encoder::out",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::time",
-        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw"
+        "crates/simbiguity-render-wasm/src/tests.rs::encode_writes_a_decodable_frame"
       ],
       "imports": [
         "crates/simbiguity-render/src/commands.rs::Command",
@@ -708,14 +708,14 @@
     "crates/simbiguity-render/src/commands.rs::CommandBuffer::new": {
       "filePath": "crates/simbiguity-render/src/commands.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
-        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words",
-        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_plot_draw"
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
       ],
       "imports": [
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
@@ -1338,6 +1338,7 @@
     "crates/simbiguity-render/src/frame.rs::FrameBuf": {
       "filePath": "crates/simbiguity-render/src/frame.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
@@ -1346,8 +1347,7 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/frame.rs::FrameBuf::capacity",
@@ -1423,8 +1423,8 @@
     "crates/simbiguity-render/src/frame.rs::FrameBuf::new": {
       "filePath": "crates/simbiguity-render/src/frame.rs",
       "importedBy": [
-        "crates/simbiguity-render/src/frame.rs::FrameBuf",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
       ],
       "imports": [],
       "inherentMethod": true,
@@ -1527,10 +1527,10 @@
     "crates/simbiguity-render/src/frame.rs::encode_frame": {
       "filePath": "crates/simbiguity-render/src/frame.rs",
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode"
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::encode",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/camera.rs::OrbitCamera",
@@ -2668,6 +2668,7 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_charges",
         "crates/simbiguity-circuits-view/src/board.rs::add_switch",
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
+        "crates/simbiguity-circuits-view/src/lib.rs::paint",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::add_line",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update",
@@ -2681,8 +2682,7 @@
         "crates/simbiguity-render/src/scene.rs::Material::with_emissive",
         "crates/simbiguity-render/src/scene.rs::Node",
         "crates/simbiguity-render/src/scene.rs::Node::material",
-        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
-        "crates/simbiguity-circuits-view/src/lib.rs::paint"
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Light::color",
@@ -2996,6 +2996,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3003,10 +3006,7 @@
         "crates/simbiguity-render/src/frame.rs::Encoder::scene",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/mesh.rs::Mesh",
@@ -3033,6 +3033,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3040,10 +3043,7 @@
         "crates/simbiguity-render/src/frame.rs::Encoder::scene",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs::Mat4",
@@ -3079,6 +3079,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3087,10 +3090,7 @@
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render/src/scene.rs::Scene::default",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
       ],
       "imports": [],
       "name": "Scene::clear"
@@ -3106,6 +3106,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3116,10 +3119,7 @@
         "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-render/src/scene.rs::Light",
         "crates/simbiguity-render/src/scene.rs::Light::default",
-        "crates/simbiguity-render/src/scene.rs::Scene::new",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::new"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Light",
@@ -3148,6 +3148,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3156,10 +3159,7 @@
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render/src/scene.rs::Scene::default",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Instances"
@@ -3177,6 +3177,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3185,10 +3188,7 @@
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render/src/scene.rs::Scene::default",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Light"
@@ -3206,6 +3206,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3216,10 +3219,7 @@
         "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-render/src/scene.rs::Scene::add_mesh",
         "crates/simbiguity-render/src/scene.rs::Scene::default",
-        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
       ],
       "imports": [
         "crates/simbiguity-render/src/mesh.rs::Mesh"
@@ -3237,6 +3237,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3247,10 +3250,7 @@
         "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-render/src/scene.rs::Light",
         "crates/simbiguity-render/src/scene.rs::Light::default",
-        "crates/simbiguity-render/src/scene.rs::Scene::default",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::default"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Light::default",
@@ -3273,6 +3273,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3280,10 +3283,7 @@
         "crates/simbiguity-render/src/frame.rs::Encoder::scene",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Node",
@@ -3304,6 +3304,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3311,10 +3314,7 @@
         "crates/simbiguity-render/src/frame.rs::Encoder::scene",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
-        "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/lib.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Node",
@@ -3335,6 +3335,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3348,10 +3351,7 @@
         "crates/simbiguity-render/src/scene.rs::Scene::node",
         "crates/simbiguity-render/src/scene.rs::Scene::node_mut",
         "crates/simbiguity-render/src/scene.rs::Scene::pick",
-        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::world_bounds"
       ],
       "imports": [
         "crates/simbiguity-render/src/scene.rs::Node"
@@ -3369,6 +3369,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3379,10 +3382,7 @@
         "crates/simbiguity-render/src/lib.rs::__file_root__",
         "crates/simbiguity-render/src/scene.rs::Node",
         "crates/simbiguity-render/src/scene.rs::Node::pick",
-        "crates/simbiguity-render/src/scene.rs::Scene::add_node",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::add_node"
       ],
       "imports": [
         "crates/simbiguity-render/src/pick.rs::Hit",
@@ -3414,6 +3414,9 @@
         "crates/simbiguity-circuits-view/src/board.rs::add_wires",
         "crates/simbiguity-circuits-view/src/board.rs::build_scene",
         "crates/simbiguity-circuits-view/src/board.rs::pickable",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
+        "crates/simbiguity-circuits-view/src/lib.rs::scene",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::scene",
@@ -3422,10 +3425,7 @@
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__",
-        "crates/simbiguity-render/src/scene.rs::Scene::pick",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::scene",
-        "crates/simbiguity-circuits-view/src/lib.rs::scene"
+        "crates/simbiguity-render/src/scene.rs::Scene::pick"
       ],
       "imports": [
         "crates/simbiguity-render/src/pick.rs::Aabb",
@@ -3501,13 +3501,13 @@
         "crates/simbiguity-render/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
         "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-render/src/frame.rs",
         "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/readouts.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs"
+        "crates/simbiguity-render-wasm/src/readouts.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",
@@ -3521,40 +3521,40 @@
         "crates/simbiguity-render/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/decode.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/tests.rs",
-        "crates/simbiguity-render-wasm/src/tests.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-wasm/src/lib.rs"
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/decode.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs",
+        "crates/simbiguity-render-wasm/src/tests.rs"
       ],
       "imports": []
     },
@@ -3581,13 +3581,13 @@
         "crates/simbiguity-render/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs"
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs",
@@ -3722,25 +3722,25 @@
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
         "crates/simbiguity-circuits-view/src/board.rs",
-        "crates/simbiguity-physics-view/src/lib.rs",
-        "crates/simbiguity-physics-view/src/lib.rs",
-        "crates/simbiguity-physics-view/src/lib.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/frame.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
-        "crates/simbiguity-render/src/lib.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs"
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-physics-view/src/lib.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/frame.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs",
+        "crates/simbiguity-render/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/mat.rs",

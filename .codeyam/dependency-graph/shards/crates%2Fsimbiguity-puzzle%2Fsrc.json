@@ -3,8 +3,8 @@
     "crates/simbiguity-puzzle/src/lib.rs::Goal": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
       "importedBy": [
-        "crates/simbiguity-puzzle/src/lib.rs::check",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-puzzle/src/lib.rs::check"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Simulation",

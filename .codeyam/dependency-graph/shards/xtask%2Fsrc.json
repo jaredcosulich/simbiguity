@@ -2879,6 +2879,10 @@
       ],
       "imports": []
     },
+    "xtask/src/golden_hashes_gen.rs": {
+      "importedBy": [],
+      "imports": []
+    },
     "xtask/src/libtest_output.rs": {
       "declaredBy": [
         "xtask/src/main.rs"

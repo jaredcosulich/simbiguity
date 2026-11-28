@@ -381,4 +381,49 @@ mod tests {
         }
         phys_free(h);
     }
+
+    /// Verifies the bridge stress conditions by ensuring heavy physics loads do not cause WASM panics.
+    #[test]
+    fn bridge_stress_test() {
+        struct Lcg(u32);
+        impl Lcg {
+            fn next(&mut self) -> u32 {
+                self.0 = self.0.wrapping_mul(1664525).wrapping_add(1013904223);
+                self.0
+            }
+            fn chance(&mut self, p: f64) -> bool {
+                (self.next() as f64 / u32::MAX as f64) < p
+            }
+        }
+        let mut rng = Lcg(0x1337);
+        for _ in 0..10000 {
+            let op = rng.next() % 6;
+            let h = if rng.chance(0.8) {
+                phys_new_pendulum()
+            } else {
+                0
+            };
+            match op {
+                0 => {
+                    phys_advance(h, 0.016);
+                }
+                1 => {
+                    phys_free(h);
+                }
+                2 => {
+                    phys_push(h, 0, 1.0, 0.0, 0.0);
+                }
+                3 => {
+                    phys_encode(h, 800, 600);
+                }
+                4 => {
+                    phys_results_ptr(h);
+                }
+                5 => {
+                    phys_mesh_count(h);
+                }
+                _ => unreachable!(),
+            }
+        }
+    }
 }

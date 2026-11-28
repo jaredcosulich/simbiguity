@@ -963,9 +963,9 @@
     "crates/simbiguity-circuits-wasm/src/status.rs::ERR_COMPONENT": {
       "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::part",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::component_calls_check_id_and_kind"
       ],
       "imports": [],
       "name": "ERR_COMPONENT"
@@ -973,12 +973,12 @@
     "crates/simbiguity-circuits-wasm/src/status.rs::ERR_HANDLE": {
       "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs::bad_handle_fails_every_export",
-        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles",
-        "crates/simbiguity-circuits-wasm/src/tests.rs::freed_handle_stays_dead_after_new_circuits",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
         "crates/simbiguity-circuits-wasm/src/slot.rs::remove",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bad_handle_fails_every_export",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::circuit_free_rejects_dead_and_zero_handles",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::freed_handle_stays_dead_after_new_circuits"
       ],
       "imports": [],
       "name": "ERR_HANDLE"
@@ -986,9 +986,9 @@
     "crates/simbiguity-circuits-wasm/src/status.rs::ERR_INDEX": {
       "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::issue",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::issue_messages_and_index_bounds"
       ],
       "imports": [],
       "name": "ERR_INDEX"
@@ -1006,9 +1006,9 @@
     "crates/simbiguity-circuits-wasm/src/status.rs::ERR_NODE": {
       "filePath": "crates/simbiguity-circuits-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs::place_rejects_unknown_node",
         "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::node",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::place_rejects_unknown_node"
       ],
       "imports": [],
       "name": "ERR_NODE"
@@ -1240,9 +1240,15 @@
       "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "importedBy": [],
       "imports": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h"
+        "crates/simbiguity-circuits-wasm/src/tests.rs::Hello::h",
+        "crates/simbiguity-core/src/rng.rs::Rng"
       ],
-      "name": "bridge_stress_test"
+      "name": "bridge_stress_test",
+      "namedMethods": [
+        "chance",
+        "new",
+        "next_u32"
+      ]
     },
     "crates/simbiguity-circuits-wasm/src/tests.rs::bypass_short_has_no_solution": {
       "filePath": "crates/simbiguity-circuits-wasm/src/tests.rs",
@@ -1608,9 +1614,9 @@
       ],
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/issues.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/lib.rs"
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
       ],
       "imports": []
     },
@@ -1621,6 +1627,12 @@
       "importedBy": [
         "crates/simbiguity-circuits-wasm/src/lib.rs"
       ],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/lib.rs"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/golden_hashes_gen.rs": {
+      "importedBy": [],
       "imports": []
     },
     "crates/simbiguity-circuits-wasm/src/issues.rs": {
@@ -1649,8 +1661,9 @@
         "crates/simbiguity-circuits-wasm/src/tests.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs"
+        "crates/simbiguity-circuits-wasm/src/golden.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits-wasm/src/alloc.rs",
@@ -1718,14 +1731,6 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
@@ -1736,7 +1741,15 @@
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs"
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs"
       ],
       "imports": [],
       "namedMethods": [
@@ -1764,7 +1777,8 @@
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
         "crates/simbiguity-circuits-wasm/src/status.rs",
-        "crates/simbiguity-circuits-wasm/src/status.rs"
+        "crates/simbiguity-circuits-wasm/src/status.rs",
+        "crates/simbiguity-core/src/rng.rs"
       ]
     }
   }

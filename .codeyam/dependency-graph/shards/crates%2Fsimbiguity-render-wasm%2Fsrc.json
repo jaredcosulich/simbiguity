@@ -619,6 +619,47 @@
       "imports": [],
       "name": "H"
     },
+    "crates/simbiguity-render-wasm/src/tests.rs::Lcg": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::bridge_stress_test"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg::chance",
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg::next"
+      ],
+      "name": "Lcg"
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::Lcg::chance": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg",
+        "crates/simbiguity-render-wasm/src/tests.rs::bridge_stress_test"
+      ],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg::next"
+      ],
+      "inherentMethod": true,
+      "name": "Lcg::chance",
+      "namedMethods": [
+        "next"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::Lcg::next": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg",
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg::chance",
+        "crates/simbiguity-render-wasm/src/tests.rs::bridge_stress_test"
+      ],
+      "imports": [],
+      "inherentMethod": true,
+      "name": "Lcg::next",
+      "namedMethods": [
+        "wrapping_add",
+        "wrapping_mul"
+      ]
+    },
     "crates/simbiguity-render-wasm/src/tests.rs::W": {
       "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
       "importedBy": [
@@ -651,6 +692,20 @@
       "namedMethods": [
         "contains",
         "is_null"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/tests.rs::bridge_stress_test": {
+      "filePath": "crates/simbiguity-render-wasm/src/tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg",
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg::chance",
+        "crates/simbiguity-render-wasm/src/tests.rs::Lcg::next"
+      ],
+      "name": "bridge_stress_test",
+      "namedMethods": [
+        "chance",
+        "next"
       ]
     },
     "crates/simbiguity-render-wasm/src/tests.rs::camera_exports_use_degrees_and_clamp": {

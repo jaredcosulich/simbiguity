@@ -1,11 +1,31 @@
 {
   "entities": {},
   "files": {
+    "golden_hashes_gen.rs": {
+      "importedBy": [],
+      "imports": [],
+      "namedMethods": [
+        "unwrap",
+        "write"
+      ]
+    },
+    "golden_tmp.rs": {
+      "importedBy": [],
+      "imports": [],
+      "namedMethods": [
+        "unwrap",
+        "write"
+      ]
+    },
     "patch_ticks.sh": {
       "importedBy": [],
       "imports": []
     },
     "reg_commands.sh": {
+      "importedBy": [],
+      "imports": []
+    },
+    "run_golden.rs": {
       "importedBy": [],
       "imports": []
     }

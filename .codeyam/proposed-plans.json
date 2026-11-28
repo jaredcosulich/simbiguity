@@ -144,6 +144,7 @@
       "mode": "backend",
       "body": "## Root cause\nThe node runner was added to the project's test runners, but no testPartition names it, so refresh-tests runs it and then has nowhere to cache or attribute the results. Every node test reads as missing evidence.\n\n## Evidence\nfnd-a5bb19c67699 plus this session's sighting. On HEAD 3341e17, .codeyam/editor.json has no partition with \"runner\": \"node\" (grep finds none).\n\n## Smallest fix\nAdd a node testPartition to .codeyam/editor.json covering site/js/**/*.js and site/demos/**/*.js, then run refresh-tests for it so per-test-evidence.json records the node tests.\n\n## Cost of leaving it\nEvery finalize reports 63+ node tests as missing evidence, which hides real gaps and pushes the session to investigate a false alarm.",
       "reason": "Two sessions (fnd-a5bb19c67699 and this one) saw all node tests pass yet record no evidence, because no partition owns the node runner.",
+      "outcome": "Passing browser-side tests stop showing up as missing.",
       "source": "codeyam-improvement",
       "status": "pending",
       "proposedAt": "2026-11-26T18:49:08.630064320+00:00",
@@ -156,10 +157,9 @@
       "ideaRank": 1,
       "theme": {
         "lane": "codeyam-improvement",
-        "score": 499,
+        "score": 458,
         "notVerified": true
-      },
-      "outcome": "Passing browser-side tests stop showing up as missing."
+      }
     },
     {
       "id": "follow-up-webgl2executor-s-gl-calls-and-demo-js-s-history-replacestate-hash-write-have-no",
@@ -178,6 +178,56 @@
       "sightingsAtDecision": 1,
       "offeredCount": 1,
       "lastOfferedAt": "2026-11-27T15:15:17.186965615+00:00"
+    },
+    {
+      "id": "node-runner-results-are-not-recorded-as-evidence",
+      "title": "Node runner results are not recorded as evidence",
+      "mode": "backend",
+      "body": "## Root cause\nThe editor or test runner configuration for node doesn't define a partition, so results are discarded in `refresh-tests`.\n\n## Evidence\nfnd-7b28d5a7a982, fnd-2a22dd662cdd, fnd-a396b9efb2f2, site/package.json:10\n\n## Smallest fix\nAdd a partition mapping in `.codeyam/editor.json` or `.codeyam/test-cache` configuration for node tests.\n\n## Cost of leaving it\nThe agent and user are incorrectly told that tests are owed or missing, triggering unnecessary full runs.",
+      "reason": "The Node test runner does not have a test partition, so its results do not count towards the cache during a session.",
+      "outcome": "You stop owing a full session-finalize run for features that only ran node tests.",
+      "source": "debt-synthesis",
+      "status": "pending",
+      "proposedAt": "2026-11-28T12:32:23.594718306+00:00",
+      "kind": "tech-debt",
+      "sightings": 1,
+      "evidenceIds": [
+        "fnd-7b28d5a7a982",
+        "fnd-2a22dd662cdd",
+        "fnd-a396b9efb2f2"
+      ],
+      "evidenceSessions": 3,
+      "ideaRank": 1,
+      "theme": {
+        "lane": "app",
+        "score": 275,
+        "notVerified": true
+      }
+    },
+    {
+      "id": "editor-older-than-committed-managed-gitignore-block",
+      "title": "Editor older than committed managed gitignore block",
+      "mode": "backend",
+      "body": "## Root cause\nThe editor binary is older than the .gitignore file generated or checked into the repo, so it doesn't recognize `.codeyam/state/node-junit.xml` as a managed rule.\n\n## Evidence\nfnd-33cecc4607ed, fnd-a6b67b29cd3b, fnd-2ed5e2779d55, .gitignore:10\n\n## Smallest fix\nUpdate the editor binary or its internal `stage-feature` .gitignore list to include `.codeyam/state/node-junit.xml`.\n\n## Cost of leaving it\nThe user and agent see cosmetic warnings on every commit, masking real issues.",
+      "reason": "The editor repeatedly warns that it is older than the committed .gitignore because it does not know the rule for .codeyam/state/node-junit.xml.",
+      "outcome": "You stop seeing warnings about the editor build being older than the committed .gitignore.",
+      "source": "codeyam-improvement",
+      "status": "pending",
+      "proposedAt": "2026-11-28T12:32:23.594718306+00:00",
+      "kind": "tech-debt",
+      "sightings": 1,
+      "evidenceIds": [
+        "fnd-33cecc4607ed",
+        "fnd-a6b67b29cd3b",
+        "fnd-2ed5e2779d55"
+      ],
+      "evidenceSessions": 3,
+      "ideaRank": 2,
+      "theme": {
+        "lane": "codeyam-improvement",
+        "score": 280,
+        "notVerified": true
+      }
     }
   ],
   "rounds": [
@@ -266,6 +316,46 @@
       "refused": 1,
       "notes": "The journal-title-match finding is two sightings from one session, cosmetic: not admitted. The prove-red timeout finding is a single time-lost sighting: not admitted.",
       "cycle": "Circuit in 3D: animated WebGL2 view of the bulb circuit"
+    },
+    {
+      "at": "2026-11-28T12:32:23.594718306+00:00",
+      "lane": "app",
+      "consumedIds": [
+        "fnd-2496dbeac6e2",
+        "fnd-4a70ed02bc12",
+        "fnd-7b28d5a7a982",
+        "fnd-2a22dd662cdd",
+        "fnd-7609d393230a",
+        "fnd-a396b9efb2f2",
+        "fnd-9a9e08e50b69",
+        "fnd-a6b6ff8ad751",
+        "fnd-4f3dee4a4e32"
+      ],
+      "keptIds": [
+        "node-runner-results-are-not-recorded-as-evidence"
+      ],
+      "refused": 1,
+      "notes": "Consolidated missing node test partition findings and the unbounded circuit solver loop.",
+      "cycle": "Physics WASM Binary Size Optimization"
+    },
+    {
+      "at": "2026-11-28T12:32:23.594718306+00:00",
+      "lane": "codeyam-improvement",
+      "consumedIds": [
+        "fnd-ff78ea87135f",
+        "fnd-e8c4e7fabbd1",
+        "fnd-33cecc4607ed",
+        "fnd-6f4350f79e66",
+        "fnd-a6b67b29cd3b",
+        "fnd-2ed5e2779d55"
+      ],
+      "keptIds": [
+        "editor-older-than-committed-managed-gitignore-block",
+        "give-the-node-test-runner-its-own-test-partition-so-its-results-count"
+      ],
+      "refused": 2,
+      "notes": "Added two new themes and merged node runner findings into the existing one.",
+      "cycle": "Physics WASM Binary Size Optimization"
     }
   ]
 }

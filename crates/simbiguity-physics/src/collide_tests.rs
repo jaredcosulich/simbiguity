@@ -146,14 +146,13 @@ fn bounce_drop() {
 }
 
 /// Verifies that kinematic friction applied to a sliding ball reduces its velocity correctly over time.
-#[test]
-fn ground_friction_slide() {
+fn test_ground_friction_slide_case(dt: f64, mu: f64, expected_dist: f64, tol: f64) {
     let mut world = World::new();
     world.gravity.acceleration = Vec3::new(0.0, -9.81, 0.0);
     world.ground = Some(Ground {
         y: 0.0,
         restitution: 0.0,
-        friction: 0.5,
+        friction: mu,
     });
 
     let p = world
@@ -161,14 +160,69 @@ fn ground_friction_slide() {
         .unwrap();
     world.particles[p].velocity.x = 2.0;
 
-    let dt = 0.01;
-    for _ in 0..100 {
+    for _ in 0..2000 {
         world.step(dt).unwrap();
     }
 
     let x = world.particles[p].position.x;
-    assert!((x - 0.4177).abs() < 0.005);
+    assert!(
+        (x - expected_dist).abs() < tol,
+        "dt={} expected {} got {}",
+        dt,
+        expected_dist,
+        x
+    );
     assert_eq!(world.particles[p].velocity.x, 0.0);
+
+    for _ in 0..100 {
+        world.step(dt).unwrap();
+        assert_eq!(world.particles[p].velocity.x, 0.0);
+    }
+}
+
+/// Verifies that sliding friction stops an object at the correct position
+#[test]
+fn ground_friction_slide() {
+    test_ground_friction_slide_case(1e-3, 0.5, 0.4077, 0.002);
+    test_ground_friction_slide_case(1e-2, 0.5, 0.4077, 0.006);
+    test_ground_friction_slide_case(1e-3, 0.25, 0.8155, 0.004);
+}
+
+/// Verifies that stopping distance matches the physics equation v^2 / 2ug
+#[test]
+fn stop_distance_matches_v_squared_over_two_mu_g() {
+    for &v0 in &[1.0, 2.0, 4.0] {
+        for &mu in &[0.25, 0.5, 1.0] {
+            let dt = 1e-3;
+            let expected = v0 * v0 / (2.0 * mu * 9.81);
+            let mut world = World::new();
+            world.gravity.acceleration = Vec3::new(0.0, -9.81, 0.0);
+            world.ground = Some(Ground {
+                y: 0.0,
+                restitution: 0.0,
+                friction: mu,
+            });
+
+            let p = world
+                .add_ball(1.0, Vec3::new(0.0, 0.1, 0.0), 0.1, 0.0)
+                .unwrap();
+            world.particles[p].velocity.x = v0;
+
+            for _ in 0..10000 {
+                world.step(dt).unwrap();
+            }
+
+            let x = world.particles[p].position.x;
+            assert!(
+                (x - expected).abs() < expected * 0.005,
+                "v0={}, mu={}, expected={}, got={}",
+                v0,
+                mu,
+                expected,
+                x
+            );
+        }
+    }
 }
 
 /// Verifies momentum conservation for a large number of randomly overlapping balls inside a box.

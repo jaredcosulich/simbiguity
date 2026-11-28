@@ -226,10 +226,22 @@
     "testFile": "crates/simbiguity-physics/src/world.rs"
   },
   {
+    "description": "Computes and applies kinetic and static friction during a ground collision, correctly integrating exact stopping distance.",
+    "filePath": "crates/simbiguity-physics/src/collide.rs",
+    "name": "apply_friction_impulse",
+    "testFile": "crates/simbiguity-physics/src/collide.rs"
+  },
+  {
     "description": "Applies mutual gravity forces to particles",
     "filePath": "crates/simbiguity-physics/src/world.rs",
     "name": "apply_mutual_gravity",
     "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
+    "description": "Computes and applies the normal bounce impulse for a ground collision.",
+    "filePath": "crates/simbiguity-physics/src/collide.rs",
+    "name": "apply_normal_impulse",
+    "testFile": "crates/simbiguity-physics/src/collide.rs"
   },
   {
     "description": "Reads a manifest array of strings, allowing a trailing comma.",
@@ -416,6 +428,12 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/tests/analysis.rs"
+  },
+  {
+    "description": "Builds a spatial hash grid for broadphase particle collision.",
+    "filePath": "crates/simbiguity-physics/src/collide.rs",
+    "name": "build_spatial_grid",
+    "testFile": "crates/simbiguity-physics/src/collide.rs"
   },
   {
     "description": "The glass, filament and halo look of the bulb for an animated glow, flash and blown state.",
@@ -1300,6 +1318,12 @@
       "engine-status"
     ],
     "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Finds particle overlaps in a spatial grid for broadphase collision.",
+    "filePath": "crates/simbiguity-physics/src/collide.rs",
+    "name": "find_cell_overlaps",
+    "testFile": "crates/simbiguity-physics/src/collide.rs"
   },
   {
     "description": "Reports one FloatingNode per connected island that has components but no battery or ground, naming its lowest node.",

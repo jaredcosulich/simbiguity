@@ -3,21 +3,41 @@ use crate::Integrator;
 use core::f64::consts::TAU;
 use simbiguity_math::vec::Vec3;
 
-fn run_orbit(world: &mut World, dt: f64, steps: usize) -> (f64, usize) {
-    let mut last_y = world.particles[0].position.y;
+fn run_orbit(world: &mut World, p_id: usize, dt: f64, steps: usize) -> (f64, usize, f64) {
+    let mut last_y = world.particles[p_id].position.y;
     let mut crossings = 0;
     let mut last_crossing_time = 0.0;
+    let mut max_r = 0.0;
 
     for i in 1..=steps {
         world.step(dt).unwrap();
-        let y = world.particles[0].position.y;
-        if last_y <= 0.0 && y > 0.0 {
+        let y = world.particles[p_id].position.y;
+        let x = world.particles[p_id].position.x;
+        let r = world.particles[p_id].position.length();
+        if r > max_r {
+            max_r = r;
+        }
+        if last_y <= 0.0 && y > 0.0 && x > 0.0 {
             crossings += 1;
-            last_crossing_time = i as f64 * dt;
+            if last_crossing_time == 0.0 {
+                let fraction = (0.0 - last_y) / (y - last_y);
+                last_crossing_time = (i as f64 - 1.0 + fraction) * dt;
+            }
         }
         last_y = y;
     }
-    (last_crossing_time, crossings)
+    (last_crossing_time, crossings, max_r)
+}
+
+fn measure_swept_area(world: &mut World, p_id: usize, dt: f64, steps: usize) -> f64 {
+    let mut area = 0.0;
+    for _ in 0..steps {
+        let pos0 = world.particles[p_id].position;
+        world.step(dt).unwrap();
+        let pos1 = world.particles[p_id].position;
+        area += 0.5 * (pos0.x * pos1.y - pos0.y * pos1.x).abs();
+    }
+    area
 }
 
 /// Verifies circular orbit period is two pi
@@ -32,8 +52,8 @@ fn circular_orbit_period_is_two_pi() {
     world.particles[p].velocity = Vec3::new(0.0, 1.0, 0.0);
 
     let dt = 1e-3;
-    let (t, _) = run_orbit(&mut world, dt, 10000);
-    assert!((t - TAU).abs() < 5e-3, "Expected {}, got {}", TAU, t);
+    let (t, _, _) = run_orbit(&mut world, p, dt, 10000);
+    assert!((t - TAU).abs() < 1e-3, "Expected {}, got {}", TAU, t);
     let r = world.particles[p].position.length();
     assert!((r - 1.0).abs() < 1e-4, "Radius drift {}", r - 1.0);
 }
@@ -94,27 +114,16 @@ fn ellipse_period_and_aphelion() {
     let p = world
         .add_particle(1.0, Vec3::new(1.0, 0.0, 0.0), false)
         .unwrap();
-    world.particles[p].velocity = Vec3::new(0.0, 1.22474487139, 0.0); // sqrt(1.5)
+    world.particles[p].velocity = Vec3::new(0.0, 1.22474487139, 0.0);
 
     let dt = 1e-3;
-    let expected_period = 17.7715; // 2pi * 2^1.5 = 2pi * sqrt(8) ~ 17.771531
-    let steps = (expected_period / dt) as usize;
+    let expected_period = 17.7715;
+    let steps = (expected_period / dt) as usize + 1000;
 
-    let mut max_r = 1.0;
-    for _ in 0..steps {
-        world.step(dt).unwrap();
-        let r = world.particles[p].position.length();
-        if r > max_r {
-            max_r = r;
-        }
-    }
+    let (period, _, max_r) = run_orbit(&mut world, p, dt, steps);
 
-    assert!((max_r - 3.0).abs() < 5e-3);
-
-    let y = world.particles[p].position.y;
-    let x = world.particles[p].position.x;
-    assert!(y.abs() < 1e-2);
-    assert!((x - 1.0).abs() < 1e-2);
+    assert!((max_r - 3.0).abs() < 1e-3);
+    assert!((period - 17.7715).abs() < 1e-2, "period = {}", period);
 }
 
 /// Verifies Kepler's second law for an ellipse
@@ -132,28 +141,18 @@ fn ellipse_keplers_second_law() {
     let window_steps = 500; // 0.5s
 
     // area at perihelion
-    let pos0 = world.particles[p].position;
-    for _ in 0..window_steps {
-        world.step(dt).unwrap();
-    }
-    let pos1 = world.particles[p].position;
-    // area of triangle 1/2 |pos0 x pos1|
-    let area_peri = 0.5 * pos0.x * pos1.y; // approximate
+    let area_peri = measure_swept_area(&mut world, p, dt, window_steps);
 
     let steps_to_aphelion = (17.7715 / 2.0 / dt) as usize - window_steps;
     for _ in 0..steps_to_aphelion {
         world.step(dt).unwrap();
     }
 
-    let pos2 = world.particles[p].position;
-    for _ in 0..window_steps {
-        world.step(dt).unwrap();
-    }
-    let pos3 = world.particles[p].position;
-    let area_ap = 0.5 * (pos2.x * pos3.y - pos2.y * pos3.x).abs();
+    let area_ap = measure_swept_area(&mut world, p, dt, window_steps);
 
-    let diff = (area_peri - area_ap).abs() / area_peri;
-    assert!(diff < 5e-2);
+    let expected = 0.306186;
+    assert!((area_peri - expected).abs() / expected < 1e-4);
+    assert!((area_ap - expected).abs() / expected < 1e-4);
 }
 
 /// Verifies binary momentum is conserved and separation is constant
@@ -212,10 +211,10 @@ fn three_body_figure_eight_returns_to_start() {
         world.step(dt).unwrap();
     }
 
-    assert!((world.particles[p1].position - p1_start).length() < 5e-3);
-    assert!((world.particles[p2].position - p2_start).length() < 5e-3);
+    assert!((world.particles[p1].position - p1_start).length() < 2e-3);
+    assert!((world.particles[p2].position - p2_start).length() < 2e-3);
     assert!(
-        (world.particles[p3].position - p3_start).length() < 5e-3,
+        (world.particles[p3].position - p3_start).length() < 2e-3,
         "err was {}",
         (world.particles[p3].position - p3_start).length()
     );

@@ -24,18 +24,7 @@ pub fn find_pairs_brute(particles: &[Particle]) -> Vec<(usize, usize)> {
     pairs
 }
 
-pub fn find_pairs_broadphase(particles: &[Particle]) -> Vec<(usize, usize)> {
-    let mut max_radius = 0.0_f64;
-    for p in particles {
-        if p.radius > max_radius {
-            max_radius = p.radius;
-        }
-    }
-    if max_radius <= 0.0 {
-        return vec![];
-    }
-
-    let cell_size = 2.0 * max_radius;
+pub fn build_spatial_grid(particles: &[Particle], cell_size: f64) -> Vec<((i32, i32, i32), usize)> {
     let mut entries = Vec::new();
 
     for (i, p) in particles.iter().enumerate() {
@@ -49,7 +38,13 @@ pub fn find_pairs_broadphase(particles: &[Particle]) -> Vec<(usize, usize)> {
     }
 
     entries.sort_unstable_by_key(|e| e.0);
+    entries
+}
 
+pub fn find_cell_overlaps(
+    entries: &[((i32, i32, i32), usize)],
+    particles: &[Particle],
+) -> Vec<(usize, usize)> {
     let mut pairs = Vec::new();
     let mut checked = Vec::new();
 
@@ -90,6 +85,22 @@ pub fn find_pairs_broadphase(particles: &[Particle]) -> Vec<(usize, usize)> {
     pairs
 }
 
+pub fn find_pairs_broadphase(particles: &[Particle]) -> Vec<(usize, usize)> {
+    let mut max_radius = 0.0_f64;
+    for p in particles {
+        if p.radius > max_radius {
+            max_radius = p.radius;
+        }
+    }
+    if max_radius <= 0.0 {
+        return vec![];
+    }
+
+    let cell_size = 2.0 * max_radius;
+    let entries = build_spatial_grid(particles, cell_size);
+    find_cell_overlaps(&entries, particles)
+}
+
 pub fn resolve_particle_collision(p1: &mut Particle, p2: &mut Particle, max_impulse: &mut f64) {
     let diff = p2.position - p1.position;
     let dist = diff.length();
@@ -127,6 +138,54 @@ pub fn resolve_particle_collision(p1: &mut Particle, p2: &mut Particle, max_impu
     }
 }
 
+pub fn apply_normal_impulse(p: &mut Particle, g: &Ground) -> f64 {
+    let v_rel_y = p.velocity.y;
+    if v_rel_y < 0.0 {
+        let e = p.restitution.min(g.restitution);
+        let j_normal = -(1.0 + e) * v_rel_y * p.mass;
+        p.velocity.y += j_normal / p.mass;
+        j_normal
+    } else {
+        0.0
+    }
+}
+
+pub fn apply_friction_impulse(
+    p: &mut Particle,
+    g: &Ground,
+    dt: f64,
+    gravity_len: f64,
+    j_normal: f64,
+) -> f64 {
+    if g.friction <= 0.0 {
+        return 0.0;
+    }
+    let mut v_tangent = p.velocity;
+    v_tangent.y = 0.0;
+    let v_tangent_len = v_tangent.length();
+    if v_tangent_len == 0.0 {
+        return 0.0;
+    }
+
+    let max_friction_j = g.friction * j_normal;
+    let max_kin_friction_j = g.friction * p.mass * gravity_len * dt;
+    let mut applied_j = max_friction_j;
+    if j_normal == 0.0 && p.velocity.y.abs() < 1e-6 {
+        applied_j = max_kin_friction_j;
+    }
+
+    let j_req = p.mass * v_tangent_len;
+    let j_fric = applied_j.min(j_req);
+    if j_fric > 0.0 {
+        let dir = -v_tangent / v_tangent_len;
+        let delta_v = dir * (j_fric / p.mass);
+        p.velocity += delta_v;
+        p.position.x += delta_v.x * (dt * 0.5);
+        p.position.z += delta_v.z * (dt * 0.5);
+    }
+    j_fric
+}
+
 pub fn resolve_ground_collision(
     p: &mut Particle,
     g: &Ground,
@@ -142,39 +201,14 @@ pub fn resolve_ground_collision(
         let pen = g.y - bottom;
         p.position.y += pen;
 
-        let v_rel_y = p.velocity.y;
-        let mut j_normal = 0.0;
-        if v_rel_y < 0.0 {
-            let e = p.restitution.min(g.restitution);
-            j_normal = -(1.0 + e) * v_rel_y * p.mass;
-            p.velocity.y += j_normal / p.mass;
-        }
+        let j_normal = apply_normal_impulse(p, g);
+        let j_fric = apply_friction_impulse(p, g, dt, gravity_len, j_normal);
 
-        if g.friction > 0.0 {
-            let mut v_tangent = p.velocity;
-            v_tangent.y = 0.0;
-            let v_tangent_len = v_tangent.length();
-            if v_tangent_len > 0.0 {
-                let max_friction_j = g.friction * j_normal;
-                let max_kin_friction_j = g.friction * p.mass * gravity_len * dt;
-                let mut applied_j = max_friction_j;
-                if j_normal == 0.0 && p.velocity.y.abs() < 1e-6 {
-                    applied_j = max_kin_friction_j;
-                }
-
-                let j_req = p.mass * v_tangent_len;
-                let j_fric = applied_j.min(j_req);
-                if j_fric > 0.0 {
-                    let dir = -v_tangent / v_tangent_len;
-                    p.velocity += dir * (j_fric / p.mass);
-                    if j_fric > *max_impulse {
-                        *max_impulse = j_fric;
-                    }
-                }
-            }
-        }
         if j_normal > *max_impulse {
             *max_impulse = j_normal;
+        }
+        if j_fric > *max_impulse {
+            *max_impulse = j_fric;
         }
     }
 }
@@ -296,5 +330,68 @@ mod tests {
         assert_eq!(p.position.y, 1.0);
         assert_eq!(p.velocity.y, 5.0);
         assert_eq!(max_impulse, 15.0);
+    }
+
+    /// Verifies that apply_normal_impulse applies bounce properly
+    #[test]
+    fn test_apply_normal_impulse() {
+        let mut p = Particle {
+            mass: 2.0,
+            position: Vec3::ZERO,
+            velocity: Vec3::new(0.0, -10.0, 0.0),
+            force: Vec3::ZERO,
+            pinned: false,
+            radius: 1.0,
+            restitution: 0.5,
+        };
+        let g = Ground {
+            y: 0.0,
+            restitution: 1.0,
+            friction: 0.0,
+        };
+        let j = apply_normal_impulse(&mut p, &g);
+        assert_eq!(p.velocity.y, 5.0);
+        assert_eq!(j, 30.0);
+    }
+
+    /// Verifies that apply_friction_impulse applies sliding friction correctly
+    #[test]
+    fn test_apply_friction_impulse() {
+        let mut p = Particle {
+            mass: 2.0,
+            position: Vec3::ZERO,
+            velocity: Vec3::new(10.0, 0.0, 0.0),
+            force: Vec3::ZERO,
+            pinned: false,
+            radius: 1.0,
+            restitution: 0.5,
+        };
+        let g = Ground {
+            y: 0.0,
+            restitution: 1.0,
+            friction: 0.5,
+        };
+        let j = apply_friction_impulse(&mut p, &g, 0.1, 9.8, 0.0);
+        // max kin = 0.5 * 2 * 9.8 * 0.1 = 0.98
+        // j_req = 2 * 10 = 20
+        assert!((j - 0.98).abs() < 1e-9);
+        assert!(p.velocity.x < 10.0);
+    }
+
+    /// Verifies build_spatial_grid correctly outputs entries
+    #[test]
+    fn test_build_spatial_grid() {
+        let p = Particle {
+            mass: 1.0,
+            position: Vec3::new(1.0, 2.0, 3.0),
+            velocity: Vec3::ZERO,
+            force: Vec3::ZERO,
+            pinned: false,
+            radius: 1.0,
+            restitution: 1.0,
+        };
+        let entries = build_spatial_grid(&[p], 2.0);
+        assert_eq!(entries.len(), 1);
+        assert_eq!(entries[0].0, (0, 1, 1));
     }
 }

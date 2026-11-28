@@ -502,11 +502,38 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that apply_friction_impulse applies sliding friction correctly",
+      "file": "crates/simbiguity-physics/src/collide.rs",
+      "format": "cargo",
+      "key": "collide::tests::test_apply_friction_impulse",
+      "line": 359,
+      "registeredAt": "2026-11-28T19:14:38.318518713+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that apply_normal_impulse applies bounce properly",
+      "file": "crates/simbiguity-physics/src/collide.rs",
+      "format": "cargo",
+      "key": "collide::tests::test_apply_normal_impulse",
+      "line": 337,
+      "registeredAt": "2026-11-28T19:14:38.318518713+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies build_spatial_grid correctly outputs entries",
+      "file": "crates/simbiguity-physics/src/collide.rs",
+      "format": "cargo",
+      "key": "collide::tests::test_build_spatial_grid",
+      "line": 383,
+      "registeredAt": "2026-11-28T19:14:38.318518713+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that broadphase returns correct pairs.",
       "file": "crates/simbiguity-physics/src/collide.rs",
       "format": "cargo",
       "key": "collide::tests::test_find_pairs_broadphase",
-      "line": 224,
+      "line": 258,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -515,7 +542,7 @@
       "file": "crates/simbiguity-physics/src/collide.rs",
       "format": "cargo",
       "key": "collide::tests::test_resolve_ground_collision",
-      "line": 279,
+      "line": 313,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -524,7 +551,7 @@
       "file": "crates/simbiguity-physics/src/collide.rs",
       "format": "cargo",
       "key": "collide::tests::test_resolve_particle_collision",
-      "line": 249,
+      "line": 283,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -533,7 +560,7 @@
       "file": "crates/simbiguity-physics/src/collide_tests.rs",
       "format": "cargo",
       "key": "collide_tests::balls_in_box_overlap_and_momentum",
-      "line": 176,
+      "line": 230,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -551,7 +578,7 @@
       "file": "crates/simbiguity-physics/src/collide_tests.rs",
       "format": "cargo",
       "key": "collide_tests::broadphase_equivalence",
-      "line": 253,
+      "line": 307,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -578,7 +605,7 @@
       "file": "crates/simbiguity-physics/src/collide_tests.rs",
       "format": "cargo",
       "key": "collide_tests::ground_friction_slide",
-      "line": 150,
+      "line": 185,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -598,6 +625,15 @@
       "key": "collide_tests::perfectly_inelastic_collision",
       "line": 40,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that stopping distance matches the physics equation v^2 / 2ug",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::stop_distance_matches_v_squared_over_two_mu_g",
+      "line": 193,
+      "registeredAt": "2026-11-28T19:14:38.318518713+00:00",
       "runner": "cargo"
     },
     {
@@ -1235,7 +1271,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::circular_orbit_energy_drift_is_bounded",
-      "line": 43,
+      "line": 63,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -1244,7 +1280,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::circular_orbit_euler_explodes",
-      "line": 64,
+      "line": 84,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -1253,7 +1289,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::circular_orbit_period_is_two_pi",
-      "line": 25,
+      "line": 45,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -1262,7 +1298,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::ellipse_keplers_second_law",
-      "line": 122,
+      "line": 131,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -1271,7 +1307,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::ellipse_period_and_aphelion",
-      "line": 90,
+      "line": 110,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -1280,7 +1316,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::three_body_figure_eight_returns_to_start",
-      "line": 194,
+      "line": 193,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
@@ -1289,7 +1325,7 @@
       "file": "crates/simbiguity-physics/src/gravity_tests.rs",
       "format": "cargo",
       "key": "gravity_tests::two_body_binary_momentum_and_separation",
-      "line": 161,
+      "line": 160,
       "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },

@@ -223,13 +223,19 @@
       "shortSha": "117056b",
       "subject": "feat: Circuits: AC signal sources, oscilloscope probes and RLC resonance",
       "deferredAt": "2026-11-28T14:21:02Z"
+    },
+    {
+      "sha": "b917e10b0209c77fd69e5d533564ad65bf4cc95d",
+      "shortSha": "b917e10",
+      "subject": "feat: Circuits: AC signal sources, oscilloscope probes and RLC resonance",
+      "deferredAt": "2026-11-28T14:21:09Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T13:59:02Z",
-    "deferredCommits": 38
+    "at": "2026-11-28T14:21:46Z",
+    "deferredCommits": 40
   },
   "drained": {
     "screenshots": 18,

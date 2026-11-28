@@ -198,6 +198,8 @@
       ],
       "evidenceSessions": 3,
       "ideaRank": 1,
+      "offeredCount": 1,
+      "lastOfferedAt": "2026-11-28T14:22:16.726169578+00:00",
       "theme": {
         "lane": "app",
         "score": 275,
@@ -228,6 +230,20 @@
         "score": 280,
         "notVerified": true
       }
+    },
+    {
+      "id": "refactor:site/js/simbiguity.js:0",
+      "title": "refactor -- Break up loadCircuits in site/js/simbiguity.js (156 lines)",
+      "mode": "backend",
+      "body": "## Summary\n\nsite/js/simbiguity.js has 198 production lines against a 500-line budget; it is new on this branch. 1 of its functions are over the 150-line entity budget: `loadCircuits` (156 lines). Feature work keeps landing in this file. Splitting it along its seams keeps each concern in its own file, so the next change touches less. CodeYam generated this plan from measurements of the files a build cycle touched.\n\n## Key Decisions\n\n- Largest entities: `loadCircuits` (156 lines), `SimbiguityError` (7 lines).\n- No shared-name groups were found; split along the largest entities instead.\n- Split only along seams that are one concern; leave the rest in place.\n- Behavior does not change: this is a move, not a rewrite.\n\n## Implementation\n\n1. Confirm the current numbers: `codeyam-editor editor size-query site/js/simbiguity.js` (the size and limit the gate judges, in under a second — re-run it after each move instead of an `audit --only` or a hand-written line counter). For the concern grouping, `codeyam-editor editor organization-report --path site/js/simbiguity.js`.\n2. Move each chosen group into its own file beside `site/js/simbiguity.js`, keeping existing callers working.\n3. Reconcile the glossary, test registry and evidence: `codeyam-editor editor relocate-entities --from site/js/simbiguity.js`.\n4. Done when `size-query site/js/simbiguity.js` reports it within 500 production lines, or what remains is one concern.",
+      "reason": "site/js/simbiguity.js has 198 production lines against a 500-line budget; it is new on this branch.",
+      "severity": 2,
+      "source": "refactor",
+      "category": "debt",
+      "status": "pending",
+      "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
+      "kind": "tech-debt",
+      "sightings": 1
     }
   ],
   "rounds": [
@@ -294,6 +310,13 @@
       "at": "2026-11-28T01:58:23.548490024+00:00",
       "feature": "Fix round 2: puzzle engine with real goals, verified levels, undo and share",
       "notes": "Deferred checks via Fast Commit."
+    },
+    {
+      "at": "2026-11-28T14:22:47.091614496+00:00",
+      "feature": "Circuits: AC signal sources, oscilloscope probes and RLC resonance",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
     }
   ],
   "syntheses": [

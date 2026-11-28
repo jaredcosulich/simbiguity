@@ -283,6 +283,12 @@
       "shortSha": "bc04b76",
       "subject": "feat: Round 4: physics accuracy — fix friction to v²/2μg and restore the original gravity tolerances",
       "deferredAt": "2026-11-28T19:17:37Z"
+    },
+    {
+      "sha": "2106eaccc6479235a95c502c25a6c08892e4bc5a",
+      "shortSha": "2106eac",
+      "subject": "feat: Round 4: Physics Lab behaviour tests through the real WASM",
+      "deferredAt": "2026-11-28T19:45:07Z"
     }
   ],
   "finalizeIntent": "fast",

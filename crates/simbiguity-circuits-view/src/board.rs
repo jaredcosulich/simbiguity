@@ -28,6 +28,7 @@ pub struct Parts {
     pub filaments: alloc::vec::Vec<NodeId>,
     pub filaments_broken: alloc::vec::Vec<NodeId>,
     pub halos: alloc::vec::Vec<NodeId>,
+    pub leds: alloc::vec::Vec<(simbiguity_circuits::ComponentId, NodeId, NodeId)>,
 }
 
 /// The filament as polylines: the intact zig-zag, and the two stubs left
@@ -69,6 +70,7 @@ pub fn build_scene(
         filaments: alloc::vec::Vec::new(),
         filaments_broken: alloc::vec::Vec::new(),
         halos: alloc::vec::Vec::new(),
+        leds: alloc::vec::Vec::new(),
     };
     for p in &layout.parts {
         match circuit.component(p.component) {
@@ -87,6 +89,16 @@ pub fn build_scene(
                 parts.filaments.push(filament);
                 parts.filaments_broken.push(broken);
                 parts.halos.push(halo);
+            }
+            simbiguity_circuits::Component::Diode { .. } => {
+                add_diode(&mut s, p);
+            }
+            simbiguity_circuits::Component::Led { color, .. } => {
+                let (glass, halo) = add_led(&mut s, p, color);
+                parts.leds.push((p.component, glass, halo));
+            }
+            simbiguity_circuits::Component::SignalSource { .. } => {
+                add_signal_source(&mut s, p);
             }
             _ => {}
         }
@@ -237,6 +249,54 @@ fn append(a: &mut Mesh, b: &Mesh) {
     let base = a.vertex_count() as u32;
     a.vertices.extend_from_slice(&b.vertices);
     a.indices.extend(b.indices.iter().map(|i| i + base));
+}
+
+fn add_diode(s: &mut Scene, p: &crate::board_layout::PartPlacement) {
+    let along_z = Mat4::rotation(Quat::from_axis_angle(Vec3::X, core::f64::consts::FRAC_PI_2));
+    let base = base_transform(p, BATTERY_Y);
+    let bx = |z: f64| base * Mat4::translation(Vec3::new(0.0, 0.0, z)) * along_z;
+    let body = s.add_mesh(Mesh::cylinder(0.2, 1.2, 16));
+    let n = s.add_node(body, bx(0.0), Material::lit(CHARCOAL));
+    pickable(s, n, p.component.index() as u32 + 1);
+
+    let band = s.add_mesh(Mesh::cylinder(0.21, 0.2, 16));
+    s.add_node(band, bx(-0.4), Material::lit(STEEL)); // Cathode end
+}
+
+fn add_led(s: &mut Scene, p: &crate::board_layout::PartPlacement, color: &str) -> (NodeId, NodeId) {
+    let base_mat = base_transform(p, 0.0);
+    let rgb = match color {
+        "red" => [1.0, 0.2, 0.2],
+        "green" => [0.2, 1.0, 0.2],
+        "blue" => [0.2, 0.2, 1.0],
+        "yellow" => [1.0, 1.0, 0.2],
+        _ => [1.0, 1.0, 1.0],
+    };
+
+    let glass_mesh = s.add_mesh(Mesh::sphere(0.3, 16, 16));
+    let bulb_centre = Vec3::new(0.0, 0.5, 0.0);
+    let glass = s.add_node(
+        glass_mesh,
+        base_mat * at(bulb_centre),
+        Material::lit(rgb).with_alpha(0.8),
+    );
+    pickable(s, glass, p.component.index() as u32 + 1);
+
+    let halo_mesh = s.add_mesh(Mesh::sphere(1.0, 16, 16));
+    let halo = s.add_node(
+        halo_mesh,
+        base_mat * at(bulb_centre),
+        Material::glow(rgb, 0.0),
+    );
+
+    (glass, halo)
+}
+
+fn add_signal_source(s: &mut Scene, p: &crate::board_layout::PartPlacement) {
+    let base_mat = base_transform(p, 0.1);
+    let disc = s.add_mesh(Mesh::cylinder(0.8, 0.1, 32));
+    let n = s.add_node(disc, base_mat, Material::lit(STEEL));
+    pickable(s, n, p.component.index() as u32 + 1);
 }
 
 #[cfg(test)]

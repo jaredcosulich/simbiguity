@@ -39,8 +39,8 @@
         "site/demos/circuit-3d/pointer.js::clickAction",
         "site/demos/circuit-3d/pointer.test.js::__file_root__",
         "site/demos/circuit-puzzles/game.js::__file_root__",
-        "site/js/simbiguity-render.js::loadCircuit3D",
-        "site/js/simbiguity-render.test.js::__file_root__"
+        "site/js/simbiguity-render.test.js::__file_root__",
+        "site/js/simbiguity-render.js::loadCircuit3D"
       ],
       "imports": [],
       "name": "Pick"
@@ -70,8 +70,8 @@
     "site/js/simbiguity-render.js::readoutsFromArray": {
       "filePath": "site/js/simbiguity-render.js",
       "importedBy": [
-        "site/js/simbiguity-render.js::loadCircuit3D",
-        "site/js/simbiguity-render.test.js::__file_root__"
+        "site/js/simbiguity-render.test.js::__file_root__",
+        "site/js/simbiguity-render.js::loadCircuit3D"
       ],
       "imports": [],
       "name": "readoutsFromArray"
@@ -97,9 +97,9 @@
     "site/js/simbiguity.js::SimbiguityError": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
+        "site/js/simbiguity.js::loadCircuits",
         "site/demos/physics/demo.js::__file_root__",
-        "site/js/simbiguity-render.js::loadCircuit3D",
-        "site/js/simbiguity.js::loadCircuits"
+        "site/js/simbiguity-render.js::loadCircuit3D"
       ],
       "imports": [],
       "name": "SimbiguityError"
@@ -107,12 +107,12 @@
     "site/js/simbiguity.js::loadCircuits": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
+        "site/js/determinism.test.js::__file_root__",
+        "site/test/ac.test.js::__file_root__",
         "site/demos/circuit-puzzles/game-state.test.js::__file_root__",
         "site/demos/hello-circuit/demo.js::main",
         "site/demos/rc-charging/demo.js::main",
-        "site/js/determinism.test.js::__file_root__",
-        "site/js/nonlinear.test.js::__file_root__",
-        "site/test/ac.test.js::__file_root__"
+        "site/js/nonlinear.test.js::__file_root__"
       ],
       "imports": [
         "site/js/simbiguity.js::IssueKind",
@@ -123,9 +123,9 @@
     "site/js/webgl2-executor.js::CommandBufferError": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
+        "site/js/webgl2-executor.test.js::__file_root__",
         "site/js/webgl2-executor.js::WebGL2Executor",
-        "site/js/webgl2-executor.js::decodeCommands",
-        "site/js/webgl2-executor.test.js::__file_root__"
+        "site/js/webgl2-executor.js::decodeCommands"
       ],
       "imports": [],
       "name": "CommandBufferError"
@@ -149,8 +149,8 @@
     "site/js/webgl2-executor.js::UNIFORMS": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
-        "site/js/webgl2-executor.js::WebGL2Executor",
-        "site/js/webgl2-executor.test.js::__file_root__"
+        "site/js/webgl2-executor.test.js::__file_root__",
+        "site/js/webgl2-executor.js::WebGL2Executor"
       ],
       "imports": [],
       "name": "UNIFORMS"
@@ -158,11 +158,11 @@
     "site/js/webgl2-executor.js::WebGL2Executor": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
+        "site/js/webgl2-executor.test.js::__file_root__",
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
         "site/demos/circuit-puzzles/game.js::main",
-        "site/demos/rc-charging/demo.js::main",
-        "site/js/webgl2-executor.test.js::__file_root__"
+        "site/demos/rc-charging/demo.js::main"
       ],
       "imports": [
         "site/js/webgl2-executor.js::CommandBufferError",
@@ -184,8 +184,8 @@
     "site/js/webgl2-executor.js::decodeCommands": {
       "filePath": "site/js/webgl2-executor.js",
       "importedBy": [
-        "site/js/webgl2-executor.js::WebGL2Executor",
-        "site/js/webgl2-executor.test.js::__file_root__"
+        "site/js/webgl2-executor.test.js::__file_root__",
+        "site/js/webgl2-executor.js::WebGL2Executor"
       ],
       "imports": [
         "site/js/webgl2-executor.js::CommandBufferError",
@@ -261,24 +261,24 @@
     },
     "site/js/simbiguity.js": {
       "importedBy": [
+        "site/js/determinism.test.js",
+        "site/test/ac.test.js",
         "site/demos/circuit-puzzles/game-state.test.js",
         "site/demos/hello-circuit/demo.js",
-        "site/demos/physics/demo.js",
         "site/demos/rc-charging/demo.js",
-        "site/js/determinism.test.js",
+        "site/demos/physics/demo.js",
         "site/js/nonlinear.test.js",
-        "site/js/simbiguity-render.js",
-        "site/test/ac.test.js"
+        "site/js/simbiguity-render.js"
       ],
       "imports": []
     },
     "site/js/webgl2-executor.js": {
       "importedBy": [
+        "site/js/webgl2-executor.test.js",
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
         "site/demos/circuit-puzzles/game.js",
-        "site/demos/rc-charging/demo.js",
-        "site/js/webgl2-executor.test.js"
+        "site/demos/rc-charging/demo.js"
       ],
       "imports": []
     },

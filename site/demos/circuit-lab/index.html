@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Circuit Lab</title>
+  
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+    #lab-container { display: flex; gap: 20px; flex-wrap: wrap; }
+    .panel { border: 1px solid #ccc; padding: 15px; border-radius: 4px; min-width: 300px; flex: 1; }
+    canvas { background: #111; display: block; margin-top: 10px; max-width: 100%; height: auto; }
+    .controls { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+    .control-row { display: flex; justify-content: space-between; align-items: center; }
+    select { padding: 5px; font-size: 16px; }
+    #error-text { color: red; font-weight: bold; min-height: 1.5em; }
+    .readout { font-family: monospace; font-size: 16px; background: #eee; padding: 5px; border-radius: 3px; }
+    #scope-canvas { height: 200px; }
+  </style>
+</head>
+<body>
+  <h1>Circuit Lab</h1>
+  
+  <div id="lab-container">
+    <div class="panel">
+      <h2>Experiment</h2>
+      <select id="experiment-select">
+        <option value="led">LED + Resistor</option>
+        <option value="rectifier">Half-wave Rectifier</option>
+        <option value="rlc">Series RLC Resonance</option>
+        <option value="rc_lowpass">RC Low-pass</option>
+        <option value="rc_square">Square wave into RC</option>
+        <option value="ladder">Big Ladder</option>
+      </select>
+      
+      <div id="controls-container" class="controls"></div>
+      <div id="error-text"></div>
+      
+      <h3>Readouts</h3>
+      <div id="readouts-container" class="controls"></div>
+    </div>
+    
+    <div class="panel">
+      <h2>3D Board</h2>
+      <canvas id="board-canvas" width="600" height="400"></canvas>
+    </div>
+    
+    <div class="panel" id="scope-panel">
+      <h2>Oscilloscope</h2>
+      <canvas id="scope-canvas" width="600" height="200"></canvas>
+    </div>
+  </div>
+
+  <script type="module" src="lab.js"></script>
+</body>
+</html>

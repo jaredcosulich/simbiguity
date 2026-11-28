@@ -86,6 +86,38 @@
         "status": "n-a",
         "reason": "Every interacted state the controls can reach is linkable by URL hash and captured directly: open, lit, dim, blown and short."
       }
+    },
+    "site/demos/circuit-lab/index.html": {
+      "empty": {
+        "status": "n-a",
+        "reason": "Always loads a default experiment on boot."
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "The view deals with fixed circuits, not collections."
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "The view deals with fixed circuits, not collections."
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "No async loading state."
+      },
+      "edge": {
+        "status": "n-a",
+        "reason": "No edge text bounds."
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "Component handles layout errors via UI overlay, no separate full page view."
+      },
+      "key-interaction": {
+        "status": "covered"
+      }
     }
   }
 }

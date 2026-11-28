@@ -69,9 +69,9 @@
     "site/demos/hello-circuit/explain.js::explanation": {
       "filePath": "site/demos/hello-circuit/explain.js",
       "importedBy": [
+        "site/demos/hello-circuit/explain.test.js::__file_root__",
         "site/demos/hello-circuit/demo.js::__file_root__",
-        "site/demos/hello-circuit/demo.js::draw",
-        "site/demos/hello-circuit/explain.test.js::__file_root__"
+        "site/demos/hello-circuit/demo.js::draw"
       ],
       "imports": [
         "site/demos/hello-circuit/state.js::__file_root__"
@@ -178,8 +178,8 @@
     },
     "site/demos/hello-circuit/explain.js": {
       "importedBy": [
-        "site/demos/hello-circuit/demo.js",
-        "site/demos/hello-circuit/explain.test.js"
+        "site/demos/hello-circuit/explain.test.js",
+        "site/demos/hello-circuit/demo.js"
       ],
       "imports": [
         "site/demos/hello-circuit/state.js"

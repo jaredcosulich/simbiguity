@@ -237,6 +237,128 @@ impl BoardLayout {
                     });
                     pos += 4 + pts * 2;
                 }
+                5 => {
+                    if pos + 10 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let saturation_amps = f64_from(words, pos + 6);
+                    let emission = f64_from(words, pos + 8);
+                    let cid = c.add_diode(a, b, saturation_amps, emission);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 10;
+                }
+                6 => {
+                    if pos + 12 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let rated_amps = f64_from(words, pos + 6);
+                    let saturation_amps = f64_from(words, pos + 8);
+                    let emission = f64_from(words, pos + 10);
+                    let cid = c.add_led(a, b, "red", rated_amps, saturation_amps, emission);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 12;
+                }
+                7 => {
+                    if pos + 15 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let waveform = words[pos + 6] as u8;
+                    let amplitude = f64_from(words, pos + 7);
+                    let frequency = f64_from(words, pos + 9);
+                    let phase = f64_from(words, pos + 11);
+                    let offset = f64_from(words, pos + 13);
+                    let cid =
+                        c.add_signal_source(a, b, waveform, amplitude, frequency, phase, offset);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 15;
+                }
+                8 => {
+                    if pos + 8 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let r = f64_from(words, pos + 6);
+                    let cid = c.add_resistor(a, b, r);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 8;
+                }
+                9 => {
+                    if pos + 8 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let f = f64_from(words, pos + 6);
+                    let cid = c.add_capacitor(a, b, f);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 8;
+                }
+                10 => {
+                    if pos + 8 > words.len() {
+                        return Err(LayoutError::BufferTooShort);
+                    }
+                    let rotation = match words[pos + 5] {
+                        0 => Rotation::Deg0,
+                        1 => Rotation::Deg90,
+                        2 => Rotation::Deg180,
+                        _ => Rotation::Deg270,
+                    };
+                    let h = f64_from(words, pos + 6);
+                    let cid = c.add_inductor(a, b, h);
+                    parts.push(PartPlacement {
+                        component: cid,
+                        cell: (as_coord(words[pos + 3])?, as_coord(words[pos + 4])?),
+                        rotation,
+                    });
+                    pos += 8;
+                }
                 _ => return Err(LayoutError::UnknownComponentKind),
             }
         }

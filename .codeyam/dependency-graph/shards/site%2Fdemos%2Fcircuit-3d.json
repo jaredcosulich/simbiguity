@@ -133,8 +133,8 @@
     "site/demos/circuit-3d/explain.js::explanation": {
       "filePath": "site/demos/circuit-3d/explain.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::show",
-        "site/demos/circuit-3d/explain.test.js::__file_root__"
+        "site/demos/circuit-3d/explain.test.js::__file_root__",
+        "site/demos/circuit-3d/demo.js::show"
       ],
       "imports": [
         "site/demos/circuit-3d/state.js::__file_root__"
@@ -239,8 +239,8 @@
     "site/demos/circuit-3d/readouts.js::formatReadouts": {
       "filePath": "site/demos/circuit-3d/readouts.js",
       "importedBy": [
-        "site/demos/circuit-3d/demo.js::show",
         "site/demos/circuit-3d/readouts.test.js::__file_root__",
+        "site/demos/circuit-3d/demo.js::show",
         "site/demos/circuit-3d-parallel/demo.js::__file_root__"
       ],
       "imports": [],
@@ -362,8 +362,8 @@
     },
     "site/demos/circuit-3d/explain.js": {
       "importedBy": [
-        "site/demos/circuit-3d/demo.js",
-        "site/demos/circuit-3d/explain.test.js"
+        "site/demos/circuit-3d/explain.test.js",
+        "site/demos/circuit-3d/demo.js"
       ],
       "imports": [
         "site/demos/circuit-3d/state.js"
@@ -406,8 +406,8 @@
     },
     "site/demos/circuit-3d/readouts.js": {
       "importedBy": [
-        "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d/readouts.test.js",
+        "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js"
       ],
       "imports": []

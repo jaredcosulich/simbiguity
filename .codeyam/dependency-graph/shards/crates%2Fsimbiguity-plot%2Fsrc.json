@@ -3,9 +3,9 @@
     "crates/simbiguity-plot/src/axes.rs::Axes": {
       "filePath": "crates/simbiguity-plot/src/axes.rs",
       "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs::__file_root__",
         "crates/simbiguity-plot/src/chart.rs::Chart",
-        "crates/simbiguity-plot/src/chart.rs::Chart::axes",
-        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+        "crates/simbiguity-plot/src/chart.rs::Chart::axes"
       ],
       "imports": [
         "crates/simbiguity-plot/src/axes.rs::Axes::data_to_px",
@@ -221,10 +221,10 @@
     "crates/simbiguity-plot/src/series.rs::Series": {
       "filePath": "crates/simbiguity-plot/src/series.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
+        "crates/simbiguity-plot/src/lib.rs::__file_root__",
         "crates/simbiguity-plot/src/chart.rs::Chart",
         "crates/simbiguity-plot/src/chart.rs::Chart::series",
-        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series::capacity",
@@ -283,8 +283,8 @@
     "crates/simbiguity-plot/src/series.rs::Series::new": {
       "filePath": "crates/simbiguity-plot/src/series.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty",
-        "crates/simbiguity-plot/src/series.rs::Series"
+        "crates/simbiguity-plot/src/series.rs::Series",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::insert_empty"
       ],
       "imports": [
         "crates/simbiguity-plot/src/series.rs::Series::capacity",
@@ -346,8 +346,8 @@
     "crates/simbiguity-plot/src/ticks.rs::NiceTicks": {
       "filePath": "crates/simbiguity-plot/src/ticks.rs",
       "importedBy": [
-        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
-        "crates/simbiguity-plot/src/lib.rs::__file_root__"
+        "crates/simbiguity-plot/src/lib.rs::__file_root__",
+        "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::exp",
@@ -400,10 +400,10 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",
-        "crates/simbiguity-plot/src/lib.rs"
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs"
       ],
       "imports": []
     },
@@ -473,10 +473,10 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-plot/src/lib.rs",
         "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/lib.rs"
+        "crates/simbiguity-plot/src/chart.rs"
       ],
       "imports": [
         "crates/simbiguity-render/src/mesh.rs",
@@ -490,10 +490,10 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",
-        "crates/simbiguity-plot/src/lib.rs"
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs"
       ],
       "imports": []
     },
@@ -502,12 +502,12 @@
         "crates/simbiguity-plot/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
-        "crates/simbiguity-plot/src/chart.rs",
         "crates/simbiguity-plot/src/lib.rs",
-        "crates/simbiguity-plot/src/lib.rs"
+        "crates/simbiguity-plot/src/lib.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs",
+        "crates/simbiguity-plot/src/chart.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs",

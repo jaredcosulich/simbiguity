@@ -301,3 +301,55 @@ fn ac_snapshot_restore_is_bit_identical() {
         assert_eq!(a.1, b.1);
     }
 }
+
+/// Verifies that a series RLC circuit experiences peak current at its resonant frequency.
+#[test]
+fn rlc_sweep_peaks_at_resonance() {
+    let mut c = Circuit::new();
+    let (n1, n2, n3, gnd) = (c.node(), c.node(), c.node(), c.node());
+    c.set_ground(gnd);
+
+    // Series RLC
+    // R = 1 ohm
+    // L = 10 mH = 0.01 H
+    // C = 10 uF = 0.00001 F
+    // Resonant freq f_0 = 1 / (2*pi*sqrt(L*C)) = 1 / (2*pi*sqrt(1e-7)) = 1 / (2*pi*0.000316227) ≈ 503 Hz
+
+    c.add_resistor(n1, n2, 1.0);
+    c.add_inductor(n2, n3, 0.01);
+    c.add_capacitor(n3, gnd, 0.00001);
+
+    let mut amplitudes = Vec::new();
+    let freqs = [100.0, 300.0, 500.0, 700.0, 1000.0];
+
+    for f in freqs {
+        let mut loop_c = c.clone();
+        let src = loop_c.add_signal_source(n1, gnd, 0, 10.0, f, 0.0, 0.0);
+        let mut sim = CircuitSim::new(loop_c);
+        let current_probe = sim.add_probe(Probe::Current(src), 1000);
+
+        let t_end = 0.1;
+        let dt = 1e-4;
+        let steps = (t_end / dt) as usize;
+
+        for _ in 0..steps {
+            sim.step(Seconds(dt));
+        }
+
+        let i_amp = measure_amplitude(&sim, current_probe);
+        amplitudes.push(i_amp);
+    }
+
+    // Current should peak near 500 Hz
+    let max_idx = amplitudes
+        .iter()
+        .enumerate()
+        .max_by(|a, b| a.1.partial_cmp(b.1).unwrap())
+        .map(|(idx, _)| idx)
+        .unwrap();
+
+    assert_eq!(
+        max_idx, 2,
+        "Current should peak at the resonant frequency (500 Hz)"
+    );
+}

@@ -125,6 +125,7 @@
         "crates/simbiguity-circuits/tests/ac.rs::backward_euler_damps_resonance",
         "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_10fc",
         "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc",
+        "crates/simbiguity-circuits/tests/ac.rs::rlc_sweep_peaks_at_resonance",
         "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0",
         "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_half_f0",
         "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_resonance_draws_r_limited_current"
@@ -187,6 +188,37 @@
         "set_ground",
         "step",
         "with_integrator"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/ac.rs::rlc_sweep_peaks_at_resonance": {
+      "filePath": "crates/simbiguity-circuits/tests/ac.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Probe",
+        "crates/simbiguity-circuits/tests/ac.rs::measure_amplitude",
+        "crates/simbiguity-core/src/simulation.rs::Seconds"
+      ],
+      "name": "rlc_sweep_peaks_at_resonance",
+      "namedMethods": [
+        "add_capacitor",
+        "add_inductor",
+        "add_probe",
+        "add_resistor",
+        "add_signal_source",
+        "clone",
+        "enumerate",
+        "iter",
+        "map",
+        "max_by",
+        "new",
+        "node",
+        "partial_cmp",
+        "push",
+        "set_ground",
+        "step",
+        "unwrap"
       ]
     },
     "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0": {

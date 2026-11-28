@@ -1,0 +1,14 @@
+{
+  "name": "Circuit Lab Demo",
+  "id": "c28565f2-9d4e-4791-9c8b-f9ae3d92a7fa",
+  "url": "/demos/circuit-lab/index.html",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "clock": {
+    "now": "2026-11-28T15:06:39Z"
+  },
+  "scenarioType": "application",
+  "description": "Circuit Lab Demo."
+}

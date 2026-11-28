@@ -96,6 +96,17 @@ export async function loadCircuit3D(url) {
     orbit(dYawDeg, dPitchDeg) { check(w.c3d_orbit(this.handle, dYawDeg, dPitchDeg)); }
     zoom(factor) { check(w.c3d_zoom(this.handle, factor)); }
 
+    addProbe(isCurrent, targetId, capacity) {
+      const probeId = check(w.c3d_add_probe(this.handle, isCurrent ? 1 : 0, targetId, capacity));
+      return {
+        read: () => {
+          const ptr = w.c3d_probe_samples_ptr(this.handle, probeId);
+          const len = w.c3d_probe_samples_len();
+          return new Float64Array(w.memory.buffer, ptr, len);
+        }
+      };
+    }
+
     /** One frame's draw commands (a copy, safe to keep). */
     frame(width, height) {
       const len = check(w.c3d_encode(this.handle, width, height));

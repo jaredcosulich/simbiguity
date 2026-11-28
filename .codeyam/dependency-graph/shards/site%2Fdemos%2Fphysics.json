@@ -56,8 +56,8 @@
     "site/demos/physics/state.js::parseState": {
       "filePath": "site/demos/physics/state.js",
       "importedBy": [
-        "site/demos/physics/demo.js::main",
-        "site/demos/physics/state.test.js::__file_root__"
+        "site/demos/physics/state.test.js::__file_root__",
+        "site/demos/physics/demo.js::main"
       ],
       "imports": [],
       "name": "parseState"
@@ -89,8 +89,8 @@
     },
     "site/demos/physics/state.js": {
       "importedBy": [
-        "site/demos/physics/demo.js",
-        "site/demos/physics/state.test.js"
+        "site/demos/physics/state.test.js",
+        "site/demos/physics/demo.js"
       ],
       "imports": []
     },

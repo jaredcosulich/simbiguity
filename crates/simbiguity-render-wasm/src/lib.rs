@@ -295,3 +295,58 @@ pub extern "C" fn c3d_mesh_indices_len(h: u32, i: u32) -> i32 {
 pub extern "C" fn c3d_vertex_stride() -> u32 {
     VERTEX_STRIDE as u32
 }
+
+static mut LAST_PROBE_SAMPLES: std::vec::Vec<f64> = std::vec::Vec::new();
+
+#[no_mangle]
+pub extern "C" fn c3d_add_probe(h: u32, is_current: u32, target_id: u32, capacity: u32) -> i32 {
+    with_view(h, |s| {
+        let probe = if is_current != 0 {
+            if target_id as usize >= s.view.circuit().parts().len() {
+                return status::fail(-1, "bad component id".into());
+            }
+            let cid = simbiguity_circuits_view::simbiguity_circuits::ComponentId::from_index(
+                target_id as usize,
+            );
+            simbiguity_circuits_view::simbiguity_circuits::sim::Probe::Current(cid)
+        } else {
+            if target_id as usize >= s.view.circuit().node_count() {
+                return status::fail(-1, "bad node id".into());
+            }
+            let nid = simbiguity_circuits_view::simbiguity_circuits::NodeId::from_index(
+                target_id as usize,
+            );
+            simbiguity_circuits_view::simbiguity_circuits::sim::Probe::NodeVoltage(nid)
+        };
+        let id = s.view.sim_mut().add_probe(probe, capacity as usize);
+        id.0 as i32
+    })
+}
+
+#[allow(static_mut_refs)]
+#[no_mangle]
+pub extern "C" fn c3d_probe_samples_ptr(h: u32, probe_id: u32) -> *const f64 {
+    let mut ptr = core::ptr::null();
+    with_view(h, |s| {
+        let samples = s.view.sim().probe_samples(
+            simbiguity_circuits_view::simbiguity_circuits::sim::ProbeId(probe_id as usize),
+        );
+        let mut flat = std::vec::Vec::with_capacity(samples.len() * 2);
+        for (t, v) in samples {
+            flat.push(t);
+            flat.push(v);
+        }
+        unsafe {
+            LAST_PROBE_SAMPLES = flat;
+            ptr = LAST_PROBE_SAMPLES.as_ptr();
+        }
+        OK
+    });
+    ptr
+}
+
+#[allow(static_mut_refs)]
+#[no_mangle]
+pub extern "C" fn c3d_probe_samples_len() -> i32 {
+    unsafe { LAST_PROBE_SAMPLES.len() as i32 }
+}

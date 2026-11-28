@@ -1,5 +1,18 @@
 {
   "entities": {
+    "crates/simbiguity-render-wasm/src/lib.rs::LAST_PROBE_SAMPLES": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_len",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_ptr"
+      ],
+      "imports": [],
+      "name": "LAST_PROBE_SAMPLES",
+      "namedMethods": [
+        "new",
+        "vec"
+      ]
+    },
     "crates/simbiguity-render-wasm/src/lib.rs::MAX_LAYOUT_WORDS": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
       "importedBy": [
@@ -19,6 +32,27 @@
         "crates/simbiguity-render-wasm/src/status.rs::last_error"
       ],
       "name": "__file_root__"
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_add_probe": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::fail"
+      ],
+      "name": "c3d_add_probe",
+      "namedMethods": [
+        "add_probe",
+        "circuit",
+        "fail",
+        "from_index",
+        "into",
+        "len",
+        "node_count",
+        "parts",
+        "sim_mut"
+      ]
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance": {
       "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
@@ -213,6 +247,37 @@
       "namedMethods": [
         "map_or",
         "pick"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_len": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-render-wasm/src/lib.rs::LAST_PROBE_SAMPLES"
+      ],
+      "name": "c3d_probe_samples_len",
+      "namedMethods": [
+        "len"
+      ]
+    },
+    "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_ptr": {
+      "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/lib.rs::__file_root__",
+        "crates/simbiguity-render-wasm/src/lib.rs::LAST_PROBE_SAMPLES",
+        "crates/simbiguity-render-wasm/src/slot.rs::with_view",
+        "crates/simbiguity-render-wasm/src/status.rs::OK"
+      ],
+      "name": "c3d_probe_samples_ptr",
+      "namedMethods": [
+        "as_ptr",
+        "len",
+        "null",
+        "probe_samples",
+        "push",
+        "sim",
+        "with_capacity"
       ]
     },
     "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts": {
@@ -778,9 +843,9 @@
     "crates/simbiguity-render-wasm/src/slot.rs::insert": {
       "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_new",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load"
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
@@ -856,23 +921,6 @@
     "crates/simbiguity-render-wasm/src/slot.rs::with_view": {
       "filePath": "crates/simbiguity-render-wasm/src/slot.rs",
       "importedBy": [
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_commands_ptr",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_encode",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_count",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_count",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_kind",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_replace_bulb",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_seek",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle_part",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_count",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_status",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_text",
@@ -887,7 +935,26 @@
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_reset",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_undo",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_add_probe",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_advance",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_commands_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_encode",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_count",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_count",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_part_kind",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_pick",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_replace_bulb",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_seek",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_toggle_part",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom"
       ],
       "imports": [
         "crates/simbiguity-render-wasm/src/slot.rs::Slot",
@@ -906,10 +973,10 @@
     "crates/simbiguity-render-wasm/src/status.rs::ERR_HANDLE": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::no_view",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
         "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
-        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/slot.rs::no_view"
+        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__"
       ],
       "imports": [],
       "name": "ERR_HANDLE"
@@ -917,9 +984,9 @@
     "crates/simbiguity-render-wasm/src/status.rs::ERR_INDEX": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
         "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
-        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+        "crates/simbiguity-render-wasm/src/lib.rs::__file_root__"
       ],
       "imports": [],
       "name": "ERR_INDEX"
@@ -927,6 +994,19 @@
     "crates/simbiguity-render-wasm/src/status.rs::OK": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_count",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_status",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_text",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_level_title",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_place",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_redo",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_remove",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_reset",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_undo",
+        "crates/simbiguity-render-wasm/src/slot.rs::remove",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_commands_ptr",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
@@ -943,25 +1023,13 @@
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_indices_ptr",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_mesh_vertices_ptr",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_orbit",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_probe_samples_ptr",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_readouts_ptr",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_replace_bulb",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_seek",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_camera",
         "crates/simbiguity-render-wasm/src/lib.rs::c3d_set_volts",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_count",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_status",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_text",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_level_title",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_place",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_redo",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_remove",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_reset",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_undo",
-        "crates/simbiguity-render-wasm/src/slot.rs::remove"
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_zoom"
       ],
       "imports": [],
       "name": "OK"
@@ -969,18 +1037,19 @@
     "crates/simbiguity-render-wasm/src/status.rs::fail": {
       "filePath": "crates/simbiguity-render-wasm/src/status.rs",
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
-        "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
-        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_text",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_level_title",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_load_share",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_share",
         "crates/simbiguity-render-wasm/src/slot.rs::no_view",
-        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh"
+        "crates/simbiguity-render-wasm/src/slot.rs::with_mesh",
+        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_free",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
+        "crates/simbiguity-physics-wasm/src/lib.rs::with_session",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_add_probe",
+        "crates/simbiguity-render-wasm/src/lib.rs::c3d_new_from_layout"
       ],
       "imports": [],
       "name": "fail",
@@ -1316,7 +1385,14 @@
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/slot.rs"
+        "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs",
+        "crates/simbiguity-circuits/src/lib.rs"
       ],
       "namedMethods": [
         "as_mut_ptr",
@@ -1400,10 +1476,10 @@
         "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/slot.rs"
+        "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs",
@@ -1415,18 +1491,18 @@
         "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
-        "crates/simbiguity-render-wasm/src/puzzle.rs"
+        "crates/simbiguity-render-wasm/src/puzzle.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs",
@@ -1445,26 +1521,28 @@
         "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
-        "crates/simbiguity-render-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
         "crates/simbiguity-render-wasm/src/slot.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-render-wasm/src/tests.rs",
-        "crates/simbiguity-render-wasm/src/tests.rs"
+        "crates/simbiguity-render-wasm/src/tests.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs",
+        "crates/simbiguity-render-wasm/src/lib.rs"
       ],
       "imports": [],
       "namedMethods": [

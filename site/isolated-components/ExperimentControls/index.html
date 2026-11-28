@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Isolated ExperimentControls</title>
+  <style>
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #fff; font-family: sans-serif; }
+    #codeyam-capture { width: 300px; padding: 20px; border: 1px solid #ccc; border-radius: 4px; }
+    .controls { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+    #error-text { color: red; font-weight: bold; min-height: 1.5em; }
+    select { padding: 5px; font-size: 16px; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="codeyam-capture">
+    <h2>Experiment</h2>
+    <select id="experiment-select">
+      <option value="led">LED + Resistor</option>
+      <option value="rectifier">Half-wave Rectifier</option>
+      <option value="rlc">Series RLC Resonance</option>
+    </select>
+    <div id="controls-container" class="controls"></div>
+    <div id="error-text"></div>
+    <h3>Readouts</h3>
+    <div id="readouts-container" class="controls"></div>
+  </div>
+  <script type="module">
+    import { ExperimentControls } from "../../demos/circuit-lab/components/experiment-controls.js";
+
+    const s = new URLSearchParams(window.location.search).get("s");
+    
+    // Stub readState/writeState for isolation context
+    window.location.hash = s === "Resonance" ? "exp=rlc" : (s === "Error" ? "exp=led" : "exp=led");
+    
+    const controls = new ExperimentControls("experiment-select", "error-text", "readouts-container", () => {});
+    if (s === "Error") {
+      controls.showError("Circuit simulation failed to converge.");
+    }
+  </script>
+</body>
+</html>

@@ -14,6 +14,11 @@ impl NodeId {
     pub const fn index(self) -> usize {
         self.0
     }
+
+    /// Reconstruct from an index.
+    pub const fn from_index(index: usize) -> Self {
+        Self(index)
+    }
 }
 
 /// A placed component. Returned by the `add_*` builder methods.
@@ -24,6 +29,11 @@ impl ComponentId {
     /// Position of this component in placement order (0, 1, 2, …).
     pub const fn index(self) -> usize {
         self.0
+    }
+
+    /// Reconstruct from an index.
+    pub const fn from_index(index: usize) -> Self {
+        Self(index)
     }
 }
 

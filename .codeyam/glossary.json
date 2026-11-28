@@ -1,5 +1,19 @@
 [
   {
+    "description": "Renders a 3D view of the selected circuit layout using WebGL.",
+    "filePath": "site/demos/circuit-lab/components/board-view.js",
+    "name": "BoardView",
+    "testFile": "site/demos/circuit-lab/components/board-view.test.js"
+  },
+  {
+    "description": "Interactive circuit lab allowing selection among pre-defined experiment setups like LED, Rectifier, and Resonance, visualizing state in 3D and 2D.",
+    "filePath": "site/demos/circuit-lab/index.html",
+    "name": "Circuit Lab Demo",
+    "scenarios": [
+      "circuit-lab-demo"
+    ]
+  },
+  {
     "description": "The Circuit in 3D demo page: WebGL2 canvas, readouts panel, voltage slider, switch and replace buttons, and explanation panel.",
     "filePath": "site/demos/circuit-3d/index.html",
     "name": "Circuit3DPage",
@@ -45,6 +59,12 @@
     ]
   },
   {
+    "description": "Provides dropdown controls to select and configure simulated experiments.",
+    "filePath": "site/demos/circuit-lab/components/experiment-controls.js",
+    "name": "ExperimentControls",
+    "testFile": "site/demos/circuit-lab/components/experiment-controls.test.js"
+  },
+  {
     "description": "Generic puzzle goal",
     "filePath": "crates/simbiguity-puzzle/src/lib.rs",
     "name": "Goal",
@@ -87,6 +107,12 @@
     "filePath": "crates/simbiguity-plot/src/ticks.rs",
     "name": "NiceTicks",
     "testFile": "crates/simbiguity-plot/src/ticks.rs"
+  },
+  {
+    "description": "Visualizes live simulation samples as an oscilloscope trace using Canvas 2D.",
+    "filePath": "site/demos/circuit-lab/components/scope-view.js",
+    "name": "ScopeView",
+    "testFile": "site/demos/circuit-lab/components/scope-view.test.js"
   },
   {
     "description": "The word a test status is written as in the report: passed, failed or ignored.",

@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "site/demos/circuit-lab/experiments.js::__file_root__": {
+      "filePath": "site/demos/circuit-lab/experiments.js",
+      "importedBy": [
+        "site/demos/circuit-lab/lab.js::main"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-lab/experiments.js::buildLayout": {
+      "filePath": "site/demos/circuit-lab/experiments.js",
+      "importedBy": [
+        "site/demos/circuit-lab/components/board-view.js::BoardView"
+      ],
+      "imports": [],
+      "name": "buildLayout"
+    },
+    "site/demos/circuit-lab/index.html::__file_root__": {
+      "filePath": "site/demos/circuit-lab/index.html",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-lab/lab.js::__file_root__"
+      ],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-lab/lab.js::__file_root__": {
+      "filePath": "site/demos/circuit-lab/lab.js",
+      "importedBy": [
+        "site/demos/circuit-lab/index.html::__file_root__"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/demos/circuit-lab/lab.js::main": {
+      "filePath": "site/demos/circuit-lab/lab.js",
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-lab/components/board-view.js::BoardView",
+        "site/demos/circuit-lab/components/experiment-controls.js::ExperimentControls",
+        "site/demos/circuit-lab/components/scope-view.js::ScopeView",
+        "site/demos/circuit-lab/experiments.js::__file_root__"
+      ],
+      "name": "main"
+    },
+    "site/demos/circuit-lab/state.js::readState": {
+      "filePath": "site/demos/circuit-lab/state.js",
+      "importedBy": [
+        "site/demos/circuit-lab/components/experiment-controls.js::ExperimentControls"
+      ],
+      "imports": [],
+      "name": "readState"
+    },
+    "site/demos/circuit-lab/state.js::writeState": {
+      "filePath": "site/demos/circuit-lab/state.js",
+      "importedBy": [
+        "site/demos/circuit-lab/components/experiment-controls.js::ExperimentControls"
+      ],
+      "imports": [],
+      "name": "writeState"
+    }
+  },
+  "files": {
+    "site/demos/circuit-lab/experiments.js": {
+      "importedBy": [
+        "site/demos/circuit-lab/components/board-view.js",
+        "site/demos/circuit-lab/lab.js"
+      ],
+      "imports": []
+    },
+    "site/demos/circuit-lab/index.html": {
+      "importedBy": [],
+      "imports": [
+        "site/demos/circuit-lab/lab.js"
+      ]
+    },
+    "site/demos/circuit-lab/lab.js": {
+      "importedBy": [
+        "site/demos/circuit-lab/index.html"
+      ],
+      "imports": [
+        "site/demos/circuit-lab/components/board-view.js",
+        "site/demos/circuit-lab/components/experiment-controls.js",
+        "site/demos/circuit-lab/components/scope-view.js",
+        "site/demos/circuit-lab/experiments.js"
+      ]
+    },
+    "site/demos/circuit-lab/state.js": {
+      "importedBy": [
+        "site/demos/circuit-lab/components/experiment-controls.js"
+      ],
+      "imports": []
+    }
+  }
+}

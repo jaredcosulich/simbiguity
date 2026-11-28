@@ -292,6 +292,10 @@ impl CircuitView {
         &self.sim
     }
 
+    pub fn sim_mut(&mut self) -> &mut CircuitSim {
+        &mut self.sim
+    }
+
     pub fn toggle_part_by_index(&mut self, id: usize) -> bool {
         let cid = self
             .layout
@@ -581,6 +585,19 @@ impl CircuitView {
             paint(&mut s.node_mut(p.halos[i]).material, look.halo);
             s.node_mut(p.filaments[i]).visible = !look.blown;
             s.node_mut(p.filaments_broken[i]).visible = look.blown;
+        }
+
+        for &(cid, glass, halo) in &p.leds {
+            let brightness = self
+                .sim
+                .state()
+                .solution()
+                .and_then(|sol| sol.brightness(cid))
+                .unwrap_or(0.0);
+            let rgb = s.node(glass).material.color;
+            s.node_mut(glass).material = simbiguity_render::Material::lit(rgb)
+                .with_alpha(0.8 + 0.2 * (brightness as f32).min(1.0));
+            s.node_mut(halo).material = simbiguity_render::Material::glow(rgb, brightness as f32);
         }
 
         for (i, path) in self.wire_paths.iter().enumerate() {

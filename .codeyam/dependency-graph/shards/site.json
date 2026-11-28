@@ -1,7 +1,26 @@
 {
-  "entities": {},
+  "entities": {
+    "site/boot.test.js::{ boot }": {
+      "filePath": "site/boot.test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/boot.js::__file_root__"
+      ],
+      "name": "{ boot }"
+    }
+  },
   "files": {
+    "site/boot.test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/boot.js"
+      ]
+    },
     "site/index.html": {
+      "importedBy": [],
+      "imports": []
+    },
+    "site/smoke.test.js": {
       "importedBy": [],
       "imports": []
     }

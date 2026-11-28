@@ -1767,6 +1767,10 @@
     }
   },
   "files": {
+    "copy_thumbs.py": {
+      "importedBy": [],
+      "imports": []
+    },
     "golden_hashes_gen.rs": {
       "importedBy": [],
       "imports": [],
@@ -1847,14 +1851,6 @@
       "importedBy": [],
       "imports": []
     },
-    "patch_lib.py": {
-      "importedBy": [],
-      "imports": []
-    },
-    "patch_session.py": {
-      "importedBy": [],
-      "imports": []
-    },
     "patch_tests.sh": {
       "importedBy": [],
       "imports": []
@@ -1871,10 +1867,6 @@
       "importedBy": [],
       "imports": []
     },
-    "rewrite_lib.py": {
-      "importedBy": [],
-      "imports": []
-    },
     "run_dbg.sh": {
       "importedBy": [],
       "imports": []
@@ -1883,11 +1875,11 @@
       "importedBy": [],
       "imports": []
     },
-    "test_x.rs": {
+    "test-resolve.js": {
       "importedBy": [],
       "imports": []
     },
-    "update_lib.py": {
+    "test_x.rs": {
       "importedBy": [],
       "imports": []
     }

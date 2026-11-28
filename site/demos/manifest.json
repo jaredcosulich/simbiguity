@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "circuit-3d",
+    "title": "Circuit in 3D",
+    "description": "Battery, switch and bulb on a 3D board. Watch charge flow and the bulb glow.",
+    "capabilities": ["circuits.dc.steady-state", "circuits.dc.power", "render.webgl.3d"],
+    "thumbnail": "circuit-3d/thumb.png"
+  },
+  {
+    "slug": "circuit-3d-parallel",
+    "title": "Parallel Circuits in 3D",
+    "description": "Current dividing across two parallel branches.",
+    "capabilities": ["circuits.dc.steady-state", "render.webgl.3d"],
+    "thumbnail": "circuit-3d-parallel/thumb.png"
+  },
+  {
+    "slug": "circuit-lab",
+    "title": "Circuit Lab",
+    "description": "Breadboard with LEDs, rectifiers, resonance and an oscilloscope.",
+    "capabilities": ["circuits.dc.steady-state", "circuits.ac.transient"],
+    "thumbnail": "circuit-lab/thumb.png"
+  },
+  {
+    "slug": "circuit-puzzles",
+    "title": "Circuit Puzzles",
+    "description": "Wire up a circuit to meet a goal voltage.",
+    "capabilities": ["circuits.dc.steady-state"],
+    "thumbnail": "circuit-puzzles/thumb.png"
+  },
+  {
+    "slug": "hello-circuit",
+    "title": "Hello, circuit",
+    "description": "Basic 2D circuit with live voltage, current, and power readouts.",
+    "capabilities": ["circuits.dc.steady-state", "circuits.dc.power"],
+    "thumbnail": "hello-circuit/thumb.png"
+  },
+  {
+    "slug": "physics",
+    "title": "Physics Engine",
+    "description": "Point masses, springs, gravity, and rods in 3D.",
+    "capabilities": ["physics.constraints.rod", "physics.forces.spring", "render.webgl.3d"],
+    "thumbnail": "physics/thumb.png"
+  },
+  {
+    "slug": "rc-charging",
+    "title": "RC Charging",
+    "description": "Live simulation of an RC circuit charging and discharging.",
+    "capabilities": ["circuits.ac.transient"],
+    "thumbnail": "rc-charging/thumb.png"
+  }
+]

@@ -3160,6 +3160,24 @@
       "runner": "node"
     },
     {
+      "description": "Renders error message on rejected promise",
+      "file": "site/boot.test.js",
+      "format": "junit-xml",
+      "key": "test › boot.js renders error message on rejected promise",
+      "line": 44,
+      "registeredAt": "2026-11-28T15:53:01.898344317+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Shows message when WebGL2 is missing",
+      "file": "site/boot.test.js",
+      "format": "junit-xml",
+      "key": "test › boot.js shows message when WebGL2 is missing",
+      "line": 5,
+      "registeredAt": "2026-11-28T15:53:01.779234230+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Test demo.js history replaceState hash write",
       "file": "site/demos/circuit-3d/demo.test.js",
       "format": "junit-xml",
@@ -3169,12 +3187,30 @@
       "runner": "node"
     },
     {
+      "description": "Every demo directory is in the manifest",
+      "file": "site/smoke.test.js",
+      "format": "junit-xml",
+      "key": "test › every_demo_directory_is_in_the_manifest",
+      "line": 32,
+      "registeredAt": "2026-11-28T15:53:02.010402510+00:00",
+      "runner": "node"
+    },
+    {
       "description": "executes GL calls from decoded commands",
       "file": "site/js/webgl2-executor.test.js",
       "format": "junit-xml",
       "key": "test › executes GL calls from decoded commands",
       "line": 86,
       "registeredAt": "2026-11-28T03:03:14.259608067+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Smoke test all demos resolve their imports",
+      "file": "site/smoke.test.js",
+      "format": "junit-xml",
+      "key": "test › smoke test all demos resolve their imports",
+      "line": 48,
+      "registeredAt": "2026-11-28T15:53:02.120477740+00:00",
       "runner": "node"
     },
     {

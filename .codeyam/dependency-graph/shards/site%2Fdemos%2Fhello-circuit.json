@@ -16,7 +16,8 @@
         "site/demos/hello-circuit/index.html::__file_root__"
       ],
       "imports": [
-        "site/demos/hello-circuit/explain.js::explanation"
+        "site/demos/hello-circuit/explain.js::explanation",
+        "site/js/boot.js::boot"
       ],
       "name": "__file_root__"
     },
@@ -170,6 +171,7 @@
         "site/demos/hello-circuit/index.html"
       ],
       "imports": [
+        "site/js/boot.js",
         "site/js/simbiguity.js",
         "site/demos/hello-circuit/explain.js",
         "site/demos/hello-circuit/readouts.js",

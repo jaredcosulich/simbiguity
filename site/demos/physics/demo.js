@@ -1,3 +1,4 @@
+import { boot } from "../../js/boot.js";
 import { parseState, formatState } from './state.js';
 import { WebGL2Executor } from '../../js/webgl2-executor.js';
 import { renderLabels } from '../../js/plot-labels.js';
@@ -200,4 +201,4 @@ async function main() {
     loop();
 }
 
-main().catch(console.error);
+boot(main);

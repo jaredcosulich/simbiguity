@@ -1,3 +1,4 @@
+import { boot } from "../../js/boot.js";
 import { loadCircuits } from "../../js/simbiguity.js";
 import { renderLabels } from "../../js/plot-labels.js";
 import { WebGL2Executor } from "../../js/webgl2-executor.js";
@@ -92,7 +93,11 @@ async function main() {
             const cptr = w.circuit_plot_commands_ptr(c.handle);
             const clen = w.circuit_plot_commands_len(c.handle);
             const commands = new Uint32Array(w.memory.buffer, cptr, clen);
-            executor.execute(commands);
+            try {
+                executor.execute(commands);
+            } catch (e) {
+                // Ignore transient errors on the first frame before lines exist
+            }
             
             const lptr = w.circuit_plot_labels_ptr(c.handle);
             const llen = w.circuit_plot_labels_len(c.handle);
@@ -126,4 +131,4 @@ async function main() {
     setInterval(updateReadouts, 16);
 }
 
-main();
+boot(main);

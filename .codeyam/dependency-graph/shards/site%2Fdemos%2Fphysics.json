@@ -6,6 +6,7 @@
         "site/demos/physics/index.html::__file_root__"
       ],
       "imports": [
+        "site/js/boot.js::boot",
         "site/js/plot-labels.js::renderLabels"
       ],
       "name": "__file_root__"
@@ -177,6 +178,7 @@
         "site/demos/physics/index.html"
       ],
       "imports": [
+        "site/js/boot.js",
         "site/demos/physics/state.js",
         "site/js/webgl2-executor.js",
         "site/js/plot-labels.js"

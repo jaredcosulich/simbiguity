@@ -9,6 +9,15 @@
     body { max-width: 44rem; margin: 4rem auto; padding: 0 1.5rem; line-height: 1.6; }
     h1 { margin-bottom: 0.25rem; }
     .tagline { margin-top: 0; opacity: 0.75; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card { border: 1px solid color-mix(in srgb, CanvasText 20%, Canvas); border-radius: 0.5rem; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+    .card img { width: 100%; aspect-ratio: 480/300; object-fit: cover; display: block; border-bottom: 1px solid color-mix(in srgb, CanvasText 20%, Canvas); }
+    .card-content { padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .card-content h3 { margin: 0; font-size: 1.1rem; }
+    .card-content p { margin: 0; font-size: 0.9rem; opacity: 0.8; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: auto; }
+    .tag { font-size: 0.75rem; background: color-mix(in srgb, CanvasText 10%, Canvas); padding: 0.2rem 0.4rem; border-radius: 0.25rem; color: inherit; text-decoration: none; position: relative; z-index: 2; }
+    .tag:hover { background: color-mix(in srgb, CanvasText 20%, Canvas); }
   </style>
 </head>
 <body>
@@ -17,13 +26,37 @@
   <p class="status-link"><a href="status/"><strong>See what it can do, and how it's tested →</strong></a><br>
     Every capability with a live demo, and every test that proves it, from the latest build.</p>
   <h2>Demos</h2>
-  <ul>
-    <li><a href="demos/hello-circuit/">Hello, circuit</a>: close a switch and light a bulb, with live
-      voltage, current and power from the circuits engine running as WebAssembly.</li>
-    <li><a href="demos/circuit-3d/">Circuit in 3D</a>: the same circuit on a board you can orbit, with
-      charge flowing along the wires as fast as the solved current and a bulb that warms up and cools down.</li>
-    <li><a href="demos/physics/">Physics Engine</a>: point masses, springs, gravity, and rods simulating pendulums and chains in 3D with a live energy chart.</li>
-  </ul>
-  <p>More are on the way, starting with a 3D circuit puzzle.</p>
+  <div id="gallery" class="gallery"></div>
+
+  <script type="module">
+    async function init() {
+      const response = await fetch('demos/manifest.json');
+      const manifests = await response.json();
+      
+      const gallery = document.getElementById('gallery');
+      const included = ["hello-circuit", "circuit-3d", "physics"];
+      
+      const toShow = manifests.filter(m => included.includes(m.slug));
+      
+      for (const m of toShow) {
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.href = `demos/${m.slug}/`;
+        
+        const tags = m.capabilities.map(cap => `<object><a class="tag" href="status/#capability=${encodeURIComponent(cap)}">${cap}</a></object>`).join('');
+        
+        card.innerHTML = `
+          <img src="demos/${m.thumbnail}" alt="${m.title} thumbnail">
+          <div class="card-content">
+            <h3>${m.title}</h3>
+            <p>${m.description}</p>
+            <div class="tags">${tags}</div>
+          </div>
+        `;
+        gallery.appendChild(card);
+      }
+    }
+    init().catch(console.error);
+  </script>
 </body>
 </html>

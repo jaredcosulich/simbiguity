@@ -1,3 +1,4 @@
+import { boot } from "../../js/boot.js";
 import { BoardView } from "./components/board-view.js";
 import { ExperimentControls } from "./components/experiment-controls.js";
 import { ScopeView } from "./components/scope-view.js";
@@ -52,4 +53,4 @@ async function main() {
   loadExperiment(initialState.experiment, initialState.params);
 }
 
-main().catch(console.error);
+boot(main);

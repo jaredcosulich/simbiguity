@@ -24,6 +24,7 @@
         "site/demos/circuit-puzzles/index.html::__file_root__"
       ],
       "imports": [
+        "site/js/boot.js::boot",
         "site/js/simbiguity-render.js::Pick"
       ],
       "name": "__file_root__"
@@ -78,6 +79,7 @@
         "site/demos/circuit-puzzles/index.html"
       ],
       "imports": [
+        "site/js/boot.js",
         "site/js/simbiguity-render.js",
         "site/js/webgl2-executor.js",
         "site/demos/circuit-puzzles/components/level-select.js",

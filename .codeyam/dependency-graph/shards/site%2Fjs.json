@@ -1,5 +1,27 @@
 {
   "entities": {
+    "site/js/boot.js::__file_root__": {
+      "filePath": "site/js/boot.js",
+      "importedBy": [
+        "site/boot.test.js::{ boot }"
+      ],
+      "imports": [],
+      "name": "__file_root__"
+    },
+    "site/js/boot.js::boot": {
+      "filePath": "site/js/boot.js",
+      "importedBy": [
+        "site/demos/circuit-3d/demo.js::__file_root__",
+        "site/demos/circuit-3d-parallel/demo.js::__file_root__",
+        "site/demos/circuit-lab/lab.js::__file_root__",
+        "site/demos/circuit-puzzles/game.js::__file_root__",
+        "site/demos/hello-circuit/demo.js::__file_root__",
+        "site/demos/physics/demo.js::__file_root__",
+        "site/demos/rc-charging/demo.js::__file_root__"
+      ],
+      "imports": [],
+      "name": "boot"
+    },
     "site/js/determinism.test.js::__file_root__": {
       "filePath": "site/js/determinism.test.js",
       "importedBy": [],
@@ -59,6 +81,7 @@
       "importedBy": [
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
+        "site/demos/circuit-lab/components/board-view.js::BoardView",
         "site/demos/circuit-puzzles/game.js::main"
       ],
       "imports": [
@@ -160,6 +183,7 @@
       "importedBy": [
         "site/demos/circuit-3d/demo.js::main",
         "site/demos/circuit-3d-parallel/demo.js::main",
+        "site/demos/circuit-lab/components/board-view.js::BoardView",
         "site/demos/circuit-puzzles/game.js::main",
         "site/demos/physics/demo.js::main",
         "site/demos/rc-charging/demo.js::main",
@@ -216,6 +240,19 @@
     }
   },
   "files": {
+    "site/js/boot.js": {
+      "importedBy": [
+        "site/boot.test.js",
+        "site/demos/circuit-3d/demo.js",
+        "site/demos/circuit-3d-parallel/demo.js",
+        "site/demos/circuit-lab/lab.js",
+        "site/demos/circuit-puzzles/game.js",
+        "site/demos/hello-circuit/demo.js",
+        "site/demos/physics/demo.js",
+        "site/demos/rc-charging/demo.js"
+      ],
+      "imports": []
+    },
     "site/js/determinism.test.js": {
       "importedBy": [],
       "imports": [
@@ -248,6 +285,7 @@
         "site/demos/circuit-3d/pointer.js",
         "site/demos/circuit-3d/pointer.test.js",
         "site/demos/circuit-3d-parallel/demo.js",
+        "site/demos/circuit-lab/components/board-view.js",
         "site/demos/circuit-puzzles/game.js",
         "site/js/simbiguity-render.test.js"
       ],
@@ -277,6 +315,7 @@
       "importedBy": [
         "site/demos/circuit-3d/demo.js",
         "site/demos/circuit-3d-parallel/demo.js",
+        "site/demos/circuit-lab/components/board-view.js",
         "site/demos/circuit-puzzles/game.js",
         "site/demos/physics/demo.js",
         "site/demos/rc-charging/demo.js",

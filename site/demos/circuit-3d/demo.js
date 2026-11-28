@@ -2,6 +2,7 @@
 // draw decision; this page only forwards input, replays the frame's draw
 // commands with WebGL2 and prints the readouts.
 
+import { boot } from "../../js/boot.js";
 import { loadCircuit3D } from "../../js/simbiguity-render.js";
 import { WebGL2Executor } from "../../js/webgl2-executor.js";
 import { bindCanvasInput } from "./canvas-input.js";
@@ -122,7 +123,4 @@ export function saveHash(r, state) {
   }));
 }
 
-main().catch((err) => {
-  showLoadError(err);
-  throw err;
-});
+boot(main);

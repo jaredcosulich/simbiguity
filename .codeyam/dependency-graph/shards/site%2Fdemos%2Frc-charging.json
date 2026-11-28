@@ -5,7 +5,9 @@
       "importedBy": [
         "site/demos/rc-charging/index.html::__file_root__"
       ],
-      "imports": [],
+      "imports": [
+        "site/js/boot.js::boot"
+      ],
       "name": "__file_root__"
     },
     "site/demos/rc-charging/demo.js::main": {
@@ -58,6 +60,7 @@
         "site/demos/rc-charging/index.html"
       ],
       "imports": [
+        "site/js/boot.js",
         "site/js/simbiguity.js",
         "site/js/plot-labels.js",
         "site/js/webgl2-executor.js"

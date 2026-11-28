@@ -29,7 +29,9 @@
       "importedBy": [
         "site/demos/circuit-lab/index.html::__file_root__"
       ],
-      "imports": [],
+      "imports": [
+        "site/js/boot.js::boot"
+      ],
       "name": "__file_root__"
     },
     "site/demos/circuit-lab/lab.js::main": {
@@ -79,6 +81,7 @@
         "site/demos/circuit-lab/index.html"
       ],
       "imports": [
+        "site/js/boot.js",
         "site/demos/circuit-lab/components/board-view.js",
         "site/demos/circuit-lab/components/experiment-controls.js",
         "site/demos/circuit-lab/components/scope-view.js",

@@ -1,3 +1,4 @@
+import { boot } from "../../js/boot.js";
 import { loadCircuit3D } from "../../js/simbiguity-render.js";
 import { WebGL2Executor } from "../../js/webgl2-executor.js";
 import { bindCanvasInput } from "../circuit-3d/canvas-input.js";
@@ -97,4 +98,4 @@ async function main() {
   requestAnimationFrame(loop);
 }
 
-main().catch(console.error);
+boot(main);

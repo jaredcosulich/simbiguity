@@ -1,3 +1,4 @@
+import { boot } from "../../js/boot.js";
 import { loadCircuit3D, Pick } from "../../js/simbiguity-render.js";
 import { WebGL2Executor } from "../../js/webgl2-executor.js";
 import { bindLevelSelect, updateLevelSelectUI } from './components/level-select.js';
@@ -158,4 +159,4 @@ async function main() {
   requestAnimationFrame(loop);
 }
 
-main().catch(console.error);
+boot(main);

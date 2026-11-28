@@ -1,5 +1,5 @@
-import { loadCircuit3D } from "../../../../js/simbiguity-render.js";
-import { WebGL2Executor } from "../../../../js/webgl2-executor.js";
+import { loadCircuit3D } from "../../../js/simbiguity-render.js";
+import { WebGL2Executor } from "../../../js/webgl2-executor.js";
 import { buildLayout } from "../experiments.js";
 
 export class BoardView {
@@ -14,7 +14,7 @@ export class BoardView {
   
   async init() {
     const [{ Circuit3D, exports: w }, exec] = await Promise.all([
-      loadCircuit3D(new URL("../../../../pkg/simbiguity_render_wasm.wasm", import.meta.url)),
+      loadCircuit3D(new URL("../../../pkg/simbiguity_render_wasm.wasm", import.meta.url)),
       WebGL2Executor.create(this.gl)
     ]);
     this.w = w;

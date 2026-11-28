@@ -6,9 +6,9 @@
         "site/demos/circuit-lab/lab.js::main"
       ],
       "imports": [
-        "js/simbiguity-render.js::__file_root__",
-        "js/webgl2-executor.js::__file_root__",
-        "site/demos/circuit-lab/experiments.js::buildLayout"
+        "site/demos/circuit-lab/experiments.js::buildLayout",
+        "site/js/simbiguity-render.js::loadCircuit3D",
+        "site/js/webgl2-executor.js::WebGL2Executor"
       ],
       "name": "BoardView"
     },
@@ -38,8 +38,8 @@
         "site/demos/circuit-lab/lab.js"
       ],
       "imports": [
-        "js/simbiguity-render.js",
-        "js/webgl2-executor.js",
+        "site/js/simbiguity-render.js",
+        "site/js/webgl2-executor.js",
         "site/demos/circuit-lab/experiments.js"
       ]
     },

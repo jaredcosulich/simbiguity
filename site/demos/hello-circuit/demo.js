@@ -1,3 +1,5 @@
+import { boot } from "../../js/boot.js";
+
 // Hello, circuit: the smallest complete embedding of simbiguity-circuits.
 //
 // 1. Load the WASM bridge.  2. Build a circuit once.  3. On every change,
@@ -111,12 +113,4 @@ function showExplanation({ title, body, issue, engine }) {
   box.replaceChildren(h2, p, ...lines);
 }
 
-main().catch((err) => {
-  const h2 = document.createElement("h2");
-  h2.className = "error";
-  h2.textContent = "The engine did not load";
-  const p = document.createElement("p");
-  p.textContent = err.message;
-  $("explain").replaceChildren(h2, p);
-  throw err;
-});
+boot(main);

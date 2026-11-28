@@ -233,17 +233,17 @@
     },
     {
       "id": "refactor:site/js/simbiguity.js:0",
-      "title": "refactor -- Break up loadCircuits in site/js/simbiguity.js (156 lines)",
+      "title": "refactor -- Break up loadCircuits in site/js/simbiguity.js (160 lines)",
       "mode": "backend",
-      "body": "## Summary\n\nsite/js/simbiguity.js has 198 production lines against a 500-line budget; it is new on this branch. 1 of its functions are over the 150-line entity budget: `loadCircuits` (156 lines). Feature work keeps landing in this file. Splitting it along its seams keeps each concern in its own file, so the next change touches less. CodeYam generated this plan from measurements of the files a build cycle touched.\n\n## Key Decisions\n\n- Largest entities: `loadCircuits` (156 lines), `SimbiguityError` (7 lines).\n- No shared-name groups were found; split along the largest entities instead.\n- Split only along seams that are one concern; leave the rest in place.\n- Behavior does not change: this is a move, not a rewrite.\n\n## Implementation\n\n1. Confirm the current numbers: `codeyam-editor editor size-query site/js/simbiguity.js` (the size and limit the gate judges, in under a second — re-run it after each move instead of an `audit --only` or a hand-written line counter). For the concern grouping, `codeyam-editor editor organization-report --path site/js/simbiguity.js`.\n2. Move each chosen group into its own file beside `site/js/simbiguity.js`, keeping existing callers working.\n3. Reconcile the glossary, test registry and evidence: `codeyam-editor editor relocate-entities --from site/js/simbiguity.js`.\n4. Done when `size-query site/js/simbiguity.js` reports it within 500 production lines, or what remains is one concern.",
-      "reason": "site/js/simbiguity.js has 198 production lines against a 500-line budget; it is new on this branch.",
+      "body": "## Summary\n\nsite/js/simbiguity.js has 202 production lines against a 500-line budget; it is new on this branch. 1 of its functions are over the 150-line entity budget: `loadCircuits` (160 lines). Feature work keeps landing in this file. Splitting it along its seams keeps each concern in its own file, so the next change touches less. CodeYam generated this plan from measurements of the files a build cycle touched.\n\n## Key Decisions\n\n- Largest entities: `loadCircuits` (160 lines), `SimbiguityError` (7 lines).\n- No shared-name groups were found; split along the largest entities instead.\n- Split only along seams that are one concern; leave the rest in place.\n- Behavior does not change: this is a move, not a rewrite.\n\n## Implementation\n\n1. Confirm the current numbers: `codeyam-editor editor size-query site/js/simbiguity.js` (the size and limit the gate judges, in under a second — re-run it after each move instead of an `audit --only` or a hand-written line counter). For the concern grouping, `codeyam-editor editor organization-report --path site/js/simbiguity.js`.\n2. Move each chosen group into its own file beside `site/js/simbiguity.js`, keeping existing callers working.\n3. Reconcile the glossary, test registry and evidence: `codeyam-editor editor relocate-entities --from site/js/simbiguity.js`.\n4. Done when `size-query site/js/simbiguity.js` reports it within 500 production lines, or what remains is one concern.",
+      "reason": "site/js/simbiguity.js has 202 production lines against a 500-line budget; it is new on this branch.",
       "severity": 2,
       "source": "refactor",
       "category": "debt",
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 9
+      "sightings": 10
     }
   ],
   "rounds": [
@@ -369,6 +369,13 @@
     {
       "at": "2026-11-28T17:53:57.283118813+00:00",
       "feature": "Round 4: Circuit Lab with a real oscilloscope and all six experiments",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T18:18:38.544516535+00:00",
+      "feature": "Circuits: Bipolar transistors simulations",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

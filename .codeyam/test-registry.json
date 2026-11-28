@@ -986,7 +986,7 @@
       "file": "crates/simbiguity-circuits-wasm/src/golden.rs",
       "format": "cargo",
       "key": "golden::tests::golden_determinism_check",
-      "line": 5,
+      "line": 34,
       "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
       "runner": "cargo"
     },
@@ -1018,12 +1018,48 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that every failure has a reason: a missing solution comes with at least one fatal issue.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::every_failure_has_a_reason",
+      "line": 140,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies Kirchhoff's Current Law (KCL) invariants across 2000 randomized seed topologies.",
       "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
       "format": "cargo",
       "key": "invariants_tests::tests::kcl_invariant",
       "line": 42,
       "registeredAt": "2026-11-27T01:04:14.000908854+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies repeatability: two solves of the same circuit are bit-identical.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::repeatability_invariant",
+      "line": 117,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies snapshot replay: a cloned circuit yields bit-identical results.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::snapshot_replay_invariant",
+      "line": 129,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Tellegen's theorem (|Σ V·I| over all elements is below 1e-9 × Σ |V·I|) across 2000 topologies.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::tellegen_invariant",
+      "line": 83,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
     {
@@ -1175,8 +1211,35 @@
       "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "format": "cargo",
       "key": "level_format::tests::load_level_test",
-      "line": 21,
+      "line": 52,
       "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies level parsing rejects empty strings",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_level_empty_fails",
+      "line": 59,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies level parsing rejects invalid content",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_level_invalid_fails",
+      "line": 65,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies level parsing succeeds for valid content",
+      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "format": "cargo",
+      "key": "level_format::tests::parse_level_valid_succeeds",
+      "line": 71,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
     {
@@ -2408,7 +2471,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "format": "cargo",
       "key": "share::tests::corrupted_share_link_is_rejected",
-      "line": 29,
+      "line": 40,
       "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
@@ -2417,7 +2480,7 @@
       "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "format": "cargo",
       "key": "share::tests::encoded_solution_round_trips",
-      "line": 21,
+      "line": 32,
       "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
@@ -2759,7 +2822,7 @@
       "file": "crates/simbiguity-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::check_all_goals",
-      "line": 104,
+      "line": 110,
       "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },
@@ -2953,6 +3016,15 @@
       "runner": "cargo"
     },
     {
+      "description": "A goal must be able to say \"no\". A bulb across an open switch carries no current and stays dark, so \"light this bulb\" has to fail. A goal that always passes would let every learner \"solve\" every level.",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::lit_bulb_goal_fails_when_the_bulb_is_dark",
+      "line": 167,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Package keys are read from the package table only, with escaped quotes.",
       "file": "xtask/src/main_tests.rs",
       "format": "cargo",
@@ -3061,6 +3133,33 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies calculation of brightness from power",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_calculate_brightness",
+      "line": 184,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies tolerance checking for currents",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_check_current_tolerance",
+      "line": 203,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies part counting",
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::test_count_parts_by_kind",
+      "line": 191,
+      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that Goal correctly returns true/false based on state",
       "file": "crates/simbiguity-puzzle/src/lib.rs",
       "format": "cargo",
@@ -3083,7 +3182,7 @@
       "file": "crates/simbiguity-puzzle/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_undo_redo",
-      "line": 122,
+      "line": 128,
       "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
       "runner": "cargo"
     },

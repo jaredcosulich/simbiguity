@@ -3,19 +3,37 @@
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "importedBy": [
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
       ],
       "imports": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::goals",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint",
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::reference_solution",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout"
       ],
       "name": "Level"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::goals": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
+      ],
+      "name": "Level::goals"
     },
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
       ],
       "imports": [],
       "name": "Level::hint"
@@ -24,41 +42,176 @@
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
       ],
       "imports": [],
       "name": "Level::id"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::reference_solution": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-view/src/board_layout.rs::BoardLayout"
+      ],
+      "name": "Level::reference_solution"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::InvalidGoal",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::InvalidLayout",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::ParseError"
+      ],
+      "name": "LevelError"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::InvalidGoal": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError"
+      ],
+      "imports": [],
+      "name": "LevelError::InvalidGoal"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::InvalidLayout": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError"
+      ],
+      "imports": [],
+      "name": "LevelError::InvalidLayout"
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::ParseError": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level"
+      ],
+      "imports": [],
+      "name": "LevelError::ParseError"
     },
     "crates/simbiguity-circuits-puzzle/src/level_format.rs::load_level": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "importedBy": [],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::goals",
         "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint",
-        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id"
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::reference_solution"
       ],
       "name": "load_level",
       "namedMethods": [
         "from",
-        "into"
+        "into",
+        "new"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/level_format.rs::parse_level": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::goals",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::hint",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::id",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::reference_solution",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::LevelError::ParseError"
+      ],
+      "name": "parse_level",
+      "namedMethods": [
+        "from",
+        "is_empty",
+        "new"
       ]
     },
     "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level",
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs::Level::goals",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::All",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Any",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Not",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
       ],
       "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::All",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Any",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::BulbBrightness",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::CurrentThrough",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::LitBulbs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::NoIssue",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Not",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::PartBudget",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check",
-        "crates/simbiguity-circuits/src/sim.rs::__file_root__",
-        "crates/simbiguity-circuits/src/solution.rs::Analysis",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Bulb",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::calculate_brightness",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::check_current_tolerance",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind",
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
         "crates/simbiguity-puzzle/src/lib.rs::Goal"
       ],
-      "name": "CircuitGoal",
-      "namedMethods": [
-        "sim"
-      ]
+      "name": "CircuitGoal"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::All": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
+      ],
+      "name": "CircuitGoal::All"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Any": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
+      ],
+      "name": "CircuitGoal::Any"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::BulbBrightness": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId"
+      ],
+      "name": "CircuitGoal::BulbBrightness"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::CurrentThrough": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId"
+      ],
+      "name": "CircuitGoal::CurrentThrough"
     },
     "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::LitBulbs": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
@@ -69,6 +222,39 @@
       "imports": [],
       "name": "CircuitGoal::LitBulbs"
     },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::NoIssue": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind"
+      ],
+      "name": "CircuitGoal::NoIssue"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Not": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal"
+      ],
+      "name": "CircuitGoal::Not"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::PartBudget": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind"
+      ],
+      "name": "CircuitGoal::PartBudget"
+    },
     "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check": {
       "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "importedBy": [
@@ -76,10 +262,326 @@
       ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::All",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Any",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::BulbBrightness",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::CurrentThrough",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::LitBulbs",
-        "crates/simbiguity-circuits/src/solution.rs::Analysis"
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::NoIssue",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::Not",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::PartBudget",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Bulb",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::calculate_brightness",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::check_current_tolerance",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind",
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim"
       ],
-      "name": "CircuitGoal::check"
+      "name": "CircuitGoal::check",
+      "namedMethods": [
+        "all",
+        "any",
+        "check",
+        "circuit",
+        "component",
+        "current",
+        "issues",
+        "iter",
+        "matches",
+        "power",
+        "solution",
+        "state"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::NoIssue",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::BulbBlown",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::FloatingNode",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::Inrush",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::InvalidTimeStep",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::InvalidValue",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::OpenCircuit",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::ShortCircuit",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::SolverFailure",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::VoltageSourceLoop",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue"
+      ],
+      "name": "IssueKind"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::BulbBlown": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::BulbBlown"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::FloatingNode": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::FloatingNode"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::Inrush": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::Inrush"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::InvalidTimeStep": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::InvalidTimeStep"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::InvalidValue": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::InvalidValue"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::OpenCircuit": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::OpenCircuit"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::ShortCircuit": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::ShortCircuit"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::SolverFailure": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::SolverFailure"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::VoltageSourceLoop": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches"
+      ],
+      "imports": [],
+      "name": "IssueKind::VoltageSourceLoop"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::BulbBlown",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::FloatingNode",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::Inrush",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::InvalidTimeStep",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::InvalidValue",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::OpenCircuit",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::ShortCircuit",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::SolverFailure",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::VoltageSourceLoop",
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue"
+      ],
+      "inherentMethod": true,
+      "name": "IssueKind::matches"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::PartBudget",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Battery",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Bulb",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Capacitor",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Inductor",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Resistor",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Switch",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Wire",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component",
+        "crates/simbiguity-circuits/src/component.rs::Component"
+      ],
+      "name": "PartKind"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Battery": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Battery"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Bulb": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Bulb"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Capacitor": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Capacitor"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Inductor": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Inductor"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Resistor": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Resistor"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Switch": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Switch"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Wire": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component"
+      ],
+      "imports": [],
+      "name": "PartKind::Wire"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Battery",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Bulb",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Capacitor",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Inductor",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Resistor",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Switch",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::Wire",
+        "crates/simbiguity-circuits/src/component.rs::Component"
+      ],
+      "inherentMethod": true,
+      "name": "PartKind::matches_component"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::__file_root__": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation"
+      ],
+      "name": "__file_root__"
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::calculate_brightness": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [],
+      "name": "calculate_brightness",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::check_current_tolerance": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [],
+      "name": "check_current_tolerance",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-circuits-puzzle/src/lib.rs::count_parts_by_kind": {
+      "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal::check"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PartKind::matches_component",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "count_parts_by_kind",
+      "namedMethods": [
+        "count",
+        "filter",
+        "iter",
+        "matches_component",
+        "parts"
+      ]
     }
   },
   "files": {
@@ -90,20 +592,29 @@
       "importedBy": [
         "crates/simbiguity-circuits-puzzle/src/lib.rs"
       ],
-      "imports": []
+      "imports": [
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/board_layout.rs"
+      ]
     },
     "crates/simbiguity-circuits-puzzle/src/lib.rs": {
       "declaresModules": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits-puzzle/src/share.rs"
       ],
-      "importedBy": [],
+      "importedBy": [
+        "crates/simbiguity-circuits-puzzle/src/level_format.rs"
+      ],
       "imports": [
         "crates/simbiguity-circuits-puzzle/src/level_format.rs",
         "crates/simbiguity-circuits-puzzle/src/share.rs",
-        "crates/simbiguity-circuits/src/solution.rs",
-        "crates/simbiguity-puzzle/src/lib.rs",
         "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/diagnostics.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-puzzle/src/lib.rs",
         "crates/simbiguity-circuits/src/netlist.rs"
       ],
       "namedMethods": [
@@ -122,8 +633,10 @@
       ],
       "imports": [],
       "namedMethods": [
+        "chars",
         "contains",
-        "to_string"
+        "new",
+        "push"
       ]
     }
   }

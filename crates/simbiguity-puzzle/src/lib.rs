@@ -24,7 +24,13 @@ pub struct Level<G> {
 }
 
 pub trait Goal<S: Simulation> {
-    fn check(&self, state: &S::State) -> bool;
+    fn check(&self, sim: &S) -> bool;
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Attempt {
+    pub level_id: String,
+    pub data: Vec<u8>,
 }
 
 pub struct UndoStack<S: Snapshot> {
@@ -64,8 +70,8 @@ impl<S: Snapshot> Default for UndoStack<S> {
     }
 }
 
-pub fn check<S: Simulation, G: Goal<S>>(level: &Level<G>, state: &S::State) -> bool {
-    level.goals.iter().all(|g| g.check(state))
+pub fn check<S: Simulation, G: Goal<S>>(level: &Level<G>, sim: &S) -> bool {
+    level.goals.iter().all(|g| g.check(sim))
 }
 
 #[cfg(test)]
@@ -94,7 +100,7 @@ mod tests {
 
     struct MockGoal(bool);
     impl Goal<MockSim> for MockGoal {
-        fn check(&self, _state: &bool) -> bool {
+        fn check(&self, _sim: &MockSim) -> bool {
             self.0
         }
     }
@@ -107,14 +113,14 @@ mod tests {
             hint: "".into(),
             goals: vec![MockGoal(true), MockGoal(true)],
         };
-        assert!(check(&l, &true));
+        assert!(check(&l, &MockSim));
 
         let l2 = Level {
             id: "1".into(),
             hint: "".into(),
             goals: vec![MockGoal(true), MockGoal(false)],
         };
-        assert!(!check(&l2, &true));
+        assert!(!check(&l2, &MockSim));
     }
 
     /// Verifies undo redo behavior

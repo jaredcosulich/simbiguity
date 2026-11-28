@@ -1,5 +1,30 @@
 {
   "entities": {
+    "crates/simbiguity-puzzle/src/lib.rs::Attempt": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-puzzle/src/lib.rs::Attempt::data",
+        "crates/simbiguity-puzzle/src/lib.rs::Attempt::level_id"
+      ],
+      "name": "Attempt"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::Attempt::data": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::Attempt"
+      ],
+      "imports": [],
+      "name": "Attempt::data"
+    },
+    "crates/simbiguity-puzzle/src/lib.rs::Attempt::level_id": {
+      "filePath": "crates/simbiguity-puzzle/src/lib.rs",
+      "importedBy": [
+        "crates/simbiguity-puzzle/src/lib.rs::Attempt"
+      ],
+      "imports": [],
+      "name": "Attempt::level_id"
+    },
     "crates/simbiguity-puzzle/src/lib.rs::Goal": {
       "filePath": "crates/simbiguity-puzzle/src/lib.rs",
       "importedBy": [

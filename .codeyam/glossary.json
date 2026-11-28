@@ -560,6 +560,12 @@
     "testFile": "crates/simbiguity-render-wasm/src/tests.rs"
   },
   {
+    "description": "Calculate brightness from power",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+    "name": "calculate_brightness",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/lib.rs"
+  },
+  {
     "description": "Maps a pointer client position to canvas backing-store pixels.",
     "filePath": "site/demos/circuit-3d/pointer.js",
     "name": "canvasPixel",
@@ -609,6 +615,12 @@
     "filePath": "crates/simbiguity-puzzle/src/lib.rs",
     "name": "check",
     "testFile": "crates/simbiguity-puzzle/src/lib.rs"
+  },
+  {
+    "description": "Check if current matches target within tolerance",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+    "name": "check_current_tolerance",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/lib.rs"
   },
   {
     "description": "Shared right-hand-side length check returning DimensionMismatch.",
@@ -905,6 +917,12 @@
     "testFile": "site/status/report-view.test.js"
   },
   {
+    "description": "Count parts by kind in circuit",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+    "name": "count_parts_by_kind",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/lib.rs"
+  },
+  {
     "description": "Every crate directory under crates/ that has a Cargo.toml, sorted.",
     "filePath": "xtask/src/main.rs",
     "name": "crate_dirs",
@@ -941,7 +959,7 @@
     "testFile": "crates/simbiguity-render/src/decode.rs"
   },
   {
-    "description": "Decodes a solution",
+    "description": "Decode shareable string to solution",
     "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
     "name": "decode_solution",
     "testFile": "crates/simbiguity-circuits-puzzle/src/share.rs"
@@ -1061,7 +1079,7 @@
     "testFile": "crates/simbiguity-render/src/frame.rs"
   },
   {
-    "description": "Encodes a solution",
+    "description": "Encode solution to shareable string",
     "filePath": "crates/simbiguity-circuits-puzzle/src/share.rs",
     "name": "encode_solution",
     "testFile": "crates/simbiguity-circuits-puzzle/src/share.rs"
@@ -1810,6 +1828,12 @@
       "engine-status"
     ],
     "testFile": "site/status/report-view.test.js"
+  },
+  {
+    "description": "Parse level from content string",
+    "filePath": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
+    "name": "parse_level",
+    "testFile": "crates/simbiguity-circuits-puzzle/src/level_format.rs"
   },
   {
     "description": "Evenly spaced charge positions along the loop from a phase, keeping only those on visible wires.",

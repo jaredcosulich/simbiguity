@@ -1,0 +1,30 @@
+{
+  "provenAt": "2026-11-28T01:51:27Z",
+  "slug": "fix-round-2-puzzle-engine-with-real-goals-verified-levels-undo-and-share",
+  "paths": [],
+  "runScope": [
+    "crates/simbiguity-circuits-puzzle/src/lib.rs"
+  ],
+  "neuters": [
+    {
+      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
+      "find": "            CircuitGoal::BulbBrightness { bulb, min, max } => {",
+      "replace": "            CircuitGoal::BulbBrightness { bulb, min, max } => { return true;"
+    }
+  ],
+  "tests": {
+    "lit_bulb_goal_fails_when_the_bulb_is_dark": {
+      "withoutFix": "fail",
+      "withFix": "pass",
+      "established": {
+        "kind": "measured"
+      }
+    }
+  },
+  "proof": {
+    "verdict": "proven",
+    "flipped": [
+      "lit_bulb_goal_fails_when_the_bulb_is_dark"
+    ]
+  }
+}

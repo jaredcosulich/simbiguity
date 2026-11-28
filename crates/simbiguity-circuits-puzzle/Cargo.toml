@@ -9,4 +9,6 @@ rust-version.workspace = true
 
 [dependencies]
 simbiguity-circuits = { version = "0.0.1", path = "../simbiguity-circuits" }
+simbiguity-circuits-view = { version = "0.0.1", path = "../simbiguity-circuits-view" }
+simbiguity-core = { version = "0.0.1", path = "../simbiguity-core" }
 simbiguity-puzzle = { version = "0.0.1", path = "../simbiguity-puzzle" }

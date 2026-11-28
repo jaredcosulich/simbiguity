@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 8
+      "sightings": 9
     }
   ],
   "rounds": [
@@ -362,6 +362,13 @@
     {
       "at": "2026-11-28T17:25:41.927435485+00:00",
       "feature": "Round 4: Trustworthy Gates",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T17:53:57.283118813+00:00",
+      "feature": "Round 4: Circuit Lab with a real oscilloscope and all six experiments",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

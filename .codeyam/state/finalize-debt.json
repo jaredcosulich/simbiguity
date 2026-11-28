@@ -169,13 +169,19 @@
       "shortSha": "b57a128",
       "subject": "feat: Add WebGL2Executor and demo.js tests",
       "deferredAt": "2026-11-28T02:51:56Z"
+    },
+    {
+      "sha": "9efa5e660b44d9a8f2414be659361fce15f39352",
+      "shortSha": "9efa5e6",
+      "subject": "feat: Round 3: site build under budget, no junk, and a determinism test that can fail",
+      "deferredAt": "2026-11-28T03:06:02Z"
     }
   ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "fast-sim-1",
   "lastWarned": {
-    "at": "2026-11-28T02:45:27Z",
-    "deferredCommits": 29
+    "at": "2026-11-28T03:06:35Z",
+    "deferredCommits": 31
   },
   "drained": {
     "screenshots": 17,

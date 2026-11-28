@@ -144,7 +144,6 @@
       "mode": "backend",
       "body": "## Root cause\nThe node runner was added to the project's test runners, but no testPartition names it, so refresh-tests runs it and then has nowhere to cache or attribute the results. Every node test reads as missing evidence.\n\n## Evidence\nfnd-a5bb19c67699 plus this session's sighting. On HEAD 3341e17, .codeyam/editor.json has no partition with \"runner\": \"node\" (grep finds none).\n\n## Smallest fix\nAdd a node testPartition to .codeyam/editor.json covering site/js/**/*.js and site/demos/**/*.js, then run refresh-tests for it so per-test-evidence.json records the node tests.\n\n## Cost of leaving it\nEvery finalize reports 63+ node tests as missing evidence, which hides real gaps and pushes the session to investigate a false alarm.",
       "reason": "Two sessions (fnd-a5bb19c67699 and this one) saw all node tests pass yet record no evidence, because no partition owns the node runner.",
-      "outcome": "Passing browser-side tests stop showing up as missing.",
       "source": "codeyam-improvement",
       "status": "pending",
       "proposedAt": "2026-11-26T18:49:08.630064320+00:00",
@@ -159,7 +158,8 @@
         "lane": "codeyam-improvement",
         "score": 499,
         "notVerified": true
-      }
+      },
+      "outcome": "Passing browser-side tests stop showing up as missing."
     },
     {
       "id": "follow-up-webgl2executor-s-gl-calls-and-demo-js-s-history-replacestate-hash-write-have-no",
@@ -236,6 +236,11 @@
       "at": "2026-11-26T20:13:00.193983217+00:00",
       "feature": "Time-series plots: simbiguity-plot draws values over time with the existing renderer",
       "notes": "Completed time-series plot library with standard math imports."
+    },
+    {
+      "at": "2026-11-28T01:58:23.548490024+00:00",
+      "feature": "Fix round 2: puzzle engine with real goals, verified levels, undo and share",
+      "notes": "Deferred checks via Fast Commit."
     }
   ],
   "syntheses": [

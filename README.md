@@ -99,16 +99,16 @@ codeyam-editor start
 ```
 <!-- codeyam:run-and-edit:end -->
 
-<!-- codeyam:scenario-gallery:start d=1fd3f4296d8a -->
+<!-- codeyam:scenario-gallery:start d=1950940fb6b1 -->
 ## Scenario gallery
 
 States captured as runnable scenarios with codeyam-editor:
 
-### Circuit 3D - Bulb Blown
+### Ball pit settled
 
-<img src=".codeyam/scenarios/screenshots/circuit-3d-bulb-blown--desktop.png" alt="Circuit 3D - Bulb Blown" width="280">
+<img src=".codeyam/scenarios/screenshots/ball-pit-settled--desktop.png" alt="Ball pit settled" width="280">
 
-Far too much voltage burns the filament through: the glass goes smoky, the broken filament shows, the charges stop, and the panel offers to replace the bulb.
+Ball pit settled.
 
 ### Circuit 3D Parallel - Working
 
@@ -116,11 +116,11 @@ Far too much voltage burns the filament through: the glass goes smoky, the broke
 
 Parallel branches with current visibly splitting.
 
-### Circuit Lab Demo
+### Circuit 3D - Bulb Blown
 
-<img src=".codeyam/scenarios/screenshots/circuit-lab-demo--desktop.png" alt="Circuit Lab Demo" width="280">
+<img src=".codeyam/scenarios/screenshots/circuit-3d-bulb-blown--desktop.png" alt="Circuit 3D - Bulb Blown" width="280">
 
-Circuit Lab Demo.
+Far too much voltage burns the filament through: the glass goes smoky, the broken filament shows, the charges stop, and the panel offers to replace the bulb.
 
 ### Physics Engine Demo
 
@@ -128,27 +128,27 @@ Circuit Lab Demo.
 
 Demonstrates physics features
 
-### Engine Status - All Green
+### Circuit Lab Demo
 
-<img src=".codeyam/scenarios/screenshots/engine-status-all-green--desktop.png" alt="Engine Status - All Green" width="280">
+<img src=".codeyam/scenarios/screenshots/circuit-lab-demo--desktop.png" alt="Circuit Lab Demo" width="280">
 
-Every test passes and all 25 capabilities are proven: the build line names the commit, the headline numbers are green, and the circuit capability cards lead with their live demos.
+Circuit Lab Demo.
 
-### Hello Circuit - Bulb Blown
+### Cloth
 
-<img src=".codeyam/scenarios/screenshots/hello-circuit-bulb-blown--desktop.png" alt="Hello Circuit - Bulb Blown" width="280">
+<img src=".codeyam/scenarios/screenshots/cloth--desktop.png" alt="Cloth" width="280">
 
-Overvoltage: the filament burns out, the panel is marked as an issue, and the Replace the bulb button appears.
+Cloth.
 
-### Landing - Demos
+### Corrupted share link
 
-<img src=".codeyam/scenarios/screenshots/landing-demos--desktop.png" alt="Landing - Demos" width="280">
+<img src=".codeyam/scenarios/screenshots/corrupted-share-link--desktop.png" alt="Corrupted share link" width="280">
 
-The project landing page with its Demos list, linking the Hello, circuit demo and the new Circuit in 3D demo.
+Corrupted share link.
 
-### Plot - Sine Wave
+### Cradle mid-swing
 
-<img src=".codeyam/scenarios/screenshots/plot-sine-wave--desktop.png" alt="Plot - Sine Wave" width="280">
+<img src=".codeyam/scenarios/screenshots/cradle-mid-swing--desktop.png" alt="Cradle mid-swing" width="280">
 
-A sine wave plotted over a scrolling 5-second window
+Cradle mid-swing.
 <!-- codeyam:scenario-gallery:end -->

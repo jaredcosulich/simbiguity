@@ -3292,6 +3292,42 @@
       "runner": "cargo"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/demos/physics/physics.test.js",
+      "format": "junit-xml",
+      "key": "test › Cloth 20x20",
+      "line": 102,
+      "registeredAt": "2026-11-28T20:01:30.517108764+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/physics/physics.test.js",
+      "format": "junit-xml",
+      "key": "test › Cradle",
+      "line": 81,
+      "registeredAt": "2026-11-28T20:01:30.908636921+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/physics/physics.test.js",
+      "format": "junit-xml",
+      "key": "test › Double pendulum, offset 0 vs 1e-9",
+      "line": 41,
+      "registeredAt": "2026-11-28T20:02:05.071605859+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/physics/physics.test.js",
+      "format": "junit-xml",
+      "key": "test › Every preset",
+      "line": 136,
+      "registeredAt": "2026-11-28T20:01:31.215404580+00:00",
+      "runner": "node"
+    },
+    {
       "description": "",
       "file": "site/js/nonlinear.test.js",
       "format": "junit-xml",
@@ -3300,11 +3336,29 @@
       "runner": "node"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/js/nonlinear.test.js",
+      "format": "junit-xml",
+      "key": "test › OpAmp inverting amplifier",
+      "line": 35,
+      "registeredAt": "2026-11-28T20:01:31.406037800+00:00",
+      "runner": "node"
+    },
+    {
       "description": "",
       "file": "site/test/ac.test.js",
       "format": "junit-xml",
       "key": "test › Oscilloscope probes read samples correctly for series RLC at resonance",
       "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/physics/physics.test.js",
+      "format": "junit-xml",
+      "key": "test › Replay",
+      "line": 118,
+      "registeredAt": "2026-11-28T20:01:31.590109846+00:00",
       "runner": "node"
     },
     {
@@ -3373,6 +3427,15 @@
       "runner": "node"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › applies triggerIndex correctly",
+      "line": 35,
+      "registeredAt": "2026-11-28T20:02:05.365849884+00:00",
+      "runner": "node"
+    },
+    {
       "description": "Renders error message on rejected promise",
       "file": "site/boot.test.js",
       "format": "junit-xml",
@@ -3404,6 +3467,15 @@
       "format": "junit-xml",
       "key": "test › clamps volts to the slider range",
       "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › converts samples to x, y coordinate pairs",
+      "line": 28,
+      "registeredAt": "2026-11-28T20:02:05.606046864+00:00",
       "runner": "node"
     },
     {
@@ -3650,6 +3722,24 @@
       "runner": "node"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › finds trigger when crossing level from below",
+      "line": 6,
+      "registeredAt": "2026-11-28T20:02:05.876735689+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › finds trigger when first value is below and next is exactly level",
+      "line": 18,
+      "registeredAt": "2026-11-28T20:02:06.110729416+00:00",
+      "runner": "node"
+    },
+    {
       "description": "",
       "file": "site/demos/hello-circuit/readouts.test.js",
       "format": "junit-xml",
@@ -3882,6 +3972,15 @@
       "runner": "node"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/demos/physics/physics.test.js",
+      "format": "junit-xml",
+      "key": "test › orbit_explicit_euler_gains_energy_verlet_does_not",
+      "line": 18,
+      "registeredAt": "2026-11-28T20:01:31.786396951+00:00",
+      "runner": "node"
+    },
+    {
       "description": "",
       "file": "site/status/report-view.test.js",
       "format": "junit-xml",
@@ -4106,6 +4205,24 @@
       "runner": "node"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › returns -1 for empty samples",
+      "line": 10,
+      "registeredAt": "2026-11-28T20:02:06.388904833+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › returns -1 if no crossing",
+      "line": 14,
+      "registeredAt": "2026-11-28T20:02:06.543056167+00:00",
+      "runner": "node"
+    },
+    {
       "description": "",
       "file": "site/status/report-view.test.js",
       "format": "junit-xml",
@@ -4143,6 +4260,24 @@
       "format": "junit-xml",
       "key": "test › returns bare content without a destination",
       "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › returns correct Uint32Array for empty parts and wires",
+      "line": 6,
+      "registeredAt": "2026-11-28T20:02:06.692292771+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › returns empty array for empty samples",
+      "line": 24,
+      "registeredAt": "2026-11-28T20:02:06.896610742+00:00",
       "runner": "node"
     },
     {
@@ -4234,11 +4369,65 @@
       "runner": "node"
     },
     {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › returns valid ladder readouts",
+      "line": 56,
+      "registeredAt": "2026-11-28T20:02:07.092698198+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › returns valid led readouts",
+      "line": 14,
+      "registeredAt": "2026-11-28T20:02:07.329201816+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › returns valid rc readouts",
+      "line": 46,
+      "registeredAt": "2026-11-28T20:02:07.545347651+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › returns valid rectifier readouts",
+      "line": 26,
+      "registeredAt": "2026-11-28T20:02:07.776554764+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › returns valid rlc readouts",
+      "line": 36,
+      "registeredAt": "2026-11-28T20:02:07.999935707+00:00",
+      "runner": "node"
+    },
+    {
       "description": "",
       "file": "site/status/report-view.test.js",
       "format": "junit-xml",
       "key": "test › returns zeros for an empty report",
       "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/experiments.test.js",
+      "format": "junit-xml",
+      "key": "test › rlc_sweep_peaks_at_1591_hz",
+      "line": 69,
+      "registeredAt": "2026-11-28T20:02:08.210664123+00:00",
       "runner": "node"
     },
     {
@@ -4392,6 +4581,15 @@
       "format": "junit-xml",
       "key": "test › stateFromHash parses empty string to defaults",
       "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "Auto-registered",
+      "file": "site/demos/circuit-lab/scope.test.js",
+      "format": "junit-xml",
+      "key": "test › stops processing if x is greater than w",
+      "line": 42,
+      "registeredAt": "2026-11-28T20:02:08.438184001+00:00",
       "runner": "node"
     },
     {

@@ -1,7 +1,7 @@
 use crate::constraints::{Ground, Rod};
 use crate::energy::Energy;
 use crate::error::PhysicsError;
-use crate::forces::{Gravity, Spring};
+use crate::forces::{Attractor, Gravity, Spring};
 use crate::integrate::Integrator;
 use simbiguity_math::vec::Vec3;
 
@@ -32,6 +32,8 @@ pub struct World {
     pub ground: Option<Ground>,
     pub integrator: Integrator,
     pub input_queue: alloc::vec::Vec<PhysicsInput>,
+    pub attractors: alloc::vec::Vec<Attractor>,
+    pub mutual_gravity: Option<f64>,
 }
 
 impl World {
@@ -46,6 +48,8 @@ impl World {
             ground: None,
             integrator: Integrator::VelocityVerlet,
             input_queue: alloc::vec::Vec::new(),
+            attractors: alloc::vec::Vec::new(),
+            mutual_gravity: None,
         }
     }
 
@@ -148,23 +152,121 @@ impl World {
         Ok(())
     }
 
-    pub fn compute_energy(&self) -> Energy {
-        let mut e = Energy::default();
+    pub fn add_attractor(&mut self, position: Vec3, gm: f64, softening: f64) {
+        self.attractors.push(Attractor {
+            position,
+            gm,
+            softening,
+        });
+    }
+
+    fn compute_kinetic_energy(&self) -> f64 {
+        let mut k = 0.0;
         for p in &self.particles {
             if !p.pinned {
-                e.kinetic += 0.5 * p.mass * p.velocity.length_squared();
+                k += 0.5 * p.mass * p.velocity.length_squared();
             }
-            e.potential_gravity += p.mass * -self.gravity.acceleration.y * p.position.y;
         }
+        k
+    }
+
+    fn compute_uniform_gravity_potential(&self) -> f64 {
+        let mut u = 0.0;
+        for p in &self.particles {
+            u += p.mass * -self.gravity.acceleration.y * p.position.y;
+        }
+        u
+    }
+
+    fn compute_attractors_potential(&self) -> f64 {
+        let mut u = 0.0;
+        for p in &self.particles {
+            for a in &self.attractors {
+                let diff = a.position - p.position;
+                let r2 = diff.length_squared();
+                let r = simbiguity_math::float::sqrt(r2);
+                if r > 1e-12 {
+                    u -= a.gm * p.mass / r;
+                }
+            }
+        }
+        u
+    }
+
+    fn compute_mutual_gravity_potential(&self) -> f64 {
+        let mut u = 0.0;
+        if let Some(g) = self.mutual_gravity {
+            for i in 0..self.particles.len() {
+                for j in (i + 1)..self.particles.len() {
+                    let diff = self.particles[i].position - self.particles[j].position;
+                    let r = diff.length();
+                    if r > 1e-12 {
+                        u -= g * self.particles[i].mass * self.particles[j].mass / r;
+                    }
+                }
+            }
+        }
+        u
+    }
+
+    fn compute_spring_potential(&self) -> f64 {
+        let mut u = 0.0;
         for s in &self.springs {
             let p1 = &self.particles[s.p1];
             let p2 = &self.particles[s.p2];
             let diff = p2.position - p1.position;
             let dist = diff.length();
             let stretch = dist - s.rest_length;
-            e.potential_spring += 0.5 * s.k * stretch * stretch;
+            u += 0.5 * s.k * stretch * stretch;
         }
-        e
+        u
+    }
+
+    pub fn compute_energy(&self) -> Energy {
+        Energy {
+            kinetic: self.compute_kinetic_energy(),
+            potential_gravity: self.compute_uniform_gravity_potential()
+                + self.compute_attractors_potential()
+                + self.compute_mutual_gravity_potential(),
+            potential_spring: self.compute_spring_potential(),
+        }
+    }
+
+    pub fn setup_orbit(&mut self) -> Result<(), PhysicsError> {
+        self.gravity.acceleration = Vec3::ZERO;
+        self.add_attractor(Vec3::ZERO, 1.0, 0.0);
+        let p = self.add_particle(1.0, Vec3::new(1.0, 0.0, 0.0), false)?;
+        self.particles[p].velocity = Vec3::new(0.0, 1.0, 0.0);
+        Ok(())
+    }
+
+    pub fn setup_binary(&mut self) -> Result<(), PhysicsError> {
+        self.gravity.acceleration = Vec3::ZERO;
+        self.mutual_gravity = Some(1.0);
+        let p1 = self.add_particle(1.0, Vec3::new(1.0, 0.0, 0.0), false)?;
+        self.particles[p1].velocity = Vec3::new(0.0, 0.5, 0.0);
+        let p2 = self.add_particle(1.0, Vec3::new(-1.0, 0.0, 0.0), false)?;
+        self.particles[p2].velocity = Vec3::new(0.0, -0.5, 0.0);
+        Ok(())
+    }
+
+    pub fn setup_figure_eight(&mut self) -> Result<(), PhysicsError> {
+        self.gravity.acceleration = Vec3::ZERO;
+        self.mutual_gravity = Some(1.0);
+        let p1 = Vec3::new(0.97000436, -0.24308753, 0.0);
+        let p2 = Vec3::new(-0.97000436, 0.24308753, 0.0);
+        let p3 = Vec3::new(0.0, 0.0, 0.0);
+        let v1 = Vec3::new(0.466203685, 0.43236573, 0.0);
+        let v2 = Vec3::new(0.466203685, 0.43236573, 0.0);
+        let v3 = Vec3::new(-0.93240737, -0.86473146, 0.0);
+
+        let idx1 = self.add_particle(1.0, p1, false)?;
+        self.particles[idx1].velocity = v1;
+        let idx2 = self.add_particle(1.0, p2, false)?;
+        self.particles[idx2].velocity = v2;
+        let idx3 = self.add_particle(1.0, p3, false)?;
+        self.particles[idx3].velocity = v3;
+        Ok(())
     }
 
     pub fn setup_deterministic_ball_pit(&mut self, count: u32) {
@@ -246,8 +348,57 @@ impl World {
         }
     }
 
+    pub fn apply_attractors(&mut self) {
+        for i in 0..self.particles.len() {
+            if self.particles[i].pinned {
+                continue;
+            }
+            let pos = self.particles[i].position;
+            let m = self.particles[i].mass;
+            let mut force = Vec3::ZERO;
+
+            for a in &self.attractors {
+                let diff = a.position - pos;
+                let r2 = diff.length_squared();
+                let soft2 = a.softening * a.softening;
+                let base = r2 + soft2;
+                let denom = base * simbiguity_math::float::sqrt(base);
+                if denom > 1e-12 {
+                    force += diff * (a.gm * m / denom);
+                }
+            }
+
+            self.particles[i].force += force;
+        }
+    }
+
+    pub fn apply_mutual_gravity(&mut self) {
+        if let Some(g) = self.mutual_gravity {
+            for i in 0..self.particles.len() {
+                for j in (i + 1)..self.particles.len() {
+                    let p1 = &self.particles[i];
+                    let p2 = &self.particles[j];
+                    let diff = p2.position - p1.position;
+                    let r2 = diff.length_squared();
+                    let denom = r2 * simbiguity_math::float::sqrt(r2);
+                    if denom > 1e-12 {
+                        let force = diff * (g * p1.mass * p2.mass / denom);
+                        if !self.particles[i].pinned {
+                            self.particles[i].force += force;
+                        }
+                        if !self.particles[j].pinned {
+                            self.particles[j].force -= force;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     pub fn apply_forces(&mut self, active_pushes: &[(usize, Vec3)]) {
         self.apply_gravity();
+        self.apply_attractors();
+        self.apply_mutual_gravity();
         self.apply_external_pushes(active_pushes);
         self.apply_spring_forces();
     }
@@ -409,6 +560,72 @@ impl Default for World {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// Verifies compute_energy returns correct total energy and partitions.
+    #[test]
+    fn test_compute_energy_partitions() {
+        let mut world = World::new();
+        world.gravity.acceleration = Vec3::new(0.0, -10.0, 0.0);
+        let p = world
+            .add_particle(1.0, Vec3::new(0.0, 10.0, 0.0), false)
+            .unwrap();
+        world.particles[p].velocity = Vec3::new(2.0, 0.0, 0.0);
+
+        let p2 = world
+            .add_particle(1.0, Vec3::new(0.0, 5.0, 0.0), false)
+            .unwrap();
+        world.add_spring(p, p2, 5.0, 10.0, 0.0).unwrap(); // Rest length is 5, distance is 5 => no stretch
+
+        world.add_attractor(Vec3::ZERO, 1.0, 0.0);
+
+        let e = world.compute_energy();
+        assert_eq!(e.kinetic, 2.0);
+        assert_eq!(e.potential_spring, 0.0);
+        assert!((e.potential_gravity - (150.0 - 0.3)).abs() < 1e-6);
+    }
+
+    /// Verifies mutual gravity is calculated and applied correctly.
+    #[test]
+    fn test_mutual_gravity() {
+        let mut world = World::new();
+        world.gravity.acceleration = Vec3::ZERO;
+        world.mutual_gravity = Some(1.0);
+        world
+            .add_particle(1.0, Vec3::new(1.0, 0.0, 0.0), false)
+            .unwrap();
+        world
+            .add_particle(1.0, Vec3::new(-1.0, 0.0, 0.0), false)
+            .unwrap();
+
+        world.apply_mutual_gravity();
+        assert!(world.particles[0].force.x < 0.0); // Pulled towards origin
+        assert!(world.particles[1].force.x > 0.0);
+
+        let e = world.compute_energy();
+        assert_eq!(e.potential_gravity, -0.5); // -G*m1*m2/r = -1.0*1.0*1.0/2.0
+    }
+
+    /// Verifies attractors force
+    #[test]
+    fn test_apply_attractors() {
+        let mut world = World::new();
+        world.add_attractor(Vec3::ZERO, 1.0, 0.0);
+        world
+            .add_particle(1.0, Vec3::new(2.0, 0.0, 0.0), false)
+            .unwrap();
+        world.apply_attractors();
+        // Force = -GmM/r^2 = -1.0 * 1.0 * 1.0 / 4.0 = -0.25
+        assert_eq!(world.particles[0].force, Vec3::new(-0.25, 0.0, 0.0));
+    }
+
+    /// Verifies orbit setup
+    #[test]
+    fn test_setup_orbit() {
+        let mut world = World::new();
+        world.setup_orbit().unwrap();
+        assert_eq!(world.particles.len(), 1);
+        assert_eq!(world.attractors.len(), 1);
+    }
 
     #[test]
     fn test_world_new() {

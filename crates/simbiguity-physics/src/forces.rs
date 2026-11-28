@@ -6,6 +6,13 @@ pub struct Gravity {
 }
 
 #[derive(Debug, Clone)]
+pub struct Attractor {
+    pub position: Vec3,
+    pub gm: f64,
+    pub softening: f64,
+}
+
+#[derive(Debug, Clone)]
 pub struct Spring {
     pub p1: usize,
     pub p2: usize,

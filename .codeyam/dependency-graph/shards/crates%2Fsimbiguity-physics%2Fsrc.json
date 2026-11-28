@@ -417,8 +417,14 @@
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
         "crates/simbiguity-physics/src/world.rs::World::add_rod",
         "crates/simbiguity-physics/src/world.rs::World::add_spring",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit",
         "crates/simbiguity-physics/src/world.rs::World::step",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_binary",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_figure_eight",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_orbit",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
@@ -481,6 +487,55 @@
       ],
       "imports": [],
       "name": "PhysicsError::SelfConnectedSpring"
+    },
+    "crates/simbiguity-physics/src/forces.rs::Attractor": {
+      "filePath": "crates/simbiguity-physics/src/forces.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::add_attractor",
+        "crates/simbiguity-physics/src/world.rs::World::attractors"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/forces.rs::Attractor::gm",
+        "crates/simbiguity-physics/src/forces.rs::Attractor::position",
+        "crates/simbiguity-physics/src/forces.rs::Attractor::softening"
+      ],
+      "name": "Attractor"
+    },
+    "crates/simbiguity-physics/src/forces.rs::Attractor::gm": {
+      "filePath": "crates/simbiguity-physics/src/forces.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/forces.rs::Attractor"
+      ],
+      "imports": [],
+      "name": "Attractor::gm"
+    },
+    "crates/simbiguity-physics/src/forces.rs::Attractor::position": {
+      "filePath": "crates/simbiguity-physics/src/forces.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/forces.rs::Attractor"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z"
+      ],
+      "name": "Attractor::position"
+    },
+    "crates/simbiguity-physics/src/forces.rs::Attractor::softening": {
+      "filePath": "crates/simbiguity-physics/src/forces.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/forces.rs::Attractor"
+      ],
+      "imports": [],
+      "name": "Attractor::softening"
     },
     "crates/simbiguity-physics/src/forces.rs::Gravity": {
       "filePath": "crates/simbiguity-physics/src/forces.rs",
@@ -571,9 +626,180 @@
       "imports": [],
       "name": "Spring::rest_length"
     },
+    "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_energy_drift_is_bounded": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "circular_orbit_energy_drift_is_bounded",
+      "namedMethods": [
+        "abs",
+        "add_attractor",
+        "add_particle",
+        "compute_energy",
+        "new",
+        "step",
+        "total",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_euler_explodes": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/integrate.rs::Integrator",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "circular_orbit_euler_explodes",
+      "namedMethods": [
+        "abs",
+        "add_attractor",
+        "add_particle",
+        "compute_energy",
+        "length",
+        "new",
+        "step",
+        "total",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_period_is_two_pi": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/gravity_tests.rs::run_orbit",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "circular_orbit_period_is_two_pi",
+      "namedMethods": [
+        "abs",
+        "add_attractor",
+        "add_particle",
+        "length",
+        "new",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::ellipse_keplers_second_law": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "ellipse_keplers_second_law",
+      "namedMethods": [
+        "abs",
+        "add_attractor",
+        "add_particle",
+        "new",
+        "step",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::ellipse_period_and_aphelion": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "ellipse_period_and_aphelion",
+      "namedMethods": [
+        "abs",
+        "add_attractor",
+        "add_particle",
+        "length",
+        "new",
+        "step",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::run_orbit": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_period_is_two_pi"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "run_orbit",
+      "namedMethods": [
+        "step",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::three_body_figure_eight_returns_to_start": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "three_body_figure_eight_returns_to_start",
+      "namedMethods": [
+        "add_particle",
+        "length",
+        "new",
+        "particles",
+        "position",
+        "step",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs::two_body_binary_momentum_and_separation": {
+      "filePath": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "name": "two_body_binary_momentum_and_separation",
+      "namedMethods": [
+        "abs",
+        "add_particle",
+        "length",
+        "new",
+        "step",
+        "unwrap"
+      ]
+    },
     "crates/simbiguity-physics/src/integrate.rs::Integrator": {
       "filePath": "crates/simbiguity-physics/src/integrate.rs",
       "importedBy": [
+        "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_euler_explodes",
         "crates/simbiguity-physics/src/lib.rs::__file_root__",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::integrator",
@@ -717,8 +943,10 @@
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::add_ball",
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
         "crates/simbiguity-physics/src/world.rs::World::apply_external_pushes",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces",
         "crates/simbiguity-physics/src/world.rs::World::step"
       ],
@@ -738,8 +966,13 @@
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::add_ball",
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints"
       ],
@@ -755,8 +988,10 @@
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::add_ball",
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints",
         "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit",
@@ -770,10 +1005,16 @@
       "importedBy": [
         "crates/simbiguity-physics/src/world.rs::Particle",
         "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::add_attractor",
         "crates/simbiguity-physics/src/world.rs::World::add_ball",
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_spring_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints",
         "crates/simbiguity-physics/src/world.rs::World::step"
@@ -818,9 +1059,12 @@
         "crates/simbiguity-physics/src/world.rs::World::add_ball",
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
-        "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints"
+        "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit"
       ],
       "imports": [
         "crates/simbiguity-math/src/vec.rs::Vec3::cross",
@@ -911,13 +1155,24 @@
         "crates/simbiguity-physics/src/collide_tests.rs::ground_friction_slide",
         "crates/simbiguity-physics/src/collide_tests.rs::newtons_cradle",
         "crates/simbiguity-physics/src/collide_tests.rs::perfectly_inelastic_collision",
+        "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_energy_drift_is_bounded",
+        "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_euler_explodes",
+        "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_period_is_two_pi",
+        "crates/simbiguity-physics/src/gravity_tests.rs::ellipse_keplers_second_law",
+        "crates/simbiguity-physics/src/gravity_tests.rs::ellipse_period_and_aphelion",
+        "crates/simbiguity-physics/src/gravity_tests.rs::run_orbit",
+        "crates/simbiguity-physics/src/gravity_tests.rs::three_body_figure_eight_returns_to_start",
+        "crates/simbiguity-physics/src/gravity_tests.rs::two_body_binary_momentum_and_separation",
         "crates/simbiguity-physics/src/lib.rs::__file_root__",
         "crates/simbiguity-physics/src/world.rs::World::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_binary",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_figure_eight",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_orbit",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
@@ -935,6 +1190,7 @@
         "crates/simbiguity-physics/src/constraints.rs::Rod",
         "crates/simbiguity-physics/src/energy.rs::Energy",
         "crates/simbiguity-physics/src/error.rs::PhysicsError",
+        "crates/simbiguity-physics/src/forces.rs::Attractor",
         "crates/simbiguity-physics/src/forces.rs::Gravity",
         "crates/simbiguity-physics/src/forces.rs::Spring",
         "crates/simbiguity-physics/src/integrate.rs::Integrator",
@@ -950,33 +1206,68 @@
         "crates/simbiguity-physics/src/world.rs::PhysicsInput::Push",
         "crates/simbiguity-physics/src/world.rs::PhysicsInput::SetGravity",
         "crates/simbiguity-physics/src/world.rs::PhysicsInput::SetPinned",
+        "crates/simbiguity-physics/src/world.rs::World::add_attractor",
         "crates/simbiguity-physics/src/world.rs::World::add_ball",
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
         "crates/simbiguity-physics/src/world.rs::World::add_rod",
         "crates/simbiguity-physics/src/world.rs::World::add_spring",
         "crates/simbiguity-physics/src/world.rs::World::apply",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
         "crates/simbiguity-physics/src/world.rs::World::apply_external_pushes",
         "crates/simbiguity-physics/src/world.rs::World::apply_forces",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces",
+        "crates/simbiguity-physics/src/world.rs::World::attractors",
+        "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential",
         "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_spring_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential",
         "crates/simbiguity-physics/src/world.rs::World::default",
         "crates/simbiguity-physics/src/world.rs::World::gravity",
         "crates/simbiguity-physics/src/world.rs::World::ground",
         "crates/simbiguity-physics/src/world.rs::World::input_queue",
         "crates/simbiguity-physics/src/world.rs::World::integrator",
+        "crates/simbiguity-physics/src/world.rs::World::mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::new",
         "crates/simbiguity-physics/src/world.rs::World::particles",
         "crates/simbiguity-physics/src/world.rs::World::restore",
         "crates/simbiguity-physics/src/world.rs::World::rods",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
         "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit",
         "crates/simbiguity-physics/src/world.rs::World::snapshot",
         "crates/simbiguity-physics/src/world.rs::World::springs",
         "crates/simbiguity-physics/src/world.rs::World::step"
       ],
       "name": "World"
+    },
+    "crates/simbiguity-physics/src/world.rs::World::add_attractor": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/forces.rs::Attractor",
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::attractors"
+      ],
+      "inherentMethod": true,
+      "name": "World::add_attractor",
+      "namedMethods": [
+        "push"
+      ]
     },
     "crates/simbiguity-physics/src/world.rs::World::add_ball": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
@@ -1012,7 +1303,10 @@
     "crates/simbiguity-physics/src/world.rs::World::add_particle": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
-        "crates/simbiguity-physics/src/world.rs::World"
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit"
       ],
       "imports": [
         "crates/simbiguity-math/src/vec.rs::Vec3::cross",
@@ -1092,6 +1386,34 @@
         "push"
       ]
     },
+    "crates/simbiguity-physics/src/world.rs::World::apply_attractors": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::apply_forces"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt",
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::Particle::force",
+        "crates/simbiguity-physics/src/world.rs::Particle::mass",
+        "crates/simbiguity-physics/src/world.rs::Particle::pinned",
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::attractors",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::apply_attractors",
+      "namedMethods": [
+        "len",
+        "length_squared",
+        "sqrt"
+      ]
+    },
     "crates/simbiguity-physics/src/world.rs::World::apply_external_pushes": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
@@ -1125,15 +1447,19 @@
         "crates/simbiguity-math/src/vec.rs::Vec3::x",
         "crates/simbiguity-math/src/vec.rs::Vec3::y",
         "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
         "crates/simbiguity-physics/src/world.rs::World::apply_external_pushes",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces"
       ],
       "inherentMethod": true,
       "name": "World::apply_forces",
       "namedMethods": [
+        "apply_attractors",
         "apply_external_pushes",
         "apply_gravity",
+        "apply_mutual_gravity",
         "apply_spring_forces"
       ]
     },
@@ -1158,6 +1484,29 @@
       "inherentMethod": true,
       "name": "World::apply_gravity"
     },
+    "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::apply_forces"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt",
+        "crates/simbiguity-physics/src/world.rs::Particle::force",
+        "crates/simbiguity-physics/src/world.rs::Particle::mass",
+        "crates/simbiguity-physics/src/world.rs::Particle::pinned",
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::apply_mutual_gravity",
+      "namedMethods": [
+        "len",
+        "length_squared",
+        "sqrt"
+      ]
+    },
     "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
@@ -1178,6 +1527,43 @@
         "length"
       ]
     },
+    "crates/simbiguity-physics/src/world.rs::World::attractors": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::add_attractor",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
+        "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential",
+        "crates/simbiguity-physics/src/world.rs::World::new"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/forces.rs::Attractor"
+      ],
+      "name": "World::attractors",
+      "namedMethods": [
+        "vec"
+      ]
+    },
+    "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::compute_energy"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::sqrt",
+        "crates/simbiguity-physics/src/world.rs::Particle::mass",
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::attractors",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::compute_attractors_potential",
+      "namedMethods": [
+        "length_squared",
+        "sqrt"
+      ]
+    },
     "crates/simbiguity-physics/src/world.rs::World::compute_energy": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
@@ -1185,28 +1571,95 @@
       ],
       "imports": [
         "crates/simbiguity-physics/src/energy.rs::Energy",
-        "crates/simbiguity-physics/src/world.rs::Particle::mass",
-        "crates/simbiguity-physics/src/world.rs::Particle::pinned",
-        "crates/simbiguity-physics/src/world.rs::Particle::position",
-        "crates/simbiguity-physics/src/world.rs::Particle::velocity",
-        "crates/simbiguity-physics/src/world.rs::World::default",
-        "crates/simbiguity-physics/src/world.rs::World::gravity",
-        "crates/simbiguity-physics/src/world.rs::World::particles",
-        "crates/simbiguity-physics/src/world.rs::World::springs"
+        "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_spring_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential"
       ],
       "inherentMethod": true,
       "name": "World::compute_energy",
       "namedMethods": [
-        "default",
-        "length",
-        "length_squared"
+        "compute_attractors_potential",
+        "compute_kinetic_energy",
+        "compute_mutual_gravity_potential",
+        "compute_spring_potential",
+        "compute_uniform_gravity_potential"
       ]
     },
-    "crates/simbiguity-physics/src/world.rs::World::default": {
+    "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::compute_energy"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/world.rs::Particle::mass",
+        "crates/simbiguity-physics/src/world.rs::Particle::pinned",
+        "crates/simbiguity-physics/src/world.rs::Particle::velocity",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::compute_kinetic_energy",
+      "namedMethods": [
+        "length_squared"
+      ]
+    },
+    "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::compute_energy"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/world.rs::Particle::mass",
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::compute_mutual_gravity_potential",
+      "namedMethods": [
+        "len",
+        "length"
+      ]
+    },
+    "crates/simbiguity-physics/src/world.rs::World::compute_spring_potential": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::compute_energy"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::particles",
+        "crates/simbiguity-physics/src/world.rs::World::springs"
+      ],
+      "inherentMethod": true,
+      "name": "World::compute_spring_potential",
+      "namedMethods": [
+        "length"
+      ]
+    },
+    "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::compute_energy"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/world.rs::Particle::mass",
+        "crates/simbiguity-physics/src/world.rs::Particle::position",
+        "crates/simbiguity-physics/src/world.rs::World::gravity",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::compute_uniform_gravity_potential"
+    },
+    "crates/simbiguity-physics/src/world.rs::World::default": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World"
       ],
       "imports": [
         "crates/simbiguity-physics/src/world.rs::World::new"
@@ -1221,9 +1674,12 @@
       "importedBy": [
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential",
         "crates/simbiguity-physics/src/world.rs::World::new",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
         "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit",
         "crates/simbiguity-physics/src/world.rs::World::step"
       ],
       "imports": [
@@ -1272,13 +1728,29 @@
       ],
       "name": "World::integrator"
     },
+    "crates/simbiguity-physics/src/world.rs::World::mutual_gravity": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential",
+        "crates/simbiguity-physics/src/world.rs::World::new",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight"
+      ],
+      "imports": [],
+      "name": "World::mutual_gravity"
+    },
     "crates/simbiguity-physics/src/world.rs::World::new": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::default",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
         "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit",
         "crates/simbiguity-physics/src/world.rs::World::step"
       ],
       "imports": [
@@ -1290,10 +1762,12 @@
         "crates/simbiguity-physics/src/forces.rs::Gravity",
         "crates/simbiguity-physics/src/integrate.rs::Integrator",
         "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-physics/src/world.rs::World::attractors",
         "crates/simbiguity-physics/src/world.rs::World::gravity",
         "crates/simbiguity-physics/src/world.rs::World::ground",
         "crates/simbiguity-physics/src/world.rs::World::input_queue",
         "crates/simbiguity-physics/src/world.rs::World::integrator",
+        "crates/simbiguity-physics/src/world.rs::World::mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::particles",
         "crates/simbiguity-physics/src/world.rs::World::rods",
         "crates/simbiguity-physics/src/world.rs::World::springs"
@@ -1312,14 +1786,23 @@
         "crates/simbiguity-physics/src/world.rs::World::add_particle",
         "crates/simbiguity-physics/src/world.rs::World::add_rod",
         "crates/simbiguity-physics/src/world.rs::World::add_spring",
+        "crates/simbiguity-physics/src/world.rs::World::apply_attractors",
         "crates/simbiguity-physics/src/world.rs::World::apply_external_pushes",
         "crates/simbiguity-physics/src/world.rs::World::apply_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::apply_mutual_gravity",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_attractors_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_kinetic_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_mutual_gravity_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_spring_potential",
+        "crates/simbiguity-physics/src/world.rs::World::compute_uniform_gravity_potential",
         "crates/simbiguity-physics/src/world.rs::World::new",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_position_constraints",
         "crates/simbiguity-physics/src/world.rs::World::satisfy_velocity_constraints",
+        "crates/simbiguity-physics/src/world.rs::World::setup_binary",
         "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit",
+        "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight",
+        "crates/simbiguity-physics/src/world.rs::World::setup_orbit",
         "crates/simbiguity-physics/src/world.rs::World::step"
       ],
       "imports": [
@@ -1416,6 +1899,32 @@
         "length"
       ]
     },
+    "crates/simbiguity-physics/src/world.rs::World::setup_binary": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/error.rs::PhysicsError",
+        "crates/simbiguity-physics/src/world.rs::Particle::velocity",
+        "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::gravity",
+        "crates/simbiguity-physics/src/world.rs::World::mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::new",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::setup_binary",
+      "namedMethods": [
+        "add_particle",
+        "new"
+      ]
+    },
     "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
@@ -1445,6 +1954,59 @@
         "wrapping_mul"
       ]
     },
+    "crates/simbiguity-physics/src/world.rs::World::setup_figure_eight": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/error.rs::PhysicsError",
+        "crates/simbiguity-physics/src/world.rs::Particle::velocity",
+        "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::gravity",
+        "crates/simbiguity-physics/src/world.rs::World::mutual_gravity",
+        "crates/simbiguity-physics/src/world.rs::World::new",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::setup_figure_eight",
+      "namedMethods": [
+        "add_particle",
+        "new"
+      ]
+    },
+    "crates/simbiguity-physics/src/world.rs::World::setup_orbit": {
+      "filePath": "crates/simbiguity-physics/src/world.rs",
+      "importedBy": [
+        "crates/simbiguity-physics/src/world.rs::World"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics/src/error.rs::PhysicsError",
+        "crates/simbiguity-physics/src/world.rs::Particle::velocity",
+        "crates/simbiguity-physics/src/world.rs::World::add_attractor",
+        "crates/simbiguity-physics/src/world.rs::World::add_particle",
+        "crates/simbiguity-physics/src/world.rs::World::gravity",
+        "crates/simbiguity-physics/src/world.rs::World::new",
+        "crates/simbiguity-physics/src/world.rs::World::particles"
+      ],
+      "inherentMethod": true,
+      "name": "World::setup_orbit",
+      "namedMethods": [
+        "add_attractor",
+        "add_particle",
+        "new"
+      ]
+    },
     "crates/simbiguity-physics/src/world.rs::World::snapshot": {
       "filePath": "crates/simbiguity-physics/src/world.rs",
       "importedBy": [
@@ -1464,7 +2026,7 @@
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::add_spring",
         "crates/simbiguity-physics/src/world.rs::World::apply_spring_forces",
-        "crates/simbiguity-physics/src/world.rs::World::compute_energy",
+        "crates/simbiguity-physics/src/world.rs::World::compute_spring_potential",
         "crates/simbiguity-physics/src/world.rs::World::new"
       ],
       "imports": [
@@ -1846,9 +2408,23 @@
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/world.rs"
       ],
       "imports": [
+        "crates/simbiguity-math/src/vec.rs"
+      ]
+    },
+    "crates/simbiguity-physics/src/gravity_tests.rs": {
+      "declaredBy": [
+        "crates/simbiguity-physics/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-physics/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/integrate.rs",
         "crates/simbiguity-math/src/vec.rs"
       ]
     },
@@ -1857,6 +2433,7 @@
         "crates/simbiguity-physics/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-physics/src/gravity_tests.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/world.rs",
@@ -1882,6 +2459,7 @@
         "crates/simbiguity-physics/src/integrate.rs",
         "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/collide_tests.rs",
+        "crates/simbiguity-physics/src/gravity_tests.rs",
         "crates/simbiguity-physics/src/world_tests.rs"
       ],
       "importedBy": [
@@ -1907,6 +2485,7 @@
         "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/collide_tests.rs",
+        "crates/simbiguity-physics/src/gravity_tests.rs",
         "crates/simbiguity-physics/src/world_tests.rs"
       ],
       "namedMethods": [
@@ -1923,6 +2502,7 @@
       "importedBy": [
         "crates/simbiguity-physics/src/collide.rs",
         "crates/simbiguity-physics/src/collide_tests.rs",
+        "crates/simbiguity-physics/src/gravity_tests.rs",
         "crates/simbiguity-physics/src/integrate.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
@@ -1940,8 +2520,12 @@
         "crates/simbiguity-physics/src/error.rs",
         "crates/simbiguity-physics/src/forces.rs",
         "crates/simbiguity-physics/src/forces.rs",
+        "crates/simbiguity-physics/src/forces.rs",
         "crates/simbiguity-physics/src/integrate.rs",
         "crates/simbiguity-math/src/vec.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
+        "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-physics/src/integrate.rs",
         "crates/simbiguity-physics/src/integrate.rs",
         "crates/simbiguity-physics/src/integrate.rs",

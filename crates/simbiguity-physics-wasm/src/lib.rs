@@ -415,6 +415,96 @@ pub extern "C" fn phys_free(h: u32) -> i32 {
     })
 }
 
+fn create_orbit() -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.setup_orbit()?;
+    let e = world.compute_energy();
+    Ok(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_orbit() -> u32 {
+    match create_orbit() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_binary() -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.setup_binary()?;
+    let e = world.compute_energy();
+    Ok(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_binary() -> u32 {
+    match create_binary() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
+fn create_figure_eight() -> Result<Session, PhysicsError> {
+    let mut world = World::new();
+    world.setup_figure_eight()?;
+    let e = world.compute_energy();
+    Ok(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_figure_eight() -> u32 {
+    match create_figure_eight() {
+        Ok(s) => insert(s),
+        Err(e) => {
+            map_error(e);
+            0
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -472,5 +562,64 @@ mod tests {
                 _ => unreachable!(),
             }
         }
+    }
+
+    /// Verifies orbit returns to start
+    #[test]
+    fn orbit_returns_to_start() {
+        let h = phys_new_orbit();
+        assert_ne!(h, 0);
+        let dt = 1e-3;
+        let steps = (core::f64::consts::TAU / dt) as usize;
+        for _ in 0..steps {
+            phys_advance(h, dt);
+        }
+        with_session(h, |s| {
+            let pos = s.world.particles[0].position;
+            assert!((pos.x - 1.0).abs() < 1e-3);
+            assert!((pos.y - 0.0).abs() < 1e-3);
+            OK
+        });
+        phys_free(h);
+    }
+
+    /// Verifies binary system returns to start
+    #[test]
+    fn binary_returns_to_start() {
+        let h = phys_new_binary();
+        assert_ne!(h, 0);
+        let dt = 1e-3;
+        // Separation = 2, G=1, mass=1. Orbit velocity is 0.5. Period = 2*pi*r / v = 2*pi*1 / 0.5 = 4*pi.
+        let steps = (4.0 * core::f64::consts::PI / dt) as usize;
+        for _ in 0..steps {
+            phys_advance(h, dt);
+        }
+        with_session(h, |s| {
+            let pos = s.world.particles[0].position;
+            assert!((pos.x - 1.0).abs() < 1e-2);
+            assert!((pos.y - 0.0).abs() < 1e-2);
+            OK
+        });
+        phys_free(h);
+    }
+
+    /// Verifies figure eight returns to start
+    #[test]
+    fn figure_eight_returns_to_start() {
+        let h = phys_new_figure_eight();
+        assert_ne!(h, 0);
+        let dt = 1e-3;
+        let t = 6.32591; // from plan
+        let steps = (t / dt) as usize;
+        for _ in 0..steps {
+            phys_advance(h, dt);
+        }
+        with_session(h, |s| {
+            let pos = s.world.particles[0].position;
+            assert!((pos.x - 0.97000436).abs() < 1e-2);
+            assert!((pos.y - -0.24308753).abs() < 1e-2);
+            OK
+        });
+        phys_free(h);
     }
 }

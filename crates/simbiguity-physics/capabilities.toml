@@ -39,3 +39,15 @@ description = "Coulomb friction on the ground."
 proves = [
     "collide_tests::ground_friction_slide"
 ]
+[[capability]]
+name = "Gravity and orbits (Kepler-checked)"
+description = "Inverse-square gravity and Kepler-checked orbits."
+proves = [
+    "gravity_tests::circular_orbit_period_is_two_pi",
+    "gravity_tests::circular_orbit_energy_drift_is_bounded",
+    "gravity_tests::circular_orbit_euler_explodes",
+    "gravity_tests::ellipse_period_and_aphelion",
+    "gravity_tests::ellipse_keplers_second_law",
+    "gravity_tests::two_body_binary_momentum_and_separation",
+    "gravity_tests::three_body_figure_eight_returns_to_start"
+]

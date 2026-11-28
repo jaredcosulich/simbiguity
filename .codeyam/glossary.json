@@ -194,6 +194,18 @@
     "testFile": "crates/simbiguity-circuits-view/src/board.rs"
   },
   {
+    "description": "Applies attractor forces to particles",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "apply_attractors",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
+    "description": "Applies mutual gravity forces to particles",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "apply_mutual_gravity",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
     "description": "Reads a manifest array of strings, allowing a trailing comma.",
     "filePath": "xtask/src/capabilities.rs",
     "name": "array",
@@ -906,6 +918,42 @@
       "simbiguity-circuits"
     ],
     "testFile": "crates/simbiguity-circuits/src/mna_tests.rs"
+  },
+  {
+    "description": "Computes attractors potential energy",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "compute_attractors_potential",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
+    "description": "Computes kinetic energy of unpinned particles",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "compute_kinetic_energy",
+    "tags": [
+      "simbiguity-physics"
+    ],
+    "testFile": "crates/simbiguity-physics/src/world.rs",
+    "tests": [
+      "world::tests::test_compute_energy_partitions"
+    ]
+  },
+  {
+    "description": "Computes mutual gravity potential energy",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "compute_mutual_gravity_potential",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
+    "description": "Computes spring potential energy",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "compute_spring_potential",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
+  },
+  {
+    "description": "Computes uniform gravity potential energy",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "compute_uniform_gravity_potential",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
   },
   {
     "description": "Returns x with the sign bit of sign, exactly.",
@@ -2481,6 +2529,24 @@
       "3d-rendering"
     ],
     "testFile": "crates/simbiguity-anim/src/spring.rs"
+  },
+  {
+    "description": "Sets up a binary system",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "setup_binary",
+    "testFile": "crates/simbiguity-physics/src/gravity_tests.rs"
+  },
+  {
+    "description": "Sets up a figure eight orbit",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "setup_figure_eight",
+    "testFile": "crates/simbiguity-physics/src/gravity_tests.rs"
+  },
+  {
+    "description": "Sets up an orbital system",
+    "filePath": "crates/simbiguity-physics/src/world.rs",
+    "name": "setup_orbit",
+    "testFile": "crates/simbiguity-physics/src/world.rs"
   },
   {
     "description": "Updates the readouts and explanation panels when what they show has changed.",

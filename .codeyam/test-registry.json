@@ -1090,6 +1090,69 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies circular orbit energy drift is bounded",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::circular_orbit_energy_drift_is_bounded",
+      "line": 43,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies circular orbit explodes with euler integration",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::circular_orbit_euler_explodes",
+      "line": 64,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies circular orbit period is two pi",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::circular_orbit_period_is_two_pi",
+      "line": 25,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Kepler's second law for an ellipse",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::ellipse_keplers_second_law",
+      "line": 122,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies ellipse period and aphelion are correct",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::ellipse_period_and_aphelion",
+      "line": 90,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies figure eight system returns to start",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::three_body_figure_eight_returns_to_start",
+      "line": 194,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies binary momentum is conserved and separation is constant",
+      "file": "crates/simbiguity-physics/src/gravity_tests.rs",
+      "format": "cargo",
+      "key": "gravity_tests::two_body_binary_momentum_and_separation",
+      "line": 161,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "An ideal battery shorted by a wire is fatal: no solution, a named ShortCircuit with unlimited current.",
       "file": "crates/simbiguity-circuits/tests/analysis.rs",
       "format": "cargo",
@@ -3043,6 +3106,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies binary system returns to start",
+      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::binary_returns_to_start",
+      "line": 588,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies the bridge stress conditions by ensuring heavy circuit loads do not cause WASM panics or incorrect states.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -3205,6 +3277,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies figure eight returns to start",
+      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::figure_eight_returns_to_start",
+      "line": 608,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "A freed handle is never reused, so it cannot alias a newer circuit.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -3331,6 +3412,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies orbit returns to start",
+      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "format": "cargo",
+      "key": "tests::orbit_returns_to_start",
+      "line": 569,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "At 20 V the bulb blows and stays blown until replaced.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -3344,7 +3434,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::pendulum_preset_steps_without_panicking",
-      "line": 423,
+      "line": 513,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -3907,11 +3997,20 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies attractors force",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_apply_attractors",
+      "line": 610,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that external forces map correctly by particle index.",
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_external_pushes",
-      "line": 433,
+      "line": 650,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -3920,7 +4019,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_gravity",
-      "line": 421,
+      "line": 638,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
@@ -3929,8 +4028,26 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_apply_spring_forces",
-      "line": 445,
+      "line": 662,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies compute_energy returns correct total energy and partitions.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_compute_energy_partitions",
+      "line": 566,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies mutual gravity is calculated and applied correctly.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_mutual_gravity",
+      "line": 589,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
     {
@@ -3938,8 +4055,17 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_setup_deterministic_ball_pit",
-      "line": 461,
+      "line": 678,
       "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies orbit setup",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_setup_orbit",
+      "line": 623,
+      "registeredAt": "2026-11-28T13:28:33.598349589+00:00",
       "runner": "cargo"
     },
     {
@@ -3947,7 +4073,7 @@
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_world_new",
-      "line": 414,
+      "line": 631,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },

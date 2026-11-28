@@ -30,4 +30,6 @@ pub use world::{Particle, PhysicsInput, World};
 #[cfg(test)]
 mod collide_tests;
 #[cfg(test)]
+mod gravity_tests;
+#[cfg(test)]
 mod world_tests;

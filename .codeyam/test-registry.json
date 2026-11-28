@@ -5250,7 +5250,7 @@
       "file": "crates/simbiguity/src/lib.rs",
       "format": "cargo",
       "key": "tests::test_simbiguity",
-      "line": 44,
+      "line": 46,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },

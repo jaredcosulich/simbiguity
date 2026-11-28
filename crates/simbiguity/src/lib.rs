@@ -37,6 +37,12 @@ pub use simbiguity_physics as physics;
 #[cfg(feature = "plot")]
 pub use simbiguity_plot as plot;
 
+/// The simbiguity version this build was compiled from (the crate's
+/// `Cargo.toml` version), for embedding projects and the status page to report.
+pub fn version() -> &'static str {
+    env!("CARGO_PKG_VERSION")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -56,10 +62,4 @@ mod tests {
         assert_eq!(version(), env!("CARGO_PKG_VERSION"));
         assert!(!version().is_empty());
     }
-}
-
-/// The simbiguity version this build was compiled from (the crate's
-/// `Cargo.toml` version), for embedding projects and the status page to report.
-pub fn version() -> &'static str {
-    env!("CARGO_PKG_VERSION")
 }

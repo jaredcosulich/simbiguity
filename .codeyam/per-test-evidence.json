@@ -3326,6 +3326,40 @@
       "pass|full|2026-11-26T17:33:52.512Z"
     ]
   },
+  "test › Cloth 20x20": {
+    "file": "site/demos/physics/physics.test.js",
+    "lastRunAt": "2026-11-28T20:01:30.815Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:01:30.815Z"
+    ]
+  },
+  "test › Cradle": {
+    "file": "site/demos/physics/physics.test.js",
+    "lastRunAt": "2026-11-28T20:01:31.170Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:01:31.170Z"
+    ]
+  },
+  "test › Double pendulum, offset 0 vs 1e-9": {
+    "file": "site/demos/physics/physics.test.js",
+    "lastRunAt": "2026-11-28T20:02:05.296Z",
+    "lastRunKind": "full",
+    "lastStatus": "skipped",
+    "statusRing": []
+  },
+  "test › Every preset": {
+    "file": "site/demos/physics/physics.test.js",
+    "lastRunAt": "2026-11-28T20:01:31.369Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:01:31.369Z"
+    ]
+  },
   "test › LED with 160 ohm resistor": {
     "file": "site/js/nonlinear.test.js",
     "lastRunAt": "2026-11-28T17:47:36.601Z",
@@ -3335,6 +3369,15 @@
       "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
+  "test › OpAmp inverting amplifier": {
+    "file": "site/js/nonlinear.test.js",
+    "lastRunAt": "2026-11-28T20:01:31.552Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:01:31.552Z"
+    ]
+  },
   "test › Oscilloscope probes read samples correctly for series RLC at resonance": {
     "file": "site/test/ac.test.js",
     "lastRunAt": "2026-11-28T17:47:36.601Z",
@@ -3342,6 +3385,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › Replay": {
+    "file": "site/demos/physics/physics.test.js",
+    "lastRunAt": "2026-11-28T20:01:31.736Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:01:31.736Z"
     ]
   },
   "test › WASM determinism hash": {
@@ -3416,6 +3468,15 @@
       "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
+  "test › applies triggerIndex correctly": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:05.536Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:05.536Z"
+    ]
+  },
   "test › boot.js renders error message on rejected promise": {
     "file": "site/boot.test.js",
     "lastRunAt": "2026-11-28T15:53:18.482Z",
@@ -3450,6 +3511,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › converts samples to x, y coordinate pairs": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:05.783Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:05.783Z"
     ]
   },
   "test › counts failures when any test failed": {
@@ -3722,6 +3792,24 @@
       "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
+  "test › finds trigger when crossing level from below": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:06.036Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:06.036Z"
+    ]
+  },
+  "test › finds trigger when first value is below and next is exactly level": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:06.334Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:06.334Z"
+    ]
+  },
   "test › flags blown only for this bulb": {
     "file": "site/demos/hello-circuit/readouts.test.js",
     "lastRunAt": "2026-11-28T17:47:36.601Z",
@@ -3983,6 +4071,15 @@
       "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
+  "test › orbit_explicit_euler_gains_energy_verlet_does_not": {
+    "file": "site/demos/physics/physics.test.js",
+    "lastRunAt": "2026-11-28T20:01:31.936Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:01:31.936Z"
+    ]
+  },
   "test › orders failures first, then ignored, then passed": {
     "file": "site/status/report-view.test.js",
     "lastRunAt": "2026-11-28T17:47:36.601Z",
@@ -4235,6 +4332,24 @@
       "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
+  "test › returns -1 for empty samples": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:06.492Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:06.492Z"
+    ]
+  },
+  "test › returns -1 if no crossing": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:06.640Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:06.640Z"
+    ]
+  },
   "test › returns an empty hash when the filters are cleared": {
     "file": "site/status/report-view.test.js",
     "lastRunAt": "2026-11-28T17:47:36.601Z",
@@ -4278,6 +4393,24 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns correct Uint32Array for empty parts and wires": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:06.838Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:06.838Z"
+    ]
+  },
+  "test › returns empty array for empty samples": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:07.024Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:07.024Z"
     ]
   },
   "test › returns empty filters for an empty hash": {
@@ -4379,6 +4512,51 @@
       "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
+  "test › returns valid ladder readouts": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:07.252Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:07.252Z"
+    ]
+  },
+  "test › returns valid led readouts": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:07.474Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:07.474Z"
+    ]
+  },
+  "test › returns valid rc readouts": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:07.688Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:07.688Z"
+    ]
+  },
+  "test › returns valid rectifier readouts": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:07.931Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:07.931Z"
+    ]
+  },
+  "test › returns valid rlc readouts": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:08.136Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:08.136Z"
+    ]
+  },
   "test › returns zeros for an empty report": {
     "file": "site/status/report-view.test.js",
     "lastRunAt": "2026-11-28T17:47:36.601Z",
@@ -4386,6 +4564,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rlc_sweep_peaks_at_1591_hz": {
+    "file": "site/demos/circuit-lab/experiments.test.js",
+    "lastRunAt": "2026-11-28T20:02:08.361Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:08.361Z"
     ]
   },
   "test › round-trips a state with a camera through stateFromHash": {
@@ -4557,6 +4744,15 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › stops processing if x is greater than w": {
+    "file": "site/demos/circuit-lab/scope.test.js",
+    "lastRunAt": "2026-11-28T20:02:08.589Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T20:02:08.589Z"
     ]
   },
   "test › strips a leading slash": {

@@ -1,5 +1,5 @@
 {
-  "$comment": "Per-developer settings (port, provider, proxy ports, startCommand, etc.) belong in editor.local.json. That file is gitignored and is deep-merged on top of this one at load time. Changing `provider` after scaffold does NOT install that agent's surface — re-run `codeyam-editor editor install-hooks` (or `codeyam-editor init --provider <name>`) to install it. See CLAUDE.md or run `codeyam-editor editor config-show` to inspect the effective config.",
+  "$comment": "Per-developer settings (port, provider, proxy ports, startCommand, etc.) belong in editor.local.json. That file is gitignored and is deep-merged on top of this one at load time. Changing `provider` after scaffold does NOT install that agent's surface \u2014 re-run `codeyam-editor editor install-hooks` (or `codeyam-editor init --provider <name>`) to install it. See CLAUDE.md or run `codeyam-editor editor config-show` to inspect the effective config.",
   "apps": [
     {
       "dir": "site",
@@ -224,7 +224,18 @@
     "site/**/*.json",
     "README.md",
     "site/pkg-budget.txt",
-    "summary.json"
+    "summary.json",
+    "golden_tmp",
+    "scripts/golden_hashes_gen.rs",
+    "scripts/invariants_prototype.rs",
+    "site/bench-budget.txt",
+    "site/demos/circuit-3d-parallel/thumb.png",
+    "site/demos/circuit-3d/thumb.png",
+    "site/demos/circuit-lab/thumb.png",
+    "site/demos/circuit-puzzles/thumb.png",
+    "site/demos/hello-circuit/thumb.png",
+    "site/demos/physics/thumb.png",
+    "site/demos/rc-charging/thumb.png"
   ],
   "testParallelism": {
     "loadGuard": true

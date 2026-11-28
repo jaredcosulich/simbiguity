@@ -73,14 +73,14 @@
         "crates/simbiguity-anim/src/easing.rs::ALL",
         "crates/simbiguity-anim/src/easing.rs::Ease::apply",
         "crates/simbiguity-anim/src/easing.rs::Ease::is_monotonic",
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-anim/src/track.rs::Keyframe",
         "crates/simbiguity-anim/src/track.rs::Keyframe::ease",
         "crates/simbiguity-anim/src/track.rs::Track<T>::key",
         "crates/simbiguity-anim/src/tween.rs::Tween",
         "crates/simbiguity-anim/src/tween.rs::Tween::ease",
         "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
-        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease",
-        "crates/simbiguity-anim/src/lib.rs::__file_root__"
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease"
       ],
       "imports": [
         "crates/simbiguity-anim/src/easing.rs::ALL",
@@ -481,10 +481,10 @@
         "crates/simbiguity-anim/src/lerp.rs::Quat",
         "crates/simbiguity-anim/src/lerp.rs::Vec2",
         "crates/simbiguity-anim/src/lerp.rs::Vec3",
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-anim/src/track.rs::Keyframe",
         "crates/simbiguity-anim/src/track.rs::Track",
         "crates/simbiguity-anim/src/tween.rs::Tween",
-        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits-view/src/look.rs::__file_root__"
       ],
       "imports": [
@@ -687,10 +687,10 @@
     "crates/simbiguity-anim/src/spring.rs::Spring": {
       "filePath": "crates/simbiguity-anim/src/spring.rs",
       "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-anim/src/spring.rs::Spring::critical",
         "crates/simbiguity-anim/src/spring.rs::Spring::new",
-        "crates/simbiguity-anim/src/spring.rs::Spring::value",
-        "crates/simbiguity-anim/src/lib.rs::__file_root__"
+        "crates/simbiguity-anim/src/spring.rs::Spring::value"
       ],
       "imports": [
         "crates/simbiguity-anim/src/spring.rs::Spring::critical",
@@ -1228,12 +1228,12 @@
     "crates/simbiguity-anim/src/track.rs::Keyframe": {
       "filePath": "crates/simbiguity-anim/src/track.rs",
       "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-anim/src/track.rs::Track",
         "crates/simbiguity-anim/src/track.rs::Track::keys",
         "crates/simbiguity-anim/src/track.rs::Track<T>::insert",
         "crates/simbiguity-anim/src/track.rs::Track<T>::key",
-        "crates/simbiguity-anim/src/track.rs::Track<T>::keys",
-        "crates/simbiguity-anim/src/lib.rs::__file_root__"
+        "crates/simbiguity-anim/src/track.rs::Track<T>::keys"
       ],
       "imports": [
         "crates/simbiguity-anim/src/easing.rs::Ease",
@@ -1281,9 +1281,9 @@
     "crates/simbiguity-anim/src/track.rs::Track": {
       "filePath": "crates/simbiguity-anim/src/track.rs",
       "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-anim/src/track.rs::Track<T>::key",
-        "crates/simbiguity-anim/src/track.rs::Track<T>::new",
-        "crates/simbiguity-anim/src/lib.rs::__file_root__"
+        "crates/simbiguity-anim/src/track.rs::Track<T>::new"
       ],
       "imports": [
         "crates/simbiguity-anim/src/lerp.rs::Lerp",
@@ -1418,9 +1418,9 @@
     "crates/simbiguity-anim/src/tween.rs::Tween": {
       "filePath": "crates/simbiguity-anim/src/tween.rs",
       "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs::__file_root__",
         "crates/simbiguity-anim/src/tween.rs::Tween<T>::new",
-        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease",
-        "crates/simbiguity-anim/src/lib.rs::__file_root__"
+        "crates/simbiguity-anim/src/tween.rs::Tween<T>::with_ease"
       ],
       "imports": [
         "crates/simbiguity-anim/src/easing.rs::Ease",
@@ -1551,10 +1551,10 @@
         "crates/simbiguity-anim/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-anim/src/track.rs",
-        "crates/simbiguity-anim/src/tween.rs",
         "crates/simbiguity-anim/src/lib.rs",
-        "crates/simbiguity-anim/src/lib.rs"
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/track.rs",
+        "crates/simbiguity-anim/src/tween.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs"
@@ -1565,10 +1565,10 @@
         "crates/simbiguity-anim/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-anim/src/lib.rs",
+        "crates/simbiguity-anim/src/lib.rs",
         "crates/simbiguity-anim/src/track.rs",
         "crates/simbiguity-anim/src/tween.rs",
-        "crates/simbiguity-anim/src/lib.rs",
-        "crates/simbiguity-anim/src/lib.rs",
         "crates/simbiguity-circuits-view/src/look.rs"
       ],
       "imports": [

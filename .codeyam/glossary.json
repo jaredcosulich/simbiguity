@@ -2961,6 +2961,12 @@
     "testFile": "crates/simbiguity-math/src/float.rs"
   },
   {
+    "description": "Computes the hyperbolic tangent of `x`.",
+    "filePath": "crates/simbiguity-math/src/float.rs",
+    "name": "tanh",
+    "testFile": "crates/simbiguity-math/src/float.rs"
+  },
+  {
     "description": "Reads one libtest result line into a test path and status, stripping the should-panic suffix.",
     "filePath": "xtask/src/libtest_output.rs",
     "name": "test_line",

@@ -13,6 +13,10 @@
     "crates/simbiguity-core/src/clock.rs::FixedClock": {
       "filePath": "crates/simbiguity-core/src/clock.rs",
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
         "crates/simbiguity-core/src/clock.rs::FixedClock::new",
         "crates/simbiguity-core/src/clock.rs::FixedClock::total_steps",
         "crates/simbiguity-core/src/clock.rs::FixedClock::with_max_steps",
@@ -20,11 +24,7 @@
         "crates/simbiguity-core/src/lockstep.rs::Lockstep",
         "crates/simbiguity-core/src/lockstep.rs::Lockstep::clock",
         "crates/simbiguity-core/src/lockstep.rs::Lockstep::new",
-        "crates/simbiguity-core/src/lockstep.rs::clock",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::clock",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim"
+        "crates/simbiguity-core/src/lockstep.rs::clock"
       ],
       "imports": [
         "crates/simbiguity-core/src/clock.rs::DEFAULT_MAX_STEPS",
@@ -532,12 +532,12 @@
     "crates/simbiguity-core/src/rng.rs::Rng": {
       "filePath": "crates/simbiguity-core/src/rng.rs",
       "importedBy": [
-        "crates/simbiguity-physics/src/collide_tests.rs::balls_in_box_overlap_and_momentum",
-        "crates/simbiguity-physics/src/collide_tests.rs::broadphase_equivalence",
+        "crates/simbiguity-circuits-wasm/src/tests.rs::bridge_stress_test",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/rng.rs::Rng::new",
         "crates/simbiguity-core/src/rng.rs::Rng::with_stream",
-        "crates/simbiguity-circuits-wasm/src/tests.rs::bridge_stress_test"
+        "crates/simbiguity-physics/src/collide_tests.rs::balls_in_box_overlap_and_momentum",
+        "crates/simbiguity-physics/src/collide_tests.rs::broadphase_equivalence"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs::DEFAULT_STREAM",
@@ -818,6 +818,22 @@
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
         "crates/simbiguity-circuits/src/mna_tests.rs::circuit_sim_solves_empty_circuit_cleanly",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::time",
+        "crates/simbiguity-circuits/src/sim.rs::time",
+        "crates/simbiguity-circuits/tests/ac.rs::ac_snapshot_restore_is_bit_identical",
+        "crates/simbiguity-circuits/tests/ac.rs::backward_euler_damps_resonance",
+        "crates/simbiguity-circuits/tests/ac.rs::half_wave_rectifier",
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_10fc",
+        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc",
+        "crates/simbiguity-circuits/tests/ac.rs::rlc_sweep_peaks_at_resonance",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_half_f0",
+        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_resonance_draws_r_limited_current",
+        "crates/simbiguity-circuits/tests/ac.rs::square_wave_into_rc",
         "crates/simbiguity-circuits/tests/analysis.rs::blown_bulb_persists_until_replaced",
         "crates/simbiguity-circuits/tests/analysis.rs::lc_ringing_backward_euler_decays_energy",
         "crates/simbiguity-circuits/tests/analysis.rs::lc_ringing_trapezoidal_preserves_energy",
@@ -830,6 +846,13 @@
         "crates/simbiguity-circuits/tests/analysis.rs::transient_snapshot_restore_replay_is_bit_identical",
         "crates/simbiguity-circuits/tests/analysis.rs::trapezoidal_rc_matches_hand_computed_discrete_answer",
         "crates/simbiguity-circuits/tests/large.rs::lc_chain_200_section_delay",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
+        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
         "crates/simbiguity-core/src/clock.rs::FixedClock",
         "crates/simbiguity-core/src/clock.rs::FixedClock::advance",
         "crates/simbiguity-core/src/clock.rs::FixedClock::elapsed",
@@ -858,30 +881,7 @@
         "crates/simbiguity-core/src/simulation.rs::ZERO",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_goal_status",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_issue_text",
-        "xtask/src/bench_fixtures.rs::run_all",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::circuit",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::step",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::time",
-        "crates/simbiguity-circuits/src/sim.rs::time",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::Slot::step",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::advance",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::from_layout",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::input",
-        "crates/simbiguity-circuits-view/src/lib.rs::CircuitView::sim",
-        "crates/simbiguity-circuits/tests/ac.rs::ac_snapshot_restore_is_bit_identical",
-        "crates/simbiguity-circuits/tests/ac.rs::backward_euler_damps_resonance",
-        "crates/simbiguity-circuits/tests/ac.rs::half_wave_rectifier",
-        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_10fc",
-        "crates/simbiguity-circuits/tests/ac.rs::rc_low_pass_at_fc",
-        "crates/simbiguity-circuits/tests/ac.rs::rlc_sweep_peaks_at_resonance",
-        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_2f0",
-        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_half_f0",
-        "crates/simbiguity-circuits/tests/ac.rs::series_rlc_at_resonance_draws_r_limited_current",
-        "crates/simbiguity-circuits/tests/ac.rs::square_wave_into_rc"
+        "xtask/src/bench_fixtures.rs::run_all"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Output",
@@ -963,21 +963,21 @@
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
         "crates/simbiguity-circuits/src/mna_tests.rs::__file_root__",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/tests/ac.rs::__file_root__",
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
         "crates/simbiguity-circuits/tests/large.rs::__file_root__",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
+        "crates/simbiguity-circuits-view/src/lib.rs::__file_root__",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__",
+        "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/lockstep.rs::S",
         "crates/simbiguity-core/src/simulation.rs::Snapshot",
         "crates/simbiguity-puzzle/src/lib.rs::Goal",
         "crates/simbiguity-puzzle/src/lib.rs::check",
         "crates/simbiguity-render-wasm/src/puzzle.rs::__file_root__",
-        "xtask/src/bench_fixtures.rs::__file_root__",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
-        "crates/simbiguity-circuits-wasm/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits-wasm/src/slot.rs::__file_root__",
-        "crates/simbiguity-circuits-view/src/lib.rs::__file_root__",
-        "crates/simbiguity-circuits/tests/ac.rs::__file_root__"
+        "xtask/src/bench_fixtures.rs::__file_root__"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1019,7 +1019,14 @@
     "crates/simbiguity-core/src/simulation.rs::Snapshot": {
       "filePath": "crates/simbiguity-core/src/simulation.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::Snapshot",
+        "crates/simbiguity-circuits/tests/ac.rs::__file_root__",
         "crates/simbiguity-circuits/tests/analysis.rs::__file_root__",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::restore",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::snapshot",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs::Snapshot",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/simulation.rs::Snapshot::restore",
         "crates/simbiguity-core/src/simulation.rs::Snapshot::snapshot",
@@ -1031,14 +1038,7 @@
         "crates/simbiguity-puzzle/src/lib.rs::UndoStack<S>::undo",
         "crates/simbiguity-puzzle/src/lib.rs::check",
         "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_place",
-        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_remove",
-        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
-        "crates/simbiguity-circuits/src/sim.rs::Snapshot",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::restore",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::PuzzleSession::snapshot",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs::Snapshot",
-        "crates/simbiguity-circuits/tests/ac.rs::__file_root__"
+        "crates/simbiguity-render-wasm/src/puzzle.rs::puzzle_remove"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs::Seconds",
@@ -1091,12 +1091,12 @@
         "crates/simbiguity-core/src/lib.rs"
       ],
       "importedBy": [
+        "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lockstep.rs",
-        "crates/simbiguity-core/src/lockstep.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs"
+        "crates/simbiguity-core/src/lockstep.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/simulation.rs"
@@ -1154,14 +1154,14 @@
         "crates/simbiguity-core/src/lib.rs"
       ],
       "importedBy": [
-        "crates/simbiguity-physics/src/collide_tests.rs",
-        "crates/simbiguity-physics/src/collide_tests.rs",
         "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits-wasm/src/tests.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/simulation.rs",
-        "crates/simbiguity-circuits/src/sim.rs",
-        "crates/simbiguity-circuits-wasm/src/tests.rs"
+        "crates/simbiguity-physics/src/collide_tests.rs",
+        "crates/simbiguity-physics/src/collide_tests.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs"
@@ -1174,11 +1174,26 @@
       "importedBy": [
         "crates/simbiguity-circuits/src/mna_tests.rs",
         "crates/simbiguity-circuits/src/mna_tests.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/tests/ac.rs",
+        "crates/simbiguity-circuits/tests/ac.rs",
+        "crates/simbiguity-circuits/tests/ac.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/large.rs",
         "crates/simbiguity-circuits/tests/large.rs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-puzzle/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
+        "crates/simbiguity-circuits-wasm/src/slot.rs",
         "crates/simbiguity-core/src/clock.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
@@ -1195,22 +1210,7 @@
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "crates/simbiguity-render-wasm/src/puzzle.rs",
         "xtask/src/bench_fixtures.rs",
-        "xtask/src/bench_fixtures.rs",
-        "crates/simbiguity-circuits/src/sim.rs",
-        "crates/simbiguity-circuits/src/sim.rs",
-        "crates/simbiguity-circuits/src/sim.rs",
-        "crates/simbiguity-circuits/src/sim.rs",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs",
-        "crates/simbiguity-circuits-puzzle/src/lib.rs",
-        "crates/simbiguity-circuits-wasm/src/lib.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-circuits-wasm/src/slot.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits-view/src/lib.rs",
-        "crates/simbiguity-circuits/tests/ac.rs",
-        "crates/simbiguity-circuits/tests/ac.rs",
-        "crates/simbiguity-circuits/tests/ac.rs"
+        "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs"

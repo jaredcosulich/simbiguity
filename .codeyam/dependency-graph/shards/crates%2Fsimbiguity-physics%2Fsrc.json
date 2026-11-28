@@ -277,11 +277,14 @@
         "crates/simbiguity-physics/src/collide_tests.rs::bounce_drop",
         "crates/simbiguity-physics/src/collide_tests.rs::ground_friction_slide",
         "crates/simbiguity-physics/src/lib.rs::__file_root__",
-        "crates/simbiguity-physics/src/world_tests.rs::bounce",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::ground",
         "crates/simbiguity-physics/src/world.rs::World::setup_deterministic_ball_pit",
-        "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile"
+        "crates/simbiguity-physics/src/world_tests.rs::bounce",
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
+        "lib_old.rs::create_projectile",
+        "mod_lib.rs::create_projectile",
+        "mod_lib.rs::create_sliding_block"
       ],
       "imports": [
         "crates/simbiguity-physics/src/constraints.rs::Ground::friction",
@@ -428,7 +431,26 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
-        "crates/simbiguity-physics-wasm/src/lib.rs::map_error"
+        "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
+        "lib_old.rs::create_binary",
+        "lib_old.rs::create_chain",
+        "lib_old.rs::create_figure_eight",
+        "lib_old.rs::create_orbit",
+        "lib_old.rs::create_pendulum",
+        "lib_old.rs::create_projectile",
+        "lib_old.rs::create_spring_mass",
+        "lib_old.rs::map_error",
+        "mod_lib.rs::create_binary",
+        "mod_lib.rs::create_chain",
+        "mod_lib.rs::create_cloth",
+        "mod_lib.rs::create_double_pendulum",
+        "mod_lib.rs::create_figure_eight",
+        "mod_lib.rs::create_orbit",
+        "mod_lib.rs::create_pendulum",
+        "mod_lib.rs::create_projectile",
+        "mod_lib.rs::create_sliding_block",
+        "mod_lib.rs::create_spring_mass",
+        "mod_lib.rs::map_error"
       ],
       "imports": [
         "crates/simbiguity-physics/src/error.rs::PhysicsError::IndexOutOfBounds",
@@ -801,13 +823,15 @@
       "importedBy": [
         "crates/simbiguity-physics/src/gravity_tests.rs::circular_orbit_euler_explodes",
         "crates/simbiguity-physics/src/lib.rs::__file_root__",
-        "crates/simbiguity-physics/src/world_tests.rs::pendulum_energy_is_conserved_by_verlet",
-        "crates/simbiguity-physics/src/world_tests.rs::undamped_spring_energy_grows_under_euler",
         "crates/simbiguity-physics/src/world.rs::World",
         "crates/simbiguity-physics/src/world.rs::World::integrator",
         "crates/simbiguity-physics/src/world.rs::World::new",
         "crates/simbiguity-physics/src/world.rs::World::step",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator"
+        "crates/simbiguity-physics/src/world_tests.rs::pendulum_energy_is_conserved_by_verlet",
+        "crates/simbiguity-physics/src/world_tests.rs::undamped_spring_energy_grows_under_euler",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator",
+        "lib_old.rs::phys_set_integrator",
+        "mod_lib.rs::phys_set_integrator"
       ],
       "imports": [
         "crates/simbiguity-physics/src/integrate.rs::Integrator::ExplicitEuler",
@@ -1083,7 +1107,9 @@
         "crates/simbiguity-physics/src/world.rs::World::apply",
         "crates/simbiguity-physics/src/world.rs::World::input_queue",
         "crates/simbiguity-physics/src/world.rs::World::step",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_push"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_push",
+        "lib_old.rs::phys_push",
+        "mod_lib.rs::phys_push"
       ],
       "imports": [
         "crates/simbiguity-math/src/vec.rs::Vec3::cross",
@@ -1164,10 +1190,9 @@
         "crates/simbiguity-physics/src/gravity_tests.rs::three_body_figure_eight_returns_to_start",
         "crates/simbiguity-physics/src/gravity_tests.rs::two_body_binary_momentum_and_separation",
         "crates/simbiguity-physics/src/lib.rs::__file_root__",
+        "crates/simbiguity-physics/src/world.rs::World::new",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
         "crates/simbiguity-physics-view/src/lib.rs::PhysicsView::update",
-        "xtask/src/bench_fixtures.rs::run_all",
-        "crates/simbiguity-physics/src/world.rs::World::new",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session",
         "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_binary",
@@ -1178,7 +1203,34 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
+        "lib_old.rs::Session",
+        "lib_old.rs::Session::world",
+        "lib_old.rs::create_binary",
+        "lib_old.rs::create_chain",
+        "lib_old.rs::create_figure_eight",
+        "lib_old.rs::create_orbit",
+        "lib_old.rs::create_pendulum",
+        "lib_old.rs::create_projectile",
+        "lib_old.rs::create_spring_mass",
+        "lib_old.rs::phys_new_ball_pit",
+        "lib_old.rs::phys_new_cradle",
+        "mod_lib.rs::Session",
+        "mod_lib.rs::Session::world",
+        "mod_lib.rs::create_binary",
+        "mod_lib.rs::create_chain",
+        "mod_lib.rs::create_cloth",
+        "mod_lib.rs::create_double_pendulum",
+        "mod_lib.rs::create_figure_eight",
+        "mod_lib.rs::create_orbit",
+        "mod_lib.rs::create_pendulum",
+        "mod_lib.rs::create_projectile",
+        "mod_lib.rs::create_sliding_block",
+        "mod_lib.rs::create_spring_mass",
+        "mod_lib.rs::new_session",
+        "mod_lib.rs::phys_new_ball_pit",
+        "mod_lib.rs::phys_new_cradle",
+        "xtask/src/bench_fixtures.rs::run_all"
       ],
       "imports": [
         "crates/simbiguity-math/src/vec.rs::Vec3::cross",
@@ -2369,10 +2421,12 @@
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/world_tests.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs"
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "lib_old.rs",
+        "mod_lib.rs"
       ],
       "imports": []
     },
@@ -2395,7 +2449,9 @@
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs"
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "lib_old.rs",
+        "mod_lib.rs"
       ],
       "imports": []
     },
@@ -2436,13 +2492,15 @@
         "crates/simbiguity-physics/src/gravity_tests.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-physics/src/world.rs",
         "crates/simbiguity-physics/src/world_tests.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics/src/world.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs"
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "lib_old.rs",
+        "mod_lib.rs"
       ],
       "imports": [
         "crates/simbiguity-physics/src/world.rs",
@@ -2509,9 +2567,13 @@
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics/src/lib.rs",
         "crates/simbiguity-physics-view/src/lib.rs",
-        "xtask/src/bench_fixtures.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
-        "crates/simbiguity-physics-wasm/src/lib.rs"
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "lib_old.rs",
+        "lib_old.rs",
+        "mod_lib.rs",
+        "mod_lib.rs",
+        "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
         "crates/simbiguity-physics/src/constraints.rs",

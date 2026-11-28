@@ -5,11 +5,12 @@
   <title>Physics Engine - Simbiguity</title>
   <style>
     #chart { width: 100%; height: 200px; background: #eee; margin-top: 10px; }
+    #readouts { display: flex; gap: 20px; font-family: monospace; background: #ddd; padding: 10px; margin-top: 10px; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Physics Engine</h1>
+    <h1>Physics Lab</h1>
     <a href="/">Back to home</a>
   </header>
   <main>
@@ -23,6 +24,14 @@
           <option value="spring">Spring-mass</option>
           <option value="projectile">Projectile</option>
           <option value="chain">Chain</option>
+          <option value="double_pendulum">Double pendulum</option>
+          <option value="cradle">Newton's cradle</option>
+          <option value="ball_pit">Ball pit</option>
+          <option value="sliding_block">Sliding block</option>
+          <option value="orbit">Orbit</option>
+          <option value="binary">Binary star</option>
+          <option value="figure_eight">Figure-eight three-body</option>
+          <option value="cloth">Cloth</option>
         </select>
       </label>
       <label>Integrator:
@@ -32,6 +41,23 @@
           <option value="explicit">Explicit Euler</option>
         </select>
       </label>
+      <label>Time Scale:
+        <input type="range" id="time-scale" min="0.1" max="4.0" step="0.1" value="1.0">
+      </label>
+      <label>Restitution:
+        <input type="range" id="restitution" min="0.0" max="1.0" step="0.05" value="0.8">
+      </label>
+      <label>Friction:
+        <input type="range" id="friction" min="0.0" max="1.0" step="0.05" value="0.5">
+      </label>
+      <button id="reset-btn">Reset</button>
+      <button id="share-btn">Share</button>
+      <div id="readouts">
+         <div>Sim Time: <span id="sim-time">0</span>s</div>
+         <div>Step Time: <span id="step-time">0</span>ms</div>
+         <div>Momentum: <span id="momentum">0</span></div>
+         <div>FPS: <span id="fps">0</span></div>
+      </div>
     </div>
     <div id="chart"></div>
   </main>

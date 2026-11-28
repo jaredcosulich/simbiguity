@@ -786,6 +786,17 @@
     }
   },
   "files": {
+    "crates/simbiguity-physics-wasm/src/check.rs": {
+      "importedBy": [],
+      "imports": []
+    },
+    "crates/simbiguity-physics-wasm/src/check2.rs": {
+      "importedBy": [],
+      "imports": [],
+      "namedMethods": [
+        "now"
+      ]
+    },
     "crates/simbiguity-physics-wasm/src/lib.rs": {
       "importedBy": [],
       "imports": [

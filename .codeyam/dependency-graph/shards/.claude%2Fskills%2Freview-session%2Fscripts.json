@@ -52,8 +52,8 @@
     ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormatFromPath": {
       "filePath": ".claude/skills/review-session/scripts/extract-session-helpers.mjs",
       "importedBy": [
-        ".claude/skills/review-session/scripts/extract-session.mjs::detectedFormat",
-        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormat"
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormat",
+        ".claude/skills/review-session/scripts/extract-session.mjs::detectedFormat"
       ],
       "imports": [],
       "name": "detectFormatFromPath"

@@ -622,4 +622,58 @@ mod tests {
         });
         phys_free(h);
     }
+
+    /// Verifies that Verlet integrator preserves energy better than Explicit Euler over time
+    #[test]
+    fn orbit_preset_energy_drift_euler_vs_verlet() {
+        let euler = phys_new_orbit();
+        phys_set_integrator(euler, 2); // 2 = explicit euler
+
+        let verlet = phys_new_orbit();
+        phys_set_integrator(verlet, 0); // 0 = verlet (default)
+
+        let dt = 0.01;
+        let steps = 1000;
+
+        let mut euler_drift = 0.0;
+        let mut verlet_drift = 0.0;
+
+        let mut e0_euler = 0.0;
+        with_session(euler, |s| {
+            e0_euler = s.world.compute_energy().total();
+            OK
+        });
+        for _ in 0..steps {
+            phys_advance(euler, dt);
+        }
+        with_session(euler, |s| {
+            let e1 = s.world.compute_energy().total();
+            euler_drift = (e1 - e0_euler).abs();
+            OK
+        });
+
+        let mut e0_verlet = 0.0;
+        with_session(verlet, |s| {
+            e0_verlet = s.world.compute_energy().total();
+            OK
+        });
+        for _ in 0..steps {
+            phys_advance(verlet, dt);
+        }
+        with_session(verlet, |s| {
+            let e1 = s.world.compute_energy().total();
+            verlet_drift = (e1 - e0_verlet).abs();
+            OK
+        });
+
+        phys_free(euler);
+        phys_free(verlet);
+
+        assert!(
+            verlet_drift < euler_drift,
+            "Verlet drift {} should be less than Euler drift {}",
+            verlet_drift,
+            euler_drift
+        );
+    }
 }

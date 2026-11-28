@@ -124,21 +124,21 @@
         "site/status/card-header.js::renderCardHeader",
         "site/status/crate-row.js::renderCrateRow",
         "site/status/crates-section.js::renderCrates",
+        "site/status/demo-embed.js::renderDemo",
         "site/status/dom.js::link",
         "site/status/load-error.js::renderLoadError",
         "site/status/pill.js::renderPill",
         "site/status/proof-item.js::renderProof",
         "site/status/proof-list.js::renderProofList",
         "site/status/section-intro.js::renderSectionIntro",
+        "site/status/stat.js::renderStat",
         "site/status/stats.js::renderStats",
         "site/status/test-description.js::renderTestDescription",
-        "site/status/test-row.js::renderTestRow",
-        "site/status/tests-table.js::renderTestsTable",
-        "site/status/unproven-note.js::renderUnprovenNote",
-        "site/status/stat.js::renderStat",
         "site/status/test-filters.js::renderTestFilters",
+        "site/status/test-row.js::renderTestRow",
         "site/status/tests-section.js::renderTests",
-        "site/status/demo-embed.js::renderDemo"
+        "site/status/tests-table.js::renderTestsTable",
+        "site/status/unproven-note.js::renderUnprovenNote"
       ],
       "imports": [],
       "name": "el"
@@ -305,8 +305,8 @@
     "site/status/report-view.js::demoEmbedUrl": {
       "filePath": "site/status/report-view.js",
       "importedBy": [
-        "site/status/report-view.test.js::__file_root__",
-        "site/status/demo-embed.js::renderDemo"
+        "site/status/demo-embed.js::renderDemo",
+        "site/status/report-view.test.js::__file_root__"
       ],
       "imports": [
         "site/status/report-view.js::demoUrl"
@@ -316,9 +316,9 @@
     "site/status/report-view.js::demoUrl": {
       "filePath": "site/status/report-view.js",
       "importedBy": [
+        "site/status/demo-embed.js::renderDemo",
         "site/status/report-view.js::demoEmbedUrl",
-        "site/status/report-view.test.js::__file_root__",
-        "site/status/demo-embed.js::renderDemo"
+        "site/status/report-view.test.js::__file_root__"
       ],
       "imports": [],
       "name": "demoUrl"
@@ -364,8 +364,8 @@
     "site/status/report-view.js::parseFilters": {
       "filePath": "site/status/report-view.js",
       "importedBy": [
-        "site/status/status.js::main",
         "site/status/report-view.test.js::__file_root__",
+        "site/status/status.js::main",
         "site/status/tests-section.js::renderTests"
       ],
       "imports": [],
@@ -392,8 +392,8 @@
     "site/status/report-view.js::reportUrl": {
       "filePath": "site/status/report-view.js",
       "importedBy": [
-        "site/status/status.js::main",
-        "site/status/report-view.test.js::__file_root__"
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/status.js::main"
       ],
       "imports": [],
       "name": "reportUrl"
@@ -402,8 +402,8 @@
       "filePath": "site/status/report-view.js",
       "importedBy": [
         "site/status/proof-item.js::renderProof",
-        "site/status/test-row.js::renderTestRow",
-        "site/status/report-view.test.js::__file_root__"
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/test-row.js::renderTestRow"
       ],
       "imports": [],
       "name": "rustPath"
@@ -412,8 +412,8 @@
       "filePath": "site/status/report-view.js",
       "importedBy": [
         "site/status/proof-item.js::renderProof",
-        "site/status/test-row.js::renderTestRow",
-        "site/status/report-view.test.js::__file_root__"
+        "site/status/report-view.test.js::__file_root__",
+        "site/status/test-row.js::renderTestRow"
       ],
       "imports": [],
       "name": "sourceUrl"
@@ -689,21 +689,21 @@
         "site/status/card-header.js",
         "site/status/crate-row.js",
         "site/status/crates-section.js",
+        "site/status/demo-embed.js",
         "site/status/dom.test.js",
         "site/status/load-error.js",
         "site/status/pill.js",
         "site/status/proof-item.js",
         "site/status/proof-list.js",
         "site/status/section-intro.js",
+        "site/status/stat.js",
         "site/status/stats.js",
         "site/status/test-description.js",
-        "site/status/test-row.js",
-        "site/status/tests-table.js",
-        "site/status/unproven-note.js",
-        "site/status/stat.js",
         "site/status/test-filters.js",
+        "site/status/test-row.js",
         "site/status/tests-section.js",
-        "site/status/demo-embed.js"
+        "site/status/tests-table.js",
+        "site/status/unproven-note.js"
       ],
       "imports": []
     },
@@ -785,15 +785,15 @@
         "site/status/capabilities-section.js",
         "site/status/capability-card.js",
         "site/status/card-header.js",
+        "site/status/demo-embed.js",
         "site/status/header.js",
         "site/status/proof-item.js",
         "site/status/proof-list.js",
-        "site/status/status.js",
-        "site/status/test-row.js",
         "site/status/report-view.test.js",
+        "site/status/status.js",
         "site/status/test-filters.js",
-        "site/status/tests-section.js",
-        "site/status/demo-embed.js"
+        "site/status/test-row.js",
+        "site/status/tests-section.js"
       ],
       "imports": []
     },

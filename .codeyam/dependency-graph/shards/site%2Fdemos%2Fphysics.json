@@ -6,9 +6,25 @@
         "site/demos/physics/index.html::__file_root__"
       ],
       "imports": [
-        "site/js/simbiguity.js::SimbiguityError"
+        "site/js/plot-labels.js::renderLabels"
       ],
       "name": "__file_root__"
+    },
+    "site/demos/physics/demo.js::fpsEl": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "fpsEl"
+    },
+    "site/demos/physics/demo.js::frictionInput": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "frictionInput"
     },
     "site/demos/physics/demo.js::integratorSelect": {
       "filePath": "site/demos/physics/demo.js",
@@ -17,6 +33,14 @@
       ],
       "imports": [],
       "name": "integratorSelect"
+    },
+    "site/demos/physics/demo.js::lastFpsTime": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "lastFpsTime"
     },
     "site/demos/physics/demo.js::loadPhysics": {
       "filePath": "site/demos/physics/demo.js",
@@ -30,12 +54,32 @@
       "filePath": "site/demos/physics/demo.js",
       "importedBy": [],
       "imports": [
+        "site/demos/physics/demo.js::fpsEl",
+        "site/demos/physics/demo.js::frictionInput",
         "site/demos/physics/demo.js::integratorSelect",
+        "site/demos/physics/demo.js::lastFpsTime",
         "site/demos/physics/demo.js::loadPhysics",
+        "site/demos/physics/demo.js::momentumEl",
         "site/demos/physics/demo.js::presetSelect",
-        "site/demos/physics/state.js::parseState"
+        "site/demos/physics/demo.js::resetBtn",
+        "site/demos/physics/demo.js::restitutionInput",
+        "site/demos/physics/demo.js::shareBtn",
+        "site/demos/physics/demo.js::simTimeEl",
+        "site/demos/physics/demo.js::stepTimeEl",
+        "site/demos/physics/demo.js::timeScaleInput",
+        "site/demos/physics/state.js::formatState",
+        "site/demos/physics/state.js::parseState",
+        "site/js/webgl2-executor.js::WebGL2Executor"
       ],
       "name": "main"
+    },
+    "site/demos/physics/demo.js::momentumEl": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "momentumEl"
     },
     "site/demos/physics/demo.js::presetSelect": {
       "filePath": "site/demos/physics/demo.js",
@@ -45,6 +89,54 @@
       "imports": [],
       "name": "presetSelect"
     },
+    "site/demos/physics/demo.js::resetBtn": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "resetBtn"
+    },
+    "site/demos/physics/demo.js::restitutionInput": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "restitutionInput"
+    },
+    "site/demos/physics/demo.js::shareBtn": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "shareBtn"
+    },
+    "site/demos/physics/demo.js::simTimeEl": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "simTimeEl"
+    },
+    "site/demos/physics/demo.js::stepTimeEl": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "stepTimeEl"
+    },
+    "site/demos/physics/demo.js::timeScaleInput": {
+      "filePath": "site/demos/physics/demo.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "timeScaleInput"
+    },
     "site/demos/physics/index.html::__file_root__": {
       "filePath": "site/demos/physics/index.html",
       "importedBy": [],
@@ -53,11 +145,19 @@
       ],
       "name": "__file_root__"
     },
+    "site/demos/physics/state.js::formatState": {
+      "filePath": "site/demos/physics/state.js",
+      "importedBy": [
+        "site/demos/physics/demo.js::main"
+      ],
+      "imports": [],
+      "name": "formatState"
+    },
     "site/demos/physics/state.js::parseState": {
       "filePath": "site/demos/physics/state.js",
       "importedBy": [
-        "site/demos/physics/state.test.js::__file_root__",
-        "site/demos/physics/demo.js::main"
+        "site/demos/physics/demo.js::main",
+        "site/demos/physics/state.test.js::__file_root__"
       ],
       "imports": [],
       "name": "parseState"
@@ -78,7 +178,8 @@
       ],
       "imports": [
         "site/demos/physics/state.js",
-        "site/js/simbiguity.js"
+        "site/js/webgl2-executor.js",
+        "site/js/plot-labels.js"
       ]
     },
     "site/demos/physics/index.html": {
@@ -89,8 +190,8 @@
     },
     "site/demos/physics/state.js": {
       "importedBy": [
-        "site/demos/physics/state.test.js",
-        "site/demos/physics/demo.js"
+        "site/demos/physics/demo.js",
+        "site/demos/physics/state.test.js"
       ],
       "imports": []
     },

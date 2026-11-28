@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 5
+      "sightings": 6
     }
   ],
   "rounds": [
@@ -342,6 +342,12 @@
     {
       "at": "2026-11-28T15:13:15.915119601+00:00",
       "feature": "Circuit Lab live oscilloscope",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T15:41:03.652426765+00:00",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

@@ -2066,14 +2066,8 @@
     "testFile": "site/status/report-view.test.js"
   },
   {
-    "description": "Checks if the current 3D circuit layout satisfies the loaded puzzle goal",
-    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
-    "name": "puzzle_check",
-    "testFile": "crates/simbiguity-render-wasm/src/lib.rs"
-  },
-  {
     "description": "Loads a puzzle level for 3D circuit rendering",
-    "filePath": "crates/simbiguity-render-wasm/src/lib.rs",
+    "filePath": "crates/simbiguity-render-wasm/src/puzzle.rs",
     "name": "puzzle_load",
     "testFile": "crates/simbiguity-render-wasm/src/lib.rs"
   },

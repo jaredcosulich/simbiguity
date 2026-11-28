@@ -37,6 +37,13 @@
       "runner": "cargo"
     },
     {
+      "description": "",
+      "format": "cargo",
+      "key": "bench::tests::check_bench_rejects_a_fixture_over_budget",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies parsing bench results handles missing medians gracefully",
       "file": "xtask/src/bench.rs",
       "format": "cargo",
@@ -1387,15 +1394,6 @@
       "runner": "cargo"
     },
     {
-      "description": "at wraps around the loop and reports whether a point is on a wire.",
-      "file": "crates/simbiguity-circuits-view/src/layout.rs",
-      "format": "cargo",
-      "key": "layout::tests::at_wraps_and_reports_wires",
-      "line": 192,
-      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "An empty loop has no length and returns the origin off-wire.",
       "file": "crates/simbiguity-circuits-view/src/layout.rs",
       "format": "cargo",
@@ -1410,33 +1408,6 @@
       "format": "cargo",
       "key": "layout::tests::lever_and_knob_follow_the_angle",
       "line": 145,
-      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "The loop is closed: each section starts where the previous one ends.",
-      "file": "crates/simbiguity-circuits-view/src/layout.rs",
-      "format": "cargo",
-      "key": "layout::tests::loop_is_closed",
-      "line": 179,
-      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "The loop is the three wires plus three hidden stretches, and its length is their sum.",
-      "file": "crates/simbiguity-circuits-view/src/layout.rs",
-      "format": "cargo",
-      "key": "layout::tests::loop_length_is_the_sum_of_its_sections",
-      "line": 168,
-      "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Only particles on wires are drawn, every one of them on the loop.",
-      "file": "crates/simbiguity-circuits-view/src/layout.rs",
-      "format": "cargo",
-      "key": "layout::tests::particle_offsets_skip_hidden_stretches",
-      "line": 232,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
       "runner": "cargo"
     },
@@ -1540,48 +1511,12 @@
       "runner": "cargo"
     },
     {
-      "description": "Verifies that load level returns a valid level.",
-      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "format": "cargo",
-      "key": "level_format::tests::load_level_test",
-      "line": 52,
-      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "Verifies parsing a fixed part line array.",
       "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
       "format": "cargo",
       "key": "level_format::tests::parse_fixed_part_valid",
       "line": 257,
       "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies level parsing rejects empty strings",
-      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "format": "cargo",
-      "key": "level_format::tests::parse_level_empty_fails",
-      "line": 59,
-      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies level parsing rejects invalid content",
-      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "format": "cargo",
-      "key": "level_format::tests::parse_level_invalid_fails",
-      "line": 65,
-      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies level parsing succeeds for valid content",
-      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "format": "cargo",
-      "key": "level_format::tests::parse_level_valid_succeeds",
-      "line": 71,
-      "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
     {
@@ -1618,15 +1553,6 @@
       "key": "level_format::tests::parse_solution_part_valid",
       "line": 280,
       "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies that a level contains the correct ID",
-      "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-      "format": "cargo",
-      "key": "level_format::tests::test_level",
-      "line": 12,
-      "registeredAt": "2026-11-26T19:55:35.333134591+00:00",
       "runner": "cargo"
     },
     {
@@ -2233,24 +2159,6 @@
       "runner": "cargo"
     },
     {
-      "description": "SolverFailure when cache topology is missing",
-      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
-      "format": "cargo",
-      "key": "mna::tests::solve_once_returns_failure_on_missing_topology",
-      "line": 188,
-      "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "SolverFailure when unknowns are missing",
-      "file": "crates/simbiguity-circuits/src/mna_tests.rs",
-      "format": "cargo",
-      "key": "mna::tests::solve_once_returns_failure_on_missing_unknowns",
-      "line": 199,
-      "registeredAt": "2026-11-26T21:39:50.102256635+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "Only nodes with a component attached count as touched.",
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
@@ -2491,15 +2399,6 @@
       "key": "pkg_budget_tests::tests::test_pkg_budget_reasons_and_limits",
       "line": 14,
       "registeredAt": "2026-11-28T17:20:23.885923564+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies that an empty board fails the check for level 1.",
-      "file": "crates/simbiguity-render-wasm/src/lib.rs",
-      "format": "cargo",
-      "key": "puzzle_tests::checking_level_1_with_an_empty_board_reports_its_goal_as_failed",
-      "line": 335,
-      "registeredAt": "2026-11-28T02:10:29.079142047+00:00",
       "runner": "cargo"
     },
     {
@@ -2971,15 +2870,6 @@
       "runner": "cargo"
     },
     {
-      "description": "Verifies that tampered strings with exclamation marks are blocked.",
-      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
-      "format": "cargo",
-      "key": "share::tests::corrupted_share_link_is_rejected",
-      "line": 40,
-      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "Verifies the CRC32 function against a known good value.",
       "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
       "format": "cargo",
@@ -3004,15 +2894,6 @@
       "key": "share::tests::share_error_tests",
       "line": 193,
       "registeredAt": "2026-11-28T12:44:56.313176715+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies that a solution string can be encoded",
-      "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
-      "format": "cargo",
-      "key": "share::tests::test_encode",
-      "line": 11,
-      "registeredAt": "2026-11-26T19:55:35.440121700+00:00",
       "runner": "cargo"
     },
     {
@@ -3214,12 +3095,84 @@
       "runner": "cargo"
     },
     {
+      "description": "",
+      "file": "site/js/nonlinear.test.js",
+      "format": "junit-xml",
+      "key": "test › LED with 160 ohm resistor",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/test/ac.test.js",
+      "format": "junit-xml",
+      "key": "test › Oscilloscope probes read samples correctly for series RLC at resonance",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
       "description": "WASM determinism hash",
       "file": "site/js/determinism.test.js",
       "format": "junit-xml",
       "key": "test › WASM determinism hash",
       "line": 39,
       "registeredAt": "2026-11-28T03:03:51.639001249+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › accepts a hash without the leading hash sign",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › accepts a hash without the leading mark",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › accepts a same-site relative fixture path",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › adds the embed flag",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › appends nodes and spreads an array of children",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › appends strings and numbers as text",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › appends to an existing query",
+      "registeredAt": "2026-11-28T17:30:25Z",
       "runner": "node"
     },
     {
@@ -3241,12 +3194,140 @@
       "runner": "node"
     },
     {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › clamps or ignores bad volts",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › clamps volts to the slider range",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › counts failures when any test failed",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › counts the test list when totals are missing",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › counts totals, crates and capability statuses",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › decodes an empty frame",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › decodes an encoded search",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › decodes every opcode",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › defaults the ratio and never returns zero",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › defaults to report.json",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
       "description": "Test demo.js history replaceState hash write",
       "file": "site/demos/circuit-3d/demo.test.js",
       "format": "junit-xml",
       "key": "test › demo.js history.replaceState hash write",
       "line": 5,
       "registeredAt": "2026-11-28T02:49:36.733828261+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › derives the filament resistance from the rating",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › does not call the rated voltage overdriven",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › does not count ignored tests as failing",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › does nothing elsewhere",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › drops an unknown status",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › drops null, undefined and false children",
+      "registeredAt": "2026-11-28T17:30:25Z",
       "runner": "node"
     },
     {
@@ -3268,12 +3349,956 @@
       "runner": "node"
     },
     {
+      "description": "",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains a blown bulb first",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains a blown bulb with the power it would draw",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains a fully lit bulb with Ohm's law",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains a short circuit first",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains an open switch",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains an open switch as a gap that stops the charges",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains an overdriven bulb",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains current flowing with the amps",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › explains zero volts as no current",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › falls back to rated volts for an unreadable v token",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › falls back when the parameter is empty",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › filters by crate",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › filters by status",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › flags blown only for this bulb",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › flips the switch",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › formats a number with its unit",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › formats an ISO timestamp as a short date",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › formats every reading with its unit",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-puzzles/game-state.test.js",
+      "format": "junit-xml",
+      "key": "test › game_state_solving_level_1_produces_a_share_code",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › groups by crate in manifest order",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/rc-charging/state.test.js",
+      "format": "junit-xml",
+      "key": "test › hashFromState produces expected hash",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › honours the digits argument",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › ignores anything after a question mark",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › ignores unknown tokens",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › joins module and name",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › keeps every test when nothing is filtered",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › keeps the hash after the flag",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › keeps zero as a reading",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › labels each status",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › labels the battery from the state voltage",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › links to the commit",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › links to the file and line at the commit",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › lists the eight slots in Rust order",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › lists the three outcomes in filter order",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › makes the demo relative to the status page",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › maps client coordinates into the backing store",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "test › matches the Rust pick tags",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "test › names every slot",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › offers to close an open switch",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › omits empty filters",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › omits the line anchor when the line is unknown",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › omits v at the rated voltage",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › orders failures first, then ignored, then passed",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/physics/state.test.js",
+      "format": "junit-xml",
+      "key": "test › parseState defaults",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/physics/state.test.js",
+      "format": "junit-xml",
+      "key": "test › parseState with values",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › passes an unknown status through",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › passes engine messages through",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › points where a click acts and grabs elsewhere",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › puts crates with more demos first",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › reads a lit loop",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › reads an empty hash as the default state",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › reads an empty or bare hash as the 3D default state",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › reads an open loop as dark and not flowing",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › reads closed, short and v tokens in any order",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › reads crate, status and search from the hash",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › reads every token",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "test › reads flags as booleans",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects a protocol-relative URL",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/simbiguity-render.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects a short buffer",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects a truncated command",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects a wrong payload length",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects an absolute URL",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects an unknown opcode",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects any scheme regardless of case",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects bad headers",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › rejects bad times and incomplete cameras",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/plot-labels.test.js",
+      "format": "junit-xml",
+      "key": "test › renders labels into a dedicated overlay without clearing siblings",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › replaces only a blown bulb",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › reports zero shown",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › requires every active filter to match",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns an empty hash when the filters are cleared",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns an empty string for a bad timestamp",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › returns an empty string for the default state",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns an empty string when nothing is filtered",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › returns bare content without a destination",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns empty filters for an empty hash",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns no groups for no capabilities",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns nothing for an untested capability",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns null when anything is missing",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns null when the URL already matches",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns null with no hash and no filters",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns null with no tests",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns null without a demo",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns null without a repository or commit",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns the bare name without a module",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns the new hash when the filters changed",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › returns zeros for an empty report",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › round-trips a state with a camera through stateFromHash",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › round-trips through parseFilters",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › round-trips through stateFromHash",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › rounds brightness to a whole percent",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › says All when every test is shown",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › says how many of the total are shown",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/pointer.test.js",
+      "format": "junit-xml",
+      "key": "test › scales by the device pixel ratio",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › searches descriptions case-insensitively",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › searches the module path",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › sets other attributes, true as empty",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › sets the class name from the class attribute",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › shows an em dash for null or undefined",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › shows dashes when there is no solution",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/readouts.test.js",
+      "format": "junit-xml",
+      "key": "test › shows replace only for a blown bulb",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › skips ids the report does not contain",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › skips null, undefined and false attributes",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
       "description": "Smoke test all demos resolve their imports",
       "file": "site/smoke.test.js",
       "format": "junit-xml",
       "key": "test › smoke test all demos resolve their imports",
       "line": 48,
       "registeredAt": "2026-11-28T15:53:02.120477740+00:00",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/rc-charging/state.test.js",
+      "format": "junit-xml",
+      "key": "test › stateFromHash parses #lc and #trap",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/rc-charging/state.test.js",
+      "format": "junit-xml",
+      "key": "test › stateFromHash parses empty string to defaults",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › strips a leading slash",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/js/webgl2-executor.test.js",
+      "format": "junit-xml",
+      "key": "test › throws CommandBufferError",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/explain.test.js",
+      "format": "junit-xml",
+      "key": "test › titles partial brightness as lit or dim",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › treats a bare hash mark as no filters",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › trims the search",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › uses the UTC date",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › uses the plural for several tests",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › uses the singular for one test",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/dom.test.js",
+      "format": "junit-xml",
+      "key": "test › wraps content in a link when there is a destination",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/status/report-view.test.js",
+      "format": "junit-xml",
+      "key": "test › writes all active filters",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › writes every non-default field",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/circuit-3d/state.test.js",
+      "format": "junit-xml",
+      "key": "test › writes nothing for the default state",
+      "registeredAt": "2026-11-28T17:30:25Z",
+      "runner": "node"
+    },
+    {
+      "description": "",
+      "file": "site/demos/hello-circuit/state.test.js",
+      "format": "junit-xml",
+      "key": "test › writes tokens in a fixed order",
+      "registeredAt": "2026-11-28T17:30:25Z",
       "runner": "node"
     },
     {
@@ -3574,15 +4599,6 @@
       "runner": "cargo"
     },
     {
-      "description": "Verifies that LitBulbs check works.",
-      "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-      "format": "cargo",
-      "key": "tests::goal_lit_bulbs",
-      "line": 39,
-      "registeredAt": "2026-11-27T13:15:45.602511993+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "Nodes and components are numbered from 0 in creation order.",
       "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
       "format": "cargo",
@@ -3808,15 +4824,6 @@
       "runner": "cargo"
     },
     {
-      "description": "Verifies that Goal correctly returns true/false based on state",
-      "file": "crates/simbiguity-puzzle/src/lib.rs",
-      "format": "cargo",
-      "key": "tests::test_goal",
-      "line": 42,
-      "registeredAt": "2026-11-26T19:55:35.524946133+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "Verifies undo/redo over board edits",
       "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
       "format": "cargo",
@@ -3853,30 +4860,12 @@
       "runner": "cargo"
     },
     {
-      "description": "Verifies physics wasm init.",
-      "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-      "format": "cargo",
-      "key": "tests::test_wasm",
-      "line": 199,
-      "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
-      "runner": "cargo"
-    },
-    {
       "description": "1. Ladder test",
       "file": "crates/simbiguity-circuits/tests/large.rs",
       "format": "cargo",
       "key": "thousand_rung_ladder_draws_one_over_phi_amps",
       "line": 7,
       "registeredAt": "2026-11-28T14:42:07.119741631+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Verifies that tick generation works correctly for a basic range.",
-      "file": "crates/simbiguity-plot/src/ticks.rs",
-      "format": "cargo",
-      "key": "ticks::tests::test_compute_ticks",
-      "line": 51,
-      "registeredAt": "2026-11-26T20:58:13.543925171+00:00",
       "runner": "cargo"
     },
     {
@@ -4435,15 +5424,6 @@
       "key": "world_tests::pendulum_large_angle",
       "line": 81,
       "registeredAt": "2026-11-27T16:18:19.564178772+00:00",
-      "runner": "cargo"
-    },
-    {
-      "description": "Pendulum 2.006 s period",
-      "file": "crates/simbiguity-physics/src/world_tests.rs",
-      "format": "cargo",
-      "key": "world_tests::pendulum_period",
-      "line": 60,
-      "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
     {

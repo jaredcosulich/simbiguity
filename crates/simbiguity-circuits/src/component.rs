@@ -85,6 +85,19 @@ pub enum Component {
         /// Voltage across the inductor from the previous step.
         volts: f64,
     },
+    /// A signal source (sine, square, or triangle).
+    SignalSource {
+        /// 0: sine, 1: square, 2: triangle.
+        waveform: u8,
+        /// Amplitude in volts (zero-to-peak).
+        amplitude: f64,
+        /// Frequency in Hz.
+        frequency: f64,
+        /// Phase in radians.
+        phase: f64,
+        /// DC offset in volts.
+        offset: f64,
+    },
 }
 
 /// How one component enters the MNA system.
@@ -193,11 +206,25 @@ impl Component {
             Component::Switch { .. } | Component::Wire => true,
             Component::Capacitor { farads, .. } => farads.is_finite() && farads > 0.0,
             Component::Inductor { henries, .. } => henries.is_finite() && henries > 0.0,
+            Component::SignalSource {
+                waveform,
+                amplitude,
+                frequency,
+                phase,
+                offset,
+            } => {
+                waveform <= 2
+                    && amplitude.is_finite()
+                    && frequency.is_finite()
+                    && frequency > 0.0
+                    && phase.is_finite()
+                    && offset.is_finite()
+            }
         }
     }
 
     /// How this component enters the system for transient analysis.
-    pub(crate) fn transient_stamp(&self, dt: f64, integrator: Integrator) -> Stamp {
+    pub(crate) fn transient_stamp(&self, dt: f64, integrator: Integrator, t_eval: f64) -> Stamp {
         match *self {
             Component::Capacitor {
                 farads,
@@ -244,12 +271,12 @@ impl Component {
                     }
                 }
             },
-            _ => self.stamp(),
+            _ => self.stamp(t_eval),
         }
     }
 
     /// How this component enters the system. Assumes [`Component::is_valid`].
-    pub(crate) fn stamp(&self) -> Stamp {
+    pub(crate) fn stamp(&self, t_eval: f64) -> Stamp {
         match *self {
             Component::Battery { emf, internal_r } if internal_r > 0.0 => Stamp::Norton {
                 g: 1.0 / internal_r,
@@ -270,6 +297,41 @@ impl Component {
             Component::Led { .. } => Stamp::Open,
             Component::Capacitor { .. } => Stamp::Open,
             Component::Inductor { .. } => Stamp::Merge,
+            Component::SignalSource {
+                waveform,
+                amplitude,
+                frequency,
+                phase,
+                offset,
+            } => {
+                let wt_phi = 2.0 * core::f64::consts::PI * frequency * t_eval + phase;
+                let val = match waveform {
+                    0 => simbiguity_math::float::sin(wt_phi),
+                    1 => {
+                        if simbiguity_math::float::sin(wt_phi) >= 0.0 {
+                            1.0
+                        } else {
+                            -1.0
+                        }
+                    }
+                    2 => {
+                        let mut phase_mod =
+                            (frequency * t_eval + phase / (2.0 * core::f64::consts::PI)) % 1.0;
+                        if phase_mod < 0.0 {
+                            phase_mod += 1.0;
+                        }
+                        if phase_mod < 0.25 {
+                            phase_mod * 4.0
+                        } else if phase_mod < 0.75 {
+                            1.0 - (phase_mod - 0.25) * 4.0
+                        } else {
+                            -1.0 + (phase_mod - 0.75) * 4.0
+                        }
+                    }
+                    _ => 0.0,
+                };
+                Stamp::VoltageSource(offset + amplitude * val)
+            }
         }
     }
 
@@ -327,7 +389,10 @@ impl Component {
             Component::Switch { closed } => *closed = v != 0.0,
             Component::Capacitor { farads, .. } => *farads = v,
             Component::Inductor { henries, .. } => *henries = v,
-            Component::Wire | Component::Diode { .. } | Component::Led { .. } => {}
+            Component::Wire
+            | Component::Diode { .. }
+            | Component::Led { .. }
+            | Component::SignalSource { .. } => {}
         }
     }
 }
@@ -375,32 +440,35 @@ mod tests {
     /// Each component enters the system in the documented way.
     #[test]
     fn stamps_match_each_component() {
-        assert_eq!(Component::battery(6.0).stamp(), Stamp::VoltageSource(6.0));
+        assert_eq!(
+            Component::battery(6.0).stamp(0.0),
+            Stamp::VoltageSource(6.0)
+        );
         assert_eq!(
             Component::Battery {
                 emf: 6.0,
                 internal_r: 2.0
             }
-            .stamp(),
+            .stamp(0.0),
             Stamp::Norton {
                 g: 0.5,
                 current: 3.0
             }
         );
         assert_eq!(
-            Component::Resistor { r: 4.0 }.stamp(),
+            Component::Resistor { r: 4.0 }.stamp(0.0),
             Stamp::Conductance(0.25)
         );
         assert_eq!(
-            Component::bulb(6.0, 3.0).stamp(),
+            Component::bulb(6.0, 3.0).stamp(0.0),
             Stamp::Conductance(1.0 / 12.0)
         );
-        assert_eq!(Component::Switch { closed: true }.stamp(), Stamp::Merge);
-        assert_eq!(Component::Switch { closed: false }.stamp(), Stamp::Open);
-        assert_eq!(Component::Wire.stamp(), Stamp::Merge);
+        assert_eq!(Component::Switch { closed: true }.stamp(0.0), Stamp::Merge);
+        assert_eq!(Component::Switch { closed: false }.stamp(0.0), Stamp::Open);
+        assert_eq!(Component::Wire.stamp(0.0), Stamp::Merge);
         let mut blown = Component::bulb(6.0, 3.0);
         blown.blow();
-        assert_eq!(blown.stamp(), Stamp::Open);
+        assert_eq!(blown.stamp(0.0), Stamp::Open);
     }
 
     /// Non-physical values are rejected; physical ones accepted.

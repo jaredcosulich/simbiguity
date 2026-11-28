@@ -217,6 +217,12 @@
       "shortSha": "54a3626",
       "subject": "feat: Circuits: Newton-Raphson solver with diodes and LEDs",
       "deferredAt": "2026-11-28T13:58:29Z"
+    },
+    {
+      "sha": "117056b842a02e97c514886517bff559659e7d61",
+      "shortSha": "117056b",
+      "subject": "feat: Circuits: AC signal sources, oscilloscope probes and RLC resonance",
+      "deferredAt": "2026-11-28T14:21:02Z"
     }
   ],
   "finalizeIntent": "fast",

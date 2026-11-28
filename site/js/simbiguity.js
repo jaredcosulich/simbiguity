@@ -101,6 +101,23 @@ export async function loadCircuits(source) {
 
     diode(a, b, is = 1e-14, n = 1.0) { return check(w.circuit_add_diode(this.handle, a, b, is, n)); }
 
+    signal(a, b, waveform, amplitude, frequency, phase = 0.0, offset = 0.0) {
+      return check(w.circuit_add_signal(this.handle, a, b, waveform, amplitude, frequency, phase, offset));
+    }
+
+    time() { return w.sim_time(this.handle); }
+
+    addProbe(isCurrent, targetId, capacity) {
+      const probeId = check(w.sim_add_probe(this.handle, isCurrent ? 1 : 0, targetId, capacity));
+      return {
+        read: () => {
+          const ptr = w.sim_probe_samples_ptr(this.handle, probeId);
+          const len = w.sim_probe_samples_len();
+          return new Float64Array(w.memory.buffer, ptr, len);
+        }
+      };
+    }
+
     led(a, b, color = "red", rated_amps = 0.02, is = 1.5195e-17, n = 2.0) {
       return check(w.circuit_add_led(this.handle, a, b, rated_amps, is, n));
     }

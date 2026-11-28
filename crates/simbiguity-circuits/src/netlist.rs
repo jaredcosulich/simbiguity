@@ -170,6 +170,31 @@ impl Circuit {
         self.add(Component::inductor(henries), a, b)
     }
 
+    /// A signal source.
+    #[allow(clippy::too_many_arguments)]
+    pub fn add_signal_source(
+        &mut self,
+        a: NodeId,
+        b: NodeId,
+        waveform: u8,
+        amplitude: f64,
+        frequency: f64,
+        phase: f64,
+        offset: f64,
+    ) -> ComponentId {
+        self.add(
+            Component::SignalSource {
+                waveform,
+                amplitude,
+                frequency,
+                phase,
+                offset,
+            },
+            a,
+            b,
+        )
+    }
+
     /// Joins two nodes with an ideal wire.
     pub fn connect(&mut self, a: NodeId, b: NodeId) -> ComponentId {
         self.add(Component::Wire, a, b)

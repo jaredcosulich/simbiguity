@@ -68,8 +68,10 @@ impl Topology {
             reference[island[g.0]] = Some(group[g.0]);
         }
         for p in &c.parts {
-            if matches!(p.component, Component::Battery { .. })
-                && reference[island[p.a.0]].is_none()
+            if matches!(
+                p.component,
+                Component::Battery { .. } | Component::SignalSource { .. }
+            ) && reference[island[p.a.0]].is_none()
             {
                 reference[island[p.a.0]] = Some(group[p.b.0]);
             }
@@ -684,6 +686,7 @@ pub(crate) fn analyze_step(
     c: &Circuit,
     dt: f64,
     integrator: Integrator,
+    t_eval: f64,
     cache: &mut SolverCache,
     mut needs_refactor: bool,
 ) -> Analysis {
@@ -720,7 +723,7 @@ pub(crate) fn analyze_step(
         let stamps: Vec<Stamp> = work
             .parts
             .iter()
-            .map(|p| p.component.transient_stamp(dt, integrator))
+            .map(|p| p.component.transient_stamp(dt, integrator, t_eval))
             .collect();
         let (solution, mut issues) = solve_once(&work, stamps, cache, needs_refactor);
         let Some(solution) = solution else {
@@ -760,7 +763,7 @@ pub(crate) fn analyze(c: &Circuit) -> Analysis {
     let mut cache = SolverCache::default();
     let mut needs_refactor = true;
     loop {
-        let stamps: Vec<Stamp> = work.parts.iter().map(|p| p.component.stamp()).collect();
+        let stamps: Vec<Stamp> = work.parts.iter().map(|p| p.component.stamp(0.0)).collect();
         let (solution, mut issues) = solve_once(&work, stamps, &mut cache, needs_refactor);
         let Some(solution) = solution else {
             return Analysis {

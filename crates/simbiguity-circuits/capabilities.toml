@@ -103,3 +103,26 @@ proves = [
   "tests/nonlinear::led_direct_blows",
   "invariants_tests::kcl_with_diodes"
 ]
+
+[[capability]]
+name = "AC signal sources and resonance"
+description = "Sine, square, and triangle waveforms that drive transient analyses, including RLC resonance."
+proves = [
+  "tests/ac::series_rlc_at_resonance_draws_r_limited_current",
+  "tests/ac::series_rlc_at_2f0",
+  "tests/ac::series_rlc_at_half_f0",
+  "tests/ac::rc_low_pass_at_fc",
+  "tests/ac::rc_low_pass_at_10fc",
+  "tests/ac::half_wave_rectifier",
+  "tests/ac::square_wave_into_rc",
+  "tests/ac::backward_euler_damps_resonance",
+  "tests/ac::ac_snapshot_restore_is_bit_identical"
+]
+
+[[capability]]
+name = "Oscilloscope probes"
+description = "Fixed-capacity ring buffers that record voltage and current over time for plotting."
+proves = [
+  "tests/ac::series_rlc_at_resonance_draws_r_limited_current",
+  "site/test/ac.test.js"
+]

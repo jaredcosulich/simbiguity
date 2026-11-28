@@ -3,8 +3,55 @@
 use simbiguity_core::{Seconds, Simulation, Snapshot};
 
 use crate::component::{Component, Integrator};
-use crate::netlist::{Circuit, ComponentId};
+use crate::netlist::{Circuit, ComponentId, NodeId};
 use crate::solution::Analysis;
+
+/// A probe measuring a node voltage or component current.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Probe {
+    /// Voltage at a node relative to ground.
+    NodeVoltage(NodeId),
+    /// Current through a component.
+    Current(ComponentId),
+}
+
+/// A handle to a registered probe.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct ProbeId(pub usize);
+
+/// The internal state of a probe's ring buffer.
+#[derive(Debug, Clone, PartialEq)]
+pub struct ProbeState {
+    /// The target of this probe.
+    pub probe: Probe,
+    /// The maximum number of samples.
+    pub capacity: usize,
+    /// The samples collected.
+    pub samples: alloc::vec::Vec<(f64, f64)>,
+    /// The index of the oldest sample (where the next sample goes).
+    pub head: usize,
+}
+
+impl ProbeState {
+    fn push(&mut self, t: f64, val: f64) {
+        if self.capacity == 0 {
+            return;
+        }
+        if self.samples.len() < self.capacity {
+            self.samples.push((t, val));
+        } else {
+            self.samples[self.head] = (t, val);
+            self.head = (self.head + 1) % self.capacity;
+        }
+    }
+
+    fn to_vec(&self) -> alloc::vec::Vec<(f64, f64)> {
+        let mut out = alloc::vec::Vec::with_capacity(self.samples.len());
+        out.extend_from_slice(&self.samples[self.head..]);
+        out.extend_from_slice(&self.samples[..self.head]);
+        out
+    }
+}
 
 /// Something a learner (or another engine) does to the circuit.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -32,6 +79,8 @@ pub struct CircuitSim {
     dirty: bool,
     needs_refactor: bool,
     cache: crate::mna::SolverCache,
+    time: Seconds,
+    probes: alloc::vec::Vec<ProbeState>,
 }
 
 impl CircuitSim {
@@ -46,6 +95,8 @@ impl CircuitSim {
             dirty: false,
             needs_refactor: true,
             cache: crate::mna::SolverCache::default(),
+            time: Seconds(0.0),
+            probes: alloc::vec::Vec::new(),
         };
         sim.persist_blown();
         sim
@@ -67,6 +118,32 @@ impl CircuitSim {
     /// The circuit as it currently stands (including blown bulbs).
     pub fn circuit(&self) -> &Circuit {
         &self.circuit
+    }
+
+    /// The current simulation time.
+    pub fn time(&self) -> Seconds {
+        self.time
+    }
+
+    /// Adds a probe and returns its ID.
+    pub fn add_probe(&mut self, probe: Probe, capacity: usize) -> ProbeId {
+        let id = ProbeId(self.probes.len());
+        self.probes.push(ProbeState {
+            probe,
+            capacity,
+            samples: alloc::vec::Vec::with_capacity(capacity),
+            head: 0,
+        });
+        id
+    }
+
+    /// Returns the samples collected by a probe, oldest first.
+    pub fn probe_samples(&self, id: ProbeId) -> alloc::vec::Vec<(f64, f64)> {
+        if let Some(p) = self.probes.get(id.0) {
+            p.to_vec()
+        } else {
+            alloc::vec::Vec::new()
+        }
     }
 
     fn persist_blown(&mut self) {
@@ -114,22 +191,34 @@ impl Simulation for CircuitSim {
         let has_transients = self.circuit.parts.iter().any(|p| {
             matches!(
                 p.component,
-                Component::Capacitor { .. } | Component::Inductor { .. }
+                Component::Capacitor { .. }
+                    | Component::Inductor { .. }
+                    | Component::SignalSource { .. }
             )
         });
         if !self.dirty && !has_transients {
             return;
         }
+        let t_eval = self.time.0 + dt.0;
         self.dirty = false;
         self.analysis = crate::mna::analyze_step(
             &self.circuit,
             dt.0,
             self.integrator,
+            t_eval,
             &mut self.cache,
             self.needs_refactor,
         );
-        if self.analysis.solution().is_some() {
+        if let Some(sol) = self.analysis.solution() {
             self.needs_refactor = false;
+            self.time = Seconds(t_eval);
+            for p in &mut self.probes {
+                let val = match p.probe {
+                    Probe::NodeVoltage(n) => sol.node_voltages[n.0].unwrap_or(0.0),
+                    Probe::Current(c) => sol.currents[c.0],
+                };
+                p.push(t_eval, val);
+            }
         }
         self.persist_blown();
         self.persist_transient_state();

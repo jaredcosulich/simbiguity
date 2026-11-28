@@ -101,7 +101,7 @@ mod tests {
     use super::*;
 
     fn stamps(c: &Circuit) -> Vec<Stamp> {
-        c.parts.iter().map(|p| p.component.stamp()).collect()
+        c.parts.iter().map(|p| p.component.stamp(0.0)).collect()
     }
 
     /// A battery's current counts as flowing out of its + terminal and into

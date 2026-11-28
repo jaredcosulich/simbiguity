@@ -87,6 +87,91 @@ pub extern "C" fn circuit_add_bulb(h: u32, a: u32, b: u32, volts: f64, watts: f6
 }
 
 #[no_mangle]
+pub extern "C" fn circuit_add_signal(
+    h: u32,
+    a: u32,
+    b: u32,
+    waveform: u32,
+    amplitude: f64,
+    frequency: f64,
+    phase: f64,
+    offset: f64,
+) -> i32 {
+    with_slot(h, |s| {
+        s.place(
+            Component::SignalSource {
+                waveform: waveform as u8,
+                amplitude,
+                frequency,
+                phase,
+                offset,
+            },
+            a,
+            b,
+        )
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn sim_time(h: u32) -> f64 {
+    let mut out = 0.0;
+    with_slot(h, |s| {
+        out = s.sim.time().0;
+        OK
+    });
+    out
+}
+
+#[no_mangle]
+pub extern "C" fn sim_add_probe(h: u32, is_current: u32, target_id: u32, capacity: u32) -> i32 {
+    with_slot(h, |s| {
+        let probe = if is_current != 0 {
+            match s.part(target_id) {
+                Ok(id) => simbiguity_circuits::sim::Probe::Current(id),
+                Err(e) => return e,
+            }
+        } else {
+            match s.node(target_id) {
+                Ok(id) => simbiguity_circuits::sim::Probe::NodeVoltage(id),
+                Err(e) => return e,
+            }
+        };
+        let id = s.sim.add_probe(probe, capacity as usize);
+        id.0 as i32
+    })
+}
+
+static mut LAST_PROBE_SAMPLES: std::vec::Vec<f64> = std::vec::Vec::new();
+
+#[allow(static_mut_refs)]
+#[no_mangle]
+pub extern "C" fn sim_probe_samples_ptr(h: u32, probe_id: u32) -> *const f64 {
+    let mut ptr = core::ptr::null();
+    with_slot(h, |s| {
+        let samples = s
+            .sim
+            .probe_samples(simbiguity_circuits::sim::ProbeId(probe_id as usize));
+        let mut flat = std::vec::Vec::with_capacity(samples.len() * 2);
+        for (t, v) in samples {
+            flat.push(t);
+            flat.push(v);
+        }
+        unsafe {
+            LAST_PROBE_SAMPLES = flat;
+            ptr = LAST_PROBE_SAMPLES.as_ptr();
+        }
+        OK
+    });
+    ptr
+}
+
+#[allow(static_mut_refs)]
+#[no_mangle]
+pub extern "C" fn sim_probe_samples_len() -> i32 {
+    unsafe { LAST_PROBE_SAMPLES.len() as i32 }
+}
+
+#[no_mangle]
 pub extern "C" fn circuit_add_diode(h: u32, a: u32, b: u32, is: f64, n: f64) -> i32 {
     with_slot(h, |s| {
         s.place(

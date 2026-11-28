@@ -243,7 +243,7 @@
       "status": "pending",
       "proposedAt": "2026-11-28T14:22:47.091614496+00:00",
       "kind": "tech-debt",
-      "sightings": 2
+      "sightings": 4
     }
   ],
   "rounds": [
@@ -321,6 +321,20 @@
     {
       "at": "2026-11-28T14:47:16.671675721+00:00",
       "feature": "Circuits: sparse solver for thousand-node circuits",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T15:13:04.218249343+00:00",
+      "feature": "Circuit Lab live oscilloscope",
+      "proposedIds": [
+        "refactor:site/js/simbiguity.js:0"
+      ]
+    },
+    {
+      "at": "2026-11-28T15:13:10.453321020+00:00",
+      "feature": "Circuit Lab live oscilloscope",
       "proposedIds": [
         "refactor:site/js/simbiguity.js:0"
       ]

@@ -13,4 +13,5 @@ publish = false
 simbiguity-circuits = { path = "../crates/simbiguity-circuits" }
 simbiguity-circuits-view = { path = "../crates/simbiguity-circuits-view" }
 simbiguity-math = { path = "../crates/simbiguity-math" }
+simbiguity-core = { path = "../crates/simbiguity-core" }
 simbiguity-physics = { path = "../crates/simbiguity-physics" }

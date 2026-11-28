@@ -604,6 +604,9 @@
         "crates/simbiguity-math/src/mat.rs::DenseMatrix",
         "crates/simbiguity-math/src/mat.rs::Mat4",
         "crates/simbiguity-math/src/quat.rs::Quat",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
         "crates/simbiguity-math/src/vec.rs::Vec2",
         "crates/simbiguity-math/src/vec.rs::Vec3::cross",
         "crates/simbiguity-math/src/vec.rs::Vec3::new",
@@ -745,7 +748,11 @@
         "crates/simbiguity-math/src/linsolve.rs::Lu::solve",
         "crates/simbiguity-math/src/linsolve.rs::SolveError::fmt",
         "crates/simbiguity-math/src/linsolve.rs::check_rhs_len",
-        "crates/simbiguity-math/src/linsolve.rs::lu_solve"
+        "crates/simbiguity-math/src/linsolve.rs::lu_solve",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
       ],
       "imports": [
         "crates/simbiguity-math/src/linsolve.rs::SolveError::DimensionMismatch",
@@ -2009,6 +2016,635 @@
         "sin"
       ]
     },
+    "crates/simbiguity-math/src/sparse.rs::CscMatrix": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n"
+      ],
+      "name": "CscMatrix"
+    },
+    "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [],
+      "name": "CscMatrix::col_ptr"
+    },
+    "crates/simbiguity-math/src/sparse.rs::CscMatrix::n": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n"
+      ],
+      "name": "CscMatrix::n"
+    },
+    "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [],
+      "name": "CscMatrix::row_idx"
+    },
+    "crates/simbiguity-math/src/sparse.rs::CscMatrix::values": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc"
+      ],
+      "imports": [],
+      "name": "CscMatrix::values"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::q",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::qinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "name": "SparseLu"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::factor": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::q",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::qinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "inherentMethod": true,
+      "name": "SparseLu::factor",
+      "namedMethods": [
+        "abs",
+        "clone",
+        "len",
+        "new",
+        "push",
+        "to_csc"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::l_col_ptr": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::l_col_ptr"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::l_row_idx": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::l_row_idx"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::l_values": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::l_values"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::n": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n"
+      ],
+      "name": "SparseLu::n"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::p": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p"
+      ],
+      "name": "SparseLu::p"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "name": "SparseLu::pinv"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::q": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::q"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::qinv": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor"
+      ],
+      "imports": [],
+      "name": "SparseLu::qinv"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::q",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p"
+      ],
+      "inherentMethod": true,
+      "name": "SparseLu::refactor",
+      "namedMethods": [
+        "abs",
+        "clear",
+        "iter_mut",
+        "push",
+        "to_csc"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::solve": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs::SolveError",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::l_values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::q",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::u_values",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "inherentMethod": true,
+      "name": "SparseLu::solve",
+      "namedMethods": [
+        "len",
+        "n",
+        "rev",
+        "to_vec"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::u_col_ptr": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::u_col_ptr"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::u_row_idx": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::u_row_idx"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseLu::u_values": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve"
+      ],
+      "imports": [],
+      "name": "SparseLu::u_values"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::assemble_sparse_matrix",
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::add",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::rows",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::triplets",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "name": "SparseMatrix"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix::add": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::triplets"
+      ],
+      "inherentMethod": true,
+      "name": "SparseMatrix::add",
+      "namedMethods": [
+        "push"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [],
+      "name": "SparseMatrix::cols"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::assemble_sparse_matrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::rows",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::triplets",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "inherentMethod": true,
+      "name": "SparseMatrix::new",
+      "namedMethods": [
+        "new"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix::rows": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new"
+      ],
+      "imports": [],
+      "name": "SparseMatrix::rows"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::values",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::triplets",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "inherentMethod": true,
+      "name": "SparseMatrix::to_csc",
+      "namedMethods": [
+        "clone",
+        "cmp",
+        "iter_mut",
+        "new",
+        "push",
+        "skip",
+        "sort_unstable_by",
+        "take",
+        "then",
+        "wrapping_add"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SparseMatrix::triplets": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::add",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc"
+      ],
+      "imports": [],
+      "name": "SparseMatrix::triplets"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SymbolicLu": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-math/src/lib.rs::__file_root__",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "name": "SymbolicLu"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n"
+      ],
+      "name": "SymbolicLu::n"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::col_ptr",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::n",
+        "crates/simbiguity-math/src/sparse.rs::CscMatrix::row_idx",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::cols",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::new",
+        "crates/simbiguity-math/src/sparse.rs::SparseMatrix::to_csc",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::n",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv"
+      ],
+      "inherentMethod": true,
+      "name": "SymbolicLu::new",
+      "namedMethods": [
+        "collect",
+        "contains",
+        "copied",
+        "count",
+        "dedup",
+        "enumerate",
+        "filter",
+        "iter",
+        "len",
+        "new",
+        "push",
+        "sort_unstable",
+        "to_csc",
+        "with_capacity"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs::SymbolicLu::p": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::refactor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::p"
+      ],
+      "name": "SymbolicLu::p"
+    },
+    "crates/simbiguity-math/src/sparse.rs::SymbolicLu::pinv": {
+      "filePath": "crates/simbiguity-math/src/sparse.rs",
+      "importedBy": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::factor",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv",
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::solve",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu",
+        "crates/simbiguity-math/src/sparse.rs::SymbolicLu::new"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/sparse.rs::SparseLu::pinv"
+      ],
+      "name": "SymbolicLu::pinv"
+    },
     "crates/simbiguity-math/src/vec.rs::Vec2": {
       "filePath": "crates/simbiguity-math/src/vec.rs",
       "importedBy": [
@@ -2944,6 +3580,7 @@
         "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/sparse.rs",
         "crates/simbiguity-math/src/vec.rs"
       ],
       "importedBy": [
@@ -2954,6 +3591,7 @@
         "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/sparse.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/linsolve.rs",
         "crates/simbiguity-math/src/linsolve.rs",
@@ -2961,6 +3599,9 @@
         "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-math/src/quat.rs",
+        "crates/simbiguity-math/src/sparse.rs",
+        "crates/simbiguity-math/src/sparse.rs",
+        "crates/simbiguity-math/src/sparse.rs",
         "crates/simbiguity-math/src/vec.rs",
         "crates/simbiguity-math/src/vec.rs"
       ],
@@ -2982,6 +3623,7 @@
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
         "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/sparse.rs",
         "xtask/src/bench_fixtures.rs"
       ],
       "imports": [
@@ -3041,6 +3683,23 @@
         "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-math/src/float.rs",
         "crates/simbiguity-math/src/float.rs"
+      ]
+    },
+    "crates/simbiguity-math/src/sparse.rs": {
+      "declaredBy": [
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-circuits/src/mna.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs",
+        "crates/simbiguity-math/src/lib.rs"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/linsolve.rs"
       ]
     },
     "crates/simbiguity-math/src/vec.rs": {

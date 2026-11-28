@@ -49,6 +49,19 @@ pub struct Circuit {
     pub(crate) node_count: usize,
     pub(crate) parts: Vec<Placed>,
     pub(crate) ground: Option<NodeId>,
+    pub(crate) solver: SolverKind,
+}
+
+/// The linear solver to use for Modified Nodal Analysis.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum SolverKind {
+    /// O(N^3) dense LU solver. Best for small circuits.
+    Dense,
+    /// Fill-reducing left-looking sparse LU solver. Best for large circuits.
+    Sparse,
+    /// Chooses Sparse if N >= 64, else Dense.
+    #[default]
+    Auto,
 }
 
 impl Circuit {
@@ -208,6 +221,11 @@ impl Circuit {
     /// The explicitly chosen ground, if any.
     pub fn ground(&self) -> Option<NodeId> {
         self.ground
+    }
+
+    /// Chooses the linear solver explicitly.
+    pub fn set_solver(&mut self, kind: SolverKind) {
+        self.solver = kind;
     }
 
     /// Every placed component, in placement order.

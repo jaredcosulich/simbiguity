@@ -31,3 +31,19 @@ for crate in $bridges; do
     exit 1
   fi
 done
+
+bench_budget="site/bench-budget.txt"
+if [ -f "$bench_budget" ]; then
+  cargo run -q --release -p xtask bench > site/bench.json
+  while read -r name limit; do
+    actual=$(grep -A 1 "\"name\": \"$name\"" site/bench.json | grep "medianUs" | tr -dc '0-9')
+    if [ -z "$actual" ]; then
+      echo "ERROR: Missing bench result for $name"
+      exit 1
+    fi
+    if [ "$actual" -gt "$limit" ]; then
+      echo "ERROR: Benchmark $name took $actual us, exceeding budget $limit us"
+      exit 1
+    fi
+  done < "$bench_budget"
+fi

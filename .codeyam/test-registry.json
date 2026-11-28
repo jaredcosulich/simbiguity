@@ -41,7 +41,7 @@
       "file": "xtask/src/bench_fixtures.rs",
       "format": "cargo",
       "key": "bench_fixtures::tests::stats_calculations",
-      "line": 180,
+      "line": 228,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -50,7 +50,7 @@
       "file": "xtask/src/bench_fixtures.rs",
       "format": "cargo",
       "key": "bench_fixtures::tests::to_json_shape",
-      "line": 158,
+      "line": 206,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -1261,6 +1261,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that the dense and sparse solver backends produce identical solutions for random circuits, ensuring the numerical accuracy of SparseLu matches DenseLu.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::dense_and_sparse_agree",
+      "line": 206,
+      "registeredAt": "2026-11-28T14:42:07.119741631+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that every failure has a reason: a missing solution comes with at least one fatal issue.",
       "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
       "format": "cargo",
@@ -1402,6 +1411,15 @@
       "key": "layout::tests::wrap_maps_into_the_period",
       "line": 136,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies accuracy and acceptable solver overhead for a wide multi-section LC chain using the sparse solver.",
+      "file": "crates/simbiguity-circuits/tests/large.rs",
+      "format": "cargo",
+      "key": "lc_chain_200_section_delay",
+      "line": 87,
+      "registeredAt": "2026-11-28T14:42:07.119741631+00:00",
       "runner": "cargo"
     },
     {
@@ -2044,6 +2062,15 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies KCL invariants and voltage symmetry for a 1000 node mesh network under the sparse solver.",
+      "file": "crates/simbiguity-circuits/tests/large.rs",
+      "format": "cargo",
+      "key": "mesh_32x32_kcl_and_symmetry",
+      "line": 38,
+      "registeredAt": "2026-11-28T14:42:07.119741631+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "assemble_matrix bubbles up an error if an ideal battery lacks a current unknown.",
       "file": "crates/simbiguity-circuits/src/mna_tests.rs",
       "format": "cargo",
@@ -2219,7 +2246,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::foreign_node_panics",
-      "line": 335,
+      "line": 353,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2228,7 +2255,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::ids_follow_creation_order",
-      "line": 321,
+      "line": 339,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2237,7 +2264,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::replace_bulb_unblows",
-      "line": 312,
+      "line": 330,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2246,7 +2273,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_ignores_non_switches",
-      "line": 293,
+      "line": 311,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2255,7 +2282,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_sets_the_state",
-      "line": 281,
+      "line": 299,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2264,7 +2291,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::toggle_switch_flips_and_reports",
-      "line": 302,
+      "line": 320,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -3715,6 +3742,15 @@
       "key": "tests::test_wasm",
       "line": 199,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "1. Ladder test",
+      "file": "crates/simbiguity-circuits/tests/large.rs",
+      "format": "cargo",
+      "key": "thousand_rung_ladder_draws_one_over_phi_amps",
+      "line": 7,
+      "registeredAt": "2026-11-28T14:42:07.119741631+00:00",
       "runner": "cargo"
     },
     {

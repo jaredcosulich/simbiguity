@@ -140,6 +140,7 @@ version = "0.0.1"
 dependencies = [
  "simbiguity-circuits",
  "simbiguity-circuits-view",
+ "simbiguity-core",
  "simbiguity-math",
  "simbiguity-physics",
 ]

@@ -199,4 +199,36 @@ mod tests {
             }
         }
     }
+
+    /// Verifies that the dense and sparse solver backends produce identical solutions
+    /// for random circuits, ensuring the numerical accuracy of SparseLu matches DenseLu.
+    #[test]
+    fn dense_and_sparse_agree() {
+        let mut rng = Rng::new(0x1337);
+        for _ in 0..2000 {
+            let mut c = generate_circuit(&mut rng);
+            let n = c.node_count();
+            if n == 0 {
+                continue;
+            }
+            c.set_ground(NodeId(0));
+
+            c.set_solver(crate::netlist::SolverKind::Dense);
+            let s_dense = c.solve();
+            c.set_solver(crate::netlist::SolverKind::Sparse);
+            let s_sparse = c.solve();
+
+            if let (Some(dense), Some(sparse)) = (s_dense.solution, s_sparse.solution) {
+                for i in 0..c.node_count() {
+                    let vd = dense.node_voltage(NodeId(i)).unwrap_or(0.0);
+                    let vs = sparse.node_voltage(NodeId(i)).unwrap_or(0.0);
+                    if vd.abs() > 1e-6 {
+                        assert!((vd - vs).abs() / vd.abs() < 1e-10, "mismatch at node {}", i);
+                    } else {
+                        assert!((vd - vs).abs() < 1e-10, "mismatch at node {}", i);
+                    }
+                }
+            }
+        }
+    }
 }

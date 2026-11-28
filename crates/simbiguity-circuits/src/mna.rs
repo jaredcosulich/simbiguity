@@ -17,7 +17,7 @@ use simbiguity_math::{float, DenseMatrix, SolveError};
 use crate::component::{Component, Integrator, Stamp, BLOW_RATIO};
 use crate::diagnostics::CircuitIssue;
 use crate::dsu::Dsu;
-use crate::netlist::{Circuit, ComponentId, NodeId};
+use crate::netlist::{Circuit, ComponentId, NodeId, SolverKind};
 use crate::solution::{Analysis, Solution};
 use crate::wires::wire_currents;
 
@@ -211,8 +211,12 @@ fn stamp_current_source(rhs: &mut [f64], a: Option<usize>, b: Option<usize>, cur
 #[derive(Clone, PartialEq, Debug)]
 pub struct SolverCache {
     pub matrix: DenseMatrix,
+    pub sparse_matrix: Option<simbiguity_math::SparseMatrix>,
     pub rhs: Vec<f64>,
     pub lu: Option<simbiguity_math::Lu>,
+    pub sparse_sym: Option<simbiguity_math::SymbolicLu>,
+    pub sparse_lu: Option<simbiguity_math::SparseLu>,
+    pub solver_kind: Option<SolverKind>,
     t: Option<Topology>,
     u: Option<Unknowns>,
     dt: Option<f64>,
@@ -223,8 +227,12 @@ impl Default for SolverCache {
     fn default() -> Self {
         Self {
             matrix: DenseMatrix::zeros(0, 0),
+            sparse_matrix: None,
             rhs: Vec::new(),
             lu: None,
+            sparse_sym: None,
+            sparse_lu: None,
+            solver_kind: None,
             t: None,
             u: None,
             dt: None,
@@ -267,6 +275,45 @@ fn assemble_matrix(
         }
     }
     Ok(())
+}
+
+fn assemble_sparse_matrix(
+    c: &Circuit,
+    t: &Topology,
+    u: &Unknowns,
+) -> Result<simbiguity_math::SparseMatrix, alloc::string::String> {
+    let mut m = simbiguity_math::SparseMatrix::new(u.count, u.count);
+    for (i, (p, s)) in c.parts.iter().zip(&t.stamps).enumerate() {
+        let a = u.voltage[t.group[p.a.0]];
+        let b = u.voltage[t.group[p.b.0]];
+        match *s {
+            Stamp::Conductance(g) | Stamp::Norton { g, .. } => {
+                if let Some(a) = a {
+                    m.add(a, a, g);
+                }
+                if let Some(b) = b {
+                    m.add(b, b, g);
+                }
+                if let (Some(a), Some(b)) = (a, b) {
+                    m.add(a, b, -g);
+                    m.add(b, a, -g);
+                }
+            }
+            Stamp::VoltageSource(_) => {
+                let Some(k) = u.source[i] else {
+                    return Err("every ideal battery has a current unknown".into());
+                };
+                for (node, sign) in [(a, 1.0), (b, -1.0)] {
+                    if let Some(node) = node {
+                        m.add(node, k, sign);
+                        m.add(k, node, sign);
+                    }
+                }
+            }
+            Stamp::Merge | Stamp::Open => {}
+        }
+    }
+    Ok(m)
 }
 
 fn assemble_rhs(
@@ -510,36 +557,136 @@ fn solve_once(
         }
         issues.extend(floating_islands(c, &t));
 
-        if needs_refactor || cache.matrix.rows() != u.count {
-            if cache.matrix.rows() != u.count {
-                cache.matrix = DenseMatrix::zeros(u.count, u.count);
+        let active_solver = match c.solver {
+            SolverKind::Auto => {
+                if u.count >= 64 {
+                    SolverKind::Sparse
+                } else {
+                    SolverKind::Dense
+                }
             }
-            if let Err(e) = assemble_matrix(c, &t, &u, &mut cache.matrix) {
-                issues.push(CircuitIssue::SolverFailure { message: e });
-                cache.t = None;
-                cache.u = None;
-                cache.lu = None;
-                return (None, issues);
-            }
-            match simbiguity_math::Lu::decompose(&cache.matrix) {
-                Ok(lu) => cache.lu = Some(lu),
-                Err(SolveError::Singular { pivot_row }) => {
-                    issues.push(issue_for_pivot(&u, pivot_row));
+            other => other,
+        };
+
+        if needs_refactor
+            || cache.matrix.rows() != u.count
+            || cache.solver_kind != Some(active_solver)
+        {
+            cache.solver_kind = Some(active_solver);
+            if active_solver == SolverKind::Dense {
+                if cache.matrix.rows() != u.count {
+                    cache.matrix = DenseMatrix::zeros(u.count, u.count);
+                }
+                if let Err(e) = assemble_matrix(c, &t, &u, &mut cache.matrix) {
+                    issues.push(CircuitIssue::SolverFailure { message: e });
                     cache.t = None;
                     cache.u = None;
                     cache.lu = None;
+                    cache.solver_kind = None;
                     return (None, issues);
                 }
-                Err(e) => {
-                    issues.push(CircuitIssue::SolverFailure {
-                        message: alloc::format!("MNA always builds a square system: {e}"),
-                    });
-                    cache.t = None;
-                    cache.u = None;
-                    cache.lu = None;
-                    return (None, issues);
+                match simbiguity_math::Lu::decompose(&cache.matrix) {
+                    Ok(lu) => {
+                        cache.lu = Some(lu);
+                        cache.sparse_lu = None;
+                    }
+                    Err(SolveError::Singular { pivot_row }) => {
+                        issues.push(issue_for_pivot(&u, pivot_row));
+                        cache.t = None;
+                        cache.u = None;
+                        cache.lu = None;
+                        cache.solver_kind = None;
+                        return (None, issues);
+                    }
+                    Err(e) => {
+                        issues.push(CircuitIssue::SolverFailure {
+                            message: alloc::format!("MNA always builds a square system: {e}"),
+                        });
+                        cache.t = None;
+                        cache.u = None;
+                        cache.lu = None;
+                        cache.solver_kind = None;
+                        return (None, issues);
+                    }
+                };
+            } else {
+                match assemble_sparse_matrix(c, &t, &u) {
+                    Ok(mat) => {
+                        let sym = cache
+                            .sparse_sym
+                            .take()
+                            .filter(|s| s.n == u.count)
+                            .unwrap_or_else(|| simbiguity_math::SymbolicLu::new(&mat));
+
+                        if let Some(mut slu) = cache.sparse_lu.take() {
+                            if slu.n == u.count {
+                                match slu.refactor(&mat) {
+                                    Ok(_) => {
+                                        cache.sparse_lu = Some(slu);
+                                        cache.sparse_sym = Some(sym.clone());
+                                        cache.sparse_matrix = Some(mat.clone());
+                                    }
+                                    Err(SolveError::Singular { pivot_row }) => {
+                                        issues.push(issue_for_pivot(&u, pivot_row));
+                                        cache.t = None;
+                                        cache.u = None;
+                                        cache.sparse_lu = None;
+                                        cache.solver_kind = None;
+                                        return (None, issues);
+                                    }
+                                    Err(e) => {
+                                        issues.push(CircuitIssue::SolverFailure {
+                                            message: alloc::format!("MNA error: {e}"),
+                                        });
+                                        cache.t = None;
+                                        cache.u = None;
+                                        cache.sparse_lu = None;
+                                        cache.solver_kind = None;
+                                        return (None, issues);
+                                    }
+                                }
+                            }
+                        }
+
+                        if cache.sparse_lu.is_none() {
+                            match simbiguity_math::SparseLu::factor(&sym, &mat) {
+                                Ok(slu) => {
+                                    cache.sparse_lu = Some(slu);
+                                    cache.sparse_sym = Some(sym);
+                                    cache.sparse_matrix = Some(mat);
+                                    cache.lu = None;
+                                }
+                                Err(SolveError::Singular { pivot_row }) => {
+                                    issues.push(issue_for_pivot(&u, pivot_row));
+                                    cache.t = None;
+                                    cache.u = None;
+                                    cache.sparse_lu = None;
+                                    cache.solver_kind = None;
+                                    return (None, issues);
+                                }
+                                Err(e) => {
+                                    issues.push(CircuitIssue::SolverFailure {
+                                        message: alloc::format!("MNA error: {e}"),
+                                    });
+                                    cache.t = None;
+                                    cache.u = None;
+                                    cache.sparse_lu = None;
+                                    cache.solver_kind = None;
+                                    return (None, issues);
+                                }
+                            }
+                        }
+                    }
+                    Err(e) => {
+                        issues.push(CircuitIssue::SolverFailure { message: e });
+                        cache.t = None;
+                        cache.u = None;
+                        cache.sparse_lu = None;
+                        cache.solver_kind = None;
+                        return (None, issues);
+                    }
                 }
-            };
+            }
         }
 
         if cache.rhs.len() != u.count {
@@ -553,16 +700,27 @@ fn solve_once(
             return (None, issues);
         }
 
-        let Some(lu) = cache.lu.as_ref() else {
-            issues.push(CircuitIssue::SolverFailure {
-                message: alloc::string::String::from("Missing LU decomp"),
-            });
-            cache.t = None;
-            cache.u = None;
-            cache.lu = None;
-            return (None, issues);
+        let x_res = if active_solver == SolverKind::Dense {
+            if let Some(lu) = cache.lu.as_ref() {
+                lu.solve(&cache.rhs)
+            } else {
+                Err(SolveError::DimensionMismatch {
+                    expected: 0,
+                    got: 0,
+                })
+            }
+        } else {
+            if let Some(slu) = cache.sparse_lu.as_ref() {
+                slu.solve(&cache.rhs)
+            } else {
+                Err(SolveError::DimensionMismatch {
+                    expected: 0,
+                    got: 0,
+                })
+            }
         };
-        let x = match lu.solve(&cache.rhs) {
+
+        let x = match x_res {
             Ok(x) => x,
             Err(e) => {
                 issues.push(CircuitIssue::SolverFailure {

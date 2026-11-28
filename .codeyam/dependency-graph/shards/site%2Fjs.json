@@ -107,11 +107,6 @@
     "site/js/simbiguity.js::loadCircuits": {
       "filePath": "site/js/simbiguity.js",
       "importedBy": [
-        "debug_js.js::run",
-        "debug_js2.js::run",
-        "debug_js3.js::run",
-        "debug_js4.js::run",
-        "debug_js5.js::run",
         "site/demos/circuit-puzzles/game-state.test.js::__file_root__",
         "site/demos/hello-circuit/demo.js::main",
         "site/demos/rc-charging/demo.js::main",
@@ -266,11 +261,6 @@
     },
     "site/js/simbiguity.js": {
       "importedBy": [
-        "debug_js.js",
-        "debug_js2.js",
-        "debug_js3.js",
-        "debug_js4.js",
-        "debug_js5.js",
         "site/demos/circuit-puzzles/game-state.test.js",
         "site/demos/hello-circuit/demo.js",
         "site/demos/physics/demo.js",

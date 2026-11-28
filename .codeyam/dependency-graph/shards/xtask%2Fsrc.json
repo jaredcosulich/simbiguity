@@ -68,6 +68,14 @@
       "imports": [],
       "name": "BenchResult::p95_us"
     },
+    "xtask/src/bench_fixtures.rs::__file_root__": {
+      "filePath": "xtask/src/bench_fixtures.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-core/src/simulation.rs::Simulation"
+      ],
+      "name": "__file_root__"
+    },
     "xtask/src/bench_fixtures.rs::bench": {
       "filePath": "xtask/src/bench_fixtures.rs",
       "importedBy": [
@@ -113,7 +121,12 @@
       ],
       "imports": [
         "crates/simbiguity-circuits-view/src/lib.rs::CircuitView",
+        "crates/simbiguity-circuits/src/component.rs::Integrator",
+        "crates/simbiguity-circuits/src/component.rs::Integrator::Trapezoidal",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim",
+        "crates/simbiguity-circuits/src/sim.rs::CircuitSim::new",
+        "crates/simbiguity-core/src/simulation.rs::Seconds",
         "crates/simbiguity-math/src/linsolve.rs::Lu",
         "crates/simbiguity-math/src/mat.rs::DenseMatrix",
         "crates/simbiguity-physics/src/world.rs::World",
@@ -124,6 +137,7 @@
       "namedMethods": [
         "add_battery",
         "add_bulb",
+        "add_capacitor",
         "add_resistor",
         "add_switch",
         "advance",
@@ -136,6 +150,7 @@
         "solve",
         "step",
         "unwrap",
+        "with_integrator",
         "zeros"
       ]
     },
@@ -2826,9 +2841,13 @@
       "imports": [
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
+        "crates/simbiguity-core/src/simulation.rs",
         "crates/simbiguity-math/src/mat.rs",
         "crates/simbiguity-math/src/linsolve.rs",
-        "crates/simbiguity-physics/src/world.rs"
+        "crates/simbiguity-physics/src/world.rs",
+        "crates/simbiguity-circuits/src/sim.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-core/src/simulation.rs"
       ]
     },
     "xtask/src/capabilities.rs": {

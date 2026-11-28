@@ -126,3 +126,13 @@ proves = [
   "tests/ac::series_rlc_at_resonance_draws_r_limited_current",
   "site/test/ac.test.js"
 ]
+
+[[capability]]
+name = "Large circuits (sparse solver)"
+description = "Fast left-looking LU factorization with partial pivoting and fill-reducing ordering, automatically chosen for large node counts."
+proves = [
+  "tests/large::thousand_rung_ladder_draws_one_over_phi_amps",
+  "tests/large::mesh_32x32_kcl_and_symmetry",
+  "tests/large::lc_chain_200_section_delay",
+  "invariants_tests::dense_and_sparse_agree"
+]

@@ -36,9 +36,11 @@ pub mod float;
 pub mod linsolve;
 pub mod mat;
 pub mod quat;
+pub mod sparse;
 pub mod vec;
 
 pub use linsolve::{lu_solve, Lu, SolveError};
 pub use mat::{DenseMatrix, Mat4};
 pub use quat::Quat;
+pub use sparse::{SparseLu, SparseMatrix, SymbolicLu};
 pub use vec::{Vec2, Vec3};

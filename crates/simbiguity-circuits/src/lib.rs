@@ -72,6 +72,6 @@ mod invariants_tests;
 
 pub use component::{Component, Integrator};
 pub use diagnostics::CircuitIssue;
-pub use netlist::{Circuit, ComponentId, NodeId, Placed};
+pub use netlist::{Circuit, ComponentId, NodeId, Placed, SolverKind};
 pub use sim::{CircuitInput, CircuitSim};
 pub use solution::{Analysis, Solution};

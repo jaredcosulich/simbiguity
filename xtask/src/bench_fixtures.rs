@@ -1,5 +1,6 @@
 use simbiguity_circuits::Circuit;
 use simbiguity_circuits_view::CircuitView;
+use simbiguity_core::Simulation;
 use simbiguity_math::DenseMatrix;
 use simbiguity_math::Lu;
 use simbiguity_physics::World;
@@ -43,6 +44,53 @@ pub fn run_all() -> Vec<BenchResult> {
             c.solve();
         }));
     }
+
+    results.push(bench("ladder_1000_dc", || {
+        let mut c = Circuit::new();
+        let mut top = c.node();
+        let mut bot = c.node();
+        c.add_battery(top, bot, 9.0);
+        for _ in 0..1000 {
+            let next_top = c.node();
+            let next_bot = c.node();
+            c.add_resistor(top, next_top, 100.0);
+            c.add_resistor(next_top, next_bot, 100.0);
+            c.add_resistor(next_bot, bot, 100.0);
+            top = next_top;
+            bot = next_bot;
+        }
+        c.solve();
+    }));
+
+    results.push(bench("mesh_32_transient_100_steps", || {
+        let mut c = Circuit::new();
+        let n = 32;
+        let mut nodes = Vec::new();
+        for _ in 0..n {
+            let mut row = Vec::new();
+            for _ in 0..n {
+                row.push(c.node());
+            }
+            nodes.push(row);
+        }
+        for i in 0..n {
+            for j in 0..n {
+                if i + 1 < n {
+                    c.add_resistor(nodes[i][j], nodes[i + 1][j], 1.0);
+                }
+                if j + 1 < n {
+                    c.add_resistor(nodes[i][j], nodes[i][j + 1], 1.0);
+                }
+            }
+        }
+        c.add_capacitor(nodes[0][0], nodes[n - 1][n - 1], 1e-6);
+        c.add_battery(nodes[0][0], nodes[n - 1][n - 1], 12.0);
+        let mut sim = simbiguity_circuits::CircuitSim::new(c)
+            .with_integrator(simbiguity_circuits::Integrator::Trapezoidal);
+        for _ in 0..100 {
+            sim.step(simbiguity_core::Seconds(1e-6));
+        }
+    }));
 
     results.push(bench("10x10 resistor grid", || {
         let mut c = Circuit::new();

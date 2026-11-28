@@ -86,6 +86,37 @@ pub extern "C" fn circuit_add_bulb(h: u32, a: u32, b: u32, volts: f64, watts: f6
     with_slot(h, |s| s.place(Component::bulb(volts, watts), a, b))
 }
 
+#[no_mangle]
+pub extern "C" fn circuit_add_diode(h: u32, a: u32, b: u32, is: f64, n: f64) -> i32 {
+    with_slot(h, |s| {
+        s.place(
+            Component::Diode {
+                saturation_amps: is,
+                emission: n,
+            },
+            a,
+            b,
+        )
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn circuit_add_led(h: u32, a: u32, b: u32, rated_amps: f64, is: f64, n: f64) -> i32 {
+    with_slot(h, |s| {
+        s.place(
+            Component::Led {
+                color: "red",
+                rated_amps,
+                saturation_amps: is,
+                emission: n,
+                blown: false,
+            },
+            a,
+            b,
+        )
+    })
+}
+
 /// A capacitor of `farads`; returns its component id.
 #[no_mangle]
 pub extern "C" fn circuit_add_capacitor(h: u32, a: u32, b: u32, farads: f64) -> i32 {

@@ -17,6 +17,7 @@
         "crates/simbiguity-circuits/src/component.rs::Component::brightness",
         "crates/simbiguity-circuits/src/component.rs::Component::bulb",
         "crates/simbiguity-circuits/src/component.rs::Component::capacitor",
+        "crates/simbiguity-circuits/src/component.rs::Component::diode_params",
         "crates/simbiguity-circuits/src/component.rs::Component::inductor",
         "crates/simbiguity-circuits/src/component.rs::Component::is_valid",
         "crates/simbiguity-circuits/src/component.rs::Component::set_value",
@@ -36,7 +37,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_battery_with_internal",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::component",
@@ -69,7 +72,9 @@
         "crates/simbiguity-circuits/src/component.rs::Component::Battery",
         "crates/simbiguity-circuits/src/component.rs::Component::Bulb",
         "crates/simbiguity-circuits/src/component.rs::Component::Capacitor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Diode",
         "crates/simbiguity-circuits/src/component.rs::Component::Inductor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led",
         "crates/simbiguity-circuits/src/component.rs::Component::Resistor",
         "crates/simbiguity-circuits/src/component.rs::Component::Switch",
         "crates/simbiguity-circuits/src/component.rs::Component::Wire",
@@ -79,7 +84,9 @@
         "crates/simbiguity-circuits/src/component.rs::Component::bulb",
         "crates/simbiguity-circuits/src/component.rs::Component::bulb_resistance",
         "crates/simbiguity-circuits/src/component.rs::Component::capacitor",
+        "crates/simbiguity-circuits/src/component.rs::Component::diode_params",
         "crates/simbiguity-circuits/src/component.rs::Component::inductor",
+        "crates/simbiguity-circuits/src/component.rs::Component::is_nonlinear",
         "crates/simbiguity-circuits/src/component.rs::Component::is_valid",
         "crates/simbiguity-circuits/src/component.rs::Component::set_value",
         "crates/simbiguity-circuits/src/component.rs::Component::stamp",
@@ -135,6 +142,18 @@
       "imports": [],
       "name": "Component::Capacitor"
     },
+    "crates/simbiguity-circuits/src/component.rs::Component::Diode": {
+      "filePath": "crates/simbiguity-circuits/src/component.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Component::diode_params",
+        "crates/simbiguity-circuits/src/component.rs::Component::is_valid",
+        "crates/simbiguity-circuits/src/component.rs::Component::set_value",
+        "crates/simbiguity-circuits/src/component.rs::Component::stamp"
+      ],
+      "imports": [],
+      "name": "Component::Diode"
+    },
     "crates/simbiguity-circuits/src/component.rs::Component::Inductor": {
       "filePath": "crates/simbiguity-circuits/src/component.rs",
       "importedBy": [
@@ -147,6 +166,20 @@
       ],
       "imports": [],
       "name": "Component::Inductor"
+    },
+    "crates/simbiguity-circuits/src/component.rs::Component::Led": {
+      "filePath": "crates/simbiguity-circuits/src/component.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Component::blow",
+        "crates/simbiguity-circuits/src/component.rs::Component::brightness",
+        "crates/simbiguity-circuits/src/component.rs::Component::diode_params",
+        "crates/simbiguity-circuits/src/component.rs::Component::is_valid",
+        "crates/simbiguity-circuits/src/component.rs::Component::set_value",
+        "crates/simbiguity-circuits/src/component.rs::Component::stamp"
+      ],
+      "imports": [],
+      "name": "Component::Led"
     },
     "crates/simbiguity-circuits/src/component.rs::Component::Resistor": {
       "filePath": "crates/simbiguity-circuits/src/component.rs",
@@ -200,7 +233,8 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Component",
-        "crates/simbiguity-circuits/src/component.rs::Component::Bulb"
+        "crates/simbiguity-circuits/src/component.rs::Component::Bulb",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led"
       ],
       "inherentMethod": true,
       "name": "Component::blow"
@@ -212,11 +246,13 @@
       ],
       "imports": [
         "crates/simbiguity-circuits/src/component.rs::Component",
-        "crates/simbiguity-circuits/src/component.rs::Component::Bulb"
+        "crates/simbiguity-circuits/src/component.rs::Component::Bulb",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led"
       ],
       "inherentMethod": true,
       "name": "Component::brightness",
       "namedMethods": [
+        "abs",
         "clamp"
       ]
     },
@@ -253,6 +289,20 @@
       "inherentMethod": true,
       "name": "Component::capacitor"
     },
+    "crates/simbiguity-circuits/src/component.rs::Component::diode_params": {
+      "filePath": "crates/simbiguity-circuits/src/component.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Component::is_nonlinear"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/component.rs::Component::Diode",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led"
+      ],
+      "inherentMethod": true,
+      "name": "Component::diode_params"
+    },
     "crates/simbiguity-circuits/src/component.rs::Component::inductor": {
       "filePath": "crates/simbiguity-circuits/src/component.rs",
       "importedBy": [
@@ -265,6 +315,21 @@
       "inherentMethod": true,
       "name": "Component::inductor"
     },
+    "crates/simbiguity-circuits/src/component.rs::Component::is_nonlinear": {
+      "filePath": "crates/simbiguity-circuits/src/component.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/component.rs::Component"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component::diode_params"
+      ],
+      "inherentMethod": true,
+      "name": "Component::is_nonlinear",
+      "namedMethods": [
+        "diode_params",
+        "is_some"
+      ]
+    },
     "crates/simbiguity-circuits/src/component.rs::Component::is_valid": {
       "filePath": "crates/simbiguity-circuits/src/component.rs",
       "importedBy": [
@@ -275,7 +340,9 @@
         "crates/simbiguity-circuits/src/component.rs::Component::Battery",
         "crates/simbiguity-circuits/src/component.rs::Component::Bulb",
         "crates/simbiguity-circuits/src/component.rs::Component::Capacitor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Diode",
         "crates/simbiguity-circuits/src/component.rs::Component::Inductor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led",
         "crates/simbiguity-circuits/src/component.rs::Component::Resistor",
         "crates/simbiguity-circuits/src/component.rs::Component::Switch",
         "crates/simbiguity-circuits/src/component.rs::Component::Wire"
@@ -296,7 +363,9 @@
         "crates/simbiguity-circuits/src/component.rs::Component::Battery",
         "crates/simbiguity-circuits/src/component.rs::Component::Bulb",
         "crates/simbiguity-circuits/src/component.rs::Component::Capacitor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Diode",
         "crates/simbiguity-circuits/src/component.rs::Component::Inductor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led",
         "crates/simbiguity-circuits/src/component.rs::Component::Resistor",
         "crates/simbiguity-circuits/src/component.rs::Component::Switch",
         "crates/simbiguity-circuits/src/component.rs::Component::Wire"
@@ -315,7 +384,9 @@
         "crates/simbiguity-circuits/src/component.rs::Component::Battery",
         "crates/simbiguity-circuits/src/component.rs::Component::Bulb",
         "crates/simbiguity-circuits/src/component.rs::Component::Capacitor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Diode",
         "crates/simbiguity-circuits/src/component.rs::Component::Inductor",
+        "crates/simbiguity-circuits/src/component.rs::Component::Led",
         "crates/simbiguity-circuits/src/component.rs::Component::Resistor",
         "crates/simbiguity-circuits/src/component.rs::Component::Switch",
         "crates/simbiguity-circuits/src/component.rs::Component::Wire",
@@ -424,6 +495,7 @@
         "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
         "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::component_current",
+        "crates/simbiguity-circuits/src/mna.rs::linearize_diode",
         "crates/simbiguity-circuits/src/mna.rs::solve_once",
         "crates/simbiguity-circuits/src/mna.rs::source_problems",
         "crates/simbiguity-circuits/src/wires.rs::node_inflows",
@@ -514,6 +586,7 @@
         "crates/simbiguity-circuits/tests/analysis.rs::parallel_ideal_batteries_are_a_voltage_source_loop",
         "crates/simbiguity-circuits/tests/analysis.rs::real_battery_short_reports_emf_over_r",
         "crates/simbiguity-circuits/tests/analysis.rs::switch_input_takes_effect_on_step",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::led_direct_blows",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::IssueKind::matches",
         "crates/simbiguity-circuits-wasm/src/issues.rs::issue_kind_code",
@@ -1303,8 +1376,7 @@
         "component",
         "enumerate",
         "filter_map",
-        "iter",
-        "then_some"
+        "iter"
       ]
     },
     "crates/simbiguity-circuits/src/mna.rs::build_solution": {
@@ -1343,6 +1415,35 @@
         "reference_of",
         "unwrap_or",
         "with_capacity",
+        "zip"
+      ]
+    },
+    "crates/simbiguity-circuits/src/mna.rs::check_diode_convergence": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::exp"
+      ],
+      "name": "check_diode_convergence",
+      "namedMethods": [
+        "abs",
+        "exp"
+      ]
+    },
+    "crates/simbiguity-circuits/src/mna.rs::check_voltage_convergence": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/solution.rs::Solution"
+      ],
+      "name": "check_voltage_convergence",
+      "namedMethods": [
+        "abs",
+        "iter",
         "zip"
       ]
     },
@@ -1425,6 +1526,34 @@
         "unwrap_or"
       ]
     },
+    "crates/simbiguity-circuits/src/mna.rs::limit_diode_voltage": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/mna.rs::pnjlim",
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "name": "limit_diode_voltage",
+      "namedMethods": [
+        "ln"
+      ]
+    },
+    "crates/simbiguity-circuits/src/mna.rs::linearize_diode": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::solve_once"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Stamp",
+        "crates/simbiguity-math/src/float.rs::exp"
+      ],
+      "name": "linearize_diode",
+      "namedMethods": [
+        "exp"
+      ]
+    },
     "crates/simbiguity-circuits/src/mna.rs::most_overloaded": {
       "filePath": "crates/simbiguity-circuits/src/mna.rs",
       "importedBy": [
@@ -1440,6 +1569,7 @@
       ],
       "name": "most_overloaded",
       "namedMethods": [
+        "abs",
         "enumerate",
         "iter",
         "map",
@@ -1468,6 +1598,19 @@
         "enumerate",
         "filter_map",
         "iter"
+      ]
+    },
+    "crates/simbiguity-circuits/src/mna.rs::pnjlim": {
+      "filePath": "crates/simbiguity-circuits/src/mna.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::limit_diode_voltage"
+      ],
+      "imports": [
+        "crates/simbiguity-math/src/float.rs::ln"
+      ],
+      "name": "pnjlim",
+      "namedMethods": [
+        "ln"
       ]
     },
     "crates/simbiguity-circuits/src/mna.rs::powers": {
@@ -1510,8 +1653,12 @@
         "crates/simbiguity-circuits/src/mna.rs::assemble_matrix",
         "crates/simbiguity-circuits/src/mna.rs::assemble_rhs",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
+        "crates/simbiguity-circuits/src/mna.rs::check_diode_convergence",
+        "crates/simbiguity-circuits/src/mna.rs::check_voltage_convergence",
         "crates/simbiguity-circuits/src/mna.rs::floating_islands",
         "crates/simbiguity-circuits/src/mna.rs::issue_for_pivot",
+        "crates/simbiguity-circuits/src/mna.rs::limit_diode_voltage",
+        "crates/simbiguity-circuits/src/mna.rs::linearize_diode",
         "crates/simbiguity-circuits/src/mna.rs::open_batteries",
         "crates/simbiguity-circuits/src/mna.rs::source_problems",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
@@ -1529,16 +1676,23 @@
         "clone",
         "count",
         "decompose",
+        "diode_params",
+        "enumerate",
         "extend",
         "format",
         "from",
         "is_fatal",
+        "is_nonlinear",
         "iter",
         "len",
+        "new",
         "number",
+        "parts",
         "push",
         "rows",
         "solve",
+        "unwrap_or",
+        "vec",
         "zeros"
       ]
     },
@@ -1777,6 +1931,12 @@
         "crates/simbiguity-circuits/tests/analysis.rs::trapezoidal_rc_matches_hand_computed_discrete_answer",
         "crates/simbiguity-circuits/tests/analysis.rs::unbalanced_wheatstone_bridge_carries_known_current",
         "crates/simbiguity-circuits/tests/analysis.rs::wire_carries_the_loop_current",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::diode_reversed",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::diode_with_1k_from_5v_drops_0_6925_volts",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::led_direct_blows",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::led_with_160_ohm",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::led_with_330_ohm",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::two_diodes_in_series",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::CircuitGoal",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::add_part",
         "crates/simbiguity-circuits-puzzle/src/lib.rs::build_circuit",
@@ -1796,7 +1956,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_battery_with_internal",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::component",
@@ -1831,7 +1993,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_battery_with_internal",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::connect"
@@ -1933,6 +2097,25 @@
         "capacitor"
       ]
     },
+    "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode": {
+      "filePath": "crates/simbiguity-circuits/src/netlist.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add",
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId",
+        "crates/simbiguity-circuits/src/netlist.rs::NodeId",
+        "crates/simbiguity-circuits/src/netlist.rs::Placed::a",
+        "crates/simbiguity-circuits/src/netlist.rs::Placed::b"
+      ],
+      "inherentMethod": true,
+      "name": "Circuit::add_diode",
+      "namedMethods": [
+        "add"
+      ]
+    },
     "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor": {
       "filePath": "crates/simbiguity-circuits/src/netlist.rs",
       "importedBy": [
@@ -1951,6 +2134,25 @@
       "namedMethods": [
         "add",
         "inductor"
+      ]
+    },
+    "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led": {
+      "filePath": "crates/simbiguity-circuits/src/netlist.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "imports": [
+        "crates/simbiguity-circuits/src/component.rs::Component",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add",
+        "crates/simbiguity-circuits/src/netlist.rs::ComponentId",
+        "crates/simbiguity-circuits/src/netlist.rs::NodeId",
+        "crates/simbiguity-circuits/src/netlist.rs::Placed::a",
+        "crates/simbiguity-circuits/src/netlist.rs::Placed::b"
+      ],
+      "inherentMethod": true,
+      "name": "Circuit::add_led",
+      "namedMethods": [
+        "add"
       ]
     },
     "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor": {
@@ -2197,7 +2399,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_battery_with_internal",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::component",
@@ -2271,7 +2475,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_battery_with_internal",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::connect",
@@ -2337,7 +2543,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::connect",
@@ -2355,7 +2563,9 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_bulb",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_capacitor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_diode",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_inductor",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_led",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_resistor",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::add_switch",
         "crates/simbiguity-circuits/src/netlist.rs::Circuit::connect",
@@ -2993,6 +3203,7 @@
       "importedBy": [
         "crates/simbiguity-circuits/src/lib.rs::__file_root__",
         "crates/simbiguity-circuits/src/mna.rs::build_solution",
+        "crates/simbiguity-circuits/src/mna.rs::check_voltage_convergence",
         "crates/simbiguity-circuits/src/mna.rs::most_overloaded",
         "crates/simbiguity-circuits/src/mna.rs::open_batteries",
         "crates/simbiguity-circuits/src/mna.rs::solve_once",
@@ -3016,7 +3227,8 @@
         "crates/simbiguity-circuits/src/solution.rs::Solution::power",
         "crates/simbiguity-circuits/src/solution.rs::Solution::powers",
         "crates/simbiguity-circuits/src/solution.rs::Solution::voltage_across",
-        "crates/simbiguity-circuits/src/solution.rs::brightness"
+        "crates/simbiguity-circuits/src/solution.rs::brightness",
+        "crates/simbiguity-circuits/src/solution.rs::newton_iterations"
       ],
       "name": "Solution"
     },
@@ -3050,7 +3262,8 @@
         "crates/simbiguity-circuits/src/solution.rs::Solution::power",
         "crates/simbiguity-circuits/src/solution.rs::Solution::powers",
         "crates/simbiguity-circuits/src/solution.rs::Solution::voltage_across",
-        "crates/simbiguity-circuits/src/solution.rs::brightness"
+        "crates/simbiguity-circuits/src/solution.rs::brightness",
+        "crates/simbiguity-circuits/src/solution.rs::newton_iterations"
       ],
       "inherentMethod": true,
       "name": "Solution::brightness"
@@ -3184,6 +3397,15 @@
       ],
       "name": "issues"
     },
+    "crates/simbiguity-circuits/src/solution.rs::newton_iterations": {
+      "filePath": "crates/simbiguity-circuits/src/solution.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/src/solution.rs::Solution",
+        "crates/simbiguity-circuits/src/solution.rs::Solution::brightness"
+      ],
+      "imports": [],
+      "name": "newton_iterations"
+    },
     "crates/simbiguity-circuits/src/solution.rs::solution": {
       "filePath": "crates/simbiguity-circuits/src/solution.rs",
       "importedBy": [
@@ -3306,6 +3528,7 @@
         "crates/simbiguity-circuits/src/diagnostics.rs",
         "crates/simbiguity-circuits/src/invariants_tests.rs",
         "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/invariants_tests.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
@@ -3352,6 +3575,7 @@
         "crates/simbiguity-circuits/src/mna.rs",
         "crates/simbiguity-circuits/src/solution.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits/tests/nonlinear.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/issues.rs",
         "crates/simbiguity-circuits-wasm/src/issues.rs",
@@ -3390,6 +3614,11 @@
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/component.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits/src/component.rs"
       ]
@@ -3523,6 +3752,10 @@
         "crates/simbiguity-circuits/src/invariants_tests.rs",
         "crates/simbiguity-circuits/src/invariants_tests.rs",
         "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/invariants_tests.rs",
+        "crates/simbiguity-circuits/src/invariants_tests.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
         "crates/simbiguity-circuits/src/lib.rs",
@@ -3538,6 +3771,7 @@
         "crates/simbiguity-circuits/src/wires.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
         "crates/simbiguity-circuits/tests/analysis.rs",
+        "crates/simbiguity-circuits/tests/nonlinear.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs",
         "crates/simbiguity-circuits-puzzle/src/lib.rs",

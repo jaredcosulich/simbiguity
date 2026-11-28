@@ -104,6 +104,17 @@
         "place"
       ]
     },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_diode": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_diode",
+      "namedMethods": [
+        "place"
+      ]
+    },
     "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_inductor": {
       "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
       "importedBy": [],
@@ -113,6 +124,17 @@
       "name": "circuit_add_inductor",
       "namedMethods": [
         "inductor",
+        "place"
+      ]
+    },
+    "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_led": {
+      "filePath": "crates/simbiguity-circuits-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits-wasm/src/slot.rs::with_slot"
+      ],
+      "name": "circuit_add_led",
+      "namedMethods": [
         "place"
       ]
     },
@@ -913,7 +935,9 @@
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_battery",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_bulb",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_capacitor",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_diode",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_inductor",
+        "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_led",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_resistor",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_switch",
         "crates/simbiguity-circuits-wasm/src/lib.rs::circuit_add_wire",

@@ -90,3 +90,16 @@ proves = [
   "tests/analysis::snapshot_round_trip_restores_state",
   "tests/analysis::solving_is_deterministic",
 ]
+
+[[capability]]
+name = "Diodes and LEDs (nonlinear solving)"
+description = "Newton-Raphson nonlinear solver for Shockley diode and LED components."
+proves = [
+  "tests/nonlinear::diode_with_1k_from_5v_drops_0_6925_volts",
+  "tests/nonlinear::two_diodes_in_series",
+  "tests/nonlinear::diode_reversed",
+  "tests/nonlinear::led_with_160_ohm",
+  "tests/nonlinear::led_with_330_ohm",
+  "tests/nonlinear::led_direct_blows",
+  "invariants_tests::kcl_with_diodes"
+]

@@ -47,6 +47,26 @@ pub enum Component {
     },
     /// An ideal wire: its two ends are the same node.
     Wire,
+    /// A diode (Shockley model).
+    Diode {
+        /// Saturation current in amps (Is).
+        saturation_amps: f64,
+        /// Emission coefficient (n).
+        emission: f64,
+    },
+    /// An LED.
+    Led {
+        /// Color for the 3D view.
+        color: &'static str,
+        /// Rated current in amps.
+        rated_amps: f64,
+        /// Saturation current in amps (Is).
+        saturation_amps: f64,
+        /// Emission coefficient (n).
+        emission: f64,
+        /// A blown LED is an open circuit.
+        blown: bool,
+    },
     /// A capacitor.
     Capacitor {
         /// Capacitance in farads.
@@ -148,6 +168,28 @@ impl Component {
                     && rated_voltage > 0.0
                     && rated_power > 0.0
             }
+            Component::Diode {
+                saturation_amps,
+                emission,
+            } => {
+                saturation_amps.is_finite()
+                    && saturation_amps > 0.0
+                    && emission.is_finite()
+                    && emission > 0.0
+            }
+            Component::Led {
+                rated_amps,
+                saturation_amps,
+                emission,
+                ..
+            } => {
+                rated_amps.is_finite()
+                    && rated_amps > 0.0
+                    && saturation_amps.is_finite()
+                    && saturation_amps > 0.0
+                    && emission.is_finite()
+                    && emission > 0.0
+            }
             Component::Switch { .. } | Component::Wire => true,
             Component::Capacitor { farads, .. } => farads.is_finite() && farads > 0.0,
             Component::Inductor { henries, .. } => henries.is_finite() && henries > 0.0,
@@ -223,6 +265,9 @@ impl Component {
             } => Stamp::Conductance(rated_power / (rated_voltage * rated_voltage)),
             Component::Switch { closed: true } | Component::Wire => Stamp::Merge,
             Component::Switch { closed: false } => Stamp::Open,
+            Component::Diode { .. } => Stamp::Open,
+            Component::Led { blown: true, .. } => Stamp::Open,
+            Component::Led { .. } => Stamp::Open,
             Component::Capacitor { .. } => Stamp::Open,
             Component::Inductor { .. } => Stamp::Merge,
         }
@@ -230,19 +275,45 @@ impl Component {
 
     /// A bulb's brightness when it absorbs `power` watts: `power / rated`,
     /// clamped to `0..=1`, and `0` once blown. `None` for anything else.
-    pub fn brightness(&self, power: f64) -> Option<f64> {
+    pub fn brightness(&self, power: f64, current: f64) -> Option<f64> {
         match *self {
             Component::Bulb { blown: true, .. } => Some(0.0),
             Component::Bulb { rated_power, .. } => Some((power / rated_power).clamp(0.0, 1.0)),
+            Component::Led { blown: true, .. } => Some(0.0),
+            Component::Led { rated_amps, .. } => Some((current.abs() / rated_amps).clamp(0.0, 1.5)),
             _ => None,
         }
     }
 
     /// Burns out a bulb's filament. Anything that is not a bulb is unchanged.
     pub fn blow(&mut self) {
-        if let Component::Bulb { blown, .. } = self {
-            *blown = true;
+        match self {
+            Component::Bulb { blown, .. } => *blown = true,
+            Component::Led { blown, .. } => *blown = true,
+            _ => {}
         }
+    }
+
+    /// Returns the saturation current and emission coefficient if this is a diode or intact LED.
+    pub fn diode_params(&self) -> Option<(f64, f64)> {
+        match self {
+            Component::Diode {
+                saturation_amps,
+                emission,
+            } => Some((*saturation_amps, *emission)),
+            Component::Led {
+                saturation_amps,
+                emission,
+                blown: false,
+                ..
+            } => Some((*saturation_amps, *emission)),
+            _ => None,
+        }
+    }
+
+    /// Returns whether this component requires Newton-Raphson iteration.
+    pub fn is_nonlinear(&self) -> bool {
+        self.diode_params().is_some()
     }
 
     /// Sets the component's main value: a battery's EMF, a resistor's
@@ -256,7 +327,7 @@ impl Component {
             Component::Switch { closed } => *closed = v != 0.0,
             Component::Capacitor { farads, .. } => *farads = v,
             Component::Inductor { henries, .. } => *henries = v,
-            Component::Wire => {}
+            Component::Wire | Component::Diode { .. } | Component::Led { .. } => {}
         }
     }
 }
@@ -269,9 +340,9 @@ mod tests {
     #[test]
     fn brightness_is_power_ratio_clamped() {
         let b = Component::bulb(6.0, 3.0);
-        assert_eq!(b.brightness(0.75), Some(0.25));
-        assert_eq!(b.brightness(6.0), Some(1.0));
-        assert_eq!(b.brightness(-1.0), Some(0.0));
+        assert_eq!(b.brightness(0.75, 0.0), Some(0.25));
+        assert_eq!(b.brightness(6.0, 0.0), Some(1.0));
+        assert_eq!(b.brightness(-1.0, 0.0), Some(0.0));
     }
 
     /// A blown bulb is dark whatever the power; non-bulbs have no brightness.
@@ -279,9 +350,9 @@ mod tests {
     fn blown_bulbs_are_dark_and_others_have_none() {
         let mut b = Component::bulb(6.0, 3.0);
         b.blow();
-        assert_eq!(b.brightness(3.0), Some(0.0));
-        assert_eq!(Component::Resistor { r: 1.0 }.brightness(3.0), None);
-        assert_eq!(Component::Wire.brightness(3.0), None);
+        assert_eq!(b.brightness(3.0, 0.5), Some(0.0));
+        assert_eq!(Component::Resistor { r: 1.0 }.brightness(3.0, 0.5), None);
+        assert_eq!(Component::Wire.brightness(3.0, 0.5), None);
     }
 
     /// Blowing marks a bulb blown and keeps its rating; anything else is
@@ -360,6 +431,42 @@ mod tests {
         let mut w = Component::Wire;
         w.set_value(5.0);
         assert_eq!(w, Component::Wire);
+    }
+
+    /// R = V² / P for a bulb.
+    /// diode_params returns correct values for non-linear components and None for others.
+    #[test]
+    fn diode_params_and_nonlinear_check() {
+        let d = Component::Diode {
+            saturation_amps: 1e-14,
+            emission: 1.5,
+        };
+        assert_eq!(d.diode_params(), Some((1e-14, 1.5)));
+        assert!(d.is_nonlinear());
+
+        let l = Component::Led {
+            color: "red",
+            rated_amps: 0.02,
+            saturation_amps: 1e-20,
+            emission: 2.0,
+            blown: false,
+        };
+        assert_eq!(l.diode_params(), Some((1e-20, 2.0)));
+        assert!(l.is_nonlinear());
+
+        let blown_l = Component::Led {
+            color: "red",
+            rated_amps: 0.02,
+            saturation_amps: 1e-20,
+            emission: 2.0,
+            blown: true,
+        };
+        assert_eq!(blown_l.diode_params(), None);
+        assert!(!blown_l.is_nonlinear());
+
+        let r = Component::Resistor { r: 100.0 };
+        assert_eq!(r.diode_params(), None);
+        assert!(!r.is_nonlinear());
     }
 
     /// R = V² / P for a bulb.

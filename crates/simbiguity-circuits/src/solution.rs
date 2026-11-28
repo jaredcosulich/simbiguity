@@ -20,6 +20,7 @@ pub struct Solution {
     pub(crate) powers: Vec<f64>,
     pub(crate) energies: Vec<f64>,
     pub(crate) brightness: Vec<Option<f64>>,
+    pub(crate) newton_iterations: usize,
 }
 
 impl Solution {
@@ -57,6 +58,11 @@ impl Solution {
     /// (`0` for a blown bulb). `None` if the component is not a bulb.
     pub fn brightness(&self, c: ComponentId) -> Option<f64> {
         self.brightness[c.0]
+    }
+
+    /// Number of Newton-Raphson iterations taken to solve the circuit.
+    pub fn newton_iterations(&self) -> usize {
+        self.newton_iterations
     }
 }
 

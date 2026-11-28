@@ -354,7 +354,8 @@ fn build_solution(c: &Circuit, t: &Topology, u: &Unknowns, x: &[f64]) -> Solutio
         .parts
         .iter()
         .zip(&powers)
-        .map(|(p, w)| p.component.brightness(*w))
+        .zip(&currents)
+        .map(|((p, w), i)| p.component.brightness(*w, *i))
         .collect();
     let energies = c
         .parts
@@ -379,6 +380,7 @@ fn build_solution(c: &Circuit, t: &Topology, u: &Unknowns, x: &[f64]) -> Solutio
         powers,
         energies,
         brightness,
+        newton_iterations: 0,
     }
 }
 
@@ -408,57 +410,161 @@ fn open_batteries(c: &Circuit, issues: &[CircuitIssue], s: &Solution) -> Vec<Cir
         .collect()
 }
 
+fn pnjlim(vnew: f64, vold: f64, vt: f64, vcrit: f64) -> f64 {
+    if vnew > vcrit && vnew > 0.0 {
+        if vold > 0.0 {
+            let arg = 1.0 + (vnew - vold) / vt;
+            if arg > 0.0 {
+                vold + vt * float::ln(arg)
+            } else {
+                vcrit
+            }
+        } else {
+            vt * float::ln(vnew / vt)
+        }
+    } else {
+        vnew
+    }
+}
+
+fn linearize_diode(is: f64, n: f64, v: f64, vt_base: f64) -> Stamp {
+    let vt = n * vt_base;
+    let exp_term = float::exp(v / vt);
+    let g = (is / vt) * exp_term;
+    let i_v = is * (exp_term - 1.0);
+    let i_eq = i_v - g * v;
+    Stamp::Norton { g, current: -i_eq }
+}
+
+fn check_diode_convergence(is: f64, n: f64, v: f64, actual_i: f64, vt_base: f64) -> bool {
+    let vt = n * vt_base;
+    let exp_term = float::exp(v / vt);
+    let expected_i = is * (exp_term - 1.0);
+    let diff = (expected_i - actual_i).abs();
+    diff <= 1e-12 + 1e-6 * actual_i.abs()
+}
+
+fn limit_diode_voltage(is: f64, n: f64, vnew: f64, vold: f64, vt_base: f64) -> f64 {
+    let vt = n * vt_base;
+    let vcrit = vt * float::ln(vt / (core::f64::consts::SQRT_2 * is));
+    pnjlim(vnew, vold, vt, vcrit)
+}
+
+fn check_voltage_convergence(prev: &Solution, current: &Solution) -> bool {
+    for (v_new_opt, v_old_opt) in current.node_voltages.iter().zip(&prev.node_voltages) {
+        if let (Some(v_new), Some(v_old)) = (v_new_opt, v_old_opt) {
+            let dv = (v_new - v_old).abs();
+            if dv > 1e-9 + 1e-6 * v_new.abs() {
+                return false;
+            }
+        }
+    }
+    true
+}
+
 /// Solves the circuit as it stands (no bulbs blow here).
 fn solve_once(
     c: &Circuit,
-    stamps: Vec<Stamp>,
+    base_stamps: Vec<Stamp>,
     cache: &mut SolverCache,
-    needs_refactor: bool,
+    mut needs_refactor: bool,
 ) -> (Option<Solution>, Vec<CircuitIssue>) {
-    let (t, u) = match (cache.t.clone(), cache.u.clone()) {
-        (Some(mut t), Some(u)) if !needs_refactor => {
-            t.stamps = stamps;
-            (t, u)
-        }
-        _ => {
-            let t = Topology::build(c, stamps);
-            let u = Unknowns::number(c, &t);
-            (t, u)
-        }
-    };
+    let vt_base = 0.025852;
+    let mut v_diodes = alloc::vec![0.6; c.parts.len()];
 
-    let mut issues = source_problems(c, &t);
-    if issues.iter().any(CircuitIssue::is_fatal) {
-        cache.t = None;
-        cache.u = None;
-        cache.lu = None;
-        return (None, issues);
-    }
-    issues.extend(floating_islands(c, &t));
+    let has_nonlinear = c.parts.iter().any(|p| p.component.is_nonlinear());
 
-    if needs_refactor || cache.matrix.rows() != u.count {
-        if cache.matrix.rows() != u.count {
-            cache.matrix = DenseMatrix::zeros(u.count, u.count);
+    let max_iter = if has_nonlinear { 100 } else { 1 };
+    let mut last_solution: Option<Solution> = None;
+    let mut last_issues = alloc::vec::Vec::new();
+
+    for iteration in 1..=max_iter {
+        let mut stamps = base_stamps.clone();
+
+        for (i, p) in c.parts.iter().enumerate() {
+            if let Some((is, n)) = p.component.diode_params() {
+                stamps[i] = linearize_diode(is, n, v_diodes[i], vt_base);
+            }
         }
-        if let Err(e) = assemble_matrix(c, &t, &u, &mut cache.matrix) {
+
+        let (t, u) = match (cache.t.clone(), cache.u.clone()) {
+            (Some(mut t), Some(u)) if !needs_refactor => {
+                t.stamps = stamps;
+                (t, u)
+            }
+            _ => {
+                let t = Topology::build(c, stamps);
+                let u = Unknowns::number(c, &t);
+                (t, u)
+            }
+        };
+
+        let mut issues = source_problems(c, &t);
+        if issues.iter().any(CircuitIssue::is_fatal) {
+            cache.t = None;
+            cache.u = None;
+            cache.lu = None;
+            return (None, issues);
+        }
+        issues.extend(floating_islands(c, &t));
+
+        if needs_refactor || cache.matrix.rows() != u.count {
+            if cache.matrix.rows() != u.count {
+                cache.matrix = DenseMatrix::zeros(u.count, u.count);
+            }
+            if let Err(e) = assemble_matrix(c, &t, &u, &mut cache.matrix) {
+                issues.push(CircuitIssue::SolverFailure { message: e });
+                cache.t = None;
+                cache.u = None;
+                cache.lu = None;
+                return (None, issues);
+            }
+            match simbiguity_math::Lu::decompose(&cache.matrix) {
+                Ok(lu) => cache.lu = Some(lu),
+                Err(SolveError::Singular { pivot_row }) => {
+                    issues.push(issue_for_pivot(&u, pivot_row));
+                    cache.t = None;
+                    cache.u = None;
+                    cache.lu = None;
+                    return (None, issues);
+                }
+                Err(e) => {
+                    issues.push(CircuitIssue::SolverFailure {
+                        message: alloc::format!("MNA always builds a square system: {e}"),
+                    });
+                    cache.t = None;
+                    cache.u = None;
+                    cache.lu = None;
+                    return (None, issues);
+                }
+            };
+        }
+
+        if cache.rhs.len() != u.count {
+            cache.rhs = vec![0.0; u.count];
+        }
+        if let Err(e) = assemble_rhs(c, &t, &u, &mut cache.rhs) {
             issues.push(CircuitIssue::SolverFailure { message: e });
             cache.t = None;
             cache.u = None;
             cache.lu = None;
             return (None, issues);
         }
-        match simbiguity_math::Lu::decompose(&cache.matrix) {
-            Ok(lu) => cache.lu = Some(lu),
-            Err(SolveError::Singular { pivot_row }) => {
-                issues.push(issue_for_pivot(&u, pivot_row));
-                cache.t = None;
-                cache.u = None;
-                cache.lu = None;
-                return (None, issues);
-            }
+
+        let Some(lu) = cache.lu.as_ref() else {
+            issues.push(CircuitIssue::SolverFailure {
+                message: alloc::string::String::from("Missing LU decomp"),
+            });
+            cache.t = None;
+            cache.u = None;
+            cache.lu = None;
+            return (None, issues);
+        };
+        let x = match lu.solve(&cache.rhs) {
+            Ok(x) => x,
             Err(e) => {
                 issues.push(CircuitIssue::SolverFailure {
-                    message: alloc::format!("MNA always builds a square system: {e}"),
+                    message: alloc::format!("LU solve failed: {e}"),
                 });
                 cache.t = None;
                 cache.u = None;
@@ -466,46 +572,52 @@ fn solve_once(
                 return (None, issues);
             }
         };
-    }
+        cache.t = Some(t.clone());
+        cache.u = Some(u.clone());
+        let mut solution = build_solution(c, &t, &u, &x);
 
-    if cache.rhs.len() != u.count {
-        cache.rhs = vec![0.0; u.count];
-    }
-    if let Err(e) = assemble_rhs(c, &t, &u, &mut cache.rhs) {
-        issues.push(CircuitIssue::SolverFailure { message: e });
-        cache.t = None;
-        cache.u = None;
-        cache.lu = None;
-        return (None, issues);
-    }
-
-    let Some(lu) = cache.lu.as_ref() else {
-        issues.push(CircuitIssue::SolverFailure {
-            message: alloc::string::String::from("Missing LU decomp"),
-        });
-        cache.t = None;
-        cache.u = None;
-        cache.lu = None;
-        return (None, issues);
-    };
-    let x = match lu.solve(&cache.rhs) {
-        Ok(x) => x,
-        Err(e) => {
-            issues.push(CircuitIssue::SolverFailure {
-                message: alloc::format!("LU solve failed: {e}"),
-            });
-            cache.t = None;
-            cache.u = None;
-            cache.lu = None;
-            return (None, issues);
+        let mut converged;
+        if let Some(ref prev) = last_solution {
+            converged = check_voltage_convergence(prev, &solution);
+            if converged {
+                for (i, p) in c.parts.iter().enumerate() {
+                    if let Some((is, n)) = p.component.diode_params() {
+                        let v = solution.across[i].unwrap_or(0.0);
+                        if !check_diode_convergence(is, n, v, solution.currents[i], vt_base) {
+                            converged = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        } else {
+            converged = !has_nonlinear;
         }
-    };
-    cache.t = Some(t.clone());
-    cache.u = Some(u.clone());
-    let solution = build_solution(c, &t, &u, &x);
-    let open = open_batteries(c, &issues, &solution);
-    issues.extend(open);
-    (Some(solution), issues)
+
+        if converged {
+            solution.newton_iterations = iteration;
+            let open = open_batteries(c, &issues, &solution);
+            issues.extend(open);
+            return (Some(solution), issues);
+        }
+
+        last_solution = Some(solution.clone());
+        last_issues = issues;
+
+        for (i, p) in c.parts.iter().enumerate() {
+            if let Some((is, n)) = p.component.diode_params() {
+                let vnew = solution.across[i].unwrap_or(0.0);
+                v_diodes[i] = limit_diode_voltage(is, n, vnew, v_diodes[i], vt_base);
+            }
+        }
+
+        needs_refactor = true;
+    } // end for loop
+
+    last_issues.push(CircuitIssue::SolverFailure {
+        message: alloc::string::String::from("Newton-Raphson did not converge"),
+    });
+    (last_solution, last_issues)
 }
 
 /// The intact bulb drawing the most power relative to its limit, if any is
@@ -513,16 +625,28 @@ fn solve_once(
 fn most_overloaded(c: &Circuit, s: &Solution) -> Option<usize> {
     let mut worst: Option<(usize, f64)> = None;
     for (i, p) in c.parts.iter().enumerate() {
-        if let Component::Bulb {
-            rated_power,
-            blown: false,
-            ..
-        } = p.component
-        {
-            let ratio = s.powers[i] / rated_power;
-            if ratio > BLOW_RATIO && worst.map_or(true, |(_, w)| ratio > w) {
-                worst = Some((i, ratio));
+        match p.component {
+            Component::Bulb {
+                rated_power,
+                blown: false,
+                ..
+            } => {
+                let ratio = s.powers[i] / rated_power;
+                if ratio > BLOW_RATIO && worst.map_or(true, |(_, w)| ratio > w) {
+                    worst = Some((i, ratio));
+                }
             }
+            Component::Led {
+                rated_amps,
+                blown: false,
+                ..
+            } => {
+                let ratio = s.currents[i].abs() / rated_amps;
+                if ratio > 1.5 && worst.map_or(true, |(_, w)| ratio > w) {
+                    worst = Some((i, ratio));
+                }
+            }
+            _ => {}
         }
     }
     worst.map(|(i, _)| i)
@@ -543,11 +667,16 @@ fn invalid_components(c: &Circuit) -> Vec<CircuitIssue> {
 /// One `BulbBlown` per blown bulb, in component order.
 fn blown_bulb_issues(c: &Circuit) -> impl Iterator<Item = CircuitIssue> + '_ {
     c.parts.iter().enumerate().filter_map(|(i, p)| {
-        matches!(p.component, Component::Bulb { blown: true, .. }).then_some(
-            CircuitIssue::BulbBlown {
+        if matches!(
+            p.component,
+            Component::Bulb { blown: true, .. } | Component::Led { blown: true, .. }
+        ) {
+            Some(CircuitIssue::BulbBlown {
                 bulb: ComponentId(i),
-            },
-        )
+            })
+        } else {
+            None
+        }
     })
 }
 

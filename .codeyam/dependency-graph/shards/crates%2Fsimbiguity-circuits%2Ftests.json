@@ -703,6 +703,148 @@
         "node_voltage",
         "unwrap"
       ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::approx_eq": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [
+        "crates/simbiguity-circuits/tests/nonlinear.rs::diode_reversed",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::diode_with_1k_from_5v_drops_0_6925_volts",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::led_with_160_ohm",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::led_with_330_ohm",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::two_diodes_in_series"
+      ],
+      "imports": [],
+      "name": "approx_eq",
+      "namedMethods": [
+        "abs"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::diode_reversed": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::approx_eq"
+      ],
+      "name": "diode_reversed",
+      "namedMethods": [
+        "add_battery",
+        "add_diode",
+        "add_resistor",
+        "current",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::diode_with_1k_from_5v_drops_0_6925_volts": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::approx_eq"
+      ],
+      "name": "diode_with_1k_from_5v_drops_0_6925_volts",
+      "namedMethods": [
+        "add_battery",
+        "add_diode",
+        "add_resistor",
+        "current",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "unwrap",
+        "voltage_across"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::led_direct_blows": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/diagnostics.rs::CircuitIssue",
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit"
+      ],
+      "name": "led_direct_blows",
+      "namedMethods": [
+        "add_battery",
+        "add_led",
+        "add_resistor",
+        "any",
+        "issues",
+        "iter",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "unwrap"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::led_with_160_ohm": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::approx_eq"
+      ],
+      "name": "led_with_160_ohm",
+      "namedMethods": [
+        "add_battery",
+        "add_led",
+        "add_resistor",
+        "brightness",
+        "current",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "unwrap",
+        "voltage_across"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::led_with_330_ohm": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::approx_eq"
+      ],
+      "name": "led_with_330_ohm",
+      "namedMethods": [
+        "add_battery",
+        "add_led",
+        "add_resistor",
+        "current",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "unwrap",
+        "voltage_across"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs::two_diodes_in_series": {
+      "filePath": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs::Circuit",
+        "crates/simbiguity-circuits/tests/nonlinear.rs::approx_eq"
+      ],
+      "name": "two_diodes_in_series",
+      "namedMethods": [
+        "add_battery",
+        "add_diode",
+        "add_resistor",
+        "current",
+        "new",
+        "node",
+        "solution",
+        "solve",
+        "unwrap",
+        "voltage_across"
+      ]
     }
   },
   "files": {
@@ -729,6 +871,13 @@
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs",
         "crates/simbiguity-circuits/src/component.rs"
+      ]
+    },
+    "crates/simbiguity-circuits/tests/nonlinear.rs": {
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-circuits/src/netlist.rs",
+        "crates/simbiguity-circuits/src/diagnostics.rs"
       ]
     }
   }

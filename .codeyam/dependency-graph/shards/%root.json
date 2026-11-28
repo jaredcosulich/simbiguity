@@ -21,6 +21,10 @@
       "importedBy": [],
       "imports": []
     },
+    "patch_component.sh": {
+      "importedBy": [],
+      "imports": []
+    },
     "patch_tests.sh": {
       "importedBy": [],
       "imports": []

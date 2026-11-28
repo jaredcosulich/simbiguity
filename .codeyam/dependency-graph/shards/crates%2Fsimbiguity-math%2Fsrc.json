@@ -284,6 +284,8 @@
         "crates/simbiguity-anim/src/easing.rs::elastic_in",
         "crates/simbiguity-anim/src/easing.rs::expo_in",
         "crates/simbiguity-anim/src/spring.rs::evolve",
+        "crates/simbiguity-circuits/src/mna.rs::check_diode_convergence",
+        "crates/simbiguity-circuits/src/mna.rs::linearize_diode",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"
       ],
@@ -353,6 +355,8 @@
     "crates/simbiguity-math/src/float.rs::ln": {
       "filePath": "crates/simbiguity-math/src/float.rs",
       "importedBy": [
+        "crates/simbiguity-circuits/src/mna.rs::limit_diode_voltage",
+        "crates/simbiguity-circuits/src/mna.rs::pnjlim",
         "crates/simbiguity-core/src/rng.rs::box_muller",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks",
         "crates/simbiguity-plot/src/ticks.rs::NiceTicks::compute"

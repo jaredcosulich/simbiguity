@@ -536,7 +536,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blow_only_affects_bulbs",
-      "line": 290,
+      "line": 361,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -545,7 +545,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::blown_bulbs_are_dark_and_others_have_none",
-      "line": 279,
+      "line": 350,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -554,7 +554,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::brightness_is_power_ratio_clamped",
-      "line": 270,
+      "line": 341,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -563,8 +563,17 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::bulb_resistance_from_rating",
-      "line": 367,
+      "line": 474,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "diode_params returns correct values for non-linear components and None for others",
+      "file": "crates/simbiguity-circuits/src/component.rs",
+      "format": "cargo",
+      "key": "component::tests::diode_params_and_nonlinear_check",
+      "line": 439,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
     {
@@ -572,7 +581,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::set_value_changes_the_main_value",
-      "line": 353,
+      "line": 424,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -581,7 +590,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::stamps_match_each_component",
-      "line": 306,
+      "line": 377,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -590,7 +599,7 @@
       "file": "crates/simbiguity-circuits/src/component.rs",
       "format": "cargo",
       "key": "component::tests::validity_rejects_non_physical_values",
-      "line": 337,
+      "line": 408,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -682,6 +691,24 @@
       "key": "diagnostics::tests::messages_name_the_part",
       "line": 176,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies reversed diode drops to negligible current.",
+      "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "format": "cargo",
+      "key": "diode_reversed",
+      "line": 57,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies diode current for a given 1k series resistor.",
+      "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "format": "cargo",
+      "key": "diode_with_1k_from_5v_drops_0_6925_volts",
+      "line": 11,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
     {
@@ -1211,7 +1238,7 @@
       "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
       "format": "cargo",
       "key": "invariants_tests::tests::every_failure_has_a_reason",
-      "line": 140,
+      "line": 145,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -1225,11 +1252,20 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies KCL invariants on topologies that include diodes.",
+      "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
+      "format": "cargo",
+      "key": "invariants_tests::tests::kcl_with_diodes",
+      "line": 158,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies repeatability: two solves of the same circuit are bit-identical.",
       "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
       "format": "cargo",
       "key": "invariants_tests::tests::repeatability_invariant",
-      "line": 117,
+      "line": 122,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -1238,7 +1274,7 @@
       "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
       "format": "cargo",
       "key": "invariants_tests::tests::snapshot_replay_invariant",
-      "line": 129,
+      "line": 134,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -1247,7 +1283,7 @@
       "file": "crates/simbiguity-circuits/src/invariants_tests.rs",
       "format": "cargo",
       "key": "invariants_tests::tests::tellegen_invariant",
-      "line": 83,
+      "line": 88,
       "registeredAt": "2026-11-28T01:51:46.411832466+00:00",
       "runner": "cargo"
     },
@@ -1357,6 +1393,33 @@
       "key": "lc_ringing_trapezoidal_preserves_energy",
       "line": 489,
       "registeredAt": "2026-11-27T15:42:25.533583684+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies connecting LED with too small a resistor blows it.",
+      "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "format": "cargo",
+      "key": "led_direct_blows",
+      "line": 123,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies LED with a standard 160 ohm series resistor matches operating point.",
+      "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "format": "cargo",
+      "key": "led_with_160_ohm",
+      "line": 79,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies LED with a standard 330 ohm series resistor matches operating point.",
+      "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "format": "cargo",
+      "key": "led_with_330_ohm",
+      "line": 102,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
     {
@@ -2129,7 +2192,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::foreign_node_panics",
-      "line": 269,
+      "line": 310,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2138,7 +2201,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::ids_follow_creation_order",
-      "line": 255,
+      "line": 296,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2147,7 +2210,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::replace_bulb_unblows",
-      "line": 246,
+      "line": 287,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2156,7 +2219,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_ignores_non_switches",
-      "line": 227,
+      "line": 268,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2165,7 +2228,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::set_switch_sets_the_state",
-      "line": 215,
+      "line": 256,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -2174,7 +2237,7 @@
       "file": "crates/simbiguity-circuits/src/netlist.rs",
       "format": "cargo",
       "key": "netlist::tests::toggle_switch_flips_and_reports",
-      "line": 236,
+      "line": 277,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
       "runner": "cargo"
     },
@@ -3742,6 +3805,15 @@
       "key": "tween::tests::zero_duration_jumps",
       "line": 88,
       "registeredAt": "2026-11-26T18:40:50.408152426+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies solving a circuit with two diodes in series.",
+      "file": "crates/simbiguity-circuits/tests/nonlinear.rs",
+      "format": "cargo",
+      "key": "two_diodes_in_series",
+      "line": 32,
+      "registeredAt": "2026-11-28T13:53:24.076610368+00:00",
       "runner": "cargo"
     },
     {

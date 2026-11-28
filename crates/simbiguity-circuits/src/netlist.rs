@@ -103,6 +103,47 @@ impl Circuit {
         self.add(Component::Resistor { r }, a, b)
     }
 
+    /// A diode (Shockley model).
+    pub fn add_diode(
+        &mut self,
+        a: NodeId,
+        b: NodeId,
+        saturation_amps: f64,
+        emission: f64,
+    ) -> ComponentId {
+        self.add(
+            Component::Diode {
+                saturation_amps,
+                emission,
+            },
+            a,
+            b,
+        )
+    }
+
+    /// An LED.
+    pub fn add_led(
+        &mut self,
+        a: NodeId,
+        b: NodeId,
+        color: &'static str,
+        rated_amps: f64,
+        saturation_amps: f64,
+        emission: f64,
+    ) -> ComponentId {
+        self.add(
+            Component::Led {
+                color,
+                rated_amps,
+                saturation_amps,
+                emission,
+                blown: false,
+            },
+            a,
+            b,
+        )
+    }
+
     /// A bulb rated `rated_power` watts at `rated_voltage` volts.
     pub fn add_bulb(
         &mut self,

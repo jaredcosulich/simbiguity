@@ -99,6 +99,12 @@ export async function loadCircuits(source) {
     /** A bulb rated `watts` at `volts`. */
     bulb(a, b, volts, watts) { return check(w.circuit_add_bulb(this.handle, a, b, volts, watts)); }
 
+    diode(a, b, is = 1e-14, n = 1.0) { return check(w.circuit_add_diode(this.handle, a, b, is, n)); }
+
+    led(a, b, color = "red", rated_amps = 0.02, is = 1.5195e-17, n = 2.0) {
+      return check(w.circuit_add_led(this.handle, a, b, rated_amps, is, n));
+    }
+
     switch(a, b, closed = false) { return check(w.circuit_add_switch(this.handle, a, b, closed ? 1 : 0)); }
 
     wire(a, b) { return check(w.circuit_add_wire(this.handle, a, b)); }

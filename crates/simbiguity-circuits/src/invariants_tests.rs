@@ -45,6 +45,11 @@ mod tests {
             let c = generate_circuit(&mut rng);
             let analysis = c.solve();
             if let Some(sol) = analysis.solution() {
+                assert_eq!(
+                    sol.newton_iterations(),
+                    1,
+                    "Linear circuit must solve in exactly 1 iteration"
+                );
                 let mut max_i = 0.0_f64;
                 for i in 0..c.parts.len() {
                     let i_mag = sol.current(crate::netlist::ComponentId(i)).abs();
@@ -144,6 +149,53 @@ mod tests {
             let analysis = c.solve();
             if analysis.solution().is_none() {
                 assert!(analysis.issues().iter().any(|i| i.is_fatal()));
+            }
+        }
+    }
+
+    /// Verifies KCL invariants on topologies that include diodes.
+    #[test]
+    fn kcl_with_diodes() {
+        for seed in 0..500 {
+            let mut rng = Rng::new(seed as u64);
+            let mut c = generate_circuit(&mut rng);
+            let num_diodes = (rng.next_u32() % 3) + 1;
+            for _ in 0..num_diodes {
+                let a = crate::netlist::NodeId(rng.next_u32() as usize % c.node_count());
+                let b = crate::netlist::NodeId(rng.next_u32() as usize % c.node_count());
+                c.add_diode(a, b, 1e-14, 1.0);
+            }
+            let analysis = c.solve();
+            if let Some(sol) = analysis.solution() {
+                let mut max_i = 0.0_f64;
+                for i in 0..c.parts.len() {
+                    let i_mag = sol.current(crate::netlist::ComponentId(i)).abs();
+                    if i_mag > max_i {
+                        max_i = i_mag;
+                    }
+                }
+                for n in 0..c.node_count() {
+                    let mut net = 0.0;
+                    for (i, p) in c.parts.iter().enumerate() {
+                        let mut current = sol.current(crate::netlist::ComponentId(i));
+                        if matches!(p.component, crate::component::Component::Battery { .. }) {
+                            current = -current;
+                        }
+                        if p.a.0 == n {
+                            net -= current;
+                        }
+                        if p.b.0 == n {
+                            net += current;
+                        }
+                    }
+                    assert!(
+                        net.abs() <= 1e-9 * max_i + 1e-12,
+                        "KCL failed at node {} (net = {}, max_i = {})",
+                        n,
+                        net,
+                        max_i
+                    );
+                }
             }
         }
     }

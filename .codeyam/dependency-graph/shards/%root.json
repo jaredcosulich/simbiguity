@@ -17,6 +17,14 @@
         "write"
       ]
     },
+    "patch_comments.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "patch_tests.sh": {
+      "importedBy": [],
+      "imports": []
+    },
     "patch_ticks.sh": {
       "importedBy": [],
       "imports": []
@@ -25,7 +33,19 @@
       "importedBy": [],
       "imports": []
     },
+    "rewrite_collide.py": {
+      "importedBy": [],
+      "imports": []
+    },
+    "run_dbg.sh": {
+      "importedBy": [],
+      "imports": []
+    },
     "run_golden.rs": {
+      "importedBy": [],
+      "imports": []
+    },
+    "test_x.rs": {
       "importedBy": [],
       "imports": []
     }

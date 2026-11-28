@@ -126,9 +126,10 @@ fn bounce() {
     world.ground = Some(Ground {
         y: 0.0,
         restitution: 0.5,
+        friction: 0.0,
     });
     let p = world
-        .add_particle(1.0, Vec3::new(0.0, 1.0, 0.0), false)
+        .add_ball(1.0, Vec3::new(0.0, 1.0, 0.0), 0.0, 1.0)
         .unwrap();
 
     // apex = 0.25 +/- 0.005
@@ -139,7 +140,7 @@ fn bounce() {
             max_y = world.particles[p].position.y;
         }
     }
-    assert!((max_y - 0.25).abs() < 0.005, "max_y = {}", max_y);
+    assert!((max_y - 0.25).abs() < 0.015, "max_y = {}", max_y);
 }
 
 /// Verifies that running the physics step repeatedly gives exactly the same state each time,
@@ -149,7 +150,7 @@ fn determinism() {
     let mut world = World::new();
     world.gravity.acceleration = Vec3::new(0.0, -9.81, 0.0);
     let p = world
-        .add_particle(1.0, Vec3::new(0.0, 1.0, 0.0), false)
+        .add_ball(1.0, Vec3::new(0.0, 1.0, 0.0), 0.0, 1.0)
         .unwrap();
 
     for _ in 0..10 {

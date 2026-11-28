@@ -621,6 +621,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-plot/src/chart.rs::Chart<'a>::draw",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
@@ -712,6 +714,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::default",
         "crates/simbiguity-render/src/commands.rs::CommandBuffer::words"
@@ -1344,6 +1348,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-render/src/frame.rs::draw_order",
         "crates/simbiguity-render/src/frame.rs::encode_frame",
         "crates/simbiguity-render/src/lib.rs::__file_root__"
@@ -3522,6 +3528,8 @@
       "importedBy": [
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-circuits-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
+        "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",
         "crates/simbiguity-physics-wasm/src/lib.rs",

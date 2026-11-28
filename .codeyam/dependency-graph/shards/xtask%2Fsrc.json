@@ -116,6 +116,7 @@
         "crates/simbiguity-circuits/src/netlist.rs::Circuit",
         "crates/simbiguity-math/src/linsolve.rs::Lu",
         "crates/simbiguity-math/src/mat.rs::DenseMatrix",
+        "crates/simbiguity-physics/src/world.rs::World",
         "xtask/src/bench_fixtures.rs::BenchResult",
         "xtask/src/bench_fixtures.rs::bench"
       ],
@@ -131,7 +132,10 @@
         "new",
         "node",
         "push",
+        "setup_deterministic_ball_pit",
         "solve",
+        "step",
+        "unwrap",
         "zeros"
       ]
     },
@@ -2823,7 +2827,8 @@
         "crates/simbiguity-circuits/src/netlist.rs",
         "crates/simbiguity-circuits-view/src/lib.rs",
         "crates/simbiguity-math/src/mat.rs",
-        "crates/simbiguity-math/src/linsolve.rs"
+        "crates/simbiguity-math/src/linsolve.rs",
+        "crates/simbiguity-physics/src/world.rs"
       ]
     },
     "xtask/src/capabilities.rs": {

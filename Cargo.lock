@@ -139,4 +139,5 @@ dependencies = [
  "simbiguity-circuits",
  "simbiguity-circuits-view",
  "simbiguity-math",
+ "simbiguity-physics",
 ]

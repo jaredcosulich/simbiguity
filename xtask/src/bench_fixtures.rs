@@ -2,6 +2,7 @@ use simbiguity_circuits::Circuit;
 use simbiguity_circuits_view::CircuitView;
 use simbiguity_math::DenseMatrix;
 use simbiguity_math::Lu;
+use simbiguity_physics::World;
 use std::time::Instant;
 
 pub struct BenchResult {
@@ -90,6 +91,15 @@ pub fn run_all() -> Vec<BenchResult> {
             let _ = Lu::decompose(&m);
         }));
     }
+
+    results.push(bench("ball_pit_1000_one_second", || {
+        let mut world = World::new();
+        world.setup_deterministic_ball_pit(1000);
+        for _ in 0..60 {
+            // 60 steps for 1 second at 60Hz
+            world.step(1.0 / 60.0).unwrap();
+        }
+    }));
 
     results
 }

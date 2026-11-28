@@ -23,7 +23,7 @@
       "file": "xtask/src/bench_fixtures.rs",
       "format": "cargo",
       "key": "bench_fixtures::tests::stats_calculations",
-      "line": 170,
+      "line": 180,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -32,7 +32,7 @@
       "file": "xtask/src/bench_fixtures.rs",
       "format": "cargo",
       "key": "bench_fixtures::tests::to_json_shape",
-      "line": 148,
+      "line": 158,
       "registeredAt": "2026-11-27T20:08:07.139679930+00:00",
       "runner": "cargo"
     },
@@ -394,6 +394,105 @@
       "key": "clock::tests::to_nanos_rounds_clamps_and_saturates",
       "line": 214,
       "registeredAt": "2026-11-26T16:47:50.918852438+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that broadphase returns correct pairs.",
+      "file": "crates/simbiguity-physics/src/collide.rs",
+      "format": "cargo",
+      "key": "collide::tests::test_find_pairs_broadphase",
+      "line": 224,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that a particle colliding with the ground is corrected and bounces.",
+      "file": "crates/simbiguity-physics/src/collide.rs",
+      "format": "cargo",
+      "key": "collide::tests::test_resolve_ground_collision",
+      "line": 279,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that two overlapping particles are pushed apart and velocities updated.",
+      "file": "crates/simbiguity-physics/src/collide.rs",
+      "format": "cargo",
+      "key": "collide::tests::test_resolve_particle_collision",
+      "line": 249,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies momentum conservation for a large number of randomly overlapping balls inside a box.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::balls_in_box_overlap_and_momentum",
+      "line": 176,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that a ball dropped on a restitution 0.5 ground bounces to exactly the expected height.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::bounce_drop",
+      "line": 117,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that the broadphase collision pair generation matches the brute-force O(N^2) pair generation exactly.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::broadphase_equivalence",
+      "line": 253,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that an elastic collision between different masses results in correct post-collision velocities.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::elastic_collision_one_kg_into_three_kg_bounces_back_at_minus_one",
+      "line": 8,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that two equal masses with an elastic head-on collision swap their velocities.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::equal_masses_elastic_head_on",
+      "line": 65,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that kinematic friction applied to a sliding ball reduces its velocity correctly over time.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::ground_friction_slide",
+      "line": 150,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Newton's cradle momentum transfer behavior across multiple aligned balls.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::newtons_cradle",
+      "line": 91,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that a perfectly inelastic collision results in both objects sticking together with zero restitution.",
+      "file": "crates/simbiguity-physics/src/collide_tests.rs",
+      "format": "cargo",
+      "key": "collide_tests::perfectly_inelastic_collision",
+      "line": 40,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
     {
@@ -997,6 +1096,33 @@
       "key": "ideal_battery_short_is_fatal",
       "line": 183,
       "registeredAt": "2026-11-26T17:29:47.731136741+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Explicit Euler advances position using old velocity.",
+      "file": "crates/simbiguity-physics/src/integrate.rs",
+      "format": "cargo",
+      "key": "integrate::tests::test_explicit_euler",
+      "line": 52,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Symplectic Euler advances position using new velocity.",
+      "file": "crates/simbiguity-physics/src/integrate.rs",
+      "format": "cargo",
+      "key": "integrate::tests::test_symplectic_euler",
+      "line": 69,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Velocity Verlet splits integration correctly.",
+      "file": "crates/simbiguity-physics/src/integrate.rs",
+      "format": "cargo",
+      "key": "integrate::tests::test_velocity_verlet",
+      "line": 86,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
       "runner": "cargo"
     },
     {
@@ -3119,7 +3245,7 @@
       "file": "crates/simbiguity-physics-wasm/src/lib.rs",
       "format": "cargo",
       "key": "tests::pendulum_preset_steps_without_panicking",
-      "line": 376,
+      "line": 423,
       "registeredAt": "2026-11-27T00:47:12.673383582+00:00",
       "runner": "cargo"
     },
@@ -3664,11 +3790,47 @@
       "runner": "cargo"
     },
     {
+      "description": "Verifies that external forces map correctly by particle index.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_apply_external_pushes",
+      "line": 433,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies that gravity is correctly applied to unpinned particles.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_apply_gravity",
+      "line": 421,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies Hooke's law forces between connected particles.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_apply_spring_forces",
+      "line": 445,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
+      "description": "Verifies deterministic setup produces the exact correct particle count.",
+      "file": "crates/simbiguity-physics/src/world.rs",
+      "format": "cargo",
+      "key": "world::tests::test_setup_deterministic_ball_pit",
+      "line": 461,
+      "registeredAt": "2026-11-28T03:24:57.708186782+00:00",
+      "runner": "cargo"
+    },
+    {
       "description": "Verifies that a new World is initialized with empty lists.",
       "file": "crates/simbiguity-physics/src/world.rs",
       "format": "cargo",
       "key": "world::tests::test_world_new",
-      "line": 360,
+      "line": 414,
       "registeredAt": "2026-11-26T20:42:10.739280329+00:00",
       "runner": "cargo"
     },
@@ -3686,7 +3848,7 @@
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::determinism",
-      "line": 148,
+      "line": 149,
       "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
       "runner": "cargo"
     },
@@ -3704,7 +3866,7 @@
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::error_paths",
-      "line": 176,
+      "line": 177,
       "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
       "runner": "cargo"
     },
@@ -3713,7 +3875,7 @@
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::pendulum_energy_is_conserved_by_verlet",
-      "line": 210,
+      "line": 211,
       "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
       "runner": "cargo"
     },
@@ -3776,7 +3938,7 @@
       "file": "crates/simbiguity-physics/src/world_tests.rs",
       "format": "cargo",
       "key": "world_tests::undamped_spring_energy_grows_under_euler",
-      "line": 234,
+      "line": 235,
       "registeredAt": "2026-11-27T16:17:40.711594748+00:00",
       "runner": "cargo"
     }

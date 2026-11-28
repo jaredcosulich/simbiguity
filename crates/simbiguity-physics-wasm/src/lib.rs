@@ -138,6 +138,7 @@ fn create_projectile() -> Result<Session, PhysicsError> {
     world.ground = Some(Ground {
         y: 0.0,
         restitution: 0.25,
+        friction: 0.0,
     });
     let p = world.add_particle(1.0, Vec3::new(0.0, 0.05, 0.0), false)?;
     world.particles[p].velocity = Vec3::new(10.0, 10.0, 0.0);
@@ -212,6 +213,52 @@ pub extern "C" fn phys_set_integrator(h: u32, kind: u32) -> i32 {
             _ => return fail(-2, "invalid integrator".into()),
         };
         OK
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_cradle() -> u32 {
+    let mut world = World::new();
+    world.gravity.acceleration = Vec3::ZERO;
+    for i in 0..5 {
+        let _ = world.add_ball(1.0, Vec3::new(i as f64 * 0.2, 0.0, 0.0), 0.1, 1.0);
+    }
+    world.particles[0].position.x -= 1.0;
+    world.particles[0].velocity.x = 1.0;
+    let e = world.compute_energy();
+    insert(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn phys_new_ball_pit(count: u32) -> u32 {
+    let mut world = World::new();
+    world.setup_deterministic_ball_pit(count);
+
+    let e = world.compute_energy();
+    insert(Session {
+        world,
+        view: PhysicsView::new(),
+        commands: simbiguity_render::CommandBuffer::new(),
+        frame_buf: FrameBuf::new(),
+        time: 0.0,
+        results: [
+            e.kinetic,
+            e.potential_gravity,
+            e.potential_spring,
+            e.total(),
+        ],
     })
 }
 

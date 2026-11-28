@@ -8,7 +8,9 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_chain",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
-        "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass"
+        "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs::acos",

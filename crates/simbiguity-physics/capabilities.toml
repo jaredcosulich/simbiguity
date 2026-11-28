@@ -1,15 +1,41 @@
 [[capability]]
-name = "physics"
-description = "Simulation of point masses, springs, rods, and gravity."
+name = "integrators"
+description = "Simulation of point masses with different integrators."
 proves = [
     "world_tests::determinism",
     "world_tests::pendulum_energy_is_conserved_by_verlet",
     "world_tests::projectile_range",
+    "world_tests::bounce",
+    "world_tests::error_paths"
+]
+
+[[capability]]
+name = "springs and rods"
+description = "Simulation of springs and rods."
+proves = [
     "world_tests::spring_period",
     "world_tests::pendulum_small_angle",
     "world_tests::pendulum_large_angle",
     "world_tests::rod_length",
-    "world_tests::bounce",
-    "world_tests::error_paths",
     "world_tests::undamped_spring_energy_grows_under_euler"
+]
+
+[[capability]]
+name = "collisions and restitution"
+description = "Particle-particle and particle-ground collisions with restitution."
+proves = [
+    "collide_tests::elastic_collision_one_kg_into_three_kg_bounces_back_at_minus_one",
+    "collide_tests::perfectly_inelastic_collision",
+    "collide_tests::equal_masses_elastic_head_on",
+    "collide_tests::newtons_cradle",
+    "collide_tests::bounce_drop",
+    "collide_tests::balls_in_box_overlap_and_momentum",
+    "collide_tests::broadphase_equivalence"
+]
+
+[[capability]]
+name = "friction"
+description = "Coulomb friction on the ground."
+proves = [
+    "collide_tests::ground_friction_slide"
 ]

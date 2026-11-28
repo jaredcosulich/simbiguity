@@ -12,6 +12,7 @@
 
 extern crate alloc;
 
+pub mod collide;
 pub mod constraints;
 pub mod energy;
 pub mod error;
@@ -26,5 +27,7 @@ pub use forces::{Gravity, Spring};
 pub use integrate::Integrator;
 pub use world::{Particle, PhysicsInput, World};
 
+#[cfg(test)]
+mod collide_tests;
 #[cfg(test)]
 mod world_tests;

@@ -8,6 +8,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::insert",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-physics-wasm/src/lib.rs::with_session"
       ],
       "imports": [
@@ -32,7 +34,9 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_commands_ptr",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"
       ],
       "imports": [],
       "name": "Session::commands"
@@ -45,7 +49,9 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"
       ],
       "imports": [
         "crates/simbiguity-render/src/frame.rs::FrameBuf"
@@ -61,6 +67,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_results_ptr"
       ],
       "imports": [],
@@ -75,7 +83,9 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::map_error",
-        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance"
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle"
       ],
       "imports": [],
       "name": "Session::time"
@@ -94,6 +104,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_indices_ptr",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_len",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_mesh_vertices_ptr",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_camera"
       ],
       "imports": [
@@ -111,6 +123,8 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::create_spring_mass",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_advance",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_encode",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_push",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_set_integrator"
       ],
@@ -258,7 +272,9 @@
     "crates/simbiguity-physics-wasm/src/lib.rs::insert": {
       "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
       "importedBy": [
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_chain",
+        "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_projectile",
         "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_spring_mass"
@@ -437,6 +453,32 @@
         "null"
       ]
     },
+    "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_ball_pit": {
+      "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::commands",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::results",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::time",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
+        "crates/simbiguity-physics-wasm/src/lib.rs::insert",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
+      ],
+      "name": "phys_new_ball_pit",
+      "namedMethods": [
+        "compute_energy",
+        "new",
+        "setup_deterministic_ball_pit",
+        "total"
+      ]
+    },
     "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_chain": {
       "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
       "importedBy": [],
@@ -446,6 +488,37 @@
         "crates/simbiguity-physics-wasm/src/lib.rs::map_error"
       ],
       "name": "phys_new_chain"
+    },
+    "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_cradle": {
+      "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
+      "importedBy": [],
+      "imports": [
+        "crates/simbiguity-math/src/vec.rs::Vec3::cross",
+        "crates/simbiguity-math/src/vec.rs::Vec3::new",
+        "crates/simbiguity-math/src/vec.rs::Vec3::x",
+        "crates/simbiguity-math/src/vec.rs::Vec3::y",
+        "crates/simbiguity-math/src/vec.rs::Vec3::z",
+        "crates/simbiguity-physics-view/src/lib.rs::PhysicsView",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::commands",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::frame_buf",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::results",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::time",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::view",
+        "crates/simbiguity-physics-wasm/src/lib.rs::Session::world",
+        "crates/simbiguity-physics-wasm/src/lib.rs::insert",
+        "crates/simbiguity-physics/src/world.rs::World",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer",
+        "crates/simbiguity-render/src/commands.rs::CommandBuffer::new",
+        "crates/simbiguity-render/src/frame.rs::FrameBuf"
+      ],
+      "name": "phys_new_cradle",
+      "namedMethods": [
+        "add_ball",
+        "compute_energy",
+        "new",
+        "total"
+      ]
     },
     "crates/simbiguity-physics-wasm/src/lib.rs::phys_new_pendulum": {
       "filePath": "crates/simbiguity-physics-wasm/src/lib.rs",
@@ -588,6 +661,8 @@
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
         "crates/simbiguity-render-wasm/src/status.rs",
+        "crates/simbiguity-render/src/commands.rs",
+        "crates/simbiguity-render/src/commands.rs",
         "crates/simbiguity-render/src/commands.rs",
         "crates/simbiguity-render/src/commands.rs",
         "crates/simbiguity-render/src/commands.rs",

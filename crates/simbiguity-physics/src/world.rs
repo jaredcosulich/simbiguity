@@ -12,6 +12,8 @@ pub struct Particle {
     pub velocity: Vec3,
     pub force: Vec3,
     pub pinned: bool,
+    pub radius: f64,
+    pub restitution: f64,
 }
 
 #[derive(Debug, Clone)]
@@ -68,6 +70,33 @@ impl World {
             velocity: Vec3::ZERO,
             force: Vec3::ZERO,
             pinned,
+            radius: 0.0,
+            restitution: 0.0,
+        });
+        Ok(index)
+    }
+
+    pub fn add_ball(
+        &mut self,
+        mass: f64,
+        position: Vec3,
+        radius: f64,
+        restitution: f64,
+    ) -> Result<usize, PhysicsError> {
+        let mass = if mass.is_nan() || mass <= 0.0 {
+            return Err(PhysicsError::NonPositiveMass);
+        } else {
+            mass
+        };
+        let index = self.particles.len();
+        self.particles.push(Particle {
+            mass,
+            position,
+            velocity: Vec3::ZERO,
+            force: Vec3::ZERO,
+            pinned: false,
+            radius,
+            restitution,
         });
         Ok(index)
     }
@@ -138,7 +167,44 @@ impl World {
         e
     }
 
-    fn apply_forces(&mut self, active_pushes: &[(usize, Vec3)]) {
+    pub fn setup_deterministic_ball_pit(&mut self, count: u32) {
+        self.gravity.acceleration = Vec3::new(0.0, -9.81, 0.0);
+        self.ground = Some(Ground {
+            y: 0.0,
+            restitution: 0.2,
+            friction: 0.5,
+        });
+
+        for x in -10..=10 {
+            if let Ok(p) = self.add_ball(1.0, Vec3::new(x as f64 * 0.2, 0.1, 10.2), 0.1, 0.2) {
+                self.particles[p].pinned = true;
+            }
+            if let Ok(p) = self.add_ball(1.0, Vec3::new(x as f64 * 0.2, 0.1, -10.2), 0.1, 0.2) {
+                self.particles[p].pinned = true;
+            }
+        }
+        for z in -10..=10 {
+            if let Ok(p) = self.add_ball(1.0, Vec3::new(10.2, 0.1, z as f64 * 0.2), 0.1, 0.2) {
+                self.particles[p].pinned = true;
+            }
+            if let Ok(p) = self.add_ball(1.0, Vec3::new(-10.2, 0.1, z as f64 * 0.2), 0.1, 0.2) {
+                self.particles[p].pinned = true;
+            }
+        }
+
+        let mut seed = 42u32;
+        for _ in 0..count {
+            seed = seed.wrapping_mul(1664525).wrapping_add(1013904223);
+            let x = ((seed as f64 / u32::MAX as f64) - 0.5) * 18.0;
+            seed = seed.wrapping_mul(1664525).wrapping_add(1013904223);
+            let y = (seed as f64 / u32::MAX as f64) * 10.0 + 1.0;
+            seed = seed.wrapping_mul(1664525).wrapping_add(1013904223);
+            let z = ((seed as f64 / u32::MAX as f64) - 0.5) * 18.0;
+            let _ = self.add_ball(1.0, Vec3::new(x, y, z), 0.1, 0.2);
+        }
+    }
+
+    pub fn apply_gravity(&mut self) {
         for p in &mut self.particles {
             if !p.pinned {
                 p.force = p.mass * self.gravity.acceleration;
@@ -146,11 +212,17 @@ impl World {
                 p.force = Vec3::ZERO;
             }
         }
+    }
+
+    pub fn apply_external_pushes(&mut self, active_pushes: &[(usize, Vec3)]) {
         for &(index, force) in active_pushes {
             if index < self.particles.len() {
                 self.particles[index].force += force;
             }
         }
+    }
+
+    pub fn apply_spring_forces(&mut self) {
         for s in &self.springs {
             let p1 = self.particles[s.p1].position;
             let p2 = self.particles[s.p2].position;
@@ -172,6 +244,12 @@ impl World {
                 self.particles[s.p2].force -= total_force;
             }
         }
+    }
+
+    pub fn apply_forces(&mut self, active_pushes: &[(usize, Vec3)]) {
+        self.apply_gravity();
+        self.apply_external_pushes(active_pushes);
+        self.apply_spring_forces();
     }
 
     fn satisfy_position_constraints(&mut self, dt: f64, old_diffs: &[Vec3]) {
@@ -281,54 +359,30 @@ impl World {
 
         match self.integrator {
             Integrator::ExplicitEuler => {
-                for p in &mut self.particles {
-                    if !p.pinned {
-                        p.position += p.velocity * dt;
-                        p.velocity += (p.force / p.mass) * dt;
-                    }
-                }
+                crate::integrate::step_explicit_euler(&mut self.particles, dt);
                 self.satisfy_position_constraints(dt, &old_diffs);
                 self.satisfy_velocity_constraints();
             }
             Integrator::SymplecticEuler => {
-                for p in &mut self.particles {
-                    if !p.pinned {
-                        p.velocity += (p.force / p.mass) * dt;
-                        p.position += p.velocity * dt;
-                    }
-                }
+                crate::integrate::step_symplectic_euler(&mut self.particles, dt);
                 self.satisfy_position_constraints(dt, &old_diffs);
                 self.satisfy_velocity_constraints();
             }
             Integrator::VelocityVerlet => {
-                for p in &mut self.particles {
-                    if !p.pinned {
-                        p.velocity += (p.force / p.mass) * (dt * 0.5);
-                        let y_old = p.position.y;
-                        p.position += p.velocity * dt;
-
-                        if let Some(ref g) = self.ground {
-                            if p.position.y < g.y && p.velocity.y < 0.0 {
-                                let f = (g.y - y_old) / (p.velocity.y * dt);
-                                let a = p.force.y / p.mass;
-                                let v_impact = p.velocity.y + a * (f - 0.5) * dt;
-                                let v_impact_new = -v_impact * g.restitution;
-                                p.velocity.y = v_impact_new + a * (0.5 - f) * dt;
-                                p.position.y = g.y + p.velocity.y * (dt * (1.0 - f));
-                            }
-                        }
-                    }
-                }
+                crate::integrate::step_velocity_verlet_part1(&mut self.particles, dt);
                 self.satisfy_position_constraints(dt, &old_diffs);
                 self.apply_forces(&active_pushes);
-                for p in &mut self.particles {
-                    if !p.pinned {
-                        p.velocity += (p.force / p.mass) * (dt * 0.5);
-                    }
-                }
+                crate::integrate::step_velocity_verlet_part2(&mut self.particles, dt);
                 self.satisfy_velocity_constraints();
             }
         }
+
+        crate::collide::resolve_collisions(
+            &mut self.particles,
+            &self.ground,
+            dt,
+            self.gravity.acceleration.length(),
+        );
 
         Ok(())
     }
@@ -360,5 +414,53 @@ mod tests {
     fn test_world_new() {
         let world = World::new();
         assert_eq!(world.particles.len(), 0);
+    }
+
+    /// Verifies that gravity is correctly applied to unpinned particles.
+    #[test]
+    fn test_apply_gravity() {
+        let mut world = World::new();
+        world.gravity.acceleration = Vec3::new(0.0, -10.0, 0.0);
+        world.add_particle(2.0, Vec3::ZERO, false).unwrap();
+        world.add_particle(1.0, Vec3::ZERO, true).unwrap();
+        world.apply_gravity();
+        assert_eq!(world.particles[0].force, Vec3::new(0.0, -20.0, 0.0));
+        assert_eq!(world.particles[1].force, Vec3::ZERO);
+    }
+
+    /// Verifies that external forces map correctly by particle index.
+    #[test]
+    fn test_apply_external_pushes() {
+        let mut world = World::new();
+        world.add_particle(1.0, Vec3::ZERO, false).unwrap();
+        world.add_particle(1.0, Vec3::ZERO, false).unwrap();
+        world
+            .apply_external_pushes(&[(0, Vec3::new(1.0, 2.0, 3.0)), (0, Vec3::new(1.0, 0.0, 0.0))]);
+        assert_eq!(world.particles[0].force, Vec3::new(2.0, 2.0, 3.0));
+        assert_eq!(world.particles[1].force, Vec3::ZERO);
+    }
+
+    /// Verifies Hooke's law forces between connected particles.
+    #[test]
+    fn test_apply_spring_forces() {
+        let mut world = World::new();
+        world
+            .add_particle(1.0, Vec3::new(0.0, 0.0, 0.0), false)
+            .unwrap();
+        world
+            .add_particle(1.0, Vec3::new(2.0, 0.0, 0.0), false)
+            .unwrap();
+        world.add_spring(0, 1, 1.0, 10.0, 0.0).unwrap();
+        world.apply_spring_forces();
+        assert_eq!(world.particles[0].force, Vec3::new(10.0, 0.0, 0.0));
+        assert_eq!(world.particles[1].force, Vec3::new(-10.0, 0.0, 0.0));
+    }
+
+    /// Verifies deterministic setup produces the exact correct particle count.
+    #[test]
+    fn test_setup_deterministic_ball_pit() {
+        let mut world = World::new();
+        world.setup_deterministic_ball_pit(100);
+        assert_eq!(world.particles.len(), 184); // 84 boundary balls + 100 random balls
     }
 }

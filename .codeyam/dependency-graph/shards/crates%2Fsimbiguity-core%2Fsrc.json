@@ -535,7 +535,9 @@
         "crates/simbiguity-circuits-wasm/src/tests.rs::bridge_stress_test",
         "crates/simbiguity-core/src/lib.rs::__file_root__",
         "crates/simbiguity-core/src/rng.rs::Rng::new",
-        "crates/simbiguity-core/src/rng.rs::Rng::with_stream"
+        "crates/simbiguity-core/src/rng.rs::Rng::with_stream",
+        "crates/simbiguity-physics/src/collide_tests.rs::balls_in_box_overlap_and_momentum",
+        "crates/simbiguity-physics/src/collide_tests.rs::broadphase_equivalence"
       ],
       "imports": [
         "crates/simbiguity-core/src/rng.rs::DEFAULT_STREAM",
@@ -1128,7 +1130,9 @@
         "crates/simbiguity-circuits-wasm/src/tests.rs",
         "crates/simbiguity-core/src/lib.rs",
         "crates/simbiguity-core/src/lib.rs",
-        "crates/simbiguity-core/src/simulation.rs"
+        "crates/simbiguity-core/src/simulation.rs",
+        "crates/simbiguity-physics/src/collide_tests.rs",
+        "crates/simbiguity-physics/src/collide_tests.rs"
       ],
       "imports": [
         "crates/simbiguity-math/src/float.rs"

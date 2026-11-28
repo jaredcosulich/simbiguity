@@ -9,4 +9,5 @@ pub struct Rod {
 pub struct Ground {
     pub y: f64,
     pub restitution: f64,
+    pub friction: f64,
 }

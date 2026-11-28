@@ -35,6 +35,15 @@
       "pass|full|2026-11-26T17:29:47.731Z"
     ]
   },
+  "bench::tests::check_bench_rejects_a_fixture_over_budget": {
+    "file": "",
+    "lastRunAt": "2026-11-28T17:48:13.871Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-11-28T17:48:13.871Z"
+    ]
+  },
   "bench::tests::test_parse_bench_results_missing_median": {
     "file": "xtask/src/bench.rs",
     "lastRunAt": "2026-11-28T17:27:26.625Z",
@@ -1399,15 +1408,6 @@
       "pass|full|2026-11-26T21:39:50.102Z"
     ]
   },
-  "layout::tests::at_wraps_and_reports_wires": {
-    "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T18:40:50.408Z"
-    ]
-  },
   "layout::tests::empty_loop_is_inert": {
     "file": "crates/simbiguity-circuits-view/src/layout.rs",
     "lastRunAt": "2026-11-28T15:33:40.490Z",
@@ -1420,33 +1420,6 @@
   "layout::tests::lever_and_knob_follow_the_angle": {
     "file": "crates/simbiguity-circuits-view/src/layout.rs",
     "lastRunAt": "2026-11-28T15:33:40.490Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T18:40:50.408Z"
-    ]
-  },
-  "layout::tests::loop_is_closed": {
-    "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T18:40:50.408Z"
-    ]
-  },
-  "layout::tests::loop_length_is_the_sum_of_its_sections": {
-    "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T18:40:50.408Z"
-    ]
-  },
-  "layout::tests::particle_offsets_skip_hidden_stretches": {
-    "file": "crates/simbiguity-circuits-view/src/layout.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
@@ -1553,15 +1526,6 @@
       "pass|full|2026-11-26T18:40:50.408Z"
     ]
   },
-  "level_format::tests::load_level_test": {
-    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-    "lastRunAt": "2026-11-28T01:51:05.673Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-27T13:15:45.602Z"
-    ]
-  },
   "level_format::tests::parse_fixed_part_valid": {
     "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
     "lastRunAt": "2026-11-28T15:52:05.823Z",
@@ -1569,33 +1533,6 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T12:44:56.313Z"
-    ]
-  },
-  "level_format::tests::parse_level_empty_fails": {
-    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-28T01:51:46.411Z"
-    ]
-  },
-  "level_format::tests::parse_level_invalid_fails": {
-    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-28T01:51:46.411Z"
-    ]
-  },
-  "level_format::tests::parse_level_valid_succeeds": {
-    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-28T01:51:46.411Z"
     ]
   },
   "level_format::tests::parse_palette_entry_valid": {
@@ -1632,15 +1569,6 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T12:44:56.313Z"
-    ]
-  },
-  "level_format::tests::test_level": {
-    "file": "crates/simbiguity-circuits-puzzle/src/level_format.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T19:55:58.345Z"
     ]
   },
   "libtest_output::tests::doc_tests_switch_the_target_to_doc": {
@@ -2250,24 +2178,6 @@
       "pass|full|2026-11-26T17:29:47.731Z"
     ]
   },
-  "mna::tests::solve_once_returns_failure_on_missing_topology": {
-    "file": "crates/simbiguity-circuits/src/mna_tests.rs",
-    "lastRunAt": "2026-11-26T22:57:01.007Z",
-    "lastRunKind": "targeted",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T21:39:50.102Z"
-    ]
-  },
-  "mna::tests::solve_once_returns_failure_on_missing_unknowns": {
-    "file": "crates/simbiguity-circuits/src/mna_tests.rs",
-    "lastRunAt": "2026-11-26T22:57:01.007Z",
-    "lastRunKind": "targeted",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T21:39:50.102Z"
-    ]
-  },
   "mna::tests::touched_nodes_marks_only_connected_nodes": {
     "file": "crates/simbiguity-circuits/src/mna_tests.rs",
     "lastRunAt": "2026-11-28T15:33:40.490Z",
@@ -2519,15 +2429,6 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T17:20:23.966Z"
-    ]
-  },
-  "puzzle_tests::checking_level_1_with_an_empty_board_reports_its_goal_as_failed": {
-    "file": "crates/simbiguity-render-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-28T02:49:13.325Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-28T02:10:29.079Z"
     ]
   },
   "quat::tests::from_axis_angle_rotates_by_right_hand_rule": {
@@ -3003,15 +2904,6 @@
       "pass|full|2026-11-28T12:44:56.313Z"
     ]
   },
-  "share::tests::corrupted_share_link_is_rejected": {
-    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
-    "lastRunAt": "2026-11-28T01:51:05.673Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-27T13:15:45.602Z"
-    ]
-  },
   "share::tests::crc32_check_value": {
     "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
     "lastRunAt": "2026-11-28T15:52:05.823Z",
@@ -3037,15 +2929,6 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T12:44:56.313Z"
-    ]
-  },
-  "share::tests::test_encode": {
-    "file": "crates/simbiguity-circuits-puzzle/src/share.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T19:55:58.345Z"
     ]
   },
   "sim::tests::cache_produces_bit_identical_results": {
@@ -3248,6 +3131,24 @@
       "pass|full|2026-11-26T17:33:52.512Z"
     ]
   },
+  "test › LED with 160 ohm resistor": {
+    "file": "site/js/nonlinear.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › Oscilloscope probes read samples correctly for series RLC at resonance": {
+    "file": "site/test/ac.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
   "test › WASM determinism hash": {
     "file": "site/js/determinism.test.js",
     "lastRunAt": "2026-11-28T13:10:32.114Z",
@@ -3255,6 +3156,69 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T03:03:51.735Z"
+    ]
+  },
+  "test › accepts a hash without the leading hash sign": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › accepts a hash without the leading mark": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › accepts a same-site relative fixture path": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › adds the embed flag": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › appends nodes and spreads an array of children": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › appends strings and numbers as text": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › appends to an existing query": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
   "test › boot.js renders error message on rejected promise": {
@@ -3275,6 +3239,96 @@
       "pass|changed|2026-11-28T15:53:18.482Z"
     ]
   },
+  "test › clamps or ignores bad volts": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › clamps volts to the slider range": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › counts failures when any test failed": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › counts the test list when totals are missing": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › counts totals, crates and capability statuses": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › decodes an empty frame": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › decodes an encoded search": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › decodes every opcode": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › defaults the ratio and never returns zero": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › defaults to report.json": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
   "test › demo.js history.replaceState hash write": {
     "file": "site/demos/circuit-3d/demo.test.js",
     "lastRunAt": "2026-11-28T03:00:07.660Z",
@@ -3282,6 +3336,60 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T02:49:36.802Z"
+    ]
+  },
+  "test › derives the filament resistance from the rating": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › does not call the rated voltage overdriven": {
+    "file": "site/demos/circuit-3d/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › does not count ignored tests as failing": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › does nothing elsewhere": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › drops an unknown status": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › drops null, undefined and false children": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
   "test › every_demo_directory_is_in_the_manifest": {
@@ -3302,6 +3410,933 @@
       "pass|full|2026-11-28T03:03:14.361Z"
     ]
   },
+  "test › explains a blown bulb first": {
+    "file": "site/demos/circuit-3d/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains a blown bulb with the power it would draw": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains a fully lit bulb with Ohm's law": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains a short circuit first": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains an open switch": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains an open switch as a gap that stops the charges": {
+    "file": "site/demos/circuit-3d/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains an overdriven bulb": {
+    "file": "site/demos/circuit-3d/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains current flowing with the amps": {
+    "file": "site/demos/circuit-3d/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › explains zero volts as no current": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › falls back to rated volts for an unreadable v token": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › falls back when the parameter is empty": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › filters by crate": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › filters by status": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › flags blown only for this bulb": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › flips the switch": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › formats a number with its unit": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › formats an ISO timestamp as a short date": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › formats every reading with its unit": {
+    "file": "site/demos/circuit-3d/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › game_state_solving_level_1_produces_a_share_code": {
+    "file": "site/demos/circuit-puzzles/game-state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › groups by crate in manifest order": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › hashFromState produces expected hash": {
+    "file": "site/demos/rc-charging/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › honours the digits argument": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › ignores anything after a question mark": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › ignores unknown tokens": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › joins module and name": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › keeps every test when nothing is filtered": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › keeps the hash after the flag": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › keeps zero as a reading": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › labels each status": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › labels the battery from the state voltage": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › links to the commit": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › links to the file and line at the commit": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › lists the eight slots in Rust order": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › lists the three outcomes in filter order": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › makes the demo relative to the status page": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › maps client coordinates into the backing store": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › matches the Rust pick tags": {
+    "file": "site/js/simbiguity-render.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › names every slot": {
+    "file": "site/js/simbiguity-render.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › offers to close an open switch": {
+    "file": "site/demos/circuit-3d/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › omits empty filters": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › omits the line anchor when the line is unknown": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › omits v at the rated voltage": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › orders failures first, then ignored, then passed": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › parseState defaults": {
+    "file": "site/demos/physics/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › parseState with values": {
+    "file": "site/demos/physics/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › passes an unknown status through": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › passes engine messages through": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › points where a click acts and grabs elsewhere": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › puts crates with more demos first": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads a lit loop": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads an empty hash as the default state": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads an empty or bare hash as the 3D default state": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads an open loop as dark and not flowing": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads closed, short and v tokens in any order": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads crate, status and search from the hash": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads every token": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reads flags as booleans": {
+    "file": "site/js/simbiguity-render.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects a protocol-relative URL": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects a short buffer": {
+    "file": "site/js/simbiguity-render.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects a truncated command": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects a wrong payload length": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects an absolute URL": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects an unknown opcode": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects any scheme regardless of case": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects bad headers": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rejects bad times and incomplete cameras": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › renders labels into a dedicated overlay without clearing siblings": {
+    "file": "site/js/plot-labels.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › replaces only a blown bulb": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › reports zero shown": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › requires every active filter to match": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns an empty hash when the filters are cleared": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns an empty string for a bad timestamp": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns an empty string for the default state": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns an empty string when nothing is filtered": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns bare content without a destination": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns empty filters for an empty hash": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns no groups for no capabilities": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns nothing for an untested capability": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns null when anything is missing": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns null when the URL already matches": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns null with no hash and no filters": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns null with no tests": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns null without a demo": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns null without a repository or commit": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns the bare name without a module": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns the new hash when the filters changed": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › returns zeros for an empty report": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › round-trips a state with a camera through stateFromHash": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › round-trips through parseFilters": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › round-trips through stateFromHash": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › rounds brightness to a whole percent": {
+    "file": "site/demos/circuit-3d/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › says All when every test is shown": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › says how many of the total are shown": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › scales by the device pixel ratio": {
+    "file": "site/demos/circuit-3d/pointer.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › searches descriptions case-insensitively": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › searches the module path": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › sets other attributes, true as empty": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › sets the class name from the class attribute": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › shows an em dash for null or undefined": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › shows dashes when there is no solution": {
+    "file": "site/demos/hello-circuit/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › shows replace only for a blown bulb": {
+    "file": "site/demos/circuit-3d/readouts.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › skips ids the report does not contain": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › skips null, undefined and false attributes": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
   "test › smoke test all demos resolve their imports": {
     "file": "site/smoke.test.js",
     "lastRunAt": "2026-11-28T15:53:18.482Z",
@@ -3309,6 +4344,141 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|changed|2026-11-28T15:53:18.482Z"
+    ]
+  },
+  "test › stateFromHash parses #lc and #trap": {
+    "file": "site/demos/rc-charging/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › stateFromHash parses empty string to defaults": {
+    "file": "site/demos/rc-charging/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › strips a leading slash": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › throws CommandBufferError": {
+    "file": "site/js/webgl2-executor.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › titles partial brightness as lit or dim": {
+    "file": "site/demos/hello-circuit/explain.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › treats a bare hash mark as no filters": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › trims the search": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › uses the UTC date": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › uses the plural for several tests": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › uses the singular for one test": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › wraps content in a link when there is a destination": {
+    "file": "site/status/dom.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › writes all active filters": {
+    "file": "site/status/report-view.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › writes every non-default field": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › writes nothing for the default state": {
+    "file": "site/demos/circuit-3d/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
+    ]
+  },
+  "test › writes tokens in a fixed order": {
+    "file": "site/demos/hello-circuit/state.test.js",
+    "lastRunAt": "2026-11-28T17:47:36.601Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-11-28T17:47:36.601Z"
     ]
   },
   "test_descriptions::tests::brace_delta_ignores_literals_and_comments": {
@@ -3608,15 +4778,6 @@
       "pass|full|2026-11-26T17:56:23.091Z"
     ]
   },
-  "tests::goal_lit_bulbs": {
-    "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
-    "lastRunAt": "2026-11-27T14:56:35.935Z",
-    "lastRunKind": "targeted",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-27T13:15:45.602Z"
-    ]
-  },
   "tests::ids_count_up_in_creation_order": {
     "file": "crates/simbiguity-circuits-wasm/src/tests.rs",
     "lastRunAt": "2026-11-28T15:33:40.490Z",
@@ -3852,15 +5013,6 @@
       "pass|full|2026-11-28T01:51:46.411Z"
     ]
   },
-  "tests::test_goal": {
-    "file": "crates/simbiguity-puzzle/src/lib.rs",
-    "lastRunAt": "2026-11-27T01:03:11.380Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T19:55:58.345Z"
-    ]
-  },
   "tests::test_puzzle_session_undo_redo": {
     "file": "crates/simbiguity-circuits-puzzle/src/lib.rs",
     "lastRunAt": "2026-11-28T15:52:05.823Z",
@@ -3897,15 +5049,6 @@
       "pass|full|2026-11-26T20:42:10.739Z"
     ]
   },
-  "tests::test_wasm": {
-    "file": "crates/simbiguity-physics-wasm/src/lib.rs",
-    "lastRunAt": "2026-11-27T00:22:12.113Z",
-    "lastRunKind": "targeted",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-26T20:42:10.739Z"
-    ]
-  },
   "thousand_rung_ladder_draws_one_over_phi_amps": {
     "file": "crates/simbiguity-circuits/tests/large.rs",
     "lastRunAt": "2026-11-28T15:33:40.490Z",
@@ -3913,15 +5056,6 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-28T14:42:07.119Z"
-    ]
-  },
-  "ticks::tests::test_compute_ticks": {
-    "file": "crates/simbiguity-plot/src/ticks.rs",
-    "lastRunAt": "2026-11-26T23:27:09.378Z",
-    "lastRunKind": "targeted",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|targeted|2026-11-26T20:58:25.840Z"
     ]
   },
   "ticks::tests::ticks_for_zero_to_ten_step_by_two": {
@@ -4501,15 +5635,6 @@
     "lastStatus": "pass",
     "statusRing": [
       "pass|full|2026-11-27T16:18:19.564Z"
-    ]
-  },
-  "world_tests::pendulum_period": {
-    "file": "crates/simbiguity-physics/src/world_tests.rs",
-    "lastRunAt": "2026-11-27T13:16:00.967Z",
-    "lastRunKind": "changed",
-    "lastStatus": "pass",
-    "statusRing": [
-      "pass|full|2026-11-27T00:47:12.673Z"
     ]
   },
   "world_tests::pendulum_small_angle": {

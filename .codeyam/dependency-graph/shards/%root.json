@@ -1,5 +1,39 @@
 {
-  "entities": {},
+  "entities": {
+    "test.js::__file_root__": {
+      "filePath": "test.js",
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js::loadCircuits"
+      ],
+      "name": "__file_root__"
+    },
+    "test.js::a": {
+      "filePath": "test.js",
+      "importedBy": [
+        "test.js::src"
+      ],
+      "imports": [],
+      "name": "a"
+    },
+    "test.js::b": {
+      "filePath": "test.js",
+      "importedBy": [
+        "test.js::src"
+      ],
+      "imports": [],
+      "name": "b"
+    },
+    "test.js::src": {
+      "filePath": "test.js",
+      "importedBy": [],
+      "imports": [
+        "test.js::a",
+        "test.js::b"
+      ],
+      "name": "src"
+    }
+  },
   "files": {
     "patch_comments.py": {
       "importedBy": [],
@@ -24,6 +58,12 @@
     "run_dbg.sh": {
       "importedBy": [],
       "imports": []
+    },
+    "test.js": {
+      "importedBy": [],
+      "imports": [
+        "site/js/simbiguity.js"
+      ]
     }
   }
 }
